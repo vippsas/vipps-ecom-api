@@ -32,7 +32,8 @@ find your issue helpful too. For more information on how issues work, check out 
 
 # License
 
-The LICENSE file defines the license for the project. An open source project's license informs users what they can and can't do (e.g., use, modify, redistribute), and contributors, what they are allowing others to do.
+The LICENSE file defines the license for the project. An open source project's license informs users what they can and can't do (e.g., use, modify, redistribute), 
+and contributors, what they are allowing others to do.
 
-The documentation for the Vipps eCommerce API is licenced under the MIT licence: https://choosealicense.com/licenses/mit/
+Vipps API documentation is licenced under the MIT licence: https://choosealicense.com/licenses/mit/
 
