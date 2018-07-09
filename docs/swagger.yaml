@@ -146,7 +146,7 @@ paths:
       tags:
         - oneclick-payment-with-vipps-controller
       summary: Initiate Payment
-      description: 'The API Call allows merchant to initiate a payment flow by using Vipps.In order to identify sales channel payments are coming from, a merchantSerialNumber is used to distinguish between them. Please note that single payment is uniquely identified by composite of merchantApplicationId (X-App-ID), merchantSerialNumber and orderId.Merchant provided orderId must be unique per sales channel.Once successfully initiated the transaction in Vipps, it will give you the redirect URL as response which has to be used by merchant to open Vipps landing page. Landing page will own functionality to identify and differentiate request coming from mobile browser/desktop browser.'
+      description: 'The API Call allows merchant to initiate a payment flow by using Vipps. In order to identify sales channel payments are coming from, a merchantSerialNumber is used to distinguish between them. Please note that single payment is uniquely identified by composite of merchantApplicationId (X-App-ID), merchantSerialNumber and orderId. Merchant provided orderId must be unique per sales channel. Once successfully initiated the transaction in Vipps, it will give you the redirect URL as response which has to be used by merchant to open Vipps landing page. Landing page will own functionality to identify and differentiate request coming from mobile browser/desktop browser.'
       operationId: initiatePaymentV3UsingPOST
       consumes:
         - application/json;charset=UTF-8
@@ -227,7 +227,7 @@ paths:
       tags:
         - oneclick-payment-with-vipps-controller
       summary: Cancel Payment
-      description: 'The API call allows merchant to cancel the reserved transaction, The API will not allow partial cancellation which has a consequence that partially captured transactions cannot be cancelled.Please note that in a case of communication errors during initiate payment service call between Vipps and PSP/Acquirer/Issuer; even in a case that customer has confirmed a payment, the payment will be cancelled by Vipps. '
+      description: 'The API call allows merchant to cancel the reserved transaction, The API will not allow partial cancellation which has a consequence that partially captured transactions cannot be cancelled. Please note that in a case of communication errors during initiate payment service call between Vipps and PSP/Acquirer/Issuer; even in a case that customer has confirmed a payment, the payment will be cancelled by Vipps. '
       operationId: cancelPaymentRequestUsingPUT
       consumes:
         - application/json;charset=UTF-8
