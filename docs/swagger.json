@@ -1261,7 +1261,10 @@
           "type": "string"
         },
         "shippingDetails": {
-          "type": "string"
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ShippingDetails"
+          }
         }
       }
     },

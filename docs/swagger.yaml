@@ -1002,7 +1002,9 @@ definitions:
       orderId:
         type: string
       shippingDetails:
-        type: string
+        type: array
+        items:
+          "$ref": "#/definitions/ShippingDetails"
   TransactionSummary:
     type: object
     required:
