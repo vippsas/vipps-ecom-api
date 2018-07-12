@@ -29,7 +29,7 @@ info:
     username and a password to login into the Merchant Developer Portal (manual
     to use merchant developer portal can be found here). Once logged in to the
     developer portal, the merchant needs to register an application to generate
-    a JWT access token and use the token in the authorization header of the
+    a JWT access token (also called Authorization Token) and use the token in the authorization header of the
     request. The diagram below shows the integration flow between merchant and
     Vipps server.
 
