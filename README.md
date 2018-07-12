@@ -9,3 +9,6 @@ If you want to contribute here on GitHub: Great! No issue or pull request is too
 See the main GitHub page for Vipps contact information, etc: https://github.com/vippsas  
 
 You can peruse the api-docs at https://vippsas.github.io/vipps-ecom-api/
+
+
+Eple og Banan
