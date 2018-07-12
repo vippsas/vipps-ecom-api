@@ -64,7 +64,7 @@ info:
       | **Header Name** | **Header Value** | **Description** |
       | :-------------------------- | :--------------------------- | :--------------------------------------------- |
       | Authorization | Bearer 'jwt_access_token'' | type: Authorization token<br>Value: Access token is obtained by registering merchant backend application in Merchant Developer Portal. |
-      | Ocp-ApimSubscription-Key | Base 64 encoded string | Subscription key for eCommerce product.<br>This can be found in User Profile page on Merchant developer portal after merchant account is created |
+      | Ocp-Apim-Subscription-Key | Base 64 encoded string | Subscription key for eCommerce product.<br>This can be found in User Profile page on Merchant developer portal after merchant account is created |
 
   version: '1.0'
   title: Vipps eCommerce APIs
