@@ -29,7 +29,8 @@
             "in": "header",
             "description": "Client ID received when merchant registered the application",
             "required": false,
-            "type": "GUID"
+            "type": "string",
+            "format": "guid"
           },
           {
             "name": "client_secret",
