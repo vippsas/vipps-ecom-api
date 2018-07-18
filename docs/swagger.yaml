@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   description: >+
 
-    **IMPORTANT!** We are preparing the documentation and will update this site
+    **IMPORTANT!!!!** We are preparing the documentation and will update this site
     regularly. This notice will remain until the site is ready for initial use.
     Please refer to our current [portal for
     developers](https://www.vipps.no/bedrift/utvikler) in the meantime.
@@ -218,7 +218,7 @@ paths:
           description: Unsupported media type
         '500':
           description: Something went wrong from Vipps Server side
-  /v2/payments:
+  '/ecomm/v2/payments':
     post:
       tags:
         - oneclick-payment-with-vipps-controller
@@ -268,7 +268,7 @@ paths:
           description: Unsupported media type
         '500':
           description: Something went wrong from Vipps Server side
-  '/v2/payments/{orderId}':
+  '/ecomm/v2/payments/{orderId}':
     post:
       tags:
         - oneclick-payment-with-vipps-controller
@@ -314,7 +314,7 @@ paths:
           description: Unsupported media type
         '500':
           description: Something went wrong from Vipps Server side
-  '/v2/payments/{orderId}/cancel':
+  '/ecomm/v2/payments/{orderId}/cancel':
     put:
       tags:
         - oneclick-payment-with-vipps-controller
@@ -365,7 +365,7 @@ paths:
           description: Unsupported media type
         '500':
           description: Something went wrong from Vipps Server side
-  '/v2/payments/{orderId}/capture':
+  '/ecomm/v2/payments/{orderId}/capture':
     post:
       tags:
         - oneclick-payment-with-vipps-controller
@@ -416,7 +416,7 @@ paths:
           description: Unsupported media type
         '500':
           description: Something went wrong from Vipps Server side
-  '/v2/payments/{orderId}/details':
+  '/ecomm/v2/payments/{orderId}/details':
     get:
       tags:
         - oneclick-payment-with-vipps-controller
@@ -457,7 +457,7 @@ paths:
           description: Unsupported media type
         '500':
           description: Something went wrong from Vipps Server side
-  '/v2/payments/{orderId}/refund':
+  '/ecomm/v2/payments/{orderId}/refund':
     post:
       tags:
         - oneclick-payment-with-vipps-controller
@@ -511,7 +511,7 @@ paths:
           description: Unsupported media type
         '500':
           description: Something went wrong from Vipps Server side
-  '/v2/payments/{orderId}/status':
+  '/ecomm/v2/payments/{orderId}/status':
     get:
       tags:
         - oneclick-payment-with-vipps-controller
