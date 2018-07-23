@@ -1,19 +1,4 @@
-# Vipps eCommerce API version 2
-
-This repo contains developer resources for the Vipps eCommerce API. For more information about this product, "Vipps på Nett", please see: https://www.vipps.no/bedrift/vipps-pa-nett
-
-**IMPORTANT:** This is a work in progress! Expect sudden, breaking changes :boom: The official, stable developer resources for Vipps is still https://vipps.no/developer
-
-If you want to contribute here on GitHub: Great! No issue or pull request is too small 👍
-
-See the main GitHub page for Vipps contact information, etc: https://github.com/vippsas  
-
-You can peruse the api-docs at https://vippsas.github.io/vipps-ecom-api/
-
-
-# Vipps Developer Portal
-
-This section will explain how merchants can start using Vipps APIs and get access to API credentials.
+This are the steps after you have received onboarding-email from vipps. You should have received proper credentials with username on email and password on the admin-phonenumber. Use those credentials to log into Vipps Developer Portal in either test or production.
 
 We start with the typical Sign-in screen.
 
@@ -40,4 +25,20 @@ username@apivipps.no
 - Make shure you are using the correct url. Remember https://apitest-portal.vipps.no/ for test, and https://api-portal.vipps.no/ for production.
 
 After an successfull log-in you will see the admin-name up in the right corner of the screen. In the left corner you have several tabs.
-The "Manage User" - gives you the possibility to add users. 
+The "Manage User" - gives you the possibility to add users.
+
+![Alt text](relative/path/to/img.jpg?raw=true "Title") Add users
+
+The next tab "Products" shows you the API's you current have. As you see from the picture below you can have several products and the possibility to test them out in Vipps Developer Portal.
+
+![Alt text](relative/path/to/img.jpg?raw=true "Title") Products
+
+![Alt text](relative/path/to/img.jpg?raw=true "Title") Test the Api(s)
+
+![Alt text](relative/path/to/img.jpg?raw=true "Title") Try it
+
+![Alt text](relative/path/to/img.jpg?raw=true "Title") request payment
+
+Now you probably wonder where you should get the API keys. Well, if you check out the tab "Applications" and click on the unit with the number-identificator that fits your salesunit, then you will find both client_id and client_secret.
+
+![Alt text](relative/path/to/img.jpg?raw=true "Title") keys Applications
