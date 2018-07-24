@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 This are the steps after you have received onboarding-email from vipps. You should have received proper credentials with username on email and password on the admin-phonenumber. Use those credentials to log into Vipps Developer Portal in either test or production.
 
 We start with the typical Sign-in screen.
@@ -40,12 +39,12 @@ The next tab **"Products"** shows you the API's you current have. As you see fro
 
 ![Alt text](relative/path/to/img.jpg?raw=true "Title") request payment
 
-Now you probably wonder where you should get the API keys. Well, if you check out the tab "Applications" and click on the unit with the number-identificator that fits your salesunit, then you will find both client_id and client_secret.
+Now you probably wonder where you should get the API keys. Well, if you check out the tab **"Applications"** and click on the unit with the number-identificator that fits your salesunit, then you will find both client_id and client_secret.
 
 ![Alt text](relative/path/to/img.jpg?raw=true "Title") keys Applications
 
-Under the tab "register application" it should say(marked in red):
-'All existing products have been subscribed'
-=======
+Under the tab **"register application"** it should say(marked in red):
 
->>>>>>> 88ceab0b5c5735063f037cbacba1f2fca45bc0c5
+'All existing products have been subscribed'
+
+Under the tab **"Profile"**
