@@ -25,11 +25,11 @@ username@apivipps.no
 - Make shure you are using the correct url. Remember https://apitest-portal.vipps.no/ for test, and https://api-portal.vipps.no/ for production.
 
 After an successfull log-in you will see the admin-name up in the right corner of the screen. In the left corner you have several tabs.
-The "Manage User" - gives you the possibility to add users.
+The **"Manage User"** - gives you the possibility to add users.
 
 ![Alt text](relative/path/to/img.jpg?raw=true "Title") Add users
 
-The next tab "Products" shows you the API's you current have. As you see from the picture below you can have several products and the possibility to test them out in Vipps Developer Portal.
+The next tab **"Products"** shows you the API's you current have. As you see from the picture below you can have several products and the possibility to test them out in Vipps Developer Portal.
 
 ![Alt text](relative/path/to/img.jpg?raw=true "Title") Products
 
@@ -42,3 +42,6 @@ The next tab "Products" shows you the API's you current have. As you see from th
 Now you probably wonder where you should get the API keys. Well, if you check out the tab "Applications" and click on the unit with the number-identificator that fits your salesunit, then you will find both client_id and client_secret.
 
 ![Alt text](relative/path/to/img.jpg?raw=true "Title") keys Applications
+
+Under the tab "register application" it should say(marked in red):
+'All existing products have been subscribed'
