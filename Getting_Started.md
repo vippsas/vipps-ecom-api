@@ -2,7 +2,7 @@ This are the steps after you have received onboarding-email from vipps. You shou
 
 We start with the typical Sign-in screen.
 
-![Sign on screen](https://github.com/Vippsittommy/vipps-ecom-api/blob/master/Vipps_Developer_Portal_SamplePictures/Vipps_sign_in.PNG?raw=true "Title") Sign on screen
+![Sign on screen](https://github.com/vippsas/vipps-ecom-api/blob/master/Vipps_Developer_Portal_SamplePictures/Vipps_sign_in.PNG?raw=true "Title") Sign on screen
 
 You type in your username and password here.
 Now remember that there's a difference in both production and test when it comes to Vipps Developer Portal.
