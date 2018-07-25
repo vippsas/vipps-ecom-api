@@ -2,7 +2,7 @@ This are the steps after you have received onboarding-email from vipps. You shou
 
 We start with the typical Sign-in screen.
 
-![Alt text](relative/path/to/img.jpg?raw=true "Title") Sign on screen
+![Sign on screen](https://github.com/Vippsittommy/vipps-ecom-api/blob/master/Vipps_Developer_Portal_SamplePictures/Vipps_sign_in.PNG?raw=true "Title") Sign on screen
 
 You type in your username and password here.
 Now remember that there's a difference in both production and test when it comes to Vipps Developer Portal.
@@ -55,4 +55,4 @@ You have the Access Token key on the top. You have to hit "show" on the right si
 
 The Ocp-Apim-Subscription-Key is right below the Access Token key. You have to hit "show" on the right side to make the keys appear. And as marked, its the primary key you are after. If the key for some reason does not work, then you can hit "regenerate", right next to "show".
 
-The MerchantSerialNumber is the number right next to the name of your Salesunit. Now you should have both the Client_id, Client_secret, Access_token key, Ocp-Apim-Subscription-Key and SerialMerchantNumber and can proceed with the payment-flow. 
+The MerchantSerialNumber is the number right next to the name of your Salesunit. Now you should have both the Client_id, Client_secret, Access_token key, Ocp-Apim-Subscription-Key and SerialMerchantNumber and can proceed with the payment-flow.
