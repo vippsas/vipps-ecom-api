@@ -20,9 +20,9 @@ username@apivipps.no
 
 ![Error Screen](https://github.com/Vippsittommy/vipps-ecom-api/blob/master/Vipps_Developer_Portal_SamplePictures/Error-Screen.PNG?raw=true "Title") Error-screen
 
-- Make shure that you are also logged out of other 365-accounts
-- Make shure you are in incognito-modus in either Google Chrome or Windows Edge
-- Make shure you are using the correct url. Remember https://apitest-portal.vipps.no/ for test, and https://api-portal.vipps.no/ for production.
+- Make sure that you are also logged out of other 365-accounts
+- Make sure you are in incognito-modus in either Google Chrome or Windows Edge
+- Make sure you are using the correct url. Remember https://apitest-portal.vipps.no/ for test, and https://api-portal.vipps.no/ for production.
 
 After an successfull log-in you will see the admin-name up in the right corner of the screen. In the left corner you have several tabs.
 The **"Manage User"** - gives you the possibility to add users.
