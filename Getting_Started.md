@@ -2,7 +2,7 @@
 
 This are the steps after you have received onboarding-email from vipps. You should have received proper credentials with username on email and password on the admin-phonenumber. Use those credentials to log into Vipps Developer Portal in either test or production.
 
-# STEP 1
+# Step 1
 We start with the typical Sign-in screen.
 
 ![Sign on screen](https://github.com/vippsas/vipps-ecom-api/blob/master/Vipps_Developer_Portal_SamplePictures/Vipps_sign_in.PNG?raw=true "Title")
