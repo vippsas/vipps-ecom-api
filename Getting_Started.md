@@ -18,7 +18,7 @@ username@apivipps.no
 
 **IN CASE OF ERROR-SCREEN SHOWN ON THE PICTURE UNDER:**
 
-![Alt text](relative/path/to/img.jpg?raw=true "Title") Error-screen
+![Error Screen](https://github.com/Vippsittommy/vipps-ecom-api/blob/master/Vipps_Developer_Portal_SamplePictures/Error-Screen.PNG?raw=true "Title") Error-screen
 
 - Make shure that you are also logged out of other 365-accounts
 - Make shure you are in incognito-modus in either Google Chrome or Windows Edge
@@ -27,21 +27,21 @@ username@apivipps.no
 After an successfull log-in you will see the admin-name up in the right corner of the screen. In the left corner you have several tabs.
 The **"Manage User"** - gives you the possibility to add users.
 
-![Alt text](relative/path/to/img.jpg?raw=true "Title") Add users
+![Alt text](https://github.com/Vippsittommy/vipps-ecom-api/blob/master/Vipps_Developer_Portal_SamplePictures/add_user_vipps_developer_portal.PNG?raw=true "Title") Add users
 
 The next tab **"Products"** shows you the API's you current have. As you see from the picture below you can have several products and the possibility to test them out in Vipps Developer Portal.
 
-![Alt text](relative/path/to/img.jpg?raw=true "Title") Products
+![Alt text](https://github.com/Vippsittommy/vipps-ecom-api/blob/master/Vipps_Developer_Portal_SamplePictures/products_vipps_dev.PNG?raw=true "Title") Products
 
-![Alt text](relative/path/to/img.jpg?raw=true "Title") Test the Api(s)
+![Alt text](https://github.com/Vippsittommy/vipps-ecom-api/blob/master/Vipps_Developer_Portal_SamplePictures/Test_the_api.PNG?raw=true "Title") Test the Api(s)
 
-![Alt text](relative/path/to/img.jpg?raw=true "Title") Try it
+![Alt text](https://github.com/Vippsittommy/vipps-ecom-api/blob/master/Vipps_Developer_Portal_SamplePictures/Try_it_out.PNG?raw=true "Title") Try it
 
-![Alt text](relative/path/to/img.jpg?raw=true "Title") request payment
+![Alt text](https://github.com/Vippsittommy/vipps-ecom-api/blob/master/Vipps_Developer_Portal_SamplePictures/Request_payment.PNG?raw=true "Title") request payment
 
 Now you probably wonder where you should get the API keys. Well, if you check out the tab **"Applications"** and click on the unit with the number-identificator that fits your salesunit, then you will find both client_id and client_secret.
 
-![Alt text](relative/path/to/img.jpg?raw=true "Title") keys Applications
+![Alt text](https://github.com/vippsas/vipps-ecom-api/blob/master/Vipps_Developer_Portal_SamplePictures/keys_application.PNG?raw=true "Title") keys Applications
 
 Under the tab **"register application"** it should say(marked in red):
 
@@ -49,7 +49,7 @@ Under the tab **"register application"** it should say(marked in red):
 
 Under the tab **"Profile"** you will find your two last keys.
 
-![Alt text](relative/path/to/img.jpg?raw=true "Title") keys_profile
+![Alt text](https://github.com/vippsas/vipps-ecom-api/blob/master/Vipps_Developer_Portal_SamplePictures/keys_profile.PNG?raw=true "Title") keys_profile
 
 You have the Access Token key on the top. You have to hit "show" on the right side to make the keys appear. And as marked, its the primary key you are after. If the key for some reason does not work, then you can hit "regenerate", right next to "show".
 
