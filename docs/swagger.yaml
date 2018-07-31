@@ -782,3 +782,19 @@ definitions:
         type: integer
         format: int32
         description: Total remaining amount to refund
+  PartnerKeyCallback:
+    type: object
+    required:
+      - Client_Id
+      - Client_Secret
+      - Ocp-Apim-Subscription-Key
+    properties:
+      Client_Id:
+        type: string
+        description: The Client Id tied to the merchant
+      Client_Secret:
+        type: string
+        description: The Client Secret tied to the merchant
+      Ocp-Apim-Subscription-Key:
+        type: string
+        description: The subscription key for the product
