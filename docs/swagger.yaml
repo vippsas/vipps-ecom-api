@@ -224,6 +224,19 @@ paths:
       produces:
         - application/json;charset=UTF-8
       parameters:
+        - name: Authorization
+          in: header
+          description: Token gotten from the Authorization service
+          required: false
+          type: string
+        - name: ocp-apim-subscription-key
+          in: header
+          description: >-
+            Subscription key for eCommerce product. This can be found in User
+            Profile page on Merchant developer portal after merchant account is
+            created
+          required: false
+          type: string
         - in: body
           name: initiatePaymentCommandDto
           description: initiatePaymentCommandDto
