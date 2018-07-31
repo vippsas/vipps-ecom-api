@@ -175,11 +175,11 @@ paths:
           required: false
           type: string
         - in: body
-          name: initiatePaymentCommandDto
-          description: initiatePaymentCommandDto
+          name: InitiatePaymentCommandDtoV2
+          description: InitiatePaymentCommandDtoV2
           required: true
           schema:
-            $ref: '#/definitions/InitiatePaymentCommandDto'
+            $ref: '#/definitions/InitiatePaymentCommandDtoV2'
       responses:
         '202':
           description: Response for Initiate Payment
@@ -600,6 +600,21 @@ definitions:
       transaction:
         description: it has transaction details which needs to be inititated
         $ref: '#/definitions/TransactionInfoInitiateDTO'
+  InitiatePaymentCommandDtoV2:
+    type: object
+    required:
+      - merchantInfo
+      - transaction
+    properties:
+      customerInfo:
+        description: it has customer information and it is not required
+        $ref: '#/definitions/CustomerInfoDto'
+      merchantInfo:
+        description: it has merchant related information to initiate the payment
+        $ref: '#/definitions/MerchantInfoDtoV2'
+      transaction:
+        description: it has transaction details which needs to be inititated
+        $ref: '#/definitions/TransactionInfoInitiateDTO'
   TransactionInfoInitiateDTO:
     type: object
     required:
@@ -671,6 +686,12 @@ definitions:
           information anymore.
         enum:
           - Values with length 255
+      merchantSerialNumber:
+        type: string
+        description: >-
+          Merchant identifier.
+        enum:
+          - Values with length 6
       fallBack:
         type: string
         description: >-
@@ -698,6 +719,68 @@ definitions:
           to let Vipps fetch shipping cost and method related details.
         enum:
           - Values with length 255
+  MerchantInfoDtoV2:
+    type: object
+    required:
+      - callbackPrefix
+      - fallBack
+      - isApp
+      - merchantSerialNumber
+      - paymentType
+    properties:
+      authToken:
+        type: string
+        description: >-
+          Merchant should share this token if merchant has authentication
+          mechanism in place which could be used for making callbacks secure
+        enum:
+          - Values with length 255
+      callbackPrefix:
+        type: string
+        description: >-
+          This is to receive the callback after the payment request. Domain name
+          and context path should be provided by merchant as the value for this
+          parameter. The rest of the URL will be appended by Vipps according to
+          Vipps guidelines. .
+        enum:
+          - Values with length 255
+      consentRemovalPrefix:
+        type: string
+        description: >-
+          In case of expess checkout payments, this callback will be used for
+          informing merchant about consent removal from Vipps user. This means
+          that particular user do not want merchant to store/use his personal
+          information anymore.
+        enum:
+          - Values with length 255
+      fallBack:
+        type: string
+        description: >-
+          Vipps will use the fall back URL to redirect Merchant Page once
+          Payment is completed in Vipps System
+        enum:
+          - Values with length 255
+      isApp:
+        type: boolean
+        example: false
+        description: >-
+          This parameter indicates whether payment request is triggered from
+          Mobile App or Web browser. Based on this value, response will be
+          redirect url for Vipps landing page or deeplink Url to connect vipps
+          App
+      paymentType:
+        type: string
+        description: >-
+          This will parameter will identify difference between ecomm payment and
+          ecomm express payment.
+      shippingDetailsPrefix:
+        type: string
+        description: >-
+          In case of express checkout payment, merchant should pass this prefix
+          to let Vipps fetch shipping cost and method related details.
+        enum:
+          - Values with length 255
+
   GetPaymentStatusResponse:
     type: object
     properties:
