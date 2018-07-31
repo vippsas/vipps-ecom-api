@@ -168,6 +168,12 @@ paths:
             created
           required: false
           type: string
+        - name: merchantSerialNumber
+          in: header
+          description: >-
+            Identifies a merchant sales channel i.e. website, mobile app etc
+          required: false
+          type: string
         - in: body
           name: initiatePaymentCommandDto
           description: initiatePaymentCommandDto
@@ -617,12 +623,6 @@ definitions:
           Mobile App or Web browser. Based on this value, response will be
           redirect url for Vipps landing page or deeplink Url to connect vipps
           App
-      merchantSerialNumber:
-        type: string
-        example: NSBWSHP12
-        description: 'Identifies a merchant sales channel i.e. website, mobile app etc.'
-        enum:
-          - Values with length 6
       paymentType:
         type: string
         description: >-
