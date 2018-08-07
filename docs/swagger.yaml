@@ -158,7 +158,7 @@ paths:
         - name: Authorization
           in: header
           description: Token gotten from the Authorization service
-          required: false
+          required: true
           type: string
         - name: ocp-apim-subscription-key
           in: header
@@ -166,7 +166,7 @@ paths:
             Subscription key for eCommerce product. This can be found in User
             Profile page on Merchant developer portal after merchant account is
             created
-          required: false
+          required: true
           type: string
         - name: merchantSerialNumber
           in: header
@@ -235,6 +235,75 @@ paths:
             Subscription key for eCommerce product. This can be found in User
             Profile page on Merchant developer portal after merchant account is
             created
+          required: false
+          type: string
+        - in: body
+          name: initiatePaymentCommandDto
+          description: initiatePaymentCommandDto
+          required: true
+          schema:
+            $ref: '#/definitions/InitiatePaymentCommandDto'
+      responses:
+        '202':
+          description: Response for Initiate Payment
+          schema:
+            $ref: '#/definitions/InitiatePaymentV2Representation'
+        '400':
+          description: Bad request (Missing a required parameter or Bad request formats)
+        '401':
+          description: Unauthorized
+        '402':
+          description: Payment Failed
+        '403':
+          description: Request Forbidden
+        '404':
+          description: Resource Not Found
+        '405':
+          description: Request method not supported
+        '415':
+          description: Unsupported media type
+        '500':
+          description: Something went wrong from Vipps Server side
+  '/ecomm/v2/payments(optional)':
+    post:
+      tags:
+        - oneclick-payment-with-vipps-controller
+      summary: Initiate Payment
+      description: >-
+        The API Call allows the merchants to initiate a payment flow by using
+        Vipps.In order to identify sales channel payments are coming from, a
+        merchantSerialNumber is used to distinguish between them. Please note
+        that a single payment is uniquely identified by a composite of
+        merchantApplicationId (X-App-ID), merchantSerialNumber and orderId. The
+        Merchant provided orderId must be unique per sales channel. Once
+        successfully initiated the transaction in Vipps, it will give you the
+        redirect URL in response which has to be used by the merchant to open
+        the Vipps landing page. The landing page will have functionality to
+        identify and differentiate request coming from mobile browser/desktop
+        browser.
+      operationId: initiatePaymentV2OptionalUsingPOST
+      consumes:
+        - application/json;charset=UTF-8
+      produces:
+        - application/json;charset=UTF-8
+      parameters:
+        - name: Authorization
+          in: header
+          description: Token gotten from the Authorization service
+          required: true
+          type: string
+        - name: ocp-apim-subscription-key
+          in: header
+          description: >-
+            Subscription key for eCommerce product. This can be found in User
+            Profile page on Merchant developer portal after merchant account is
+            created
+          required: true
+          type: string
+        - name: merchantSerialNumber
+          in: header
+          description: >-
+            Identifies a merchant sales channel i.e. website, mobile app etc
           required: false
           type: string
         - in: body
@@ -944,3 +1013,11 @@ definitions:
       Ocp-Apim-Subscription-Key:
         type: string
         description: The subscription key for the product
+  MerchantInformationCallback:
+    type: object
+    required:
+      -  MerchantSerialNumber
+    properties:
+      MerchantSerialNumber:
+        type: string
+        description: The serial number tied to the merchant
