@@ -5,13 +5,13 @@
 Make sure you are trying to log in to the right portal. If your username is name@testapivipps.no, 
 then you should log into the test portal https://apitest-portal.vipps.no/.
 If your username is name@apivipps.no then you should log in to the production portal https://api-portal.vipps.no/.
-Open the link yo the developer portal in an inkognito/InPrivate-window in your web browser.
+Open the link to the developer portal in an inkognito/InPrivate-window in your web browser.
 
 ## I am getting 401 authorization error - and I have double checked all my keys!
 
 401 occurs when there is a mismatch between subscription keys and merchant sales unit. Please go through these steps to make sure everything is correct:
 
-1. Correct spelling of Ocp-Apim-Subscription-Key parametre in the header of Access Token and Payment API
+1. Correct spelling of Ocp-Apim-Subscription-Key parameter in the header of Access Token and Payment API
 2. Confirm that you are not using the same subscription key for Access Token and Payment Initiation
 3. Make sure you are using the same merchantSerialNumber in the body of your request as is stated in the developer portal
 4. Make sure you are making calls to ecomm/v2/payments and not ecomm/v1/payments unless this is specifically agreed upon
