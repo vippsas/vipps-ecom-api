@@ -10,16 +10,19 @@ We start with the typical Sign-in screen.
 
 You type in your username and password here. Please note that there's a difference in both production and test when it comes to Vipps Developer Portal:
 
-Link for Vipps Developer in **test**: https://apitest-portal.vipps.no/
-- You will be given a username that looks like this: `username@testapivipps.no`
-- And a default password. For a password change please contact `integration@vipps.no`
+## Test
 
-Link for Vipps Developer in **production**: https://api-portal.vipps.no/
-- You will be given a username that looks like this:
-`username@apivipps.no`
-- And a default password. For a password change please contact `integration@vipps.no`
+* Vipps Developer Portal for **test**: https://apitest-portal.vipps.no/
+* A username that looks like this: `username@testapivipps.no`
+* A default password. For a password change please contact `integration@vipps.no`
 
-**Remember to log out of other Microsoft accounts**
+## Production
+
+* Vipps Developer Portal for **production**: https://api-portal.vipps.no/
+* A username that looks like this: `username@apivipps.no`
+* A default password. For a password change please contact `integration@vipps.no`
+
+## Remember to log out of other Microsoft accounts
 
 ![Error Screen](images/Error-Screen.PNG?raw=true "Title")
 
