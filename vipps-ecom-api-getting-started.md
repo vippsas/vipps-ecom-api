@@ -4,29 +4,29 @@ These are the steps after you have received in the onboarding email from Vipps. 
 
 # Step 1
 
-We start with the typical Sign-in screen.
+We start with the typical Sign-in screen:
 
 ![Sign on screen](images/Vipps_sign_in.PNG?raw=true "Title")
 
-You type in your username and password here. Please note that there's a difference in both production and test when it comes to Vipps Developer Portal:
+You type in your username and password here. Please note that there's a difference between the test and production environments when it comes to Vipps Developer Portal:
 
-## Test
+## Test environment
 
 * Vipps Developer Portal for **test**: https://apitest-portal.vipps.no/
-* A username that looks like this: `username@testapivipps.no`
-* A default password. For a password change please contact `integration@vipps.no`
+* A username that looks like this: username@**testapivipps**.no`
+* A default password. For a password change please contact integration@vipps.no
 
-## Production
+## Production environment
 
 * Vipps Developer Portal for **production**: https://api-portal.vipps.no/
-* A username that looks like this: `username@apivipps.no`
-* A default password. For a password change please contact `integration@vipps.no`
+* A username that looks like this: username@**apivipps**.no`
+* A default password. For a password change please contact integration@vipps.no
 
 ## Remember to log out of other Microsoft accounts
 
 ![Error Screen](images/Error-Screen.PNG?raw=true "Title")
 
-If you see the error page similar to the one above:
+If you see an error page similar to the one above:
 
 1. Make sure that you are logged out of any Microsoft Office 365 accounts, or make sure you are in incognito mode or "private window" in your browser.
 2. Make sure you are using the correct URL. Remember https://apitest-portal.vipps.no/ for test, and https://api-portal.vipps.no/ for production.
@@ -67,9 +67,9 @@ Under the profile tab (the account name at the top right, "TOM KVAM" in this exa
 
 ![keys_profile](images/keys_profile.PNG?raw=true "Title")
 
-You have the `Access Token` key on the top. You have to click "Show" on the right side to make the keys appear. And as marked, its the `Primary key` you are after. If the key for some reason does not work, then you can hit "Regenerate", right next to "Show".
+You have the `Access Token` key on the top. You have to click "Show" on the right side to make the keys appear. And as marked in yellow, it's the `Primary key` you are after. If the key for some reason does not work, then you can hit "Regenerate", right next to "Show".
 
-The `Ocp-Apim-Subscription-Key` is right below the `Access Token` key. You have to click "Show" on the right side to make the keys appear. And as marked, its the `Primary key` you are after. If the key for some reason does not work, then you can hit "Regenerate", right next to "show".
+The `Ocp-Apim-Subscription-Key` is right below the `Access Token` key. You have to click "Show" on the right side to make the keys appear. And as marked in yellow, it's the `Primary key` you are after. If the key for some reason does not work, then you can hit "Regenerate", right next to "show".
 
 The `MerchantSerialNumber` (MSN) is the number right next to the name of your Salesunit, `100848` in this example.
 
