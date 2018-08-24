@@ -4,12 +4,12 @@ This repo contains developer resources for the Vipps eCommerce API. For more inf
 
 **IMPORTANT:** This is a work in progress! Expect sudden, breaking changes :boom: The official, stable developer resources for Vipps is still https://vipps.no/developer
 
-See the FAQ: [vipps-ecom-api-faq.md](vipps-ecom-api-faq.md)
+For product activation please read [vipps-ecom-api-getting-started.md](vipps-ecom-api-getting-started.md)
+
+Frequently Asked Questions: [vipps-ecom-api-faq.md](vipps-ecom-api-faq.md)
 
 If you want to contribute here on GitHub: Great! No issue or pull request is too small 👍
 
 See the main GitHub page for Vipps contact information, etc: https://github.com/vippsas  
 
 You can peruse the api-docs at https://vippsas.github.io/vipps-ecom-api/
-
-For product activation please read [vipps-ecom-api-getting-started.md](vipps-ecom-api-getting-started.md)
