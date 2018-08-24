@@ -68,4 +68,4 @@ Vipps will make a new payment request to the bank.
 If the user has sufficient funds everything will be successful. 
 If the user does not have coverage on his account at this time the payment will fail. 
 In many cases the bank will have a register of expired reservations and they will force it through if the account allows this. 
-This will put the account in minus.
+This will put the account in the negative.
