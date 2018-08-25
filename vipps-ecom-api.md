@@ -91,8 +91,7 @@ Every API call is authenticated and authorized based on the application access t
 
 | Header Name | Header Value | Description |
 | ----------- | ------------ | ----------- |
-|  `Authorization` | `Bearer <JWT access token>` | Type: Authorization token. Value: Access token is obtained by registering
-merchant backend application in Merchant Developer Portal. |
+|  `Authorization` | `Bearer <JWT access token>` | Type: Authorization token. Value: Access token is obtained by registering merchant backend application in Merchant Developer Portal. |
 | `Ocp-Apim-Subscription-Key` | Base 64 encoded string | Subscription key for eCommerce product. This can be found in User Profile page on Merchant developer portal after merchant account is created |
 
 ## Access Token
@@ -113,4 +112,4 @@ Access token API endpoint helps to get the JWT Bearer token that needs to be pas
 
 Client_secret
 
-(_**This is Swagger material.. Awaiting decision before continuining this document**_)
+(_**Technical API specificatrion should be in Swagger format: https://vippsas.github.io/vipps-ecom-api/ Awaiting decision before continuing this document.**_)
