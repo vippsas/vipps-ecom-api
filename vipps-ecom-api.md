@@ -102,20 +102,6 @@ Access token API endpoint helps to get the JWT Bearer token that needs to be pas
 
 (_**Technical API specification isavailable in Swagger format: https://vippsas.github.io/vipps-ecom-api/ The details below is a high-level overview.**_)
 
-### URL
-
-`https://<<hostname>>/accessToken/get`
-
-### Method
-
-`POST`
-
-###  Header Name
-
-Client_secret
-
-
-
 ### Request
 
 ```
