@@ -139,7 +139,7 @@ HTTP 200 OK
 | `resource` | GUID string | A common resource object that comes by default. Not used in token validation |
 | `access_token` | Base 64 encoded string | The actual access token that needs to be used in request header |
 
-Possible errors:
+#### Errors
 
 | HTTP response code | Error |
 | ------------------ | ----- |
@@ -147,12 +147,15 @@ Possible errors:
 | `401 Unauthorized` | Invalid `client_secret` |
 | `5XX` | Internal servder error |
 
-Error reponse body:
+Error reponse body (formatted for readability):
 
 ```
 {
   "error": "unauthorized_client",
-  "error_description": "AADSTS70001: Application with identifier 'e9b6c99d-2442-4a5d-84a2- c53a807fe0c4' was not found in the directory testapivipps.no\r\nTrace ID: 3bc2b2a0-d9bb-4c2e-8367- 5633866f1300\r\nCorrelation ID: bb2f4093-70af-446a-a26d-ed8becca1a1a\r\nTimestamp: 2017-05-19 09:21:28Z",
+  "error_description": "AADSTS70001: Application with identifier 'e9b6c99d-2442-4a5d-84a2-\
+                        c53a807fe0c4' was not found in the directory testapivipps.no\
+                        Trace ID: 3bc2b2a0-d9bb-4c2e-8367- 5633866f1300\r\nCorrelation ID:\
+                        bb2f4093-70af-446a-a26d-ed8becca1a1a\r\nTimestamp: 2017-05-19 09:21:28Z",
   "error_codes": [ 70001
   ],
   "timestamp": "2017-05-19 09:21:28Z",
