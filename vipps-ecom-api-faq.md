@@ -37,7 +37,7 @@ your spam filter and trash.
 ## How do I perform testing in production?
 
 To do this you need a live Vipps account - we do not have test accounts available for Vipps.
-We recommend testing with 2 NOK, even though 1 NOK is the smallest possible amount -
+We recommend testing with 2 NOK, even though 1 NOK is the smallest possible amount.
 1 NOK is not reliable, as it gets low priority in some systems.
 
 ## What is the difference between "Reserve Capture" and "Direct Capture", and how do I change payment type?
