@@ -96,9 +96,13 @@ Every API call is authenticated and authorized based on the application access t
 
 ## Access Token
 
-### Overview
+Access token API endpoint helps to get the JWT Bearer token that needs to be passed in every API request in the authorization header. Merchant application use the <ClientId> and <ClientSecret> to get a JWT access token. JWT access token is a base 64 encoded string value that must be aquire first before making any Vipps API calls.
 
-Access token API endpoint helps to get the JWT Bearer token that needs to be passed in every API request in the authorization header. Merchant application use the <ClientId> and <ClientSecret> to get a JWT access token. JWT access token is a base 64 encoded string value that must be aquire first before making any Vipps api calls.
+| Header Name | Header Value | Description |
+| ----------- | ------------ | ----------- |
+| `client_id` | A GUID value | Client ID received when merchant registered the application |
+| `client_secret` | Base 64 encoded string | Client Secret received when merchant registered the application |
+| `Ocp-Apim-Subscription-Key` | Base 64 encoded string | Subscription key for eCommerce product. This can be found in User Profile page on Merchant developer portal after merchant account is created |
 
 (_**Technical API specification isavailable in Swagger format: https://vippsas.github.io/vipps-ecom-api/ The details below is a high-level overview.**_)
 
@@ -116,12 +120,45 @@ Ocp-Apim-Subscription-Key: <Ocp-Apim-Subscription-Key>
 ```
 HTTP 200 OK
 {
-"token_type": "Bearer",
-"expires_in": "86398",
-"ext_expires_in": "0",
-"expires_on": "1495271273",
-"not_before": "1495184574",
-"resource": "00000002-0000-0000-c000-000000000000", "access_token":
-"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCIsImtpZCI6In NWNiNDcxNmJjNGIvIiwiaWF0IjoxNDk1MTg0NTc0LCJuYmYiOjE0OTUxODQ1NzQsImV4cCI6MTQ5NTI3MTI3MywiY 2NTI2LTUxZGMtNGMxNC1iMDg2LWE1Y2I0NzE2YmM0Yi8iLCJ0aWQiOiJlNTExNjUyNi01MWRjLTRjMTQtYjA4Ni1h _CnMRo3bXavz3Sdo2-1amFKsOY8AFODpqJR0MYqPK_Kr6sSIWL3M_L3wu0rG976HIXllsRLvWBSwDeMgBAUvwW
+  "token_type": "Bearer",
+  "expires_in": "86398",
+  "ext_expires_in": "0",
+  "expires_on": "1495271273",
+  "not_before": "1495184574",
+  "resource": "00000002-0000-0000-c000-000000000000",
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni <continued>"
 }
 ```
+
+| Name | Value | Description |
+| ----------- | ------------ | ----------- |
+| `token_type` | String | It’s a bearer type token. When used the word ‘Bearer’ must be added before the token value |
+| `expires_in` | Integer | Token expiry duration in seconds |
+| `ext_expires_in` | Integer | Any additional expiry time. This is zero only. |
+| `not_before` | Integer | Token creation time in epoch format |
+| `resource` | GUID string | A common resource object that comes by default. Not used in token validation |
+| `access_token` | Base 64 encoded string | The actual access token that needs to be used in request header |
+
+Possible errors:
+
+| HTTP response code | Error |
+| ------------------ | ----- |
+| `400 Bad Request` | Invalid `client_id` |
+| `401 Unauthorized` | Invalid `client_secret` |
+| `5XX` | Internal servder error |
+
+Error reponse body:
+
+```
+{
+  "error": "unauthorized_client",
+  "error_description": "AADSTS70001: Application with identifier 'e9b6c99d-2442-4a5d-84a2- c53a807fe0c4' was not found in the directory testapivipps.no\r\nTrace ID: 3bc2b2a0-d9bb-4c2e-8367- 5633866f1300\r\nCorrelation ID: bb2f4093-70af-446a-a26d-ed8becca1a1a\r\nTimestamp: 2017-05-19 09:21:28Z",
+  "error_codes": [ 70001
+  ],
+  "timestamp": "2017-05-19 09:21:28Z",
+  "trace_id": "3bc2b2a0-d9bb-4c2e-8367-5633866f1300",
+  "correlation_id": "bb2f4093-70af-446a-a26d-ed8becca1a1a"
+}
+```
+
+See the Swagger documentation for more details: [POST:/accesstoken/get](https://vippsas.github.io/vipps-ecom-api/#/Authorization_Service/fetchAuthorizationTokenUsingPost)
