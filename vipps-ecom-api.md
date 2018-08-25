@@ -112,4 +112,29 @@ Access token API endpoint helps to get the JWT Bearer token that needs to be pas
 
 Client_secret
 
-(_**Technical API specification should be in Swagger format: https://vippsas.github.io/vipps-ecom-api/ Awaiting decision before continuing this document.**_)
+(_**Technical API specification should be in Swagger format: https://vippsas.github.io/vipps-ecom-api/ Awaiting decision before continuing with this document.**_)
+
+### Request
+
+```
+POST https://<<hostname>>/accessToken/get
+client_id: <ClientID>
+client_secret: <ClientSecret>
+Ocp-Apim-Subscription-Key: <Ocp-Apim-Subscription-Key>
+```
+
+### Response
+
+```
+HTTP 200 OK
+{
+"token_type": "Bearer",
+"expires_in": "86398",
+"ext_expires_in": "0",
+"expires_on": "1495271273",
+"not_before": "1495184574",
+"resource": "00000002-0000-0000-c000-000000000000", "access_token":
+"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCIsImtpZCI6In NWNiNDcxNmJjNGIvIiwiaWF0IjoxNDk1MTg0NTc0LCJuYmYiOjE0OTUxODQ1NzQsImV4cCI6MTQ5NTI3MTI3MywiY 2NTI2LTUxZGMtNGMxNC1iMDg2LWE1Y2I0NzE2YmM0Yi8iLCJ0aWQiOiJlNTExNjUyNi01MWRjLTRjMTQtYjA4Ni1h _CnMRo3bXavz3Sdo2-1amFKsOY8AFODpqJR0MYqPK_Kr6sSIWL3M_L3wu0rG976HIXllsRLvWBSwDeMgBAUvwW
+}
+
+```
