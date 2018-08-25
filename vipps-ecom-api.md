@@ -90,8 +90,7 @@ All communication with the Vipps ecommerce API has to be authenticated via JWT a
 Every API call is authenticated and authorized based on the application access token (JWT Bearer token) and APIM subscription key (Ocp-Apim-Subscription-Key). Following headers are required to be there in every API request to successfully authenticate every API call.
 
 | Header Name | Header Value | Description |
-|  `Authorization`| `Bearer <JWT access token>` | type: Authorization token
-Value: Access token is obtained by registering
+|  `Authorization`| `Bearer <JWT access token>` | Type: Authorization token. Value: Access token is obtained by registering
 merchant backend application in Merchant Developer Portal.|
 | `Ocp-Apim-Subscription-Key` | Base 64 encoded string | Subscription key for eCommerce product. This can be found in User Profile page on Merchant developer portal after merchant account is created |
 
