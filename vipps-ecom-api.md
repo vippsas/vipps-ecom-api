@@ -69,7 +69,7 @@ During merchant’s onboarding process in Vipps, the merchant receives a usernam
 
 The diagram below shows the integration flow between merchant and Vipps server.
 
-![API calls flow](images/api-call-flow.png)
+![API calls flow](images/api-calls-flow.png)
 
 All communication with the Vipps ecommerce API has to be authenticated via JWT access token. To get this access token and use it in API calls merchant should follow the steps below:
 
@@ -112,4 +112,4 @@ Access token API endpoint helps to get the JWT Bearer token that needs to be pas
 
 Client_secret
 
-(_**Technical API specificatrion should be in Swagger format: https://vippsas.github.io/vipps-ecom-api/ Awaiting decision before continuing this document.**_)
+(_**Technical API specification should be in Swagger format: https://vippsas.github.io/vipps-ecom-api/ Awaiting decision before continuing this document.**_)
