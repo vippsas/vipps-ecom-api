@@ -9,8 +9,10 @@ https://github.com/vippsas/vipps-ecom-api/tree/master/original-docs
 See also the [FAQ](vipps-ecom-api-faq.md).
 
 Test:
-
-<a href="http://www.pingdom.com"><img src="https://share.pingdom.com/banners/f626772f" alt="Uptime Report for Vipps: API: eCommerce: Last 30 days" title="Uptime Report for Vipps: API: eCommerce: Last 30 days" width="300" height="165" /></a>
+<img src="https://share.pingdom.com/banners/f626772f" 
+alt="Uptime Report for Vipps: API: eCommerce: Last 30 days"
+title="Uptime Report for Vipps: API: eCommerce: Last 30 days"
+width="300" height="165" />
 
 # Table of contents
 
