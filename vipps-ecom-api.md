@@ -100,6 +100,8 @@ Every API call is authenticated and authorized based on the application access t
 
 Access token API endpoint helps to get the JWT Bearer token that needs to be passed in every API request in the authorization header. Merchant application use the <ClientId> and <ClientSecret> to get a JWT access token. JWT access token is a base 64 encoded string value that must be aquire first before making any Vipps api calls.
 
+(_**Technical API specification isavailable in Swagger format: https://vippsas.github.io/vipps-ecom-api/ The details below is a high-level overview.**_)
+
 ### URL
 
 `https://<<hostname>>/accessToken/get`
@@ -112,7 +114,7 @@ Access token API endpoint helps to get the JWT Bearer token that needs to be pas
 
 Client_secret
 
-(_**Technical API specification should be in Swagger format: https://vippsas.github.io/vipps-ecom-api/ Awaiting decision before continuing with this document.**_)
+
 
 ### Request
 
@@ -136,5 +138,4 @@ HTTP 200 OK
 "resource": "00000002-0000-0000-c000-000000000000", "access_token":
 "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCIsImtpZCI6In NWNiNDcxNmJjNGIvIiwiaWF0IjoxNDk1MTg0NTc0LCJuYmYiOjE0OTUxODQ1NzQsImV4cCI6MTQ5NTI3MTI3MywiY 2NTI2LTUxZGMtNGMxNC1iMDg2LWE1Y2I0NzE2YmM0Yi8iLCJ0aWQiOiJlNTExNjUyNi01MWRjLTRjMTQtYjA4Ni1h _CnMRo3bXavz3Sdo2-1amFKsOY8AFODpqJR0MYqPK_Kr6sSIWL3M_L3wu0rG976HIXllsRLvWBSwDeMgBAUvwW
 }
-
 ```
