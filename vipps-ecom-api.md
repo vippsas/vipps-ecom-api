@@ -6,6 +6,7 @@ Document version 0.1.1.
 
 _**IMPORTANT:**_ This document is a work in progress. See the official PDF documentation:
 https://github.com/vippsas/vipps-ecom-api/tree/master/original-docs
+See also the [FAQ](vipps-ecom-api-faq.md).
 
 # Table of contents
 
@@ -24,7 +25,7 @@ functionality and usage some typical scenarios is presented.
 
 ## Regular eCommerce Payments
 
-Merchants can utilize vipps payment services for ecommerce payments at their
+Merchants can utilize Vipps payment services for ecommerce payments at their
 online websites. Vipps APIs can be integrated at merchant’s checkout page where
 Vipps can be represented as one of the payment methods for online purchases.
 
