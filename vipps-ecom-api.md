@@ -2,7 +2,7 @@
 
 API version: 2.1.
 
-Document version 0.1.0.
+Document version 0.1.1.
 
 _**IMPORTANT:**_ This document is a work in progress. See the official PDF documentation:
 https://github.com/vippsas/vipps-ecom-api/tree/master/original-docs
@@ -444,7 +444,7 @@ Following section explains how appswitch will happen for Vipps app on iOS platfo
 
 Below is sample code to open iOS Vipps application with deeplinkURL.
 
-```
+```java
 NSString *url = deeplinkURL; //Use deeplink url provided in API response
 if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:url]]) {
   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]]; }
@@ -459,7 +459,7 @@ else {
 
 Once the operation in Vipps is completed, vipps mobile application will open the frontend url. For app to app integration, merchant app needs to be registered for a url scheme and pass the url scheme in “fallbackURL” in Vipps backend API (explained here). Vipps mobile application will use below code to launch merchant application.
 
-```
+```java
 NSString *fallbackURL = self.fallbackURL; //fallback url will be the url which has been provided in Vipps API.
 
 NSURLComponents *urlComponents = [NSURLComponents componentsWithString:fallbackURL];
@@ -494,11 +494,11 @@ and add a new item for URL Schemes. Then click the grey arrow next to
 
 In order for your app to respond when it receives a custom URL call, you must implement the application:handleOpenURL method in the application delegate class:
 
-```
+```java
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-// handler your code here
-NSURLComponents *urlComponents = [NSURLComponents componentsWithString:baseURL];
-NSMutableArray <NSURLQueryItem *>*queryItems = urlComponents.queryItems; //fetch the value of a particular paramerter from queryItems array.
+  // handler your code here
+  NSURLComponents *urlComponents = [NSURLComponents componentsWithString:baseURL];
+  NSMutableArray <NSURLQueryItem *>*queryItems = urlComponents.queryItems; //fetch the value of a particular paramerter from queryItems array.
 }
 ```
 
@@ -523,7 +523,7 @@ Vipps Android platform supports two ways of appswitch integration:
 In case of Android Intent system, in backend API call(defined later) “INTENT”
 should be passed in fallbackURL. And below code should be used to launch Vipps application.
 
-```
+```java
 try {
   PackageManager pm = context.getPackageManager();
   PackageInfo info = pm.getPackageInfo( , PackageManager.GET_ACTIVITIES);
@@ -548,7 +548,7 @@ try {
 
 Following is the code sample for Android URL scheme approach.
 
-```
+```java
 try {
   PackageManager pm = context.getPackageManager();
   PackageInfo info = pm.getPackageInfo , PackageManager.GET_ACTIVITIES);
@@ -580,7 +580,7 @@ Below are two ways of redirecting back to source app from Android Vipps app:
 
 Register the activity in manifest file which will handle result of Vipps response. For Example:
 
-```
+```html
 <activity
   android:name=".MainActivity"
   android:label="@string/app_name">
@@ -590,7 +590,7 @@ Register the activity in manifest file which will handle result of Vipps respons
 Receiving activity has to override onActivityResult method to handle result sent by Vipps application.
 For Example:
 
-```
+```java
 @Override
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
   if (resultCode == RESULT_OK) {
@@ -618,7 +618,7 @@ Vipps provides a custom URL scheme to interact with Vipps. If 3rd party applicat
 
 Set filter in Manifest file: To receive a call back from the Vipps application to an activity there has to be set a filter to that activity. In the example below MainActivity is the receiving activity and Vipps application sends a response to the activity. For this activity one can set a custom URL scheme inside the intent filter. For Example:
 
-```
+```html
 <activity android:name=".MainActivity" android:label="@string/app_name" android:launchMode="singleInstance">
 <intent-filter>
               <action android:name="android.intent.action.VIEW" />
@@ -635,7 +635,7 @@ Vipps application will send the result to the 3rd party application by starting 
 
 The receiving activity has to override onNewIntent method to handle result send by Vipps application.
 
-```
+```java
 @Override
 protected void onNewIntent(Intent intent) {
   super.onNewIntent(intent);
