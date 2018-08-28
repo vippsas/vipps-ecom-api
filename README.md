@@ -2,7 +2,7 @@
 
 This repo contains developer resources for the Vipps eCommerce API. For more information about this product, "Vipps på Nett", please see: https://www.vipps.no/bedrift/vipps-pa-nett
 
-**IMPORTANT:** This is a work in progress. The PDFs are still the official documentation, but we are working on making the same information available in more developer friendly formats. See also: https://vipps.no/developer
+**IMPORTANT:** This is a work in progress. The [PDF documentation](original-docs/) is still the official documentation, but we are working on making the same information available in more developer friendly formats. See also: https://vipps.no/developer
 
 For product activation please read [vipps-ecom-api-getting-started.md](vipps-ecom-api-getting-started.md)
 
