@@ -66,6 +66,16 @@ info:
       | Authorization | Bearer 'jwt_access_token'' | type: Authorization token<br>Value: Access token is obtained by registering merchant backend application in Merchant Developer Portal. |
       | Ocp-Apim-Subscription-Key | Base 64 encoded string | Subscription key for eCommerce product.<br>This can be found in User Profile page on Merchant developer portal after merchant account is created |
 
+    # eCommerce Express Checkout API
+
+    In addition to regular ecommerce APIs, Vipps also supports optional express checkout payment service.
+    Merchant needs to be onboarded for this additional service as it involves sharing personal information of user (including address), shipping details, etc.
+
+    Vipps follows GDPR compliance for making express checkouts possible for merchants. Vipps takes away the lengthy checkout process to simple steps in Vipps app which gives merchants higher conversion rates of online purchases.
+
+Vipps can share personal information of Vipps users with merchant by taking user’s consent as per GDPR law during checkout process. Also, it will be possible to populate different delivery options to Vipps users during checkout within Vipps app.
+
+
   version: '1.0'
   title: Vipps eCommerce APIs
 host: apitest.vipps.no
