@@ -56,8 +56,7 @@ in the bank (2-3 days later), the money will be available to the customer again.
 
 Have you successfully implemented `getPaymentDetails` or `getOrderStatus`?
 
-In case our callback fails, you will not automatically receive notification of order status.
-In case this fails, the backup should be to asked for status within a time frame.
+In case our callback fails, you will not automatically receive notification of order status. The backup should be to ask for status within a time frame.
 
 ## Where can I find reports on transactions?
 
