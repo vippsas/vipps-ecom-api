@@ -20,4 +20,4 @@ contribution guidelines,
 etc:
 https://github.com/vippsas/vipps-developers  
 
-You can peruse the API docs at https://vippsas.github.io/vipps-recurring-api/
+You can peruse the API docs at https://vippsas.github.io/vipps-ecom-api/
