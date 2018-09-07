@@ -110,7 +110,7 @@ Access token API endpoint helps to get the JWT Bearer token that needs to be pas
 ### Request
 
 ```
-POST https://<<hostname>>/accessToken/get
+POST https://apitest.vipps.no/accessToken/get
 client_id: <ClientID>
 client_secret: <ClientSecret>
 Ocp-Apim-Subscription-Key: <Ocp-Apim-Subscription-Key>
