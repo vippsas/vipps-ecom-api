@@ -105,7 +105,7 @@ Access token API endpoint helps to get the JWT Bearer token that needs to be pas
 | `client_secret` | Base 64 encoded string | Client Secret received when merchant registered the application |
 | `Ocp-Apim-Subscription-Key` | Base 64 encoded string | Subscription key for eCommerce product. This can be found in User Profile page on Merchant developer portal after merchant account is created |
 
-(_**Technical API specification isavailable in Swagger format: https://vippsas.github.io/vipps-ecom-api/ The details below is a high-level overview.**_)
+(_**Technical API specification is available in Swagger format: https://vippsas.github.io/vipps-ecom-api/ The details below is a high-level overview.**_)
 
 ### Request
 
@@ -235,7 +235,6 @@ HTTP 202 Accepted
 
 When the customer successfully authorizes the payment request by using Vipps app, the payment status changes to Reserved, and the respective amount will be reserved for future capturing at the PSP.
 
-API details: [`GET:`]()
 
 ## Cancel
 
@@ -249,44 +248,31 @@ Reservations can be cancelled and payment flow aborted under certain circumstanc
 
 * When reservation fails caused by system or communication error.
 
-API details: [`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/cancelPaymentRequestUsingPUT)
+Jump to [Cancel Payment](#cancel-payment)
 
 ## Capture
 
 When merchant shipped the goods then they can call capture API on the reserved transaction. The API allows to do a full amount capture or partial amount capture.
 
-API details: [`GET:`]()
+Jump to [Capture Payment](#capture-payment)
 
 ## Direct capture
 
 Direct capture is not depicted on diagram above but, in essence, combines two steps (reserve and capture) in one. This is a configuration in Vipps backend when Initiate payment request is sent.
 
-API details: [`GET:`]()
+Jump to [Capture Payment](#capture-payment)
 
 ## Refund
 
 Merchant can initiate a refund of the captured amount. The refund can be a partial or full.
 
-API details: [`GET:`]()
+Jump to [Refund Payment](#refund-payment)
 
-## Get Order Status
+## Order Status
 
 Get Order Status intention is to check whether the user is authenticated the transaction or not. Possible status provided by this service is listed below:
 
-API details: [`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)
-
-| Status | Description |
-| ------ | ----------- |
-| INITIATE | Initiate Payment |
-| REGISTER | When we call PSP for payment |
-| RESERVE | Parent Reserve Payment and for its child Capture\Refund payments |
-| SALE | Direct Capture |
-| CANCEL | When payment has been cancelled |
-| VOID | Registration Cancel |
-| AUTOREVERSAL | Transaction timed out at Nets, we will refund the transaction and then it will be autoreversal |
-| AUTOCANCEL | When no action from user for notification for X minutes. |
-| FAILED | When transaction failed to execute |
-| REJECTED | When user reject payment request in Vipps app |
+Jump to [Get Order Status](#get-order-status)
 
 # Additional payment flow for express checkout
 
@@ -295,6 +281,8 @@ In addition to above mentioned payment flows, following are the services which m
 ## Get shipping cost & method
 
 When express checkout payment is initiated, vipps will call this service from merchant’s backend to fetch shipping cost and shipping method related details. Merchant can send priority of shipping cost and method combination if there are multiple ways of delivery. Merchant can also send default shipping cost & method combination which merchant wants user to see on payment confirmation screen of Vipps. Vipps will support upto 10 shipping cost and method combinations. If user sends more than 10 combinations, vipps will display first 10 always.
+
+Jump to get 
 
 ## Transaction updates with user details
 
@@ -675,8 +663,264 @@ Below are the status code ranges which Vipps maintains for future purposes. For 
 7XX – Reserved for future use 8XX – Reserved for future use
 9XX – Others
 ```
-# API definitions
+# API-definitions
 
 Below section explains different API definitions supported by Vipps ecommerce APIs.
 
-(_**TODO: Continue with page 20+**:_)
+| Header Name | Header Value | Optional | Description |
+| ----------- | ------------ | -------- | ----------- |
+| Authorization |	JWT Access Token <>	| No | type: Authorization token value: Access token is obtained by registering merchant backend application in Merchant Developer Portal. |
+| Content-Type | application/json |	No | Type of the body |
+| Ocp-Apim-Subscription-Key | Base 64 encoded string | No |	Subscription key for eCommerce product. This can be found in User Profile page on Merchant developer portal |
+| X-TimeStamp	| Time stamp when the request called | Yes |	Time to call |
+| X-Request-Id | To identify the idempotent request | Yes | For Making request to be idempotent this ID is must so that the system will not do any side effects. 1. Applicable to Initiate, Capture, Refund payment 2. Size should be 30 3. If user wants to re-try any failed capture or refund transaction then they should provide same X-request-id, else system will create a new entry for partial capture or partial refund. |
+
+## Base URL
+
+`https://apitest.vipps.no`
+
+# Initiate Payment
+
+Initiate payment is used to create a payment order in Vipps. In order to identify sales channel payments are coming from merchantSerialNumber is used to distinguish between them. Merchant provided orderId must be unique per sales channel. Please note that single payment is uniquely identified by composition of merchantSerialNumber and orderId.
+
+Initiate call will have parameter paymentType which will identify regular ecommerce payment and express checkout payment flow.
+
+Once successfully initiated the transaction in Vipps, it will give you the redirect URL as response which has to be used by merchant to open Vipps landing page. Landing page will own functionality to identify and differentiate request coming from mobile browser/desktop browser.
+
+## Payment triggered from desktop and mobile browser
+
+### Flow when user initiates payment from mobile browser where Vipps is present in same device
+
+Landing page will check if Vipps app is available in same mobile device.
+1. If Vipps app is available then it will invoke Vipps app and landing page will be closed.
+2. Here after based on user interactions (accept / reject) further payment steps will be followed.
+3. Once payment process is completed, Vipps will call fallback URL to redirect to original mobile browser page.
+If merchant do not receive callback from Vipps, then they have to confirm their order status from Vipps by calling getOrderStatus service.
+
+### Flow when user initiates payment from mobile browser where Vipps is NOT present in same device
+
+1. Landing page will check if Vipps app is available in same mobile device.
+2. If Vipps app is not available then landing page will ask for user’s mobile number. After user enters mobile number, Vipps will send push notification to corresponding Vipps profile, if it exists. Landing page is not closed in this case.
+3. Vipps user needs to accept/reject the payment request coming from merchant for further payment steps.
+4. Once payment process is completed, landing page will redirect to mobile web browser where payment was initiated.
+5. If merchant do not receive callback from Vipps, then they have to confirm their order status from Vipps by calling getOrderStatus service.
+
+### Flow when user initiates payment from desktop browser
+1. Landing page will be opened inside desktop browser.
+2. As Vipps app is not available in the vicinity, landing page will ask for user’s mobile number. After user enters mobile number, Vipps will send push notification to corresponding Vipps profile, if it exists. Landing page is not closed in this case.
+3. Vipps user needs to accept/reject the payment request coming from merchant for further payment steps.
+4. Once payment process is completed, landing page will redirect to desktop web browser where payment was initiated.
+5. If merchant do not receive callback from Vipps, then they have to confirm their order status from Vipps by calling getOrderStatus service.
+
+## Payment triggered from Merchant Mobile App
+
+Vipps will identify the request coming from mobile app of merchant from initiate request body parameter (isApp). In this case, Vipps backend will send the URI which merchant should use to invoke Vipps app directly. Landing page is not involved in this case.
+
+1. Vipps will identify the request coming from merchant mobile app based on isApp parameter value.
+2. If value is true then Vipps will send deeplink URI as response to initiate payment.
+3. Merchant as to use this URI to invoke Vipps app for user to proceed with payment.
+4. Vipps user needs to accept/reject the payment request coming from merchant for further payment steps.
+5. Once payment process is completed, Vipps app will redirect to merchant mobile app where payment was initiated.
+6. If merchant do not receive callback from Vipps, then they have to confirm their order status from Vipps by calling getOrderStatus service.
+
+### When user confirms the payment in Vipps app
+
+After the customer has confirmed payment, Vipps will execute funds reservation on customer card used in transaction in order to secure future capture. Please note that in a case of direct capture, reservation and capture is done in a single step.
+
+If the funds reservation fails for any reason (communication error, credit card expired, not enough funds to reserve) Vipps will cancel the payment flow and inform the merchant about outcome. Merchant’s orderId used for cancelled payment flow cannot be reused for a new initiate payment service call.
+
+merchantSerialNumber are provided to merchant by Vipps after merchant account is created or new sales channel is enrolled.
+
+
+API details: [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/initiatePaymentV3UsingPOST)
+
+# Cancel Payment
+
+Cancel payment call allows merchant to cancel a reserved payment order
+
+API details: [`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/cancelPaymentRequestUsingPUT)
+
+# Capture Payment
+
+Capture payment allows merchant to capture the reserved amount. Amount to capture cannot be higher than reserved. The API also allows capturing partial amount of the reserved amount. Partial capture can be called as many times as required as long as there is reserved amount to capture. Transaction text is not optional and is used as a proof of delivery (tracking code, consignment number etc.).
+
+In a case of direct capture, both fund reservation and capture are executed in a single operation.
+
+API details: [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/capturePaymentUsingPOST)
+
+# Refund Payment 
+
+Refund payment allows merchant to do a refund of an already captured payment order. There is an option to do a partial refund of the captured amount by giving an amount which is lower than the captured amount. Refunded amount cannot be larger than captured.
+
+API details: [`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/refundPaymentUsingPOST)
+
+# Get Payment Details
+
+Get Payment Details allows merchant to get the details of a payment order. Service call returns detailed transaction history of given payment where events are sorted by the time.
+
+API details: [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getPaymentDetailsUsingGET)
+
+# Get Order Status
+
+Get Order Status allows merchant to get the status of a payment order.
+
+API details: [`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)
+
+# Endpoints Hosted by Merchant
+
+1. [Callback: Transaction Update](#callback)
+2. [Fetch Shipping Cost & Method](#fetch-shipping-cost)
+3. [Remove User Consent](#remove-user-consent)
+
+# Callback
+
+Callback allows Vipps to send the payment order details. During regular ecomm payment order and transaction details will be shared. During express checkout payment it will provide user details and shipping details addition to the order and transaction details.
+
+If the communication is broken during payment process for some reason, and Vipps is not able to execute callback, then callback will not be retried. In other words,if the merchant doesn’t receive any confirmation on payment request call within callback timeframe, merchant should call get payment details service to get the response of payment request.
+
+API details: [`POST:/ecomm/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/transactionUpdateCallbackForRegularPaymentUsingPOST)
+
+
+# Fetch Shipping Cost
+
+This API call allows Vipps to get the shipping cost and method based on the provided address and product details. Primarily use of this service is meant for ecomm express checkout where Vipps needs to present shipping cost and method to the vipps user. This service is to be implemented by merchants.
+
+API details: [`POST:/[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](/[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails)
+
+# Remove User Consent
+
+Allows Vipps to send consent removal request to merchant. After this merchant is obliged to remove the user details from merchant system permanently, as per the GDPR guidelines.
+
+API details: [`DELETE:/[consetRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/removeUserConsentUsingDELETE)
+
+# Vipps eCommerce APIs
+
+`[ Base URL: localhost:8080/ ]`
+
+API details: [`Details`](https://vippsas.github.io/vipps-ecom-api/#/)
+
+*(TODO: Elaborate)*
+
+# Vipps Login APIs
+
+The following AOI definitions are presented using Open API definition and Swagger UI
+
+*(TODO: Elaborate)*
+
+# Vipps Signup API
+
+The intention is to create signup forms for Vipps eCom. Prefilled forms are to be created by our ecommerce partners to create a connection between the signup and the partner, and making the process simpler for the merchant by prefilling the form with certain data.
+
+## Process overview
+
+![Signup Api Overview](images/signup-api-overview.png )
+
+## Partner initiates the signup
+
+We want to create a connection between the ecommerce partner ("Partner") and the signup, as the partners are assisting Vipps with the distribution and the merchant has a strong technical relationship to the partner to complete the integration to Vipps ecommerce API.
+
+## v1/partial/signup
+
+```
+{
+    "orgnumber" : "819226032",
+    
+    "partnerId":"1234",
+    
+    "subscriptionPackageId":"1234",
+    
+    "merchantWebsiteUrl": "https://www.vipps.no",
+    "signupCallbackToken":"",
+    "signupCallbackUrl":"https://upload.credentials.to.partner.url",
+    "form-type":"vippspanett"
+}
+```
+
+## Partner receives the signup link
+
+As response to partial signup initiation above the partner receives an signup id and a link to the signup which is forwarded to the merchant to complete and sign.
+
+## Partial Signup Response
+
+```
+{
+    "signup-id": "4188dea2-00d0-488a-88b7-b39b186151c0",
+    "vippsURL": "https://vippsbedrift.no/signup/vippspanett/?r=4188dea2-00d0-488a-88b7-b39b186151c0"
+}
+```
+
+## The signup form, KYC and signing process
+Merchant completes the form, according to standard form validation for ecommerce (Signup form). Merchant is not displayed with the option to change the partner nor the price package.
+
+## The email notification
+In order for Driftkonto to complete the registration according to partner registration routines it is important to provide some additional partner related information in the email notification. Therefore the email notifcation for partner signups extends the regular ecommerce email notification as per specification: "email specification"
+
+# Vipps Signup API
+
+*(TODO: Elaborate)*
+
+# Email Specification
+The email notifcation for partner signups extends the regular ecommerce email notification as per the following specification:
+
+## p2b
+
+| Organization Number | Name | Social Security Number | Email | Phone | Account Number | Name of saleunit |
+| ------------------- | ---- | ---------------------- | ----- | ----- | -------------- | ---------------- |
+| 915501958 | Dirk Trommer | 24046111111 | montasjeteam@gmail.com | 41072907 | 29012245643 | Bedriften AS faktura |
+| 912584275 | Annikken Hamran Fjellbekk | 27128411111 | annikken.fjellbekk@gmail.com | 41214502 | 90013002079 | Bedriften AS |
+
+## Vippsgo
+```
+Produkt: VippsGO 
+Organisasjonsnummer: 819283192 
+Firmanavn: ENESTE RIKTIGE DA 
+Adresse: Glomstuvegen 22 
+Postnummer: 6412 
+Sted: MOLDE Bestillers 
+personnummer: 13128044196 
+Bestillers navn: Pål Thomas Høstmælingen Bestillers 
+mobilnummer: 48200384 
+Epostadresse til kontaktperson: hjertoyafestivalen@gmail.com 
+Produkt type: Rett til meny 
+Abonnement: Lavt 
+Oppgjørskonto: 12106092433 Navn på 
+salgssted: Test Bedriften
+```
+
+## eCOM
+```
+Direkte Hurtigkasse: Nei
+Log inn med Vipps: Nei 
+SignUp med Vipps: 
+Nei Organisasjonsnummer: 914852447 
+Kontaktpersonens navn: Ola Nordman 
+Kontaktpersonens personnummer: 01092341123 
+Kontaktpersonens epost: ola.testperson@vipps.no 
+Kontaktpersonens mobilnr: 95104800 
+Oppgjørskonto: 39910525739 
+Hjemmeside:http://www.vipps.no/ 
+Navn på salgssted: Interoptik Nymark, 
+Volda Signert: Ja 
+Signert av: Ola Nordman Nordman Personnummer: 01092341123
+```
+
+## eCOM - Partner
+```
+Partner Hurtigkasse: Nei
+Log inn med Vipps: Nei 
+SignUp med Vipps: Nei 
+Organisasjonsnummer: 914852447 
+Kontaktpersonens navn: Ola Nordman 
+Kontaktpersonens personnummer: 01092341123 
+Kontaktpersonens epost: ola.testperson@vipps.no 
+Kontaktpersonens mobilnr: 95104800 
+Oppgjørskonto: 39910525739 
+Hjemmeside:http://www.vipps.no/ 
+Navn på salgssted: Interoptik Nymark, 
+Volda Signert: Ja 
+Signert av: Ola Nordman Nordman 
+Personnummer: 01092341123 
+Partner: 24Nettbutikk 
+Prispakke: 24Nettbutikk Basis 
+signupCallbackUrl: https://url.upload.credentials.to.partner
+```
