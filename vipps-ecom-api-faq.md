@@ -1,16 +1,22 @@
 # Frequently Asked Questions for Vipps eCommerce API
 
-See also the [Getting Started](vipps-ecom-api-getting-started.md) guide.
+See also the 
+[Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) 
+guide for the Vipps Developer Portal.
 
-## I am unable to login to the developer portal in either test and/or production.
+## I am unable to login to the Developer Portal in either test or production.
 
-Make sure you are trying to log in to the right portal. If your username is `name@testapivipps.no`,
-then you should log into the test portal https://apitest-portal.vipps.no/.
+Make sure you are trying to log in to the right portal, and that you are using a browser that 
+[does not have an active Microsoft login](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md#remember-to-log-out-of-other-microsoft-accounts).
 
-If your username is `name@apivipps.no` then you should log in to the production portal https://api-portal.vipps.no/.
-Open the link to the developer portal in an incognito/InPrivate-window in your web browser.
+If your username is `name@testapivipps.no`, you should log into the test portal https://apitest-portal.vipps.no/.
 
-## I am getting 401 authorization error - and I have double checked all my keys!
+If your username is `name@apivipps.no`, you should log in to the production portal https://api-portal.vipps.no/.
+
+See [Step 1](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md#step-1)
+in the guide.
+
+## I am getting `401 Unauthorized` error - and I have double checked all my keys!
 
 `HTTP 401 Unauthorized` occurs when there is a mismatch between the subscription keys and the
 merchant sales unit. Please follow these steps to make sure everything is correct:
@@ -18,19 +24,21 @@ merchant sales unit. Please follow these steps to make sure everything is correc
 1. Correct spelling of `Ocp-Apim-Subscription-Key` parameter in the header of `Access Token` and Payment API
 2. Confirm that you are not using the same subscription key for `Access Token` and `Payment Initiation`
 3. Make sure you are using the same `merchantSerialNumber` in the body of your request as is stated in the developer portal
-4. Make sure you are making calls to `ecomm/v2/payments` and _not_ `ecomm/v1/payments` unless this is specifically agreed upon
+4. Make sure you are making calls to `ecomm/v2/payments` and _not_ `ecomm/v1/payments` (unless this is specifically agreed upon)
 
-## Everything worked yesterday and now I'm suddenly getting 500 Internal Server Error (or similar)
+## Everything worked yesterday and now I'm suddenly getting `500 Internal Server Error` (or similar)
 
-Something _might_ be wrong on our side and we are working to fix it! See the [Vipps Status Page](https://vipps.statuspage.io).
+Something _might_ be wrong on our side and we are working to fix it! 
 
-## I have not had time to test this month and when I came back to it now I get errorCode 37 "Merchant not available or deactivated or blocked"
+## I have not had time to test this month and when I came back to it now I get `errorCode 37 "Merchant not available or deactivated or blocked"`
 
-This happens if the test merchant is not being used for some time. Please contact us (integrations@vipps.no), and we will reactivate the merchant.
+This happens if the test merchant is not being used for some time. Please 
+[contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md), and we will reactivate the merchant.
 
 ## I have successfully tested my integration in the test environment and now need access to the production environment. How do I get it?
 
-Please contact integration@vipps.no, we will activate your production account and you will receive login credentials
+Please [contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md).
+We will activate your production account and you will receive login credentials
 to your production developer portal https://api-portal.vipps.no - If you do not receive credentials please double check
 your spam filter and trash.
 
@@ -43,26 +51,31 @@ We recommend testing with 2 NOK, even though 1 NOK is the smallest possible amou
 ## What is the difference between "Reserve Capture" and "Direct Capture", and how do I change payment type?
 
 `Reserve Capture` is the default. When you initiate a payment it will be reserved until you capture it.
-According to Norwegian regulations you should not capture a payment until the product or service is provided to the customer.
-When direct capture is activated, all payment reservations will instantly be captured.
-This is intended for situations where the product or service is immediately provided to the customer.
+According to Norwegian regulations you should _not_ capture a payment until the product or service is provided to the customer.
 
-## I have initiated a payment (200 NOK) for two items in one order. The customer changed his mind and only bought one of the items. I have performed a partial capture of 100 NOK. How do I cancel the remaining 100 NOK ?
+When `Direct Capture` is activated, all payment reservations will instantly be captured.
+This is intended for situations where the product or service is immediately provided to the customer, e.g. digital services.
 
-It's not possible to cancel the remaining reservation after a partial capture, but when the payment is confirmed
-in the bank (2-3 days later), the money will be available to the customer again.
+## I have initiated a payment - how can I refund a part of the amount?
 
-## I have initiated an order but I can't find it.
+Case: A customer has placed an order of of two items for a total of 1000 NOK. You have initiated a payment of 1000 NOK, but the customer has changed her mind and only bought one of the items, with a price of 750 NOK. You have performed a partial capture of 750 NOK, and need to refund the reamining 250 NOK.
 
-Have you successfully implemented `getPaymentDetails` or `getOrderStatus`?
+It's not possible to cancel the remaining reservation after a partial capture through Vipps, but when the payment is confirmed
+in the bank (normally 2-3 days later), the money will automatically be available to the customer.
 
-In case our callback fails, you will not automatically receive notification of order status. The backup should be to ask for status within a time frame.
+## I have initiated an order but I can't find it!
+
+Have you successfully implemented 
+[`getPaymentDetails`](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details) or 
+[`getOrderStatus`](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-order-status)?
+
+In case our callback fails, you will not automatically receive notification of order status. The backup should be to ask for status within a time frame. 
 
 ## Where can I find reports on transactions?
 
 The [Vipps portal](https://portal.vipps.no/login/) provides information about
-your transactions, your sale units and settlement reports.
-You can also subscribe to daily or monthly reports of transactions.
+your transactions, sale units and settlement reports.
+You can also subscribe to daily or monthly transaction reports.
 
 ## For how long is an initiated payment reserved?
 
