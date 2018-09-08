@@ -8,7 +8,7 @@ For more information about this product, please see
 is still the official documentation, but we are working on making the same
 information available in more developer friendly formats.
 
-For product activation please read [vipps-ecom-api-getting-started.md](vipps-ecom-api-getting-started.md)
+For product activation please see [vipps-ecom-api-getting-started.md](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md)
 
 Frequently Asked Questions: [vipps-ecom-api-faq.md](vipps-ecom-api-faq.md)
 
