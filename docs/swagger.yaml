@@ -645,13 +645,13 @@ definitions:
       mobileNumber:
         type: string
         description: '12345678'
-        enum:
-          - Values with Length 8-12
+        minLength: 8
+        maxLength: 12
       ssn:
         type: string
         description: '12345678912'
-        enum:
-          - Values with Length 11
+        minLength: 11
+        maxLength: 11
       userId:
         type: string
         description: '1234567'
@@ -858,16 +858,14 @@ definitions:
         description: >-
           Id which uniquely identifies a payment. Maximum length is 30
           alphanumeric characters.
-        enum:
-          - Values with length 30
+        maxLength: 30
       refOrderId:
         type: string
         description: >-
           Identifies if the payment references to some past orders registered
           with Vipps. If defined, transactions for this payment will show up as
           child transactions of the specified order.
-        enum:
-          - Values with length 30
+        maxLength: 30
       timeStamp:
         type: string
         format: date-time
@@ -877,8 +875,7 @@ definitions:
       transactionText:
         type: string
         description: Transaction text that can be displayed to end user
-        enum:
-          - Values with length 100
+        maxLength: 100
   MerchantInfoDto:
     type: object
     required:
@@ -893,8 +890,7 @@ definitions:
         description: >-
           Merchant should share this token if merchant has authentication
           mechanism in place which could be used for making callbacks secure
-        enum:
-          - Values with length 255
+        maxLength: 255
       callbackPrefix:
         type: string
         description: >-
@@ -902,8 +898,7 @@ definitions:
           and context path should be provided by merchant as the value for this
           parameter. The rest of the URL will be appended by Vipps according to
           Vipps guidelines. .
-        enum:
-          - Values with length 255
+        maxLength: 255
       consentRemovalPrefix:
         type: string
         description: >-
@@ -911,15 +906,13 @@ definitions:
           informing merchant about consent removal from Vipps user. This means
           that particular user do not want merchant to store/use his personal
           information anymore.
-        enum:
-          - Values with length 255
+        maxLength: 255
       fallBack:
         type: string
         description: >-
           Vipps will use the fall back URL to redirect Merchant Page once
           Payment is completed in Vipps System
-        enum:
-          - Values with length 255
+        maxLength: 255
       isApp:
         type: boolean
         example: false
@@ -932,8 +925,8 @@ definitions:
         type: string
         example: NSBWSHP12
         description: 'Identifies a merchant sales channel i.e. website, mobile app etc.'
-        enum:
-          - Values with length 6
+        minLength: 6
+        maxLength: 6
       paymentType:
         type: string
         description: >-
@@ -944,8 +937,7 @@ definitions:
         description: >-
           In case of express checkout payment, merchant should pass this prefix
           to let Vipps fetch shipping cost and method related details.
-        enum:
-          - Values with length 255
+        maxLength: 255
   GetPaymentStatusResponse:
     type: object
     properties:
@@ -1004,8 +996,8 @@ definitions:
         description: >-
           Mobile number of the user who has to pay for the transation from
           Vipps.Allowed format:xxxxxxxx
-        enum:
-          - Values with length 8
+        minLength: 8
+        maxLength: 8
   CancelPaymentActionRequest:
     type: object
     properties:
