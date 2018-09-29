@@ -348,7 +348,7 @@ paths:
         '200':
           description: Cancel payment response
           schema:
-            $ref: '#/definitions/TransactionResponce'
+            $ref: '#/definitions/TransactionResponse'
         '400':
           description: Bad request (Missing a required parameter or Bad request formats)
         '401':
@@ -399,7 +399,7 @@ paths:
         '200':
           description: Capture payment response
           schema:
-            $ref: '#/definitions/TransactionResponce'
+            $ref: '#/definitions/TransactionResponse'
         '400':
           description: Bad request (Missing a required parameter or Bad request formats)
         '401':
@@ -494,7 +494,7 @@ paths:
         '200':
           description: Refund payment response
           schema:
-            $ref: '#/definitions/RefundTransactionResponce'
+            $ref: '#/definitions/RefundTransactionResponse'
         '400':
           description: Bad request (Missing a required parameter or Bad request formats)
         '401':
@@ -737,7 +737,7 @@ definitions:
           Url parameter will have url to redirect the request to vipps gateway
           page in case request is trigger from web browser or deeplink url to
           open vipps app incase request is triggered from Merchant Mobile App.
-  ShippingDetailsReqest:
+  ShippingDetailsRequest:
     type: object
     required:
       - address
@@ -754,7 +754,7 @@ definitions:
       shippingMethod:
         type: string
         description: Shipping method which choosed for the payment
-  TransactionResponce:
+  TransactionResponse:
     type: object
     required:
       - orderId
@@ -768,7 +768,7 @@ definitions:
         $ref: '#/definitions/TransactionInfo'
       transactionSummary:
         $ref: '#/definitions/TransactionSummary'
-  RefundTransactionResponce:
+  RefundTransactionResponse:
     type: object
     required:
       - orderId
@@ -1033,7 +1033,7 @@ definitions:
         description: >-
           Shipping Details will be added in the call back request if the payment
           is Express Checkout
-        $ref: '#/definitions/ShippingDetailsReqest'
+        $ref: '#/definitions/ShippingDetailsRequest'
       transactionInfo:
         $ref: '#/definitions/OrderStatusInfoTransactionInfo'
       userDetails:
