@@ -95,7 +95,7 @@ paths:
         - name: ocp-apim-subscription-key
           in: header
           description: >-
-            Subscription key for Authroization product. This can be found in User
+            Subscription key for Authorization product. This can be found in the User
             Profile page on Merchant developer portal after merchant account is
             created
           required: false
