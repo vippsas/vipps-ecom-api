@@ -29,7 +29,7 @@ info:
     username and a password to login into the Merchant Developer Portal (manual
     to use merchant developer portal can be found here). Once logged in to the
     developer portal, the merchant needs to register an application to generate
-    a JWT access token and use the token in the authorization header of the
+    a JWT access token (also called Authorization Token) and use the token in the authorization header of the
     request. The diagram below shows the integration flow between merchant and
     Vipps server.
 
@@ -65,6 +65,10 @@ info:
       | :-------------------------- | :--------------------------- | :--------------------------------------------- |
       | Authorization | Bearer 'jwt_access_token'' | type: Authorization token<br>Value: Access token is obtained by registering merchant backend application in Merchant Developer Portal. |
       | Ocp-Apim-Subscription-Key | Base 64 encoded string | Subscription key for eCommerce product.<br>This can be found in User Profile page on Merchant developer portal after merchant account is created |
+
+    # Responses
+
+    Vipps has a series of responses depending on the state of the transaction. For more information please read [this segment](https://github.com/alfmags/vipps-ecom-api/blob/master/vipps-ecom-api.md#response-codes) in the manual.
 
   version: '1.0'
   title: Vipps eCommerce APIs
