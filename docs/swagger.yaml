@@ -66,10 +66,9 @@ info:
       | Authorization | Bearer 'jwt_access_token'' | type: Authorization token<br>Value: Access token is obtained by registering merchant backend application in Merchant Developer Portal. |
       | Ocp-Apim-Subscription-Key | Base 64 encoded string | Subscription key for eCommerce product.<br>This can be found in User Profile page on Merchant developer portal after merchant account is created |
 
-   # Response Codes
+    # Responses
 
-   Vipps has a series of responses depending on the state of the transaction. For more information please read
-   [this segment](https://github.com/alfmags/vipps-ecom-api/blob/master/vipps-ecom-api.md#response-codes) in the manual.
+    Vipps has a series of responses depending on the state of the transaction. For more information please read [this segment](https://github.com/alfmags/vipps-ecom-api/blob/master/vipps-ecom-api.md#response-codes) in the manual.
 
   version: '1.0'
   title: Vipps eCommerce APIs
@@ -100,7 +99,7 @@ paths:
         - name: ocp-apim-subscription-key
           in: header
           description: >-
-            Subscription key for Authorization product. This can be found in the User
+            Subscription key for Authorization product. This can be found in User
             Profile page on Merchant developer portal after merchant account is
             created
           required: false
@@ -137,59 +136,76 @@ paths:
           description: Unsupported media type
         '500':
           description: Something went wrong from Vipps Server side
-  '/ecomm/v3/payments':
+  '/[consetRemovalPrefix]/v2/consents/{userId}':
+    delete:
+      tags:
+        - oneclick-payment-with-vipps-controller
+      summary: Remove User Consent (for express checkout)
+      description: >-
+        This API allows Vipps to send consent removal request to merchant. After
+        this the merchant is obliged to remove the user details from merchant
+        system permanently, as per the GDPR guidelines.
+      operationId: removeUserConsentUsingDELETE
+      consumes:
+        - application/json
+      produces:
+        - application/json;charset=UTF-8
+      parameters:
+        - name: userId
+          in: path
+          description: userId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Remove User Consent (for express checkout)
+        '400':
+          description: Bad request (Missing a required parameter or Bad request formats)
+        '401':
+          description: Unauthorized
+        '403':
+          description: Request Forbidden
+        '404':
+          description: Resource Not Found
+        '405':
+          description: Request method not supported
+        '415':
+          description: Unsupported media type
+        '500':
+          description: Something went wrong from Vipps Server side
+  '/[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails':
     post:
       tags:
         - oneclick-payment-with-vipps-controller
-      summary: Initiate Payment
+      summary: Fetch Shipping Cost & Method
       description: >-
-        The API Call allows the merchants to initiate a payment flow by using
-        Vipps.In order to identify sales channel payments are coming from, a
-        merchantSerialNumber is used to distinguish between them. Please note
-        that a single payment is uniquely identified by a composite of
-        merchantApplicationId (X-App-ID), merchantSerialNumber and orderId. The
-        Merchant provided orderId must be unique per sales channel. Once
-        successfully initiated the transaction in Vipps, it will give you the
-        redirect URL in response which has to be used by the merchant to open
-        the Vipps landing page. The landing page will have functionality to
-        identify and differentiate request coming from mobile browser/desktop
-        browser.
-      operationId: initiatePaymentV3UsingPOST
+        This API call allows Vipps to get the shipping cost and method based on
+        the provided address and product details. Primarily use of this service
+        is meant for ecomm express checkout where Vipps needs to present
+        shipping cost and method  to the vipps user. This service is to be
+        implemented by merchants.
+      operationId: fetchShippingCostUsingPOST
       consumes:
         - application/json;charset=UTF-8
       produces:
         - application/json;charset=UTF-8
       parameters:
-        - name: Authorization
-          in: header
-          description: Token gotten from the Authorization service
+        - name: orderId
+          in: path
+          description: orderId
           required: true
-          type: string
-        - name: ocp-apim-subscription-key
-          in: header
-          description: >-
-            Subscription key for eCommerce product. This can be found in User
-            Profile page on Merchant developer portal after merchant account is
-            created
-          required: true
-          type: string
-        - name: merchantSerialNumber
-          in: header
-          description: >-
-            Identifies a merchant sales channel i.e. website, mobile app etc
-          required: false
           type: string
         - in: body
-          name: InitiatePaymentCommandDtoV2
-          description: InitiatePaymentCommandDtoV2
+          name: fetchShippingCostAndMethod
+          description: fetchShippingCostAndMethod
           required: true
           schema:
-            $ref: '#/definitions/InitiatePaymentCommandDtoV2'
+            $ref: '#/definitions/FetchShippingCostAndMethod'
       responses:
-        '202':
-          description: Response for Initiate Payment
+        '200':
+          description: Fetch Shipping Cost & Method.
           schema:
-            $ref: '#/definitions/InitiatePaymentV2Representation'
+            $ref: '#/definitions/FetchShippingCostResponse'
         '400':
           description: Bad request (Missing a required parameter or Bad request formats)
         '401':
@@ -223,94 +239,12 @@ paths:
         the Vipps landing page. The landing page will have functionality to
         identify and differentiate request coming from mobile browser/desktop
         browser.
-      operationId: initiatePaymentV2UsingPOST
+      operationId: initiatePaymentV3UsingPOST
       consumes:
         - application/json;charset=UTF-8
       produces:
         - application/json;charset=UTF-8
       parameters:
-        - name: Authorization
-          in: header
-          description: Token gotten from the Authorization service
-          required: false
-          type: string
-        - name: ocp-apim-subscription-key
-          in: header
-          description: >-
-            Subscription key for eCommerce product. This can be found in User
-            Profile page on Merchant developer portal after merchant account is
-            created
-          required: false
-          type: string
-        - in: body
-          name: initiatePaymentCommandDto
-          description: initiatePaymentCommandDto
-          required: true
-          schema:
-            $ref: '#/definitions/InitiatePaymentCommandDto'
-      responses:
-        '202':
-          description: Response for Initiate Payment
-          schema:
-            $ref: '#/definitions/InitiatePaymentV2Representation'
-        '400':
-          description: Bad request (Missing a required parameter or Bad request formats)
-        '401':
-          description: Unauthorized
-        '402':
-          description: Payment Failed
-        '403':
-          description: Request Forbidden
-        '404':
-          description: Resource Not Found
-        '405':
-          description: Request method not supported
-        '415':
-          description: Unsupported media type
-        '500':
-          description: Something went wrong from Vipps Server side
-  '/ecomm/v2/payments(optional)':
-    post:
-      tags:
-        - oneclick-payment-with-vipps-controller
-      summary: Initiate Payment
-      description: >-
-        The API Call allows the merchants to initiate a payment flow by using
-        Vipps.In order to identify sales channel payments are coming from, a
-        merchantSerialNumber is used to distinguish between them. Please note
-        that a single payment is uniquely identified by a composite of
-        merchantApplicationId (X-App-ID), merchantSerialNumber and orderId. The
-        Merchant provided orderId must be unique per sales channel. Once
-        successfully initiated the transaction in Vipps, it will give you the
-        redirect URL in response which has to be used by the merchant to open
-        the Vipps landing page. The landing page will have functionality to
-        identify and differentiate request coming from mobile browser/desktop
-        browser.
-      operationId: initiatePaymentV2OptionalUsingPOST
-      consumes:
-        - application/json;charset=UTF-8
-      produces:
-        - application/json;charset=UTF-8
-      parameters:
-        - name: Authorization
-          in: header
-          description: Token gotten from the Authorization service
-          required: true
-          type: string
-        - name: ocp-apim-subscription-key
-          in: header
-          description: >-
-            Subscription key for eCommerce product. This can be found in User
-            Profile page on Merchant developer portal after merchant account is
-            created
-          required: true
-          type: string
-        - name: merchantSerialNumber
-          in: header
-          description: >-
-            Identifies a merchant sales channel i.e. website, mobile app etc
-          required: false
-          type: string
         - in: body
           name: initiatePaymentCommandDto
           description: initiatePaymentCommandDto
@@ -368,6 +302,244 @@ paths:
       responses:
         '200':
           description: 'Callback : Transaction Update'
+        '400':
+          description: Bad request (Missing a required parameter or Bad request formats)
+        '401':
+          description: Unauthorized
+        '402':
+          description: Payment Failed
+        '403':
+          description: Request Forbidden
+        '404':
+          description: Resource Not Found
+        '405':
+          description: Request method not supported
+        '415':
+          description: Unsupported media type
+        '500':
+          description: Something went wrong from Vipps Server side
+  '/ecomm/v2/payments/{orderId}/cancel':
+    put:
+      tags:
+        - oneclick-payment-with-vipps-controller
+      summary: Cancel Payment
+      description: >-
+        The API call allows merchant to cancel the reserved transaction, The API
+        will not allow partial cancellation which has the consequence that
+        partially captured transactions cannot be cancelled. Please note that in
+        a case of communication errors during initiate payment service call
+        between Vipps and PSP/Acquirer/Issuer; even in a case that customer has
+        confirmed a payment, the payment will be cancelled by Vipps. Note this
+        means you can not cancel a captured payment.
+      operationId: cancelPaymentRequestUsingPUT
+      consumes:
+        - application/json;charset=UTF-8
+      produces:
+        - application/json;charset=UTF-8
+      parameters:
+        - name: orderId
+          in: path
+          description: orderId
+          required: true
+          type: string
+        - in: body
+          name: paymentActionsRequest
+          description: paymentActionsRequest
+          required: true
+          schema:
+            $ref: '#/definitions/CancelPaymentActionRequest'
+      responses:
+        '200':
+          description: Cancel payment response
+          schema:
+            $ref: '#/definitions/TransactionResponce'
+        '400':
+          description: Bad request (Missing a required parameter or Bad request formats)
+        '401':
+          description: Unauthorized
+        '402':
+          description: Payment Failed
+        '403':
+          description: Request Forbidden
+        '404':
+          description: Resource Not Found
+        '405':
+          description: Request method not supported
+        '415':
+          description: Unsupported media type
+        '500':
+          description: Something went wrong from Vipps Server side
+  '/ecomm/v2/payments/{orderId}/capture':
+    post:
+      tags:
+        - oneclick-payment-with-vipps-controller
+      summary: 'Capture Payment '
+      description: >-
+        The API call allows merchant to capture the reserved amount. Amount to
+        capture cannot be higher than reserved. The API also allows capturing
+        partial amount of the reserved amount. Partial capture can be called as
+        many times as required so long there is reserved amount to capture.
+        Transaction text is not optional and is used as a proof of delivery
+        (tracking code, consignment number etc.). In a case of direct capture,
+        both fund reservation and capture are executed in a single operation.
+      operationId: capturePaymentUsingPOST
+      consumes:
+        - application/json;charset=UTF-8
+      produces:
+        - application/json;charset=UTF-8
+      parameters:
+        - name: orderId
+          in: path
+          description: orderId
+          required: true
+          type: string
+        - in: body
+          name: paymentActionsRequest
+          description: paymentActionsRequest
+          required: true
+          schema:
+            $ref: '#/definitions/PaymentActionsRequest'
+      responses:
+        '200':
+          description: Capture payment response
+          schema:
+            $ref: '#/definitions/TransactionResponce'
+        '400':
+          description: Bad request (Missing a required parameter or Bad request formats)
+        '401':
+          description: Unauthorized
+        '402':
+          description: Payment Failed
+        '403':
+          description: Request Forbidden
+        '404':
+          description: Resource Not Found
+        '405':
+          description: Request method not supported
+        '415':
+          description: Unsupported media type
+        '500':
+          description: Something went wrong from Vipps Server side
+  '/ecomm/v2/payments/{orderId}/details':
+    get:
+      tags:
+        - oneclick-payment-with-vipps-controller
+      summary: Get payment Details
+      description: >-
+        The API allows merchant to get the details of a payment transaction.
+        Service call returns detailed transaction history of given payment where
+        events are sorted by the time single transaction occurred.
+      operationId: getPaymentDetailsUsingGET
+      consumes:
+        - application/json
+      produces:
+        - application/json;charset=UTF-8
+      parameters:
+        - name: orderId
+          in: path
+          description: orderId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Get payment Details
+          schema:
+            $ref: '#/definitions/GetTransactionDetails'
+        '400':
+          description: Bad request (Missing a required parameter or Bad request formats)
+        '401':
+          description: Unauthorized
+        '402':
+          description: Payment Failed
+        '403':
+          description: Request Forbidden
+        '404':
+          description: Resource Not Found
+        '405':
+          description: Request method not supported
+        '415':
+          description: Unsupported media type
+        '500':
+          description: Something went wrong from Vipps Server side
+  '/ecomm/v2/payments/{orderId}/refund':
+    post:
+      tags:
+        - oneclick-payment-with-vipps-controller
+      summary: 'Refund Payment '
+      description: >-
+        The API allows a merchant to do a refund of already captured
+        transaction. There is an option to do a partial refund of the captured
+        amount. Refunded amount cannot be larger than captured. Timeframe for
+        issuing a refund for a payment is 365 days from the date payment has
+        been captured. If the refund payment service call is called after the
+        refund timeframe, service call will respond with an error. Refunded
+        funds will be transferred from the merchant account to the customer
+        credit card that was used in payment flow. Pay attention that in order
+        to perform refund, there must be enough funds at merchant settlements
+        account.
+      operationId: refundPaymentUsingPOST
+      consumes:
+        - application/json;charset=UTF-8
+      produces:
+        - application/json;charset=UTF-8
+      parameters:
+        - name: orderId
+          in: path
+          description: orderId
+          required: true
+          type: string
+        - in: body
+          name: paymentActionsRequest
+          description: paymentActionsRequest
+          required: true
+          schema:
+            $ref: '#/definitions/PaymentActionsRequest'
+      responses:
+        '200':
+          description: Refund payment response
+          schema:
+            $ref: '#/definitions/RefundTransactionResponce'
+        '400':
+          description: Bad request (Missing a required parameter or Bad request formats)
+        '401':
+          description: Unauthorized
+        '402':
+          description: Payment Failed
+        '403':
+          description: Request Forbidden
+        '404':
+          description: Resource Not Found
+        '405':
+          description: Request method not supported
+        '415':
+          description: Unsupported media type
+        '500':
+          description: Something went wrong from Vipps Server side
+  '/ecomm/v2/payments/{orderId}/status':
+    get:
+      tags:
+        - oneclick-payment-with-vipps-controller
+      summary: Get order status
+      description: >-
+        The API call allows the merchant to get the status of the last payment
+        transaction. Primarily use of this service is meant for inApp where
+        simple response to check order status is preferred.
+      operationId: getOrderStatusUsingGET
+      consumes:
+        - application/json
+      produces:
+        - application/json;charset=UTF-8
+      parameters:
+        - name: orderId
+          in: path
+          description: orderId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Get order status
+          schema:
+            $ref: '#/definitions/GetPaymentStatusResponse'
         '400':
           description: Bad request (Missing a required parameter or Bad request formats)
         '401':
@@ -674,21 +846,6 @@ definitions:
       transaction:
         description: it has transaction details which needs to be inititated
         $ref: '#/definitions/TransactionInfoInitiateDTO'
-  InitiatePaymentCommandDtoV2:
-    type: object
-    required:
-      - merchantInfo
-      - transaction
-    properties:
-      customerInfo:
-        description: it has customer information and it is not required
-        $ref: '#/definitions/CustomerInfoDto'
-      merchantInfo:
-        description: it has merchant related information to initiate the payment
-        $ref: '#/definitions/MerchantInfoDtoV2'
-      transaction:
-        description: it has transaction details which needs to be inititated
-        $ref: '#/definitions/TransactionInfoInitiateDTO'
   TransactionInfoInitiateDTO:
     type: object
     required:
@@ -760,27 +917,27 @@ definitions:
           information anymore.
         enum:
           - Values with length 255
+      fallBack:
+        type: string
+        description: >-
+          Vipps will use the fall back URL to redirect Merchant Page once
+          Payment is completed in Vipps System
+        enum:
+          - Values with length 255
+      isApp:
+        type: boolean
+        example: false
+        description: >-
+          This parameter indicates whether payment request is triggered from
+          Mobile App or Web browser. Based on this value, response will be
+          redirect url for Vipps landing page or deeplink Url to connect vipps
+          App
       merchantSerialNumber:
         type: string
-        description: >-
-          Merchant identifier.
+        example: NSBWSHP12
+        description: 'Identifies a merchant sales channel i.e. website, mobile app etc.'
         enum:
           - Values with length 6
-      fallBack:
-        type: string
-        description: >-
-          Vipps will use the fall back URL to redirect Merchant Page once
-          Payment is completed in Vipps System
-        enum:
-          - Values with length 255
-      isApp:
-        type: boolean
-        example: false
-        description: >-
-          This parameter indicates whether payment request is triggered from
-          Mobile App or Web browser. Based on this value, response will be
-          redirect url for Vipps landing page or deeplink Url to connect vipps
-          App
       paymentType:
         type: string
         description: >-
@@ -793,68 +950,6 @@ definitions:
           to let Vipps fetch shipping cost and method related details.
         enum:
           - Values with length 255
-  MerchantInfoDtoV2:
-    type: object
-    required:
-      - callbackPrefix
-      - fallBack
-      - isApp
-      - merchantSerialNumber
-      - paymentType
-    properties:
-      authToken:
-        type: string
-        description: >-
-          Merchant should share this token if merchant has authentication
-          mechanism in place which could be used for making callbacks secure
-        enum:
-          - Values with length 255
-      callbackPrefix:
-        type: string
-        description: >-
-          This is to receive the callback after the payment request. Domain name
-          and context path should be provided by merchant as the value for this
-          parameter. The rest of the URL will be appended by Vipps according to
-          Vipps guidelines. .
-        enum:
-          - Values with length 255
-      consentRemovalPrefix:
-        type: string
-        description: >-
-          In case of expess checkout payments, this callback will be used for
-          informing merchant about consent removal from Vipps user. This means
-          that particular user do not want merchant to store/use his personal
-          information anymore.
-        enum:
-          - Values with length 255
-      fallBack:
-        type: string
-        description: >-
-          Vipps will use the fall back URL to redirect Merchant Page once
-          Payment is completed in Vipps System
-        enum:
-          - Values with length 255
-      isApp:
-        type: boolean
-        example: false
-        description: >-
-          This parameter indicates whether payment request is triggered from
-          Mobile App or Web browser. Based on this value, response will be
-          redirect url for Vipps landing page or deeplink Url to connect vipps
-          App
-      paymentType:
-        type: string
-        description: >-
-          This will parameter will identify difference between ecomm payment and
-          ecomm express payment.
-      shippingDetailsPrefix:
-        type: string
-        description: >-
-          In case of express checkout payment, merchant should pass this prefix
-          to let Vipps fetch shipping cost and method related details.
-        enum:
-          - Values with length 255
-
   GetPaymentStatusResponse:
     type: object
     properties:
@@ -1002,27 +1097,3 @@ definitions:
         type: integer
         format: int32
         description: Total remaining amount to refund
-  PartnerKeyCallback:
-    type: object
-    required:
-      - Client_Id
-      - Client_Secret
-      - Ocp-Apim-Subscription-Key
-    properties:
-      Client_Id:
-        type: string
-        description: The Client Id tied to the merchant
-      Client_Secret:
-        type: string
-        description: The Client Secret tied to the merchant
-      Ocp-Apim-Subscription-Key:
-        type: string
-        description: The subscription key for the product
-  MerchantInformationCallback:
-    type: object
-    required:
-      -  MerchantSerialNumber
-    properties:
-      MerchantSerialNumber:
-        type: string
-        description: The serial number tied to the merchant
