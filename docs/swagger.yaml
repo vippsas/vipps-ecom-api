@@ -136,7 +136,7 @@ paths:
           description: Unsupported media type
         '500':
           description: Something went wrong from Vipps Server side
-  '/[consetRemovalPrefix]/v2/consents/{userId}':
+  '[consetRemovalPrefix]/v2/consents/{userId}':
     delete:
       tags:
         - oneclick-payment-with-vipps-controller
@@ -173,7 +173,7 @@ paths:
           description: Unsupported media type
         '500':
           description: Something went wrong from Vipps Server side
-  '/[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails':
+  '[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails':
     post:
       tags:
         - oneclick-payment-with-vipps-controller
