@@ -78,6 +78,8 @@ tags:
     description: Authorization Service
   - name: oneclick-payment-with-vipps-controller
     description: Oneclick Payment With Vipps Controller
+  - name: Calls from Vipps examples
+    description: These calls will be sent from Vipps to Merchant during various points in the flow
 paths:
   /accesstoken/get:
     post:
@@ -139,7 +141,7 @@ paths:
   '[consetRemovalPrefix]/v2/consents/{userId}':
     delete:
       tags:
-        - oneclick-payment-with-vipps-controller
+        - Calls from Vipps examples
       summary: Remove User Consent (for express checkout)
       description: >-
         This API allows Vipps to send consent removal request to merchant. After
@@ -176,7 +178,7 @@ paths:
   '[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails':
     post:
       tags:
-        - oneclick-payment-with-vipps-controller
+        - Calls from Vipps examples
       summary: Fetch Shipping Cost & Method
       description: >-
         This API call allows Vipps to get the shipping cost and method based on
