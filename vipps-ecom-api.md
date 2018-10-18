@@ -225,6 +225,43 @@ Error reponse body (formatted for readability):
 
 See the Swagger documentation for more details: [POST:/accesstoken/get](https://vippsas.github.io/vipps-ecom-api/#/Authorization_Service/fetchAuthorizationTokenUsingPost)
 
+# Postman
+[Postman](https://www.getpostman.com/)
+is a common tool for working with REST APIs. We offer a
+[Postman Collection](https://www.getpostman.com/collection)
+for Vipps Regninger to make development easier.
+See the
+[Postman documentation](https://www.getpostman.com/docs/)
+for more information about using Postman.
+
+By following the steps below, you can make calls to all the Vipps Regninger
+endpoints, and see the full `request` and `response` for each call.
+
+### Setting up Postman
+
+#### Step 1: Import the Postman Collection
+
+1. Click `Import` in the upper left corner.
+2. Import the [vipps-ecom-api-postman-collection.json](https://github.com/vippsas/vipps-ecom-api/blob/master/tools/vipps-ecom-api-postman-collection.json) file
+
+#### Step 2: Import the Postman Environment
+
+1. Click `Import` in the upper left corner.
+2. Import the [vipps-ecom-api-postman-enviroment.json](https://github.com/vippsas/vipps-ecom-api/blob/master/tools/vipps-ecom-api-postman-enviroment.json) file
+
+#### Step 3: Setup Postman Environment
+
+1. Click the "eye" icon in the top right corner.
+2. In the dropdown window, click `Edit` in the top right corner.
+3. Fill in the `Current Value` for the following fields to get started.
+   - `access-token-key`
+   - `subscription-key`
+   - `client-id`
+   - `client-secret`
+
+Detailed guide on where to find the key values:
+[Getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md#step-4).
+
 # Idempotency
 
 All API requests in Vipps eCommerce can be retried without any side effects by
@@ -340,7 +377,7 @@ In addition to above mentioned payment flows, following are the services which m
 
 When express checkout payment is initiated, vipps will call this service from merchant’s backend to fetch shipping cost and shipping method related details. Merchant can send priority of shipping cost and method combination if there are multiple ways of delivery. Merchant can also send default shipping cost & method combination which merchant wants user to see on payment confirmation screen of Vipps. Vipps will support upto 10 shipping cost and method combinations. If user sends more than 10 combinations, vipps will display first 10 always.
 
-Jump to get 
+Jump to get
 
 ## Transaction updates with user details
 
@@ -806,7 +843,7 @@ In a case of direct capture, both fund reservation and capture are executed in a
 
 API details: [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/capturePaymentUsingPOST)
 
-# Refund Payment 
+# Refund Payment
 
 Refund payment allows merchant to do a refund of an already captured payment order. There is an option to do a partial refund of the captured amount by giving an amount which is lower than the captured amount. Refunded amount cannot be larger than captured.
 
@@ -881,11 +918,11 @@ We want to create a connection between the ecommerce partner ("Partner") and the
 ```
 {
     "orgnumber" : "819226032",
-    
+
     "partnerId":"1234",
-    
+
     "subscriptionPackageId":"1234",
-    
+
     "merchantWebsiteUrl": "https://www.vipps.no",
     "signupCallbackToken":"",
     "signupCallbackUrl":"https://upload.credentials.to.partner.url",
@@ -918,4 +955,3 @@ In order for Driftkonto to complete the registration according to partner regist
 
 # Email Specification
 The email notifcation for partner signups extends the regular ecommerce email notification as per the following specification:
-
