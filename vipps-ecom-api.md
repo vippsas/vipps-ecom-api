@@ -861,6 +861,8 @@ Get Order Status allows merchant to get the status of a payment order.
 
 API details: [`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)
 
+# Transactions statuses
+
 # Endpoints Hosted by Merchant
 
 1. [Callback: Transaction Update](#callback)

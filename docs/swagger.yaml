@@ -675,9 +675,10 @@ definitions:
         description: Ordered amount in Ã¸re
       status:
         type: string
+        enum: [Captured, Cancelled, Refunded, Reserved]
         description: >-
-          Id which uniquely identifies a payment. Maximum length is 30
-          alphanumeric characters
+          Status which gives the current state of the payment within Vipps
+        example: "Captured"
       timeStamp:
         type: string
         description: Timestamp in ISO-8601 representing when vipps Cancelled transaction.
