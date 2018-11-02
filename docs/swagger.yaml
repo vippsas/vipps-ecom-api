@@ -240,7 +240,7 @@ paths:
         redirect URL in response which has to be used by the merchant to open
         the Vipps landing page. The landing page will have functionality to
         identify and differentiate request coming from mobile browser/desktop
-        browser. The fallback (url) attribute should pass the Apache Commons [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). The URL should already be encoded when making the API-call.
+        browser. The fallback (URL) attribute should pass the Apache Commons [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). The URL should already be encoded when making the API-call.
       operationId: initiatePaymentV3UsingPOST
       consumes:
         - application/json;charset=UTF-8
