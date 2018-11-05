@@ -539,6 +539,9 @@ else {
 }
 ```
 
+Example of a deeplinkURL:
+`vipps://?token=eyJraWQiOiJqd3RrZXkiLCJhbGciOiJSUzI1NiJ9.ey <snip>`
+
 #### Redirect Back to Source App from iOS Vipps App
 
 Once the operation in Vipps is completed, vipps mobile application will open the frontend url. For app to app integration, merchant app needs to be registered for a url scheme and pass the url scheme in “fallbackURL” in Vipps backend API (explained here). Vipps mobile application will use below code to launch merchant application.
@@ -628,6 +631,9 @@ try {
 }
 ```
 
+Example of a deeplinkURL:
+`vipps://?token=eyJraWQiOiJqd3RrZXkiLCJhbGciOiJSUzI1NiJ9.ey <snip>`
+
 ##### Android URL Scheme
 
 Following is the code sample for Android URL scheme approach.
@@ -652,6 +658,10 @@ try {
   startActivity(storeIntent);
 }
 ```
+
+Example of a deeplinkURL:
+`vipps://?token=eyJraWQiOiJqd3RrZXkiLCJhbGciOiJSUzI1NiJ9.ey <snip>`
+
 
 #### Redirect Back to Source App from Android Vipps App
 
@@ -773,6 +783,12 @@ Below section explains different API definitions supported by Vipps ecommerce AP
 ## Base URL
 
 `https://apitest.vipps.no`
+
+## deeplinkURL
+
+Below is a complete example of a deeplinkURL:
+
+```vipps://?token=eyJraWQiOiJqd3RrZXkiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJmMDE0MmIxYy02YjIwLTQ1M2MtYTlmMS1lMWUwZGFiNjkzOTciLCJhdWQiOiJmMDE0MmIxYy02YjIwLTQ1M2MtYTlmMS1lMWUwZGFiNjkzOTciLCJhenAiOiJmMDE0MmIxYy02YjIwLTQ1M2MtYTlmMS1lMWUwZGFiNjkzOTciLCJhcHBUeXBlIjoiTEFORElOR1BBR0UiLCJpc3MiOiJodHRwczpcL1wvdmlwcHMtdGVzdC1jb24tYWdlbnQtaWxiLnRlc3QudGVjaC0wMi5uZXRcL2F0M1wvZGVlcGxpbmstb3BlbmlkLXByb3ZpZGVyLWFwcGxpY2F0aW9uXC8iLCJhZ3JlZW1lbnRJZCI6ImFncl9UNmNMeGY0IiwiZXhwIjoxNTQxNDMwMzk5LCJ0b2tlblR5cGUiOiJERUVQTElOSyIsImlhdCI6MTU0MTQzMDI3OSwidXVpZCI6IjU2MTM0YjI3LWQ1ODAtNDdmZC1hOTExLWYzMGU0ZDY4NmNkZiIsImp0aSI6IjI2NzIyYzU5LWZlYTMtNGYwNi1hNGRiLTVhOGM3MDFjY2JkMCJ9.d_jDLUW7cZi6xF5N51CggymsiT0zQM36a2nEB8h7jQhCIE5BDG_6u0QmW4tbYiK8T_8TJNmPIQbJ1YY7gZiIY9kHD1fPQC6JlFS4FaUldOdq9yYesqXFcvnsZdzeRk45g9YuCdHSmmcYQ4Hzz3HurlZ_txiPybytOWbhm1hTKFsyQOC_1GZWA9SFdLG8g2z5ZMuCkyUlXgArdYN_FaqdowrPydRwuTyeeC97SG-SS208d1ZZ5p0K7VEJSs05m-rQE1APX0eAiMtxk0JOBEz_MzwCA--Pf7Hk_mRjEOtYqCmAKM0B8rG3zxohEnWSIZGf8znApfVUhfI85sBMB9YD8A```
 
 # Initiate Payment
 
