@@ -511,7 +511,7 @@ public class UrlValidate {
  public static void main(String[] args) {
   UrlValidator urlValidator = new UrlValidator();
 
-  if (urlValidator.isValid("https://api.kardinal.app/api/v1/vipps/vipps-callback-login")) {
+  if (urlValidator.isValid("https://example.com/vipps/fallback?id=abc123")) {
    System.out.println("URL is valid");
   } else {
    System.out.println("URL is invalid");
