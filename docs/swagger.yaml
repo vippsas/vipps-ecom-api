@@ -74,8 +74,8 @@ host: apitest.vipps.no
 tags:
   - name: Authorization Service
     description: Authorization Service
-  - name: oneclick-payment-with-vipps-controller
-    description: Oneclick Payment With Vipps Controller
+  - name: Express checkout with Vipps
+    description: Express checkout with Vipps
   - name: Calls from Vipps examples
     description: These calls will be sent from Vipps to Merchant during various points in the flow
 paths:
@@ -87,21 +87,21 @@ paths:
       parameters:
         - name: client_id
           in: header
-          description: Client ID received when merchant registered the application
+          description: >-
+            Client id is located in the [developer portal](https://apitest-portal.vipps.no/). Navigate to the ```Applications``` tab and click the ```View secrets``` button to display the client id. See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.
           required: true
           type: string
           format: guid
         - name: client_secret
           in: header
-          description: Client Secret received when merchant registered the application
+          description: >-
+            Client secret is located in the [developer portal](https://apitest-portal.vipps.no/). Navigate to the ```Applications``` tab and click the ```View secrets``` button to display the client id. See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.
           required: true
           type: string
         - name: ocp-apim-subscription-key
           in: header
           description: >-
-            Subscription key for Authorization product. This can be found in User
-            Profile page on Merchant developer portal after merchant account is
-            created
+            The subscription-key for authorization token is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. The ```DEFAULT_ACCESSTOKEN``` key is the value for subscription-key. See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.
           required: true
           type: string
       description: >-
@@ -225,32 +225,49 @@ paths:
   '/ecomm/v2/payments':
     post:
       tags:
-        - oneclick-payment-with-vipps-controller
+        - Express checkout with Vipps
       summary: Initiate Payment
       description: >-
-        The API Call allows the merchants to initiate a payment flow by using
-        Vipps. In order to identify sales channel payments are coming from, a
+        This API call allows the merchants to initiate a payment flow by using
+        Vipps. In order to identify which sales channel payments are coming from, a
         merchantSerialNumber is used to distinguish between them. Please note
         that a single payment is uniquely identified by a composite of
         merchantApplicationId (X-App-ID), merchantSerialNumber and orderId. The
-        Merchant provided orderId must be unique per sales channel. Once
-        successfully initiated the transaction in Vipps, it will give you the
-        redirect URL in response which has to be used by the merchant to open
+        Merchant provided orderId must be unique per sales channel. Once the transaction is
+        successfully initiated in Vipps, will you receive a redirect URL in response which has to be used by the merchant to open
         the Vipps landing page. The landing page will have functionality to
         identify and differentiate request coming from mobile browser/desktop
-        browser.
+        browser. The fallback (URL) attribute should pass the Apache Commons [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). The URL should already be encoded when making the API-call.
       operationId: initiatePaymentV3UsingPOST
       consumes:
         - application/json;charset=UTF-8
       produces:
         - application/json;charset=UTF-8
       parameters:
+        - in: header
+          name: authorization
+          description: >-
+            Authorization-token is obtained by running the /accesstoken/get request. 
+          required: true
+          type: string
+        - in: header
+          name: content-type
+          description: >-
+            `application/json`
+          required: true
+          type: string
+        - in: header
+          name: ocp-apim-subscription-key
+          description: >-
+            The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images. 
+          required: true
+          type: string
         - in: body
-          name: initiatePaymentCommandDto
-          description: initiatePaymentCommandDto
+          name: initiatePaymentCommand
+          description: initiatePaymentCommand
           required: true
           schema:
-            $ref: '#/definitions/InitiatePaymentCommandDto'
+            $ref: '#/definitions/InitiatePaymentCommand'
       responses:
         '202':
           description: Response for Initiate Payment
@@ -278,7 +295,7 @@ paths:
         - Calls from Vipps examples
       summary: 'Callback : Transaction Update'
       description: >-
-        This API allows Vipps to send the transaction details. During regular
+        This API call allows Vipps to send the transaction details. During regular
         ecomm payment order and transaction details will be shared. During
         express checkout payment it will provide user details and shipping
         details addition to the order and transaction details.
@@ -321,7 +338,7 @@ paths:
   '/ecomm/v2/payments/{orderId}/cancel':
     put:
       tags:
-        - oneclick-payment-with-vipps-controller
+        - Express checkout with Vipps
       summary: Cancel Payment
       description: >-
         The API call allows merchant to cancel the reserved transaction, The API
@@ -339,7 +356,25 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: orderId
+          description: Order id specified in the request body of initiate payment.
+          required: true
+          type: string
+        - in: header
+          name: authorization
+          description: >-
+            Authorization-token is obtained by running the /accesstoken/get request. 
+          required: true
+          type: string
+        - in: header
+          name: content-type
+          description: >-
+            `application/json`
+          required: true
+          type: string
+        - in: header
+          name: ocp-apim-subscription-key
+          description: >-
+            The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images. 
           required: true
           type: string
         - in: body
@@ -372,10 +407,10 @@ paths:
   '/ecomm/v2/payments/{orderId}/capture':
     post:
       tags:
-        - oneclick-payment-with-vipps-controller
+        - Express checkout with Vipps
       summary: 'Capture Payment '
       description: >-
-        The API call allows merchant to capture the reserved amount. Amount to
+        This API call allows merchant to capture the reserved amount. Amount to
         capture cannot be higher than reserved. The API also allows capturing
         partial amount of the reserved amount. Partial capture can be called as
         many times as required so long there is reserved amount to capture.
@@ -390,7 +425,25 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: orderId
+          description: Order id specified in the request body of initiate payment.
+          required: true
+          type: string
+        - in: header
+          name: authorization
+          description: >-
+            Authorization-token is obtained by running the /accesstoken/get request. 
+          required: true
+          type: string
+        - in: header
+          name: content-type
+          description: >-
+            `application/json`
+          required: true
+          type: string
+        - in: header
+          name: ocp-apim-subscription-key
+          description: >-
+            The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images. 
           required: true
           type: string
         - in: body
@@ -423,10 +476,10 @@ paths:
   '/ecomm/v2/payments/{orderId}/details':
     get:
       tags:
-        - oneclick-payment-with-vipps-controller
+        - Express checkout with Vipps
       summary: Get payment Details
       description: >-
-        The API allows merchant to get the details of a payment transaction.
+        This API call allows merchant to get the details of a payment transaction.
         Service call returns detailed transaction history of given payment where
         events are sorted by the time single transaction occurred.
       operationId: getPaymentDetailsUsingGET
@@ -437,9 +490,27 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: orderId
+          description: Order id specified in the request body of initiate payment.
           required: true
           type: string
+        - in: header
+          name: authorization
+          description: >-
+            Authorization-token is obtained by running the `/accesstoken/get` request. 
+          required: true
+          type: string
+        - in: header
+          name: content-type
+          description: >-
+            `application/json`
+          required: true
+          type: string
+        - in: header
+          name: ocp-apim-subscription-key
+          description: >-
+            The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images. 
+          required: true
+          type: string 
       responses:
         '200':
           description: Get payment Details
@@ -464,7 +535,7 @@ paths:
   '/ecomm/v2/payments/{orderId}/refund':
     post:
       tags:
-        - oneclick-payment-with-vipps-controller
+        - Express checkout with Vipps
       summary: 'Refund Payment '
       description: >-
         The API allows a merchant to do a refund of already captured
@@ -485,7 +556,25 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: orderId
+          description: Order id specified in the request body of initiate payment.
+          required: true
+          type: string
+        - in: header
+          name: authorization
+          description: >-
+            Authorization-token is obtained by running the /accesstoken/get request. 
+          required: true
+          type: string
+        - in: header
+          name: content-type
+          description: >-
+            `application/json`
+          required: true
+          type: string
+        - in: header
+          name: ocp-apim-subscription-key
+          description: >-
+            The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images. 
           required: true
           type: string
         - in: body
@@ -518,10 +607,10 @@ paths:
   '/ecomm/v2/payments/{orderId}/status':
     get:
       tags:
-        - oneclick-payment-with-vipps-controller
+        - Express checkout with Vipps
       summary: Get order status
       description: >-
-        The API call allows the merchant to get the status of the last payment
+        This API call allows the merchant to get the status of the last payment
         transaction. Primarily use of this service is meant for inApp where
         simple response to check order status is preferred.
       operationId: getOrderStatusUsingGET
@@ -532,7 +621,19 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: orderId
+          description: Order id specified in the request body of initiate payment.
+          required: true
+          type: string
+        - in: header
+          name: authorization
+          description: >-
+            Authorization-token is obtained by running the /accesstoken/get request. 
+          required: true
+          type: string
+        - in: header
+          name: ocp-apim-subscription-key
+          description: >-
+            The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images. 
           required: true
           type: string
       responses:
@@ -844,7 +945,7 @@ definitions:
         format: double
       shippingMethod:
         type: string
-  InitiatePaymentCommandDto:
+  InitiatePaymentCommand:
     type: object
     required:
       - merchantInfo
