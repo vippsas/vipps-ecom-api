@@ -515,11 +515,33 @@ The two subsections below explain how appswitch happens for iOS and Android resp
 
 Following section explains how appswitch will happen for Vipps app on iOS platform.
 
+### URL validation
+
+URLs are validated with the
+[Apache Commons UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
+
+Here is a simple Java class suitable for testing, using the dummy URL `https://example.com/vipps/fallback?id=abc123`:
+
+```java
+import org.apache.commons.validator.routines.UrlValidator;
+
+public class UrlValidate {
+ public static void main(String[] args) {
+  UrlValidator urlValidator = new UrlValidator();
+
+  if (urlValidator.isValid("https://api.kardinal.app/api/v1/vipps/vipps-callback-login")) {
+   System.out.println("URL is valid");
+  } else {
+   System.out.println("URL is invalid");
+  }
+ }
+}
+```
+
 #### Overview for iOS
 
 * Vipps app on iOS platform requires URL scheme in order to support appswitch.
-* Merchant need to pass the URI Scheme of app into “fallbackURL” in Vipps backend API
-(explained here).
+* Merchant need to pass the URI Scheme of app into “fallbackURL” in Vipps backend API (explained here).
 * Merchant will open the url received from Vipps backend API.
 * Once the operation in Vipps is completed, Vipps will open the url mentioned in “fallbackURL”.
 * From vipps mobile application appropriate status code will be appended with “fallbackURL”.
