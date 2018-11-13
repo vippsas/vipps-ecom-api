@@ -497,24 +497,6 @@ Merchants need to implement “Appswitch” integration which is also called as 
 
 Below section explains how merchant can implement these integrations in detail.
 
-## Appswitch between Mobile or Desktop Browser and Vipps App
-
-For mobile/desktop browser to Vipps front end integration, merchant doesn’t need to do any special activity.
-Front end integration will be handled by Vipps using Vipps landing page.
-
-Merchant needs to ensure passing correct “fallbackURL” in Vipps backend API (explained here).
-After vipps has completed the operation the “fallbackURL” will be opened in a new tab/new window in the browser.
-To maintain the session, merchant can pass along a session identifier through “fallbackURL”.
-
-## Appswitch between Merchant’s Mobile App and Vipps App
-
-App to App switch is supported by both Vipps applications on iOS and Android platform.
-The two subsections below explain how appswitch happens for iOS and Android respectively.
-
-### Appswitch with iOS platform
-
-Following section explains how appswitch will happen for Vipps app on iOS platform.
-
 ### URL validation
 
 URLs are validated with the
@@ -537,6 +519,24 @@ public class UrlValidate {
  }
 }
 ```
+
+## Appswitch between Mobile or Desktop Browser and Vipps App
+
+For mobile/desktop browser to Vipps front end integration, merchant doesn’t need to do any special activity.
+Front end integration will be handled by Vipps using Vipps landing page.
+
+Merchant needs to ensure passing correct “fallbackURL” in Vipps backend API (explained here).
+After vipps has completed the operation the “fallbackURL” will be opened in a new tab/new window in the browser.
+To maintain the session, merchant can pass along a session identifier through “fallbackURL”.
+
+## Appswitch between Merchant’s Mobile App and Vipps App
+
+App to App switch is supported by both Vipps applications on iOS and Android platform.
+The two subsections below explain how appswitch happens for iOS and Android respectively.
+
+### Appswitch with iOS platform
+
+Following section explains how appswitch will happen for Vipps app on iOS platform.
 
 #### Overview for iOS
 
