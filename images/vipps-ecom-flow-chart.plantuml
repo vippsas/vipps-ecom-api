@@ -1,0 +1,19 @@
+@startuml
+skinparam monochrome true
+
+Title Flow chart for Vipps checkout
+
+scale 1.5
+'scale 1.5 | scale 200 width | scale 100 height | scale [max] 200x100
+
+[*] --> Initiate
+Initiate --> Reserve :T1
+Initiate --> Cancel :T2
+Reserve --> Capture :T3
+Reserve --> Cancel  :T4
+Capture --> Refund  :T5
+Capture --> [*]
+Cancel --> [*] 
+Refund --> [*]
+
+@enduml

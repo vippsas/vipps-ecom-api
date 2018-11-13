@@ -13,6 +13,69 @@ _**IMPORTANT:**_ This document is a work in progress. See the official PDF docum
 https://github.com/vippsas/vipps-ecom-api/tree/master/original-docs
 See also the [FAQ](vipps-ecom-api-faq.md).
 
+# Table of contents
+
+- [Overview](#overview)
+    - [Use case scenarios](#use-case-scenarios)
+    - [Regular eCommerce Payments](#regular-ecommerce-payments)
+    - [Express Checkout Payments](#express-checkout-payments)
+- [API calls flow](#api-calls-flow)
+- [Authentication](#authentication)
+    - [Access Token](#access-token)
+- [Idempotency](#idempotency)
+- [eCommerce Payment Flows](#ecommerce-payment-flows)
+    - [Flow for push notification flow on desktop browser](#flow-for-push-notification-flow-on-desktop-browser)
+    - [Flow for push notification flow on mobile](#flow-for-push-notification-flow-on-mobile)
+    - [Vipps checkout flow chart](#vipps-checkout-flow-chart)
+    - [Initiate](#initiate)
+    - [Reserve](#reserve)
+    - [Cancel](#cancel)
+    - [Capture](#capture)
+    - [Direct capture](#direct-capture)
+    - [Refund](#refund)
+    - [Order Status](#order-status)
+- [Additional payment flow for express checkout](#additional-payment-flow-for-express-checkout)
+    - [Get shipping cost & method](#get-shipping-cost--method)
+    - [Transaction updates with user details](#transaction-updates-with-user-details)
+    - [Remove user consent](#remove-user-consent)
+    - [Exception handling 7.1 Introduction](#exception-handling-71-introduction)
+    - [Exception scenarios](#exception-scenarios)
+- [Response codes](#response-codes)
+    - [Success Codes](#success-codes)
+    - [HTTP Error Codes](#http-error-codes)
+    - [Error Representation](#error-representation)
+    - [Error codes](#error-codes)
+- [Front-end Integration](#front-end-integration)
+    - [Appswitch between Mobile or Desktop Browser and Vipps App](#appswitch-between-mobile-or-desktop-browser-and-vipps-app)
+    - [Appswitch between Merchant’s Mobile App and Vipps App](#appswitch-between-merchants-mobile-app-and-vipps-app)
+    - [List of error codes for deeplinking](#list-of-error-codes-for-deeplinking)
+- [API-definitions](#api-definitions)
+    - [Base URL](#base-url)
+- [Initiate Payment](#initiate-payment)
+    - [Payment triggered from desktop and mobile browser](#payment-triggered-from-desktop-and-mobile-browser)
+    - [Payment triggered from Merchant Mobile App](#payment-triggered-from-merchant-mobile-app)
+- [Cancel Payment](#cancel-payment)
+- [Capture Payment](#capture-payment)
+- [Refund Payment](#refund-payment)
+- [Get Payment Details](#get-payment-details)
+- [Get Order Status](#get-order-status)
+- [Endpoints Hosted by Merchant](#endpoints-hosted-by-merchant)
+- [Callback](#callback)
+- [Fetch Shipping Cost](#fetch-shipping-cost)
+- [Remove User Consent](#remove-user-consent)
+- [Vipps eCommerce APIs](#vipps-ecommerce-apis)
+- [Vipps Login APIs](#vipps-login-apis)
+- [Vipps Signup API](#vipps-signup-api)
+    - [Process overview](#process-overview)
+    - [Partner initiates the signup](#partner-initiates-the-signup)
+    - [v1/partial/signup](#v1partialsignup)
+    - [Partner receives the signup link](#partner-receives-the-signup-link)
+    - [Partial Signup Response](#partial-signup-response)
+    - [The signup form, KYC and signing process](#the-signup-form-kyc-and-signing-process)
+    - [The email notification](#the-email-notification)
+- [Vipps Signup API](#vipps-signup-api-1)
+- [Email Specification](#email-specification)
+
 # Overview
 
 The Vipps eCommerce API (eCom API) offers functionality for online payments,
@@ -257,6 +320,20 @@ There are separate payment and push notification flows for desktop and mobile br
 ## Flow for push notification flow on mobile
 
 ![API calls flow: Push for mobile](images/api-calls-flow-push-mobile.png)
+
+## Vipps checkout flow chart
+
+![Vipps checkout flow chart](images/vipps-ecom-flow-chart.svg)
+
+| #   | From       | To         | Description                                      |
+| --- | ---------- | ---------- | -----------------------------------------------------------------------------------|
+| 1   | `initiate` | `reserve`  | Customer clicks Vipps button in chart and confirm                                    payment in Vipps app. Merchant reserve payment.  | | -   |            | `cancel`   | Customer cancel order                            |
+| 2   | `reserve`  | `capture`  | Merchant capture payment and ship goods          |
+| -   |            | `cancel`   | Merchant cancel order                            |
+| 3   | `capture`  | --         | Final state                                      |
+| -   |            | `refund`   | Merchant refund money to customer                |
+| 4   | `cancel`   | --         | Final state                                      |
+| 5   | `refund`   | --         | Final state                                      |
 
 ## Initiate
 
