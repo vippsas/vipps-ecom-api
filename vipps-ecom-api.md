@@ -21,6 +21,7 @@ See also the [FAQ](vipps-ecom-api-faq.md).
 - [eCommerce Payment Flows](#ecommerce-payment-flows)
     - [Flow for push notification flow on desktop browser](#flow-for-push-notification-flow-on-desktop-browser)
     - [Flow for push notification flow on mobile](#flow-for-push-notification-flow-on-mobile)
+    - [Vipps checkout flow chart](#vipps-checkout-flow-chart)
     - [Initiate](#initiate)
     - [Reserve](#reserve)
     - [Cancel](#cancel)
@@ -282,6 +283,20 @@ Payment flow in Vipps eCommerce is represented by following diagrams:
 ## Flow for push notification flow on mobile
 
 ![API calls flow: Push for mobile](images/api-calls-flow-push-mobile.png)
+
+## Vipps checkout flow chart
+
+![Vipps checkout flow chart](images/vipps-ecom-flow-chart.svg)
+
+| #   | From       | To         | Description                                      |
+| --- | ---------- | ---------- | -----------------------------------------------------------------------------------|
+| 1   | `initiate` | `reserve`  | Customer clicks Vipps button in chart and confirm                                    payment in Vipps app. Merchant reserve payment.  | | -   |            | `cancel`   | Customer cancel order                            |
+| 2   | `reserve`  | `capture`  | Merchant capture payment and ship goods          |
+| -   |            | `cancel`   | Merchant cancel order                            |
+| 3   | `capture`  | --         | Final state                                      |
+| -   |            | `refund`   | Merchant refund money to customer                |
+| 4   | `cancel`   | --         | Final state                                      |
+| 5   | `refund`   | --         | Final state                                      |
 
 ## Initiate
 
