@@ -2,7 +2,7 @@
 
 API version: 2.1.
 
-Document version 0.2.0.
+Document version 0.2.1.
 
 Please use GitHub's built-in functionality for
 [issues](https://github.com/vippsas/vipps-invoice-api/issues),
@@ -84,7 +84,18 @@ both on websites and in native apps.
 Vipps may be integrated at merchant’s checkout page as one of the payment
 methods, or in native apps using app-switching.
 
-_TODO: Insert diagram with overall flow: Initiate-Reserved-Captured-etc._
+![Vipps checkout flow chart](images/vipps-ecom-flow-chart.svg)
+
+| #   | From       | To         | Description                                      |
+| --- | ---------- | ---------- | -----------------------------------------------------------------------------------|
+| 1   | `initiate` | `reserve`  | The customer confirms payment in the Vipps app. The merchant reserves the payment.  |
+| -   |            | `cancel`   | The customer cancels the order .                           |
+| 2   | `reserve`  | `capture`  | The merchant captures the payment and ships the goods.          |
+| -   |            | `cancel`   | The merchant cancels the order.                            |
+| 3   | `capture`  | --         | A final state: Payment fully processed.                                      |
+| -   |            | `refund`   | The merchant refunds the money to the the customer.                |
+| 4   | `cancel`   | --         | A final state: Payment cancelled.                                      |
+| 5   | `refund`   | --         | A final state: Payment refunded.                                      |
 
 # API overview
 
@@ -327,171 +338,584 @@ There are separate payment and push notification flows for desktop and mobile br
 
 | #   | From       | To         | Description                                      |
 | --- | ---------- | ---------- | -----------------------------------------------------------------------------------|
-| 1   | `initiate` | `reserve`  | Customer clicks Vipps button in chart and confirm                                    payment in Vipps app. Merchant reserve payment.  | | -   |            | `cancel`   | Customer cancel order                            |
-| 2   | `reserve`  | `capture`  | Merchant capture payment and ship goods          |
-| -   |            | `cancel`   | Merchant cancel order                            |
-| 3   | `capture`  | --         | Final state                                      |
-| -   |            | `refund`   | Merchant refund money to customer                |
-| 4   | `cancel`   | --         | Final state                                      |
-| 5   | `refund`   | --         | Final state                                      |
+| 1   | `initiate` | `reserve`  | The customer confirms payment in the Vipps app. The merchant reserves the payment.  |
+| -   |            | `cancel`   | The customer cancels the order .                           |
+| 2   | `reserve`  | `capture`  | The merchant captures the payment and ships the goods.          |
+| -   |            | `cancel`   | The merchant cancels the order.                            |
+| 3   | `capture`  | --         | A final state: Payment fully processed.                                      |
+| -   |            | `refund`   | The merchant refunds the money to the the customer.                |
+| 4   | `cancel`   | --         | A final state: Payment cancelled.                                      |
+| 5   | `refund`   | --         | A final state: Payment refunded.                                      |
+
+# API call details
+
+This section contains complete HTTP `requests` and `responses` for each API call.
+For each step a call to "get order status"
+([`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET))
+and "get payment details"
+([`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getPaymentDetailsUsingGET))
+are shown.
+
+Please note that the `response` from [`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)
+always contain the entire history of the order, not just the current status.
 
 ## Initiate
 
-The first call in the payment flow initiates a payment request that requires
-confirmation from the customer (end user). The payment gets the status
-`Initiated` and the customer is notified about payment request in mobile app.
+The first call in the payment flow initiates a payment request, setting the
+order status to `INITIATE`.
+The Vipps customer is automatically prompted by the Vipps app for confirmation.
 
-If customer does not confirm in the Vipps app within five minutes, the
-payment request times out and the payment flow stops.
+If customer does _not_ confirm in the Vipps app within five minutes, the
+payment request times out, and the payment flow stops.
 
-The paym,ent initiation call
+
+The payment initiation call
 ([`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/initiatePaymentV3UsingPOST))
 must include the `paymentType` parameter, which specifies whether the payment
-is a regular eCommerce payment or an Express payment (Vipps Hurtigkasse).
-
-API details:
-[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/initiatePaymentV3UsingPOST)
+is a regular eCommerce payment: `eComm Inapp Allignment Payment`,
+or an Express payment (Vipps Hurtigkasse): `eComm Express Payment`.
 
 ### Request
 
-_TODO: Replace with actual, working example from the Postman collection, and link to Swagger._
+```json
+{
+    "merchantInfo": {
+      "merchantSerialNumber": "123456",
+      "callbackPrefix": "https://merchant-website.example.com/vipps/callback/",
+      "fallBack":"https://merchant-website.example.com/vipps/fallback/",
+      "paymentType":"eComm Inapp Allignment Payment",
+      "isApp": false
+    },
+    "customerInfo": {
+        "mobileNumber": "99999999"
+    },
+    "transaction": {
+        "orderId": "order123abc",
+        "amount": "20000",
+        "transactionText": "One pair of Vipps socks",
+        "timeStamp": "2018-11-14T15:17:30.684Z"
+    }
+}
+
+```
+
+### Response
+
+```json
+HTTP 202 Accepted
+{
+    "orderId": "order123abc",
+    "url": "https://ece46ec4-6f9c-489b-8fe5-146a89e11635.tech-02.net/dwo-api-application/v1/deeplink/vippsgateway?token=eyJraWQiOiJqd3RrZXkiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJmMDE0MmIxYy02YjIwLTQ1M2MtYTlmMS1lMWUwZGFiNjkzOTciLCJhdWQiOiJmMDE0MmIxYy02YjIwLTQ1M2MtYTlmMS1lMWUwZGFiNjkzOTciLCJhenAiOiJmMDE0MmIxYy02YjIwLTQ1M2MtYTlmMS1lMWUwZGFiNjkzOTciLCJhcHBUeXBlIjoiTEFORElOR1BBR0UiLCJtZXJjaGFudFNlcmlhbE51bWJlciI6IjEwMTIxMiIsImV4cHJlc3NDaGVja091dCI6Ik4iLCJpc3MiOiJodHRwczpcL1wvdmlwcHMtdGVzdC1jb24tYWdlbnQtaWxiLnRlc3QudGVjaC0wMi5uZXRcL2F0M1wvZGVlcGxpbmstb3BlbmlkLXByb3ZpZGVyLWFwcGxpY2F0aW9uXC8iLCJleHAiOjE1NDIyMDg4OTcsInRva2VuVHlwZSI6IkRFRVBMSU5LIiwiaWF0IjoxNTQyMjA4Nzc3LCJ1dWlkIjoiM2Q3NTRlMzItYjQ4NC00Y2Y2LTk1MjctYTQ3OWRhODA2ZTQ4IiwianRpIjoiZWY4MTVjMTYtNzM4ZS00NzRhLTljMGMtYTQxN2MyMjljNjJlIn0.UEZNp-hWZqrQvo6ZlQQ9KBuOt-fGIvPsAxOV1NQSGl_y-Wb1l_YCPonHw__Zxc3xdczPo9oopCsN9wHkbBs5xy1Z_S8DmCp0ziExl-cNsPU7v-D6BgmGfDbYvWp6SHZlPh0YLah3OeZVcMvLPPB3g5O7DtqkC-tT0M2H-dGzNPUYLREAjh8WsyWUI6sOmx7aiZ73M42k9sPIOV7FcUELJTPGF38UcK0LM9biCsChhIL5nVyBUO0JeIf5EmlBOs7FP7poYFlMAvMjMnTv0GfLsAvxFfr94ZU_ziZRRV0all5cZf49Azt8bc7zA-LY6I32zJvIqGvNNtvFAG5QGSHgCw"
+}
+```
+
+#### Get order status
+
+[`GET:/ecomm/v2/payments/order123abc/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)  |
 
 ```json
 {
-  "customerInfo": {
-    "mobileNumber": "Values with length 8"
-  },
+    "orderId": "order123abc",
+    "transactionLogHistory": [
+        {
+            "amount": 114,
+            "transactionText": "One pair of Vipps socks",
+            "timeStamp": "2018-11-14T15:17:30.684Z",
+            "operation": "INITIATE",
+            "operationSuccess": true
+        }
+    ]
+}
+```
+
+#### Get payment details
+
+[`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getPaymentDetailsUsingGET)
+
+```json
+{
+    "orderId": "order123abc",
+    "transactionInfo": {
+        "amount": 20000,
+        "status": "INITIATE",
+        "transactionId": "5001420062",
+        "timeStamp": "2018-11-14T15:44:26.590Z"
+    }
+}
+```
+
+## Reserve
+
+When the Vipps backend reserves a payment initiation, the customer is
+prompted for confirmation in the Vipps app.
+
+When the customer confirms, the payment status changes to `RESERVE`.
+The respective amount will be reserved for future capturing.
+
+### Request
+
+The request is automatic from the Vipps backend to the Vipps app.
+
+#### Get order status
+
+[`GET:/ecomm/v2/payments/order123abc/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)  |
+
+
+```json
+{
+    "orderId": "order123abc",
+    "transactionSummary": {
+        "capturedAmount": 0,
+        "remainingAmountToCapture": 20000,
+        "refundedAmount": 0,
+        "remainingAmountToRefund": 0
+    },
+    "transactionLogHistory": [
+        {
+            "amount": 20000,
+            "transactionText": "One pair of Vipps socks",
+            "transactionId": "5001420055",
+            "timeStamp": "2018-11-14T15:21:22.126Z",
+            "operation": "RESERVE",
+            "requestId": "",
+            "operationSuccess": true
+        },
+        {
+            "amount": 20000,
+            "transactionText": "One pair of Vipps socks",
+            "transactionId": "5001420055",
+            "timeStamp": "2018-11-14T15:21:04.697Z",
+            "operation": "INITIATE",
+            "requestId": "",
+            "operationSuccess": true
+        }
+    ]
+}
+```
+#### Get payment details
+
+[`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getPaymentDetailsUsingGET)
+
+```json
+{
+    "orderId": "order123abc",
+    "transactionInfo": {
+        "amount": 20000,
+        "status": "RESERVE",
+        "transactionId": "5001420062",
+        "timeStamp": "2018-11-14T15:44:26.590Z"
+    }
+}
+```
+
+## Cancel
+
+Reservations can be cancelled and payment flow aborted under certain circumstances:
+
+* When the user cancels the initiated payment, the payment will be cancelled.
+* Timeouts (if the customer does not confirm, etc) results in a cancellation of the initiated payment.
+* Partially captured reservations can not be cancelled.
+
+Resulting status of the order:
+* If an order is cancelled by the merchant, it gets the status `VOID`.
+* If an order is cancelled by the user, it gets the status `CANCEL`.
+
+### Request
+
+[`PUT:/ecomm/v2/payments/order123abc/cancel`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/cancelPaymentRequestUsingPUT)
+
+```json
+{
   "merchantInfo": {
-    "authToken": "Values with length 255",
-    "callbackPrefix": "Values with length 255",
-    "consentRemovalPrefix": "Values with length 255",
-    "fallBack": "Values with length 255",
-    "isApp": false,
-    "merchantSerialNumber": "NSBWSHP12",
-    "paymentType": "string",
-    "shippingDetailsPrefix": "Values with length 255"
+    "merchantSerialNumber": "123456"
   },
   "transaction": {
-    "amount": 0,
-    "orderId": "Values with length 30",
-    "refOrderId": "Values with length 30",
-    "timeStamp": "2018-08-25T11:46:25.386Z",
-    "transactionText": "Values with length 100"
+    "transactionText": "No socks for you!"
   }
 }
 ```
 
 ### Response
 
-_TODO: Replace with actual, working example from the Postman collection, and link to Swagger._
-
 ```json
-HTTP 202 Accepted
 {
-  "orderId": "string",
-  "url": "string"
+    "orderId": "order123abc",
+    "transactionInfo": {
+        "amount": 20000,
+        "transactionText": "Cancelling the order",
+        "status": "Cancelled",
+        "transactionId": "5001420061",
+        "timeStamp": "2018-11-14T15:31:10.004Z"
+    },
+    "transactionSummary": {
+        "capturedAmount": 0,
+        "remainingAmountToCapture": 0,
+        "refundedAmount": 0,
+        "remainingAmountToRefund": 0
+    }
 }
 ```
 
-## Reserve
+#### Get order status if the merchant has cancelled
 
-When the customer successfully authorizes the payment request by using Vipps app, the payment status changes to Reserved, and the respective amount will be reserved for future capturing at the PSP.
+[`GET:/ecomm/v2/payments/order123abc/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)  |
 
-_TODO: Include an actual, working example from the Postman collection, and link to Swagger._
 
-## Cancel
+```json
+{
+    "orderId": "order123abc",
+    "transactionLogHistory": [
+        {
+            "amount": 20000,
+            "transactionText": "One pair of Vipps socks",
+            "transactionId": "5001420061",
+            "timeStamp": "2018-11-14T15:31:09.946Z",
+            "operation": "VOID",
+            "requestId": "",
+            "operationSuccess": true
+        },
+        {
+            "amount": 20000,
+            "transactionText": "One pair of Vipps socks",
+            "transactionId": "5001420061",
+            "timeStamp": "2018-11-14T15:30:55.467Z",
+            "operation": "RESERVE",
+            "requestId": "",
+            "operationSuccess": true
+        },
+        {
+            "amount": 20000,
+            "transactionText": "One pair of Vipps socks",
+            "transactionId": "5001420061",
+            "timeStamp": "2018-11-14T15:30:41.002Z",
+            "operation": "INITIATE",
+            "requestId": "",
+            "operationSuccess": true
+        }
+    ]
+}
+```
 
-_TODO: Include an actual, working example from the Postman collection, and link to Swagger._
+#### Get payment details if the merchant has cancelled
 
-Reservations can be cancelled and payment flow aborted under certain circumstances:
+[`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getPaymentDetailsUsingGET)
 
-* When user cancels the initiated payment then the payment status shown will be cancelled
 
-* When Merchant call cancellation of the reservation. Please note that partially captured reservations can’t be cancelled.
+```json
+{
+    "orderId": "order123abc",
+    "transactionInfo": {
+        "amount": 20000,
+        "status": "VOID",
+        "transactionId": "5001420063",
+        "timeStamp": "2018-11-14T15:46:07.498Z"
+    }
+}
+```
 
-* When there is a timeout of the payment confirmation by several of reasons (no action by the customer, notification to user is delayed, etc.)
+#### Get payment details if the customer has cancelled
 
-* When reservation fails caused by system or communication error.
+[`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getPaymentDetailsUsingGET)
 
-Jump to [Cancel Payment](#cancel-payment)
+
+```json
+{
+    "orderId": "1542212324",
+    "transactionInfo": {
+        "amount": 2224,
+        "status": "CANCEL",
+        "transactionId": "5001420067",
+        "timeStamp": "2018-11-14T16:18:57.393Z"
+    }
+}
+```
 
 ## Capture
 
-When merchant shipped the goods then they can call capture API on the reserved transaction. The API allows to do a full amount capture or partial amount capture.
+When the merchant has shipped the goods, the payment can be caoptured.
+The API allows for both a _full amount capture_ and a _partial amount capture_.
 
-Jump to [Capture Payment](#capture-payment)
+Full capture is the most common method.
+Partial capture may be used if shipping cost can not be determined, or for other reasons.
+
+For a fukll capture, the `amount` is zero. There is only a need to specify the
+`amount` when doing a partial capture.
+
+### Request
+
+[`POST:/ecomm/v2/payments/order123abc/capture`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/capturePaymentUsingPOST)
+
+```json
+{
+    "merchantInfo": {
+        "merchantSerialNumber": "123456"
+    },
+    "transaction": {
+        "amount": "0",
+        "transactionText":"One pair of Vipps socks"
+    }
+ }
+```
+
+### Response
+
+```json
+{
+    "orderId": "order123abc",
+    "transactionInfo": {
+        "amount": 20000,
+        "timeStamp": "2018-11-14T15:22:46.736Z",
+        "transactionText": "transaction text ",
+        "status": "Captured",
+        "transactionId": "5001420058"
+    },
+    "transactionSummary": {
+        "capturedAmount": 20000,
+        "remainingAmountToCapture": 0,
+        "refundedAmount": 0,
+        "remainingAmountToRefund": 20000
+    }
+}
+```
+
+#### Get order status
+
+[`GET:/ecomm/v2/payments/order123abc/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)  |
+
+```json
+{
+    "orderId": "order123abc",
+    "transactionSummary": {
+        "capturedAmount": 20000,
+        "remainingAmountToCapture": 0,
+        "refundedAmount": 0,
+        "remainingAmountToRefund": 20000
+    },
+    "transactionLogHistory": [
+        {
+            "amount": 2466,
+            "transactionText": "Refund ",
+            "transactionId": "5001420059",
+            "timeStamp": "2018-11-14T15:23:02.286Z",
+            "operation": "REFUND",
+            "requestId": "1542208972",
+            "operationSuccess": true
+        },
+        {
+            "amount": 20000,
+            "transactionText": "transaction text ",
+            "transactionId": "5001420058",
+            "timeStamp": "2018-11-14T15:22:46.680Z",
+            "operation": "CAPTURE",
+            "requestId": "1542208966",
+            "operationSuccess": true
+        },
+        {
+            "amount": 20000,
+            "transactionText": "One pair of Vipps socks",
+            "transactionId": "5001420055",
+            "timeStamp": "2018-11-14T15:21:22.126Z",
+            "operation": "RESERVE",
+            "requestId": "",
+            "operationSuccess": true
+        },
+        {
+            "amount": 20000,
+            "transactionText": "One pair of Vipps socks",
+            "transactionId": "5001420055",
+            "timeStamp": "2018-11-14T15:21:04.697Z",
+            "operation": "INITIATE",
+            "requestId": "",
+            "operationSuccess": true
+        }
+    ]
+}
+```
+#### Get payment details if the customer has cancelled
+
+[`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getPaymentDetailsUsingGET)
+
+
+```json
+TODO
+```
+
 
 ## Direct capture
 
-Direct capture is not depicted on diagram above but, in essence, combines two steps (reserve and capture) in one. This is a configuration in Vipps backend when Initiate payment request is sent.
-
-Jump to [Capture Payment](#capture-payment)
+Direct capture is not depicted on diagram above but, in essence, combines two
+steps (reserve and capture) in one. This is a configuration in Vipps backend
+when Initiate payment request is sent.
 
 ## Refund
 
-Merchant can initiate a refund of the captured amount. The refund can be a partial or full.
+The merchant can initiate a refund of the captured amount.
+The refund can be a partial or full.
 
-Jump to [Refund Payment](#refund-payment)
+### Request
 
-## Order Status
+[`POST:/ecomm/v2/payments/order123abc/refund`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/refundPaymentUsingPOST)
 
-Get Order Status intention is to check whether the user is authenticated the transaction or not. Possible status provided by this service is listed below:
+```json
+{
+    "merchantInfo": {
+        "merchantSerialNumber": "123456"
+    },
+    "transaction": {
+        "amount": "0",
+        "transactionText":"Refund of Vipps socks"
+    }
+ }
+```
 
-Jump to [Get Order Status](#get-order-status)
+#### Get order status
+
+[`GET:/ecomm/v2/payments/order123abc/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)  |
+
+```json
+{
+    "orderId": "order123abc",
+    "transactionSummary": {
+        "capturedAmount": 20000,
+        "remainingAmountToCapture": 0,
+        "refundedAmount": 2466,
+        "remainingAmountToRefund": 19655
+    },
+    "transactionLogHistory": [
+        {
+            "amount": 20000,
+            "transactionText": "Refund of Vipps socks",
+            "transactionId": "5001420059",
+            "timeStamp": "2018-11-14T15:23:02.286Z",
+            "operation": "REFUND",
+            "requestId": "1542208972",
+            "operationSuccess": true
+        },
+        {
+            "amount": 20000,
+            "transactionText": "One pair of Vipps socks",
+            "transactionId": "5001420058",
+            "timeStamp": "2018-11-14T15:22:46.680Z",
+            "operation": "CAPTURE",
+            "requestId": "1542208966",
+            "operationSuccess": true
+        },
+        {
+            "amount": 20000,
+            "transactionText": "One pair of Vipps socks",
+            "transactionId": "5001420055",
+            "timeStamp": "2018-11-14T15:21:22.126Z",
+            "operation": "RESERVE",
+            "requestId": "",
+            "operationSuccess": true
+        },
+        {
+            "amount": 20000,
+            "transactionText": "One pair of Vipps socks",
+            "transactionId": "5001420055",
+            "timeStamp": "2018-11-14T15:21:04.697Z",
+            "operation": "INITIATE",
+            "requestId": "",
+            "operationSuccess": true
+        }
+    ]
+}
+```
+
+### Response from get payment status
+
+```json
+{
+  "TODO": "fix"
+}
+```
 
 # Additional payment flow for express checkout
 
-In addition to above mentioned payment flows, following are the services which merchants should build on their side to support express checkout during online purchases.
+In addition to above mentioned payment flows, following are the services which
+merchants should build on their side to support express checkout during online purchases.
 
 ## Get shipping cost & method
 
-When express checkout payment is initiated, vipps will call this service from merchant’s backend to fetch shipping cost and shipping method related details. Merchant can send priority of shipping cost and method combination if there are multiple ways of delivery. Merchant can also send default shipping cost & method combination which merchant wants user to see on payment confirmation screen of Vipps. Vipps will support upto 10 shipping cost and method combinations. If user sends more than 10 combinations, vipps will display first 10 always.
-
-Jump to get
+When express checkout payment is initiated, Vipps will call this service from
+the merchant’s backend to fetch shipping cost and shipping method related details.
+The merchant can send priority of shipping cost and method combination if there
+are multiple ways of delivery. Merchant can also send default shipping cost &
+method combination which merchant wants user to see on payment confirmation
+screen of Vipps. Vipps will support up to 10 shipping cost and method combinations.
+If user sends more than 10 combinations, Vipps will display first 10 always.
 
 ## Transaction updates with user details
 
-After express checkout payment is processed, vipps will make a call back to merchant stating payment details, shipping details and user details (optional).
+After express checkout payment is processed, vipps will make a call back to
+merchant stating payment details, shipping details and user details (optional).
 
 ## Remove user consent
 
-When consent to store/process/view details of vipps user is removed by user in vipps app, vipps will make a call to merchant informing the same. Merchant is obliged to delete user information upon receiving this request.
+When consent to store/process/view details of vipps user is removed by user in
+vipps app, vipps will make a call to merchant informing the same. Merchant is
+obliged to delete user information upon receiving this request.
 
 ## Exception handling 7.1 Introduction
 
-Every system, especially those that includes complex integrations and/or participation of many users, is prone to unexpected conditions. Below section explains how Vipps handles different exception and error situations in detail.
+Every system, especially those that includes complex integrations and/or
+participation of many users, is prone to unexpected conditions. Below section
+explains how Vipps handles different exception and error situations in detail.
 
 ## Exception scenarios
 
-The most critical action in payment flow is when Initiate Payment service call is invoked. The Flow diagram below shows how to successfully fulfil service call, communication between several contributors and users across several systems has to work flawlessly.
+The most critical action in payment flow is when Initiate Payment service call
+is invoked. The Flow diagram below shows how to successfully fulfil service call,
+communication between several contributors and users across several systems has
+to work flawlessly.
 
 ![Payment flow eCommerce – Payment request](images/payment-flow-for-ecommerce-payment-request.png)
 
-To cope with possible communication problems/errors, several scenarios and guidelines are developed.
+To cope with possible communication problems/errors, several scenarios and
+guidelines are developed.
 
 ### Connection timeout
 
-Defining a socket timeout period is the common measure to protect server resources and is expected. However, the time needed to fulfill a service requests depends on several systems, which impose longer timeout period than usually required. We recommend setting no less than 1 second socket connection timeout and 5 seconds socket read timeout while communicating with Vipps.
-A good practice is, if/when the socket read timeout occurs call Get Payment Details and check status of last transaction in transaction history prior executing the service call again.
+Defining a socket timeout period is the common measure to protect server
+resources and is expected. However, the time needed to fulfill a service requests
+depends on several systems, which impose longer timeout period than usually
+required. We recommend setting no less than 1 second socket connection timeout
+and 5 seconds socket read timeout while communicating with Vipps.
+A good practice is, if/when the socket read timeout occurs call Get Payment
+Details and check status of last transaction in transaction history prior
+executing the service call again.
 
 ### Callback aborted/interrupted
 
-If the communication is broken during payment process for some reason, and Vipps is not able to execute callback, then callback will not be retried.
-In other words, if the merchant doesn’t receive any confirmation on payment request call within callback timeframe, merchant should call get payment details service to get the response of payment request.
+If the communication is broken during payment process for some reason, and
+Vipps is not able to execute callback, then callback will not be retried.
+In other words, if the merchant doesn’t receive any confirmation on payment
+request call within callback timeframe, merchant should call get payment
+details service to get the response of payment request.
 
 ### PSP connection issues
 
-In a case when Vipps experiences communication problems with PSP, service call will respond with 402 HTTP Error. Merchant should make a call to Get Payment Details to check if the transaction request is processed before making service call (with same idempotency key) again.
+In a case when Vipps experiences communication problems with PSP, service call
+will respond with 402 HTTP Error. Merchant should make a call to Get Payment
+Details to check if the transaction request is processed before making service
+call (with same idempotency key) again.
 
-# Response codes
+# HTTP response codes
 
-Vipps eCommerce API uses standard HTTP response codes to indicate the success and failure
-of the request as defined in [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).
+This API returns the following HTTP statuses in the responses:
 
-(_**TODO: This section should refer to Swagger spec**_)
-
-
-## Error details
+| HTTP status             | Description                                             |
+| ----------------------- | ------------------------------------------------------- |
+| `200 OK`                | Request successful                                      |
+| `201 Created`           | Request successful, resource created                    |
+| `204 No Content`        | Request successful, but empty result                    |
+| `400 Bad Request`       | Invalid request, see the error for details              |
+| `401 Unauthorized`      | Invalid credentials                                     |
+| `403 Forbidden`         | Authentication ok, but credentials lacks authorization  |
+| `404 Not Found`         | The resource was not found                              |
+| `409 Conflict`          | Unsuccessful due to conflicting resource                |
+| `429 Too Many Requests` | There is currently a limit of max 200 calls per second\* |
+| `500 Server Error`      | An internal Vipps problem.                              |
 
 HTTP responses with HTTP `4XX` and `5XX` error codes contain an `error` object:
 
@@ -956,71 +1380,7 @@ Allows Vipps to send consent removal request to merchant. After this merchant is
 
 API details: [`DELETE:/[consetRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/removeUserConsentUsingDELETE)
 
-# Vipps eCommerce APIs
-
-`[ Base URL: localhost:8080/ ]`
-
 API details: [`Details`](https://vippsas.github.io/vipps-ecom-api/#/)
-
-*(TODO: Elaborate)*
-
-# Vipps Login APIs
-
-The following AOI definitions are presented using Open API definition and Swagger UI
-
-*(TODO: Elaborate)*
-
-# Vipps Signup API
-
-The intention is to create signup forms for Vipps eCom. Prefilled forms are to be created by our ecommerce partners to create a connection between the signup and the partner, and making the process simpler for the merchant by prefilling the form with certain data.
-
-## Process overview
-
-![Signup Api Overview](images/signup-api-overview.png )
-
-## Partner initiates the signup
-
-We want to create a connection between the ecommerce partner ("Partner") and the signup, as the partners are assisting Vipps with the distribution and the merchant has a strong technical relationship to the partner to complete the integration to Vipps ecommerce API.
-
-## v1/partial/signup
-
-```json
-{
-    "orgnumber" : "819226032",
-    "partnerId":"1234",
-    "subscriptionPackageId":"1234",
-    "merchantWebsiteUrl": "https://www.vipps.no",
-    "signupCallbackToken":"",
-    "signupCallbackUrl":"https://upload.credentials.to.partner.url",
-    "form-type":"vippspanett"
-}
-```
-
-## Partner receives the signup link
-
-As response to partial signup initiation above the partner receives an signup id and a link to the signup which is forwarded to the merchant to complete and sign.
-
-## Partial Signup Response
-
-```json
-{
-    "signup-id": "4188dea2-00d0-488a-88b7-b39b186151c0",
-    "vippsURL": "https://vippsbedrift.no/signup/vippspanett/?r=4188dea2-00d0-488a-88b7-b39b186151c0"
-}
-```
-
-## The signup form, KYC and signing process
-Merchant completes the form, according to standard form validation for ecommerce (Signup form). Merchant is not displayed with the option to change the partner nor the price package.
-
-## The email notification
-In order for Driftkonto to complete the registration according to partner registration routines it is important to provide some additional partner related information in the email notification. Therefore the email notifcation for partner signups extends the regular ecommerce email notification as per specification: "email specification"
-
-# Vipps Signup API
-
-*(TODO: Elaborate)*
-
-# Email Specification
-The email notifcation for partner signups extends the regular ecommerce email notification as per the following specification:
 
 # Questions or comments?
 
