@@ -75,9 +75,9 @@ tags:
   - name: Authorization Service
     description: Authorization Service
   - name: Express checkout with Vipps
-    description: Express checkout with Vipps
-  - name: Calls from Vipps examples
-    description: These calls will be sent from Vipps to Merchant during various points in the flow
+    description: Express checkout with Vipps (Vipps Hurtigkasse)
+  - name: Endpoints required by Vipps from the merchant
+    description: These endpoints must be implemented by the merchant, and are called by Vipps.
 paths:
   /accesstoken/get:
     post:
@@ -139,7 +139,7 @@ paths:
   '[consetRemovalPrefix]/v2/consents/{userId}':
     delete:
       tags:
-        - Calls from Vipps examples
+        - Endpoints required by Vipps from the merchant
       summary: Remove User Consent (for express checkout)
       description: >-
         This API allows Vipps to send consent removal request to merchant. After
@@ -176,7 +176,7 @@ paths:
   '[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails':
     post:
       tags:
-        - Calls from Vipps examples
+        - Endpoints required by Vipps from the merchant
       summary: Fetch Shipping Cost & Method
       description: >-
         This API call allows Vipps to get the shipping cost and method based on
@@ -247,7 +247,7 @@ paths:
         - in: header
           name: authorization
           description: >-
-            Authorization-token is obtained by running the /accesstoken/get request. 
+            Authorization-token is obtained by running the /accesstoken/get request.
           required: true
           type: string
         - in: header
@@ -259,7 +259,7 @@ paths:
         - in: header
           name: ocp-apim-subscription-key
           description: >-
-            The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images. 
+            The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.
           required: true
           type: string
         - in: body
@@ -292,7 +292,7 @@ paths:
   '/ecomm/v2/payments/{orderId}':
     post:
       tags:
-        - Calls from Vipps examples
+        - Endpoints required by Vipps from the merchant
       summary: 'Callback : Transaction Update'
       description: >-
         This API call allows Vipps to send the transaction details. During regular
@@ -362,7 +362,7 @@ paths:
         - in: header
           name: authorization
           description: >-
-            Authorization-token is obtained by running the /accesstoken/get request. 
+            Authorization-token is obtained by running the /accesstoken/get request.
           required: true
           type: string
         - in: header
@@ -374,7 +374,7 @@ paths:
         - in: header
           name: ocp-apim-subscription-key
           description: >-
-            The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images. 
+            The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.
           required: true
           type: string
         - in: body
@@ -431,7 +431,7 @@ paths:
         - in: header
           name: authorization
           description: >-
-            Authorization-token is obtained by running the /accesstoken/get request. 
+            Authorization-token is obtained by running the /accesstoken/get request.
           required: true
           type: string
         - in: header
@@ -443,7 +443,7 @@ paths:
         - in: header
           name: ocp-apim-subscription-key
           description: >-
-            The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images. 
+            The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.
           required: true
           type: string
         - in: body
@@ -496,7 +496,7 @@ paths:
         - in: header
           name: authorization
           description: >-
-            Authorization-token is obtained by running the `/accesstoken/get` request. 
+            Authorization-token is obtained by running the `/accesstoken/get` request.
           required: true
           type: string
         - in: header
@@ -508,9 +508,9 @@ paths:
         - in: header
           name: ocp-apim-subscription-key
           description: >-
-            The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images. 
+            The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.
           required: true
-          type: string 
+          type: string
       responses:
         '200':
           description: Get payment Details
@@ -562,7 +562,7 @@ paths:
         - in: header
           name: authorization
           description: >-
-            Authorization-token is obtained by running the /accesstoken/get request. 
+            Authorization-token is obtained by running the /accesstoken/get request.
           required: true
           type: string
         - in: header
@@ -574,7 +574,7 @@ paths:
         - in: header
           name: ocp-apim-subscription-key
           description: >-
-            The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images. 
+            The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.
           required: true
           type: string
         - in: body
@@ -627,13 +627,13 @@ paths:
         - in: header
           name: authorization
           description: >-
-            Authorization-token is obtained by running the /accesstoken/get request. 
+            Authorization-token is obtained by running the /accesstoken/get request.
           required: true
           type: string
         - in: header
           name: ocp-apim-subscription-key
           description: >-
-            The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images. 
+            The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.
           required: true
           type: string
       responses:
