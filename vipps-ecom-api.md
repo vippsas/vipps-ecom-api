@@ -86,7 +86,7 @@ methods, or in native apps using app-switching.
 
 ![Vipps checkout flow chart](images/vipps-ecom-flow-chart.svg)
 
-|     #   | Action       | getOrderStatus        |  | Description                                      |
+|     #   | Action       | getOrderStatus        |  Description                                      |
 | ------- | ---------- | ---------- | -----------------------------------------------------------------------------------|
 |     1   | `initiate` | `reserve`  | The customer confirms payment in the Vipps app. The merchant reserves the payment.  |
 |     -   |            | `cancel`   | The customer cancels the order .                           |
@@ -336,16 +336,17 @@ There are separate payment and push notification flows for desktop and mobile br
 
 ![Vipps checkout flow chart](images/vipps-ecom-flow-chart.svg)
 
-| #   | From       | To         | Description                                      |
-| --- | ---------- | ---------- | -----------------------------------------------------------------------------------|
-| 1   | `initiate` | `reserve`  | The customer confirms payment in the Vipps app. The merchant reserves the payment.  |
-| -   |            | `cancel`   | The customer cancels the order .                           |
-| 2   | `reserve`  | `capture`  | The merchant captures the payment and ships the goods.          |
-| -   |            | `cancel`   | The merchant cancels the order.                            |
-| 3   | `capture`  | --         | A final state: Payment fully processed.                                      |
-| -   |            | `refund`   | The merchant refunds the money to the the customer.                |
-| 4   | `cancel`   | --         | A final state: Payment cancelled.                                      |
-| 5   | `refund`   | --         | A final state: Payment refunded.                                      |
+| #   | From state      | To state         | Description | Result from getOrderStatus        |
+| --- | ---------- | ---------- | ---------- | -----------------------------------------------------------------------------------|
+| 1   | Initiate | - | The customer initiate payment.  | `INITIATE`
+| -   |  | Reserve  | The merchant reserves the payment.  | `RESERVE`
+| -   |            | Cancel   | The customer cancels the order.                           |  `CANCEL`
+| 2   | Reserve  | Capture  | The merchant captures the payment and ships the goods.          | `CAPTURE`
+| -   |            | Cancel   | The merchant cancels the order.                            | `VOID`
+| 3   | Capture  | --         | A final state: Payment fully processed.                                      |
+| -   |            | Refund   | The merchant refunds the money to the the customer.                | `REFUND`
+| 4   | Cancel   | --         | A final state: Payment cancelled.                                      |
+| 5   | Refund   | --         | A final state: Payment refunded.      |
 
 # API call details
 
