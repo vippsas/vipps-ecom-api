@@ -2,7 +2,7 @@
 
 API version: 2.1.
 
-Document version 0.3.2.
+Document version 0.3.3.
 
 Please use GitHub's built-in functionality for
 [issues](https://github.com/vippsas/vipps-invoice-api/issues) and
@@ -117,7 +117,7 @@ using app-switching.
 ### Flow diagram details
 
 This table shows the from- and to-state, and the status returned from
-getOrderStatus
+""Get order status"
 ([`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)).
 
 | #   | From-state | To-state | Description                                   | getOrderStatus |
@@ -133,21 +133,30 @@ getOrderStatus
 | 4   | Cancel     | --       | A final state: Payment cancelled.             | -              |
 | 5   | Refund     | --       | A final state: Payment refunded.              | -              |
 
-**Please note:** When using "Get order status ([`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)), the order will show as _reserved_, even if it has been _captured_.
+**Please note:** When using "Get order status" ([`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)), the order will show as _reserved_, even if it has been _captured_.
 To se if the payment has been completed, and the reserved amount has been captured, use "Get payment details" ([`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getPaymentDetailsUsingGET)).
 
-Please note that the `response` from
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getPaymentDetailsUsingGET)
-always contain _the entire history_ of the order, not just the current status.
-
-"Get payment details" ([`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getPaymentDetailsUsingGET))
-returns (among other information) the following,
-and in this example it shows that the full amount (200.00 NOK) has been captured:
+Please note that the response from "Get payment details"
+()[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getPaymentDetailsUsingGET))
+always contain _the entire history_ of payments for the order, not just the current status.
+In this truncated example, it shows that the full amount (200.00 NOK) has been captured:
 
 ```json
 "transactionSummary": {
     "capturedAmount": 20000,
     "remainingAmountToCapture": 0,
+    "refundedAmount": 0,
+    "remainingAmountToRefund": 0
+}
+```
+
+In this truncated example, it shows that a partial capture of 100.00 NOK, of
+the total reserved amount of 200.00 NOK, has been captured:
+
+```json
+"transactionSummary": {
+    "capturedAmount": 10000,
+    "remainingAmountToCapture": 10000,
     "refundedAmount": 0,
     "remainingAmountToRefund": 0
 }
