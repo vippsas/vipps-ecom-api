@@ -2,7 +2,7 @@
 
 API version: 2.1.
 
-Document version 0.3.1.
+Document version 0.3.2.
 
 Please use GitHub's built-in functionality for
 [issues](https://github.com/vippsas/vipps-invoice-api/issues) and
@@ -16,6 +16,8 @@ See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md).
 - [Vipps eCommerce API](#vipps-ecommerce-api)
 - [Table of contents](#table-of-contents)
 - [Overview](#overview)
+  * [Flow diagram](#flow-diagram)
+    + [Flow diagram details](#flow-diagram-details)
 - [Overview of API endpoints](#overview-of-api-endpoints)
 - [HTTP responses](#http-responses)
   * [API endpoints required by Vipps from the merchant for express checkout](#api-endpoints-required-by-vipps-from-the-merchant-for-express-checkout)
@@ -48,11 +50,12 @@ See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md).
       - [Get payment details](#get-payment-details)
   * [Reserve](#reserve)
     + [Request](#request-1)
+    + [Response](#response-1)
       - [Get order status](#get-order-status-1)
       - [Get payment details](#get-payment-details-1)
   * [Cancel](#cancel)
     + [Request](#request-2)
-    + [Response](#response-1)
+    + [Response](#response-2)
       - [Get order status if the merchant has cancelled](#get-order-status-if-the-merchant-has-cancelled)
       - [Get payment details if the merchant has cancelled](#get-payment-details-if-the-merchant-has-cancelled)
       - [Get payment details if the user has cancelled](#get-payment-details-if-the-user-has-cancelled)
@@ -62,11 +65,10 @@ See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md).
       - [Partial capture](#partial-capture)
     + [Direct capture](#direct-capture)
     + [Request](#request-3)
-    + [Response](#response-2)
+    + [Response](#response-3)
       - [Get order status](#get-order-status-2)
       - [Get payment details if the user has cancelled](#get-payment-details-if-the-user-has-cancelled-1)
-  * [Refund](#refund)
-    + [Request](#request-4)
+    + [Response](#response-4)
       - [Get order status](#get-order-status-3)
     + [Response from get payment status](#response-from-get-payment-status)
 - [Additional payment flow for express checkout (Vipps Hurtigkasse)](#additional-payment-flow-for-express-checkout--vipps-hurtigkasse-)
@@ -131,10 +133,15 @@ getOrderStatus
 | 4   | Cancel     | --       | A final state: Payment cancelled.             | -              |
 | 5   | Refund     | --       | A final state: Payment refunded.              | -              |
 
-**Please note:** When using getOrderStatus ([`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)), the order will show as _reserved_, even if it has been _captured_.
-To se if the payment has been completed, use GetPaymentDetails ([`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getPaymentDetailsUsingGET)).
+**Please note:** When using "Get order status ([`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)), the order will show as _reserved_, even if it has been _captured_.
+To se if the payment has been completed, and the reserved amount has been captured, use "Get payment details" ([`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getPaymentDetailsUsingGET)).
 
-getPaymentDetails returns (among other information) the following,
+Please note that the `response` from
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getPaymentDetailsUsingGET)
+always contain _the entire history_ of the order, not just the current status.
+
+"Get payment details" ([`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getPaymentDetailsUsingGET))
+returns (among other information) the following,
 and in this example it shows that the full amount (200.00 NOK) has been captured:
 
 ```json
@@ -380,9 +387,6 @@ For each step we have included a complete `request` and `response` for a call to
 [`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)
 * Get payment details:
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getPaymentDetailsUsingGET)
-
-Please note that the `response` from [`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)
-always contain _the entire history_ of the order, not just the current status.
 
 ## Initiate payment
 
@@ -830,18 +834,13 @@ requirements and compliance checks needed for merchants using direct capture.
 
 [`GET:/ecomm/v2/payments/order123abc/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)  |
 
-```json
-{
-  "TODO": "fix"
-}
-```
-
+`
 #### Get payment details if the user has cancelled
 
 [`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getPaymentDetailsUsingGET)
 
 
-```json
+`det`json
 {
     "orderId": "order123abc",
     "transactionSummary": {
@@ -929,14 +928,6 @@ The refunded amount cannot be larger than the captured amount.
 
 ```json
 {
-  "TODO": "fix"
-}
-```
-
-### Get payment details 
-
-```json
-{
     "orderId": "order123abc",
     "transactionSummary": {
         "capturedAmount": 20000,
@@ -985,7 +976,13 @@ The refunded amount cannot be larger than the captured amount.
 }
 ```
 
+### Response from get payment status
 
+```json
+{
+  "TODO": "fix"
+}
+```
 
 # Additional payment flow for express checkout (Vipps Hurtigkasse)
 
