@@ -125,6 +125,8 @@ using app-switching.
 | 4   | Cancel   | --         | A final state: Payment cancelled.                                      |
 | 5   | Refund   | --         | A final state: Payment refunded.      |
 
+**Please note:** When using getOrderStatus ([`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)), the order will show as _reserved_, even if it has been _captured_.
+To se if the payment has been completed, use GetPaymentDetails ([`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getPaymentDetailsUsingGET)).
 
 # Overview of API endpoints
 
