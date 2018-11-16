@@ -176,7 +176,7 @@ _not_ Vipps endpoints that may be called by merchants.
 | Callback : Transaction Update | A callback to the merchant for receiving post-payment information. | [`POST:/ecomm/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Calls_from_Vipps_examples/transactionUpdateCallbackForRegularPaymentUsingPOST)  |
 | Get shipping cost and method | [`POST:/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Calls_from_Vipps_examples/fetchShippingCostUsingPOST)  |   |
 
-See [Payment flows](#payment-flows) for complete `requests` and `responses`.
+See [API endpoints required by Vipps from the merchant](#api-endpoints-required-by-vipps-from-the-merchant) for details.
 
 # Payment types
 
@@ -283,8 +283,6 @@ These are found in the Vipps Developer Portal - see the
 
 The request is: [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-ecom-api/#/Authorization_Service/fetchAuthorizationTokenUsingPost).
 
-#### Request
-
 ```http
 POST https://apitest.vipps.no/accessToken/get
 client_id: <ClientID>
@@ -323,8 +321,6 @@ Example of an error reponse body (formatted for readability):
   "correlation_id": "bb2f4093-70af-446a-a26d-ed8becca1a1a"
 }
 ```
-
-#### Response
 
 The response contains a JWT:
 
@@ -452,6 +448,8 @@ payment request times out, and the payment flow stops.
 
 ### Request
 
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/initiatePaymentV3UsingPOST)
+
 ```json
 {
     "merchantInfo": {
@@ -501,9 +499,6 @@ public class UrlValidate {
 
 ### Response
 
-The URL is slightly simplified, but the format is correct:
-`https://hostname.example.com/deeplink/vippsgateway?token=eyJraWQiOiJqd3R <snip>`.
-
 ```json
 HTTP 202 Accepted
 {
@@ -511,6 +506,10 @@ HTTP 202 Accepted
     "url": "https://api.vipps.no/deeplink/vippsgateway?token=eyJraWQiOiJqd3RrZXkiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJmMDE0MmIxYy02YjIwLTQ1M2MtYTlmMS1lMWUwZGFiNjkzOTciLCJhdWQiOiJmMDE0MmIxYy02YjIwLTQ1M2MtYTlmMS1lMWUwZGFiNjkzOTciLCJhenAiOiJmMDE0MmIxYy02YjIwLTQ1M2MtYTlmMS1lMWUwZGFiNjkzOTciLCJhcHBUeXBlIjoiTEFORElOR1BBR0UiLCJtZXJjaGFudFNlcmlhbE51bWJlciI6IjEwMTIxMiIsImV4cHJlc3NDaGVja091dCI6Ik4iLCJpc3MiOiJodHRwczpcL1wvdmlwcHMtdGVzdC1jb24tYWdlbnQtaWxiLnRlc3QudGVjaC0wMi5uZXRcL2F0M1wvZGVlcGxpbmstb3BlbmlkLXByb3ZpZGVyLWFwcGxpY2F0aW9uXC8iLCJleHAiOjE1NDIyMDg4OTcsInRva2VuVHlwZSI6IkRFRVBMSU5LIiwiaWF0IjoxNTQyMjA4Nzc3LCJ1dWlkIjoiM2Q3NTRlMzItYjQ4NC00Y2Y2LTk1MjctYTQ3OWRhODA2ZTQ4IiwianRpIjoiZWY4MTVjMTYtNzM4ZS00NzRhLTljMGMtYTQxN2MyMjljNjJlIn0.UEZNp-hWZqrQvo6ZlQQ9KBuOt-fGIvPsAxOV1NQSGl_y-Wb1l_YCPonHw__Zxc3xdczPo9oopCsN9wHkbBs5xy1Z_S8DmCp0ziExl-cNsPU7v-D6BgmGfDbYvWp6SHZlPh0YLah3OeZVcMvLPPB3g5O7DtqkC-tT0M2H-dGzNPUYLREAjh8WsyWUI6sOmx7aiZ73M42k9sPIOV7FcUELJTPGF38UcK0LM9biCsChhIL5nVyBUO0JeIf5EmlBOs7FP7poYFlMAvMjMnTv0GfLsAvxFfr94ZU_ziZRRV0all5cZf49Azt8bc7zA-LY6I32zJvIqGvNNtvFAG5QGSHgCw"
 }
 ```
+
+The `url` is slightly simplified, but the format is correct:
+`https://hostname.example.com/deeplink/vippsgateway?token=eyJraWQiOiJqd3R <snip>`.
+
 
 #### Get order status
 
@@ -1341,7 +1340,7 @@ The following are the status code ranges which Vipps maintains for future purpos
 | 8XX | Reserved for future use |
 | 9XX | Other |
 
-# API endpoints Vipps required from the merchant side
+# API endpoints required by Vipps from the merchant
 
 The following endpoints are to be implemented by merchants, in order for Vipps to make calls to them.
 The documentation is included in the Swagger file for reference only - these endpoints are _not_ callable at Vipps.
