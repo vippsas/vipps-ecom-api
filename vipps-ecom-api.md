@@ -1008,7 +1008,7 @@ This is an anonymized example of a completed order.
 
 ## Get order status
 
-[`GET:/ecomm/v2/payments/order123abc/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)  |
+[`GET:/ecomm/v2/payments/order123abc/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET) 
 
 ```json
 {
@@ -1022,7 +1022,7 @@ This is an anonymized example of a completed order.
 }
 ```
 It _is_ correct that the status is `RESERVE`.
-To check if the paymewnt has been commpleted: Get payment details.
+To check if the payment has been commpleted: Get payment details.
 
 #### Get payment details
 
