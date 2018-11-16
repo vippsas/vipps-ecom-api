@@ -2,7 +2,7 @@
 
 API version: 2.1.
 
-Document version 0.3.3.
+Document version 0.3.4.
 
 Please use GitHub's built-in functionality for
 [issues](https://github.com/vippsas/vipps-invoice-api/issues) and
@@ -68,9 +68,14 @@ See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md).
     + [Response](#response-3)
       - [Get order status](#get-order-status-2)
       - [Get payment details if the user has cancelled](#get-payment-details-if-the-user-has-cancelled-1)
+  * [Refund](#refund)
+    + [Request](#request-4)
     + [Response](#response-4)
       - [Get order status](#get-order-status-3)
     + [Response from get payment status](#response-from-get-payment-status)
+- [A real-world example from the production environment](#a-real-world-example-from-the-production-environment)
+  * [Get order status](#get-order-status-4)
+      - [Get payment details](#get-payment-details-2)
 - [Additional payment flow for express checkout (Vipps Hurtigkasse)](#additional-payment-flow-for-express-checkout--vipps-hurtigkasse-)
   * [Get shipping cost & method](#get-shipping-cost---method)
   * [Transaction updates with user details](#transaction-updates-with-user-details)
@@ -843,13 +848,17 @@ requirements and compliance checks needed for merchants using direct capture.
 
 [`GET:/ecomm/v2/payments/order123abc/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)  |
 
-`
+```json
+{
+  "TODO": "fix"
+}
+```
+
 #### Get payment details if the user has cancelled
 
 [`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getPaymentDetailsUsingGET)
 
-
-`det`json
+```json
 {
     "orderId": "order123abc",
     "transactionSummary": {
@@ -990,6 +999,75 @@ The refunded amount cannot be larger than the captured amount.
 ```json
 {
   "TODO": "fix"
+}
+```
+
+# A real-world example from the production environment
+
+This is an anonymized example of a completed order.
+
+## Get order status
+
+[`GET:/ecomm/v2/payments/order123abc/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)  |
+
+```json
+{
+    "orderId": "000005510",
+    "transactionInfo": {
+        "amount": 21700,
+        "status": "RESERVE",
+        "transactionId": "5596201306",
+        "timeStamp": "2018-11-16T08:26:27.956Z"
+    }
+}
+```
+It _is_ correct that the status is `RESERVE`.
+To check if the paymewnt has been commpleted: Get payment details.
+
+#### Get payment details
+
+This shows the complete history of the payment flow for this order.
+
+[`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getPaymentDetailsUsingGET)
+
+```json
+{
+    "orderId": "000005510",
+    "transactionSummary": {
+        "capturedAmount": 21700,
+        "remainingAmountToCapture": 0,
+        "refundedAmount": 0,
+        "remainingAmountToRefund": 21700
+    },
+    "transactionLogHistory": [
+        {
+            "amount": 21700,
+            "transactionText": "Takk for at du handler hos Vipps. Order Id: 000005510",
+            "transactionId": "5596265320",
+            "timeStamp": "2018-11-16T12:31:39.278Z",
+            "operation": "CAPTURE",
+            "requestId": "req-id-5beeb8aa4688f2.84706695",
+            "operationSuccess": true
+        },
+        {
+            "amount": 21700,
+            "transactionText": "Takk for at du handler hos Vipps. Order Id: 000005510",
+            "transactionId": "5596201306",
+            "timeStamp": "2018-11-16T08:26:42.251Z",
+            "operation": "RESERVE",
+            "requestId": "",
+            "operationSuccess": true
+        },
+        {
+            "amount": 21700,
+            "transactionText": "Takk for at du handler hos Vipps. Order Id: 000005510",
+            "transactionId": "5596201306",
+            "timeStamp": "2018-11-16T08:26:27.960Z",
+            "operation": "INITIATE",
+            "requestId": "",
+            "operationSuccess": true
+        }
+    ]
 }
 ```
 
