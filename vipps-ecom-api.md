@@ -2,7 +2,7 @@
 
 API version: 2.1.
 
-Document version 0.3.4.
+Document version 0.3.5.
 
 Please use GitHub's built-in functionality for
 [issues](https://github.com/vippsas/vipps-invoice-api/issues) and
@@ -138,7 +138,8 @@ This table shows the from- and to-state, and the status returned from
 | 4   | Cancel     | --       | A final state: Payment cancelled.             | -              |
 | 5   | Refund     | --       | A final state: Payment refunded.              | -              |
 
-**Please note:** When using "Get order status" ([`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)), the order will show as _reserved_, even if it has been _captured_.
+**Please note:** When using "Get order status" ([`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)),
+the order will show as _reserved_, even if it has been _captured_.
 To se if the payment has been completed, and the reserved amount has been captured, use "Get payment details" ([`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getPaymentDetailsUsingGET)).
 
 Please note that the response from "Get payment details"
@@ -850,7 +851,7 @@ requirements and compliance checks needed for merchants using direct capture.
 
 ```json
 {
-  "TODO": "fix"
+  "TODO": "Add example JSON"
 }
 ```
 
@@ -936,7 +937,7 @@ The refunded amount cannot be larger than the captured amount.
 
 ```json
 {
-  "TODO": "fix"
+  "TODO": "Add example JSON"
 }
 ```
 
@@ -998,7 +999,7 @@ The refunded amount cannot be larger than the captured amount.
 
 ```json
 {
-  "TODO": "fix"
+  "TODO": "Add example JSON"
 }
 ```
 
@@ -1008,7 +1009,7 @@ This is an anonymized example of a completed order.
 
 ## Get order status
 
-[`GET:/ecomm/v2/payments/order123abc/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET) 
+[`GET:/ecomm/v2/payments/order123abc/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)
 
 ```json
 {
