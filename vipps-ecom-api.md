@@ -1503,7 +1503,104 @@ There are separate payment flows and push notification flows for desktop and mob
 
 ## Push notifications: Desktop browser
 
-![API calls flow: Push for desktop](images/api-calls-flow-push-desktop.png)
+# Get Payment Details
+
+Get Payment Details allows merchant to get the details of a payment order. Service call returns detailed transaction history of given payment where events are sorted by the time.
+
+API details: [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getPaymentDetailsUsingGET)
+
+# Get Order Status
+
+Get Order Status allows merchant to get the status of a payment order.
+
+API details: [`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)
+
+# Transactions statuses
+
+# Endpoints Hosted by Merchant
+
+1. [Callback: Transaction Update](#callback)
+2. [Fetch Shipping Cost & Method](#fetch-shipping-cost)
+3. [Remove User Consent](#remove-user-consent)
+
+# Callback
+
+Callback allows Vipps to send the payment order details. During regular ecomm payment order and transaction details will be shared. During express checkout payment it will provide user details and shipping details addition to the order and transaction details.
+
+If the communication is broken during payment process for some reason, and Vipps is not able to execute callback, then callback will not be retried. In other words,if the merchant doesn’t receive any confirmation on payment request call within callback timeframe, merchant should call get payment details service to get the response of payment request.
+
+API details: [`POST:/ecomm/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/transactionUpdateCallbackForRegularPaymentUsingPOST)
+
+
+# Fetch Shipping Cost
+
+This API call allows Vipps to get the shipping cost and method based on the provided address and product details. Primarily use of this service is meant for ecomm express checkout where Vipps needs to present shipping cost and method to the vipps user. This service is to be implemented by merchants.
+
+API details: [`POST:/[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/fetchShippingCostUsingPOST
+# Remove User Consent
+
+Allows Vipps to send consent removal request to merchant. After this merchant is obliged to remove the user details from merchant system permanently, as per the GDPR guidelines.
+
+API details: [`DELETE:/[consetRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/removeUserConsentUsingDELETE)
+
+# Vipps eCommerce APIs
+
+`[ Base URL: localhost:8080/ ]`
+
+API details: [`Details`](https://vippsas.github.io/vipps-ecom-api/#/)
+
+*(TODO: Elaborate)*
+
+# Vipps Login APIs
+
+The following AOI definitions are presented using Open API definition and Swagger UI
+
+*(TODO: Elaborate)*
+
+# Vipps Signup API
+
+The intention is to create signup forms for Vipps eCom. Prefilled forms are to be created by our ecommerce partners to create a connection between the signup and the partner, and making the process simpler for the merchant by prefilling the form with certain data.
+
+## Process overview
+
+![Signup Api Overview](images/signup-api-overview.png )
+
+## Partner initiates the signup
+
+We want to create a connection between the ecommerce partner ("Partner") and the signup, as the partners are assisting Vipps with the distribution and the merchant has a strong technical relationship to the partner to complete the integration to Vipps ecommerce API.
+
+## v1/partial/signup
+
+```
+{
+    "orgnumber" : "819226032",
+
+    "partnerId":"1234",
+
+    "subscriptionPackageId":"1234",
+
+    "merchantWebsiteUrl": "https://www.vipps.no",
+    "signupCallbackToken":"",
+    "signupCallbackUrl":"https://upload.credentials.to.partner.url",
+    "form-type":"vippspanett"
+}
+```
+
+## Partner receives the signup link
+
+As response to partial signup initiation above the partner receives an signup id and a link to the signup which is forwarded to the merchant to complete and sign.
+
+## Partial Signup Response
+
+```
+{
+    "signup-id": "4188dea2-00d0-488a-88b7-b39b186151c0",
+    "vippsURL": "https://vippsbedrift.no/signup/vippspanett/?r=4188dea2-00d0-488a-88b7-b39b186151c0"
+}
+```
+
+## The signup form, KYC and signing process
+Merchant completes the form, according to standard form validation for ecommerce (Signup form). Merchant is not displayed with the option to change the partner nor the price package.
 
 ## Push notifications: Mobile browser
 
