@@ -56,6 +56,8 @@ According to Norwegian regulations you should _not_ capture a payment until the 
 When `Direct Capture` is activated, all payment reservations will instantly be captured.
 This is intended for situations where the product or service is immediately provided to the customer, e.g. digital services.
 
+`Direct capture` requires additional compliance checks. To request this, please [contact us](https://www.vipps.no/bedrift/kontakt-oss).
+
 ## I have initiated a payment - how can I refund a part of the amount?
 
 Case: A customer has placed an order of of two items for a total of 1000 NOK. You have initiated a payment of 1000 NOK, but the customer has changed her mind and only bought one of the items, with a price of 750 NOK. You have performed a partial capture of 750 NOK, and need to refund the reamining 250 NOK.
