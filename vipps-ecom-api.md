@@ -2,7 +2,7 @@
 
 API version: 2.1.
 
-Document version 0.3.5.
+Document version 0.3.6.
 
 Please use GitHub's built-in functionality for
 [issues](https://github.com/vippsas/vipps-invoice-api/issues) and
@@ -222,11 +222,18 @@ See [API endpoints required by Vipps from the merchant](#api-endpoints-required-
 
 ## Regular eCommerce payments
 
-Vipps supports both _reserve-capture_ and _direct capture_. Please note that
-reserver-capture is the normal flow, and that there are additional regulatory
+When you initiate a payment it will be reserved until you capture it. 
+Vipps supports both _reserve-capture_ and _direct capture_. 
+When _direct capture_ is activated, all payment reservations will instantly be captured. 
+This is intended for situations where the product or service is immediately provided to the customer, e.g. digital services.
+
+_Reserve-capture_ is the normal flow, and that there are additional regulatory
 requirements and compliance checks needed for merchants using direct capture.
-See the Consumer Authority's
-[Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
+Customers do not choose between _reserve-capture_ and _direct capture_ themselves,
+the type of capture is configured by Vipps after the additional compliance checks have been completed. 
+
+According to Norwegian regulations you should not capture a payment until the product or service is provided to the customer. See the Consumer Authority's
+[Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet). 
 
 Vipps detects whether user is using a desktop browser or a mobile browser,
 and - if using a mobile browser - whether user has the Vipps app installed
