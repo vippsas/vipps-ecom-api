@@ -50,15 +50,15 @@ We recommend testing with 2 NOK, even though 1 NOK is the smallest possible amou
 
 ## What is the difference between "Reserve Capture" and "Direct Capture", and how do I change payment type?
 
-`Reserve Capture` is the default. When you initiate a payment it will be reserved until you capture it.
+_Reserve capture_ is the default. When you initiate a payment it will be reserved until you capture it.
 According to Norwegian regulations you should _not_ capture a payment until the product or service is provided to the customer.
 
-When `Direct Capture` is activated, all payment reservations will instantly be captured.
+When _direct capture_ is activated, all payment reservations will instantly be captured.
 This is intended for situations where the product or service is immediately provided to the customer, e.g. digital services.
 
-`Direct capture` requires additional compliance checks. To request this, please [contact us](https://www.vipps.no/bedrift/kontakt-oss).
+_Direct capture_ requires additional compliance checks. To request this, please [contact us](https://www.vipps.no/bedrift/kontakt-oss).
 
-See also: [Regular eCommerce payments](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#regular-ecommerce-payments)
+See also: [Regular eCommerce payments](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#regular-ecommerce-payments).
 
 ## I have initiated a payment - how can I refund a part of the amount?
 
