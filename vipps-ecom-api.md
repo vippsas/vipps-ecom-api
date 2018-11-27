@@ -1269,6 +1269,10 @@ else {
 Example of a `deeplinkURL`:
 `vipps://?token=eyJraWQiOiJqd3RrZXkiLCJhbGciOiJSUzI1NiJ9.ey <snip>`
 
+**Please note:** If you have both the official Vipps app from App Store _and_ the test Vipps app from TestFlight installed, 
+the app switch may open either one. There is no way to open one of them specifically, as
+the URL scheme is the same for both. A workaround is to only have one of the apps installed on the device.
+
 #### Redirect back to the merchant app from Vipps app
 
 Once the operation in the Vipps app is completed, the Vipps app will open the frontend URL.
