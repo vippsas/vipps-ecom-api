@@ -222,18 +222,18 @@ See [API endpoints required by Vipps from the merchant](#api-endpoints-required-
 
 ## Regular eCommerce payments
 
-When you initiate a payment it will be reserved until you capture it. 
-Vipps supports both _reserve-capture_ and _direct capture_. 
-When _direct capture_ is activated, all payment reservations will instantly be captured. 
+When you initiate a payment it will be reserved until you capture it.
+Vipps supports both _reserve-capture_ and _direct capture_.
+When _direct capture_ is activated, all payment reservations will instantly be captured.
 This is intended for situations where the product or service is immediately provided to the customer, e.g. digital services.
 
 _Reserve-capture_ is the normal flow, and that there are additional regulatory
 requirements and compliance checks needed for merchants using direct capture.
 Customers do not choose between _reserve-capture_ and _direct capture_ themselves,
-the type of capture is configured by Vipps after the additional compliance checks have been completed. 
+the type of capture is configured by Vipps after the additional compliance checks have been completed.
 
 According to Norwegian regulations you should not capture a payment until the product or service is provided to the customer. See the Consumer Authority's
-[Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet). 
+[Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
 
 Vipps detects whether user is using a desktop browser or a mobile browser,
 and - if using a mobile browser - whether user has the Vipps app installed
@@ -482,6 +482,7 @@ The landing page is not involved in this case.
 After the user has confirmed payment, Vipps will reserve an amount on user's
 payment, to secure a future capture.
 For direct capture, the reservation and capture is done in a single step.
+See [Regular eCommerce payments](#regular-ecommerce-payments) for more details.
 
 If the funds reservation fails for any reason, Vipps will cancel the payment flow
 and inform the merchant. The merchant’s `orderId` used for the cancelled payment
