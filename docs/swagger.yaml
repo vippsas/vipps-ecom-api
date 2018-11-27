@@ -885,6 +885,7 @@ definitions:
   InitiatePaymentCommand:
     type: object
     required:
+      - customerInfo
       - merchantInfo
       - transaction
     properties:
