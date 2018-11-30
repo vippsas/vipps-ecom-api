@@ -1233,7 +1233,7 @@ HTTP responses with HTTP `4XX` and `5XX` error codes contain an `error` object:
 
 ## Error codes
 
-| Group | Code | Description |
+| Error groups | Error Code | Error Message |
 | ----- | ---- | ----------- |
 | Payment | 41 | User don’t have a valid card |
 | Payment | 42 | Refused by issuer bank |
@@ -1244,7 +1244,7 @@ HTTP responses with HTTP `4XX` and `5XX` error codes contain an `error` object:
 | Payment | 52 | Cancellation failed |
 | Payment | 53 | Can’t cancel order which is not reserved yet |
 | Payment | 61 | Captured amount exceeds the reserved amount ordered |
-| Payment | 62 | Can't capture cancelled order |
+| Payment | 62 | The amount you tried to capture is not reserved |
 | Payment | 63 | Capture failed for some unknown reason, please use Get Payment Details API to know the exact status |
 | Payment | 71 | Cant refund more than captured amount |
 | Payment | 72 | Cant refund for reserved order, please use Cancel API |
