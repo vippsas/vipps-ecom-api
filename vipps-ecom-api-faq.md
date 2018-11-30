@@ -1,12 +1,12 @@
 # Frequently Asked Questions for Vipps eCommerce API
 
-See also the 
-[Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) 
+See also the
+[Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md)
 guide for the Vipps Developer Portal.
 
 ## I am unable to login to the Developer Portal in either test or production.
 
-Make sure you are trying to log in to the right portal, and that you are using a browser that 
+Make sure you are trying to log in to the right portal, and that you are using a browser that
 [does not have an active Microsoft login](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md#remember-to-log-out-of-other-microsoft-accounts).
 
 If your username is `name@testapivipps.no`, you should log into the test portal https://apitest-portal.vipps.no/.
@@ -28,11 +28,11 @@ merchant sales unit. Please follow these steps to make sure everything is correc
 
 ## Everything worked yesterday and now I'm suddenly getting `500 Internal Server Error` (or similar)
 
-Something _might_ be wrong on our side and we are working to fix it! 
+Something _might_ be wrong on our side and we are working to fix it!
 
 ## I have not had time to test this month and when I came back to it now I get `errorCode 37 "Merchant not available or deactivated or blocked"`
 
-This happens if the test merchant is not being used for some time. Please 
+This happens if the test merchant is not being used for some time. Please
 [contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md), and we will reactivate the merchant.
 
 ## I have successfully tested my integration in the test environment and now need access to the production environment. How do I get it?
@@ -56,7 +56,14 @@ According to Norwegian regulations you should _not_ capture a payment until the 
 When _direct capture_ is activated, all payment reservations will instantly be captured.
 This is intended for situations where the product or service is immediately provided to the customer, e.g. digital services.
 
-_Direct capture_ requires additional compliance checks. To request this, please [contact us](https://www.vipps.no/bedrift/kontakt-oss).
+When doing _direct capture_ Vipps is responsible for the customer receiving the purchased product.
+Because of this, _direct capture_ requires additional compliance checks, and the following
+requirements apply:
+* The merchant must have an annual revenue of more than 10 million NOK
+* The merchant must have a Key Account Manager (KAM) in Vipps
+* The merchant must have a partner that is responsible for the Vipps integration
+
+To request _direct capture_, please contact your KAM.
 
 See also: [Regular eCommerce payments](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#regular-ecommerce-payments).
 
@@ -69,11 +76,11 @@ in the bank (normally 2-3 days later), the money will automatically be available
 
 ## I have initiated an order but I can't find it!
 
-Have you successfully implemented 
-[`getPaymentDetails`](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details) or 
+Have you successfully implemented
+[`getPaymentDetails`](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details) or
 [`getOrderStatus`](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-order-status)?
 
-In case our callback fails, you will not automatically receive notification of order status. The backup should be to ask for status within a time frame. 
+In case our callback fails, you will not automatically receive notification of order status. The backup should be to ask for status within a time frame.
 
 ## Where can I find reports on transactions?
 

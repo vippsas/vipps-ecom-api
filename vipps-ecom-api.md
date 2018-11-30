@@ -23,6 +23,9 @@ See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md).
   * [API endpoints required by Vipps from the merchant for express checkout](#api-endpoints-required-by-vipps-from-the-merchant-for-express-checkout)
 - [Payment types](#payment-types)
   * [Regular eCommerce payments](#regular-ecommerce-payments)
+    + [Reserve capture](#reserve-capture)
+    + [Direct capture](#direct-capture)
+  * [Desktop browsers and mobile browsers](#desktop-browsers-and-mobile-browsers)
   * [Express checkout payments](#express-checkout-payments)
 - [API development](#api-development)
   * [The Vipps developer portal](#the-vipps-developer-portal)
@@ -63,7 +66,7 @@ See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md).
     + [Normal capture](#normal-capture)
       - [Full capture](#full-capture)
       - [Partial capture](#partial-capture)
-    + [Direct capture](#direct-capture)
+    + [Direct capture](#direct-capture-1)
     + [Request](#request-3)
     + [Response](#response-3)
       - [Get order status](#get-order-status-2)
@@ -106,9 +109,25 @@ See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md).
   * [Remove User Consent](#remove-user-consent)
 - [Sequence diagrams for payment flows and push notifications](#sequence-diagrams-for-payment-flows-and-push-notifications)
   * [Push notifications: Desktop browser](#push-notifications--desktop-browser)
+- [Get Payment Details](#get-payment-details)
+- [Get Order Status](#get-order-status)
+- [Transactions statuses](#transactions-statuses)
+- [Endpoints Hosted by Merchant](#endpoints-hosted-by-merchant)
+- [Callback](#callback-1)
+- [Fetch Shipping Cost](#fetch-shipping-cost-1)
+- [Remove User Consent](#remove-user-consent-1)
+- [Vipps eCommerce APIs](#vipps-ecommerce-apis)
+- [Vipps Login APIs](#vipps-login-apis)
+- [Vipps Signup API](#vipps-signup-api)
+  * [Process overview](#process-overview)
+  * [Partner initiates the signup](#partner-initiates-the-signup)
+  * [v1/partial/signup](#v1-partial-signup)
+  * [Partner receives the signup link](#partner-receives-the-signup-link)
+  * [Partial Signup Response](#partial-signup-response)
+  * [The signup form, KYC and signing process](#the-signup-form--kyc-and-signing-process)
   * [Push notifications: Mobile browser](#push-notifications--mobile-browser)
 - [Questions or comments?](#questions-or-comments-)
-
+- 
 # Overview
 
 The Vipps eCommerce API (eCom API) offers functionality for online payments,
@@ -227,13 +246,35 @@ Vipps supports both _reserve-capture_ and _direct capture_.
 When _direct capture_ is activated, all payment reservations will instantly be captured.
 This is intended for situations where the product or service is immediately provided to the customer, e.g. digital services.
 
+### Reserve capture
+
+_Reserve capture_ is the default. When you initiate a payment it will be reserved until you capture it.
+
 _Reserve-capture_ is the normal flow, and that there are additional regulatory
 requirements and compliance checks needed for merchants using direct capture.
 Customers do not choose between _reserve-capture_ and _direct capture_ themselves,
 the type of capture is configured by Vipps after the additional compliance checks have been completed.
 
-According to Norwegian regulations you should not capture a payment until the product or service is provided to the customer. See the Consumer Authority's
+### Direct capture
+
+According to Norwegian regulations you should _not_ capture a payment until the product or service is provided to the customer.
+
+When _direct capture_ is activated, all payment reservations will instantly be captured.
+This is intended for situations where the product or service is immediately provided to the customer, e.g. digital services.
+
+When doing _direct capture_ Vipps is responsible for the customer receiving the purchased product.
+Because of this, _direct capture_ requires additional compliance checks, and the following
+requirements apply:
+* The merchant must have an annual revenue of more than 10 million NOK
+* The merchant must have a Key Account Manager (KAM) in Vipps
+* The merchant must have a partner that is responsible for the Vipps integration
+
+To request _direct capture_, please contact your KAM.
+
+For more information, please see the Consumer Authority's
 [Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
+
+## Desktop browsers and mobile browsers
 
 Vipps detects whether user is using a desktop browser or a mobile browser,
 and - if using a mobile browser - whether user has the Vipps app installed
@@ -1269,7 +1310,7 @@ else {
 Example of a `deeplinkURL`:
 `vipps://?token=eyJraWQiOiJqd3RrZXkiLCJhbGciOiJSUzI1NiJ9.ey <snip>`
 
-**Please note:** If you have both the official Vipps app from App Store _and_ the test Vipps app from TestFlight installed, 
+**Please note:** If you have both the official Vipps app from App Store _and_ the test Vipps app from TestFlight installed,
 the app switch may open either one. There is no way to open one of them specifically, as
 the URL scheme is the same for both. A workaround is to only have one of the apps installed on the device.
 
