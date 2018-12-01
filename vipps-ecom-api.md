@@ -2,7 +2,7 @@
 
 API version: 2.1.
 
-Document version 0.3.6.
+Document version 0.3.7.
 
 Please use GitHub's built-in functionality for
 [issues](https://github.com/vippsas/vipps-invoice-api/issues) and
@@ -127,7 +127,7 @@ See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md).
   * [The signup form, KYC and signing process](#the-signup-form--kyc-and-signing-process)
   * [Push notifications: Mobile browser](#push-notifications--mobile-browser)
 - [Questions or comments?](#questions-or-comments-)
-- 
+-
 # Overview
 
 The Vipps eCommerce API (eCom API) offers functionality for online payments,
@@ -249,7 +249,7 @@ _Reserve capture_ is the default. When you initiate a payment it will be reserve
 When _direct capture_ is activated, all payment reservations will instantly be captured.
 This is intended for situations where the product or service is immediately provided to the customer, e.g. digital services.
 
-According to Norwegian regulations you should _not_ capture a payment until the product or service is provided to the customer. 
+According to Norwegian regulations you should _not_ capture a payment until the product or service is provided to the customer.
 For more information, please see the Consumer Authority's
 [Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
 
@@ -277,14 +277,18 @@ To request _direct capture_, please contact your KAM.
 
 ## Desktop browsers and mobile browsers
 
-Vipps detects whether user is using a desktop browser or a mobile browser,
-and - if using a mobile browser - whether user has the Vipps app installed
+When a user has selected Vipps for payment, the Vipps landing page
+detects whether user is using a desktop browser or a mobile browser:
 
-If a desktop browser is used, Vipps displays the "Vipps landing page",
-where the user enters the phone number. The user enters the phone number,
-and the Vipps app prompts for confirmation on the phone.
+* In a mobile browser, the landing page detects if the Vipps app is installed,
+  and automatically switches to the Vipps app if it is.
+* In a desktop browser, the landing page prompts the user for the phone number (the number may also be pre-filled).
+  The user enters or confirms the phone number, and the Vipps app prompts for confirmation on the phone.
 
-Following are different API services that merchant can utilize as part of ecommerce payments:
+The Vipps landing page is mandatory, and provides a consistent and recognizable user experience,
+that helps guide the user through the payment flow.
+In this way Vipps takes responsibility for helping the user from the browser to the app,
+and to complete the payment in a familiar way.
 
 ## Express checkout payments
 
