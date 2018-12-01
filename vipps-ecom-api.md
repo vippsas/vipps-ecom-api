@@ -243,24 +243,28 @@ See [API endpoints required by Vipps from the merchant](#api-endpoints-required-
 
 When you initiate a payment it will be reserved until you capture it.
 Vipps supports both _reserve-capture_ and _direct capture_.
-When _direct capture_ is activated, all payment reservations will instantly be captured.
-This is intended for situations where the product or service is immediately provided to the customer, e.g. digital services.
-
-### Reserve capture
 
 _Reserve capture_ is the default. When you initiate a payment it will be reserved until you capture it.
 
-_Reserve-capture_ is the normal flow, and that there are additional regulatory
-requirements and compliance checks needed for merchants using direct capture.
+When _direct capture_ is activated, all payment reservations will instantly be captured.
+This is intended for situations where the product or service is immediately provided to the customer, e.g. digital services.
+
+According to Norwegian regulations you should _not_ capture a payment until the product or service is provided to the customer. 
+For more information, please see the Consumer Authority's
+[Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
+
 Customers do not choose between _reserve-capture_ and _direct capture_ themselves,
 the type of capture is configured by Vipps after the additional compliance checks have been completed.
 
+### Reserve capture
+
+_Reserve-capture_ is the normal flow.
+
+When you initiate a payment it will be reserved until you capture it.
+
 ### Direct capture
 
-According to Norwegian regulations you should _not_ capture a payment until the product or service is provided to the customer.
-
 When _direct capture_ is activated, all payment reservations will instantly be captured.
-This is intended for situations where the product or service is immediately provided to the customer, e.g. digital services.
 
 When doing _direct capture_ Vipps is responsible for the customer receiving the purchased product.
 Because of this, _direct capture_ requires additional compliance checks, and the following
@@ -270,9 +274,6 @@ requirements apply:
 * The merchant must have a partner that is responsible for the Vipps integration
 
 To request _direct capture_, please contact your KAM.
-
-For more information, please see the Consumer Authority's
-[Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
 
 ## Desktop browsers and mobile browsers
 
