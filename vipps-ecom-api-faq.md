@@ -4,6 +4,18 @@ See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md)
 guide for the Vipps Developer Portal.
 
+## Why do some Vipps payments fail?
+
+The most common reasons are:
+1. The debit/credit card has expired
+2. The debit/credit is no longer valid (typically when a user has received a new card, but the previous card's expiry date has not yet been reached)
+3. Insufficient funds on the debit/credit card (not enough money in the debit card's bank account, or not enough credit left on the credit card)
+4. The debit/credit card has been rejected by the issuer
+5. Payment limit reached, the user needs to authenticate with bankID in the Vipps app
+6. The payment has timed out (this happens if the user does not confirm in the Vipps app within 5 minutes - typically of the user has deactivcated puch notifications)
+
+We are continuously improving the error messages in the Vipps app. Please note that we are not allowed to give detailed information about all errors to the merchant, as some information should only be provided to the Vipps user.
+
 ## I am unable to login to the Developer Portal in either test or production.
 
 Make sure you are trying to log in to the right portal, and that you are using a browser that
