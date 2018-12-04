@@ -341,7 +341,7 @@ The redirect depends on whether the user is using a desktop or mobile browser:
 
 ### Initiate payment flows
 
-#### Mobile browser
+#### Mobile browser initiated payments
 
 The landing page will detect if the Vipps app is installed.
 
@@ -349,27 +349,24 @@ The landing page will detect if the Vipps app is installed.
 
 1. The Vipps app is invoked and the landing page is closed.
 2. The Vipps user accepts or rejects the payment request
-3. Once payment process is completed, Vipps will call fallback URL to redirect to original mobile browser page.
-4. If merchant does not receive a callback from Vipps, it must confirm the order status from Vipps by calling [`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET).
+3. Once payment process is completed, Vipps app redirects to `fallBack`
 
 ##### Vipps app not installed
 
 1. The user is prompted for the mobile number.
 2. Vipps sends a push notification to corresponding Vipps profile, if it exists. The landing page is not closed in this case.
 3. The Vipps user accepts or rejects the payment request.
-4. Once payment process is completed, the landing page will redirect to `fallBack` url.
-5. If the merchant does not receive callback from Vipps, it must confirm the order status from Vipps by calling [`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET).
+4. Once payment process is completed, Vipps app redirects to `fallBack`
 
-#### Desktop browser
+#### Desktop browser initiated payments
 
-1. The landing page will be opened in the desktop browser.
-2. The landing page will prompt for user’s mobile number.
-3. Vipps sends a push notification to corresponding Vipps profile, if it exists. The landing page is not closed in this case.
-4. The Vipps user accepts or rejects the payment request.
-5. Once payment process is completed, the landing page will redirect to the `fallBack` url.
-6. If the merchant does not receive callback from Vipps, it must confirm the order status from Vipps by calling [`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET).
+1. The landing page will be opened in the desktop browser
+2. The landing page will prompt for user’s mobile number
+3. Vipps sends a push notification to corresponding Vipps profile, if it exists. The landing page is not closed in this case
+4. The Vipps user accepts or rejects the payment request
+5. Once payment process is completed, the landing page will redirect to `fallBack`
 
-#### Payment initiated by the merchant's app
+#### App initated payments
 
 Vipps will identify the request coming from merchant's app by the `isApp:true` parameter.
 In this case, the Vipps backend will send the URI use by the merchant to invoke the Vipps app.
@@ -379,8 +376,7 @@ The landing page is not involved in this case.
 2. Vipps sends a `deeplink` URI as response to initiate payment.
 3. The merchant uses the URI to invoke the Vipps app.
 4. The Vipps user accepts or rejects the payment request.
-5. Vipps app redirects the end user to `fallBack` and sends callback to merchant.
-6. If the merchant does not receive callback from Vipps, it must confirm the order status from Vipps by calling [`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET).
+5. Once payment process is completed, Vipps app redirects to `fallBack`
 
 ### URL Validation
 
@@ -1063,7 +1059,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
           try {
             url = URLDecoder.decode(mBundle.get("data").toString(), "UTF-8"); Uri parseUri = Uri.parse(url);
             String status = parseUri.getQueryParameter("status");
-            //TODO Handle status
+            //Handle status
           } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
           }
@@ -1143,7 +1139,7 @@ protected void onNewIntent(Intent intent) {
       url = URLDecoder.decode(intent.getData().toString(),"UTF-8");
       Uri parseUri = Uri.parse(url);
       String status = parseUri.getQueryParameter("status");
-      //TODO Handle status
+      //Handle status
     } catch(UnsupportedEncodingException e) {
       e.printStackTrace();
     }
