@@ -842,8 +842,7 @@ added to the amount before doing the capture.
 Full capture, of the entire amount that is reserved, is the most common method.
 
 According to Norwegian law, capture can not be done before the goods have been shipped.
-See the Consumer Authority's
-[Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
+See See [Regular eCommerce payments](#regular-ecommerce-payments)
 
 For a full capture, the `amount` is set to `0` (zero).
 There is only a need to specify the `amount` when doing a partial capture.
@@ -859,8 +858,7 @@ The transaction text is mandatory, and is used as a proof of delivery (tracking 
 
 For direct capture, both fund reservation and capture are executed in a single operation.
 
-Please note that there are additional regulatory
-requirements and compliance checks needed for merchants using direct capture.
+See [Regular eCommerce payments](#regular-ecommerce-payments)
 
 ### Request
 

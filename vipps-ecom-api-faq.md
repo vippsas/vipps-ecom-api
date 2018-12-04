@@ -50,22 +50,21 @@ We recommend testing with 2 NOK, even though 1 NOK is the smallest possible amou
 
 ## What is the difference between "Reserve Capture" and "Direct Capture", and how do I change payment type?
 
+When you initiate a payment it will be reserved until you capture it.
+Vipps supports both _reserve-capture_ and _direct capture_.
+
 _Reserve capture_ is the default. When you initiate a payment it will be reserved until you capture it.
-According to Norwegian regulations you should _not_ capture a payment until the product or service is provided to the customer.
 
 When _direct capture_ is activated, all payment reservations will instantly be captured.
 This is intended for situations where the product or service is immediately provided to the customer, e.g. digital services.
 
-When doing _direct capture_ Vipps is responsible for the customer receiving the purchased product.
-Because of this, _direct capture_ requires additional compliance checks, and the following
-requirements apply:
-* The merchant must have an annual revenue of more than 10 million NOK
-* The merchant must have a Key Account Manager (KAM) in Vipps
-* The merchant must have a partner that is responsible for the Vipps integration
+According to Norwegian regulations you should _not_ capture a payment until the product or service is provided to the customer.
+For more information, please see the Consumer Authority's
+[Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
 
 To request _direct capture_, please contact your KAM.
 
-See also: [Regular eCommerce payments](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#regular-ecommerce-payments).
+See [Regular eCommerce payments](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#regular-ecommerce-payments) for more details.
 
 ## I have initiated a payment - how can I refund a part of the amount?
 
