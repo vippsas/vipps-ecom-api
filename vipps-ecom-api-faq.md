@@ -92,10 +92,15 @@ in the bank (normally 2-3 days later), the money will automatically be available
 ## I have initiated an order but I can't find it!
 
 Have you successfully implemented
-[`getPaymentDetails`](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details) or
-[`getOrderStatus`](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-order-status)?
+[``GET:/ecomm/v2/payments/{orderId}/details``](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details) or
+[``GET:/ecomm/v2/payments/{orderId}/status``](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-order-status)?
 
-In case our callback fails, you will not automatically receive notification of order status. The backup should be to ask for status within a time frame.
+In case our callback fails, you will not automatically receive notification of order status.
+The backup should be to ask for status within a time frame.
+
+You can use [Postman](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#postman)
+to manually do API calls, like the two above.
+See also: [Complete HTTP requests and responses for each API endpoint and method](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#complete-http-requests-and-responses-for-each-api-endpoint-and-method).
 
 ## Where can I find reports on transactions?
 
