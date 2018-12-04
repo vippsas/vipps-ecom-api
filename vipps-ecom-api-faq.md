@@ -1,5 +1,7 @@
 # Frequently Asked Questions for Vipps eCommerce API
 
+See the [Vipps eCommerce API](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md) for all the details.
+
 See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md)
 guide for the Vipps Developer Portal.
@@ -13,6 +15,8 @@ The most common reasons are:
 4. The debit/credit card has been rejected by the issuer
 5. Payment limit reached, the user needs to authenticate with bankID in the Vipps app
 6. The payment has timed out (this happens if the user does not confirm in the Vipps app within 5 minutes - typically of the user has deactivcated puch notifications)
+7. Attempt to capture an amount that exceeds the reserved amount
+8. Attempt to capture an amount that has not been reserved
 
 We are continuously improving the error messages in the Vipps app. Please note that we are not allowed to give detailed information about all errors to the merchant, as some information should only be provided to the Vipps user.
 
