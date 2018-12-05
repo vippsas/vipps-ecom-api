@@ -12,7 +12,7 @@ guide for the Vipps Developer Portal.
 - [Why does capture fail?](#why-does-capture-fail-)
 - [Why doed Vipps Hurtigkasse (express checkout) fail?](#why-doed-vipps-hurtigkasse--express-checkout--fail-)
 - [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between--reserve-capture--and--direct-capture--)
-- [How can I refund a part of the amount of an initiasted payment?](#how-can-i-refund-a-part-of-the-amount-of-an-initiasted-payment-)
+- [How can I refund a part of the amount of a payment?](#how-can-i-refund-a-part-of-the-amount-of-a-payment-)
 - [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-can-t-find-it-)
 - [How long does it take until the money is in my account?](#how-long-does-it-take-until-the-money-is-in-my-account-)
 - [Where can I find reports on transactions?](#where-can-i-find-reports-on-transactions-)
@@ -75,7 +75,7 @@ To request _direct capture_, please contact your KAM.
 
 See [Regular eCommerce payments](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#regular-ecommerce-payments) for more details.
 
-# How can I refund a part of the amount of an initiasted payment?
+# How can I refund a part of the amount of a payment?
 
 Case: A customer has placed an order of of two items for a total of 1000 NOK. You have initiated a payment of 1000 NOK, but the customer has changed her mind and only bought one of the items, with a price of 750 NOK. You have performed a partial capture of 750 NOK, and need to refund the reamining 250 NOK.
 
