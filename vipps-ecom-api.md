@@ -6,7 +6,9 @@ Document version 1.0.1
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
-API details: [`Details`](https://vippsas.github.io/vipps-ecom-api/#/)
+API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/), 
+[swagger.yaml](https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/docs/swagger.yaml), 
+[swagger.json](https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/docs/swagger.json).
 
 # Table of contents
 
