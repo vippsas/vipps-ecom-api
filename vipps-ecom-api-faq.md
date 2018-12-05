@@ -8,7 +8,22 @@ guide for the Vipps Developer Portal.
 
 # Table of contents
 
-## Payments fail
+- [Why do payments fail?](#why-do-payments-fail-)
+- [Why does capture fail?](#why-does-capture-fail-)
+- [Why doed Vipps Hurtigkasse (express checkout) fail?](#why-doed-vipps-hurtigkasse--express-checkout--fail-)
+- [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between--reserve-capture--and--direct-capture--)
+- [How can I refund a part of the amount of an initiasted payment?](#how-can-i-refund-a-part-of-the-amount-of-an-initiasted-payment-)
+- [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-can-t-find-it-)
+- [How long does it take until the money is in my account?](#how-long-does-it-take-until-the-money-is-in-my-account-)
+- [Where can I find reports on transactions?](#where-can-i-find-reports-on-transactions-)
+- [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved-)
+- [I am unable to login to the Vipps developer portal](#i-am-unable-to-login-to-the-vipps-developer-portal)
+- [I am getting `401 Unauthorized` error - and I have double checked all my keys!](#i-am-getting--401-unauthorized--error---and-i-have-double-checked-all-my-keys-)
+- [Why do I get `500 Internal Server Error` (or similar)?](#why-do-i-get--500-internal-server-error---or-similar--)
+- [I have not had time to test this month and when I came back to it now I get `errorCode 37 "Merchant not available or deactivated or blocked"`](#i-have-not-had-time-to-test-this-month-and-when-i-came-back-to-it-now-i-get--errorcode-37--merchant-not-available-or-deactivated-or-blocked--)
+- [How do I perform "testing in production"?](#how-do-i-perform--testing-in-production--)
+
+# Why do payments fail?
 
 The most common reasons are:
 1. The debit/credit card has expired
@@ -22,7 +37,7 @@ The most common reasons are:
 
 We are continuously improving the error messages in the Vipps app. Please note that we are not allowed to give detailed information about all errors to the merchant, as some information should only be provided to the Vipps user.
 
-## Capture fails
+# Why does capture fail?
 
 If the reserved amount is too low for shipping costs to be included, the capture will fail.
 The reserved amount must at least as high as the amount that is captured.
@@ -31,7 +46,7 @@ Example: If the value of the shopping cart is 1000 NOK, and the reserved amount 
 the shipping cost must be maximum 100 NOK. If the shipping cost is 150 kr, a capture of
 1000 + 150 kr = 1150 NOK will fail.
 
-## Vipps Hurtigkasse (express checkout) fails
+# Why doed Vipps Hurtigkasse (express checkout) fail?
 
 When using Vipps Hurtigkasse (express checkout), Vipps makes a
 [callback](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#1-callback)
@@ -42,7 +57,7 @@ The solution to this is a faster server and internet connection.
 Some third party plugins do not work with Vipps Hurtigkasse. Please ask for help in the support forum,
 and include information about the plugins you have installed.
 
-## What is the difference between "Reserve Capture" and "Direct Capture"?
+# What is the difference between "Reserve Capture" and "Direct Capture"?
 
 When you initiate a payment it will be reserved until you capture it.
 Vipps supports both _reserve-capture_ and _direct capture_.
@@ -60,14 +75,14 @@ To request _direct capture_, please contact your KAM.
 
 See [Regular eCommerce payments](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#regular-ecommerce-payments) for more details.
 
-## How can I refund a part of the amount of an initiasted payment?
+# How can I refund a part of the amount of an initiasted payment?
 
 Case: A customer has placed an order of of two items for a total of 1000 NOK. You have initiated a payment of 1000 NOK, but the customer has changed her mind and only bought one of the items, with a price of 750 NOK. You have performed a partial capture of 750 NOK, and need to refund the reamining 250 NOK.
 
 It's not possible to cancel the remaining reservation after a partial capture through Vipps, but when the payment is confirmed
 in the bank (normally 2-3 days later), the money will automatically be available to the customer.
 
-## I have initiated an order but I can't find it!
+# I have initiated an order but I can't find it!
 
 Have you, or the ecommerce solution you are using, successfully implemented
 [``GET:/ecomm/v2/payments/{orderId}/details``](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details) or
@@ -82,7 +97,7 @@ You can use [Postman](https://github.com/vippsas/vipps-ecom-api/blob/master/vipp
 to manually do API calls, like the two above.
 See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
 
-## How long does it take until the money is in my account?
+# How long does it take until the money is in my account?
 
 The settlement flow is as follows:
 
@@ -101,7 +116,7 @@ You can also subscribe to daily or monthly transaction reports.
 
 More information: https://github.com/vippsas/vipps-developers/tree/master/settlements
 
-## For how long is an initiated payment reserved?
+# For how long is an initiated payment reserved?
 
 In the bank the transaction is reserved for 7 days, however this varies depending on which bank the customer is using.
 In Vipps we do not automatically change the status of the order.
@@ -113,12 +128,12 @@ If the user does not have coverage on his account at this time the payment will 
 In many cases the bank will have a register of expired reservations and they will force it through if the account allows this.
 This will put the account in the negative.
 
-## I am unable to login to the Vipps developer portal
+# I am unable to login to the Vipps developer portal
 
 See [Step 1](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md#step-1)
 in the guide.
 
-## I am getting `401 Unauthorized` error - and I have double checked all my keys!
+# I am getting `401 Unauthorized` error - and I have double checked all my keys!
 
 `HTTP 401 Unauthorized` occurs when there is a mismatch between the subscription keys and the
 merchant sales unit. Please follow these steps to make sure everything is correct:
@@ -132,7 +147,7 @@ You can use [Postman](https://github.com/vippsas/vipps-ecom-api/blob/master/vipp
 to manually do API calls, like the two above.
 See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
 
-## Why do I get `500 Internal Server Error` (or similar)?
+# Why do I get `500 Internal Server Error` (or similar)?
 
 Something _might_ be wrong on our side and we are working to fix it!
 
@@ -140,12 +155,12 @@ You can use [Postman](https://github.com/vippsas/vipps-ecom-api/blob/master/vipp
 to manually do API calls, just to be sure.
 See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
 
-## I have not had time to test this month and when I came back to it now I get `errorCode 37 "Merchant not available or deactivated or blocked"`
+# I have not had time to test this month and when I came back to it now I get `errorCode 37 "Merchant not available or deactivated or blocked"`
 
 This happens if the test merchant is not being used for some time. Please
 [contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md), and we will reactivate the merchant.
 
-## How do I perform "testing in production"?
+# How do I perform "testing in production"?
 
 To do this you need a live Vipps account.
 We recommend testing with 2 NOK, even though 1 NOK is the smallest possible amount.
