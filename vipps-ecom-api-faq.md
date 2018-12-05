@@ -50,7 +50,7 @@ the shipping cost must be maximum 100 NOK. If the shipping cost is 150 kr, a cap
 
 When using Vipps Hurtigkasse (express checkout), Vipps makes a
 [callback](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#1-callback)
-to the customer's server where WooCommerce is running. If this server is slow,
+to the customer's server. If this server is slow,
 or has a slow internet connection, the delay may cause Vipps Hurtigkasse to fail due to a timeout.
 The solution to this is a faster server and internet connection.
 
