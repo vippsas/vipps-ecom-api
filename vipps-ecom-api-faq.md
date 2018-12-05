@@ -10,7 +10,7 @@ guide for the Vipps Developer Portal.
 
 - [Why do payments fail?](#why-do-payments-fail-)
 - [Why does capture fail?](#why-does-capture-fail-)
-- [Why doed Vipps Hurtigkasse (express checkout) fail?](#why-doed-vipps-hurtigkasse--express-checkout--fail-)
+- [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse--express-checkout--fail-)
 - [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between--reserve-capture--and--direct-capture--)
 - [How can I refund a part of the amount of a payment?](#how-can-i-refund-a-part-of-the-amount-of-a-payment-)
 - [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-can-t-find-it-)
@@ -46,7 +46,7 @@ Example: If the value of the shopping cart is 1000 NOK, and the reserved amount 
 the shipping cost must be maximum 100 NOK. If the shipping cost is 150 kr, a capture of
 1000 + 150 kr = 1150 NOK will fail.
 
-# Why doed Vipps Hurtigkasse (express checkout) fail?
+# Why does Vipps Hurtigkasse (express checkout) fail?
 
 When using Vipps Hurtigkasse (express checkout), Vipps makes a
 [callback](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#1-callback)
