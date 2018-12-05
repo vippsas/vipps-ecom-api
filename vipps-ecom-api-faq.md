@@ -145,7 +145,7 @@ merchant sales unit. Please follow these steps to make sure everything is correc
 
 You can use [Postman](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-postman.md)
 to manually do API calls, like the two above.
-See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
+See [API endpoints](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
 
 # Why do I get `500 Internal Server Error` (or similar)?
 
