@@ -6,24 +6,34 @@ Document version 1.0.1
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
-API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/), 
-[swagger.yaml](https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/docs/swagger.yaml), 
+API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
+[swagger.yaml](https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/docs/swagger.yaml),
 [swagger.json](https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/docs/swagger.json).
 
 # Table of contents
 
 - [Overview](#overview)
-  * [Payment types](#payment-types-)
+  * [Payment types](#payment-types)
     + [Regular eCommerce payments](#regular-ecommerce-payments)
+      - [Reserve capture](#reserve-capture)
+      - [Direct capture](#direct-capture)
+    + [Desktop browsers and mobile browsers](#desktop-browsers-and-mobile-browsers)
     + [Express checkout payments](#express-checkout-payments)
+      - [API endpoints required by Vipps from the merchant for express checkout](#api-endpoints-required-by-vipps-from-the-merchant-for-express-checkout)
   * [Flow diagram](#flow-diagram)
-- [Overview of API endpoints](#overview-of-api-endpoints)
+    + [Flow diagram details](#flow-diagram-details)
+- [API endpoints](#api-endpoints)
   * [Authentication](#authentication)
+    + [Access token](#access-token)
+      - [HTTP response codes](#http-response-codes)
   * [Initiate payment](#initiate-payment)
     + [Initiate payment flows](#initiate-payment-flows)
-      - [Mobile browser](#mobile-browser)
-      - [Desktop browser](#desktop-browser)
-      - [Payment initiated by the merchant's app](#payment-initiated-by-the-merchant-s-app)
+      - [Mobile browser initiated payments](#mobile-browser-initiated-payments)
+        * [Vipps app installed](#vipps-app-installed)
+        * [Vipps app not installed](#vipps-app-not-installed)
+      - [Desktop browser initiated payments](#desktop-browser-initiated-payments)
+      - [App initated payments](#app-initated-payments)
+    + [URL Validation](#url-validation)
   * [Reserve](#reserve)
   * [Cancel](#cancel)
   * [Capture](#capture)
@@ -33,16 +43,26 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
     + [Connection timeout](#connection-timeout)
     + [Callback aborted/interrupted](#callback-aborted-interrupted)
     + [PSP connection issues](#psp-connection-issues)
+  * [Error groups](#error-groups)
+  * [Error codes](#error-codes)
 - [App integration](#app-integration)
   * [App-switch between mobile or desktop browsers and the Vipps app](#app-switch-between-mobile-or-desktop-browsers-and-the-vipps-app)
     + [App-switch on iOS](#app-switch-on-ios)
+      - [Switch from merchant app to the Vipps app](#switch-from-merchant-app-to-the-vipps-app)
+      - [Redirect back to the merchant app from Vipps app](#redirect-back-to-the-merchant-app-from-vipps-app)
+        * [Registering a 3rd party app with URL scheme and handling custom URL calls](#registering-a-3rd-party-app-with-url-scheme-and-handling-custom-url-calls)
     + [App-switch on Android](#app-switch-on-android)
+      - [App-switch: Android Intent](#app-switch--android-intent)
+        * [Redirect back to merchant app](#redirect-back-to-merchant-app)
+      - [App-switch: Android URL Scheme](#app-switch--android-url-scheme)
+        * [Redirect back to merchant app](#redirect-back-to-merchant-app-1)
   * [Error codes for deeplinking](#error-codes-for-deeplinking)
 - [API endpoints required by Vipps from the merchant](#api-endpoints-required-by-vipps-from-the-merchant)
   * [1. Callback](#1-callback)
   * [2. Fetch Shipping Cost](#2-fetch-shipping-cost)
   * [3. Remove User Consent](#3-remove-user-consent)
 - [Questions?](#questions-)
+
 
 # Overview
 
