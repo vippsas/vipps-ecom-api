@@ -99,7 +99,7 @@
           "Endpoints required by Vipps from the merchant"
         ],
         "summary": "Remove User Consent (for express checkout)",
-        "description": "This API endpoint on the merchant side allows Vipps to send consent removal requests to merchant. When receiving requeats the merchant is obliged to remove the user details permanently, as per the GDPR guidelines. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).",
+        "description": "This API endpoint on the merchant side allows Vipps to send consent removal requests to merchant. When receiving requests the merchant is obliged to remove the user details permanently, as per the GDPR guidelines. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).",
         "operationId": "removeUserConsentUsingDELETE",
         "consumes": [
           "application/json"
@@ -290,7 +290,7 @@
         }
       }
     },
-    "/ecomm/v2/payments/{orderId}": {
+    "[callbackPrefix]/ecomm/v2/payments/{orderId}": {
       "post": {
         "tags": [
           "Endpoints required by Vipps from the merchant"
