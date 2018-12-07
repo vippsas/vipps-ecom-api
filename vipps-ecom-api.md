@@ -319,7 +319,21 @@ Initiate payment is used to create a new payment order in Vipps:
 
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/initiatePaymentV3UsingPOST)
 
-**Initiate request example:**
+**Initiate request headers example:**
+```json
+{
+    "Authorization": "Bearer jfewioIJffruJIfewiyYUdweiLMfnewUQiwmdcLnfewjNj <snip>",
+    "Content-Type": "application/json",
+    "Ocp-Apim-Subscription-Key": "12345678901234567890123456789012"
+}
+```
+
+A request is authorized by the `Authorization` and `Ocp-Apim-Subscription-Key` included in the
+HTTP headers.
+* `Authorization`: The word Bearer followed by the token from a Access Token request.
+* `Ocp-Apim-Subscription-Key`: Subscription key for the eCommerce Product.
+
+**Initiate request body example:**
 ```json
 {
     "merchantInfo": {
