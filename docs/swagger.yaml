@@ -651,6 +651,8 @@ definitions:
         format: int32
       operation:
         type: string
+      operationSuccess:
+        type: boolean
       requestId:
         type: string
       timeStamp:
