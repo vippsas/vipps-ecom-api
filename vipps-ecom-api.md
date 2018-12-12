@@ -343,16 +343,17 @@ A minimal example:
     "merchantInfo": {
       "merchantSerialNumber": "123456",
       "callbackPrefix":"https://vipps.io/vipps/callbacks/",
-  		"fallBack": "https://vipps.no/"
+      "fallBack": "https://vipps.no/"
     },
     "customerInfo": {
     },
     "transaction": {
-  		"orderId": "order123abc",
-  		"amount": 20000,
-  		"transactionText": "One pair of Vipps socks"
+      "orderId": "order123abc",
+      "amount": 20000,
+      "transactionText": "One pair of Vipps socks"
     }
 }
+```
 
 An example with more parameters provided:
 
