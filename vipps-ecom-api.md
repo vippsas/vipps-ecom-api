@@ -334,11 +334,15 @@ HTTP headers.
 * `Ocp-Apim-Subscription-Key`: Subscription key for the eCommerce Product.
 
 **Initiate request body example:**
+
+A minimal example:
+
+
 ```json
 {
     "merchantInfo": {
-  		"merchantSerialNumber": "123456",
-  		"callbackPrefix":"https://vipps.io/vipps/callbacks/",
+      "merchantSerialNumber": "123456",
+      "callbackPrefix":"https://vipps.io/vipps/callbacks/",
   		"fallBack": "https://vipps.no/"
     },
     "customerInfo": {
@@ -349,6 +353,32 @@ HTTP headers.
   		"transactionText": "One pair of Vipps socks"
     }
 }
+
+An example with more parameters provided:
+
+```json
+{
+  "customerInfo": {
+    "mobileNumber": 91234567
+  },
+  "merchantInfo": {
+    "authToken": "string",
+    "callbackPrefix": "https://example.com/vipps/callbacks/",
+    "consentRemovalPrefix": "https://example.com/vipps/consents/",
+    "fallBack": "https://example.com/vipps/fallback/",
+    "isApp": false,
+    "merchantSerialNumber": 123456,
+    "shippingDetailsPrefix": "https://example.com/vipps/shipping/"
+  },
+  "transaction": {
+    "amount": 20000,
+    "orderId": "order123abc",
+    "timeStamp": "2018-12-12T11:18:38.246Z",
+    "transactionText": "One pair of Vipps socks"
+  }
+}
+```
+
 
 ```
 
