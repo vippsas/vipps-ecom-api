@@ -1244,4 +1244,7 @@ API details: [`DELETE:/[consetRemovalPrefix]/v2/consents/{userId}`](https://vipp
 
 # Questions?
 
-We're always happy to help with code or other questions you might have! Please create an [issues](https://github.com/vippsas/vipps-recurring-api/issues), a [pull requests](https://github.com/vippsas/vipps-recurring-api/pulls), or contact us at `integration@vipps.no`.
+We're always happy to help with code or other questions you might have!
+Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),
+a [pull request](https://github.com/vippsas/vipps-ecom-api/pulls),
+or [contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md).

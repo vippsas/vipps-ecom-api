@@ -165,3 +165,9 @@ This happens if the test merchant is not being used for some time. Please
 To do this you need a live Vipps account.
 We recommend testing with 2 NOK, even though 1 NOK is the smallest possible amount.
 1 NOK is not reliable, as it gets low priority in some systems.
+
+# Questions?
+
+We're always happy to help with code or other questions you might have! Please create an [issue](https://github.com/vippsas/vipps-recurring-api/issues),
+a [pull request](https://github.com/vippsas/vipps-recurring-api/pulls),
+or [contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md).
