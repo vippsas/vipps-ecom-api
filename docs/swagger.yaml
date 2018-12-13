@@ -1007,11 +1007,11 @@ definitions:
         description: >-
           This parameter will identify difference between a regular ecomm payment
           and ecomm express payment.
-          For express checkout, use: "express checkout payment".
+          For express checkout, use: "eComm Express Payment".
           Express checkouts require consentRemovalPrefix.
         enum:
-          - regular payment
-          - express checkout payment
+          - eComm Regular Payment
+          - eComm Express Payment
         example:
       shippingDetailsPrefix:
         type: string

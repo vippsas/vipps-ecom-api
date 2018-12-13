@@ -1258,10 +1258,10 @@
         },
         "paymentType": {
           "type": "string",
-          "description": "This parameter will identify difference between a regular ecomm payment and ecomm express payment. For express checkout, use: \"express checkout payment\". Express checkouts require consentRemovalPrefix.",
+          "description": "This parameter will identify difference between a regular ecomm payment and ecomm express payment. For express checkout, use: \"eComm Express Payment\". Express checkouts require consentRemovalPrefix.",
           "enum": [
-            "regular payment",
-            "express checkout payment"
+            "eComm Regular Payment",
+            "eComm Express Payment"
           ],
           "example": null
         },
