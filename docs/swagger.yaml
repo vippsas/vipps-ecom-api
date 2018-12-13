@@ -716,7 +716,7 @@ definitions:
         description: Ordered amount in øre
       status:
         type: string
-        enum: [Captured, Cancelled, Refunded, Reserved]
+        enum: [INITIATE, RESERVE, CANCEL, CAPTURE, REFUND, VOID]
         description: >-
           Status which gives the current state of the payment within Vipps
         example: "Captured"
@@ -885,6 +885,7 @@ definitions:
   InitiatePaymentCommand:
     type: object
     required:
+      - customerInfo
       - merchantInfo
       - transaction
     properties:
@@ -939,7 +940,6 @@ definitions:
       - fallBack
       - isApp
       - merchantSerialNumber
-      - paymentType
     properties:
       authToken:
         type: string
@@ -992,8 +992,10 @@ definitions:
       paymentType:
         type: string
         description: >-
-          This will parameter will identify difference between ecomm payment and
-          ecomm express payment. Express checkouts require consentRemovalPrefix.
+          This will parameter will identify difference between a regular ecomm payment
+          and ecomm express payment.
+          For express checkout, use: "eComm Express Payment".
+          Express checkouts require consentRemovalPrefix.
         enum:
           - regular payment
           - express checkout payment
