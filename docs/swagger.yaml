@@ -4,7 +4,7 @@ info:
     # Vipps eCommerce API
 
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: '1.0'
+  version: '1.0.1'
   title: Vipps eCommerce APIs
 host: apitest.vipps.no
 tags:
@@ -72,15 +72,16 @@ paths:
           description: Unsupported media type
         '500':
           description: Something went wrong from Vipps Server side
-  '[consetRemovalPrefix]/v2/consents/{userId}':
+  '[consentRemovalPrefix]/v2/consents/{userId}':
     delete:
       tags:
         - Endpoints required by Vipps from the merchant
       summary: Remove User Consent (for express checkout)
       description: >-
-        This API allows Vipps to send consent removal request to merchant. After
-        this the merchant is obliged to remove the user details from merchant
-        system permanently, as per the GDPR guidelines.
+        This API endpoint on the merchant side allows Vipps to send consent removal requests to merchant.
+        When receiving requests the merchant is obliged to remove the user details permanently, as per the GDPR guidelines.
+        URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons
+        [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
       operationId: removeUserConsentUsingDELETE
       consumes:
         - application/json
@@ -115,11 +116,12 @@ paths:
         - Endpoints required by Vipps from the merchant
       summary: Fetch Shipping Cost & Method
       description: >-
-        This API call allows Vipps to get the shipping cost and method based on
-        the provided address and product details. Primarily use of this service
-        is meant for ecomm express checkout where Vipps needs to present
-        shipping cost and method  to the vipps user. This service is to be
-        implemented by merchants.
+        This API endpoint on the merchant side allows Vipps to get the shipping cost and method based on
+        the provided address and product details. The primary use of this service
+        is Vipps HUrtigkasse (express checkout) where Vipps needs to present
+        shipping cost and method to the Vipps user.
+        URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons
+        [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
       operationId: fetchShippingCostUsingPOST
       consumes:
         - application/json;charset=UTF-8
@@ -173,7 +175,9 @@ paths:
         successfully initiated in Vipps, will you receive a redirect URL in response which has to be used by the merchant to open
         the Vipps landing page. The landing page will have functionality to
         identify and differentiate request coming from mobile browser/desktop
-        browser. The fallback (URL) attribute should pass the Apache Commons [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). The URL should already be encoded when making the API-call.
+        browser.
+        URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons
+        [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
       operationId: initiatePaymentV3UsingPOST
       consumes:
         - application/json;charset=UTF-8
@@ -225,7 +229,7 @@ paths:
           description: Unsupported media type
         '500':
           description: Something went wrong from Vipps Server side
-  '/ecomm/v2/payments/{orderId}':
+  '[callbackPrefix]/v2/payments/{orderId}':
     post:
       tags:
         - Endpoints required by Vipps from the merchant
@@ -647,6 +651,8 @@ definitions:
         format: int32
       operation:
         type: string
+      operationSuccess:
+        type: boolean
       requestId:
         type: string
       timeStamp:
@@ -782,8 +788,8 @@ definitions:
       url:
         type: string
         description: >-
-          Url parameter will have url to redirect the request to vipps gateway
-          page in case request is trigger from web browser or deeplink url to
+          URL parameter will have URL to redirect the request to vipps gateway
+          page in case request is trigger from web browser or deeplink URL to
           open vipps app incase request is triggered from Merchant Mobile App.
   ShippingDetailsRequest:
     type: object
@@ -944,25 +950,29 @@ definitions:
       authToken:
         type: string
         description: >-
-          Merchant should share this token if merchant has authentication
-          mechanism in place which could be used for making callbacks secure
+          The Merchant should share this token if merchant has authentication
+          mechanism in place which could be used for making callbacks secure.
         maxLength: 255
       callbackPrefix:
         type: string
         description: >-
-          This is to receive the callback after the payment request. Domain name
+          This is an URL for receiving the callback after the payment request. Domain name
           and context path should be provided by merchant as the value for this
           parameter. The rest of the URL will be appended by Vipps according to
-          Vipps guidelines. .
+          Vipps guidelines.
+          URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons
+          [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
         maxLength: 255
         example: 'https://example.com/vipps/callbacks/'
       consentRemovalPrefix:
         type: string
         description: >-
-          Required for expess checkout payments. This callback will be used
+          Required for expess checkout payments. This callback URL will be used
           by Vipps to inform the merchant that the user has revoked his/her
           consent: This Vipps user does do not want the merchant to store or
           use his/her personal information anymore. Required by GDPR.
+          URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons
+          [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
         maxLength: 255
         example: 'https://example.com/vipps/consents/'
       fallBack:
@@ -970,6 +980,8 @@ definitions:
         description: >-
           Vipps will use the fall back URL to redirect Merchant Page once
           Payment is completed in Vipps System
+          URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons
+          [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
         maxLength: 255
         example: 'https://example.com/vipps/fallback/'
       isApp:
@@ -978,8 +990,9 @@ definitions:
         description: >-
           This parameter indicates whether payment request is triggered from
           Mobile App or Web browser. Based on this value, response will be
-          redirect url for Vipps landing page or deeplink Url to connect vipps
-          App
+          redirect URL for Vipps landing page or deeplink URL to connect vipps
+          App.
+          When isApp is set to true, URLs passed to Vipps will not be validated as regular URLs.
       merchantSerialNumber:
         type: string
         description: >-
@@ -992,9 +1005,9 @@ definitions:
       paymentType:
         type: string
         description: >-
-          This will parameter will identify difference between a regular ecomm payment
+          This parameter will identify difference between a regular ecomm payment
           and ecomm express payment.
-          For express checkout, use: "eComm Express Payment".
+          For express checkout, use: "express checkout payment".
           Express checkouts require consentRemovalPrefix.
         enum:
           - regular payment
