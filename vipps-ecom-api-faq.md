@@ -54,7 +54,9 @@ to the customer's server. If this server is slow,
 or has a slow internet connection, the delay may cause Vipps Hurtigkasse to fail due to a timeout.
 The solution to this is a faster server and internet connection.
 
-Some third party plugins do not work with Vipps Hurtigkasse. Please ask for help in the support forum,
+Information for [Vipps for WooCommerce](https://www.vipps.no/bedrift/vipps-pa-nett/woocommerce): 
+Some third party plugins do not work with Vipps Hurtigkasse. Please ask for help in the 
+[support forum](https://wordpress.org/support/plugin/woo-vipps),
 and include information about the plugins you have installed.
 
 # What is the difference between "Reserve Capture" and "Direct Capture"?
