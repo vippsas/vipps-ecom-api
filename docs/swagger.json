@@ -1213,7 +1213,6 @@
       "required": [
         "callbackPrefix",
         "fallBack",
-        "isApp",
         "merchantSerialNumber"
       ],
       "properties": {

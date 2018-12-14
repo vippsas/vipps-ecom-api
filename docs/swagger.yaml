@@ -938,7 +938,6 @@ definitions:
     required:
       - callbackPrefix
       - fallBack
-      - isApp
       - merchantSerialNumber
     properties:
       authToken:
