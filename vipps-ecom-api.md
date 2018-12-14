@@ -380,9 +380,6 @@ An example with more parameters provided:
 }
 ```
 
-
-```
-
 A payment is uniquely identified by the combination of `merchantSerialNumber` and `orderId`:
 * `merchantSerialNumber`: The merchant's Vipps id.
 * `orderId`: Must be unique for the `merchantSerialNumber`.
