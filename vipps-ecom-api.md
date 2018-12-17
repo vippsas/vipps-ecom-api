@@ -1,4 +1,4 @@
-# Vipps eCommerce API
+  # Vipps eCommerce API
 
 API version: 2.0
 
@@ -1263,7 +1263,7 @@ API details: [`POST:/v2/payments/{orderId}`](https://vippsas.github.io/vipps-eco
 
 This API call allows Vipps to get the shipping cost and method based on the provided address and product details. This is only relevant for express checkout payments where Vipps needs to present shipping cost and method to the vipps user. This service is to be implemented by merchants.
 
-API details: [`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/fetchShippingCostUsingPOST)
+API details: [`POST:  [shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/fetchShippingCostUsingPOST)
 
 ## 3. Remove User Consent
 
