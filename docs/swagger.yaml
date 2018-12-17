@@ -986,6 +986,7 @@ definitions:
       isApp:
         type: boolean
         example: false
+        default: false
         description: >-
           This parameter indicates whether payment request is triggered from
           Mobile App or Web browser. Based on this value, response will be
@@ -1011,7 +1012,8 @@ definitions:
         enum:
           - eComm Regular Payment
           - eComm Express Payment
-        example:
+        example: eComm Express Payment
+        default: eComm Regular Payment
       shippingDetailsPrefix:
         type: string
         description: >-

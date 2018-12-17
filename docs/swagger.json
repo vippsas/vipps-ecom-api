@@ -1245,6 +1245,7 @@
         "isApp": {
           "type": "boolean",
           "example": false,
+          "default": false,
           "description": "This parameter indicates whether payment request is triggered from Mobile App or Web browser. Based on this value, response will be redirect URL for Vipps landing page or deeplink URL to connect vipps App. When isApp is set to true, URLs passed to Vipps will not be validated as regular URLs."
         },
         "merchantSerialNumber": {
