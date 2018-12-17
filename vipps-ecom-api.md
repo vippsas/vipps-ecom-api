@@ -369,7 +369,8 @@ An example with more parameters provided:
     "fallBack": "https://example.com/vipps/fallback/",
     "isApp": false,
     "merchantSerialNumber": 123456,
-    "shippingDetailsPrefix": "https://example.com/vipps/shipping/"
+    "shippingDetailsPrefix": "https://example.com/vipps/shipping/",
+    "paymentType": "eComm Regular Payment"
   },
   "transaction": {
     "amount": 20000,
@@ -399,7 +400,7 @@ HTTP 202 Accepted
 
 The `url` is slightly simplified, but the format is correct.
 
-The redirect depends on whether the user is using a desktop or mobile browser:
+The URL depends on whether the user is using a desktop or mobile browser, defined using the `isApp` parameter:
 * For mobile browsers, the URL is for an app-switch to the Vipps app.
 * For desktop browsers, the URL is for the Vipps "landing page".
 
