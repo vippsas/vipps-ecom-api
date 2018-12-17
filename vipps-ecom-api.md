@@ -385,7 +385,7 @@ A payment is uniquely identified by the combination of `merchantSerialNumber` an
 * `merchantSerialNumber`: The merchant's Vipps id.
 * `orderId`: Must be unique for the `merchantSerialNumber`.
 
-To initiate an express checkout payment the payment initiation call must include the `"paymentType":"eComm Express Payment"` parameter.
+To initiate an express checkout payment the payment initiation call must include the `"paymentType":"eComm Express Payment"` parameter. If this parameter is not passed, the payment type will default to regular payment.
 
 Once successfully initiated, a response with a redirect URL is returned.
 
