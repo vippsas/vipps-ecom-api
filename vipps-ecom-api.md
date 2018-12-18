@@ -153,7 +153,7 @@ These endpoints are included in the Swagger file for reference.
 | Operation           | Description         | Endpoint          |
 | ------------------- | ------------------- | ----------------- |
 | Remove user consent | Used to inform merchant when the Vipps user removes consent to share information.  | [`DELETE:/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Calls_from_Vipps_examples/removeUserConsentUsingDELETE)  |
-| Callback : Transaction Update | A callback to the merchant for receiving post-payment information. | [`POST:/ecomm/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Calls_from_Vipps_examples/transactionUpdateCallbackForRegularPaymentUsingPOST)  |
+| Callback : Transaction Update | A callback to the merchant for receiving post-payment information. | [`POST:/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Calls_from_Vipps_examples/transactionUpdateCallbackForRegularPaymentUsingPOST)  |
 | Get shipping cost and method | Used to fetch shipping information | [`POST:/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Calls_from_Vipps_examples/fetchShippingCostUsingPOST)  |
 
 ## Flow diagram
@@ -369,7 +369,8 @@ An example with more parameters provided:
     "fallBack": "https://example.com/vipps/fallback/",
     "isApp": false,
     "merchantSerialNumber": 123456,
-    "shippingDetailsPrefix": "https://example.com/vipps/shipping/"
+    "shippingDetailsPrefix": "https://example.com/vipps/shipping/",
+    "paymentType": "eComm Regular Payment"
   },
   "transaction": {
     "amount": 20000,
@@ -380,14 +381,11 @@ An example with more parameters provided:
 }
 ```
 
-
-```
-
 A payment is uniquely identified by the combination of `merchantSerialNumber` and `orderId`:
 * `merchantSerialNumber`: The merchant's Vipps id.
 * `orderId`: Must be unique for the `merchantSerialNumber`.
 
-To initiate an express checkout payment the payment initiation call must include the `"paymentType":"eComm Express Payment"` parameter.
+To initiate an express checkout payment the payment initiation call must include the `"paymentType":"eComm Express Payment"` parameter. If this parameter is not passed, the payment type will default to regular payment.
 
 Once successfully initiated, a response with a redirect URL is returned.
 
@@ -402,7 +400,7 @@ HTTP 202 Accepted
 
 The `url` is slightly simplified, but the format is correct.
 
-The redirect depends on whether the user is using a desktop or mobile browser:
+The URL depends on whether the user is using a desktop or mobile browser, defined using the `isApp` parameter:
 * For mobile browsers, the URL is for an app-switch to the Vipps app.
 * For desktop browsers, the URL is for the Vipps "landing page".
 
