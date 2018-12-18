@@ -1136,9 +1136,19 @@
     },
     "ShippingDetails": {
       "type": "object",
+      "required": [
+        "isDefault",
+        "shippingCost",
+        "shippingMethod",
+        "shippingMethodId"
+      ],
       "properties": {
         "isDefault": {
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "Y",
+            "N"
+          ]
         },
         "priority": {
           "type": "integer",
@@ -1149,6 +1159,9 @@
           "format": "double"
         },
         "shippingMethod": {
+          "type": "string"
+        },
+        "shippingMethodId": {
           "type": "string"
         }
       }
@@ -1263,7 +1276,8 @@
             "eComm Regular Payment",
             "eComm Express Payment"
           ],
-          "example": null
+          "example": "eComm Express Payment",
+          "default": "eComm Regular Payment"
         },
         "shippingDetailsPrefix": {
           "type": "string",
@@ -1427,6 +1441,11 @@
     },
     "FetchShippingCostResponse": {
       "type": "object",
+      "required": [
+        "addressId",
+        "orderId",
+        "shippingDetails"
+      ],
       "properties": {
         "addressId": {
           "type": "integer",
