@@ -10,10 +10,10 @@ For more information about this product, please see
 
 [Frequently Asked Questions](vipps-ecom-api-faq.md): Questions and answers.
 
-See the Vipps Developers repository for
+See the [Vipps Developers repository](https://github.com/vippsas/vipps-developers) 
+for
 contact information,
 contribution guidelines,
-etc:
-https://github.com/vippsas/vipps-developers  
+etc.
 
 You can peruse the API docs at https://vippsas.github.io/vipps-ecom-api/
