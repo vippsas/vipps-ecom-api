@@ -6,13 +6,11 @@ For more information about this product, please see
 
 [Vipps eCommerce API guide](vipps-ecom-api.md)
 
-For product activation please see [vipps-ecom-api-getting-started.md](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md)
+For information about API keys, product activation, etc please see the [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) guide.
 
 Frequently Asked Questions: [vipps-ecom-api-faq.md](vipps-ecom-api-faq.md)
 
 See the Vipps Developers repository for
-a "getting started" guide,
-information about product activation,
 contact information,
 contribution guidelines,
 etc:
