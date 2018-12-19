@@ -11,7 +11,7 @@ For more information about this product, please see
 [Frequently Asked Questions](vipps-ecom-api-faq.md): Questions and answers.
 
 We have made some example code available, in the hope that it may be useful:
-[Vipps eCom python example)(https://github.com/vippsas/vipps-developers/tree/master/code-examples/ecom_python_example).
+[Vipps eCom python example](https://github.com/vippsas/vipps-developers/tree/master/code-examples/ecom_python_example).
 
 See the [Vipps Developers repository](https://github.com/vippsas/vipps-developers) 
 for
