@@ -854,6 +854,7 @@ definitions:
         type: number
         format: double
         description: Ordered amount in øre
+        example: 20000
       status:
         type: string
         description: >-
@@ -876,6 +877,7 @@ definitions:
     properties:
       orderId:
         type: string
+        example: 'order123abc'
       shippingDetails:
         $ref: '#/definitions/PaymentShippingDetails'
       transactionLogHistory:
@@ -932,6 +934,8 @@ definitions:
         description: >-
           Id which uniquely identifies a payment. Maximum length is 30
           alphanumeric characters
+        example: 'order123abc'
+        maxLength: 30
       transactionInfo:
         $ref: '#/definitions/TransactionInfo'
       transactionSummary:
@@ -976,14 +980,18 @@ definitions:
     properties:
       addressLine1:
         type: string
+        example: 'Dronning Eufemias gsate 42'
       addressLine2:
         type: string
+        example: 'Att: Rune Garborg'
       city:
         type: string
         description: City
+        example: 'Oslo'
       country:
         type: string
         description: The only country supported is Norway
+        example: 'NO'
       zipCode:
         type: integer
         format: int32
@@ -1041,6 +1049,7 @@ definitions:
         format: int32
         description: Amount in øre. 32 bit Integer (2147483647)
         pattern: '^\d{3,}$'
+        example: 20000
       orderId:
         type: string
         description: >-
@@ -1155,6 +1164,7 @@ definitions:
     properties:
       orderId:
         type: string
+        example: 'order123abc'
       transactionInfo:
         $ref: '#/definitions/OrderStatusInfoTransactionInfo'
   Transaction:
@@ -1169,6 +1179,7 @@ definitions:
           Amount in øre, if amount is 0 or not provided then full capture will
           be performed. 32 Bit Integer (2147483647)
         pattern: '^\d{3,}$'
+        example: 20000
       transactionText:
         type: string
         description: Proof of delivery
@@ -1189,14 +1200,17 @@ definitions:
           field
       addressLine1:
         type: string
+        example: 'Dronning Eufemias gate 42'
       addressLine2:
         type: string
       city:
         type: string
         description: City
+        example: 'Oslo'
       country:
         type: string
         description: The only country supported is Norway
+        example: 'NO'
       postCode:
         type: integer
         format: int32
@@ -1260,17 +1274,23 @@ definitions:
     properties:
       token_type:
         type: string
+        example: 'Bearer'
       access_token:
         type: string
+        example: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni <snip>'
       ext_expires_in:
         type: integer
+        example: 0
       not_before:
         type: integer
+        example: 1495184574
       expires_in:
         type: integer
         format: int32
+        example: 86398
       resource:
         type: string
+        example: '00000002-0000-0000-c000-000000000000'
   AuthorizationTokenMethod:
     type: object
   FetchShippingCostResponse:
@@ -1285,6 +1305,7 @@ definitions:
         format: int32
       orderId:
         type: string
+        example: 'order123abc'
       shippingDetails:
         type: array
         items:
@@ -1301,15 +1322,19 @@ definitions:
         type: integer
         format: int32
         description: Total amount captured
+        example: 20000
       refundedAmount:
         type: integer
         format: int32
         description: Total refunded amount of the order
+        example: 0
       remainingAmountToCapture:
         type: integer
         format: int32
         description: Total remaining amount to capture
+        example: 0
       remainingAmountToRefund:
         type: integer
         format: int32
         description: Total remaining amount to refund
+        example: 20000
