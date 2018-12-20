@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "# Vipps eCommerce API\nAdditional API documentation: https://github.com/vippsas/vipps-ecom-api/\n",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "title": "Vipps eCommerce APIs"
   },
   "host": "apitest.vipps.no",
@@ -1346,7 +1346,7 @@
             "eComm Regular Payment",
             "eComm Express Payment"
           ],
-          "example": "eComm Express Payment",
+          "example": "eComm Regular Payment",
           "default": "eComm Regular Payment"
         },
         "shippingDetailsPrefix": {

@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.0.2
+  version: 1.0.3
   title: Vipps eCommerce APIs
 host: apitest.vipps.no
 tags:
@@ -1155,7 +1155,7 @@ definitions:
         enum:
           - eComm Regular Payment
           - eComm Express Payment
-        example: eComm Express Payment
+        example: eComm Regular Payment
         default: eComm Regular Payment
       shippingDetailsPrefix:
         type: string
