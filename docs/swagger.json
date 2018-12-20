@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "# Vipps eCommerce API\nAdditional API documentation: https://github.com/vippsas/vipps-ecom-api/\n",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "title": "Vipps eCommerce APIs"
   },
   "host": "apitest.vipps.no",
@@ -235,7 +235,7 @@
           {
             "in": "header",
             "name": "content-type",
-            "description": "`application/json`",
+            "description": "application/json",
             "required": true,
             "type": "string"
           },
@@ -787,23 +787,28 @@
       "properties": {
         "addressLine1": {
           "type": "string",
-          "description": "Address Line 1"
+          "description": "Address Line 1",
+          "example": "Dronning Eufemias gate 42"
         },
         "addressLine2": {
           "type": "string",
-          "description": "Address Line 2"
+          "description": "Address Line 2",
+          "example": "Att: Rune Garborg"
         },
         "city": {
           "type": "string",
-          "description": "City"
+          "description": "City",
+          "example": "Oslo"
         },
         "country": {
           "type": "string",
-          "description": "Country,default=NO"
+          "description": "Country,default=NO",
+          "example": "NO"
         },
         "zipCode": {
           "type": "string",
-          "description": "Zip Code"
+          "description": "Zip Code",
+          "example": "0191"
         }
       }
     },
@@ -820,11 +825,13 @@
         "shippingCost": {
           "type": "number",
           "format": "double",
-          "description": "Shipping Cost"
+          "description": "Shipping Cost",
+          "example": 1500
         },
         "shippingMethod": {
           "type": "string",
-          "description": "Shipping method"
+          "description": "Shipping method",
+          "example": "Posten"
         }
       }
     },
@@ -912,7 +919,8 @@
         },
         "userId": {
           "type": "string",
-          "description": "1234567"
+          "description": "1234567",
+          "example": "1234567"
         }
       }
     },
@@ -928,7 +936,8 @@
         "amount": {
           "type": "number",
           "format": "double",
-          "description": "Ordered amount in øre"
+          "description": "Ordered amount in øre",
+          "example": 20000
         },
         "status": {
           "type": "string",
@@ -943,11 +952,13 @@
         },
         "timeStamp": {
           "type": "string",
-          "description": "Timestamp in ISO-8601 representing when Vipps cancelled the transaction."
+          "description": "Timestamp in ISO-8601 representing when Vipps cancelled the transaction.",
+          "example": "2018-12-12T11:18:38.246Z"
         },
         "transactionId": {
           "type": "string",
-          "description": "Vipps transaction id"
+          "description": "Vipps transaction id",
+          "example": "5001420062"
         }
       }
     },
@@ -963,7 +974,8 @@
         "amount": {
           "type": "number",
           "format": "double",
-          "description": "Ordered amount in øre"
+          "description": "Ordered amount in øre",
+          "example": 20000
         },
         "status": {
           "type": "string",
@@ -977,15 +989,17 @@
             "REGISTER"
           ],
           "description": "Status which gives the current state of the payment within Vipps",
-          "example": "Captured"
+          "example": "RESERVE"
         },
         "timeStamp": {
           "type": "string",
-          "description": "Timestamp in ISO-8601 representing when Vipps cancelled the transaction."
+          "description": "Timestamp in ISO-8601 representing when Vipps cancelled the transaction.",
+          "example": "2018-12-12T11:18:38.246Z"
         },
         "transactionId": {
           "type": "string",
-          "description": "Vipps transaction id"
+          "description": "Vipps transaction id",
+          "example": "5001420062"
         }
       }
     },
@@ -1010,15 +1024,18 @@
         },
         "timeStamp": {
           "type": "string",
-          "description": "Timestamp in ISO-8601 representing when vipps Cancelled transaction."
+          "description": "Timestamp in ISO-8601 representing when vipps Cancelled transaction.",
+          "example": "2018-12-12T11:18:38.246Z"
         },
         "transactionId": {
           "type": "string",
-          "description": "Vipps transaction id"
+          "description": "Vipps transaction id",
+          "example": "5001420062"
         },
         "transactionText": {
           "type": "string",
-          "description": "Transaction text reference provided by merchant"
+          "description": "Transaction text reference provided by merchant",
+          "example": "One pair of Vipps socks"
         }
       }
     },
@@ -1054,11 +1071,13 @@
       "properties": {
         "orderId": {
           "type": "string",
-          "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters."
+          "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters.",
+          "example": "order123abc"
         },
         "url": {
           "type": "string",
-          "description": "URL parameter will have URL to redirect the request to vipps gateway page in case request is trigger from web browser or deeplink URL to open vipps app incase request is triggered from Merchant Mobile App."
+          "description": "URL parameter will have URL to redirect the request to vipps gateway page in case request is trigger from web browser or deeplink URL to open vipps app incase request is triggered from Merchant Mobile App.",
+          "example": "https://example.com"
         }
       }
     },
@@ -1112,6 +1131,7 @@
         "orderId": {
           "type": "string",
           "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters.",
+          "example": "order123abc",
           "maxLength": 30
         },
         "transaction": {
@@ -1241,22 +1261,26 @@
         "orderId": {
           "type": "string",
           "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters.",
-          "maxLength": 30
+          "maxLength": 30,
+          "example": "order123abc"
         },
         "refOrderId": {
           "type": "string",
           "description": "Identifies if the payment references to some past orders registered with Vipps. If defined, transactions for this payment will show up as child transactions of the specified order.",
-          "maxLength": 30
+          "maxLength": 30,
+          "example": "merchantOrder123abc"
         },
         "timeStamp": {
           "type": "string",
           "format": "date-time",
-          "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters."
+          "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters.",
+          "example": "2018-11-14T15:44:26.590Z"
         },
         "transactionText": {
           "type": "string",
           "description": "Transaction text that can be displayed to end user",
-          "maxLength": 100
+          "maxLength": 100,
+          "example": "One pair of Vipps socks"
         }
       }
     },
@@ -1271,7 +1295,8 @@
         "authToken": {
           "type": "string",
           "description": "The Merchant should share this token if merchant has authentication mechanism in place which could be used for making callbacks secure.",
-          "maxLength": 255
+          "maxLength": 255,
+          "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni <snip>"
         },
         "callbackPrefix": {
           "type": "string",
@@ -1433,7 +1458,8 @@
         },
         "orderId": {
           "type": "string",
-          "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters"
+          "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters",
+          "example": "order123abc"
         },
         "shippingDetails": {
           "description": "Shipping Details will be added in the call back request if the payment is Express Checkout",
