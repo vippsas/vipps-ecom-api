@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.0.3
+  version: 1.0.4
   title: Vipps eCommerce APIs
 host: apitest.vipps.no
 tags:
@@ -860,6 +860,10 @@ definitions:
         example: 20000
       status:
         type: string
+        enum:
+          - Cancelled
+          - Captured
+          - Reserved
         description: >-
           Id which uniquely identifies a payment. Maximum length is 30
           alphanumeric characters

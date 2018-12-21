@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "description": "# Vipps eCommerce API\nAdditional API documentation: https://github.com/vippsas/vipps-ecom-api/\n",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "title": "Vipps eCommerce APIs"
   },
   "host": "apitest.vipps.no",
@@ -1021,6 +1021,11 @@
         },
         "status": {
           "type": "string",
+          "enum": [
+            "Cancelled",
+            "Captured",
+            "Reserved"
+          ],
           "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters"
         },
         "timeStamp": {
