@@ -864,6 +864,7 @@ definitions:
           - Cancelled
           - Captured
           - Reserved
+        example: Reserved
         description: >-
           Id which uniquely identifies a payment. Maximum length is 30
           alphanumeric characters
