@@ -37,6 +37,8 @@ window.onload = function() {
   const ui = SwaggerUIBundle({
     url: 'https://vippsas.github.io/vipps-ecom-api/swagger.yaml',
     dom_id: '#swagger-ui',
+    defaultModelsExpandDepth: 2,
+    defaultModelRendering: "model",
     deepLinking: true,
     presets: [
       SwaggerUIBundle.presets.apis,
