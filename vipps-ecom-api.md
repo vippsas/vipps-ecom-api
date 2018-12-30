@@ -164,7 +164,7 @@ These endpoints are included in the Swagger file for reference.
 
 This table shows the from- and to-state, and the status returned from
 ""Get order status"
-([`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)).
+([`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET), [[Redoc](https://vippsas.github.io/vipps-ecom-api/redoc.html#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)], [[Swagger](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)]).
 
 | #   | From-state | To-state | Description                                   | getOrderStatus |
 | --- | ---------- | -------- | --------------------------------------------- | -------------- |
