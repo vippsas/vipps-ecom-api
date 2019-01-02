@@ -1267,7 +1267,61 @@ Callback allows Vipps to send the payment order details. During regular ecomm pa
 
 If the communication is broken during payment process for some reason, and Vipps is not able to execute callback, then callback will not be retried. In other words, if the merchant doesn’t receive any confirmation on payment request call within callback timeframe, merchant should call get payment details service to get the status of the payment.
 
+The callback body received from Vipps will depend on if the payment type is set as `"eComm Express Payment"` or `"eComm Regular Payment"`.
+
 API details: [`POST:/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/transactionUpdateCallbackForRegularPaymentUsingPOST)
+
+**Example Express Checkout Callback**
+
+```json
+{
+  "merchantSerialNumber": 123456,
+  "orderId": "order123abc",
+  "shippingDetails": {
+    "address": {
+      "addressLine1": "Dronning Eufemias gsate 42",
+      "addressLine2": "Att: Rune Garborg",
+      "city": "Oslo",
+      "country": "NO",
+      "zipCode": "0191"
+    },
+    "shippingCost": 0,
+    "shippingMethod": "string"
+  },
+  "transactionInfo": {
+    "amount": 20000,
+    "status": "RESERVE",
+    "timeStamp": "2018-12-12T11:18:38.246Z",
+    "transactionId": "5001420062"
+  },
+  "userDetails": {
+    "bankIdVerified": "string",
+    "dateOfBirth": "12-3-1988",
+    "email": "user@example.com",
+    "firstName": "Ada",
+    "lastName": "Lovelace",
+    "mobileNumber": "string",
+    "ssn": "string",
+    "userId": "1234567"
+  }
+}
+```
+
+**Example Regular Checkout Callback**
+
+```json
+{
+  "merchantSerialNumber": 123456,
+  "orderId": "order123abc",
+  "transactionInfo": {
+    "amount": 20000,
+    "status": "RESERVED",
+    "timeStamp": "2018-12-12T11:18:38.246Z",
+    "transactionId": "5001420062"
+  }
+}
+```
+
 
 ## 2. Fetch Shipping Cost
 
