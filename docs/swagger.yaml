@@ -804,7 +804,7 @@ definitions:
         type: string
         enum:
           - RESERVE
-          - RESERVED_FAILED
+          - SALE
           - CANCELLED
           - REJECTED
         description: Status which gives the current state of the payment within Vipps

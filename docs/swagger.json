@@ -954,7 +954,7 @@
           "type": "string",
           "enum": [
             "RESERVE",
-            "RESERVED_FAILED",
+            "SALE",
             "CANCELLED",
             "REJECTED"
           ],
