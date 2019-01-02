@@ -41,7 +41,7 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
 - [HTTP response codes](#http-response-codes-1)
   * [Exception handling](#exception-handling)
     + [Connection timeout](#connection-timeout)
-    + [Callback aborted/interrupted](#callback-aborted-interrupted)
+    + [Callback aborted/interrupted](#callback-abortedinterrupted)
     + [PSP connection issues](#psp-connection-issues)
   * [Error groups](#error-groups)
   * [Error codes](#error-codes)
@@ -52,16 +52,16 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
       - [Redirect back to the merchant app from Vipps app](#redirect-back-to-the-merchant-app-from-vipps-app)
         * [Registering a 3rd party app with URL scheme and handling custom URL calls](#registering-a-3rd-party-app-with-url-scheme-and-handling-custom-url-calls)
     + [App-switch on Android](#app-switch-on-android)
-      - [App-switch: Android Intent](#app-switch--android-intent)
+      - [App-switch: Android Intent](#app-switch-android-intent)
         * [Redirect back to merchant app](#redirect-back-to-merchant-app)
-      - [App-switch: Android URL Scheme](#app-switch--android-url-scheme)
+      - [App-switch: Android URL Scheme](#app-switch-android-url-scheme)
         * [Redirect back to merchant app](#redirect-back-to-merchant-app-1)
   * [Error codes for deeplinking](#error-codes-for-deeplinking)
 - [API endpoints required by Vipps from the merchant](#api-endpoints-required-by-vipps-from-the-merchant)
   * [1. Callback](#1-callback)
   * [2. Fetch Shipping Cost](#2-fetch-shipping-cost)
   * [3. Remove User Consent](#3-remove-user-consent)
-- [Questions?](#questions-)
+- [Questions?](#questions)
 
 
 # Overview
