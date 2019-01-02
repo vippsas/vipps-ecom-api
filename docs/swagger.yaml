@@ -719,6 +719,16 @@ definitions:
         format: int32
       operation:
         type: string
+        example: RESERVE
+        description: 'The operation that was performed'
+        enum:
+          - INITIATE
+          - RESERVE
+          - SALE
+          - CAPTURE
+          - REFUND
+          - CANCEL
+          - VOID
       operationSuccess:
         type: boolean
       requestId:
