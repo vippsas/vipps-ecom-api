@@ -1265,7 +1265,7 @@ In depth callback descriptions
 
 Callback allows Vipps to send the payment order details. During regular ecomm payment order and transaction details will be shared. During express checkout payment it will provide user details and shipping details addition to the order and transaction details.
 
-If the communication is broken during payment process for some reason, and Vipps is not able to execute callback, then callback will not be retried. In other words, if the merchant doesn’t receive any confirmation on payment request call within callback timeframe, merchant should call get payment details service to get the status of the payment.
+This call will be performed once during a payment process, when the payment is successful, failed, rejected or timed out. If the communication is broken during the process for some reason, and Vipps is not able to execute callback, then callback will not be retried. In other words, if the merchant doesn’t receive any confirmation on payment request call within callback timeframe, merchant should call get payment details service to get the status of the payment.
 
 The callback body received from Vipps will depend on if the payment type is set as `"eComm Express Payment"` or `"eComm Regular Payment"`.
 
@@ -1279,7 +1279,7 @@ API details: [`POST:/v2/payments/{orderId}`](https://vippsas.github.io/vipps-eco
   "orderId": "order123abc",
   "shippingDetails": {
     "address": {
-      "addressLine1": "Dronning Eufemias gsate 42",
+      "addressLine1": "Dronning Eufemias gate 42",
       "addressLine2": "Att: Rune Garborg",
       "city": "Oslo",
       "country": "NO",
@@ -1328,6 +1328,44 @@ API details: [`POST:/v2/payments/{orderId}`](https://vippsas.github.io/vipps-eco
 This API call allows Vipps to get the shipping cost and method based on the provided address and product details. This is only relevant for express checkout payments where Vipps needs to present shipping cost and method to the vipps user. This service is to be implemented by merchants.
 
 API details: [`POST:  [shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/fetchShippingCostUsingPOST)
+
+**Example Request Shipping Details Callback**
+```json
+{
+    "addressId": 3960,
+    "addressLine1": "Dronning Eufemias gate 42",
+    "addressLine2": null,
+    "country": "Norway",
+    "city": "OSLO",
+    "postalCode": "0191",
+    "postCode": "0191",
+    "addressType": "H",
+}
+```
+
+**Example Response for Shipping Details Callback**
+```json
+{
+    "addressId": 3960,
+    "orderId": "123456abc",
+    "shippingDetails": [
+        {
+            "isDefault": "N",
+            "priority": 1,
+            "shippingCost": 30.0,
+            "shippingMethod": "Walking",
+            "shippingMethodId": "123abc"
+        },
+        {
+            "isDefault": "Y",
+            "priority": 2,
+            "shippingCost": 30.0,
+            "shippingMethod": "Running",
+            "shippingMethodId": "321abc"
+        }
+    ]
+}
+```
 
 ## 3. Remove User Consent
 

@@ -1336,7 +1336,7 @@
       "properties": {
         "addressLine1": {
           "type": "string",
-          "example": "Dronning Eufemias gsate 42"
+          "example": "Dronning Eufemias gate 42"
         },
         "addressLine2": {
           "type": "string",
@@ -1589,6 +1589,17 @@
           "description": "Four digits",
           "pattern": "^\\df{4}$",
           "example": "0191"
+        },
+        "postalCode": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Four digits",
+          "pattern": "^\\df{4}$",
+          "example": "0191"
+        },
+        "addressType": {
+          "type": "string",
+          "example": "H"
         }
       }
     },
