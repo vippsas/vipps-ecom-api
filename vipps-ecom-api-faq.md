@@ -8,20 +8,20 @@ guide for the Vipps Developer Portal.
 
 # Table of contents
 
-- [Why do payments fail?](#why-do-payments-fail-)
-- [Why does capture fail?](#why-does-capture-fail-)
-- [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse--express-checkout--fail-)
-- [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between--reserve-capture--and--direct-capture--)
-- [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment-)
-- [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-can-t-find-it-)
-- [How long does it take until the money is in my account?](#how-long-does-it-take-until-the-money-is-in-my-account-)
-- [Where can I find reports on transactions?](#where-can-i-find-reports-on-transactions-)
-- [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved-)
+- [Why do payments fail?](#why-do-payments-fail)
+- [Why does capture fail?](#why-does-capture-fail)
+- [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
+- [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
+- [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
+- [I have initiated an order but I can't find it!](##i-have-initiated-an-order-but-i-cant-find-it)
+- [How long does it take until the money is in my account?](#how-long-does-it-take-until-the-money-is-in-my-account)
+- [Where can I find reports on transactions?](#where-can-i-find-reports-on-transactions)
+- [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
 - [I am unable to login to the Vipps developer portal](#i-am-unable-to-login-to-the-vipps-developer-portal)
-- [I am getting `401 Unauthorized` error - and I have double checked all my keys!](#i-am-getting--401-unauthorized--error---and-i-have-double-checked-all-my-keys-)
-- [Why do I get `500 Internal Server Error` (or similar)?](#why-do-i-get--500-internal-server-error---or-similar--)
-- [I have not had time to test this month and when I came back to it now I get `errorCode 37 "Merchant not available or deactivated or blocked"`](#i-have-not-had-time-to-test-this-month-and-when-i-came-back-to-it-now-i-get--errorcode-37--merchant-not-available-or-deactivated-or-blocked--)
-- [How do I perform "testing in production"?](#how-do-i-perform--testing-in-production--)
+- [I am getting `401 Unauthorized` error - and I have double checked all my keys!](#i-am-getting-401-unauthorized-error---and-i-have-double-checked-all-my-keys)
+- [Why do I get `500 Internal Server Error` (or similar)?](#why-do-i-get-500-internal-server-error-or-similar)
+- [I have not had time to test this month and when I came back to it now I get `errorCode 37 "Merchant not available or deactivated or blocked"`](#i-have-not-had-time-to-test-this-month-and-when-i-came-back-to-it-now-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked)
+- [How do I perform "testing in production"?](#how-do-i-perform-testing-in-production)
 
 # Why do payments fail?
 
