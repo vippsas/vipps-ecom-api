@@ -13,7 +13,7 @@ guide for the Vipps Developer Portal.
 - [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
 - [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
 - [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
-- [I have initiated an order but I can't find it!](##i-have-initiated-an-order-but-i-cant-find-it)
+- [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-cant-find-it)
 - [How long does it take until the money is in my account?](#how-long-does-it-take-until-the-money-is-in-my-account)
 - [Where can I find reports on transactions?](#where-can-i-find-reports-on-transactions)
 - [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
