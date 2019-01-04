@@ -907,17 +907,26 @@ This API returns the following HTTP statuses in the responses:
 | `429 Too Many Requests` | There is currently a limit of max 200 calls per second\* |
 | `500 Server Error`      | An internal Vipps problem.                              |
 
-HTTP responses with HTTP `4XX` and `5XX` error codes contain an `error` object:
+HTTP requests that are being stopped in the application gateway will result in an error json object, while requests that are produced from the backend will receive an array with a json object. Error codes that are produced from the application gateway include 401, 403 and 422.
 
-```
+```json
 [
   {
     "errorGroup": "Payment",
-    "errorCode": "44"
     "errorMessage": "Refused by issuer because of expired card",
+    "errorCode": "44"
  }
 ]
 ```
+
+
+```json
+{
+    "statusCode": 401,
+    "message": "Access denied due to invalid subscription key. Make sure to provide a valid key for an active subscription."
+}
+```
+
 
 ## Exception handling
 
