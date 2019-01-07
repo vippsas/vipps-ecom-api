@@ -1372,7 +1372,7 @@ API details: [`POST:  [shippingDetailsPrefix]/v2/payments/{orderId}/shippingDeta
 
 ## 3. Remove User Consent
 
-Allows Vipps to send an end user's consent removal request to merchant. This is only relevant for express checkout payments. After this merchant is obliged to handle the user details as per the GDPR guidelines.
+Allows Vipps to send an end user's consent removal request to merchant. This endpoint is required for express checkout. When receiving this request, the merchant is obliged to handle the user details as per the GDPR guidelines. The request path will include a `userId` that the merchant will be required to provide when Vipps are to share information with the merchant.
 
 API details: [`DELETE:[consetRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/oneclick-payment-with-vipps-controller/removeUserConsentUsingDELETE)
 
