@@ -109,7 +109,7 @@ paths:
       parameters:
         - name: userId
           in: path
-          description: The userId provided when requesting user information from Vipps, such as for Vipps Signup & Login.
+          description: The userId provided when requesting user information from Vipps. Received by callback or get detail request.
           required: true
           type: string
       responses:
@@ -137,7 +137,7 @@ paths:
       description: >-
         This API endpoint on the merchant side allows Vipps to get the shipping
         cost and method based on the provided address and product details. The
-        primary use of this service is Vipps HUrtigkasse (express checkout)
+        primary use of this service is Vipps Hurtigkasse (express checkout)
         where Vipps needs to present shipping cost and method to the Vipps user.
         Vipps will add `/v2/payments/{orderId}/shippingDetails` to the end of this URL.
         URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons
