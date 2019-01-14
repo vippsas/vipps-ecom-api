@@ -1039,7 +1039,7 @@
             "Cancelled"
           ],
           "example": "Cancelled",
-          "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters. See the [API guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#responses-from-requests) for more information."
+          "description": "Status which gives the current state of the payment within Vipps. See the [API guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#responses-from-requests) for more information."
         },
         "timeStamp": {
           "type": "string",
@@ -1080,7 +1080,7 @@
             "Refund"
           ],
           "example": "Refund",
-          "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters. See the [API guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#responses-from-requests) for more information."
+          "description": "Status which gives the current state of the payment within Vipps. See the [API guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#responses-from-requests) for more information."
         },
         "timeStamp": {
           "type": "string",
@@ -1121,7 +1121,7 @@
             "Captured"
           ],
           "example": "Captured",
-          "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters. See the [API guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#responses-from-requests) for more information."
+          "description": "Status which gives the current state of the payment within Vipps. See the [API guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#responses-from-requests) for more information."
         },
         "timeStamp": {
           "type": "string",
@@ -1366,7 +1366,7 @@
         "timeStamp": {
           "type": "string",
           "format": "date-time",
-          "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters.",
+          "description": "ISO formatted date time string.",
           "example": "2018-11-14T15:44:26.590Z"
         },
         "transactionText": {
