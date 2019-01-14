@@ -942,8 +942,8 @@ definitions:
       status:
         type: string
         enum:
-          - Capture
-        example: Capture
+          - Captured
+        example: Captured
         description: >-
           Id which uniquely identifies a payment. Maximum length is 30
           alphanumeric characters. See the [API guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#responses-from-requests) for more information.
