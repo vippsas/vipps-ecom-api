@@ -1258,7 +1258,7 @@
           "example": "order123abc",
           "maxLength": 30
         },
-        "transactionInfo": {
+        "transaction": {
           "$ref": "#/definitions/TransactionInfoRefund"
         },
         "transactionSummary": {

@@ -1052,7 +1052,7 @@ definitions:
           alphanumeric characters
         example: 'order123abc'
         maxLength: 30
-      transactionInfo:
+      transaction:
         $ref: '#/definitions/TransactionInfoRefund'
       transactionSummary:
         $ref: '#/definitions/TransactionSummary'
