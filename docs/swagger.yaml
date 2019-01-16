@@ -109,7 +109,7 @@ paths:
       parameters:
         - name: userId
           in: path
-          description: The userId provided when requesting user information from Vipps, such as for Vipps Signup & Login.
+          description: The userId provided when requesting user information from Vipps. Received by callback or get detail request.
           required: true
           type: string
       responses:
@@ -137,7 +137,7 @@ paths:
       description: >-
         This API endpoint on the merchant side allows Vipps to get the shipping
         cost and method based on the provided address and product details. The
-        primary use of this service is Vipps HUrtigkasse (express checkout)
+        primary use of this service is Vipps Hurtigkasse (express checkout)
         where Vipps needs to present shipping cost and method to the Vipps user.
         Vipps will add `/v2/payments/{orderId}/shippingDetails` to the end of this URL.
         URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons
@@ -720,7 +720,7 @@ definitions:
       operation:
         type: string
         example: RESERVE
-        description: 'The operation that was performed'
+        description: The operation that was performed for this log entry. See the [API guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#responses-from-requests) for more information.
         enum:
           - INITIATE
           - RESERVE
@@ -807,7 +807,7 @@ definitions:
           - SALE
           - CANCELLED
           - REJECTED
-        description: Status which gives the current state of the payment within Vipps
+        description: Status which gives the current state of the payment within Vipps. See the [API guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callbacks) for more information.
         example: RESERVE
       timeStamp:
         type: string
@@ -845,7 +845,7 @@ definitions:
           - VOID
           - FAILED
           - REJECTED
-        description: Status which gives the current state of the payment within Vipps
+        description: Status which gives the current state of the payment within Vipps. See the [API guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#responses-from-requests) for more information.
         example: RESERVE
       timeStamp:
         type: string
@@ -857,42 +857,6 @@ definitions:
         type: string
         description: Vipps transaction id
         example: '5001420062'
-  TransactionInfo:
-    type: object
-    required:
-      - amount
-      - status
-      - timeStamp
-      - transactionId
-      - transactionText
-    properties:
-      amount:
-        type: number
-        format: double
-        description: Ordered amount in øre
-        example: 20000
-      status:
-        type: string
-        enum:
-          - Cancelled
-          - Captured
-          - Reserved
-        example: Reserved
-        description: >-
-          Id which uniquely identifies a payment. Maximum length is 30
-          alphanumeric characters
-      timeStamp:
-        type: string
-        description: Timestamp in ISO-8601 representing when vipps Cancelled transaction.
-        example: '2018-12-12T11:18:38.246Z'
-      transactionId:
-        type: string
-        description: Vipps transaction id
-        example: '5001420062'
-      transactionText:
-        type: string
-        description: Transaction text reference provided by merchant
-        example: 'One pair of Vipps socks'
   TransactionInfoCancel:
     type: object
     required:
@@ -913,8 +877,7 @@ definitions:
           - Cancelled
         example: Cancelled
         description: >-
-          Id which uniquely identifies a payment. Maximum length is 30
-          alphanumeric characters
+          Status which gives the current state of the payment within Vipps. See the [API guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#responses-from-requests) for more information.
       timeStamp:
         type: string
         description: Timestamp in ISO-8601 representing when vipps Cancelled transaction.
@@ -947,8 +910,7 @@ definitions:
           - Refund
         example: Refund
         description: >-
-          Id which uniquely identifies a payment. Maximum length is 30
-          alphanumeric characters
+          Status which gives the current state of the payment within Vipps. See the [API guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#responses-from-requests) for more information.
       timeStamp:
         type: string
         description: Timestamp in ISO-8601 representing when vipps Cancelled transaction.
@@ -978,11 +940,10 @@ definitions:
       status:
         type: string
         enum:
-          - Capture
-        example: Capture
+          - Captured
+        example: Captured
         description: >-
-          Id which uniquely identifies a payment. Maximum length is 30
-          alphanumeric characters
+          Status which gives the current state of the payment within Vipps. See the [API guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#responses-from-requests) for more information.
       timeStamp:
         type: string
         description: Timestamp in ISO-8601 representing when vipps Cancelled transaction.
@@ -1039,7 +1000,7 @@ definitions:
     properties:
       address:
         description: Address Details
-        $ref: '#/definitions/AddressDetails'
+        $ref: '#/definitions/Address'
       shippingCost:
         type: number
         format: double
@@ -1091,7 +1052,7 @@ definitions:
           alphanumeric characters
         example: 'order123abc'
         maxLength: 30
-      transactionInfo:
+      transaction:
         $ref: '#/definitions/TransactionInfoRefund'
       transactionSummary:
         $ref: '#/definitions/TransactionSummary'
@@ -1109,34 +1070,6 @@ definitions:
         maxLength: 6
         example: 123456
         pattern: '^\d{6}$'
-  AddressDetails:
-    type: object
-    required:
-      - addressLine1
-      - city
-      - country
-      - zipCode
-    properties:
-      addressLine1:
-        type: string
-        example: 'Dronning Eufemias gate 42'
-      addressLine2:
-        type: string
-        example: 'Att: Rune Garborg'
-      city:
-        type: string
-        description: City
-        example: 'Oslo'
-      country:
-        type: string
-        description: The only country supported is Norway
-        example: 'NO'
-      zipCode:
-        type: integer
-        format: int32
-        description: Four digits
-        pattern: '^\d{4}$'
-        example: 0191
   ShippingDetails:
     type: object
     required:
@@ -1208,8 +1141,7 @@ definitions:
         type: string
         format: date-time
         description: >-
-          Id which uniquely identifies a payment. Maximum length is 30
-          alphanumeric characters.
+          ISO formatted date time string.
         example: '2018-11-14T15:44:26.590Z'
       transactionText:
         type: string
