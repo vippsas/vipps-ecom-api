@@ -453,7 +453,7 @@ All URLs in Vipps eCommerce API are validated with the
 [Apache Commons UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
 
 If `isApp` is true, the `fallBack` is not validated with Apache Commons UrlValidator,
-as the app-switch URL may be something like `vipps://`, which is not a valid ÚRL.
+as the app-switch URL may be something like `vipps://`, which is not a valid URL.
 
 Here is a simple Java class suitable for testing URLs,
 using the dummy URL `https://example.com/vipps/fallback?id=abc123`:
