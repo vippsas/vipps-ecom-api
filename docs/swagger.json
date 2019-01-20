@@ -1585,36 +1585,52 @@
     },
     "AuthorizationTokenResponse": {
       "type": "object",
+      "required": [
+        "token_type",
+        "expires_in",
+        "ext_expires_in",
+        "expires_on",
+        "not_before",
+        "resource",
+        "access_token"
+      ],
       "properties": {
         "token_type": {
           "type": "string",
+          "description": "String containing the type for the Access Token.",
           "example": "Bearer"
-        },
-        "access_token": {
-          "type": "string",
-          "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni <snip>"
-        },
-        "ext_expires_in": {
-          "type": "integer",
-          "example": 0
-        },
-        "not_before": {
-          "type": "integer",
-          "example": 1495184574
         },
         "expires_in": {
           "type": "integer",
-          "format": "int32",
-          "example": 86398
+          "description": "Token expiry time in seconds.",
+          "example": 3600
+        },
+        "ext_expires_in": {
+          "type": "integer",
+          "description": "Extra time added to expiry time. Currently disabled.",
+          "example": 3600
+        },
+        "expires_on": {
+          "type": "integer",
+          "description": "Token expiry time in epoch time format.",
+          "example": 1547823408
+        },
+        "not_before": {
+          "type": "integer",
+          "description": "Token creation time in epoch time format.",
+          "example": 1547819508
         },
         "resource": {
           "type": "string",
+          "description": "A common resource object. Not used in token validation",
           "example": "00000002-0000-0000-c000-000000000000"
+        },
+        "access_token": {
+          "type": "string",
+          "format": "byte",
+          "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni <snip>"
         }
       }
-    },
-    "AuthorizationTokenMethod": {
-      "type": "object"
     },
     "FetchShippingCostResponse": {
       "type": "object",
