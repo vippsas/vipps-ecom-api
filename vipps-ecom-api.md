@@ -1,8 +1,8 @@
-  # Vipps eCommerce API
+# Vipps eCommerce API
 
 API version: 2.0
 
-Document version 1.0.2
+Document version 1.0.3
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
@@ -1414,7 +1414,7 @@ Callbacks and responses from the eCommerce API provide status updates for the cu
 | Callback                                                                  | Response "Status" or "Operation"                                                                                                                                                                                                                                                                     |
 |:--------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Callback for express checkout:<br>[callbackPrefix]/v2/payments/{orderId}  | RESERVE - When user approved and payment is reserved.<br> SALE - When user approved and payment type is Direct capture.<br> CANCELLED - User rejected the payment.<br> REJECTED - User didn't act on the payment.<br>                                                                                |
-| Callback for regular checkout:<br> [callbackPrefix]/v2/payments/{orderId} | RESERVED - When user approved and payment is reserved.<br> SALE - When user approved and payment type is Direct capture.<br> RESERVE_FAILED - Reserve failed because of no coverage, outdated card details or similliar.<br> SALE_FAILED - Direct capture failed because of no coverage, outdated card details or similliar.<br> CANCELLED - User rejected the payment.<br> REJECTED - User didn't act on the payment.<br> |
+| Callback for regular checkout:<br> [callbackPrefix]/v2/payments/{orderId} | RESERVED - When user approved and payment is reserved.<br> SALE - When user approved and payment type is Direct capture.<br> RESERVE_FAILED - Reserve failed because of no coverage, outdated card details or similar.<br> SALE_FAILED - Direct capture failed because of no coverage, outdated card details or similliar.<br> CANCELLED - User rejected the payment.<br> REJECTED - User didn't act on the payment.<br> |
 
 # Questions?
 
