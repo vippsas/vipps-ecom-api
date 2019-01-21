@@ -1457,7 +1457,7 @@ different requests and for different payment types.
 |   |  `SALE_FAILED` - Direct capture failed because of no coverage, outdated card details or similar. |
 |   |  `CANCELLED` - User rejected the payment. |
 |   |  `REJECTED` - User didn't act on the payment. |
-| Callback for *express* checkout: [`[callbackPrefix]/v2/payments/{orderId}``](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)  | `RESERVE` - When user approved and payment is reserved. (It _is_ correct that this is different from `RESERVED` for regular checkout.)|
+| Callback for *express* checkout: [`[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)  | `RESERVE` - When user approved and payment is reserved. (It _is_ correct that this is different from `RESERVED` for regular checkout.)|
 |    | `SALE` - When user approved and payment type is Direct capture.  |
 |    | `CANCELLED` - User rejected the payment.  |
 |    | `REJECTED` - User didn't act on the payment.  |
