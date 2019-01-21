@@ -1426,8 +1426,9 @@ Callbacks and responses from the eCommerce API provide status updates for the cu
 |   |  `REJECTED` - No user action in the Vipps app, i.e timeout. |
 
 ## Callbacks
+
 | Callback | Response "Status" or "Operation"    |
-| -----------  --- | -----|
+| -------------- | ----- |
 | Callback for *regular* checkout: [[callbackPrefix]/v2/payments/{orderId}](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST) | `RESERVED` - When user approved and payment is reserved. |
 |   |  `SALE` - When user approved and payment type is Direct capture.  |
 |   |  `RESERVE_FAILED` - Reserve failed because of no coverage, outdated card details or similar. |
