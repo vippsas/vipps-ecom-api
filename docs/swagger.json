@@ -935,6 +935,25 @@
         }
       }
     },
+    "callbackErrorInfo": {
+      "type": "object",
+      "properties": {
+        "errorCode": {
+          "type": "int",
+          "example": 45,
+          "description": "The number code for the error."
+        },
+        "errorGroup": {
+          "type": "string",
+          "example": "PAYMENTS"
+        },
+        "errorMessage": {
+          "type": "string",
+          "description": "Description of the error",
+          "example": "User has cancelled or not acted upon the payment"
+        }
+      }
+    },
     "CallbackTransactionInfoStatus": {
       "type": "object",
       "required": [
@@ -1580,6 +1599,9 @@
         "userDetails": {
           "description": "Vipps User Information",
           "$ref": "#/definitions/UserDetails"
+        },
+        "callbackErrorInfo": {
+          "$ref": "#/definitions/callbackErrorInfo"
         }
       }
     },

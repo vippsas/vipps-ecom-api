@@ -787,6 +787,20 @@ definitions:
         type: string
         description: '1234567'
         example: '1234567'
+  callbackErrorInfo:
+    type: object
+    properties:
+      errorCode:
+        type: int
+        example: 45
+        description: The number code for the error.
+      errorGroup:
+        type: string
+        example: 'PAYMENTS'
+      errorMessage:
+        type: string
+        description: Description of the error
+        example: 'User has cancelled or not acted upon the payment'
   CallbackTransactionInfoStatus:
     type: object
     required:
@@ -1352,6 +1366,8 @@ definitions:
       userDetails:
         description: Vipps User Information
         $ref: '#/definitions/UserDetails'
+      callbackErrorInfo:
+        $ref: '#/definitions/callbackErrorInfo'
   AuthorizationTokenResponse:
     type: object
     required:
