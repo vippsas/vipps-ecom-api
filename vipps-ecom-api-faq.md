@@ -10,7 +10,7 @@ guide for the Vipps Developer Portal.
 
 - [Why do payments fail?](#why-do-payments-fail)
 - [Why does capture fail?](#why-does-capture-fail)
-- [Can I use my "Vipps-nummer" in my webshop?](#can-i-use-vipps--nummer-in-my-webshop)
+- [Can I use my "Vipps-nummer" in my webshop?](#can-i-use-my-vipps-nummer-in-my-webshop)
 - [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
 - [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
 - [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
