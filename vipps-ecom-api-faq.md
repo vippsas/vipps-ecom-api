@@ -10,6 +10,7 @@ guide for the Vipps Developer Portal.
 
 - [Why do payments fail?](#why-do-payments-fail)
 - [Why does capture fail?](#why-does-capture-fail)
+- [Can I use my "Vipps-nummer" in my webshop?](#can-i-use-vipps--nummer-in-my-webshop)
 - [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
 - [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
 - [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
@@ -36,6 +37,12 @@ The most common reasons are:
 8. Attempt to capture an amount that has not been reserved
 
 We are continuously improving the error messages in the Vipps app. Please note that we are not allowed to give detailed information about all errors to the merchant, as some information should only be provided to the Vipps user.
+
+# Can I use my "Vipps-nummer" in my webshop?
+
+No. According to Norwegian law you must be able to offer refunds. 
+This is not supported with [Vipps-nummer](https://www.vipps.no/bedrift/vippsnummer).
+You need [Vipps på Nett](https://www.vipps.no/bedrift/vipps-pa-nett).
 
 # Why does capture fail?
 
