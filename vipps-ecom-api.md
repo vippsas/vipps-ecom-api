@@ -1359,7 +1359,6 @@ API details: [`POST:/v2/payments/{orderId}`](https://vippsas.github.io/vipps-eco
 }
 ```
 
-
 ## Fetch Shipping Cost
 
 This API call allows Vipps to get the shipping cost and method based on the provided address and product details. This is only relevant for express checkout payments where Vipps needs to present shipping cost and method to the Vipps user. This service is to be implemented by merchants.
