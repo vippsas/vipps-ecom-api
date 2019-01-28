@@ -353,6 +353,11 @@ paths:
             for full guide with images.
           required: true
           type: string
+        - in: header
+          name: x-request-id
+          type: string
+          description: >-
+            Id used for making requests idempotent. Adding this ID will allow the merchant to retry requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Max 30 characters.
         - in: body
           name: paymentActionsRequest
           description: paymentActionsRequest
@@ -506,6 +511,11 @@ paths:
             for full guide with images.
           required: true
           type: string
+        - in: header
+          name: x-request-id
+          type: string
+          description: >-
+            Id used for making requests idempotent. Adding this ID will allow the merchant to retry requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Max 30 characters.
         - in: body
           name: paymentActionsRequest
           description: paymentActionsRequest
@@ -791,7 +801,7 @@ definitions:
     type: object
     properties:
       errorCode:
-        type: int
+        type: integer
         example: 45
         description: The number code for the error.
       errorGroup:
