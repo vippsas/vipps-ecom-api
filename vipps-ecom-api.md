@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.0.4
+Document version 1.0.5
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
@@ -943,11 +943,15 @@ explains how Vipps handles different exception and error situations in detail.
 Defining a socket timeout period is the common measure to protect server
 resources and is expected. However, the time needed to fulfill a service requests
 depends on several systems, which impose longer timeout period than usually
-required. We recommend setting no less than 1 second socket connection timeout
+required.
+
+We recommend setting no less than 1 second socket connection timeout
 and 5 seconds socket read timeout while communicating with Vipps.
-A good practice is, if/when the socket read timeout occurs call Get Payment
-Details and check status of last transaction in transaction history prior
-executing the service call again.
+
+A good practice is, if/when the socket read timeout occurs, to call
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
+and check status of last transaction in transaction history prior
+to executing the service call again.
 
 ### Callback aborted/interrupted
 
