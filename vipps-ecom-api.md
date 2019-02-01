@@ -234,8 +234,8 @@ and these headers are required:
 
 | Header Name | Header Value | Description |
 | ----------- | ------------ | ----------- |
-| `Authorization` | `Bearer <JWT access token>` | Type: Authorization token. This is available in the Vipps Developer Portal. |
-| `Ocp-Apim-Subscription-Key` | Base 64 encoded string | The subscription key for the eCom API. This is available in the Vipps Developer Portal. |
+| `authorization` | `Bearer <JWT access token>` | Type: Authorization token. This is available in the Vipps Developer Portal. |
+| `ocp-apim-subscription-key` | Base 64 encoded string | The subscription key for the eCom API. This is available in the Vipps Developer Portal. |
 
 ### Access token
 
@@ -247,9 +247,9 @@ The Access Token API provides the JWT bearer token.
 
 ```http
 POST https://apitest.vipps.no/accessToken/get
-client_id: <ClientID>
-client_secret: <ClientSecret>
-Ocp-Apim-Subscription-Key: <Ocp-Apim-Subscription-Key>
+client_id: <client_id>
+client_secret: <client_secret>
+ocp-apim-subscription-key: <ocp-apim-subscription-key>
 ```
 All headers are per merchantSerialNumber and can be found in Vipps Developer Portal.
 
@@ -257,12 +257,13 @@ All headers are per merchantSerialNumber and can be found in Vipps Developer Por
 | ----------- | ------------ | ----------- |
 | `client_id` | A GUID value | Client ID for the merchant |
 | `client_secret` | Base 64 encoded string | Client Secret for the merchant |
-| `Ocp-Apim-Subscription-Key` | Base 64 encoded string | Subscription key for the product |
+| `ocp-apim-subscription-key` | Base 64 encoded string | Subscription key for the product |
 
 **Response**
-
-```json
+````http
 HTTP 200 OK
+````
+```json
 {
   "token_type": "Bearer",
   "expires_in": "86398",
@@ -280,15 +281,15 @@ JWT properties:
 | --------------------------- | ------------------------------------------- |
 | `Bearer`                    | It’s a `Bearer` token. The word `Bearer` should be added before the token |
 | `expires_in`                | Token expiry duration in seconds. |
-| `ext_expires_in`            | Extra expiry time. This is always zero. |
+| `ext_expires_in`            | Extra expiry time. Not used. |
 | `expires_on`                | Token expiry time in epoch time format. |
 | `not_before`                | Token creation time in epoch time format. |
 | `resource`                  | For the product for which token has been issued. |
-| `access_token`              | The actual access token that needs to be used in `Authorization` request header. |
+| `access_token`              | The actual access token that needs to be used in `authorization` request header. |
 
-**Please note:** The access token is valid for 24 hours.
+**Please note:** The access token is valid for 1 hour.
 
-Example of an error reponse body (formatted for readability):
+Example of an error response body (formatted for readability):
 
 ```json
 {
@@ -313,7 +314,7 @@ This API returns the following HTTP statuses in the responses:
 | ------------------- | ------------------------------------------- |
 | `200 OK`            | Request successful.                          |
 | `400 Bad Request`   | Invalid request, see the `error` for details.  |
-| `401 Unauthorized`  | Invalid credentials.                         |
+| `401 Unauthorized`  | Invalid authorization.                         |
 | `403 Forbidden`     | Authentication ok, but credentials lacks authorization.  |
 | `500 Server Error`  | An internal Vipps problem.                  |
 
@@ -326,16 +327,16 @@ Initiate payment is used to create a new payment order in Vipps:
 **Initiate request headers example:**
 ```json
 {
-    "Authorization": "Bearer jfewioIJffruJIfewiyYUdweiLMfnewUQiwmdcLnfewjNj <snip>",
-    "Content-Type": "application/json",
-    "Ocp-Apim-Subscription-Key": "12345678901234567890123456789012"
+    "authorization": "Bearer jfewioIJffruJIfewiyYUdweiLMfnewUQiwmdcLnfewjNj <snip>",
+    "content-type": "application/json",
+    "ocp-apim-subscription-key": "12345678901234567890123456789012"
 }
 ```
 
-A request is authorized by the `Authorization` and `Ocp-Apim-Subscription-Key` included in the
+A request is authorized by the `authorization` and `ocp-apim-subscription-key` included in the
 HTTP headers.
-* `Authorization`: The word Bearer followed by the token from a Access Token request.
-* `Ocp-Apim-Subscription-Key`: Subscription key for the eCommerce Product.
+* `authorization`: The word Bearer followed by the token from a Access Token request.
+* `ocp-apim-subscription-key`: Subscription key for the eCommerce Product.
 
 **Initiate request body example:**
 
@@ -394,8 +395,10 @@ To initiate an express checkout payment the payment initiation call must include
 Once successfully initiated, a response with a redirect URL is returned.
 
 **Initiate response example:**
-```json
+```http
 HTTP 202 Accepted
+```
+```json
 {
     "orderId": "order123abc",
     "url": "https://api.vipps.no/deeplink/vippsgateway?token=eyJraWQiOiJqd3R <snip>"
