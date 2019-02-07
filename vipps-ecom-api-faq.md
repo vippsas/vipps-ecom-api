@@ -40,7 +40,7 @@ We are continuously improving the error messages in the Vipps app. Please note t
 
 # Can I use my "Vipps-nummer" in my webshop?
 
-No. According to Norwegian law you must be able to offer refunds. 
+No. According to Norwegian law you must be able to offer refunds.
 This is not supported with [Vipps-nummer](https://www.vipps.no/bedrift/vippsnummer).
 You need [Vipps på Nett](https://www.vipps.no/bedrift/vipps-pa-nett).
 
@@ -61,8 +61,8 @@ to the customer's server. If this server is slow,
 or has a slow internet connection, the delay may cause Vipps Hurtigkasse to fail due to a timeout.
 The solution to this is a faster server and internet connection.
 
-Information for [Vipps for WooCommerce](https://www.vipps.no/bedrift/vipps-pa-nett/woocommerce): 
-Some third party plugins do not work with Vipps Hurtigkasse. Please ask for help in the 
+Information for [Vipps for WooCommerce](https://www.vipps.no/bedrift/vipps-pa-nett/woocommerce):
+Some third party plugins do not work with Vipps Hurtigkasse. Please ask for help in the
 [support forum](https://wordpress.org/support/plugin/woo-vipps),
 and include information about the plugins you have installed.
 
@@ -105,6 +105,12 @@ The backup should be to ask for status within a time frame.
 You can use [Postman](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-postman.md)
 to manually do API calls, like the two above.
 See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
+
+# How long is an initiated order valid, if the user does not confirm in the Vipps app?
+
+Vipps currently waits for five minutes before automatically cancelling an order due to inactivity.
+It's important that the merchant waits at least as long, otherwise the Vipps user may
+confirm in the Vipps app, and right after get an error from the merchant that the order has been cancelled.
 
 # How long does it take until the money is in my account?
 
