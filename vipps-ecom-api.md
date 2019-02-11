@@ -391,6 +391,8 @@ A payment is uniquely identified by the combination of `merchantSerialNumber` an
 
 To initiate an express checkout payment the payment initiation call must include the `"paymentType":"eComm Express Payment"` parameter. If this parameter is not passed, the payment type will default to regular payment.
 
+To add authentication to the callbacks made by Vipps the merchant may provide an `authToken`. This token will then be returned as a `authorization` header in the callback and shipping details requests made by Vipps for that order.
+
 Once successfully initiated, a response with a redirect URL is returned.
 
 **Initiate response example:**

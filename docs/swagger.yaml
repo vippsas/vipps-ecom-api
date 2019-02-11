@@ -153,6 +153,10 @@ paths:
           description: orderId
           required: true
           type: string
+        - name: authorization
+          in: headers
+          type: string
+          description: Token provided by the merchant in initiate payment request as `authToken`. Used so that the merchant may authenticate the request.
         - in: body
           name: fetchShippingCostAndMethod
           description: fetchShippingCostAndMethod
@@ -280,6 +284,10 @@ paths:
           description: orderId
           required: true
           type: string
+        - name: authorization
+          in: headers
+          type: string
+          description: Token provided by the merchant in initiate payment request as `authToken`. Used so that the merchant may authenticate the request.
         - in: body
           name: expressCheckOutPaymentRequest
           description: expressCheckOutPaymentRequest
@@ -1172,8 +1180,9 @@ definitions:
       authToken:
         type: string
         description: >-
-          The Merchant should share this token if merchant has authentication
-          mechanism in place which could be used for making callbacks secure.
+          Authorization token that the merchant could share to make callbacks more secure.
+          If provided this token will be returned as an `Authorization` header for our callbacks.
+          This includes shipping details and callback.
         maxLength: 255
         example: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni <snip>'
       callbackPrefix:
@@ -1191,7 +1200,7 @@ definitions:
       consentRemovalPrefix:
         type: string
         description: >-
-          Required for expess checkout payments. This callback URL will be used
+          Required for express checkout payments. This callback URL will be used
           by Vipps to inform the merchant that the user has revoked his/her
           consent: This Vipps user does do not want the merchant to store or use
           his/her personal information anymore. Required by GDPR.
