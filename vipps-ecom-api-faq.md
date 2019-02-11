@@ -13,6 +13,7 @@ guide for the Vipps Developer Portal.
 - [Can I use my "Vipps-nummer" in my webshop?](#can-i-use-my-vipps-nummer-in-my-webshop)
 - [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
 - [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
+- [How can I refund a payment?](how-can-i-refund-a-payment)
 - [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
 - [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-cant-find-it)
 - [How long is an initiated order valid, if the user does not confirm in the Vipps app?](#how-long-is-an-initiated-order-valid-if-the-user-does-not-confirm-in-the-vipps-app)
@@ -85,6 +86,12 @@ For more information, please see the Consumer Authority's
 To request _direct capture_, please contact your KAM.
 
 See [Regular eCommerce payments](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#regular-ecommerce-payments) for more details.
+
+# How can I refund a payment?
+
+This depends on your eCommerce solution. The Vipps API supports refunds with
+[`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/refundPaymentUsingPOST).
+For details on how to offer refunds, please refer to the documentation for your eCommerce solution.
 
 # How can I refund only a part of a payment?
 
