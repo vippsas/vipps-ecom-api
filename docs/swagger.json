@@ -632,7 +632,7 @@
           "Vipps eCom API"
         ],
         "summary": "Get payment Details",
-        "description": "This API call allows merchant to get the details of a payment transaction. Service call returns detailed transaction history of given payment where events are sorted by the time single transaction occurred.",
+        "description": "This API call allows merchant to get the details of a payment transaction. Service call returns detailed transaction history of given payment where events are sorted from newest to oldest for when the transaction occurred.",
         "operationId": "getPaymentDetailsUsingGET",
         "consumes": [
           "application/json"
@@ -849,6 +849,12 @@
     },
     "TransactionLogHistory": {
       "type": "object",
+      "required": [
+        "operation",
+        "amount",
+        "operationSuccess",
+        "transactionText"
+      ],
       "properties": {
         "amount": {
           "type": "integer",
@@ -869,18 +875,27 @@
           ]
         },
         "operationSuccess": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "If the corrosponding operation was successfull.",
+          "example": true
         },
         "requestId": {
+          "description": "The idempotent request id provided by the merchant for the operation.",
+          "example": 12983921873981898213,
           "type": "string"
         },
         "timeStamp": {
-          "type": "string"
+          "type": "string",
+          "description": "Timestamp in ISO-8601 representing when the operation was perfomed.",
+          "example": "2019-02-05T12:27:42.311Z"
         },
         "transactionId": {
+          "description": "Identifies the transaction",
+          "example": 5001446662,
           "type": "string"
         },
         "transactionText": {
+          "description": "Text provided by the merchant for the corresponding operation.",
           "type": "string"
         }
       }
@@ -1183,6 +1198,7 @@
         },
         "transactionLogHistory": {
           "type": "array",
+          "description": "Array of transaction operations. Sorted from newest to oldest.",
           "items": {
             "$ref": "#/definitions/TransactionLogHistory"
           }
@@ -1585,7 +1601,8 @@
         "merchantSerialNumber",
         "orderId",
         "shippingDetails",
-        "userDetails"
+        "userDetails",
+        "transactionInfo"
       ],
       "properties": {
         "merchantSerialNumber": {
