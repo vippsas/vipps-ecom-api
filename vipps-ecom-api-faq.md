@@ -15,7 +15,9 @@ guide for the Vipps Developer Portal.
 - [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
 - [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
 - [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-cant-find-it)
+- [How long is an initiated order valid, if the user does not confirm in the Vipps app?](#how-long-is-an-initiated-order-valid-if-the-user-does-not-confirm-in-the-vipps-app)
 - [How long does it take until the money is in my account?](#how-long-does-it-take-until-the-money-is-in-my-account)
+- [How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
 - [Where can I find reports on transactions?](#where-can-i-find-reports-on-transactions)
 - [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
 - [I am unable to login to the Vipps developer portal](#i-am-unable-to-login-to-the-vipps-developer-portal)
@@ -40,7 +42,7 @@ We are continuously improving the error messages in the Vipps app. Please note t
 
 # Can I use my "Vipps-nummer" in my webshop?
 
-No. According to Norwegian law you must be able to offer refunds. 
+No. According to Norwegian law you must be able to offer refunds.
 This is not supported with [Vipps-nummer](https://www.vipps.no/bedrift/vippsnummer).
 You need [Vipps på Nett](https://www.vipps.no/bedrift/vipps-pa-nett).
 
@@ -61,8 +63,8 @@ to the customer's server. If this server is slow,
 or has a slow internet connection, the delay may cause Vipps Hurtigkasse to fail due to a timeout.
 The solution to this is a faster server and internet connection.
 
-Information for [Vipps for WooCommerce](https://www.vipps.no/bedrift/vipps-pa-nett/woocommerce): 
-Some third party plugins do not work with Vipps Hurtigkasse. Please ask for help in the 
+Information for [Vipps for WooCommerce](https://www.vipps.no/bedrift/vipps-pa-nett/woocommerce):
+Some third party plugins do not work with Vipps Hurtigkasse. Please ask for help in the
 [support forum](https://wordpress.org/support/plugin/woo-vipps),
 and include information about the plugins you have installed.
 
@@ -106,6 +108,12 @@ You can use [Postman](https://github.com/vippsas/vipps-ecom-api/blob/master/vipp
 to manually do API calls, like the two above.
 See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
 
+# How long is an initiated order valid, if the user does not confirm in the Vipps app?
+
+Vipps currently waits for five minutes before automatically cancelling an order due to inactivity.
+It's important that the merchant waits at least as long, otherwise the Vipps user may
+confirm in the Vipps app, and right after get an error from the merchant that the order has been cancelled.
+
 # How long does it take until the money is in my account?
 
 The settlement flow is as follows:
@@ -115,7 +123,13 @@ The settlement flow is as follows:
 3. Day 3 (the next _bank day_) at 16:00: Payments are made from Vipps.
 4. Day 5 (the third _bank day_): The settlement is booked with reference by the bank.
 
+See also [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
+
 See https://www.vipps.no/sporsmal for more details.
+
+# How long does it take from a refund is made until the money is in the customer's account?
+
+Normally 2-3 _bank days_, depending on the bank.
 
 # Where can I find reports on transactions?
 
@@ -127,12 +141,13 @@ More information: https://github.com/vippsas/vipps-developers/tree/master/settle
 
 # For how long is an initiated payment reserved?
 
-In the bank the transaction is reserved for 7 days, however this varies depending on which bank the customer is using.
-In Vipps we do not automatically change the status of the order.
+Most banks keep reservations for 7 days, however this varies depending on which bank the customer is using.
+Vipps does not automatically change the status of the order.
 
-If you try to capture a payment more than 7 days after the payment has been initiated and the reservation has been released,
-Vipps will make a new payment request to the bank. If the user has sufficient funds everything will be successful.
-If the user does not have coverage on his account at this time the payment will fail.
+If a capture attempt is made more than 7 days after the payment has been initiated
+and the reservation has been released, Vipps will make a new payment request to the bank.
+If the account has sufficient funds, the payment will be successful.
+If the user's account has insufficient funds at this time, the payment will fail.
 
 In many cases the bank will have a register of expired reservations and they will force it through if the account allows this.
 This will put the account in the negative.

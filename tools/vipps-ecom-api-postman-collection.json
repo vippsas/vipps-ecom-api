@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "324fd820-8466-49d8-9fbb-79e9e9b1bc84",
+		"_postman_id": "5771bed2-6c75-463a-b95c-6db8cf99e489",
 		"name": "eCommerce API v2 - Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -105,6 +105,18 @@
 		},
 		{
 			"name": "Capture Payment",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c81cb9b3-5b95-43ea-a7c0-3421b7f3bd58",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -121,9 +133,8 @@
 						"value": "Bearer {{access_token}}"
 					},
 					{
-						"key": "X-Request-Id",
-						"value": "{{$randomInt}}",
-						"disabled": true
+						"key": "x-request-id",
+						"value": "{{orderId}}XIDC1"
 					}
 				],
 				"body": {
@@ -174,11 +185,6 @@
 					{
 						"key": "authorization",
 						"value": "Bearer {{access_token}}"
-					},
-					{
-						"key": "X-Request-Id",
-						"value": "{{$randomInt}}",
-						"disabled": true
 					}
 				],
 				"body": {
@@ -252,9 +258,8 @@
 						"value": "application/json"
 					},
 					{
-						"key": "X-Request-Id",
-						"value": "{{$randomInt}}",
-						"disabled": true
+						"key": "x-request-id",
+						"value": "{{orderId}}XIDR1"
 					}
 				],
 				"body": {

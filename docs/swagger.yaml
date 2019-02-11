@@ -361,6 +361,11 @@ paths:
             for full guide with images.
           required: true
           type: string
+        - in: header
+          name: x-request-id
+          type: string
+          description: >-
+            Id used for making requests idempotent. Adding this ID will allow the merchant to retry requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Max 30 characters.
         - in: body
           name: paymentActionsRequest
           description: paymentActionsRequest
@@ -514,6 +519,11 @@ paths:
             for full guide with images.
           required: true
           type: string
+        - in: header
+          name: x-request-id
+          type: string
+          description: >-
+            Id used for making requests idempotent. Adding this ID will allow the merchant to retry requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Max 30 characters.
         - in: body
           name: paymentActionsRequest
           description: paymentActionsRequest
@@ -549,7 +559,7 @@ paths:
       description: >-
         This API call allows merchant to get the details of a payment
         transaction. Service call returns detailed transaction history of given
-        payment where events are sorted by the time single transaction occurred.
+        payment where events are sorted from newest to oldest for when the transaction occurred.
       operationId: getPaymentDetailsUsingGET
       consumes:
         - application/json
@@ -721,6 +731,11 @@ definitions:
         example: 'Posten'
   TransactionLogHistory:
     type: object
+    required:
+      - operation
+      - amount
+      - operationSuccess
+      - transactionText
     properties:
       amount:
         type: integer
@@ -739,13 +754,22 @@ definitions:
           - VOID
       operationSuccess:
         type: boolean
+        description: If the corrosponding operation was successfull.
+        example: true
       requestId:
+        description: The idempotent request id provided by the merchant for the operation.
+        example: 12983921873981898213
         type: string
       timeStamp:
         type: string
+        description: Timestamp in ISO-8601 representing when the operation was perfomed.
+        example: '2019-02-05T12:27:42.311Z'
       transactionId:
+        description: Identifies the transaction
+        example: 5001446662
         type: string
       transactionText:
+        description: Text provided by the merchant for the corresponding operation.
         type: string
   CancelTransaction:
     type: object
@@ -799,7 +823,7 @@ definitions:
     type: object
     properties:
       errorCode:
-        type: int
+        type: integer
         example: 45
         description: The number code for the error.
       errorGroup:
@@ -988,6 +1012,8 @@ definitions:
         $ref: '#/definitions/PaymentShippingDetails'
       transactionLogHistory:
         type: array
+        description:
+          Array of transaction operations. Sorted from newest to oldest.
         items:
           $ref: '#/definitions/TransactionLogHistory'
       transactionSummary:
@@ -1349,6 +1375,7 @@ definitions:
       - orderId
       - shippingDetails
       - userDetails
+      - transactionInfo
     properties:
       merchantSerialNumber:
         type: string
