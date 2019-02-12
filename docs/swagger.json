@@ -336,11 +336,18 @@
           "content": {
             "application/json;charset=UTF-8": {
               "schema": {
-                "$ref": "#/components/schemas/ExpressCheckOutPaymentRequest"
+                "oneOf": [
+                  {
+                    "$ref": "#/components/schemas/ExpressCheckOutPaymentRequest"
+                  },
+                  {
+                    "$ref": "#/components/schemas/RegularCheckOutPaymentRequest"
+                  }
+                ]
               }
             }
           },
-          "description": "expressCheckOutPaymentRequest",
+          "description": "The body of the request made by Vipps. It will differ if the request is a regular or express payment.",
           "required": true
         },
         "responses": {
@@ -1684,6 +1691,35 @@
           },
           "userDetails": {
             "$ref": "#/components/schemas/UserDetails"
+          },
+          "callbackErrorInfo": {
+            "$ref": "#/components/schemas/callbackErrorInfo"
+          }
+        }
+      },
+      "RegularCheckOutPaymentRequest": {
+        "type": "object",
+        "required": [
+          "merchantSerialNumber",
+          "orderId",
+          "transactionInfo"
+        ],
+        "properties": {
+          "merchantSerialNumber": {
+            "type": "string",
+            "description": "Unique id for this merchant's sales channel: website, mobile app etc. Short name: MSN.",
+            "minLength": 6,
+            "maxLength": 6,
+            "example": 123456,
+            "pattern": "^\\d{6}$"
+          },
+          "orderId": {
+            "type": "string",
+            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters",
+            "example": "order123abc"
+          },
+          "transactionInfo": {
+            "$ref": "#/components/schemas/CallbackTransactionInfoStatus"
           },
           "callbackErrorInfo": {
             "$ref": "#/components/schemas/callbackErrorInfo"
