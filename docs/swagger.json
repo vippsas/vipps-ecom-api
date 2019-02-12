@@ -118,27 +118,6 @@
         "responses": {
           "200": {
             "description": "Remove User Consent (for express checkout)"
-          },
-          "400": {
-            "description": "Bad request (Missing a required parameter or bad request format)"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "403": {
-            "description": "Request Forbidden"
-          },
-          "404": {
-            "description": "Resource Not Found"
-          },
-          "405": {
-            "description": "Request method not supported"
-          },
-          "415": {
-            "description": "Unsupported media type"
-          },
-          "500": {
-            "description": "Something went wrong from Vipps Server side"
           }
         }
       }
@@ -191,30 +170,6 @@
                 }
               }
             }
-          },
-          "400": {
-            "description": "Bad request (Missing a required parameter or bad request format)"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "402": {
-            "description": "Payment Failed"
-          },
-          "403": {
-            "description": "Request Forbidden"
-          },
-          "404": {
-            "description": "Resource Not Found"
-          },
-          "405": {
-            "description": "Request method not supported"
-          },
-          "415": {
-            "description": "Unsupported media type"
-          },
-          "500": {
-            "description": "Something went wrong from Vipps Server side"
           }
         }
       }
@@ -266,6 +221,144 @@
           },
           "description": "initiatePaymentCommand",
           "required": true
+        },
+        "callbacks": {
+          "callbackExpress": {
+            "{$request.body#/merchantInfo/callbackPrefix}/v2/payments/{$request.body#/transaction/orderId}": {
+              "post": {
+                "summary": "Callback : Transaction Update",
+                "description": "This API call allows Vipps to send the transaction details. During regular ecomm payment order and transaction details will be shared. During express checkout payment it will provide user details and shipping details addition to the order and transaction details. Vipps will add `/v2/payments/{orderId}` to the end of this URL. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).",
+                "operationId": "InitiatePaymentTransactionUpdateCallbackForRegularPaymentUsingPOSTExpress",
+                "parameters": [
+                  {
+                    "name": "orderId",
+                    "in": "path",
+                    "description": "orderId",
+                    "required": true,
+                    "schema": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "responses": {
+                  "200": {
+                    "description": "Vipps does not require a response for this request."
+                  }
+                },
+                "requestBody": {
+                  "content": {
+                    "application/json;charset=UTF-8": {
+                      "schema": {
+                        "$ref": "#/components/schemas/ExpressCheckOutPaymentRequest"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "callbackRegular": {
+            "{$request.body#/merchantInfo/callbackPrefix}/v2/payments/{$request.body#/transaction/orderId}": {
+              "post": {
+                "summary": "Callback : Transaction Update",
+                "description": "This API call allows Vipps to send the transaction details. During regular ecomm payment order and transaction details will be shared. During express checkout payment it will provide user details and shipping details addition to the order and transaction details. Vipps will add `/v2/payments/{orderId}` to the end of this URL. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).",
+                "operationId": "InitiatePaymentTransactionUpdateCallbackForRegularPaymentUsingPOSTExpress",
+                "parameters": [
+                  {
+                    "name": "orderId",
+                    "in": "path",
+                    "description": "orderId",
+                    "required": true,
+                    "schema": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "responses": {
+                  "200": {
+                    "description": "Vipps does not require a response for this request."
+                  }
+                },
+                "requestBody": {
+                  "content": {
+                    "application/json;charset=UTF-8": {
+                      "schema": {
+                        "$ref": "#/components/schemas/RegularCheckOutPaymentRequest"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "consentRemoval": {
+            "{$request.body#/merchantInfo/consentRemovalPrefix}/v2/consents/{userId}": {
+              "delete": {
+                "summary": "Remove User Consent (for express checkout)",
+                "description": "This API endpoint on the merchant side allows Vipps to send consent removal requests to merchant. When receiving requests the merchant is obliged to remove the user details permanently, as per the GDPR guidelines. Vipps will add `/v2/consents/{userId}` to the end of this URL. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).",
+                "operationId": "removeUserConsentUsingDELETE",
+                "parameters": [
+                  {
+                    "name": "userId",
+                    "in": "path",
+                    "description": "userId",
+                    "required": true,
+                    "schema": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "responses": {
+                  "200": {
+                    "description": "OK"
+                  }
+                }
+              }
+            }
+          },
+          "shippingDetails": {
+            "{$request.body#/merchantInfo/shippingDetailsPrefix}/v2/payments/{$request.body#/transaction/orderId}/shippingDetails": {
+              "post": {
+                "summary": "Fetch Shipping Cost & Method",
+                "description": "This API endpoint on the merchant side allows Vipps to get the shipping cost and method based on the provided address and product details. The primary use of this service is Vipps HUrtigkasse (express checkout) where Vipps needs to present shipping cost and method to the Vipps user. Vipps will add `/v2/payments/{orderId}/shippingDetails` to the end of this URL. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).",
+                "operationId": "fetchShippingCostUsingPOST",
+                "parameters": [
+                  {
+                    "name": "orderId",
+                    "in": "path",
+                    "description": "orderId",
+                    "required": true,
+                    "schema": {
+                      "type": "string"
+                    }
+                  }
+                ],
+                "responses": {
+                  "200": {
+                    "description": "Fetch Shipping Cost & Method.",
+                    "content": {
+                      "application/json;charset=UTF-8": {
+                        "schema": {
+                          "$ref": "#/components/schemas/FetchShippingCostResponse"
+                        }
+                      }
+                    }
+                  }
+                },
+                "requestBody": {
+                  "content": {
+                    "application/json;charset=UTF-8": {
+                      "schema": {
+                        "$ref": "#/components/schemas/FetchShippingCostAndMethod"
+                      }
+                    }
+                  },
+                  "description": "fetchShippingCostAndMethod",
+                  "required": true
+                }
+              }
+            }
+          }
         },
         "responses": {
           "202": {
@@ -349,35 +442,6 @@
           },
           "description": "The body of the request made by Vipps. It will differ if the request is a regular or express payment.",
           "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Callback : Transaction Update"
-          },
-          "400": {
-            "description": "Bad request (Missing a required parameter or bad request format)"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "402": {
-            "description": "Payment Failed"
-          },
-          "403": {
-            "description": "Request Forbidden"
-          },
-          "404": {
-            "description": "Resource Not Found"
-          },
-          "405": {
-            "description": "Request method not supported"
-          },
-          "415": {
-            "description": "Unsupported media type"
-          },
-          "500": {
-            "description": "Something went wrong on the Vipps server side"
-          }
         }
       }
     },
