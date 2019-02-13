@@ -947,8 +947,11 @@
           },
           "country": {
             "type": "string",
-            "description": "Country,default=NO",
-            "example": "NO"
+            "description": "Country",
+            "example": "Norway",
+            "enum": [
+              "Norway"
+            ]
           },
           "zipCode": {
             "type": "string",
