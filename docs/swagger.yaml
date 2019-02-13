@@ -966,8 +966,7 @@ components:
         timeStamp:
           type: string
           description: >-
-            Timestamp in ISO-8601 representing when Vipps cancelled the
-            transaction.
+            Timestamp in ISO-8601 representing when the operation was performed.
           example: 2018-12-12T11:18:38.246Z
         transactionId:
           type: string
@@ -1008,8 +1007,7 @@ components:
         timeStamp:
           type: string
           description: >-
-            Timestamp in ISO-8601 representing when Vipps cancelled the
-            transaction.
+            Timestamp in ISO-8601 representing when the status operation was performed.
           example: 2018-12-12T11:18:38.246Z
         transactionId:
           type: string
@@ -1041,7 +1039,7 @@ components:
             for more information.
         timeStamp:
           type: string
-          description: Timestamp in ISO-8601 representing when vipps Cancelled transaction.
+          description: Timestamp in ISO-8601 representing when the order was cancelled.
           example: 2018-12-12T11:18:38.246Z
         transactionId:
           type: string
@@ -1077,7 +1075,7 @@ components:
             for more information.
         timeStamp:
           type: string
-          description: Timestamp in ISO-8601 representing when vipps Cancelled transaction.
+          description: Timestamp in ISO-8601 representing when the order was refunded.
           example: 2018-12-12T11:18:38.246Z
         transactionId:
           type: string
@@ -1113,7 +1111,7 @@ components:
             for more information.
         timeStamp:
           type: string
-          description: Timestamp in ISO-8601 representing when vipps Cancelled transaction.
+          description: Timestamp in ISO-8601 representing when the order was captured.
           example: 2018-12-12T11:18:38.246Z
         transactionId:
           type: string

@@ -1142,7 +1142,7 @@
           },
           "timeStamp": {
             "type": "string",
-            "description": "Timestamp in ISO-8601 representing when Vipps cancelled the transaction.",
+            "description": "Timestamp in ISO-8601 representing when the operation was performed.",
             "example": "2018-12-12T11:18:38.246Z"
           },
           "transactionId": {
@@ -1186,7 +1186,7 @@
           },
           "timeStamp": {
             "type": "string",
-            "description": "Timestamp in ISO-8601 representing when Vipps cancelled the transaction.",
+            "description": "Timestamp in ISO-8601 representing when the status operation was performed.",
             "example": "2018-12-12T11:18:38.246Z"
           },
           "transactionId": {
@@ -1222,7 +1222,7 @@
           },
           "timeStamp": {
             "type": "string",
-            "description": "Timestamp in ISO-8601 representing when vipps Cancelled transaction.",
+            "description": "Timestamp in ISO-8601 representing when the order was cancelled.",
             "example": "2018-12-12T11:18:38.246Z"
           },
           "transactionId": {
@@ -1263,7 +1263,7 @@
           },
           "timeStamp": {
             "type": "string",
-            "description": "Timestamp in ISO-8601 representing when vipps Cancelled transaction.",
+            "description": "Timestamp in ISO-8601 representing when the order was refunded.",
             "example": "2018-12-12T11:18:38.246Z"
           },
           "transactionId": {
@@ -1304,7 +1304,7 @@
           },
           "timeStamp": {
             "type": "string",
-            "description": "Timestamp in ISO-8601 representing when vipps Cancelled transaction.",
+            "description": "Timestamp in ISO-8601 representing when the order was captured.",
             "example": "2018-12-12T11:18:38.246Z"
           },
           "transactionId": {
