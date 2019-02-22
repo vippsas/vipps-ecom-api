@@ -893,38 +893,45 @@ components:
       properties:
         bankIdVerified:
           type: string
+          description: Optional Y/N string indicating if the user in bankId vertified, must be requested during onboarding.
+          example: 'Y'
+          enum:
+            - Y
+            - N
         dateOfBirth:
           type: string
-          description: 12-3-1988
+          description: Optional date of birth infomation, must be requested during onboarding.
           example: 12-3-1988
         email:
           type: string
           description: Email address
-          example: user@example.com
+          example: 'user@example.com'
         firstName:
           type: string
           description: First name
-          example: Ada
+          example: 'Ada'
         lastName:
           type: string
           description: Last name
-          example: Lovelace
+          example: 'Lovelace'
         mobileNumber:
           type: string
-          description: '12345678'
+          description: Mobile number
+          example: '12345678'
           minLength: 8
           maxLength: 12
           pattern: '^\d{8,12}$'
         ssn:
           type: string
-          description: '12345678912'
+          description: Optional social security number for the user, must be requested during onboarding.
+          example: '12345678901'
           minLength: 11
           maxLength: 11
           pattern: '^\d{11}$'
         userId:
           type: string
-          description: '1234567'
-          example: '1234567'
+          description: Id which identifies the user.
+          example: 'uiJskNQ6qNN1iwN891uuob=='
     callbackErrorInfo:
       type: object
       properties:
