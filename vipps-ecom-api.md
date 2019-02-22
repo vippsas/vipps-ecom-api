@@ -1330,11 +1330,11 @@ API details: [`POST:/v2/payments/{orderId}`](https://vippsas.github.io/vipps-eco
       "addressLine1": "Dronning Eufemias gate 42",
       "addressLine2": "Att: Rune Garborg",
       "city": "Oslo",
-      "country": "NO",
+      "country": "Norway",
       "zipCode": "0191"
     },
-    "shippingCost": 0,
-    "shippingMethod": "string"
+    "shippingCost": 109.99,
+    "shippingMethod": "By cannon"
   },
   "transactionInfo": {
     "amount": 20000,
@@ -1343,13 +1343,13 @@ API details: [`POST:/v2/payments/{orderId}`](https://vippsas.github.io/vipps-eco
     "transactionId": "5001420062"
   },
   "userDetails": {
-    "bankIdVerified": "string",
+    "bankIdVerified": "Y",
     "dateOfBirth": "12-3-1988",
     "email": "user@example.com",
     "firstName": "Ada",
     "lastName": "Lovelace",
-    "mobileNumber": "string",
-    "ssn": "string",
+    "mobileNumber": "12345678",
+    "ssn": "12345678901",
     "userId": "1234567"
   }
 }
