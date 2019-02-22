@@ -1767,7 +1767,7 @@
           "userDetails": {
             "$ref": "#/components/schemas/UserDetails"
           },
-          "callbackErrorInfo": {
+          "errorInfo": {
             "$ref": "#/components/schemas/callbackErrorInfo"
           }
         }
@@ -1796,7 +1796,7 @@
           "transactionInfo": {
             "$ref": "#/components/schemas/CallbackTransactionInfoStatus"
           },
-          "callbackErrorInfo": {
+          "errorInfo": {
             "$ref": "#/components/schemas/callbackErrorInfo"
           }
         }

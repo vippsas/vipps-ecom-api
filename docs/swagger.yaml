@@ -1522,7 +1522,7 @@ components:
           $ref: '#/components/schemas/CallbackTransactionInfoStatus'
         userDetails:
           $ref: '#/components/schemas/UserDetails'
-        callbackErrorInfo:
+        errorInfo:
           $ref: '#/components/schemas/callbackErrorInfo'
     RegularCheckOutPaymentRequest:
       type: object
@@ -1548,7 +1548,7 @@ components:
           example: order123abc
         transactionInfo:
           $ref: '#/components/schemas/CallbackTransactionInfoStatus'
-        callbackErrorInfo:
+        errorInfo:
           $ref: '#/components/schemas/callbackErrorInfo'
     AuthorizationTokenResponse:
       type: object
