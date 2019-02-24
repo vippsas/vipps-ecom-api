@@ -31,8 +31,8 @@
 						"value": "{{client_secret}}"
 					},
 					{
-						"key": "ocp-apim-subscription-key",
-						"value": "{{ocp-apim-subscription-key-access-token}}"
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{Ocp-Apim-Subscription-Key-Access-Token}}"
 					}
 				],
 				"body": {
@@ -70,17 +70,17 @@
 				"method": "GET",
 				"header": [
 					{
-						"key": "content-type",
+						"key": "Content-Type",
 						"value": "application/json",
 						"disabled": true
 					},
 					{
-						"key": "authorization",
+						"key": "Authorization",
 						"value": "Bearer {{access_token}}"
 					},
 					{
-						"key": "ocp-apim-subscription-key",
-						"value": "{{ocp-apim-subscription-key-ecom}}"
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{Ocp-Apim-Subscription-Key-Ecom}}"
 					}
 				],
 				"body": {
@@ -121,19 +121,19 @@
 				"method": "POST",
 				"header": [
 					{
-						"key": "content-type",
+						"key": "Content-Type",
 						"value": "application/json"
 					},
 					{
-						"key": "ocp-apim-subscription-key",
-						"value": "{{ocp-apim-subscription-key-ecom}}"
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{Ocp-Apim-Subscription-Key-Ecom}}"
 					},
 					{
-						"key": "authorization",
+						"key": "Authorization",
 						"value": "Bearer {{access_token}}"
 					},
 					{
-						"key": "x-request-id",
+						"key": "X-Request-Id",
 						"value": "{{orderId}}XIDC1"
 					}
 				],
@@ -175,15 +175,15 @@
 				"method": "POST",
 				"header": [
 					{
-						"key": "content-type",
+						"key": "Content-Type",
 						"value": "application/json"
 					},
 					{
-						"key": "ocp-apim-subscription-key",
-						"value": "{{ocp-apim-subscription-key-ecom}}"
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{Ocp-Apim-Subscription-Key-Ecom}}"
 					},
 					{
-						"key": "authorization",
+						"key": "Authorization",
 						"value": "Bearer {{access_token}}"
 					}
 				],
@@ -212,12 +212,12 @@
 				"method": "GET",
 				"header": [
 					{
-						"key": "authorization",
+						"key": "Authorization",
 						"value": "Bearer {{access_token}}"
 					},
 					{
-						"key": "ocp-apim-subscription-key",
-						"value": "{{ocp-apim-subscription-key-ecom}}"
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{Ocp-Apim-Subscription-Key-Ecom}}"
 					}
 				],
 				"body": {
@@ -246,19 +246,19 @@
 				"method": "POST",
 				"header": [
 					{
-						"key": "authorization",
+						"key": "Authorization",
 						"value": "Bearer {{access_token}}"
 					},
 					{
-						"key": "ocp-apim-subscription-key",
-						"value": "{{ocp-apim-subscription-key-ecom}}"
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{Ocp-Apim-Subscription-Key-Ecom}}"
 					},
 					{
-						"key": "content-type",
+						"key": "Content-Type",
 						"value": "application/json"
 					},
 					{
-						"key": "x-request-id",
+						"key": "X-Request-Id",
 						"value": "{{orderId}}XIDR1"
 					}
 				],
@@ -288,15 +288,15 @@
 				"method": "PUT",
 				"header": [
 					{
-						"key": "content-type",
+						"key": "Content-Type",
 						"value": "application/json"
 					},
 					{
-						"key": "ocp-apim-subscription-key",
-						"value": "{{ocp-apim-subscription-key-ecom}}"
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{Ocp-Apim-Subscription-Key-Ecom}}"
 					},
 					{
-						"key": "authorization",
+						"key": "Authorization",
 						"value": "Bearer {{access_token}}"
 					}
 				],

@@ -13,7 +13,7 @@
 			"enabled": true
 		},
 		{
-			"key": "ocp-apim-subscription-key-access-token",
+			"key": "Ocp-Apim-Subscription-Key-Access-Token",
 			"value": "<Go To Developer Portal->Click on your name on top right->select profile->find subscription named DEFAULT_ACCESSTOKEN and copy the value from Primary key here>",
 			"enabled": true
 		},
@@ -23,7 +23,7 @@
 			"enabled": true
 		},
 		{
-			"key": "ocp-apim-subscription-key-ecom",
+			"key": "Ocp-Apim-Subscription-Key-Ecom",
 			"value": "<Go To Developer Portal->Click on your name on top right->select profile->find subscription relevant to your eCommerce InApp Alignment Product and copy the Primary key here>",
 			"enabled": true
 		},
