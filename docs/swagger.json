@@ -25,7 +25,7 @@
         "tags": [
           "Authorization Service"
         ],
-        "summary": "Fetch authorization token",
+        "summary": "Fetch Authorization token",
         "parameters": [
           {
             "name": "client_id",
@@ -47,16 +47,16 @@
             }
           },
           {
-            "name": "ocp-apim-subscription-key",
+            "name": "Ocp-Apim-Subscription-Key",
             "in": "header",
-            "description": "The subscription-key for authorization token is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. The ```DEFAULT_ACCESSTOKEN``` key is the value for subscription-key. See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.",
+            "description": "The subscription-key for Authorization token is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. The ```DEFAULT_ACCESSTOKEN``` key is the value for subscription-key. See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.",
             "required": true,
             "schema": {
               "type": "string"
             }
           }
         ],
-        "description": "Authorization token API endpoint helps to get the JWT Bearer token that needs to be passed in every API request in the authorization header. The merchant application use the API to get a JWT access token. JWT access token is a base 64 encoded string value that must be aquire first before making any Vipps api calls",
+        "description": "Authorization token API endpoint helps to get the JWT Bearer token that needs to be passed in every API request in the Authorization header. The merchant application use the API to get a JWT access token. JWT access token is a base 64 encoded string value that must be aquire first before making any Vipps api calls",
         "operationId": "fetchAuthorizationTokenUsingPost",
         "responses": {
           "200": {
@@ -141,7 +141,7 @@
             }
           },
           {
-            "name": "authorization",
+            "name": "Authorization",
             "in": "headers",
             "description": "Token provided by the merchant in initiate payment request as `authToken`. Used so that the merchant may authenticate the request.",
             "schema": {
@@ -185,7 +185,7 @@
         "parameters": [
           {
             "in": "header",
-            "name": "authorization",
+            "name": "Authorization",
             "description": "Authorization-token is obtained by running the /accesstoken/get request.",
             "required": true,
             "schema": {
@@ -194,7 +194,7 @@
           },
           {
             "in": "header",
-            "name": "content-type",
+            "name": "Content-Type",
             "description": "application/json",
             "required": true,
             "schema": {
@@ -203,7 +203,7 @@
           },
           {
             "in": "header",
-            "name": "ocp-apim-subscription-key",
+            "name": "Ocp-Apim-Subscription-Key",
             "description": "The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.",
             "required": true,
             "schema": {
@@ -417,7 +417,7 @@
             }
           },
           {
-            "name": "authorization",
+            "name": "Authorization",
             "in": "headers",
             "description": "Token provided by the merchant in initiate payment request as `authToken`. Used so that the merchant may authenticate the request.",
             "schema": {
@@ -465,7 +465,7 @@
           },
           {
             "in": "header",
-            "name": "authorization",
+            "name": "Authorization",
             "description": "Authorization-token is obtained by running the /accesstoken/get request.",
             "required": true,
             "schema": {
@@ -474,7 +474,7 @@
           },
           {
             "in": "header",
-            "name": "content-type",
+            "name": "Content-Type",
             "description": "`application/json`",
             "required": true,
             "schema": {
@@ -483,7 +483,7 @@
           },
           {
             "in": "header",
-            "name": "ocp-apim-subscription-key",
+            "name": "Ocp-Apim-Subscription-Key",
             "description": "The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.",
             "required": true,
             "schema": {
@@ -492,7 +492,7 @@
           },
           {
             "in": "header",
-            "name": "x-request-id",
+            "name": "X-Request-Id",
             "description": "Id used for making requests idempotent. Adding this ID will allow the merchant to retry requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Max 30 characters.",
             "schema": {
               "type": "string"
@@ -560,7 +560,7 @@
           },
           {
             "in": "header",
-            "name": "authorization",
+            "name": "Authorization",
             "description": "Authorization-token is obtained by running the /accesstoken/get request.",
             "required": true,
             "schema": {
@@ -569,7 +569,7 @@
           },
           {
             "in": "header",
-            "name": "content-type",
+            "name": "Content-Type",
             "description": "`application/json`",
             "required": true,
             "schema": {
@@ -578,7 +578,7 @@
           },
           {
             "in": "header",
-            "name": "ocp-apim-subscription-key",
+            "name": "Ocp-Apim-Subscription-Key",
             "description": "The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.",
             "required": true,
             "schema": {
@@ -655,7 +655,7 @@
           },
           {
             "in": "header",
-            "name": "authorization",
+            "name": "Authorization",
             "description": "Authorization-token is obtained by running the /accesstoken/get request.",
             "required": true,
             "schema": {
@@ -664,7 +664,7 @@
           },
           {
             "in": "header",
-            "name": "content-type",
+            "name": "Content-Type",
             "description": "`application/json`",
             "required": true,
             "schema": {
@@ -673,7 +673,7 @@
           },
           {
             "in": "header",
-            "name": "ocp-apim-subscription-key",
+            "name": "Ocp-Apim-Subscription-Key",
             "description": "The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.",
             "required": true,
             "schema": {
@@ -682,7 +682,7 @@
           },
           {
             "in": "header",
-            "name": "x-request-id",
+            "name": "X-Request-Id",
             "description": "Id used for making requests idempotent. Adding this ID will allow the merchant to retry requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Max 30 characters.",
             "schema": {
               "type": "string"
@@ -750,7 +750,7 @@
           },
           {
             "in": "header",
-            "name": "authorization",
+            "name": "Authorization",
             "description": "Authorization-token is obtained by running the `/accesstoken/get` request.",
             "required": true,
             "schema": {
@@ -759,7 +759,7 @@
           },
           {
             "in": "header",
-            "name": "content-type",
+            "name": "Content-Type",
             "description": "`application/json`",
             "required": true,
             "schema": {
@@ -768,7 +768,7 @@
           },
           {
             "in": "header",
-            "name": "ocp-apim-subscription-key",
+            "name": "Ocp-Apim-Subscription-Key",
             "description": "The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.",
             "required": true,
             "schema": {
@@ -834,7 +834,7 @@
           },
           {
             "in": "header",
-            "name": "authorization",
+            "name": "Authorization",
             "description": "Authorization-token is obtained by running the /accesstoken/get request.",
             "required": true,
             "schema": {
@@ -843,7 +843,7 @@
           },
           {
             "in": "header",
-            "name": "ocp-apim-subscription-key",
+            "name": "Ocp-Apim-Subscription-Key",
             "description": "The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.",
             "required": true,
             "schema": {
