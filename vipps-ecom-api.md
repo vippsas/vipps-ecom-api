@@ -1317,7 +1317,7 @@ type is set to `"eComm Express Payment"` or `"eComm Regular Payment"`.
 
 If `authToken` was used in the initiate payment request these requests will have a `authorization` header. These headers will have the same value as the one provided in `authToken`.
 
-API details: [`POST:/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)
+API details: [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)
 
 **Example Express Checkout Callback**
 

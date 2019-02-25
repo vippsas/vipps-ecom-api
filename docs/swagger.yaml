@@ -167,14 +167,12 @@ paths:
         This API call allows the merchants to initiate a payment flow by using
         Vipps. In order to identify which sales channel payments are coming
         from, a merchantSerialNumber is used to distinguish between them. Please
-        note that a single payment is uniquely identified by a composite of
-        merchantApplicationId (X-App-ID), merchantSerialNumber and orderId. The
+        note that a single payment is uniquely identified by a composite of merchantSerialNumber and orderId. The
         Merchant provided orderId must be unique per sales channel. Once the
-        transaction is successfully initiated in Vipps, will you receive a
-        redirect URL in response which has to be used by the merchant to open
-        the Vipps landing page. The landing page will have functionality to
+        transaction is successfully initiated in Vipps, you will receive a
+        URL in response which will direct the customer to the landing page. The landing page will have functionality to
         identify and differentiate request coming from mobile browser/desktop
-        browser. URLs passed to Vipps should be URL-encoded, and must validate
+        browser. The merchant may also pass the 'isApp' parameter that will make Vipps respond with a app-switch deeplink that will take the customer directly to the Vipps app. URLs passed to Vipps should be URL-encoded, and must validate
         with the Apache Commons
         [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
       operationId: initiatePaymentV3UsingPOST
@@ -182,8 +180,7 @@ paths:
         - in: header
           name: Authorization
           description: >-
-            Authorization-token is obtained by running the /accesstoken/get
-            request.
+            Authorization-token is obtained by appending the access_token obtained by using the /accesstoken/get request to 'Bearer '.
           required: true
           schema:
             type: string
