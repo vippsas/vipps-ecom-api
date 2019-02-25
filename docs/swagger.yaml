@@ -869,7 +869,7 @@ components:
         timeStamp:
           type: string
           description: Timestamp in ISO-8601 representing when the operation was perfomed.
-          example: 2019-02-05T12:27:42.311Z
+          example: '2019-02-05T12:27:42.311Z'
         transactionId:
           description: Identifies the transaction
           example: 5001446662
@@ -976,7 +976,7 @@ components:
           type: string
           description: >-
             Timestamp in ISO-8601 representing when the operation was performed.
-          example: 2018-12-12T11:18:38.246Z
+          example: '2018-12-12T11:18:38.246Z'
         transactionId:
           type: string
           description: Vipps transaction id
@@ -1017,7 +1017,7 @@ components:
           type: string
           description: >-
             Timestamp in ISO-8601 representing when the status operation was performed.
-          example: 2018-12-12T11:18:38.246Z
+          example: '2018-12-12T11:18:38.246Z'
         transactionId:
           type: string
           description: Vipps transaction id
@@ -1049,7 +1049,7 @@ components:
         timeStamp:
           type: string
           description: Timestamp in ISO-8601 representing when the order was cancelled.
-          example: 2018-12-12T11:18:38.246Z
+          example: '2018-12-12T11:18:38.246Z'
         transactionId:
           type: string
           description: Vipps transaction id
@@ -1085,7 +1085,7 @@ components:
         timeStamp:
           type: string
           description: Timestamp in ISO-8601 representing when the order was refunded.
-          example: 2018-12-12T11:18:38.246Z
+          example: '2018-12-12T11:18:38.246Z'
         transactionId:
           type: string
           description: Vipps transaction id
@@ -1121,7 +1121,7 @@ components:
         timeStamp:
           type: string
           description: Timestamp in ISO-8601 representing when the order was captured.
-          example: 2018-12-12T11:18:38.246Z
+          example: '2018-12-12T11:18:38.246Z'
         transactionId:
           type: string
           description: Vipps transaction id
@@ -1312,7 +1312,7 @@ components:
           type: string
           format: date-time
           description: ISO formatted date time string.
-          example: 2018-11-14T15:44:26.590Z
+          example: '2018-11-14T15:44:26.590Z'
         transactionText:
           type: string
           description: Transaction text that can be displayed to end user
