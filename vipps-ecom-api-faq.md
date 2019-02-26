@@ -13,6 +13,7 @@ guide for the Vipps Developer Portal.
 - [Can I use my "Vipps-nummer" in my webshop?](#can-i-use-my-vipps-nummer-in-my-webshop)
 - [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
 - [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
+- [How do I turn _direct capture_ on or off?](#How-do-I-turn-direct-capture-on-or-off)
 - [How can I refund a payment?](how-can-i-refund-a-payment)
 - [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
 - [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-cant-find-it)
@@ -86,6 +87,9 @@ For more information, please see the Consumer Authority's
 To request _direct capture_, please contact your KAM.
 
 See [Regular eCommerce payments](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#regular-ecommerce-payments) for more details.
+
+# How do I turn _direct capture_ on or off?
+You can't turn _direct capture_ on or off as a merchant, and this must be requested of your KAM. To get both _direct capture_ and _reserve capture_ you must request two different sale units.
 
 # How can I refund a payment?
 
