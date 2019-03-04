@@ -3,7 +3,7 @@
 See the [Vipps eCommerce API](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md) for all the details.
 
 See also the
-[Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md)
+[Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide for the Vipps Developer Portal.
 
 # Table of contents
