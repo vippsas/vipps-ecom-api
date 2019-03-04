@@ -234,8 +234,8 @@ and these headers are required:
 
 | Header Name | Header Value | Description |
 | ----------- | ------------ | ----------- |
-| `authorization` | `Bearer <JWT access token>` | Type: Authorization token. This is available in the Vipps Developer Portal. |
-| `ocp-apim-subscription-key` | Base 64 encoded string | The subscription key for the eCom API. This is available in the Vipps Developer Portal. |
+| `Authorization` | `Bearer <JWT access token>` | Type: Authorization token. This is available in the Vipps Developer Portal. |
+| `Ocp-Apim-Subscription-Key` | Base 64 encoded string | The subscription key for the eCom API. This is available in the Vipps Developer Portal. |
 
 ### Access token
 
@@ -249,7 +249,7 @@ The Access Token API provides the JWT bearer token.
 POST https://apitest.vipps.no/accessToken/get
 client_id: <client_id>
 client_secret: <client_secret>
-ocp-apim-subscription-key: <ocp-apim-subscription-key>
+Ocp-Apim-Subscription-Key: <Ocp-Apim-Subscription-Key>
 ```
 All headers are per merchantSerialNumber and can be found in Vipps Developer Portal.
 
@@ -257,7 +257,7 @@ All headers are per merchantSerialNumber and can be found in Vipps Developer Por
 | ----------- | ------------ | ----------- |
 | `client_id` | A GUID value | Client ID for the merchant |
 | `client_secret` | Base 64 encoded string | Client Secret for the merchant |
-| `ocp-apim-subscription-key` | Base 64 encoded string | Subscription key for the product |
+| `Ocp-Apim-Subscription-Key` | Base 64 encoded string | Subscription key for the product |
 
 **Response**
 ````http
@@ -285,7 +285,7 @@ JWT properties:
 | `expires_on`                | Token expiry time in epoch time format. |
 | `not_before`                | Token creation time in epoch time format. |
 | `resource`                  | For the product for which token has been issued. |
-| `access_token`              | The actual access token that needs to be used in `authorization` request header. |
+| `access_token`              | The actual access token that needs to be used in `Authorization` request header. |
 
 **Please note:** The access token is valid for 1 hour.
 
@@ -327,16 +327,16 @@ Initiate payment is used to create a new payment order in Vipps:
 **Initiate request headers example:**
 ```json
 {
-    "authorization": "Bearer jfewioIJffruJIfewiyYUdweiLMfnewUQiwmdcLnfewjNj <snip>",
-    "content-type": "application/json",
-    "ocp-apim-subscription-key": "12345678901234567890123456789012"
+    "Authorization": "Bearer jfewioIJffruJIfewiyYUdweiLMfnewUQiwmdcLnfewjNj <snip>",
+    "Content-Type": "application/json",
+    "Ocp-Apim-Subscription-Key": "12345678901234567890123456789012"
 }
 ```
 
-A request is authorized by the `authorization` and `ocp-apim-subscription-key` included in the
+A request is authorized by the `Authorization` and `Ocp-Apim-Subscription-Key` included in the
 HTTP headers.
-* `authorization`: The word Bearer followed by the token from a Access Token request.
-* `ocp-apim-subscription-key`: Subscription key for the eCommerce Product.
+* `Authorization`: The word Bearer followed by the token from a Access Token request.
+* `Ocp-Apim-Subscription-Key`: Subscription key for the eCommerce Product.
 
 **Initiate request body example:**
 
@@ -392,7 +392,7 @@ A payment is uniquely identified by the combination of `merchantSerialNumber` an
 
 To initiate an express checkout payment the payment initiation call must include the `"paymentType":"eComm Express Payment"` parameter. If this parameter is not passed, the payment type will default to regular payment.
 
-To add authentication to the callbacks made by Vipps the merchant may provide an `authToken`. This token will then be returned as a `authorization` header in the callback and shipping details requests made by Vipps for that order.
+To add authentication to the callbacks made by Vipps the merchant may provide an `authToken`. This token will then be returned as a `Authorization` header in the callback and shipping details requests made by Vipps for that order.
 
 Once successfully initiated, a response with a redirect URL is returned.
 
@@ -1315,7 +1315,7 @@ to get the status of the payment.
 The callback body received from Vipps will depend on whether the payment
 type is set to `"eComm Express Payment"` or `"eComm Regular Payment"`.
 
-If `authToken` was used in the initiate payment request these requests will have a `authorization` header. These headers will have the same value as the one provided in `authToken`.
+If `authToken` was used in the initiate payment request these requests will have a `Authorization` header. These headers will have the same value as the one provided in `authToken`.
 
 API details: [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)
 
@@ -1375,7 +1375,7 @@ API details: [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.git
 
 This API call allows Vipps to get the shipping cost and method based on the provided address and product details. This is only relevant for express checkout payments where Vipps needs to present shipping cost and method to the Vipps user. This service is to be implemented by merchants.
 
-If `authToken` was used in the initiate payment request these requests will have a `authorization` header. These headers will have the same value as the one provided in `authToken`.
+If `authToken` was used in the initiate payment request these requests will have a `Authorization` header. These headers will have the same value as the one provided in `authToken`.
 
 API details: [`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/fetchShippingCostUsingPOST)
 
