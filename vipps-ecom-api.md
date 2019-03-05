@@ -694,6 +694,8 @@ Partial capture may be used if not the entire order is shipped or for other reas
 
 There is only a need to specify the `amount` when doing a partial capture. To perform capture of the entire amount `amount` can be set to `null` or `0`
 
+In a capture request the merchant may also use the `X-Request-Id`header. This header is an idempotency header ensuring that if the merchant retries a request with the same `X-Request-Id` the retried request will not make additional changes.
+
 **Request**
 
 [`POST:/ecomm/v2/payments/order123abc/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/capturePaymentUsingPOST)
@@ -795,6 +797,8 @@ The refund can be a partial or full.
 
 Partial refunds are done by specifying an `amount` which is lower than the captured amount.
 The refunded amount cannot be larger than the captured amount.
+
+In a capture request the merchant may also use the `X-Request-Id`header. This header is an idempotency header ensuring that if the merchant retries a request with the same `X-Request-Id` the retried request will not make additional changes.
 
 **Request**
 
