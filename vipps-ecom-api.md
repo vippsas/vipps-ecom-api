@@ -259,6 +259,8 @@ All headers are per merchantSerialNumber and can be found in Vipps Developer Por
 | `client_secret` | Base 64 encoded string | Client Secret for the merchant |
 | `Ocp-Apim-Subscription-Key` | Base 64 encoded string | Subscription key for the product |
 
+For the subscription `Vipps-eCommerce-Services-API` the `Ocp-Apim-Subscription-Key` for a access token request will be the same as for eCommerce requests. While for other subscriptions they will use different keys. See [getting started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md) for a guide.
+
 **Response**
 ````http
 HTTP 200 OK
