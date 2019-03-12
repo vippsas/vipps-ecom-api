@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5771bed2-6c75-463a-b95c-6db8cf99e489",
+		"_postman_id": "d7641b2f-5853-4fea-a2bf-4b9491d2fc75",
 		"name": "eCommerce API v2 - Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -53,6 +53,104 @@
 			"response": []
 		},
 		{
+			"name": "Initiate Payment",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1c0a421f-d8b3-49f5-a04b-efb1c5d63bd0",
+						"exec": [
+							"pm.environment.set('orderId',pm.environment.get('merchantSerialNumber') + (new Date()).getTime());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{Ocp-Apim-Subscription-Key-Ecom}}"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"merchantInfo\": {\n    \"merchantSerialNumber\": \"{{merchantSerialNumber}}\",\n    \"callbackPrefix\":\"{{callbackPrefix}}\",\n    \"fallBack\": \"{{fallBack}}\",\n    \"authToken\": \"{{$guid}}\",\n    \"isApp\":false\n  },\n  \"customerInfo\": {\n    \"mobileNumber\": \"{{mobileNumber}}\"\n  },\n  \"transaction\": {\n    \"orderId\": \"{{orderId}}\",\n    \"amount\": {{amount}},\n    \"transactionText\": \"{{transactionTextInitiate}}\"\n  }\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/ecomm/v2/payments/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"ecomm",
+						"v2",
+						"payments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Initiate Payment - Express Checkout",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1c0a421f-d8b3-49f5-a04b-efb1c5d63bd0",
+						"exec": [
+							"pm.environment.set('orderId',pm.environment.get('merchantSerialNumber') + (new Date()).getTime());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{Ocp-Apim-Subscription-Key-Ecom}}"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"merchantInfo\": {\n    \"merchantSerialNumber\": \"{{merchantSerialNumber}}\",\n    \"callbackPrefix\":\"{{callbackPrefix}}\",\n    \"shippingDetailsPrefix\": \"{{shippingDetailsPrefix}}\",\n    \"consentRemovalPrefix\": \"{{consentRemovalPrefix}}\",\n    \"paymentType\": \"eComm Express Payment\",\n    \"fallBack\": \"{{fallBack}}\",\n    \"authToken\": \"{{$guid}}\",\n    \"isApp\":false\n  },\n  \"customerInfo\": {\n    \"mobileNumber\": \"{{mobileNumber}}\"\n  },\n  \"transaction\": {\n    \"orderId\": \"{{orderId}}\",\n    \"amount\": {{amount}},\n    \"transactionText\": \"{{transactionTextInitiate}}\"\n  }\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/ecomm/v2/payments/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"ecomm",
+						"v2",
+						"payments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Get Order Status",
 			"event": [
 				{
@@ -98,6 +196,78 @@
 						"payments",
 						"{{orderId}}",
 						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Payment Details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{Ocp-Apim-Subscription-Key-Ecom}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/ecomm/v2/payments/{{orderId}}/details",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"ecomm",
+						"v2",
+						"payments",
+						"{{orderId}}",
+						"details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cancel Payment",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{Ocp-Apim-Subscription-Key-Ecom}}"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"merchantInfo\": {\r\n        \"merchantSerialNumber\": \"{{merchantSerialNumber}}\"\r\n    },\r\n    \"transaction\": {\r\n        \"transactionText\":\"{{transactionTextCancel}}\"\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/ecomm/v2/payments/{{orderId}}/cancel",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"ecomm",
+						"v2",
+						"payments",
+						"{{orderId}}",
+						"cancel"
 					]
 				}
 			},
@@ -158,89 +328,6 @@
 			"response": []
 		},
 		{
-			"name": "Initiate Payment",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "1c0a421f-d8b3-49f5-a04b-efb1c5d63bd0",
-						"exec": [
-							"pm.environment.set('orderId',pm.environment.get('merchantSerialNumber') + (new Date()).getTime());"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "Ocp-Apim-Subscription-Key",
-						"value": "{{Ocp-Apim-Subscription-Key-Ecom}}"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{access_token}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"merchantInfo\": {\n    \"merchantSerialNumber\": \"{{merchantSerialNumber}}\",\n    \"callbackPrefix\":\"{{callbackPrefix}}\",\n    \"fallBack\": \"{{fallBack}}\",\n    \"authToken\": \"{{$guid}}\",\n    \"isApp\":false\n  },\n  \"customerInfo\": {\n    \"mobileNumber\": \"{{mobileNumber}}\"\n  },\n  \"transaction\": {\n    \"orderId\": \"{{orderId}}\",\n    \"amount\": {{amount}},\n    \"transactionText\": \"{{transactionTextInitiate}}\"\n  }\n}"
-				},
-				"url": {
-					"raw": "{{base_url}}/ecomm/v2/payments/",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"ecomm",
-						"v2",
-						"payments",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Payment Details",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer {{access_token}}"
-					},
-					{
-						"key": "Ocp-Apim-Subscription-Key",
-						"value": "{{Ocp-Apim-Subscription-Key-Ecom}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{base_url}}/ecomm/v2/payments/{{orderId}}/details",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"ecomm",
-						"v2",
-						"payments",
-						"{{orderId}}",
-						"details"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Refund Payment",
 			"request": {
 				"method": "POST",
@@ -277,44 +364,6 @@
 						"payments",
 						"{{orderId}}",
 						"refund"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Cancel Payment",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "Ocp-Apim-Subscription-Key",
-						"value": "{{Ocp-Apim-Subscription-Key-Ecom}}"
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{access_token}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"merchantInfo\": {\r\n        \"merchantSerialNumber\": \"{{merchantSerialNumber}}\"\r\n    },\r\n    \"transaction\": {\r\n        \"transactionText\":\"{{transactionTextCancel}}\"\r\n    }\r\n}"
-				},
-				"url": {
-					"raw": "{{base_url}}/ecomm/v2/payments/{{orderId}}/cancel",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"ecomm",
-						"v2",
-						"payments",
-						"{{orderId}}",
-						"cancel"
 					]
 				}
 			},

@@ -1,5 +1,5 @@
 {
-	"id": "10eee8ce-63c5-48a0-a276-3fb65218719c",
+	"id": "4eaf5f94-8535-4199-80f4-2af4a1378c7a",
 	"name": "eCommerce API v2 - Environment",
 	"values": [
 		{
@@ -54,6 +54,18 @@
 			"enabled": true
 		},
 		{
+			"key": "shippingDetailsPrefix",
+			"value": "<Input your shippingDetails URL here - this is where we will request shippingDetails>",
+			"description": "",
+			"enabled": true
+		},
+		{
+			"key": "consentRemovalPrefix",
+			"value": "<Input your consentRemoval URL here - this is where we will inform that the user has removed consent>",
+			"description": "",
+			"enabled": true
+		},
+		{
 			"key": "access_token",
 			"value": "<This value will be overwritten when you call the Get Access Token API when having selected eCommerce v2 - MTE environment>",
 			"enabled": true
@@ -90,6 +102,6 @@
 		}
 	],
 	"_postman_variable_scope": "environment",
-	"_postman_exported_at": "2019-01-24T16:28:01.821Z",
-	"_postman_exported_using": "Postman/6.6.1"
+	"_postman_exported_at": "2019-03-12T15:39:48.085Z",
+	"_postman_exported_using": "Postman/7.0.5"
 }
