@@ -1692,18 +1692,16 @@
             "example": "NO"
           },
           "postCode": {
-            "type": "integer",
-            "format": "int32",
+            "type": "string",
             "description": "Four digits",
-            "pattern": "^\\df{4}$",
-            "example": 191
+            "pattern": "^\\d{4}$",
+            "example": 387
           },
           "postalCode": {
-            "type": "integer",
-            "format": "int32",
+            "type": "string",
             "description": "Four digits",
-            "pattern": "^\\df{4}$",
-            "example": 191
+            "pattern": "^\\d{4}$",
+            "example": 387
           },
           "addressType": {
             "type": "string",

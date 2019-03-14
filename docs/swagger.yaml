@@ -1458,12 +1458,12 @@ components:
         postCode:
           type: string
           description: Four digits
-          pattern: '^\df{4}$'
+          pattern: '^\d{4}$'
           example: 0603
         postalCode:
           type: string
           description: Four digits
-          pattern: '^\df{4}$'
+          pattern: '^\d{4}$'
           example: 0603
         addressType:
           type: string
