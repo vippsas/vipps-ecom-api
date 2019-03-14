@@ -1456,17 +1456,15 @@ components:
           description: The only country supported is Norway
           example: 'NO'
         postCode:
-          type: integer
-          format: int32
+          type: string
           description: Four digits
           pattern: '^\df{4}$'
-          example: 191
+          example: 0603
         postalCode:
-          type: integer
-          format: int32
+          type: string
           description: Four digits
           pattern: '^\df{4}$'
-          example: 191
+          example: 0603
         addressType:
           type: string
           example: H
