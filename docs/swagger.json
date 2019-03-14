@@ -1695,13 +1695,13 @@
             "type": "string",
             "description": "Four digits",
             "pattern": "^\\d{4}$",
-            "example": 387
+            "example": "0603"
           },
           "postalCode": {
             "type": "string",
             "description": "Four digits",
             "pattern": "^\\d{4}$",
-            "example": 387
+            "example": "0603"
           },
           "addressType": {
             "type": "string",

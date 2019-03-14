@@ -1459,12 +1459,12 @@ components:
           type: string
           description: Four digits
           pattern: '^\d{4}$'
-          example: 0603
+          example: '0603'
         postalCode:
           type: string
           description: Four digits
           pattern: '^\d{4}$'
-          example: 0603
+          example: '0603'
         addressType:
           type: string
           example: H
