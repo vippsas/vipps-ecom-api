@@ -115,7 +115,7 @@ In case the Vipps
 fails, you will not automatically receive notification of order status.
 The backup should be to ask for status within a time frame.
 
-You can use [Postman](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-postman.md)
+You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
 to manually do API calls, like the two above.
 See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
 
@@ -178,7 +178,7 @@ merchant sales unit. Please follow these steps to make sure everything is correc
 3. Make sure you are using the same `merchantSerialNumber` in the body of your request as is stated in the developer portal
 4. Make sure you are making calls to `ecomm/v2/payments` and _not_ `ecomm/v1/payments` (unless this is specifically agreed upon)
 
-You can use [Postman](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-postman.md)
+You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
 to manually do API calls, like the two above.
 See [API endpoints](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
 
@@ -186,7 +186,7 @@ See [API endpoints](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-
 
 Something _might_ be wrong on our side and we are working to fix it!
 
-You can use [Postman](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-postman.md)
+You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
 to manually do API calls, just to be sure.
 See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
 
