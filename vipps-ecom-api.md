@@ -1463,7 +1463,7 @@ different requests and for different payment types.
 |   |  `REFUND` - Payment refunded when merchant called for refund - Stage-7, Status - 101. |
 |   |  `CANCEL` - Payment cancel status when user canceled payment in App. |
 |   |  `VOID` - Payment cancel status when merchant calls for cancel API. |
-|   |  `FAILED` - Payment failed - Status - 102. |
+|   |  `FAILED` - Payment failed failed because of no coverage, outdated card details or similar. - Status - 102. |
 |   |  `REJECTED` - No user action in the Vipps app, i.e timeout. |
 
 ## Callbacks
