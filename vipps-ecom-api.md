@@ -398,6 +398,8 @@ To add authentication to the callbacks made by Vipps the merchant may provide an
 
 Once successfully initiated, a response with a redirect URL is returned.
 
+**Note:** We do not send requests to `callbackPrefix`, `shippingDetails` or `consentsRemovalPrefix` for all ports. To be safe use common port numbers such as: 80, 443, 8080.
+
 **Initiate response example:**
 ```http
 HTTP 202 Accepted
@@ -1325,6 +1327,8 @@ If `authToken` was used in the initiate payment request these requests will have
 
 API details: [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)
 
+**Note:** We do not send requests to all ports so to be safe use common port numbers such as: 80, 443, 8080.
+
 **Example Express Checkout Callback**
 
 ```json
@@ -1385,6 +1389,8 @@ If `authToken` was used in the initiate payment request these requests will have
 
 API details: [`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/fetchShippingCostUsingPOST)
 
+**Note:** We do not send requests to all ports so to be safe use common port numbers such as: 80, 443, 8080.
+
 **Example Request Shipping Details Callback**
 ```json
 {
@@ -1432,6 +1438,8 @@ The request path will include a `userId` that Vipps will have provided as
 part of callback, and also made accessible through [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET).
 
 API details: [`DELETE:[consetRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/removeUserConsentUsingDELETE)
+
+**Note:** We do not send requests to all ports so to be safe use common port numbers such as: 80, 443, 8080.
 
 # Status and operations
 

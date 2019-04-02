@@ -101,7 +101,7 @@ paths:
         guidelines. Vipps will add `/v2/consents/{userId}` to the end of this
         URL. URLs passed to Vipps should be URL-encoded, and must validate with
         the Apache Commons
-        [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
+        [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
       operationId: removeUserConsentUsingDELETE
       parameters:
         - name: userId
@@ -128,7 +128,7 @@ paths:
         Vipps will add `/v2/payments/{orderId}/shippingDetails` to the end of
         this URL. URLs passed to Vipps should be URL-encoded, and must validate
         with the Apache Commons
-        [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
+        [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
       operationId: fetchShippingCostUsingPOST
       parameters:
         - name: orderId
@@ -222,7 +222,7 @@ paths:
                 shipping details addition to the order and transaction details. Vipps
                 will add `/v2/payments/{orderId}` to the end of this URL. URLs passed to
                 Vipps should be URL-encoded, and must validate with the Apache Commons
-                [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
+                [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
               operationId: InitiatePaymentTransactionUpdateCallbackForRegularPaymentUsingPOSTExpress
               parameters:
                 - name: orderId
@@ -250,7 +250,7 @@ paths:
                 shipping details addition to the order and transaction details. Vipps
                 will add `/v2/payments/{orderId}` to the end of this URL. URLs passed to
                 Vipps should be URL-encoded, and must validate with the Apache Commons
-                [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
+                [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
               operationId: InitiatePaymentTransactionUpdateCallbackForRegularPaymentUsingPOSTExpress
               parameters:
                 - name: orderId
@@ -278,7 +278,7 @@ paths:
                 guidelines. Vipps will add `/v2/consents/{userId}` to the end of this
                 URL. URLs passed to Vipps should be URL-encoded, and must validate with
                 the Apache Commons
-                [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
+                [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).  We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
               operationId: removeUserConsentUsingDELETE
               parameters:
                 - name: userId
@@ -302,7 +302,7 @@ paths:
                     Vipps will add `/v2/payments/{orderId}/shippingDetails` to the end of
                     this URL. URLs passed to Vipps should be URL-encoded, and must validate
                     with the Apache Commons
-                    [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
+                    [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
                   operationId: fetchShippingCostUsingPOST
                   parameters:
                     - name: orderId
@@ -360,7 +360,7 @@ paths:
         shipping details addition to the order and transaction details. Vipps
         will add `/v2/payments/{orderId}` to the end of this URL. URLs passed to
         Vipps should be URL-encoded, and must validate with the Apache Commons
-        [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
+        [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
       operationId: transactionUpdateCallbackForRegularPaymentUsingPOST
       parameters:
         - name: orderId
@@ -1339,7 +1339,7 @@ components:
             value for this parameter. Vipps will add `/v2/payments/{orderId}` to
             the end or this URL. URLs passed to Vipps should be URL-encoded, and
             must validate with the Apache Commons
-            [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
+            [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
           maxLength: 255
           example: 'https://example.com/vipps/callbacks'
         consentRemovalPrefix:
@@ -1352,7 +1352,7 @@ components:
             Vipps will add `/v2/consents/{userId}` to the end or this URL. URLs
             passed to Vipps should be URL-encoded, and must validate with the
             Apache Commons
-            [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
+            [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
           maxLength: 255
           example: 'https://example.com/vipps'
         fallBack:
@@ -1400,7 +1400,7 @@ components:
             In case of express checkout payment, merchant should pass this
             prefix to let Vipps fetch shipping cost and method related details.
             Vipps will add `/v2/payments/{orderId}/shippingDetails` to the end
-            or this URL.
+            or this URL. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
           maxLength: 255
           example: 'https://example.com/vipps/shipping/'
     GetPaymentStatusResponse:
