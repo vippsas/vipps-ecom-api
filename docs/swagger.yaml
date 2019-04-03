@@ -963,6 +963,7 @@ components:
             - SALE
             - CANCELLED
             - REJECTED
+            - AUTO_CANCEL
           description: >-
             Status which gives the current state of the payment within Vipps.
             See the [API

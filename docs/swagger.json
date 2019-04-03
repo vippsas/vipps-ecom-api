@@ -1146,7 +1146,8 @@
               "RESERVE",
               "SALE",
               "CANCELLED",
-              "REJECTED"
+              "REJECTED",
+              "AUTO_CANCEL"
             ],
             "description": "Status which gives the current state of the payment within Vipps. See the [API guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callbacks) for more information.",
             "example": "RESERVE"
