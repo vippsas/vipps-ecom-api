@@ -1160,9 +1160,7 @@ components:
         url:
           type: string
           description: >-
-            URL parameter will have URL to redirect the request to vipps gateway
-            page in case request is trigger from web browser or deeplink URL to
-            open vipps app incase request is triggered from Merchant Mobile App.
+            URL to redirect the user to Vipps landing page or a deeplink URL to open Vipps app, if isApp was set as true. The landing page will also redirect a user to the app if the user is using a mobile browser. This link will timeout after 5 minutes.
           example: 'https://example.com'
     ShippingDetailsRequest:
       type: object

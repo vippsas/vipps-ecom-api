@@ -417,6 +417,8 @@ The URL depends on whether the user is using a desktop or mobile browser, define
 * For mobile browsers, the URL is for an app-switch to the Vipps app.
 * For desktop browsers, the URL is for the Vipps "landing page".
 
+**Note:** this URL will timeout after 5 minutes.
+
 ### Initiate payment flows
 
 #### Mobile browser initiated payments
