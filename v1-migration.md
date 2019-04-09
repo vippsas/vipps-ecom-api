@@ -59,7 +59,7 @@ For apps, this URL will be the appswitch-URL.
 See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation) for details.
 
 # Migration
-If you have already signed an agreement with Vipps, and would like move from v1 to v2, then send a request to ```integration@vipps.no``` with the merchant serial number of the sale unit you want to be moved to v2. 
+If you have already signed an agreement with Vipps, and would like move from v1 to v2, [contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md) and send the merchant serial number of the sale unit you want to be moved to v2. 
 
 Keep in mind that the old sales unit will not be affected, and your old integration will still work with the old credentials.
 
