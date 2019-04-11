@@ -932,7 +932,7 @@ components:
           example: 'uiJskNQ6qNN1iwN891uuob=='
           maxLength: 50
           description: Identifies a user in Vipps. Merchant is required to store this field for future references.
-          pattern: '^[\d\w\/=+]+'
+          pattern: '^[\d\w\/=+]+$'
     callbackErrorInfo:
       type: object
       properties:
