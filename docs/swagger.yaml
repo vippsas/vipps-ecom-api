@@ -107,7 +107,7 @@ paths:
         - name: userId
           in: path
           description: >-
-            The userId provided when requesting user information from Vipps.
+            URL encoded userId provided when requesting user information from Vipps.
             Received by callback or get detail request.
           required: true
           schema:
@@ -283,7 +283,9 @@ paths:
               parameters:
                 - name: userId
                   in: path
-                  description: userId
+                  description: >-
+                    URL encoded userId provided when requesting user information from Vipps.
+                    Received by callback or get detail request.
                   required: true
                   schema:
                     type: string
@@ -927,8 +929,10 @@ components:
           pattern: '^\d{11}$'
         userId:
           type: string
-          description: Id which identifies the user.
           example: 'uiJskNQ6qNN1iwN891uuob=='
+          maxLength: 50
+          description: Identifies a user in Vipps. Merchant is required to store this field for future references.
+          pattern: '^[\d\w\/=+]+'
     callbackErrorInfo:
       type: object
       properties:

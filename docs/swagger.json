@@ -108,7 +108,7 @@
           {
             "name": "userId",
             "in": "path",
-            "description": "The userId provided when requesting user information from Vipps. Received by callback or get detail request.",
+            "description": "URL encoded userId provided when requesting user information from Vipps. Received by callback or get detail request.",
             "required": true,
             "schema": {
               "type": "string"
@@ -301,7 +301,7 @@
                   {
                     "name": "userId",
                     "in": "path",
-                    "description": "userId",
+                    "description": "URL encoded userId provided when requesting user information from Vipps. Received by callback or get detail request.",
                     "required": true,
                     "schema": {
                       "type": "string"
@@ -1101,8 +1101,10 @@
           },
           "userId": {
             "type": "string",
-            "description": "Id which identifies the user.",
-            "example": "uiJskNQ6qNN1iwN891uuob=="
+            "example": "uiJskNQ6qNN1iwN891uuob==",
+            "maxLength": 50,
+            "description": "Identifies a user in Vipps. Merchant is required to store this field for future references.",
+            "pattern": "^[\\d\\w\\/=+]+"
           }
         }
       },
