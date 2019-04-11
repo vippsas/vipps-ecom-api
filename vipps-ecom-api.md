@@ -1283,13 +1283,17 @@ The documentation is included in the Swagger file for reference only - these end
 
 The callbacks from Vipps are made from the following servers:
 
-Test environment:
-* callback-mt-1.vipps.no
-* callback-mt-2.vipps.no
-
 Production environment:
-* callback-1.vipps.no
-* callback-2.vipps.no
+callback-1.vipps.no
+callback-2.vipps.no
+callback-3.vipps.no
+callback-4.vipps.no
+
+Test environment
+callback-mt-1.vipps.no
+callback-mt-2.vipps.no
+callback-mt-3.vipps.no
+callback-mt-4.vipps.no
 
 Please make sure that requests from these servers are allowed through firewalls, etc.
 
