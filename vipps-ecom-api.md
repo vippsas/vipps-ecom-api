@@ -1295,7 +1295,9 @@ callback-mt-2.vipps.no\
 callback-mt-3.vipps.no\
 callback-mt-4.vipps.no
 
-Please make sure that requests from these servers are allowed through firewalls, etc.
+Please make sure that requests from these servers are allowed through firewalls, etc. 
+
+**Note:** Vipps may change the IP addresses that we make callbacks from. To ensure that you are whitelisting the corrects IP addresses please use these hostnames.  
 
 ## Callback endpoints
 
