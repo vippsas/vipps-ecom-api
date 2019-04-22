@@ -19,6 +19,14 @@
       "description": "These endpoints must be implemented by the merchant, and are called by Vipps."
     }
   ],
+  "servers": [
+    {
+      "url": "https://apitest.vipps.no"
+    },
+    {
+      "url": "https://api.vipps.no"
+    }
+  ],
   "paths": {
     "/accesstoken/get": {
       "post": {
@@ -890,11 +898,6 @@
       }
     }
   },
-  "servers": [
-    {
-      "url": "//apitest.vipps.no"
-    }
-  ],
   "components": {
     "requestBodies": {
       "PaymentActionsRequest": {

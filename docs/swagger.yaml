@@ -14,6 +14,9 @@ tags:
     description: >-
       These endpoints must be implemented by the merchant, and are called by
       Vipps.
+servers:
+  - url: https://apitest.vipps.no
+  - url: https://api.vipps.no
 paths:
   /accesstoken/get:
     post:
@@ -763,8 +766,6 @@ paths:
           description: Unsupported media type
         '500':
           description: Something went wrong from Vipps Server side
-servers:
-  - url: //apitest.vipps.no
 components:
   requestBodies:
     PaymentActionsRequest:
