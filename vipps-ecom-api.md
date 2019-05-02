@@ -289,7 +289,7 @@ JWT properties:
 | `resource`                  | For the product for which token has been issued. |
 | `access_token`              | The actual access token that needs to be used in `Authorization` request header. |
 
-**Please note:** The access token is valid for 1 hour.
+**Please note:** The access token is valid for 1 hour in MT and 24 hours in Production. To be sure that you are using correct time please use `expires_in` or `expires_on`.
 
 Example of an error response body (formatted for readability):
 
