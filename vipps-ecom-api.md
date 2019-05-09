@@ -404,18 +404,27 @@ Once successfully initiated, a response with a redirect URL is returned.
 ```http
 HTTP 202 Accepted
 ```
+
+Response body for `"isApp":false`:
 ```json
 {
     "orderId": "order123abc",
     "url": "https://api.vipps.no/deeplink/vippsgateway?token=eyJraWQiOiJqd3R <snip>"
 }
 ```
+Response body for `"isApp":true`:
+```json
+{
+    "orderId": "order123abc",
+    "url": "vipps://?token=eyJraWQiOiJqd3RrZXkiLCJhbGciOiJSUzI1NiJ9.eyJzdWIi <snip>"
+}
+```
 
 The `url` is slightly simplified, but the format is correct.
 
-The URL depends on whether the user is using a desktop or mobile browser, defined using the `isApp` parameter:
-* For mobile browsers, the URL is for an app-switch to the Vipps app.
-* For desktop browsers, the URL is for the Vipps "landing page".
+The URL depends on whether the `initiate` request was provided the `isApp` parameter:
+* For `true`, the URL is for an deeplink to the Vipps app.
+* For `false` or not provided, the URL is for the Vipps "landing page".
 
 **Note:** this URL will timeout after 5 minutes.
 
