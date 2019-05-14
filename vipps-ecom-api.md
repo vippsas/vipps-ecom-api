@@ -1013,6 +1013,7 @@ call (with same idempotency key) again.
 | Payment | 71 | Cant refund more than captured amount |
 | Payment | 72 | Cant refund for reserved order, please use Cancel API |
 | Payment | 73 | Can't refund on cancelled order |
+| Payment | 93 | Captured amount should be same in Idempotent retry |
 | InvalidRequest  | Field name will be the error code | Description about what exactly the field error is |
 | VippsError | 91 | Transaction is not allowed |
 | VippsError | 92 | Transaction already processed |
