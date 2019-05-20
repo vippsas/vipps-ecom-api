@@ -2,7 +2,7 @@
 
 This repository contains developer resources for the Vipps eCommerce API.
 For more information about this product, please see
-[Vipps på Nett](https://www.vipps.no/bedrift/vipps-pa-nett).
+[Vipps på Nett](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).
 
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md): information about API keys, product activation, etc please see the guide.
 

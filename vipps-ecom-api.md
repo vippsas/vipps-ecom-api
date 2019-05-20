@@ -133,9 +133,7 @@ and to complete the payment in a familiar way.
 
 ### Express checkout payments
 
-These are payments related to
-[Vipps Hurtigkasse](https://www.vipps.no/bedrift/vipps-pa-nett/hurtigkasse),
-where Vipps reduces the typical purchase process to a few simple steps:
+These are payments related to Vipps Hurtigkasse, where Vipps reduces the typical purchase process to a few simple steps:
 
 1. The user clicks on the "Vipps Hurtigkasse" button
 2. The user confirms the amount, delivery address and delivery method in the Vipps app
