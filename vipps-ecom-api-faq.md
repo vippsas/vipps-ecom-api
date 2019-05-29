@@ -26,7 +26,7 @@ guide for the Vipps Developer Portal.
 - [I am getting `401 Unauthorized` error - and I have double checked all my keys!](#i-am-getting-401-unauthorized-error---and-i-have-double-checked-all-my-keys)
 - [Why do I get `500 Internal Server Error` (or similar)?](#why-do-i-get-500-internal-server-error-or-similar)
 - [Why do I not get callbacks from Vipps?](#why-do-i-not-get-callbacks-from-vipps)
-- [I have not had time to test this month and when I came back to it now I get `errorCode 37 "Merchant not available or deactivated or blocked"`](#i-have-not-had-time-to-test-this-month-and-when-i-came-back-to-it-now-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked)
+- [Why do I came back to it now I get `errorCode 37 "Merchant not available or deactivated or blocked"`](#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked)
 - [How do I perform "testing in production"?](#how-do-i-perform-testing-in-production)
 
 # Why do payments fail?
@@ -196,7 +196,7 @@ See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-e
 It could be because your firewall is blocking our requests. 
 Please see [Vipps request servers](https://github.com/vippsas/vipps-developers/blob/master/README.md#vipps-request-servers).
 
-# I have not had time to test this month and when I came back to it now I get `errorCode 37 "Merchant not available or deactivated or blocked"`
+# Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`
 
 This happens if the test merchant is not being used for some time. Please
 [contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md), and we will reactivate the merchant.
