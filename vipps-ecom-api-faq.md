@@ -187,6 +187,8 @@ See [API endpoints](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-
 
 Something _might_ be wrong on our side and we are working to fix it!
 
+It _might_ also be a problem with your request, and that our validation does not catch it.
+In other words: We should have returned `HTTP 400 Bad Request`.
 You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
 to manually do API calls, just to be sure.
 See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
