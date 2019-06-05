@@ -141,7 +141,7 @@ paths:
           schema:
             type: string
         - name: Authorization
-          in: headers
+          in: header
           description: >-
             Token provided by the merchant in initiate payment request as
             `authToken`. Used so that the merchant may authenticate the request.
@@ -375,7 +375,7 @@ paths:
           schema:
             type: string
         - name: Authorization
-          in: headers
+          in: header
           description: >-
             Token provided by the merchant in initiate payment request as
             `authToken`. Used so that the merchant may authenticate the request.
@@ -385,13 +385,14 @@ paths:
         content:
           application/json;charset=UTF-8:
             schema:
-              oneOf:
-                - $ref: '#/components/schemas/ExpressCheckOutPaymentRequest'
-                - $ref: '#/components/schemas/RegularCheckOutPaymentRequest'
+              $ref: '#/components/schemas/TransactionUpdateCallbackOneOf'
         description: >-
           The body of the request made by Vipps. It will differ if the request
           is a regular or express payment.
         required: true
+      responses:
+        '200':
+          description: All ok
   '/ecomm/v2/payments/{orderId}/capture':
     post:
       tags:
@@ -1633,3 +1634,7 @@ components:
           format: int32
           description: Total remaining amount to refund
           example: 20000
+    TransactionUpdateCallbackOneOf:
+      oneOf:
+        - $ref: '#/components/schemas/ExpressCheckOutPaymentRequest'
+        - $ref: '#/components/schemas/RegularCheckOutPaymentRequest'
