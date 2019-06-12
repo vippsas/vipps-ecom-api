@@ -819,6 +819,7 @@ components:
       required:
         - shippingCost
         - shippingMethod
+        - shippingMethodId
       properties:
         address:
           $ref: '#/components/schemas/Address'
@@ -831,6 +832,8 @@ components:
           type: string
           description: Shipping method
           example: Posten
+        shippingMethodId:
+          type: string
     TransactionLogHistory:
       type: object
       required:
@@ -1174,6 +1177,7 @@ components:
         - address
         - shippingCost
         - shippingMethod
+        - shippingMethodId
       properties:
         address:
           $ref: '#/components/schemas/Address'
@@ -1184,6 +1188,8 @@ components:
         shippingMethod:
           type: string
           description: Shipping method which choosed for the payment
+        shippingMethodId:
+          type: string
     TransactionResponseCancel:
       type: object
       required:
