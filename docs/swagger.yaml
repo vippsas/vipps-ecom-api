@@ -790,7 +790,7 @@ components:
         - addressLine1
         - city
         - country
-        - zipCode
+        - postCode
       properties:
         addressLine1:
           type: string
@@ -810,9 +810,9 @@ components:
           example: 'Norway'
           enum:
             - Norway
-        zipCode:
+        postCode:
           type: string
-          description: Zip Code
+          description: Post Code
           example: 0191
     PaymentShippingDetails:
       type: object
