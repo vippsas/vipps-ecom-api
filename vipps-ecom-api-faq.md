@@ -46,8 +46,8 @@ We are continuously improving the error messages in the Vipps app. Please note t
 # Can I use my "Vipps-nummer" in my webshop?
 
 No. According to Norwegian law you must be able to offer refunds.
-This is not supported with [Vipps-nummer](https://www.vipps.no/bedrift/vippsnummer).
-You need [Vipps på Nett](https://www.vipps.no/bedrift/vipps-pa-nett).
+This is not supported with [Vipps-nummer](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/ta-betalt-med-vipps/).
+You need [Vipps på Nett](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).
 
 # Why does capture fail?
 
@@ -66,7 +66,7 @@ to the customer's server. If this server is slow,
 or has a slow internet connection, the delay may cause Vipps Hurtigkasse to fail due to a timeout.
 The solution to this is a faster server and internet connection.
 
-Information for [Vipps for WooCommerce](https://www.vipps.no/bedrift/vipps-pa-nett/woocommerce):
+Information for [Vipps for WooCommerce](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/woocommerce/):
 Some third party plugins do not work with Vipps Hurtigkasse. Please ask for help in the
 [support forum](https://wordpress.org/support/plugin/woo-vipps),
 and include information about the plugins you have installed.
@@ -137,7 +137,6 @@ The settlement flow is as follows:
 
 See also [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
 
-See https://www.vipps.no/sporsmal for more details.
 
 # How long does it take from a refund is made until the money is in the customer's account?
 

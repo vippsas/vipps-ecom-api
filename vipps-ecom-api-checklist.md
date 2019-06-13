@@ -4,7 +4,7 @@ Document version 0.1.0
 
 # Overall flow for direct integrations
 
-1. The merchant orders [Vipps på Nett](https://www.vipps.no/bedrift/vipps-pa-nett)
+1. The merchant orders [Vipps på Nett](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/)
 2. Vipps completes customer control (KYC, PEP, AML, etc)
 3. The merchant received login credentials for retrieving API keys
 4. The merchant completes the direct integration with the [Vipps eCommerce API](https://github.com/vippsas/vipps-ecom-api)
