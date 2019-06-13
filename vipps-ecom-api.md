@@ -1357,7 +1357,7 @@ API details: [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.git
       "addressLine2": "Att: Rune Garborg",
       "city": "Oslo",
       "country": "Norway",
-      "zipCode": "0191"
+      "postCode": "0191"
     },
     "shippingCost": 109.99,
     "shippingMethod": "By cannon"
@@ -1415,7 +1415,6 @@ API details: [`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetail
     "addressLine2": null,
     "country": "Norway",
     "city": "OSLO",
-    "postalCode": "0191",
     "postCode": "0191",
     "addressType": "H",
 }

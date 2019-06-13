@@ -930,7 +930,7 @@
           "addressLine1",
           "city",
           "country",
-          "zipCode"
+          "postCode"
         ],
         "properties": {
           "addressLine1": {
@@ -956,7 +956,7 @@
               "Norway"
             ]
           },
-          "zipCode": {
+          "postCode": {
             "type": "string",
             "description": "Zip Code",
             "example": "0191"
@@ -1698,12 +1698,6 @@
             "example": "NO"
           },
           "postCode": {
-            "type": "string",
-            "description": "Four digits",
-            "pattern": "^\\d{4}$",
-            "example": "0603"
-          },
-          "postalCode": {
             "type": "string",
             "description": "Four digits",
             "pattern": "^\\d{4}$",
