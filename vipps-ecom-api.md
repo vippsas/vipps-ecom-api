@@ -1417,7 +1417,6 @@ API details: [`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetail
     "addressLine2": null,
     "country": "Norway",
     "city": "OSLO",
-    "postalCode": "0191",
     "postCode": "0191",
     "addressType": "H",
 }
