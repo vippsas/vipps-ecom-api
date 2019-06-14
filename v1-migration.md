@@ -52,6 +52,7 @@ See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.
 ```
 
 ## Fallback url is required
+
 The initiate payment must contain a fallback URL. This is where the user will be redirect to after the payment. This is set in the initiate payment body. 
 
 For apps, this URL will be the appswitch-URL.
@@ -59,16 +60,16 @@ For apps, this URL will be the appswitch-URL.
 See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation) for details.
 
 # Migration
-If you have already signed an agreement with Vipps, and would like move from v1 to v2, [contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md) and send the merchant serial number of the sale unit you want to be moved to v2. 
 
-Keep in mind that the old sales unit will not be affected, and your old integration will still work with the old credentials.
-
-We will create a mirror of the old salesunit in both production and test, and update it with the v2 API. Mark: The new sales unit will have it's own subscription key. 
+If you have already signed an agreement with Vipps, and have API keys for v1, you can use the same API keys
+for v2. 
 
 ## Subscription keys
+
 When you have received confirmation that your new salesunit is created, then you can retrieve the keys in the developer portal. See the [Getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full details
 
 ## New endpoint
+
 The v2 API is available at ```ecomm/v2/payments```:
 
 * Test: ```https://apitest.vipps.no/ecomm/v2/payments```
