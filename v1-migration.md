@@ -1,14 +1,15 @@
 # Disclaimer
-This is a work in progress. See the respective documentation for differences.
+This is a work in progress. Issues and PRs are welcome.
 
 # Key differences
+
 ## Landing page
 Universal payment flows are essential for a good user experience. This is why the v2 API has a single, mandatory landing page for all payments.
 The initiate payment response will contain a unique URL to the landing page for each order.
 
 <img src="images/landing-page.png" width="300">
 
-*Note: If the landing page realize it's on a mobile browser it will [switch to the Vipps app](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#desktop-browsers-and-mobile-browsers) if it is installed.*
+*Note: If the landing page realizes it's on a mobile browser it will [switch to the Vipps app](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#desktop-browsers-and-mobile-browsers) if it is installed.*
 
 ## Phone number is optional
 The initiate payment call no longer requires a phone number. Instead, the user will be asked to fill in the phone number on the landing page. If phone number is included in the initiate payment body, then the landing page wil be "pre-filled" with that number.
@@ -47,11 +48,11 @@ See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.
 ```
 {
     "orderId": "id170",
-    "url": "vipps://?token=eyJraWQiOiJqd3RrZXkiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJmMDE0MmIxYy02YjIwLTQ1M2MtYTlmMS1lMWUwZGFiNjkzOTciLCJhdWQiOiJmMDE0MmIxYy02YjIwLTQ1M2MtYTlmMS1lMWUwZGFiNjkzOTciLCJhenAiOiJmMDE0MmIxYy02YjIwLTQ1M2MtYTlmMS1lMWUwZGFiNjkzOTciLCJhcHBUeXBlIjoiTEFORElOR1BBR0UiLCJtZXJjaGFudFNlcmlhbE51bWJlciI6IjIxMDQ2MiIsImV4cHJlc3NDaGVja091dCI6Ik4iLCJpc3MiOiJodHRwczpcL1wvVklQUFMtTVQtQ09OLUFHRU5ULWlsYi50ZWNoLTAyLm5ldFwvbXQxXC9kZWVwbGluay1vcGVuaWQtcHJvdmlkZXItYXBwbGljYXRpb25cLyIsImV4cCI6MTU0ODI2NDI3NCwidG9rZW5UeXBlIjoiREVFUExJTksiLCJpYXQiOjE1NDgyNjQwMzQsInV1aWQiOiI0ZTVlYzkyZS03NDYxLTQwNmMtOThmNC0wZmVhYjgxM2E3Y2UiLCJqdGkiOiJkMTE5ODM4Ni1mNjE4LTQ3YWYtYmQ1Ni1kNDk3YTlmNzA4ZGMifQ.NCC90CFchCxgnjXvpl_FOm30KJqqaLgTe2bLi_Td473DL7RKflmopOsMvzvT96jMUr6XmY8f5JUGQxSu_DjRrTOoel3y0GoADXSMBQq5BM12J2RvoJRfBffS2RDkPbW4rbFXDWmZ9A-e1Ym3W02BTPJquFlxi3LiCIFt-eweBBzUEBKghHITWPgi9DBEhYHx6uet_zlM_2CbsylrdPxt6C1S91dLO-MefpsWNCifQ3atdWa5lCWxUzmAFX3CZrIvZKfU5Q-JbDGsrgou_HShy5NhpnF5xGnVppXJ026nnkRmEcxykzTmtveZEZJVWnuZK8KC6HyUl_MrhvTPcXnnQw"
+    "url": "vipps://?token=eyJraWQiOiJqd3RrZXkiLCJ <snip>"
 }
 ```
 
-## Fallback url is required
+## Fallback URL is required
 
 The initiate payment must contain a fallback URL. This is where the user will be redirect to after the payment. This is set in the initiate payment body. 
 
