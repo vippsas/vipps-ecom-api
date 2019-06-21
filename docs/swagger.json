@@ -2,8 +2,8 @@
   "openapi": "3.0.0",
   "info": {
     "description": "# Vipps eCommerce API\nAdditional API documentation: https://github.com/vippsas/vipps-ecom-api/\n",
-    "version": "1.0.4",
-    "title": "Vipps eCommerce APIs"
+    "version": "1.0.5",
+    "title": "Vipps eCommerce API"
   },
   "tags": [
     {
@@ -130,7 +130,7 @@
         }
       }
     },
-    "[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails": {
+    "[shippingDetailsPrefix]/v2/payments/{orderid}/shippingDetails": {
       "post": {
         "tags": [
           "Endpoints required by Vipps from the merchant"
@@ -150,7 +150,7 @@
           },
           {
             "name": "Authorization",
-            "in": "headers",
+            "in": "header",
             "description": "Token provided by the merchant in initiate payment request as `authToken`. Used so that the merchant may authenticate the request.",
             "schema": {
               "type": "string"
@@ -426,7 +426,7 @@
           },
           {
             "name": "Authorization",
-            "in": "headers",
+            "in": "header",
             "description": "Token provided by the merchant in initiate payment request as `authToken`. Used so that the merchant may authenticate the request.",
             "schema": {
               "type": "string"
@@ -437,19 +437,17 @@
           "content": {
             "application/json;charset=UTF-8": {
               "schema": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/ExpressCheckOutPaymentRequest"
-                  },
-                  {
-                    "$ref": "#/components/schemas/RegularCheckOutPaymentRequest"
-                  }
-                ]
+                "$ref": "#/components/schemas/TransactionUpdateCallbackOneOf"
               }
             }
           },
           "description": "The body of the request made by Vipps. It will differ if the request is a regular or express payment.",
           "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "All ok"
+          }
         }
       }
     },
@@ -958,7 +956,7 @@
           },
           "postCode": {
             "type": "string",
-            "description": "Zip Code",
+            "description": "Post Code",
             "example": "0191"
           }
         }
@@ -967,7 +965,8 @@
         "type": "object",
         "required": [
           "shippingCost",
-          "shippingMethod"
+          "shippingMethod",
+          "shippingMethodId"
         ],
         "properties": {
           "address": {
@@ -983,6 +982,9 @@
             "type": "string",
             "description": "Shipping method",
             "example": "Posten"
+          },
+          "shippingMethodId": {
+            "type": "string"
           }
         }
       },
@@ -1341,7 +1343,10 @@
         "properties": {
           "orderId": {
             "type": "string",
-            "example": "order123abc"
+            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z and '-'.",
+            "example": "order123abc",
+            "pattern": "^[a-zA-Z-]{2,30}$",
+            "maxLength": 30
           },
           "shippingDetails": {
             "$ref": "#/components/schemas/PaymentShippingDetails"
@@ -1370,8 +1375,10 @@
         "properties": {
           "orderId": {
             "type": "string",
-            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters.",
-            "example": "order123abc"
+            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z and '-'.",
+            "example": "order123abc",
+            "pattern": "^[a-zA-Z-]{2,30}$",
+            "maxLength": 30
           },
           "url": {
             "type": "string",
@@ -1385,7 +1392,8 @@
         "required": [
           "address",
           "shippingCost",
-          "shippingMethod"
+          "shippingMethod",
+          "shippingMethodId"
         ],
         "properties": {
           "address": {
@@ -1399,6 +1407,9 @@
           "shippingMethod": {
             "type": "string",
             "description": "Shipping method which choosed for the payment"
+          },
+          "shippingMethodId": {
+            "type": "string"
           }
         }
       },
@@ -1410,8 +1421,9 @@
         "properties": {
           "orderId": {
             "type": "string",
-            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters",
+            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z and '-'.",
             "example": "order123abc",
+            "pattern": "^[a-zA-Z-]{2,30}$",
             "maxLength": 30
           },
           "transactionInfo": {
@@ -1430,8 +1442,9 @@
         "properties": {
           "orderId": {
             "type": "string",
-            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters",
+            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z and '-'.",
             "example": "order123abc",
+            "pattern": "^[a-zA-Z-]{2,30}$",
             "maxLength": 30
           },
           "transactionInfo": {
@@ -1450,8 +1463,9 @@
         "properties": {
           "orderId": {
             "type": "string",
-            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters",
+            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z and '-'.",
             "example": "order123abc",
+            "pattern": "^[a-zA-Z-]{2,30}$",
             "maxLength": 30
           },
           "transaction": {
@@ -1546,15 +1560,17 @@
           },
           "orderId": {
             "type": "string",
-            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters.",
-            "maxLength": 30,
-            "example": "order123abc"
+            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z and '-'.",
+            "example": "order123abc",
+            "pattern": "^[a-zA-Z-]{2,30}$",
+            "maxLength": 30
           },
           "refOrderId": {
             "type": "string",
-            "description": "Identifies if the payment references to some past orders registered with Vipps. If defined, transactions for this payment will show up as child transactions of the specified order.",
-            "maxLength": 30,
-            "example": "merchantOrder123abc"
+            "description": "Identifies if the payment references to some past orders registered with Vipps. If defined, transactions for this payment will show up as child transactions of the specified order. Maximum length is 30 alphanumeric characters: a-z, A-Z and '-'.",
+            "example": "merchantOrder123abc",
+            "pattern": "^[a-zA-Z-]{2,30}$",
+            "maxLength": 30
           },
           "timeStamp": {
             "type": "string",
@@ -1639,7 +1655,10 @@
         "properties": {
           "orderId": {
             "type": "string",
-            "example": "order123abc"
+            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z and '-'.",
+            "example": "order123abc",
+            "pattern": "^[a-zA-Z-]{2,30}$",
+            "maxLength": 30
           },
           "transactionInfo": {
             "$ref": "#/components/schemas/OrderStatusInfoTransactionInfo"
@@ -1753,8 +1772,10 @@
           },
           "orderId": {
             "type": "string",
-            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters",
-            "example": "order123abc"
+            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z and '-'.",
+            "example": "order123abc",
+            "pattern": "^[a-zA-Z-]{2,30}$",
+            "maxLength": 30
           },
           "shippingDetails": {
             "$ref": "#/components/schemas/ShippingDetailsRequest"
@@ -1788,8 +1809,10 @@
           },
           "orderId": {
             "type": "string",
-            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters",
-            "example": "order123abc"
+            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z and '-'.",
+            "example": "order123abc",
+            "pattern": "^[a-zA-Z-]{2,30}$",
+            "maxLength": 30
           },
           "transactionInfo": {
             "$ref": "#/components/schemas/CallbackTransactionInfoStatus"
@@ -1862,7 +1885,10 @@
           },
           "orderId": {
             "type": "string",
-            "example": "order123abc"
+            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z and '-'.",
+            "example": "order123abc",
+            "pattern": "^[a-zA-Z-]{2,30}$",
+            "maxLength": 30
           },
           "shippingDetails": {
             "type": "array",
@@ -1906,6 +1932,16 @@
             "example": 20000
           }
         }
+      },
+      "TransactionUpdateCallbackOneOf": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/ExpressCheckOutPaymentRequest"
+          },
+          {
+            "$ref": "#/components/schemas/RegularCheckOutPaymentRequest"
+          }
+        ]
       }
     }
   }

@@ -3,8 +3,8 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.0.4
-  title: Vipps eCommerce APIs
+  version: 1.0.5
+  title: Vipps eCommerce API
 tags:
   - name: Authorization Service
     description: Authorization Service
@@ -12,8 +12,7 @@ tags:
     description: Functionality provided by the Vipps eCommerce API
   - name: Endpoints required by Vipps from the merchant
     description: >-
-      These endpoints must be implemented by the merchant, and are called by
-      Vipps.
+      These endpoints must be implemented by the merchant, and are called by Vipps.
 servers:
   - url: https://apitest.vipps.no
   - url: https://api.vipps.no
@@ -118,7 +117,7 @@ paths:
       responses:
         '200':
           description: Remove User Consent (for express checkout)
-  '[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails':
+  '[shippingDetailsPrefix]/v2/payments/{orderid}/shippingDetails':
     post:
       tags:
         - Endpoints required by Vipps from the merchant
@@ -1142,7 +1141,12 @@ components:
       properties:
         orderId:
           type: string
+          description: >-
+            Id which uniquely identifies a payment. Maximum length is 30
+            alphanumeric characters: a-z, A-Z and '-'.
           example: order123abc
+          pattern: '^[a-zA-Z-]{2,30}$'
+          maxLength: 30
         shippingDetails:
           $ref: '#/components/schemas/PaymentShippingDetails'
         transactionLogHistory:
@@ -1164,8 +1168,10 @@ components:
           type: string
           description: >-
             Id which uniquely identifies a payment. Maximum length is 30
-            alphanumeric characters.
+            alphanumeric characters: a-z, A-Z and '-'.
           example: order123abc
+          pattern: '^[a-zA-Z-]{2,30}$'
+          maxLength: 30
         url:
           type: string
           description: >-
@@ -1199,8 +1205,9 @@ components:
           type: string
           description: >-
             Id which uniquely identifies a payment. Maximum length is 30
-            alphanumeric characters
+            alphanumeric characters: a-z, A-Z and '-'.
           example: order123abc
+          pattern: '^[a-zA-Z-]{2,30}$'
           maxLength: 30
         transactionInfo:
           $ref: '#/components/schemas/TransactionInfoCancel'
@@ -1215,8 +1222,9 @@ components:
           type: string
           description: >-
             Id which uniquely identifies a payment. Maximum length is 30
-            alphanumeric characters
+            alphanumeric characters: a-z, A-Z and '-'.
           example: order123abc
+          pattern: '^[a-zA-Z-]{2,30}$'
           maxLength: 30
         transactionInfo:
           $ref: '#/components/schemas/TransactionInfoCapture'
@@ -1231,8 +1239,9 @@ components:
           type: string
           description: >-
             Id which uniquely identifies a payment. Maximum length is 30
-            alphanumeric characters
+            alphanumeric characters: a-z, A-Z and '-'.
           example: order123abc
+          pattern: '^[a-zA-Z-]{2,30}$'
           maxLength: 30
         transaction:
           $ref: '#/components/schemas/TransactionInfoRefund'
@@ -1305,17 +1314,20 @@ components:
           type: string
           description: >-
             Id which uniquely identifies a payment. Maximum length is 30
-            alphanumeric characters.
-          maxLength: 30
+            alphanumeric characters: a-z, A-Z and '-'.
           example: order123abc
+          pattern: '^[a-zA-Z-]{2,30}$'
+          maxLength: 30
         refOrderId:
           type: string
           description: >-
             Identifies if the payment references to some past orders registered
             with Vipps. If defined, transactions for this payment will show up
             as child transactions of the specified order.
-          maxLength: 30
+            Maximum length is 30 alphanumeric characters: a-z, A-Z and '-'.
           example: merchantOrder123abc
+          pattern: '^[a-zA-Z-]{2,30}$'
+          maxLength: 30
         timeStamp:
           type: string
           format: date-time
@@ -1419,7 +1431,12 @@ components:
       properties:
         orderId:
           type: string
+          description: >-
+            Id which uniquely identifies a payment. Maximum length is 30
+            alphanumeric characters: a-z, A-Z and '-'.
           example: order123abc
+          pattern: '^[a-zA-Z-]{2,30}$'
+          maxLength: 30
         transactionInfo:
           $ref: '#/components/schemas/OrderStatusInfoTransactionInfo'
     Transaction:
@@ -1515,8 +1532,10 @@ components:
           type: string
           description: >-
             Id which uniquely identifies a payment. Maximum length is 30
-            alphanumeric characters
+            alphanumeric characters: a-z, A-Z and '-'.
           example: order123abc
+          pattern: '^[a-zA-Z-]{2,30}$'
+          maxLength: 30
         shippingDetails:
           $ref: '#/components/schemas/ShippingDetailsRequest'
         transactionInfo:
@@ -1545,8 +1564,10 @@ components:
           type: string
           description: >-
             Id which uniquely identifies a payment. Maximum length is 30
-            alphanumeric characters
+            alphanumeric characters: a-z, A-Z and '-'.
           example: order123abc
+          pattern: '^[a-zA-Z-]{2,30}$'
+          maxLength: 30
         transactionInfo:
           $ref: '#/components/schemas/CallbackTransactionInfoStatus'
         errorInfo:
@@ -1602,7 +1623,12 @@ components:
           format: int32
         orderId:
           type: string
+          description: >-
+            Id which uniquely identifies a payment. Maximum length is 30
+            alphanumeric characters: a-z, A-Z and '-'.
           example: order123abc
+          pattern: '^[a-zA-Z-]{2,30}$'
+          maxLength: 30
         shippingDetails:
           type: array
           items:
