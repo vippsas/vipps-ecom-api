@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "description": "# Vipps eCommerce API\nAdditional API documentation: https://github.com/vippsas/vipps-ecom-api/\n",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "title": "Vipps eCommerce API"
   },
   "tags": [
@@ -1343,9 +1343,9 @@
         "properties": {
           "orderId": {
             "type": "string",
-            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z and '-'.",
+            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z, 0-9 and '-'.",
             "example": "order123abc",
-            "pattern": "^[a-zA-Z-]{2,30}$",
+            "pattern": "^[a-zA-Z0-9-]{1,30}$",
             "maxLength": 30
           },
           "shippingDetails": {
@@ -1375,9 +1375,9 @@
         "properties": {
           "orderId": {
             "type": "string",
-            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z and '-'.",
+            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z, 0-9 and '-'.",
             "example": "order123abc",
-            "pattern": "^[a-zA-Z-]{2,30}$",
+            "pattern": "^[a-zA-Z0-9-]{1,30}$",
             "maxLength": 30
           },
           "url": {
@@ -1421,9 +1421,9 @@
         "properties": {
           "orderId": {
             "type": "string",
-            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z and '-'.",
+            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z, 0-9 and '-'.",
             "example": "order123abc",
-            "pattern": "^[a-zA-Z-]{2,30}$",
+            "pattern": "^[a-zA-Z0-9-]{1,30}$",
             "maxLength": 30
           },
           "transactionInfo": {
@@ -1442,9 +1442,9 @@
         "properties": {
           "orderId": {
             "type": "string",
-            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z and '-'.",
+            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z, 0-9 and '-'.",
             "example": "order123abc",
-            "pattern": "^[a-zA-Z-]{2,30}$",
+            "pattern": "^[a-zA-Z0-9-]{1,30}$",
             "maxLength": 30
           },
           "transactionInfo": {
@@ -1463,9 +1463,9 @@
         "properties": {
           "orderId": {
             "type": "string",
-            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z and '-'.",
+            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z, 0-9 and '-'.",
             "example": "order123abc",
-            "pattern": "^[a-zA-Z-]{2,30}$",
+            "pattern": "^[a-zA-Z0-9-]{1,30}$",
             "maxLength": 30
           },
           "transaction": {
@@ -1560,16 +1560,16 @@
           },
           "orderId": {
             "type": "string",
-            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z and '-'.",
+            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z, 0-9 and '-'.",
             "example": "order123abc",
-            "pattern": "^[a-zA-Z-]{2,30}$",
+            "pattern": "^[a-zA-Z0-9-]{1,30}$",
             "maxLength": 30
           },
           "refOrderId": {
             "type": "string",
-            "description": "Identifies if the payment references to some past orders registered with Vipps. If defined, transactions for this payment will show up as child transactions of the specified order. Maximum length is 30 alphanumeric characters: a-z, A-Z and '-'.",
+            "description": "Identifies if the payment references to some past orders registered with Vipps. If defined, transactions for this payment will show up as child transactions of the specified order. Maximum length is 30 alphanumeric characters: a-z, A-Z, 0-9 and '-'.",
             "example": "merchantOrder123abc",
-            "pattern": "^[a-zA-Z-]{2,30}$",
+            "pattern": "^[a-zA-Z0-9-]{1,30}$",
             "maxLength": 30
           },
           "timeStamp": {
@@ -1655,9 +1655,9 @@
         "properties": {
           "orderId": {
             "type": "string",
-            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z and '-'.",
+            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z, 0-9 and '-'.",
             "example": "order123abc",
-            "pattern": "^[a-zA-Z-]{2,30}$",
+            "pattern": "^[a-zA-Z0-9-]{1,30}$",
             "maxLength": 30
           },
           "transactionInfo": {
@@ -1772,9 +1772,9 @@
           },
           "orderId": {
             "type": "string",
-            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z and '-'.",
+            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z, 0-9 and '-'.",
             "example": "order123abc",
-            "pattern": "^[a-zA-Z-]{2,30}$",
+            "pattern": "^[a-zA-Z0-9-]{1,30}$",
             "maxLength": 30
           },
           "shippingDetails": {
@@ -1809,9 +1809,9 @@
           },
           "orderId": {
             "type": "string",
-            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z and '-'.",
+            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z, 0-9 and '-'.",
             "example": "order123abc",
-            "pattern": "^[a-zA-Z-]{2,30}$",
+            "pattern": "^[a-zA-Z0-9-]{1,30}$",
             "maxLength": 30
           },
           "transactionInfo": {
@@ -1885,9 +1885,9 @@
           },
           "orderId": {
             "type": "string",
-            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z and '-'.",
+            "description": "Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z, 0-9 and '-'.",
             "example": "order123abc",
-            "pattern": "^[a-zA-Z-]{2,30}$",
+            "pattern": "^[a-zA-Z0-9-]{1,30}$",
             "maxLength": 30
           },
           "shippingDetails": {
