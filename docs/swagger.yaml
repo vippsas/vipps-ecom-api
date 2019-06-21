@@ -117,7 +117,7 @@ paths:
       responses:
         '200':
           description: Remove User Consent (for express checkout)
-  '[shippingDetailsPrefix]/v2/payments/{orderid}/shippingDetails':
+  '[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails':
     post:
       tags:
         - Endpoints required by Vipps from the merchant
