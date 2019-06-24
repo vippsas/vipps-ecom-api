@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "description": "# Vipps eCommerce API\nAdditional API documentation: https://github.com/vippsas/vipps-ecom-api/\n",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "title": "Vipps eCommerce API"
   },
   "tags": [
@@ -1036,8 +1036,10 @@
             "type": "string"
           },
           "transactionText": {
-            "description": "Text provided by the merchant for the corresponding operation.",
-            "type": "string"
+            "type": "string",
+            "description": "Transaction text to be displayed in Vipps",
+            "example": "One pair of Vipps socks",
+            "maxLength": 100
           }
         }
       },
@@ -1045,7 +1047,10 @@
         "type": "object",
         "properties": {
           "transactionText": {
-            "type": "string"
+            "type": "string",
+            "description": "Transaction text to be displayed in Vipps",
+            "example": "One pair of Vipps socks",
+            "maxLength": 100
           }
         }
       },
@@ -1251,8 +1256,9 @@
           },
           "transactionText": {
             "type": "string",
-            "description": "Transaction text reference provided by merchant",
-            "example": "One pair of Vipps socks"
+            "description": "Transaction text to be displayed in Vipps",
+            "example": "One pair of Vipps socks",
+            "maxLength": 100
           }
         }
       },
@@ -1292,8 +1298,9 @@
           },
           "transactionText": {
             "type": "string",
-            "description": "Transaction text reference provided by merchant",
-            "example": "One pair of Vipps socks"
+            "description": "Transaction text to be displayed in Vipps",
+            "example": "One pair of Vipps socks",
+            "maxLength": 100
           }
         }
       },
@@ -1333,8 +1340,9 @@
           },
           "transactionText": {
             "type": "string",
-            "description": "Transaction text reference provided by merchant",
-            "example": "One pair of Vipps socks"
+            "description": "Transaction text to be displayed in Vipps",
+            "example": "One pair of Vipps socks",
+            "maxLength": 100
           }
         }
       },
@@ -1580,9 +1588,9 @@
           },
           "transactionText": {
             "type": "string",
-            "description": "Transaction text that can be displayed to end user",
-            "maxLength": 100,
-            "example": "One pair of Vipps socks"
+            "description": "Transaction text to be displayed in Vipps",
+            "example": "One pair of Vipps socks",
+            "maxLength": 100
           }
         }
       },
@@ -1680,7 +1688,9 @@
           },
           "transactionText": {
             "type": "string",
-            "description": "Proof of delivery"
+            "description": "Transaction text to be displayed in Vipps",
+            "example": "One pair of Vipps socks",
+            "maxLength": 100
           }
         }
       },

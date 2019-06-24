@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.0.6
+  version: 1.0.7
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -878,13 +878,18 @@ components:
           example: 5001446662
           type: string
         transactionText:
-          description: Text provided by the merchant for the corresponding operation.
           type: string
+          description: Transaction text to be displayed in Vipps
+          example: One pair of Vipps socks
+          maxLength: 100
     CancelTransaction:
       type: object
       properties:
         transactionText:
           type: string
+          description: Transaction text to be displayed in Vipps
+          example: One pair of Vipps socks
+          maxLength: 100
     UserDetails:
       type: object
       required:
@@ -1062,8 +1067,9 @@ components:
           example: '5001420062'
         transactionText:
           type: string
-          description: Transaction text reference provided by merchant
+          description: Transaction text to be displayed in Vipps
           example: One pair of Vipps socks
+          maxLength: 100
     TransactionInfoRefund:
       type: object
       required:
@@ -1098,8 +1104,9 @@ components:
           example: '5001420062'
         transactionText:
           type: string
-          description: Transaction text reference provided by merchant
+          description: Transaction text to be displayed in Vipps
           example: One pair of Vipps socks
+          maxLength: 100
     TransactionInfoCapture:
       type: object
       required:
@@ -1134,8 +1141,9 @@ components:
           example: '5001420062'
         transactionText:
           type: string
-          description: Transaction text reference provided by merchant
+          description: Transaction text to be displayed in Vipps
           example: One pair of Vipps socks
+          maxLength: 100
     GetTransactionDetails:
       type: object
       properties:
@@ -1335,9 +1343,9 @@ components:
           example: '2018-11-14T15:44:26.590Z'
         transactionText:
           type: string
-          description: Transaction text that can be displayed to end user
-          maxLength: 100
+          description: Transaction text to be displayed in Vipps
           example: One pair of Vipps socks
+          maxLength: 100
     MerchantInfoDto:
       type: object
       required:
@@ -1454,7 +1462,9 @@ components:
           example: 20000
         transactionText:
           type: string
-          description: Proof of delivery
+          description: Transaction text to be displayed in Vipps
+          example: One pair of Vipps socks
+          maxLength: 100
     FetchShippingCostAndMethod:
       type: object
       required:
