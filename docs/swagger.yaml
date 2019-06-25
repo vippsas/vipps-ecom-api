@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.0.7
+  version: 1.0.8
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -829,8 +829,11 @@ components:
           example: 1500
         shippingMethod:
           type: string
-          description: Shipping method
-          example: Posten
+          description: >-
+            Shipping method. Max length: 25 characters
+            (for iOS, Android supports more characters).
+          example: Posten Servicepakke
+          maxLength: 25
         shippingMethodId:
           type: string
     TransactionLogHistory:
@@ -1201,7 +1204,11 @@ components:
           description: Shipping cost
         shippingMethod:
           type: string
-          description: Shipping method which choosed for the payment
+          description: >-
+            Shipping method. Max length: 25 characters
+            (for iOS, Android supports more characters).
+          example: Posten Servicepakke
+          maxLength: 25
         shippingMethodId:
           type: string
     TransactionResponseCancel:
@@ -1290,6 +1297,11 @@ components:
           format: double
         shippingMethod:
           type: string
+          description: >-
+            Shipping method. Max length: 25 characters
+            (for iOS, Android supports more characters).
+          example: Posten Servicepakke
+          maxLength: 25
         shippingMethodId:
           type: string
     InitiatePaymentCommand:
