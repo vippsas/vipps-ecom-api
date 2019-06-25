@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "description": "# Vipps eCommerce API\nAdditional API documentation: https://github.com/vippsas/vipps-ecom-api/\n",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "title": "Vipps eCommerce API"
   },
   "tags": [
@@ -980,9 +980,9 @@
           },
           "shippingMethod": {
             "type": "string",
-            "description": "Shipping method. Max length: 25 characters (for iOS, Android supports more characters).",
+            "description": "Shipping method. Max length: 256 characters. Recommended length for readability on most screens: 25 characters.",
             "example": "Posten Servicepakke",
-            "maxLength": 25
+            "maxLength": 256
           },
           "shippingMethodId": {
             "type": "string"
@@ -1415,9 +1415,9 @@
           },
           "shippingMethod": {
             "type": "string",
-            "description": "Shipping method. Max length: 25 characters (for iOS, Android supports more characters).",
+            "description": "Shipping method. Max length: 256 characters. Recommended length for readability on most screens: 25 characters.",
             "example": "Posten Servicepakke",
-            "maxLength": 25
+            "maxLength": 256
           },
           "shippingMethodId": {
             "type": "string"
@@ -1529,9 +1529,9 @@
           },
           "shippingMethod": {
             "type": "string",
-            "description": "Shipping method. Max length: 25 characters (for iOS, Android supports more characters).",
+            "description": "Shipping method. Max length: 256 characters. Recommended length for readability on most screens: 25 characters.",
             "example": "Posten Servicepakke",
-            "maxLength": 25
+            "maxLength": 256
           },
           "shippingMethodId": {
             "type": "string"
