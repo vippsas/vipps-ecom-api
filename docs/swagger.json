@@ -369,7 +369,7 @@
           }
         },
         "responses": {
-          "202": {
+          "200": {
             "description": "Response for Initiate Payment",
             "content": {
               "application/json;charset=UTF-8": {
