@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "description": "# Vipps eCommerce API\nAdditional API documentation: https://github.com/vippsas/vipps-ecom-api/\n",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "title": "Vipps eCommerce API"
   },
   "tags": [
@@ -136,7 +136,7 @@
           "Endpoints required by Vipps from the merchant"
         ],
         "summary": "Fetch Shipping Cost & Method",
-        "description": "This API endpoint on the merchant side allows Vipps to get the shipping cost and method based on the provided address and product details. The primary use of this service is Vipps Hurtigkasse (express checkout) where Vipps needs to present shipping cost and method to the Vipps user. Vipps will add `/v2/payments/{orderId}/shippingDetails` to the end of this URL. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.",
+        "description": "This API endpoint on the merchant side allows Vipps to get the shipping cost and method based on the provided address and product details. The primary use of this service is Vipps Hurtigkasse (express checkout) where Vipps needs to present shipping cost and method to the Vipps user. Vipps will add `/v2/payments/{orderId}/shippingDetails` to the end of this URL. Vipps has a *10 second timeout* for these requests, and thus requires a quick reply from the merchant's server for successful payments. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.",
         "operationId": "fetchShippingCostUsingPOST",
         "parameters": [
           {
@@ -328,7 +328,7 @@
             "{$request.body#/merchantInfo/shippingDetailsPrefix}/v2/payments/{$request.body#/transaction/orderId}/shippingDetails": {
               "post": {
                 "summary": "Fetch Shipping Cost & Method",
-                "description": "This API endpoint on the merchant side allows Vipps to get the shipping cost and method based on the provided address and product details. The primary use of this service is Vipps HUrtigkasse (express checkout) where Vipps needs to present shipping cost and method to the Vipps user. Vipps will add `/v2/payments/{orderId}/shippingDetails` to the end of this URL. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.",
+                "description": "This API endpoint on the merchant side allows Vipps to get the shipping cost and method based on the provided address and product details. The primary use of this service is Vipps Hurtigkasse (express checkout) where Vipps needs to present shipping cost and method to the Vipps user. Vipps will add `/v2/payments/{orderId}/shippingDetails` to the end of this URL. Vipps has a *10 second timeout* for these requests, and thus requires a quick reply from the merchant's server for successful payments. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.",
                 "operationId": "fetchShippingCostUsingPOST",
                 "parameters": [
                   {
@@ -1016,7 +1016,7 @@
               "VOID"
             ]
           },
-          "operationSuccess": {
+          "operationf": {
             "type": "boolean",
             "description": "If the corrosponding operation was successfull.",
             "example": true
@@ -1648,7 +1648,7 @@
           },
           "paymentType": {
             "type": "string",
-            "description": "This parameter will identify difference between a regular ecomm payment and ecomm express payment. For express checkout, use: \"eComm Express Payment\". Express checkouts require consentRemovalPrefix.",
+            "description": "This parameter will identify difference between a regular ecomm payment and ecomm express payment. For express checkout, use: \"eComm Express Payment\". Express checkouts require `consentRemovalPrefix`.",
             "enum": [
               "eComm Regular Payment",
               "eComm Express Payment"
