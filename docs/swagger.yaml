@@ -1352,16 +1352,6 @@ components:
           example: order123abc
           pattern: '^[a-zA-Z0-9-]{1,30}$'
           maxLength: 30
-        refOrderId:
-          type: string
-          description: >-
-            Identifies if the payment references to some past orders registered
-            with Vipps. If defined, transactions for this payment will show up
-            as child transactions of the specified order.
-            Maximum length is 30 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
-          example: merchantOrder123abc
-          pattern: '^[a-zA-Z0-9-]{1,30}$'
-          maxLength: 30
         timeStamp:
           type: string
           format: date-time
