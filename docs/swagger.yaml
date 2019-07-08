@@ -1451,6 +1451,14 @@ components:
             We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
           maxLength: 255
           example: 'https://example.com/vipps/shipping/'
+        staticShippingDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShippingDetails'
+          description: >-
+            If shipping method and cost are always a fixed value, for example 50kr, 
+            then the method and price can be provided during the initiate call.
+            The shippingDetailsPrefix callback will not be used if this value is provided.
     GetPaymentStatusResponse:
       type: object
       properties:
