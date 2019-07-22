@@ -821,6 +821,36 @@ components:
           type: string
           description: Post Code
           example: 0191
+    AddressExpress:
+      type: object
+      required:
+        - addressLine1
+        - city
+        - country
+        - postCode
+      properties:
+        addressLine1:
+          type: string
+          description: Address Line 1
+          example: Dronning Eufemias gate 42
+        addressLine2:
+          type: string
+          description: Address Line 2
+          example: 'Att: Rune Garborg'
+        city:
+          type: string
+          description: City
+          example: Oslo
+        country:
+          type: string
+          description: 'Country'
+          example: 'Norway'
+          enum:
+            - Norway
+        zipCode:
+          type: string
+          description: Post Code
+          example: 0603
     PaymentShippingDetails:
       type: object
       required:
@@ -1209,7 +1239,7 @@ components:
         - shippingMethodId
       properties:
         address:
-          $ref: '#/components/schemas/Address'
+          $ref: '#/components/schemas/AddressExpress'
         shippingCost:
           type: number
           format: double
