@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "description": "# Vipps eCommerce API\nAdditional API documentation: https://github.com/vippsas/vipps-ecom-api/\n",
-    "version": "1.0.10",
+    "version": "1.0.11",
     "title": "Vipps eCommerce API"
   },
   "tags": [
@@ -38,7 +38,7 @@
           {
             "name": "client_id",
             "in": "header",
-            "description": "Client id is located in the [developer portal](https://apitest-portal.vipps.no/). Navigate to the ```Applications``` tab and click the ```View secrets``` button to display the client id. See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.",
+            "description": "Client id is available on portal.vipps.no, under the 'Utvikler' tab.",
             "required": true,
             "schema": {
               "type": "string",
@@ -48,7 +48,7 @@
           {
             "name": "client_secret",
             "in": "header",
-            "description": "Client secret is located in the [developer portal](https://apitest-portal.vipps.no/). Navigate to the ```Applications``` tab and click the ```View secrets``` button to display the client id. See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.",
+            "description": "Client secret is available on portal.vipps.no, under the 'Utvikler' tab.",
             "required": true,
             "schema": {
               "type": "string"
@@ -57,7 +57,7 @@
           {
             "name": "Ocp-Apim-Subscription-Key",
             "in": "header",
-            "description": "The subscription-key for Authorization token is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. The ```DEFAULT_ACCESSTOKEN``` key is the value for subscription-key. See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.",
+            "description": "The subscription-key for Authorization token is available on portal.vipps.no, under the 'Utvikler' tab.",
             "required": true,
             "schema": {
               "type": "string"
@@ -212,7 +212,7 @@
           {
             "in": "header",
             "name": "Ocp-Apim-Subscription-Key",
-            "description": "The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.",
+            "description": "The subscription-key for your product is available on portal.vipps.no, under the 'Utvikler' tab.",
             "required": true,
             "schema": {
               "type": "string"
@@ -490,7 +490,7 @@
           {
             "in": "header",
             "name": "Ocp-Apim-Subscription-Key",
-            "description": "The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.",
+            "description": "The subscription-key for your product is available on portal.vipps.no, under the 'Utvikler' tab.",
             "required": true,
             "schema": {
               "type": "string"
@@ -585,7 +585,7 @@
           {
             "in": "header",
             "name": "Ocp-Apim-Subscription-Key",
-            "description": "The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.",
+            "description": "The subscription-key for your product is available on portal.vipps.no, under the 'Utvikler' tab.",
             "required": true,
             "schema": {
               "type": "string"
@@ -680,7 +680,7 @@
           {
             "in": "header",
             "name": "Ocp-Apim-Subscription-Key",
-            "description": "The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.",
+            "description": "The subscription-key for your product is available on portal.vipps.no, under the 'Utvikler' tab.",
             "required": true,
             "schema": {
               "type": "string"
@@ -775,7 +775,7 @@
           {
             "in": "header",
             "name": "Ocp-Apim-Subscription-Key",
-            "description": "The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.",
+            "description": "The subscription-key for your product is available on portal.vipps.no, under the 'Utvikler' tab.",
             "required": true,
             "schema": {
               "type": "string"
@@ -850,7 +850,7 @@
           {
             "in": "header",
             "name": "Ocp-Apim-Subscription-Key",
-            "description": "The subscription-key for your product is located in the [developer portal](https://apitest-portal.vipps.no/). Click the username to the right on the page and select ```Profile``` from the dropdown. Find the relevant salesunit and copy the primary key.  See the [getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full guide with images.",
+            "description": "The subscription-key for your product is available on portal.vipps.no, under the 'Utvikler' tab.",
             "required": true,
             "schema": {
               "type": "string"
