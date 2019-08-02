@@ -6,7 +6,9 @@ For more information about this product, please see
 
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md): information about API keys, product activation, etc please see the guide.
 
-For API documentation and development guidelines please see our [Vipps eCommerce API guide](vipps-ecom-api.md)
+For API documentation and development guidelines please see our [Vipps eCommerce API guide](vipps-ecom-api.md).
+
+For direct integration, see the [Vipps eCommerce API Checklist](vipps-ecom-api-checklist.md).
 
 [Frequently Asked Questions](vipps-ecom-api-faq.md): Questions and answers.
 
