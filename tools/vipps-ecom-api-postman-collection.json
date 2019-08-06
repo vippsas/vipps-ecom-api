@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d7641b2f-5853-4fea-a2bf-4b9491d2fc75",
+		"_postman_id": "c7bc6058-1f3f-4394-992c-fcadfbbe8baf",
 		"name": "eCommerce API v2 - Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -32,7 +32,7 @@
 					},
 					{
 						"key": "Ocp-Apim-Subscription-Key",
-						"value": "{{Ocp-Apim-Subscription-Key-Access-Token}}"
+						"value": "{{Ocp-Apim-Subscription-Key}}"
 					}
 				],
 				"body": {
@@ -75,7 +75,7 @@
 					},
 					{
 						"key": "Ocp-Apim-Subscription-Key",
-						"value": "{{Ocp-Apim-Subscription-Key-Ecom}}"
+						"value": "{{Ocp-Apim-Subscription-Key}}"
 					},
 					{
 						"key": "Authorization",
@@ -124,7 +124,7 @@
 					},
 					{
 						"key": "Ocp-Apim-Subscription-Key",
-						"value": "{{Ocp-Apim-Subscription-Key-Ecom}}"
+						"value": "{{Ocp-Apim-Subscription-Key}}"
 					},
 					{
 						"key": "Authorization",
@@ -133,7 +133,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"merchantInfo\": {\n    \"merchantSerialNumber\": \"{{merchantSerialNumber}}\",\n    \"callbackPrefix\":\"{{callbackPrefix}}\",\n    \"shippingDetailsPrefix\": \"{{shippingDetailsPrefix}}\",\n    \"consentRemovalPrefix\": \"{{consentRemovalPrefix}}\",\n    \"paymentType\": \"eComm Express Payment\",\n    \"fallBack\": \"{{fallBack}}\",\n    \"authToken\": \"{{$guid}}\",\n    \"isApp\":false\n  },\n  \"customerInfo\": {\n    \"mobileNumber\": \"{{mobileNumber}}\"\n  },\n  \"transaction\": {\n    \"orderId\": \"{{orderId}}\",\n    \"amount\": {{amount}},\n    \"transactionText\": \"{{transactionTextInitiate}}\"\n  }\n}"
+					"raw": "{\r\n  \"merchantInfo\": {\r\n    \"merchantSerialNumber\": \"{{merchantSerialNumber}}\",\r\n    \"callbackPrefix\":\"{{callbackPrefix}}\",\r\n    \"shippingDetailsPrefix\": \"{{shippingDetailsPrefix}}\",\r\n    \"consentRemovalPrefix\": \"{{consentRemovalPrefix}}\",\r\n    \"paymentType\": \"eComm Express Payment\",\r\n    \"fallBack\": \"{{fallBack}}\",\r\n    \"authToken\": \"{{$guid}}\",\r\n    \"isApp\":false,\r\n    \"staticShippingDetails\": [\r\n\t\t{\r\n\t\t    \"isDefault\": \"Y\",\r\n\t\t    \"priority\": 1,\r\n\t\t    \"shippingCost\": {{shippingCost1}},\r\n\t\t    \"shippingMethod\": \"{{shippingMethod1}}\",\r\n\t\t    \"shippingMethodId\": \"shippingMethodId1\"\r\n\t\t},\r\n\t\t{\r\n\t\t    \"isDefault\": \"N\",\r\n\t\t    \"priority\": 2,\r\n\t\t    \"shippingCost\": {{shippingCost2}},\r\n\t\t    \"shippingMethod\": \"{{shippingMethod2}}\",\r\n\t\t    \"shippingMethodId\": \"shippingMethodId2\"\r\n\t\t}\r\n\t]\r\n  },\r\n  \"customerInfo\": {\r\n    \"mobileNumber\": \"{{mobileNumber}}\"\r\n  },\r\n  \"transaction\": {\r\n    \"orderId\": \"{{orderId}}\",\r\n    \"amount\": {{amount}},\r\n    \"transactionText\": \"{{transactionTextInitiate}}\"\r\n  }\r\n}"
 				},
 				"url": {
 					"raw": "{{base_url}}/ecomm/v2/payments/",
@@ -178,13 +178,9 @@
 					},
 					{
 						"key": "Ocp-Apim-Subscription-Key",
-						"value": "{{Ocp-Apim-Subscription-Key-Ecom}}"
+						"value": "{{Ocp-Apim-Subscription-Key}}"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "{{base_url}}/ecomm/v2/payments/{{orderId}}/status",
 					"host": [
@@ -212,13 +208,9 @@
 					},
 					{
 						"key": "Ocp-Apim-Subscription-Key",
-						"value": "{{Ocp-Apim-Subscription-Key-Ecom}}"
+						"value": "{{Ocp-Apim-Subscription-Key}}"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "{{base_url}}/ecomm/v2/payments/{{orderId}}/details",
 					"host": [
@@ -246,7 +238,7 @@
 					},
 					{
 						"key": "Ocp-Apim-Subscription-Key",
-						"value": "{{Ocp-Apim-Subscription-Key-Ecom}}"
+						"value": "{{Ocp-Apim-Subscription-Key}}"
 					},
 					{
 						"key": "Authorization",
@@ -296,7 +288,7 @@
 					},
 					{
 						"key": "Ocp-Apim-Subscription-Key",
-						"value": "{{Ocp-Apim-Subscription-Key-Ecom}}"
+						"value": "{{Ocp-Apim-Subscription-Key}}"
 					},
 					{
 						"key": "Authorization",
@@ -338,7 +330,7 @@
 					},
 					{
 						"key": "Ocp-Apim-Subscription-Key",
-						"value": "{{Ocp-Apim-Subscription-Key-Ecom}}"
+						"value": "{{Ocp-Apim-Subscription-Key}}"
 					},
 					{
 						"key": "Content-Type",

@@ -360,7 +360,7 @@ A minimal example:
 }
 ```
 
-An example with more parameters provided:
+An express payment example with more parameters provided:
 
 ```json
 {
@@ -375,7 +375,23 @@ An example with more parameters provided:
     "isApp": false,
     "merchantSerialNumber": 123456,
     "shippingDetailsPrefix": "https://example.com/vipps/shipping/",
-    "paymentType": "eComm Regular Payment"
+    "paymentType": "eComm Express Payment",
+    "staticShippingDetails": [
+        {
+            "isDefault": "N",
+            "priority": 1,
+            "shippingCost": 30.0,
+            "shippingMethod": "Walking",
+            "shippingMethodId": "123abc"
+        },
+        {
+            "isDefault": "Y",
+            "priority": 2,
+            "shippingCost": 30.0,
+            "shippingMethod": "Running",
+            "shippingMethodId": "321abc"
+        }
+    ]
   },
   "transaction": {
     "amount": 20000,
