@@ -4,7 +4,7 @@ See the [Vipps eCommerce API](https://github.com/vippsas/vipps-ecom-api/blob/mas
 
 See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
-guide for the Vipps Developer Portal.
+guide.
 
 # Table of contents
 
@@ -16,13 +16,13 @@ guide for the Vipps Developer Portal.
 - [How do I turn _direct capture_ on or off?](#How-do-I-turn-direct-capture-on-or-off)
 - [How can I refund a payment?](how-can-i-refund-a-payment)
 - [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
+- [Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
 - [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-cant-find-it)
 - [How long is an initiated order valid, if the user does not confirm in the Vipps app?](#how-long-is-an-initiated-order-valid-if-the-user-does-not-confirm-in-the-vipps-app)
 - [How long does it take until the money is in my account?](#how-long-does-it-take-until-the-money-is-in-my-account)
 - [How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
 - [Where can I find reports on transactions?](#where-can-i-find-reports-on-transactions)
 - [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
-- [I am unable to login to the Vipps developer portal](#i-am-unable-to-login-to-the-vipps-developer-portal)
 - [I am getting `401 Unauthorized` error - and I have double checked all my keys!](#i-am-getting-401-unauthorized-error---and-i-have-double-checked-all-my-keys)
 - [Why do I get `500 Internal Server Error` (or similar)?](#why-do-i-get-500-internal-server-error-or-similar)
 - [Why do I not get callbacks from Vipps?](#why-do-i-not-get-callbacks-from-vipps)
@@ -90,6 +90,7 @@ To request _direct capture_, please contact your KAM.
 See [Regular eCommerce payments](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#regular-ecommerce-payments) for more details.
 
 # How do I turn _direct capture_ on or off?
+
 You can't turn _direct capture_ on or off as a merchant, and this must be requested of your KAM. To get both _direct capture_ and _reserve capture_ you must request two different sale units.
 
 # How can I refund a payment?
@@ -104,6 +105,12 @@ Case: A customer has placed an order of of two items for a total of 1000 NOK. Yo
 
 It's not possible to cancel the remaining reservation after a partial capture through Vipps, but when the payment is confirmed
 in the bank (normally 2-3 days later), the money will automatically be available to the customer.
+
+# Is there an API for retrieving information about a Vipps user?
+
+No. Vipps users have not consented to Vipps providing any information to
+third parties, and Vipps does not allow it. There is no API to look up
+a user's address, retrieve a user's purchases, etc.
 
 # I have initiated an order but I can't find it!
 
@@ -137,7 +144,6 @@ The settlement flow is as follows:
 
 See also [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
 
-
 # How long does it take from a refund is made until the money is in the customer's account?
 
 Normally 2-3 _bank days_, depending on the bank.
@@ -162,11 +168,6 @@ If the user's account has insufficient funds at this time, the payment will fail
 
 In many cases the bank will have a register of expired reservations and they will force it through if the account allows this.
 This will put the account in the negative.
-
-# I am unable to login to the Vipps developer portal
-
-See [Step 1](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md#step-1)
-in the guide.
 
 # I am getting `401 Unauthorized` error - and I have double checked all my keys!
 
@@ -194,8 +195,11 @@ See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-e
 
 # Why do I not get callbacks from Vipps?
 
-It could be because your firewall is blocking our requests. 
+It could be because your firewall is blocking our requests.
 Please see [Vipps request servers](https://github.com/vippsas/vipps-developers/blob/master/README.md#vipps-request-servers).
+
+If you need help solving a callback-related problem, please send us a
+complete HTTP request, and any other related details, so we can investigate.
 
 # Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`
 
