@@ -28,6 +28,7 @@ guide.
 - [Why do I not get callbacks from Vipps?](#why-do-i-not-get-callbacks-from-vipps)
 - [Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`](#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked)
 - [How do I perform "testing in production"?](#how-do-i-perform-testing-in-production)
+- [What do we have to do with PSD2's SCA requirements?](#what-do-we-have-to-do-with-psd2s-sca-requirements)
 
 # Why do payments fail?
 
@@ -211,6 +212,14 @@ This happens if the test merchant is not being used for some time. Please
 To do this you need a live Vipps account.
 We recommend testing with 2 NOK, even though 1 NOK is the smallest possible amount.
 1 NOK is not reliable, as it gets low priority in some systems.
+
+# What do we have to do with PSD2's SCA requirements?
+
+SCA (Strong customer authentication) is a security requirement, related to PSD2, to reduce the risk of fraud and protect customers data.
+
+Delegated SCA will be Vipps' primary way of solving the SCA requirements. For this solution Vipps is developing a SCA compliant solution that consists of a two factor authentication featuring either PIN or biometrics in addition to device possession. In addition Vipps will implement a Dynamic Linking according to the requirements.
+
+There is no need for any changes to your Vipps implementation. 
 
 # Questions?
 
