@@ -1359,10 +1359,12 @@ components:
         callbackPrefix:
           type: string
           description: >-
-            This is an URL for receiving the callback after the payment request.
+            This is an URL for Vipps to call at the merchant's server to provide
+            updated information about the order after the payment request.
             Domain name and context path should be provided by merchant as the
             value for this parameter. Vipps will add `/v2/payments/{orderId}` to
-            the end or this URL. URLs passed to Vipps should be URL-encoded, and
+            the end or this URL.
+            URLs passed to Vipps should be URL-encoded, and
             must validate with the Apache Commons
             [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
           maxLength: 255
@@ -1383,8 +1385,10 @@ components:
         fallBack:
           type: string
           description: >-
-            Vipps will use the fall back URL to redirect Merchant Page once
-            Payment is completed in Vipps System URLs passed to Vipps should be
+            Vipps will use the fallBack URL to redirect the Vipps user to the
+            merchant's confirmation page once the payment is completed in Vipps.
+            This is the "success page", although the name is ambiguous.
+            URLs passed to Vipps should be
             URL-encoded, and must validate with the Apache Commons
             [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
           maxLength: 255
@@ -1434,7 +1438,7 @@ components:
           items:
             $ref: '#/components/schemas/ShippingDetails'
           description: >-
-            If shipping method and cost are always a fixed value, for example 50kr, 
+            If shipping method and cost are always a fixed value, for example 50kr,
             then the method and price can be provided during the initiate call.
             The shippingDetailsPrefix callback will not be used if this value is provided.
     GetPaymentStatusResponse:
