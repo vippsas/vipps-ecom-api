@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "description": "# Vipps eCommerce API\nAdditional API documentation: https://github.com/vippsas/vipps-ecom-api/\n",
-    "version": "1.0.13",
+    "version": "1.0.14",
     "title": "Vipps eCommerce API"
   },
   "tags": [
@@ -1162,8 +1162,8 @@
         "type": "object",
         "properties": {
           "errorCode": {
-            "type": "integer",
-            "example": 45,
+            "type": "string",
+            "example": "45",
             "description": "The number code for the error."
           },
           "errorGroup": {
