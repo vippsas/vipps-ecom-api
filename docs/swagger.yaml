@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.0.12
+  version: 1.0.13
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -1386,8 +1386,10 @@ components:
           type: string
           description: >-
             Vipps will use the fallBack URL to redirect the Vipps user to the
-            merchant's confirmation page once the payment is completed in Vipps.
-            This is the "success page", although the name is ambiguous.
+            merchant’s confirmation page once the payment is completed in Vipps.
+            This is normally the “success page”, although the “fallback” name
+            is ambiguous (the same URL is also used if payment was not successful).
+            In other words: This is the URL Vipps sends the Vipps user back to.
             URLs passed to Vipps should be
             URL-encoded, and must validate with the Apache Commons
             [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
