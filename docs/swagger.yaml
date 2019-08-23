@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.0.13
+  version: 1.0.14
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -936,8 +936,8 @@ components:
       type: object
       properties:
         errorCode:
-          type: integer
-          example: 45
+          type: string
+          example: '45'
           description: The number code for the error.
         errorGroup:
           type: string

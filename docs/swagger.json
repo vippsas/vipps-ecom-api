@@ -1162,8 +1162,8 @@
         "type": "object",
         "properties": {
           "errorCode": {
-            "type": "integer",
-            "example": 45,
+            "type": "string",
+            "example": "45",
             "description": "The number code for the error."
           },
           "errorGroup": {
