@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "description": "# Vipps eCommerce API\nAdditional API documentation: https://github.com/vippsas/vipps-ecom-api/\n",
-    "version": "1.0.11",
+    "version": "1.0.12",
     "title": "Vipps eCommerce API"
   },
   "tags": [
@@ -1648,9 +1648,9 @@
           },
           "callbackPrefix": {
             "type": "string",
-            "description": "This is an URL for Vipps to call at the merchant's server to provide updated information about the order after the payment request. Domain name and context path should be provided by merchant as the value for this parameter. Vipps will add `/v2/payments/{orderId}` to the end or this URL. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.",
+            "description": "This is an URL for receiving the callback after the payment request. Domain name and context path should be provided by merchant as the value for this parameter. Vipps will add `/v2/payments/{orderId}` to the end or this URL. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.",
             "maxLength": 255,
-            "example": "https://example.com/vipps/callbacks-for-payment-update"
+            "example": "https://example.com/vipps/callbacks"
           },
           "consentRemovalPrefix": {
             "type": "string",
@@ -1660,9 +1660,9 @@
           },
           "fallBack": {
             "type": "string",
-            "description": "Vipps will use the fallBack URL to redirect the Vipps user to the merchant's confirmation page once the payment is completed in Vipps. This is the \"success page\", although the name is ambiguous. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).",
+            "description": "Vipps will use the fall back URL to redirect Merchant Page once Payment is completed in Vipps System URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).",
             "maxLength": 255,
-            "example": "https://example.com/vipps/fallback-success-page/order123abc"
+            "example": "https://example.com/vipps/fallback/order123abc"
           },
           "isApp": {
             "type": "boolean",
