@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.0.5
+Document version 1.0.6
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
@@ -347,8 +347,8 @@ A minimal example:
 {
     "merchantInfo": {
       "merchantSerialNumber": "123456",
-      "callbackPrefix":"https://vipps.io/vipps/callbacks/",
-      "fallBack": "https://vipps.no/"
+      "callbackPrefix":"https://example.com/vipps/callbacks-for-payment-update",
+      "fallBack": "https://example.com/vipps/fallback-success-page/order123abc"
     },
     "customerInfo": {
     },
@@ -369,9 +369,9 @@ An express payment example with more parameters provided:
   },
   "merchantInfo": {
     "authToken": "string",
-    "callbackPrefix": "https://example.com/vipps/callbacks/",
+    "callbackPrefix": "https://example.com/vipps/callbacks-for-payment-update",
     "consentRemovalPrefix": "https://example.com/vipps/consents/",
-    "fallBack": "https://example.com/vipps/fallback/",
+    "fallBack": "https://example.com/vipps/fallback-success-page/order123abc",
     "isApp": false,
     "merchantSerialNumber": 123456,
     "shippingDetailsPrefix": "https://example.com/vipps/shipping/",
@@ -490,7 +490,7 @@ If `isApp` is true, the `fallBack` is not validated with Apache Commons UrlValid
 as the app-switch URL may be something like `vipps://`, which is not a valid URL.
 
 Here is a simple Java class suitable for testing URLs,
-using the dummy URL `https://example.com/vipps/fallback?id=abc123`:
+using the dummy URL `https://example.com/vipps/fallback-success-page/order123abc`:
 
 ```java
 import org.apache.commons.validator.routines.UrlValidator;
@@ -499,7 +499,7 @@ public class UrlValidate {
  public static void main(String[] args) {
   UrlValidator urlValidator = new UrlValidator();
 
-  if (urlValidator.isValid("https://example.com/vipps/fallback?id=abc123")) {
+  if (urlValidator.isValid("https://example.com/vipps/fallback-success-page/order123abc")) {
    System.out.println("URL is valid");
   } else {
    System.out.println("URL is invalid");
@@ -1319,7 +1319,7 @@ callback-mt-2.vipps.no\
 callback-mt-3.vipps.no\
 callback-mt-4.vipps.no
 
-Please make sure that requests from these servers are allowed through firewalls, etc. 
+Please make sure that requests from these servers are allowed through firewalls, etc.
 
 **Note:** Vipps may change the IP addresses that we make callbacks from. To ensure that you are whitelisting the corrects IP addresses please use these hostnames.  
 
