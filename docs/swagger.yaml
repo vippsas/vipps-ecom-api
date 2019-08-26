@@ -849,7 +849,7 @@ components:
             - REFUND
             - CANCEL
             - VOID
-        operationf:
+        operationSuccess:
           type: boolean
           description: If the corrosponding operation was successfull.
           example: true
