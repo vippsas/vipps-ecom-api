@@ -822,6 +822,7 @@
     },
     "/ecomm/v2/payments/{orderId}/status": {
       "get": {
+        "deprecated": true,
         "tags": [
           "Vipps eCom API"
         ],
