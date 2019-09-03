@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "description": "# Vipps eCommerce API\nAdditional API documentation: https://github.com/vippsas/vipps-ecom-api/\n",
-    "version": "1.0.14",
+    "version": "1.0.15",
     "title": "Vipps eCommerce API"
   },
   "tags": [
@@ -1663,7 +1663,7 @@
             "type": "string",
             "description": "Vipps will use the fallBack URL to redirect the Vipps user to the merchant’s confirmation page once the payment is completed in Vipps. This is normally the “success page”, although the “fallback” name is ambiguous (the same URL is also used if payment was not successful). In other words: This is the URL Vipps sends the Vipps user back to. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).",
             "maxLength": 255,
-            "example": "https://example.com/vipps/fallback-success-page/order123abc"
+            "example": "https://example.com/vipps/fallback-result-page/order123abc"
           },
           "isApp": {
             "type": "boolean",

@@ -345,7 +345,7 @@ A minimal example:
     "merchantInfo": {
       "merchantSerialNumber": "123456",
       "callbackPrefix":"https://example.com/vipps/callbacks-for-payment-update",
-      "fallBack": "https://example.com/vipps/fallback-success-page/order123abc"
+      "fallBack": "https://example.com/vipps/fallback-result-page/order123abc"
     },
     "customerInfo": {
     },
@@ -368,7 +368,7 @@ An express payment example with more parameters provided:
     "authToken": "string",
     "callbackPrefix": "https://example.com/vipps/callbacks-for-payment-update",
     "consentRemovalPrefix": "https://example.com/vipps/consents/",
-    "fallBack": "https://example.com/vipps/fallback-success-page/order123abc",
+    "fallBack": "https://example.com/vipps/fallback-result-page/order123abc",
     "isApp": false,
     "merchantSerialNumber": 123456,
     "shippingDetailsPrefix": "https://example.com/vipps/shipping/",
@@ -487,7 +487,7 @@ If `isApp` is true, the `fallBack` is not validated with Apache Commons UrlValid
 as the app-switch URL may be something like `vipps://`, which is not a valid URL.
 
 Here is a simple Java class suitable for testing URLs,
-using the dummy URL `https://example.com/vipps/fallback-success-page/order123abc`:
+using the dummy URL `https://example.com/vipps/fallback-result-page/order123abc`:
 
 ```java
 import org.apache.commons.validator.routines.UrlValidator;
@@ -496,7 +496,7 @@ public class UrlValidate {
  public static void main(String[] args) {
   UrlValidator urlValidator = new UrlValidator();
 
-  if (urlValidator.isValid("https://example.com/vipps/fallback-success-page/order123abc")) {
+  if (urlValidator.isValid("https://example.com/vipps/fallback-result-page/order123abc")) {
    System.out.println("URL is valid");
   } else {
    System.out.println("URL is invalid");
