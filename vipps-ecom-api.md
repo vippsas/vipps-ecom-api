@@ -164,11 +164,11 @@ These endpoints are included in the Swagger file for reference.
 
 ### Flow diagram details
 
-This table shows the from- and to-state, and the status returned from
-""Get order status"
-([`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST), [[Redoc](https://vippsas.github.io/vipps-ecom-api/redoc.html#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)], [[Swagger](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST)]).
+This table shows the from- and to-state, and the operation returned from
+"Get order details"
+([`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET), [[Redoc](https://vippsas.github.io/vipps-ecom-api/redoc.html#operation/getPaymentDetailsUsingGET)], [[Swagger](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)]).
 
-| #   | From-state | To-state | Description                                   | getOrderStatus |
+| #   | From-state | To-state | Description                                   | Operation |
 | --- | ---------- | -------- | --------------------------------------------- | -------------- |
 | 0   | -          | Initiate | Payment initiation                            | `INITIATE`     |
 | 1   | Initiate   | -        | The merchant has initiated the payment        | `INITIATE`     |
@@ -176,13 +176,10 @@ This table shows the from- and to-state, and the status returned from
 | -   |            | Cancel   | The user cancels the order                    | `CANCEL`       |
 | 2   | Reserve    | Capture  | The merchant captures the payment, and ships  | `CAPTURE`      |
 | -   |            | Cancel   | The merchant cancels the order                | `VOID`         |
-| 3   | Capture    | --       | A final state: Payment fully processed        | `RESERVE`      |
-| -   |            | Refund   | The merchant refunds the money to the user    | `RESERVE`     |
+| 3   | Capture    | --       | A final state: Payment fully processed        | `CAPTURE`      |
+| -   |            | Refund   | The merchant refunds the money to the user    | `REFUND`     |
 | 4   | Cancel     | --       | A final state: Payment cancelled              | -              |
 | 5   | Refund     | --       | A final state: Payment refunded               | -              |
-
-**Please note:** When using Get order status ([`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getOrderStatusUsingGET)),
-the order will show as `"status": "RESERVE"`, even after operations as capture and refund. To se if the payment has been completed, and the reserved amount has been captured, use Get payment details ([`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)).
 
 Please note that the response from Get payment details [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET))
 always contain _the entire history_ of payments for the order, not just the current status.
@@ -218,7 +215,7 @@ This section contains complete HTTP `requests` and `responses` for each API endp
 | Capture payment     | When an amount has been reserved, and the goods are (about to be) shipped, the payment must be _captured_  | [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/capturePaymentUsingPOST)  |
 | Cancel payment      | The merchant may cancel a reserved amount, but not on a captured amount.  | [`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/cancelPaymentRequestUsingPUT)  |
 | Refund payment      | The merchant may refund a captured amount.  |[`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/refundPaymentUsingPOST)  |
-| Get order status    | The status is "reserved" after a payment has been initiated. For details about payment, use [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET) | [`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getOrderStatusUsingGET)  |
+| Get order status    | Deprecated, please use [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET). | [`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getOrderStatusUsingGET)  |
 | Get payment details | How much of the reserved amount has been captured, etc.  | [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)  |
 | Access Token | Fetch the access token | [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-ecom-api/#/Authorization_Service/fetchAuthorizationTokenUsingPost) |
 
@@ -508,21 +505,6 @@ public class UrlValidate {
 }
 ```
 
-
-**Example Get order status** - [`GET:/ecomm/v2/payments/order123abc/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getOrderStatusUsingGET)
-
-```json
-{
-    "orderId": "order123abc",
-    "transactionInfo": {
-        "amount": 20000,
-        "status": "INITIATE",
-        "transactionId": "5001420062",
-        "timeStamp": "2018-11-14T15:44:26.590Z"
-    }
-}
-```
-
 **Example Get payment details** - [`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
 
 ```json
@@ -547,21 +529,6 @@ public class UrlValidate {
 When the user confirms, the payment status changes to `RESERVE`.
 The respective amount will be reserved for future capturing.
 
-
-
-**Example Get order status** - [`GET:/ecomm/v2/payments/order123abc/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getOrderStatusUsingGET)  |
-
-```json
-{
-    "orderId": "order123abc",
-    "transactionInfo": {
-        "amount": 20000,
-        "status": "RESERVE",
-        "transactionId": "5001420062",
-        "timeStamp": "2018-11-14T15:44:26.590Z"
-    }
-}
-```
 
 **Example Get payment details** - [`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
 
@@ -642,20 +609,6 @@ After cancellation, the order gets a new status:
         "remainingAmountToCapture": 0,
         "refundedAmount": 0,
         "remainingAmountToRefund": 0
-    }
-}
-```
-
-**Example Get order status** - [`GET:/ecomm/v2/payments/order123abc/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getOrderStatusUsingGET)  |
-
-```json
-{
-    "orderId": "order123abc",
-    "transactionInfo": {
-        "amount": 20000,
-        "status": "VOID",
-        "transactionId": "5001420063",
-        "timeStamp": "2018-11-14T15:46:07.498Z"
     }
 }
 ```
@@ -762,20 +715,6 @@ In a capture request the merchant may also use the `X-Request-Id`header. This he
 }
 ```
 
-**Example Get order status** - [`GET:/ecomm/v2/payments/order123abc/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getOrderStatusUsingGET)  |
-
-```json
-{
-    "orderId": "order123abc",
-    "transactionInfo": {
-        "amount": 20000,
-        "status": "RESERVE",
-        "transactionId": "5001420062",
-        "timeStamp": "2018-11-14T15:22:46.736Z"
- }
-}
-```
-
 **Example Get payment details** - [`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
 
 ```json
@@ -863,20 +802,6 @@ In a capture request the merchant may also use the `X-Request-Id`header. This he
         "refundedAmount": 20000,
         "remainingAmountToRefund": 0
     }
-}
-```
-
-**Example Get order status** - [`GET:/ecomm/v2/payments/order123abc/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getOrderStatusUsingGET)
-
-```json
-{
-    "orderId": "order123abc",
-    "transactionInfo": {
-        "amount": 20000,
-        "status": "RESERVE",
-        "transactionId": "5001420062",
-        "timeStamp": "2018-11-14T15:22:46.736Z"
- }
 }
 ```
 
