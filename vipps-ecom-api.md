@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.0.7
+Document version 1.0.8
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
@@ -229,8 +229,8 @@ and these headers are required:
 
 | Header Name | Header Value | Description |
 | ----------- | ------------ | ----------- |
-| `Authorization` | `Bearer <JWT access token>` | Type: Authorization token. This is available in the Vipps Developer Portal. |
-| `Ocp-Apim-Subscription-Key` | Base 64 encoded string | The subscription key for the eCom API. This is available in the Vipps Developer Portal. |
+| `Authorization` | `Bearer <JWT access token>` | Type: Authorization token. This is available on [portal.vipps.no](https://portal.vipps.no). |
+| `Ocp-Apim-Subscription-Key` | Base 64 encoded string | The subscription key for the eCom API. This is available on [portal.vipps.no](https://portal.vipps.no). |
 
 ### Access token
 
@@ -246,7 +246,7 @@ client_id: <client_id>
 client_secret: <client_secret>
 Ocp-Apim-Subscription-Key: <Ocp-Apim-Subscription-Key>
 ```
-All headers are per merchantSerialNumber and can be found in Vipps Developer Portal.
+All headers are per merchantSerialNumber and can be found on [portal.vipps.no](https://portal.vipps.no).
 
 | Header Name | Header Value | Description |
 | ----------- | ------------ | ----------- |
