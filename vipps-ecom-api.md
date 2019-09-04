@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.0.6
+Document version 1.0.7
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
@@ -1284,7 +1284,12 @@ If `authToken` was used in the initiate payment request these requests will have
 
 API details: [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)
 
-**Note:** We do not send requests to all ports so to be safe use common port numbers such as: 80, 443, 8080.
+### Callback URLs must be reachable
+
+Please make sure that the callback URLs are valid:
+
+* Vipps does _not_ support sending requests to all ports, so to be safe use common port numbers such as: 80, 443, 8080.
+* Vipps does _not_ support callback URLs that return `HTTP 301 Redirect` or `HTTP 302 Permanently Moved`. The callback URLs _must_ be directly reachable.
 
 **Example Express Checkout Callback**
 
