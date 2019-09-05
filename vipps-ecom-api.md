@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.0.8
+Document version 1.0.9
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
@@ -13,6 +13,7 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
 # Table of contents
 
 - [Overview](#overview)
+  * [Checklist](#checklist)
   * [Payment types](#payment-types)
     + [Regular eCommerce payments](#regular-ecommerce-payments)
       - [Reserve capture](#reserve-capture)
@@ -73,6 +74,10 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
 The Vipps eCommerce API (eCom API) offers functionality for online payments,
 both using web browsers on websites and in native apps for iOS and Android,
 using app-switching.
+
+## Checklist
+
+See the [eCom API checklist](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md).
 
 ## Payment types
 
