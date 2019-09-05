@@ -6,6 +6,8 @@ See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
+Document version 1.0.0.
+
 # Table of contents
 
 - [Why do payments fail?](#why-do-payments-fail)
@@ -219,7 +221,25 @@ SCA (Strong customer authentication) is a security requirement, related to PSD2,
 
 Delegated SCA will be Vipps' primary way of solving the SCA requirements. For this solution Vipps is developing a SCA compliant solution that consists of a two factor authentication featuring either PIN or biometrics in addition to device possession. In addition Vipps will implement a Dynamic Linking according to the requirements.
 
-There is no need for any changes to your Vipps implementation. 
+There is no need for any changes to your Vipps implementation.
+
+# What about webhooks?
+
+Vipps has, so far (and this _may_ change), used `GET` methods for retrieving information.
+We have varying success when depending on systems on the merchant side, especially
+during peak traffic periods. With webhooks, and also callbacks, Vipps
+takes the responsibility of providing information to the merchant, while being
+dependent on systems on the merchant side, network stability, etc.
+In our experience, `GET` methods is the safest way for merchants to get
+information from Vipps. We also provide callbacks, but merchants _must not_
+rely on this alone - being able to actively retrieving information with `GET` methods
+is a requirement.
+
+See the checklists for
+[Vipps eCom API](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md)
+and
+[Vipps PSP API](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-checklist.md)
+for examples.
 
 # Questions?
 

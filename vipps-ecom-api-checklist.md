@@ -1,5 +1,7 @@
 # Vipps eCommerce API Checklist
 
+API version: 2.0
+
 Document version 1.1.0
 
 For examples of requests and responses, see the Postman collection in [tools](tools/)
@@ -21,6 +23,7 @@ For examples of requests and responses, see the Postman collection in [tools](to
     - [ ] The Vipps branding must be according to the [Vipps design guidelines](https://github.com/vippsas/vipps-design-guidelines)
 
 # Flow to go live for direct integrations
+
 1. The merchant orders [Vipps på Nett](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).
 2. Vipps completes customer control (KYC, PEP, AML, etc).
 3. The merchant receives an email that they can log in with bankID on portal.vipps.no and retrieve API keys.
