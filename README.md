@@ -22,3 +22,5 @@ contribution guidelines,
 etc.
 
 You can peruse the API reference documentation as [Swagger](https://vippsas.github.io/vipps-ecom-api/) or [ReDoc](https://vippsas.github.io/vipps-ecom-api/redoc.html).
+
+The flow of settlements and how to retrieve them are accessible at [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements)
