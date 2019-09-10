@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.0.9
+Document version 1.0.10
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
@@ -1235,19 +1235,8 @@ The documentation is included in the Swagger file for reference only - these end
 
 ## Vipps callback servers
 
-The callbacks from Vipps are made from the following servers:
-
-**Production environment:**\
-callback-1.vipps.no\
-callback-2.vipps.no\
-callback-3.vipps.no\
-callback-4.vipps.no
-
-**Test environment:**\
-callback-mt-1.vipps.no\
-callback-mt-2.vipps.no\
-callback-mt-3.vipps.no\
-callback-mt-4.vipps.no
+The callbacks from Vipps are made from the servers described in
+[Vipps request servers](https://github.com/vippsas/vipps-developers#vipps-request-servers).
 
 Please make sure that requests from these servers are allowed through firewalls, etc.
 
