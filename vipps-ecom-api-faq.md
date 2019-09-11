@@ -161,11 +161,12 @@ More information: https://github.com/vippsas/vipps-developers/tree/master/settle
 
 # For how long is an initiated payment reserved?
 
-Most banks keep reservations for 4-7 days, however this varies depending on which bank the customer is using.
+Most banks keep reservations for 7 days, however this varies depending on which bank the customer is using.
+Some banks only keep reservations for 4 days.
 Vipps does not automatically change the status of the order.
 
-If a capture attempt is made more than 4-7 days after the payment has been initiated
-and the reservation has been released, Vipps will make a new payment request to the bank.
+If a capture attempt is made more than 7 days after the payment has been initiated
+and the reservation has been released by the bank, Vipps will make a new payment request to the bank.
 If the account has sufficient funds, the payment will be successful.
 If the user's account has insufficient funds at this time, the payment will fail.
 
