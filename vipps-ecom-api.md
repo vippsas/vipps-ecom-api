@@ -414,6 +414,8 @@ To add authentication to the callbacks made by Vipps the merchant may provide an
 
 Once successfully initiated, a response with a redirect URL is returned.
 
+**Note:** While the minimum length for `orderId` is 1, we suggest making them longer. Using both numbers and characters of length 6 or more lets us more easily identify the order in our event logs.
+
 **Note:** We do not send requests to `callbackPrefix`, `shippingDetails` or `consentsRemovalPrefix` for all ports. To be safe use common port numbers such as: 80, 443, 8080.
 
 **Initiate response example:**
