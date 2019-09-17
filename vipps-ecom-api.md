@@ -950,40 +950,40 @@ call (with same idempotency key) again.
 
 ## Error codes
 
-| Error groups | Error Code | Error Message |
-| ----- | ---- | ----------- |
-| Payment | 41 | User don’t have a valid card |
-| Payment | 42 | Refused by issuer bank |
-| Payment | 43 | Refused by issuer bank because of invalid a amount |
-| Payment | 44 | Refused by issuer because of expired card |
-| Payment | 45 | Reservation failed for some unknown reason |
-| Payment | 51 | Can't cancel already captured order |
-| Payment | 52 | Cancellation failed |
-| Payment | 53 | Can’t cancel order which is not reserved yet |
-| Payment | 61 | Captured amount exceeds the reserved amount ordered |
-| Payment | 62 | The amount you tried to capture is not reserved |
-| Payment | 63 | Capture failed for some unknown reason, please use Get Payment Details API to know the exact status |
-| Payment | 71 | Cant refund more than captured amount |
-| Payment | 72 | Cant refund for reserved order, please use Cancel API |
-| Payment | 73 | Can't refund on cancelled order |
-| Payment | 93 | Captured amount should be same in Idempotent retry |
-| Payment | 1501 | This person can not pay to companies |
-| InvalidRequest  | Field name will be the error code | Description about what exactly the field error is |
-| VippsError | 91 | Transaction is not allowed |
-| VippsError | 92 | Transaction already processed |
-| VippsError | 98 | Too many concurrent requests |
-| VippsError | 99 | Description of the internal error |
-| user | 81 | User not registered with Vipps |
-| user | 82 | User App version not supported |
-| Merchant | 31 | Merchant is blocked because of <reason> |
-| Merchant | 32 | Receiving limit of merchant is exceeded |
-| Merchant | 33 | Number of payment requests has been exceeded |
-| Merchant | 34 | Unique constraint violation of the order id |
-| Merchant | 35 | Registered order not found |
-| Merchant | 36 | Merchant agreement not signed |
-| Merchant | 37 | Merchant not available, deactivated or blocked |
-| Merchant | 21 | Reference Order ID is not valid |
-| Merchant | 22 | Reference Order ID is not in valid state |
+| Error groups | Error Code | Error Message | Comment |
+| ----- | ---- | ----------- |------|
+| Payment | 41 | User don’t have a valid card ||
+| Payment | 42 | Refused by issuer bank ||
+| Payment | 43 | Refused by issuer bank because of invalid a amount ||
+| Payment | 44 | Refused by issuer because of expired card ||
+| Payment | 45 | Reservation failed for some unknown reason ||
+| Payment | 51 | Can't cancel already captured order ||
+| Payment | 52 | Cancellation failed ||
+| Payment | 53 | Can’t cancel order which is not reserved yet ||
+| Payment | 61 | Captured amount exceeds the reserved amount ordered ||
+| Payment | 62 | The amount you tried to capture is not reserved ||
+| Payment | 63 | Capture failed for some unknown reason, please use Get Payment Details API to know the exact status ||
+| Payment | 71 | Cant refund more than captured amount ||
+| Payment | 72 | Cant refund for reserved order, please use Cancel API ||
+| Payment | 73 | Can't refund on cancelled order ||
+| Payment | 93 | Captured amount should be same in Idempotent retry ||
+| Payment | 1501 | This person can not pay to companies |Used for Vipps users under the age of 15.|
+| InvalidRequest  | Field name will be the error code | Description about what exactly the field error is ||
+| VippsError | 91 | Transaction is not allowed ||
+| VippsError | 92 | Transaction already processed ||
+| VippsError | 98 | Too many concurrent requests ||
+| VippsError | 99 | Description of the internal error ||
+| user | 81 | User not registered with Vipps ||
+| user | 82 | User App version not supported ||
+| Merchant | 31 | Merchant is blocked because of <reason> ||
+| Merchant | 32 | Receiving limit of merchant is exceeded ||
+| Merchant | 33 | Number of payment requests has been exceeded ||
+| Merchant | 34 | Unique constraint violation of the order id ||
+| Merchant | 35 | Registered order not found ||
+| Merchant | 36 | Merchant agreement not signed ||
+| Merchant | 37 | Merchant not available, deactivated or blocked ||
+| Merchant | 21 | Reference Order ID is not valid ||
+| Merchant | 22 | Reference Order ID is not in valid state ||
 
 # App integration
 
