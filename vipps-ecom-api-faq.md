@@ -3,8 +3,10 @@
 See the [Vipps eCommerce API](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md) for all the details.
 
 See also the
-[Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md)
-guide for the Vipps Developer Portal.
+[Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
+guide.
+
+Document version 1.0.0.
 
 # Table of contents
 
@@ -13,16 +15,22 @@ guide for the Vipps Developer Portal.
 - [Can I use my "Vipps-nummer" in my webshop?](#can-i-use-my-vipps-nummer-in-my-webshop)
 - [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
 - [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
+- [How do I turn _direct capture_ on or off?](#How-do-I-turn-direct-capture-on-or-off)
+- [How can I refund a payment?](how-can-i-refund-a-payment)
 - [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
+- [Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
 - [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-cant-find-it)
+- [How long is an initiated order valid, if the user does not confirm in the Vipps app?](#how-long-is-an-initiated-order-valid-if-the-user-does-not-confirm-in-the-vipps-app)
 - [How long does it take until the money is in my account?](#how-long-does-it-take-until-the-money-is-in-my-account)
+- [How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
 - [Where can I find reports on transactions?](#where-can-i-find-reports-on-transactions)
 - [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
-- [I am unable to login to the Vipps developer portal](#i-am-unable-to-login-to-the-vipps-developer-portal)
 - [I am getting `401 Unauthorized` error - and I have double checked all my keys!](#i-am-getting-401-unauthorized-error---and-i-have-double-checked-all-my-keys)
 - [Why do I get `500 Internal Server Error` (or similar)?](#why-do-i-get-500-internal-server-error-or-similar)
-- [I have not had time to test this month and when I came back to it now I get `errorCode 37 "Merchant not available or deactivated or blocked"`](#i-have-not-had-time-to-test-this-month-and-when-i-came-back-to-it-now-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked)
+- [Why do I not get callbacks from Vipps?](#why-do-i-not-get-callbacks-from-vipps)
+- [Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`](#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked)
 - [How do I perform "testing in production"?](#how-do-i-perform-testing-in-production)
+- [What do we have to do with PSD2's SCA requirements?](#what-do-we-have-to-do-with-psd2s-sca-requirements)
 
 # Why do payments fail?
 
@@ -40,9 +48,9 @@ We are continuously improving the error messages in the Vipps app. Please note t
 
 # Can I use my "Vipps-nummer" in my webshop?
 
-No. According to Norwegian law you must be able to offer refunds. 
-This is not supported with [Vipps-nummer](https://www.vipps.no/bedrift/vippsnummer).
-You need [Vipps på Nett](https://www.vipps.no/bedrift/vipps-pa-nett).
+No. According to Norwegian law you must be able to offer refunds.
+This is not supported with [Vipps-nummer](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/ta-betalt-med-vipps/).
+You need [Vipps på Nett](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).
 
 # Why does capture fail?
 
@@ -61,8 +69,8 @@ to the customer's server. If this server is slow,
 or has a slow internet connection, the delay may cause Vipps Hurtigkasse to fail due to a timeout.
 The solution to this is a faster server and internet connection.
 
-Information for [Vipps for WooCommerce](https://www.vipps.no/bedrift/vipps-pa-nett/woocommerce): 
-Some third party plugins do not work with Vipps Hurtigkasse. Please ask for help in the 
+Information for [Vipps for WooCommerce](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/woocommerce/):
+Some third party plugins do not work with Vipps Hurtigkasse. Please ask for help in the
 [support forum](https://wordpress.org/support/plugin/woo-vipps),
 and include information about the plugins you have installed.
 
@@ -84,12 +92,28 @@ To request _direct capture_, please contact your KAM.
 
 See [Regular eCommerce payments](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#regular-ecommerce-payments) for more details.
 
+# How do I turn _direct capture_ on or off?
+
+You can't turn _direct capture_ on or off as a merchant, and this must be requested of your KAM. To get both _direct capture_ and _reserve capture_ you must request two different sale units.
+
+# How can I refund a payment?
+
+This depends on your eCommerce solution. The Vipps API supports refunds with
+[`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/refundPaymentUsingPOST).
+For details on how to offer refunds, please refer to the documentation for your eCommerce solution.
+
 # How can I refund only a part of a payment?
 
 Case: A customer has placed an order of of two items for a total of 1000 NOK. You have initiated a payment of 1000 NOK, but the customer has changed her mind and only bought one of the items, with a price of 750 NOK. You have performed a partial capture of 750 NOK, and need to refund the reamining 250 NOK.
 
 It's not possible to cancel the remaining reservation after a partial capture through Vipps, but when the payment is confirmed
 in the bank (normally 2-3 days later), the money will automatically be available to the customer.
+
+# Is there an API for retrieving information about a Vipps user?
+
+No. Vipps users have not consented to Vipps providing any information to
+third parties, and Vipps does not allow it. There is no API to look up
+a user's address, retrieve a user's purchases, etc.
 
 # I have initiated an order but I can't find it!
 
@@ -102,9 +126,15 @@ In case the Vipps
 fails, you will not automatically receive notification of order status.
 The backup should be to ask for status within a time frame.
 
-You can use [Postman](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-postman.md)
+You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
 to manually do API calls, like the two above.
 See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
+
+# How long is an initiated order valid, if the user does not confirm in the Vipps app?
+
+Vipps currently waits for five minutes before automatically cancelling an order due to inactivity.
+It's important that the merchant waits at least as long, otherwise the Vipps user may
+confirm in the Vipps app, and right after get an error from the merchant that the order has been cancelled.
 
 # How long does it take until the money is in my account?
 
@@ -115,7 +145,11 @@ The settlement flow is as follows:
 3. Day 3 (the next _bank day_) at 16:00: Payments are made from Vipps.
 4. Day 5 (the third _bank day_): The settlement is booked with reference by the bank.
 
-See https://www.vipps.no/sporsmal for more details.
+See also [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
+
+# How long does it take from a refund is made until the money is in the customer's account?
+
+Normally 2-3 _bank days_, depending on the bank.
 
 # Where can I find reports on transactions?
 
@@ -127,20 +161,17 @@ More information: https://github.com/vippsas/vipps-developers/tree/master/settle
 
 # For how long is an initiated payment reserved?
 
-In the bank the transaction is reserved for 7 days, however this varies depending on which bank the customer is using.
-In Vipps we do not automatically change the status of the order.
+Most banks keep reservations for 7 days, however this varies depending on which bank the customer is using.
+Some banks only keep reservations for 4 days.
+Vipps does not automatically change the status of the order.
 
-If you try to capture a payment more than 7 days after the payment has been initiated and the reservation has been released,
-Vipps will make a new payment request to the bank. If the user has sufficient funds everything will be successful.
-If the user does not have coverage on his account at this time the payment will fail.
+If a capture attempt is made more than 7 days after the payment has been initiated
+and the reservation has been released by the bank, Vipps will make a new payment request to the bank.
+If the account has sufficient funds, the payment will be successful.
+If the user's account has insufficient funds at this time, the payment will fail.
 
 In many cases the bank will have a register of expired reservations and they will force it through if the account allows this.
 This will put the account in the negative.
-
-# I am unable to login to the Vipps developer portal
-
-See [Step 1](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md#step-1)
-in the guide.
 
 # I am getting `401 Unauthorized` error - and I have double checked all my keys!
 
@@ -152,7 +183,7 @@ merchant sales unit. Please follow these steps to make sure everything is correc
 3. Make sure you are using the same `merchantSerialNumber` in the body of your request as is stated in the developer portal
 4. Make sure you are making calls to `ecomm/v2/payments` and _not_ `ecomm/v1/payments` (unless this is specifically agreed upon)
 
-You can use [Postman](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-postman.md)
+You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
 to manually do API calls, like the two above.
 See [API endpoints](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
 
@@ -160,11 +191,21 @@ See [API endpoints](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-
 
 Something _might_ be wrong on our side and we are working to fix it!
 
-You can use [Postman](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-postman.md)
+It _might_ also be a problem with your request, and that our validation does not catch it.
+In other words: We should have returned `HTTP 400 Bad Request`.
+You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
 to manually do API calls, just to be sure.
 See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
 
-# I have not had time to test this month and when I came back to it now I get `errorCode 37 "Merchant not available or deactivated or blocked"`
+# Why do I not get callbacks from Vipps?
+
+It could be because your firewall is blocking our requests.
+Please see [Vipps request servers](https://github.com/vippsas/vipps-developers/blob/master/README.md#vipps-request-servers).
+
+If you need help solving a callback-related problem, please send us a
+complete HTTP request, and any other related details, so we can investigate.
+
+# Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`
 
 This happens if the test merchant is not being used for some time. Please
 [contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md), and we will reactivate the merchant.
@@ -174,6 +215,32 @@ This happens if the test merchant is not being used for some time. Please
 To do this you need a live Vipps account.
 We recommend testing with 2 NOK, even though 1 NOK is the smallest possible amount.
 1 NOK is not reliable, as it gets low priority in some systems.
+
+# What do we have to do with PSD2's SCA requirements?
+
+SCA (Strong customer authentication) is a security requirement, related to PSD2, to reduce the risk of fraud and protect customers data.
+
+Delegated SCA will be Vipps' primary way of solving the SCA requirements. For this solution Vipps is developing a SCA compliant solution that consists of a two factor authentication featuring either PIN or biometrics in addition to device possession. In addition Vipps will implement a Dynamic Linking according to the requirements.
+
+There is no need for any changes to your Vipps implementation.
+
+# What about webhooks?
+
+Vipps has, so far (and this _may_ change), used `GET` methods for retrieving information.
+We have varying success when depending on systems on the merchant side, especially
+during peak traffic periods. With webhooks, and also callbacks, Vipps
+takes the responsibility of providing information to the merchant, while being
+dependent on systems on the merchant side, network stability, etc.
+In our experience, `GET` methods is the safest way for merchants to get
+information from Vipps. We also provide callbacks, but merchants _must not_
+rely on this alone - being able to actively retrieving information with `GET` methods
+is a requirement.
+
+See the checklists for
+[Vipps eCom API](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md)
+and
+[Vipps PSP API](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-checklist.md)
+for examples.
 
 # Questions?
 

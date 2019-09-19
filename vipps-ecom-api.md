@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.0.4
+Document version 1.0.10
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
@@ -13,6 +13,7 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
 # Table of contents
 
 - [Overview](#overview)
+  * [Checklist](#checklist)
   * [Payment types](#payment-types)
     + [Regular eCommerce payments](#regular-ecommerce-payments)
       - [Reserve capture](#reserve-capture)
@@ -74,6 +75,10 @@ The Vipps eCommerce API (eCom API) offers functionality for online payments,
 both using web browsers on websites and in native apps for iOS and Android,
 using app-switching.
 
+## Checklist
+
+See the [eCom API checklist](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md).
+
 ## Payment types
 
 Vipps eCommerce API offers 2 types of payments
@@ -133,9 +138,7 @@ and to complete the payment in a familiar way.
 
 ### Express checkout payments
 
-These are payments related to
-[Vipps Hurtigkasse](https://www.vipps.no/bedrift/vipps-pa-nett/hurtigkasse),
-where Vipps reduces the typical purchase process to a few simple steps:
+These are payments related to Vipps Hurtigkasse, where Vipps reduces the typical purchase process to a few simple steps:
 
 1. The user clicks on the "Vipps Hurtigkasse" button
 2. The user confirms the amount, delivery address and delivery method in the Vipps app
@@ -166,11 +169,11 @@ These endpoints are included in the Swagger file for reference.
 
 ### Flow diagram details
 
-This table shows the from- and to-state, and the status returned from
-""Get order status"
-([`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST), [[Redoc](https://vippsas.github.io/vipps-ecom-api/redoc.html#/oneclick-payment-with-vipps-controller/getOrderStatusUsingGET)], [[Swagger](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST)]).
+This table shows the from- and to-state, and the operation returned from
+"Get order details"
+([`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET), [[Redoc](https://vippsas.github.io/vipps-ecom-api/redoc.html#operation/getPaymentDetailsUsingGET)], [[Swagger](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)]).
 
-| #   | From-state | To-state | Description                                   | getOrderStatus |
+| #   | From-state | To-state | Description                                   | Operation |
 | --- | ---------- | -------- | --------------------------------------------- | -------------- |
 | 0   | -          | Initiate | Payment initiation                            | `INITIATE`     |
 | 1   | Initiate   | -        | The merchant has initiated the payment        | `INITIATE`     |
@@ -178,13 +181,10 @@ This table shows the from- and to-state, and the status returned from
 | -   |            | Cancel   | The user cancels the order                    | `CANCEL`       |
 | 2   | Reserve    | Capture  | The merchant captures the payment, and ships  | `CAPTURE`      |
 | -   |            | Cancel   | The merchant cancels the order                | `VOID`         |
-| 3   | Capture    | --       | A final state: Payment fully processed        | `RESERVE`      |
-| -   |            | Refund   | The merchant refunds the money to the user    | `RESERVE`     |
+| 3   | Capture    | --       | A final state: Payment fully processed        | `CAPTURE`      |
+| -   |            | Refund   | The merchant refunds the money to the user    | `REFUND`     |
 | 4   | Cancel     | --       | A final state: Payment cancelled              | -              |
 | 5   | Refund     | --       | A final state: Payment refunded               | -              |
-
-**Please note:** When using Get order status ([`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getOrderStatusUsingGET)),
-the order will show as `"status": "RESERVE"`, even after operations as capture and refund. To se if the payment has been completed, and the reserved amount has been captured, use Get payment details ([`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)).
 
 Please note that the response from Get payment details [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET))
 always contain _the entire history_ of payments for the order, not just the current status.
@@ -220,7 +220,7 @@ This section contains complete HTTP `requests` and `responses` for each API endp
 | Capture payment     | When an amount has been reserved, and the goods are (about to be) shipped, the payment must be _captured_  | [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/capturePaymentUsingPOST)  |
 | Cancel payment      | The merchant may cancel a reserved amount, but not on a captured amount.  | [`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/cancelPaymentRequestUsingPUT)  |
 | Refund payment      | The merchant may refund a captured amount.  |[`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/refundPaymentUsingPOST)  |
-| Get order status    | The status is "reserved" after a payment has been initiated. For details about payment, use [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET) | [`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getOrderStatusUsingGET)  |
+| Get order status    | Deprecated, please use [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET). | [`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getOrderStatusUsingGET)  |
 | Get payment details | How much of the reserved amount has been captured, etc.  | [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)  |
 | Access Token | Fetch the access token | [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-ecom-api/#/Authorization_Service/fetchAuthorizationTokenUsingPost) |
 
@@ -234,8 +234,8 @@ and these headers are required:
 
 | Header Name | Header Value | Description |
 | ----------- | ------------ | ----------- |
-| `Authorization` | `Bearer <JWT access token>` | Type: Authorization token. This is available in the Vipps Developer Portal. |
-| `Ocp-Apim-Subscription-Key` | Base 64 encoded string | The subscription key for the eCom API. This is available in the Vipps Developer Portal. |
+| `Authorization` | `Bearer <JWT access token>` | Type: Authorization token. This is available on [portal.vipps.no](https://portal.vipps.no). |
+| `Ocp-Apim-Subscription-Key` | Base 64 encoded string | The subscription key for the eCom API. This is available on [portal.vipps.no](https://portal.vipps.no). |
 
 ### Access token
 
@@ -247,11 +247,11 @@ The Access Token API provides the JWT bearer token.
 
 ```http
 POST https://apitest.vipps.no/accessToken/get
-client_id: <ClientID>
-client_secret: <ClientSecret>
+client_id: <client_id>
+client_secret: <client_secret>
 Ocp-Apim-Subscription-Key: <Ocp-Apim-Subscription-Key>
 ```
-All headers are per merchantSerialNumber and can be found in Vipps Developer Portal.
+All headers are per merchantSerialNumber and can be found on [portal.vipps.no](https://portal.vipps.no).
 
 | Header Name | Header Value | Description |
 | ----------- | ------------ | ----------- |
@@ -259,10 +259,13 @@ All headers are per merchantSerialNumber and can be found in Vipps Developer Por
 | `client_secret` | Base 64 encoded string | Client Secret for the merchant |
 | `Ocp-Apim-Subscription-Key` | Base 64 encoded string | Subscription key for the product |
 
-**Response**
+For the subscription `Vipps-eCommerce-Services-API` the `Ocp-Apim-Subscription-Key` for a access token request will be the same as for eCommerce requests. While for other subscriptions they will use different keys. See [getting started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md) for a guide.
 
-```json
+**Response**
+````http
 HTTP 200 OK
+````
+```json
 {
   "token_type": "Bearer",
   "expires_in": "86398",
@@ -280,15 +283,15 @@ JWT properties:
 | --------------------------- | ------------------------------------------- |
 | `Bearer`                    | It’s a `Bearer` token. The word `Bearer` should be added before the token |
 | `expires_in`                | Token expiry duration in seconds. |
-| `ext_expires_in`            | Extra expiry time. This is always zero. |
+| `ext_expires_in`            | Extra expiry time. Not used. |
 | `expires_on`                | Token expiry time in epoch time format. |
 | `not_before`                | Token creation time in epoch time format. |
 | `resource`                  | For the product for which token has been issued. |
 | `access_token`              | The actual access token that needs to be used in `Authorization` request header. |
 
-**Please note:** The access token is valid for 24 hours.
+**Please note:** The access token is valid for 1 hour in MT and 24 hours in Production. To be sure that you are using correct time please use `expires_in` or `expires_on`.
 
-Example of an error reponse body (formatted for readability):
+Example of an error response body (formatted for readability):
 
 ```json
 {
@@ -313,7 +316,7 @@ This API returns the following HTTP statuses in the responses:
 | ------------------- | ------------------------------------------- |
 | `200 OK`            | Request successful.                          |
 | `400 Bad Request`   | Invalid request, see the `error` for details.  |
-| `401 Unauthorized`  | Invalid credentials.                         |
+| `401 Unauthorized`  | Invalid authorization.                         |
 | `403 Forbidden`     | Authentication ok, but credentials lacks authorization.  |
 | `500 Server Error`  | An internal Vipps problem.                  |
 
@@ -346,8 +349,8 @@ A minimal example:
 {
     "merchantInfo": {
       "merchantSerialNumber": "123456",
-      "callbackPrefix":"https://vipps.io/vipps/callbacks/",
-      "fallBack": "https://vipps.no/"
+      "callbackPrefix":"https://example.com/vipps/callbacks-for-payment-update",
+      "fallBack": "https://example.com/vipps/fallback-result-page/order123abc"
     },
     "customerInfo": {
     },
@@ -359,7 +362,7 @@ A minimal example:
 }
 ```
 
-An example with more parameters provided:
+An express payment example with more parameters provided:
 
 ```json
 {
@@ -368,13 +371,29 @@ An example with more parameters provided:
   },
   "merchantInfo": {
     "authToken": "string",
-    "callbackPrefix": "https://example.com/vipps/callbacks/",
+    "callbackPrefix": "https://example.com/vipps/callbacks-for-payment-update",
     "consentRemovalPrefix": "https://example.com/vipps/consents/",
-    "fallBack": "https://example.com/vipps/fallback/",
+    "fallBack": "https://example.com/vipps/fallback-result-page/order123abc",
     "isApp": false,
     "merchantSerialNumber": 123456,
     "shippingDetailsPrefix": "https://example.com/vipps/shipping/",
-    "paymentType": "eComm Regular Payment"
+    "paymentType": "eComm Express Payment",
+    "staticShippingDetails": [
+        {
+            "isDefault": "N",
+            "priority": 1,
+            "shippingCost": 30.0,
+            "shippingMethod": "Walking",
+            "shippingMethodId": "123abc"
+        },
+        {
+            "isDefault": "Y",
+            "priority": 2,
+            "shippingCost": 30.0,
+            "shippingMethod": "Running",
+            "shippingMethodId": "321abc"
+        }
+    ]
   },
   "transaction": {
     "amount": 20000,
@@ -391,22 +410,41 @@ A payment is uniquely identified by the combination of `merchantSerialNumber` an
 
 To initiate an express checkout payment the payment initiation call must include the `"paymentType":"eComm Express Payment"` parameter. If this parameter is not passed, the payment type will default to regular payment.
 
+To add authentication to the callbacks made by Vipps the merchant may provide an `authToken`. This token will then be returned as a `Authorization` header in the callback and shipping details requests made by Vipps for that order.
+
 Once successfully initiated, a response with a redirect URL is returned.
 
+**Note:** While the minimum length for `orderId` is 1, we suggest making them longer. Using both numbers and characters of length 6 or more lets us more easily identify the order in our event logs.
+
+**Note:** We do not send requests to `callbackPrefix`, `shippingDetails` or `consentsRemovalPrefix` for all ports. To be safe use common port numbers such as: 80, 443, 8080.
+
 **Initiate response example:**
-```json
+```http
 HTTP 202 Accepted
+```
+
+Response body for `"isApp":false`:
+```json
 {
     "orderId": "order123abc",
     "url": "https://api.vipps.no/deeplink/vippsgateway?token=eyJraWQiOiJqd3R <snip>"
 }
 ```
+Response body for `"isApp":true`:
+```json
+{
+    "orderId": "order123abc",
+    "url": "vipps://?token=eyJraWQiOiJqd3RrZXkiLCJhbGciOiJSUzI1NiJ9.eyJzdWIi <snip>"
+}
+```
 
 The `url` is slightly simplified, but the format is correct.
 
-The URL depends on whether the user is using a desktop or mobile browser, defined using the `isApp` parameter:
-* For mobile browsers, the URL is for an app-switch to the Vipps app.
-* For desktop browsers, the URL is for the Vipps "landing page".
+The URL depends on whether the `initiate` request was provided the `isApp` parameter:
+* For `true`, the URL is for an deeplink to the Vipps app.
+* For `false` or not provided, the URL is for the Vipps "landing page".
+
+**Note:** this URL will timeout after 5 minutes.
 
 ### Initiate payment flows
 
@@ -456,7 +494,7 @@ If `isApp` is true, the `fallBack` is not validated with Apache Commons UrlValid
 as the app-switch URL may be something like `vipps://`, which is not a valid URL.
 
 Here is a simple Java class suitable for testing URLs,
-using the dummy URL `https://example.com/vipps/fallback?id=abc123`:
+using the dummy URL `https://example.com/vipps/fallback-result-page/order123abc`:
 
 ```java
 import org.apache.commons.validator.routines.UrlValidator;
@@ -465,27 +503,12 @@ public class UrlValidate {
  public static void main(String[] args) {
   UrlValidator urlValidator = new UrlValidator();
 
-  if (urlValidator.isValid("https://example.com/vipps/fallback?id=abc123")) {
+  if (urlValidator.isValid("https://example.com/vipps/fallback-result-page/order123abc")) {
    System.out.println("URL is valid");
   } else {
    System.out.println("URL is invalid");
   }
  }
-}
-```
-
-
-**Example Get order status** - [`GET:/ecomm/v2/payments/order123abc/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getOrderStatusUsingGET)
-
-```json
-{
-    "orderId": "order123abc",
-    "transactionInfo": {
-        "amount": 20000,
-        "status": "INITIATE",
-        "transactionId": "5001420062",
-        "timeStamp": "2018-11-14T15:44:26.590Z"
-    }
 }
 ```
 
@@ -513,21 +536,6 @@ public class UrlValidate {
 When the user confirms, the payment status changes to `RESERVE`.
 The respective amount will be reserved for future capturing.
 
-
-
-**Example Get order status** - [`GET:/ecomm/v2/payments/order123abc/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getOrderStatusUsingGET)  |
-
-```json
-{
-    "orderId": "order123abc",
-    "transactionInfo": {
-        "amount": 20000,
-        "status": "RESERVE",
-        "transactionId": "5001420062",
-        "timeStamp": "2018-11-14T15:44:26.590Z"
-    }
-}
-```
 
 **Example Get payment details** - [`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
 
@@ -612,20 +620,6 @@ After cancellation, the order gets a new status:
 }
 ```
 
-**Example Get order status** - [`GET:/ecomm/v2/payments/order123abc/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getOrderStatusUsingGET)  |
-
-```json
-{
-    "orderId": "order123abc",
-    "transactionInfo": {
-        "amount": 20000,
-        "status": "VOID",
-        "transactionId": "5001420063",
-        "timeStamp": "2018-11-14T15:46:07.498Z"
-    }
-}
-```
-
 **Example Get payment details** - [`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
 
 ```json
@@ -689,6 +683,8 @@ Partial capture may be used if not the entire order is shipped or for other reas
 
 There is only a need to specify the `amount` when doing a partial capture. To perform capture of the entire amount `amount` can be set to `null` or `0`
 
+In a capture request the merchant may also use the `X-Request-Id`header. This header is an idempotency header ensuring that if the merchant retries a request with the same `X-Request-Id` the retried request will not make additional changes.
+
 **Request**
 
 [`POST:/ecomm/v2/payments/order123abc/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/capturePaymentUsingPOST)
@@ -723,20 +719,6 @@ There is only a need to specify the `amount` when doing a partial capture. To pe
         "refundedAmount": 0,
         "remainingAmountToRefund": 20000
     }
-}
-```
-
-**Example Get order status** - [`GET:/ecomm/v2/payments/order123abc/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getOrderStatusUsingGET)  |
-
-```json
-{
-    "orderId": "order123abc",
-    "transactionInfo": {
-        "amount": 20000,
-        "status": "RESERVE",
-        "transactionId": "5001420062",
-        "timeStamp": "2018-11-14T15:22:46.736Z"
- }
 }
 ```
 
@@ -791,6 +773,8 @@ The refund can be a partial or full.
 Partial refunds are done by specifying an `amount` which is lower than the captured amount.
 The refunded amount cannot be larger than the captured amount.
 
+In a capture request the merchant may also use the `X-Request-Id`header. This header is an idempotency header ensuring that if the merchant retries a request with the same `X-Request-Id` the retried request will not make additional changes.
+
 **Request**
 
 [`POST:/ecomm/v2/payments/order123abc/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/refundPaymentUsingPOST)
@@ -825,20 +809,6 @@ The refunded amount cannot be larger than the captured amount.
         "refundedAmount": 20000,
         "remainingAmountToRefund": 0
     }
-}
-```
-
-**Example Get order status** - [`GET:/ecomm/v2/payments/order123abc/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getOrderStatusUsingGET)
-
-```json
-{
-    "orderId": "order123abc",
-    "transactionInfo": {
-        "amount": 20000,
-        "status": "RESERVE",
-        "transactionId": "5001420062",
-        "timeStamp": "2018-11-14T15:22:46.736Z"
- }
 }
 ```
 
@@ -943,11 +913,15 @@ explains how Vipps handles different exception and error situations in detail.
 Defining a socket timeout period is the common measure to protect server
 resources and is expected. However, the time needed to fulfill a service requests
 depends on several systems, which impose longer timeout period than usually
-required. We recommend setting no less than 1 second socket connection timeout
+required.
+
+We recommend setting no less than 1 second socket connection timeout
 and 5 seconds socket read timeout while communicating with Vipps.
-A good practice is, if/when the socket read timeout occurs call Get Payment
-Details and check status of last transaction in transaction history prior
-executing the service call again.
+
+A good practice is, if/when the socket read timeout occurs, to call
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
+and check status of last transaction in transaction history prior
+to executing the service call again.
 
 ### Callback aborted/interrupted
 
@@ -978,38 +952,40 @@ call (with same idempotency key) again.
 
 ## Error codes
 
-| Error groups | Error Code | Error Message |
-| ----- | ---- | ----------- |
-| Payment | 41 | User don’t have a valid card |
-| Payment | 42 | Refused by issuer bank |
-| Payment | 43 | Refused by issuer bank because of invalid a amount |
-| Payment | 44 | Refused by issuer because of expired card |
-| Payment | 45 | Reservation failed for some unknown reason |
-| Payment | 51 | Can't cancel already captured order |
-| Payment | 52 | Cancellation failed |
-| Payment | 53 | Can’t cancel order which is not reserved yet |
-| Payment | 61 | Captured amount exceeds the reserved amount ordered |
-| Payment | 62 | The amount you tried to capture is not reserved |
-| Payment | 63 | Capture failed for some unknown reason, please use Get Payment Details API to know the exact status |
-| Payment | 71 | Cant refund more than captured amount |
-| Payment | 72 | Cant refund for reserved order, please use Cancel API |
-| Payment | 73 | Can't refund on cancelled order |
-| InvalidRequest  | Field name will be the error code | Description about what exactly the field error is |
-| VippsError | 91 | Transaction is not allowed |
-| VippsError | 92 | Transaction already processed |
-| VippsError | 98 | Too many concurrent requests |
-| VippsError | 99 | Description of the internal error |
-| user | 81 | User not registered with Vipps |
-| user | 82 | User App version not supported |
-| Merchant | 31 | Merchant is blocked because of <reason> |
-| Merchant | 32 | Receiving limit of merchant is exceeded |
-| Merchant | 33 | Number of payment requests has been exceeded |
-| Merchant | 34 | Unique constraint violation of the order id |
-| Merchant | 35 | Registered order not found |
-| Merchant | 36 | Merchant agreement not signed |
-| Merchant | 37 | Merchant not available, deactivated or blocked |
-| Merchant | 21 | Reference Order ID is not valid |
-| Merchant | 22 | Reference Order ID is not in valid state |
+| Error groups | Error Code | Error Message | Comment |
+| ----- | ---- | ----------- |------|
+| Payment | 41 | User don’t have a valid card ||
+| Payment | 42 | Refused by issuer bank ||
+| Payment | 43 | Refused by issuer bank because of invalid a amount ||
+| Payment | 44 | Refused by issuer because of expired card ||
+| Payment | 45 | Reservation failed for some unknown reason ||
+| Payment | 51 | Can't cancel already captured order ||
+| Payment | 52 | Cancellation failed ||
+| Payment | 53 | Can’t cancel order which is not reserved yet ||
+| Payment | 61 | Captured amount exceeds the reserved amount ordered ||
+| Payment | 62 | The amount you tried to capture is not reserved ||
+| Payment | 63 | Capture failed for some unknown reason, please use Get Payment Details API to know the exact status ||
+| Payment | 71 | Cant refund more than captured amount ||
+| Payment | 72 | Cant refund for reserved order, please use Cancel API ||
+| Payment | 73 | Can't refund on cancelled order ||
+| Payment | 93 | Captured amount should be same in Idempotent retry ||
+| Payment | 1501 | This person can not pay to companies |Used for Vipps users under the age of 15.|
+| InvalidRequest  | Field name will be the error code | Description about what exactly the field error is ||
+| VippsError | 91 | Transaction is not allowed ||
+| VippsError | 92 | Transaction already processed ||
+| VippsError | 98 | Too many concurrent requests ||
+| VippsError | 99 | Description of the internal error ||
+| user | 81 | User not registered with Vipps ||
+| user | 82 | User App version not supported ||
+| Merchant | 31 | Merchant is blocked because of <reason> ||
+| Merchant | 32 | Receiving limit of merchant is exceeded ||
+| Merchant | 33 | Number of payment requests has been exceeded ||
+| Merchant | 34 | Unique constraint violation of the order id ||
+| Merchant | 35 | Registered order not found ||
+| Merchant | 36 | Merchant agreement not signed ||
+| Merchant | 37 | Merchant not available, deactivated or blocked ||
+| Merchant | 21 | Reference Order ID is not valid ||
+| Merchant | 22 | Reference Order ID is not in valid state ||
 
 # App integration
 
@@ -1262,17 +1238,12 @@ The documentation is included in the Swagger file for reference only - these end
 
 ## Vipps callback servers
 
-The callbacks from Vipps are made from the following servers:
-
-Test environment:
-* callback-mt-1.vipps.no
-* callback-mt-2.vipps.no
-
-Production environment:
-* callback-1.vipps.no
-* callback-2.vipps.no
+The callbacks from Vipps are made from the servers described in
+[Vipps request servers](https://github.com/vippsas/vipps-developers#vipps-request-servers).
 
 Please make sure that requests from these servers are allowed through firewalls, etc.
+
+**Note:** Vipps may change the IP addresses that we make callbacks from. To ensure that you are whitelisting the corrects IP addresses please use these hostnames.  
 
 ## Callback endpoints
 
@@ -1306,7 +1277,16 @@ to get the status of the payment.
 The callback body received from Vipps will depend on whether the payment
 type is set to `"eComm Express Payment"` or `"eComm Regular Payment"`.
 
-API details: [`POST:/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)
+If `authToken` was used in the initiate payment request these requests will have a `Authorization` header. These headers will have the same value as the one provided in `authToken`.
+
+API details: [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)
+
+### Callback URLs must be reachable
+
+Please make sure that the callback URLs are valid:
+
+* Vipps does _not_ support sending requests to all ports, so to be safe use common port numbers such as: 80, 443, 8080.
+* Vipps does _not_ support callback URLs that return `HTTP 301 Redirect` or `HTTP 302 Permanently Moved`. The callback URLs _must_ be directly reachable.
 
 **Example Express Checkout Callback**
 
@@ -1319,11 +1299,11 @@ API details: [`POST:/v2/payments/{orderId}`](https://vippsas.github.io/vipps-eco
       "addressLine1": "Dronning Eufemias gate 42",
       "addressLine2": "Att: Rune Garborg",
       "city": "Oslo",
-      "country": "NO",
-      "zipCode": "0191"
+      "country": "Norway",
+      "postCode": "0191"
     },
-    "shippingCost": 0,
-    "shippingMethod": "string"
+    "shippingCost": 109.99,
+    "shippingMethod": "By cannon"
   },
   "transactionInfo": {
     "amount": 20000,
@@ -1332,13 +1312,13 @@ API details: [`POST:/v2/payments/{orderId}`](https://vippsas.github.io/vipps-eco
     "transactionId": "5001420062"
   },
   "userDetails": {
-    "bankIdVerified": "string",
+    "bankIdVerified": "Y",
     "dateOfBirth": "12-3-1988",
     "email": "user@example.com",
     "firstName": "Ada",
     "lastName": "Lovelace",
-    "mobileNumber": "string",
-    "ssn": "string",
+    "mobileNumber": "12345678",
+    "ssn": "12345678901",
     "userId": "1234567"
   }
 }
@@ -1363,7 +1343,11 @@ API details: [`POST:/v2/payments/{orderId}`](https://vippsas.github.io/vipps-eco
 
 This API call allows Vipps to get the shipping cost and method based on the provided address and product details. This is only relevant for express checkout payments where Vipps needs to present shipping cost and method to the Vipps user. This service is to be implemented by merchants.
 
+If `authToken` was used in the initiate payment request these requests will have a `Authorization` header. These headers will have the same value as the one provided in `authToken`.
+
 API details: [`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/fetchShippingCostUsingPOST)
+
+**Note:** We do not send requests to all ports so to be safe use common port numbers such as: 80, 443, 8080.
 
 **Example Request Shipping Details Callback**
 ```json
@@ -1373,7 +1357,6 @@ API details: [`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetail
     "addressLine2": null,
     "country": "Norway",
     "city": "OSLO",
-    "postalCode": "0191",
     "postCode": "0191",
     "addressType": "H",
 }
@@ -1413,6 +1396,8 @@ part of callback, and also made accessible through [`GET:/ecomm/v2/payments/{ord
 
 API details: [`DELETE:[consetRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/removeUserConsentUsingDELETE)
 
+**Note:** We do not send requests to all ports so to be safe use common port numbers such as: 80, 443, 8080.
+
 # Status and operations
 
 Callbacks and responses from the eCommerce API provide status updates
@@ -1443,7 +1428,7 @@ different requests and for different payment types.
 |   |  `REFUND` - Payment refunded when merchant called for refund - Stage-7, Status - 101. |
 |   |  `CANCEL` - Payment cancel status when user canceled payment in App. |
 |   |  `VOID` - Payment cancel status when merchant calls for cancel API. |
-|   |  `FAILED` - Payment failed - Status - 102. |
+|   |  `FAILED` - Payment failed failed because of no coverage, outdated card details or similar. - Status - 102. |
 |   |  `REJECTED` - No user action in the Vipps app, i.e timeout. |
 
 ## Callbacks

@@ -2,11 +2,13 @@
 
 This repository contains developer resources for the Vipps eCommerce API.
 For more information about this product, please see
-[Vipps på Nett](https://www.vipps.no/bedrift/vipps-pa-nett).
+[Vipps på Nett](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).
 
-[Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md): information about API keys, product activation, etc please see the guide.
+[Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md): information about API keys, product activation, etc please see the guide.
 
-[Vipps eCommerce API guide](vipps-ecom-api.md): API documentation and guide for developers.
+For API documentation and development guidelines please see our [Vipps eCommerce API guide](vipps-ecom-api.md).
+
+For direct integration, see the [Vipps eCommerce API Checklist](vipps-ecom-api-checklist.md).
 
 [Frequently Asked Questions](vipps-ecom-api-faq.md): Questions and answers.
 
@@ -20,3 +22,5 @@ contribution guidelines,
 etc.
 
 You can peruse the API reference documentation as [Swagger](https://vippsas.github.io/vipps-ecom-api/) or [ReDoc](https://vippsas.github.io/vipps-ecom-api/redoc.html).
+
+The flow of settlements and how to retrieve them are described in [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements)

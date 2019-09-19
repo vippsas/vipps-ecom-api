@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "324fd820-8466-49d8-9fbb-79e9e9b1bc84",
+		"_postman_id": "c7bc6058-1f3f-4394-992c-fcadfbbe8baf",
 		"name": "eCommerce API v2 - Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -31,8 +31,8 @@
 						"value": "{{client_secret}}"
 					},
 					{
-						"key": "ocp-apim-subscription-key",
-						"value": "{{ocp-apim-subscription-key-access-token}}"
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{Ocp-Apim-Subscription-Key}}"
 					}
 				],
 				"body": {
@@ -47,100 +47,6 @@
 					"path": [
 						"accessToken",
 						"get"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Order Status",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "28dcc2df-296c-4c0d-a05b-4e171230b6e1",
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "content-type",
-						"value": "application/json",
-						"disabled": true
-					},
-					{
-						"key": "authorization",
-						"value": "Bearer {{access_token}}"
-					},
-					{
-						"key": "ocp-apim-subscription-key",
-						"value": "{{ocp-apim-subscription-key-ecom}}"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "{{base_url}}/ecomm/v2/payments/{{orderId}}/status",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"ecomm",
-						"v2",
-						"payments",
-						"{{orderId}}",
-						"status"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Capture Payment",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "content-type",
-						"value": "application/json"
-					},
-					{
-						"key": "ocp-apim-subscription-key",
-						"value": "{{ocp-apim-subscription-key-ecom}}"
-					},
-					{
-						"key": "authorization",
-						"value": "Bearer {{access_token}}"
-					},
-					{
-						"key": "X-Request-Id",
-						"value": "{{$randomInt}}",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": " {\n    \"merchantInfo\": {\n        \"merchantSerialNumber\": \"{{merchantSerialNumber}}\"\n    },\n    \"transaction\": {\n        \"amount\": {{amount_capture}},\n        \"transactionText\": \"{{transactionTextCapture}}\"\n    }\n }"
-				},
-				"url": {
-					"raw": "{{base_url}}/ecomm/v2/payments/{{orderId}}/capture",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"ecomm",
-						"v2",
-						"payments",
-						"{{orderId}}",
-						"capture"
 					]
 				}
 			},
@@ -164,21 +70,16 @@
 				"method": "POST",
 				"header": [
 					{
-						"key": "content-type",
+						"key": "Content-Type",
 						"value": "application/json"
 					},
 					{
-						"key": "ocp-apim-subscription-key",
-						"value": "{{ocp-apim-subscription-key-ecom}}"
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{Ocp-Apim-Subscription-Key}}"
 					},
 					{
-						"key": "authorization",
+						"key": "Authorization",
 						"value": "Bearer {{access_token}}"
-					},
-					{
-						"key": "X-Request-Id",
-						"value": "{{$randomInt}}",
-						"disabled": true
 					}
 				],
 				"body": {
@@ -201,23 +102,115 @@
 			"response": []
 		},
 		{
+			"name": "Initiate Payment - Express Checkout",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1c0a421f-d8b3-49f5-a04b-efb1c5d63bd0",
+						"exec": [
+							"pm.environment.set('orderId',pm.environment.get('merchantSerialNumber') + (new Date()).getTime());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{Ocp-Apim-Subscription-Key}}"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"merchantInfo\": {\r\n    \"merchantSerialNumber\": \"{{merchantSerialNumber}}\",\r\n    \"callbackPrefix\":\"{{callbackPrefix}}\",\r\n    \"shippingDetailsPrefix\": \"{{shippingDetailsPrefix}}\",\r\n    \"consentRemovalPrefix\": \"{{consentRemovalPrefix}}\",\r\n    \"paymentType\": \"eComm Express Payment\",\r\n    \"fallBack\": \"{{fallBack}}\",\r\n    \"authToken\": \"{{$guid}}\",\r\n    \"isApp\":false,\r\n    \"staticShippingDetails\": [\r\n\t\t{\r\n\t\t    \"isDefault\": \"Y\",\r\n\t\t    \"priority\": 1,\r\n\t\t    \"shippingCost\": {{shippingCost1}},\r\n\t\t    \"shippingMethod\": \"{{shippingMethod1}}\",\r\n\t\t    \"shippingMethodId\": \"shippingMethodId1\"\r\n\t\t},\r\n\t\t{\r\n\t\t    \"isDefault\": \"N\",\r\n\t\t    \"priority\": 2,\r\n\t\t    \"shippingCost\": {{shippingCost2}},\r\n\t\t    \"shippingMethod\": \"{{shippingMethod2}}\",\r\n\t\t    \"shippingMethodId\": \"shippingMethodId2\"\r\n\t\t}\r\n\t]\r\n  },\r\n  \"customerInfo\": {\r\n    \"mobileNumber\": \"{{mobileNumber}}\"\r\n  },\r\n  \"transaction\": {\r\n    \"orderId\": \"{{orderId}}\",\r\n    \"amount\": {{amount}},\r\n    \"transactionText\": \"{{transactionTextInitiate}}\"\r\n  }\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/ecomm/v2/payments/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"ecomm",
+						"v2",
+						"payments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Order Status",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "28dcc2df-296c-4c0d-a05b-4e171230b6e1",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{Ocp-Apim-Subscription-Key}}"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/ecomm/v2/payments/{{orderId}}/status",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"ecomm",
+						"v2",
+						"payments",
+						"{{orderId}}",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Get Payment Details",
 			"request": {
 				"method": "GET",
 				"header": [
 					{
-						"key": "authorization",
+						"key": "Authorization",
 						"value": "Bearer {{access_token}}"
 					},
 					{
-						"key": "ocp-apim-subscription-key",
-						"value": "{{ocp-apim-subscription-key-ecom}}"
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{Ocp-Apim-Subscription-Key}}"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
 					"raw": "{{base_url}}/ecomm/v2/payments/{{orderId}}/details",
 					"host": [
@@ -235,63 +228,20 @@
 			"response": []
 		},
 		{
-			"name": "Refund Payment",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "authorization",
-						"value": "Bearer {{access_token}}"
-					},
-					{
-						"key": "ocp-apim-subscription-key",
-						"value": "{{ocp-apim-subscription-key-ecom}}"
-					},
-					{
-						"key": "content-type",
-						"value": "application/json"
-					},
-					{
-						"key": "X-Request-Id",
-						"value": "{{$randomInt}}",
-						"disabled": true
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"merchantInfo\": {\r\n        \"merchantSerialNumber\": \"{{merchantSerialNumber}}\"\r\n    },\r\n    \"transaction\": {\r\n        \"transactionText\":\"{{transactionTextRefund}}\"\r\n    }\r\n}"
-				},
-				"url": {
-					"raw": "{{base_url}}/ecomm/v2/payments/{{orderId}}/refund",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"ecomm",
-						"v2",
-						"payments",
-						"{{orderId}}",
-						"refund"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Cancel Payment",
 			"request": {
 				"method": "PUT",
 				"header": [
 					{
-						"key": "content-type",
+						"key": "Content-Type",
 						"value": "application/json"
 					},
 					{
-						"key": "ocp-apim-subscription-key",
-						"value": "{{ocp-apim-subscription-key-ecom}}"
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{Ocp-Apim-Subscription-Key}}"
 					},
 					{
-						"key": "authorization",
+						"key": "Authorization",
 						"value": "Bearer {{access_token}}"
 					}
 				],
@@ -310,6 +260,102 @@
 						"payments",
 						"{{orderId}}",
 						"cancel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Capture Payment",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c81cb9b3-5b95-43ea-a7c0-3421b7f3bd58",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{Ocp-Apim-Subscription-Key}}"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "X-Request-Id",
+						"value": "{{orderId}}XIDC1"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    \"merchantInfo\": {\n        \"merchantSerialNumber\": \"{{merchantSerialNumber}}\"\n    },\n    \"transaction\": {\n        \"amount\": {{amount_capture}},\n        \"transactionText\": \"{{transactionTextCapture}}\"\n    }\n }"
+				},
+				"url": {
+					"raw": "{{base_url}}/ecomm/v2/payments/{{orderId}}/capture",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"ecomm",
+						"v2",
+						"payments",
+						"{{orderId}}",
+						"capture"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refund Payment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{Ocp-Apim-Subscription-Key}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-Request-Id",
+						"value": "{{orderId}}XIDR1"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"merchantInfo\": {\r\n        \"merchantSerialNumber\": \"{{merchantSerialNumber}}\"\r\n    },\r\n    \"transaction\": {\r\n        \"transactionText\":\"{{transactionTextRefund}}\"\r\n    }\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/ecomm/v2/payments/{{orderId}}/refund",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"ecomm",
+						"v2",
+						"payments",
+						"{{orderId}}",
+						"refund"
 					]
 				}
 			},
