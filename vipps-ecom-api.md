@@ -1208,6 +1208,7 @@ The following are the identified status codes merchant may receive from Vipps ap
 | Status Code	| Description |
 | ----------- | ----------- |
 |100 |	Success |
+|202 |  User canceling action. Either an expiration or active user Cancel |
 |302 |	User doesn’t have Vipps profile |
 |303 |	Login failed (login max attempt reached) |
 |304 |	Vipps doesn’t support this action, please update Vipps |
