@@ -1356,7 +1356,7 @@ components:
             `Authorization` header for our callbacks. This includes shipping
             details and callback.
           maxLength: 255
-          example: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni
+          example: iOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImllX3FXQ1hoWHh0MXpJ
         callbackPrefix:
           type: string
           description: >-
