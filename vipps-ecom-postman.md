@@ -7,6 +7,8 @@ See the [Postman documentation](https://www.getpostman.com/docs/) for more infor
 By following the steps below, you can make calls to all the
 endpoints, and see the full `request` and `response` for each call.
 
+We also have a short [getting started guide to Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
+
 ### Setting up Postman
 
 #### Step 1: Import the Postman Collection
@@ -24,10 +26,10 @@ endpoints, and see the full `request` and `response` for each call.
 1. Click the "eye" icon in the top right corner.
 2. In the dropdown window, click `Edit` in the top right corner.
 3. Fill in the `Current Value` for the following fields to get started.
-   - `access-token-key`
-   - `subscription-key`
    - `client-id`
    - `client-secret`
+   - `merchantSerialNumber`
+   - `Ocp-Apim-Subscription-Key`
 
 # Questions?
 
