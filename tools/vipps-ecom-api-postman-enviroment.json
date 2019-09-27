@@ -4,22 +4,22 @@
 	"values": [
 		{
 			"key": "client_id",
-			"value": "<Go To Developer Portal->Select the Applications tab->Select View secret for the application you registered for eCommerce InApp Alignment product->copy the Client Id here>",
+			"value": "<Go To Vipps Portal->Select the Developer tab->Select Test or Production Keys->Select 'Show keys'->copy the Client Id here>",
 			"enabled": true
 		},
 		{
 			"key": "client_secret",
-			"value": "<Go To Developer Portal->Select the Applications tab->Select View secret for the application you registered for eCommerce InApp Alignment product->copy the Client secret here>",
+			"value": "<Go To Vipps Portal->Select the Developer tab->Select Test or Production Keys->Select 'Show keys'->copy the Client secret here>",
 			"enabled": true
 		},
 		{
 			"key": "merchantSerialNumber",
-			"value": "<Go To Developer Portal->Select the Applications tab->Copy the Saleunit Serial Number from the application you registered for eCommerce InApp Alignment product here>",
+			"value": "<Go To Vipps Portal->Select the Developer tab->Select Test or Production Keys->Copy the Merchant Serial Number from the Sale Unit you copied the keys from>",
 			"enabled": true
 		},
 		{
 			"key": "Ocp-Apim-Subscription-Key",
-			"value": "<Go To Developer Portal->Click on your name on top right->select profile->find subscription relevant to your eCommerce InApp Alignment Product and copy the Primary key here>",
+			"value": "<Go To Vipps Portal->Select the Developer tab->Select Test or Production Keys->Select 'Show keys'->copy the Vipps-Subscription-Key>",
 			"enabled": true
 		},
 		{
