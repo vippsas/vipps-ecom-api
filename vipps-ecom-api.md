@@ -1420,7 +1420,7 @@ different requests and for different payment types.
 |   |  `REFUND` - Payment refunded when merchant called for refund - Stage-7. |
 |   |  `CANCEL` - Payment cancel status when user canceled payment in App. |
 |   |  `VOID` - Payment cancel status when merchant called for cancel. |
-| [`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getOrderStatusUsingGET)  | This information is currently inaccurate, please use [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET) |
+| [`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getOrderStatusUsingGET)  | **This endpoint is deprecated, please use:** [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET) |
 |   |  `INITIATE`  -  Merchant initiates the transaction. Stage-1, Status - 101. |
 |   |  `REGISTER`  - Vipps registers payment for Reserve. Stage-2, Stage-3, Status - 101.|
 |   |  `RESERVE` -  Payment Reserved by user accepting transaction in App. Stage-3, Status - 101. |
