@@ -420,7 +420,7 @@ Once successfully initiated, a response with a redirect URL is returned.
 
 **Initiate response example:**
 ```http
-HTTP 202 Accepted
+HTTP 200 OK
 ```
 
 Response body for `"isApp":false`:
