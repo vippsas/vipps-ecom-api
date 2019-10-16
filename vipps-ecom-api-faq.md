@@ -118,13 +118,12 @@ a user's address, retrieve a user's purchases, etc.
 # I have initiated an order but I can't find it!
 
 Have you, or the ecommerce solution you are using, successfully implemented
-[``GET:/ecomm/v2/payments/{orderId}/details``](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details) or
-[``GET:/ecomm/v2/payments/{orderId}/status``](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-order-status)?
+[``GET:/ecomm/v2/payments/{orderId}/details``](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details)? This is a requirement, see the [API checklist](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md).
 
 In case the Vipps
 [callback](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#1-callback)
 fails, you will not automatically receive notification of order status.
-The backup should be to ask for status within a time frame.
+The backup is to check `/details`.
 
 You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
 to manually do API calls, like the two above.
