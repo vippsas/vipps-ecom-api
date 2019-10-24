@@ -67,7 +67,7 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
 - [Status and operations](#status-and-operations)
   * [Responses from requests](#responses-from-requests)
   * [Callbacks](#callbacks)
-- [Questions?](#questions-)
+- [Questions?](#questions-)µ
 
 # Overview
 
@@ -484,6 +484,25 @@ The landing page is not involved in this case.
 3. The merchant uses the URI to invoke the Vipps app.
 4. The Vipps user accepts or rejects the payment request.
 5. Once payment process is completed, Vipps app redirects to `fallBack`
+
+#### Skip landing page
+
+There are certain scenarios where you want to skip the
+landing page. For example cash register
+
+This is done on a sale unit level, and needs to be white listed by
+Vipps.
+
+Enable this flow by adding the parameter to the initiate calls
+`skipLandingPage: true`
+
+In order to support this the mobile number is required
+
+``` json
+"customerInfo": {
+   "mobileNumber": 91234567
+ },
+ ```
 
 ### URL Validation
 

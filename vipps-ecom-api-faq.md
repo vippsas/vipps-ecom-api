@@ -40,7 +40,7 @@ The most common reasons are:
 3. Insufficient funds on the debit/credit card (not enough money in the debit card's bank account, or not enough credit left on the credit card)
 4. The debit/credit card has been rejected by the issuer
 5. Payment limit reached, the user needs to authenticate with bankID in the Vipps app
-6. The payment has timed out (this happens if the user does not confirm in the Vipps app within 5 minutes - typically of the user has deactivcated puch notifications)
+6. The payment has timed out (this happens if the user does not confirm in the Vipps app within 5 minutes - typically of the user has deactivcated push notifications)
 7. Attempt to capture an amount that exceeds the reserved amount
 8. Attempt to capture an amount that has not been reserved
 
