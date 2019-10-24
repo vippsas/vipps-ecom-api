@@ -40,7 +40,7 @@ The most common reasons are:
 3. Insufficient funds on the debit/credit card (not enough money in the debit card's bank account, or not enough credit left on the credit card)
 4. The debit/credit card has been rejected by the issuer
 5. Payment limit reached, the user needs to authenticate with bankID in the Vipps app
-6. The payment has timed out (this happens if the user does not confirm in the Vipps app within 5 minutes - typically of the user has deactivcated puch notifications)
+6. The payment has timed out (this happens if the user does not confirm in the Vipps app within 5 minutes - typically of the user has deactivcated push notifications)
 7. Attempt to capture an amount that exceeds the reserved amount
 8. Attempt to capture an amount that has not been reserved
 
@@ -240,6 +240,14 @@ See the checklists for
 and
 [Vipps PSP API](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-checklist.md)
 for examples.
+
+# Is it possible to skip the landing page?
+
+Skipping the landing page is reserved for special cases, where displaying it would not possible.
+This feature has to be enabled by Vipps for eligible sale units.
+Typically only physical points of sale are eligible.
+
+To request this feature, [contact Vipps](https://github.com/vippsas/vipps-developers/blob/master/contact.md).
 
 # Questions?
 
