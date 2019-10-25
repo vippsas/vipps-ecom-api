@@ -485,6 +485,18 @@ The landing page is not involved in this case.
 4. The Vipps user accepts or rejects the payment request.
 5. Once payment process is completed, Vipps app redirects to `fallBack`
 
+#### Skip landing page
+
+*Only available for whitelisted sale units.*
+
+If this property is set to `true`,
+it will cause a push notification to be sent to the given phone number immediately,
+without loading the landing page.
+
+If the sale unit is not whitelisted, this property is ignored.
+
+If you need to be whitelisted, instructions for this can be found in the [FAQ](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-faq.md#can-i-skip-the-landing-page).
+
 ### URL Validation
 
 All URLs in Vipps eCommerce API are validated with the

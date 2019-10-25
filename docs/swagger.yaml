@@ -1341,6 +1341,11 @@ components:
           description: Transaction text to be displayed in Vipps
           example: One pair of Vipps socks
           maxLength: 100
+        skipLandingPage:
+          type: boolean
+          example: true
+          default: false
+          description: Skips the landing page for whitelisted sale units. Requires a valid customerInfo.mobileNumber.
     MerchantInfoDto:
       type: object
       required:
