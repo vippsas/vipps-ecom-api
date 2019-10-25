@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.0.10
+Document version 1.0.11
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
@@ -34,6 +34,7 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
         * [Vipps app not installed](#vipps-app-not-installed)
       - [Desktop browser initiated payments](#desktop-browser-initiated-payments)
       - [App initated payments](#app-initated-payments)
+      - [Skip landing page](#skip-landing-page)
     + [URL Validation](#url-validation)
   * [Reserve](#reserve)
   * [Cancel](#cancel)
@@ -62,6 +63,7 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
   * [Vipps callback servers](#vipps-callback-servers)
   * [Callback endpoints](#callback-endpoints)
   * [Callback](#callback)
+    + [Callback URLs must be reachable](#callback-urls-must-be-reachable)
   * [Fetch Shipping Cost](#fetch-shipping-cost)
   * [Remove User Consent](#remove-user-consent)
 - [Status and operations](#status-and-operations)
