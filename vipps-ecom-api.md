@@ -497,7 +497,8 @@ without loading the landing page.
 
 If the sale unit is not whitelisted, this property is ignored.
 
-If you need to be whitelisted, instructions for this can be found in the [FAQ](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-faq.md#can-i-skip-the-landing-page).
+If you need to be whitelisted, instructions for this can be found in the 
+[FAQ](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-faq.md#is-it-possible-to-skip-the-landing-page).
 
 ### URL Validation
 
