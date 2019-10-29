@@ -497,7 +497,7 @@ without loading the landing page.
 
 If the sale unit is not whitelisted, this property is ignored.
 
-If you need to be whitelisted, instructions for this can be found in the 
+If you need to be whitelisted, instructions for this can be found in the
 [FAQ](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-faq.md#is-it-possible-to-skip-the-landing-page).
 
 ### URL Validation
@@ -692,13 +692,28 @@ Example if end user reject the payment request:
 Capture payment allows the merchant to capture the reserved amount.
 The API allows for both a _full amount capture_ and a _partial amount capture_.
 
-The amount to capture cannot be higher than the reserved amount. According to Norwegian regulations, capture can not be done before the goods have been shipped. The transaction text is mandatory, and is displayed to end user in Vipps.
+The amount to capture cannot be higher than the reserved amount. According to
+Norwegian regulations, capture can not be done before the goods have been shipped.
+The transaction text is mandatory, and is displayed to end user in Vipps.
 
-Partial capture may be used if not the entire order is shipped or for other reasons. Partial capture may be called as many times as required as long as there is a remaining reserved amount to capture.
+Partial capture may be used if not the entire order is shipped or for other
+reasons. Partial capture may be called as many times as required as long as
+there is a remaining reserved amount to capture.
 
-There is only a need to specify the `amount` when doing a partial capture. To perform capture of the entire amount `amount` can be set to `null` or `0`
+If one or more partial captures have been made, the remaining amount
+(if there is one) will be automatically refunded after a few days.
+See the FAQ for
+[details](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#for-how-long-is-an-initiated-payment-reserved).
+It is not possible to refund the remaining amount (since it has not been captured),
+and it is not possible to cancel the reservation, since some of it has been captured.
 
-In a capture request the merchant may also use the `X-Request-Id`header. This header is an idempotency header ensuring that if the merchant retries a request with the same `X-Request-Id` the retried request will not make additional changes.
+There is only a need to specify the `amount` when doing a partial capture.
+To perform capture of the entire amount `amount` can be set to `null` or `0`
+
+In a capture request the merchant may also use the `X-Request-Id`header.
+This header is an idempotency header ensuring that if the merchant retries
+a request with the same `X-Request-Id` the retried request will not make
+additional changes.
 
 **Request**
 
