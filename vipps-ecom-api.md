@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.0.11
+Document version 1.0.12
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
@@ -696,6 +696,8 @@ The amount to capture cannot be higher than the reserved amount. According to
 Norwegian regulations, capture can not be done before the goods have been shipped.
 The transaction text is mandatory, and is displayed to end user in Vipps.
 
+### Partial capture
+
 Partial capture may be used if not the entire order is shipped or for other
 reasons. Partial capture may be called as many times as required as long as
 there is a remaining reserved amount to capture.
@@ -709,6 +711,8 @@ and it is not possible to cancel the reservation, since some of it has been capt
 
 There is only a need to specify the `amount` when doing a partial capture.
 To perform capture of the entire amount `amount` can be set to `null` or `0`
+
+### Idempotency
 
 In a capture request the merchant may also use the `X-Request-Id`header.
 This header is an idempotency header ensuring that if the merchant retries
