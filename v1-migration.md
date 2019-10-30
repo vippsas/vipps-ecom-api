@@ -4,23 +4,23 @@ This is a work in progress. Issues and PRs are welcome.
 # Key differences
 
 ## Landing page
-Universal payment flows are essential for a good user experience. This is why the v2 API has a single, mandatory landing page for all payments.
-The initiate payment response will contain a unique URL to the landing page for each order.
+Universal payment flows are essential for a good user experience. This is why the v2 API has a single, mandatory landing page for all non-mobile payments.
+The initiate payment response will contain a unique URL for each order. Either a standard `https://` URL or a deeplink URL, prefixed with `vipps://`.
 
 <img src="images/landing-page.png" width="300">
 
-*Note: If the landing page realizes it's on a mobile browser it will [switch to the Vipps app](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#desktop-browsers-and-mobile-browsers) if it is installed.*
+*Note: On mobile Universal Linking will be used fot `https` URLs and [the Vipps app](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#desktop-browsers-and-mobile-browsers) will open instead.*
 
 ## Phone number is optional
 The initiate payment call no longer requires a phone number. Instead, the user will be asked to fill in the phone number on the landing page. If phone number is included in the initiate payment body, then the landing page wil be "pre-filled" with that number.
 
-## Deeplink is automatically generated
-If  ```"isApp": false``` in the initiate payment body, then a https deeplink with a unique token for that specific order will be generated.
+## `isApp: true/false`
+If `isApp` is `false` in the initiate payment body, then a `https` URL with a unique token for that specific order will be generated.
 
-If  ```"isApp": true``` then an appswitch deeplink with a unique token for that specific order will be generated.
+If `isApp` is `true` then an appswitch deeplink with a unique token for that specific order will be generated.
 
 ### Initiate payment example
-See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#initiate-payment-flows) for full overview of initiate payment
+See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#initiate-payment-flows) for full overview of initiate payment.
 
 #### Request Body
 ```
@@ -44,17 +44,25 @@ See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.
 }
 ```
 
-#### Response body
+#### Response body App Switch (`isApp: true`)
 ```
 {
     "orderId": "id170",
-    "url": "vipps://?token=eyJraWQiOiJqd3RrZXkiLCJ <snip>"
+    "url": "vipps://?token=eyJraWQiOiJqd3RrZXkiLCJ[...]"
+}
+```
+
+#### Response body HTTPS (`isApp: false`)
+```
+{
+    "orderId": "id170",
+    "url": "https://api.vipps.no/dwo-api-application/v1/deeplink/vippsgateway?v=2&token=eyJraWQiOiJqd3RrZXkiLCJ[...]"
 }
 ```
 
 ## Fallback URL is required
 
-The initiate payment must contain a fallback URL. This is where the user will be redirect to after the payment. This is set in the initiate payment body. 
+The initiate payment must contain a fallback URL. This is where the user will be redirect to after the payment. This is set in the initiate payment body.
 
 For apps, this URL will be the appswitch-URL.
 
@@ -62,12 +70,11 @@ See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.
 
 # Migration
 
-If you have already signed an agreement with Vipps, and have API keys for v1, you can use the same API keys
-for v2. 
+If you have already signed an agreement with Vipps, and have API keys for v1, you can use the same API keys for v2.
 
 ## Subscription keys
 
-When you have received confirmation that your new salesunit is created, then you can retrieve the keys in the developer portal. See the [Getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full details
+When you have received confirmation that your new salesunit is created, then you can retrieve the keys in the developer portal. See the [Getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-developer-portal-getting-started.md) for full details.
 
 ## New endpoint
 
