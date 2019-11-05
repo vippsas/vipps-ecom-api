@@ -751,7 +751,7 @@ components:
         addressLine1:
           type: string
           description: Address Line 1
-          example: Dronning Eufemias gate 42
+          example: Robert Levins gate 5
         addressLine2:
           type: string
           description: Address Line 2
@@ -769,7 +769,7 @@ components:
         postCode:
           type: string
           description: Post Code
-          example: 0191
+          example: 0154
     AddressExpress:
       type: object
       required:
@@ -781,7 +781,7 @@ components:
         addressLine1:
           type: string
           description: Address Line 1
-          example: Dronning Eufemias gate 42
+          example: Robert Levins gate 5
         addressLine2:
           type: string
           description: Address Line 2
@@ -799,7 +799,7 @@ components:
         zipCode:
           type: string
           description: Post Code
-          example: 0603
+          example: 0154
     PaymentShippingDetails:
       type: object
       required:
