@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.0.15
+  version: 1.0.16
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -1343,7 +1343,7 @@ components:
           maxLength: 100
         skipLandingPage:
           type: boolean
-          example: true
+          example: false
           default: false
           description: Skips the landing page for whitelisted sale units. Requires a valid customerInfo.mobileNumber.
     MerchantInfoDto:
