@@ -53,7 +53,7 @@ information about test environments, test apps, etc [here](https://github.com/vi
 
 We have also released new APIs that may be interesting, such as:
 * [Vipps Recurring API ("faste betalinger")](https://github.com/vippsas/vipps-recurring-api)
-* [Vipps Invoice API ("Vipps Regninger")](https://github.com/vippsas/vipps-invoice-api]
+* [Vipps Invoice API ("Vipps Regninger")](https://github.com/vippsas/vipps-invoice-api)
 * [Vipps Log In](https://github.com/vippsas/vipps-login-api)
 
 Vipps also has plugins available:
