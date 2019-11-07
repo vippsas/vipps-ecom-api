@@ -1206,6 +1206,9 @@ components:
           maxLength: 256
         shippingMethodId:
           type: string
+          description: >-
+            Max length: 100 characters.
+          maxLength: 100
     TransactionResponseCancel:
       type: object
       required:
