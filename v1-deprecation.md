@@ -64,7 +64,7 @@ See also our partners, who offer various Vipps ervices and integrations:
 https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/#kom-i-gang-med-vipps-pa-nett-category-1
 
 
-Vipps Integration
+Vipps Integration  
 [Contact info](https://github.com/vippsas/vipps-developers/blob/master/contact.md)  
 [Vipps on GitHub](https://github.com/vippsas)  
 [Technical newsletter for developers](https://cloud.hei.vipps.no/utv)  
