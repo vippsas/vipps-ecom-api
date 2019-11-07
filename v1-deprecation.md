@@ -25,8 +25,9 @@ this message to those who have made API calls during the last few months.
 This eCom v1 API shutdown means that:
 
 * Your current integration needs to be updated to use the eCom v2 API. The API
-  is well documented, with an extensive guide, Swagger specification, Postman
-  collection, integration checklist and a migration guide: https://github.com/vippsas/vipps-ecom-api
+  is [well documented](https://github.com/vippsas/vipps-ecom-api), with an
+  extensive guide, Swagger specification, Postman collection, integration
+  checklist and a migration guide.
 * Integrations using the eCom v1 API will stop working on June 1 2020.
 
 The main benefits of the eCom v2 API:
@@ -48,20 +49,21 @@ To get updates about the availability of this solution, please
 
 If you have any questions about the eCom v2 API, please see the GitHub documentation.
 You can contact Vipps Integration if you have questions. See contact information,
-information about test environments, test apps, etc here: https://github.com/vippsas/vipps-developers
+information about test environments, test apps, etc [here](https://github.com/vippsas/vipps-developers).
 
 We have also released new APIs that may be interesting, such as:
-* Vipps Recurring API ("faste betalinger"): https://github.com/vippsas/vipps-recurring-api
-* Vipps Invoice API ("Vipps Regninger"): https://github.com/vippsas/vipps-invoice-api
-* Vipps Log In: https://github.com/vippsas/vipps-login-api
+* [Vipps Recurring API ("faste betalinger")](https://github.com/vippsas/vipps-recurring-api)
+* [Vipps Invoice API ("Vipps Regninger")](https://github.com/vippsas/vipps-invoice-api]
+* [Vipps Log In](https://github.com/vippsas/vipps-login-api)
 
 Vipps also has plugins available:
-* Vipps for WooCommerce (Wordpress): https://wordpress.org/plugins/woo-vipps/
-* Vipps for Magento:https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/magento/
+* [Vipps for WooCommerce (Wordpress)](https://wordpress.org/plugins/woo-vipps/)
+* [Vipps for Magento](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/magento/)
 * Upcoming: Vipps for Shopify, Vipps for Drupal and Vipps for Episerver.
 
-See also our partners, who offer various Vipps ervices and integrations:
-https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/#kom-i-gang-med-vipps-pa-nett-category-1
+See also our
+[partners](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/#kom-i-gang-med-vipps-pa-nett-category-1),
+who offer various Vipps services and integrations.
 
 
 Vipps Integration  
