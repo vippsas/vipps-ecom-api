@@ -1,8 +1,9 @@
-# Deprecation of the Vipps eCom API v1
+# DRAFT: Deprecation of the Vipps eCom API v1
 
 This is the message we sent to communicate the deprecation of the API:
-
-
+<br/>
+<br/>
+<br/>
 
 Hi
 
