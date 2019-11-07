@@ -22,7 +22,7 @@ this message to those who have made API calls during the last few months.
 
 This eCom v1 API shutdown means that:
 
-* Your current integration needs to be updated to use the eCom V2 API. The API
+* Your current integration needs to be updated to use the eCom v2 API. The API
   is well documented, with an extensive guide, Swagger specification, Postman
   collection, integration checklist and a migration guide: https://github.com/vippsas/vipps-ecom-api
 * Integrations using the eCom v1 API will stop working on June 1 2020.
