@@ -824,6 +824,8 @@ components:
           maxLength: 256
         shippingMethodId:
           type: string
+          description: >-
+            Max length: 100 characters.
     TransactionLogHistory:
       type: object
       required:
