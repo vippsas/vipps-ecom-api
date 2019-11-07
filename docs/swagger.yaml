@@ -826,6 +826,7 @@ components:
           type: string
           description: >-
             Max length: 100 characters.
+          maxLength: 100
     TransactionLogHistory:
       type: object
       required:
@@ -1299,6 +1300,9 @@ components:
           maxLength: 256
         shippingMethodId:
           type: string
+          description: >-
+            Max length: 256 characters.
+          maxLength: 100
     InitiatePaymentCommand:
       type: object
       required:
