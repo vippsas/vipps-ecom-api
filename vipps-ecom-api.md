@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.0.13
+Document version 1.0.14.
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
@@ -1000,15 +1000,18 @@ to executing the service call again.
 
 If the communication is broken during payment process for some reason, and
 Vipps is not able to execute callback, then callback will not be retried.
+
 In other words, if the merchant doesn’t receive any confirmation on payment
-request call within callback timeframe, merchant should call get payment
-details service to get the response of payment request.
+request call within callback timeframe, merchant should call
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
+to get the response of payment request.
 
 ### PSP connection issues
 
 In a case when Vipps experiences communication problems with PSP, service call
-will respond with 402 HTTP Error. Merchant should make a call to Get Payment
-Details to check if the transaction request is processed before making service
+will respond with 402 HTTP Error. Merchant should make a call to
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
+to check if the transaction request is processed before making service
 call (with same idempotency key) again.
 
 
