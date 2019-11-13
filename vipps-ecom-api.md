@@ -77,7 +77,7 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
 - [Status and operations](#status-and-operations)
   * [Responses from requests](#responses-from-requests)
   * [Callbacks](#callbacks)
-- [Questions?](#questions-)µ
+- [Questions?](#questions-)
 
 # Overview
 
