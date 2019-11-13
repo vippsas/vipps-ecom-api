@@ -21,6 +21,7 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
     + [Desktop browsers and mobile browsers](#desktop-browsers-and-mobile-browsers)
     + [Express checkout payments](#express-checkout-payments)
       - [API endpoints required by Vipps from the merchant for express checkout](#api-endpoints-required-by-vipps-from-the-merchant-for-express-checkout)
+    + [Recurring eCommerce payments](#recurring-ecommerce-payments)
   * [Flow diagram](#flow-diagram)
     + [Flow diagram details](#flow-diagram-details)
 - [API endpoints](#api-endpoints)
@@ -172,6 +173,11 @@ These endpoints are included in the Swagger file for reference.
 | Remove user consent | Used to inform merchant when the Vipps user removes consent to share information.  | [`DELETE:/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/removeUserConsentUsingDELETE)  |
 | Callback : Transaction Update | A callback to the merchant for receiving post-payment information. | [`POST:/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)  |
 | Get shipping cost and method | Used to fetch shipping information | [`POST:/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/fetchShippingCostUsingPOST)  |
+
+### Recurring eCommerce payments
+
+Recurring eCommerce is its own seperate product and can be found descriped in details in
+our [Recurring Repo.](https://github.com/vippsas/vipps-recurring-api)
 
 ## Flow diagram
 
