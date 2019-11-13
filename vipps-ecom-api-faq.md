@@ -131,7 +131,7 @@ See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-e
 
 # How long is an initiated order valid, if the user does not confirm in the Vipps app?
 
-Vipps currently waits for five minutes before automatically cancelling an order due to inactivity.
+Vipps orders have a max timeout of 10 minutes.
 It's important that the merchant waits at least as long, otherwise the Vipps user may
 confirm in the Vipps app, and right after get an error from the merchant that the order has been cancelled.
 
@@ -240,6 +240,14 @@ See the checklists for
 and
 [Vipps PSP API](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-checklist.md)
 for examples.
+
+# Is it possible to skip the landing page?
+
+Skipping the landing page is reserved for special cases, where displaying it would not possible.
+This feature has to be enabled by Vipps for eligible sale units.
+Typically only physical points of sale are eligible.
+
+To request this feature, [contact Vipps](https://github.com/vippsas/vipps-developers/blob/master/contact.md).
 
 # Questions?
 

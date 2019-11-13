@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.0.10
+Document version 1.0.14.
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
@@ -28,16 +28,25 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
     + [Access token](#access-token)
       - [HTTP response codes](#http-response-codes)
   * [Initiate payment](#initiate-payment)
+    + [Detailed information for request calls](#detailed-information-for-request-calls)
+      - [Orderid recommendations](#orderid-recommendations)
+      - [Callback ports](#callback-ports)
+    + [Timeouts](#timeouts)
+      - [Using a phone](#using-a-phone)
+      - [Using a laptop/desktop](#using-a-laptop-desktop)
     + [Initiate payment flows](#initiate-payment-flows)
       - [Mobile browser initiated payments](#mobile-browser-initiated-payments)
         * [Vipps app installed](#vipps-app-installed)
         * [Vipps app not installed](#vipps-app-not-installed)
       - [Desktop browser initiated payments](#desktop-browser-initiated-payments)
       - [App initated payments](#app-initated-payments)
+      - [Skip landing page](#skip-landing-page)
     + [URL Validation](#url-validation)
   * [Reserve](#reserve)
   * [Cancel](#cancel)
   * [Capture](#capture)
+    + [Partial capture](#partial-capture)
+    + [Idempotency](#idempotency)
   * [Refund](#refund)
 - [HTTP response codes](#http-response-codes-1)
   * [Exception handling](#exception-handling)
@@ -62,6 +71,7 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
   * [Vipps callback servers](#vipps-callback-servers)
   * [Callback endpoints](#callback-endpoints)
   * [Callback](#callback)
+    + [Callback URLs must be reachable](#callback-urls-must-be-reachable)
   * [Fetch Shipping Cost](#fetch-shipping-cost)
   * [Remove User Consent](#remove-user-consent)
 - [Status and operations](#status-and-operations)
@@ -344,7 +354,6 @@ HTTP headers.
 
 A minimal example:
 
-
 ```json
 {
     "merchantInfo": {
@@ -403,20 +412,35 @@ An express payment example with more parameters provided:
   }
 }
 ```
+### Detailed information for request calls
 
-A payment is uniquely identified by the combination of `merchantSerialNumber` and `orderId`:
+A payment is uniquely identified by the combination of `merchantSerialNumber`
+and `orderId`:
 * `merchantSerialNumber`: The merchant's Vipps id.
 * `orderId`: Must be unique for the `merchantSerialNumber`.
 
-To initiate an express checkout payment the payment initiation call must include the `"paymentType":"eComm Express Payment"` parameter. If this parameter is not passed, the payment type will default to regular payment.
+To initiate an express checkout payment the payment initiation call must include
+the `"paymentType":"eComm Express Payment"` parameter. If this parameter is not
+passed, the payment type will default to regular payment.
 
-To add authentication to the callbacks made by Vipps the merchant may provide an `authToken`. This token will then be returned as a `Authorization` header in the callback and shipping details requests made by Vipps for that order.
+To add authentication to the callbacks made by Vipps the merchant may provide
+an `authToken`. This token will then be returned as a `Authorization` header
+in the callback and shipping details requests made by Vipps for that order.
 
 Once successfully initiated, a response with a redirect URL is returned.
 
-**Note:** While the minimum length for `orderId` is 1, we suggest making them longer. Using both numbers and characters of length 6 or more lets us more easily identify the order in our event logs.
+#### Orderid recommendations
 
-**Note:** We do not send requests to `callbackPrefix`, `shippingDetails` or `consentsRemovalPrefix` for all ports. To be safe use common port numbers such as: 80, 443, 8080.
+While the minimum length for `orderId` is 1, we recommend
+using at least 6 characters, and a combination of numbers and characters.
+Leading zeros should be avoided, as some applications (like Excel)
+tend to remove them, and this may cause misunderstandings.
+
+#### Callback ports
+
+We do not send requests to `callbackPrefix`, `shippingDetails` or
+`consentsRemovalPrefix` for all ports. To be safe use common port numbers
+such as: 80, 443, 8080.
 
 **Initiate response example:**
 ```http
@@ -444,7 +468,24 @@ The URL depends on whether the `initiate` request was provided the `isApp` param
 * For `true`, the URL is for an deeplink to the Vipps app.
 * For `false` or not provided, the URL is for the Vipps "landing page".
 
-**Note:** this URL will timeout after 5 minutes.
+### Timeouts
+
+#### Using a phone
+
+This deeplink URL will timeout after 5 minutes: If the user does not act
+on the payment (after the app-switch) request within 5 minutes,
+the payment times out.
+
+#### Using a laptop/desktop
+
+If the user is using a laptop/desktop device, and the landing page is
+displayed to the user, an additional timeout may occur. When the
+user is shown the Vipps landing page and clicks "OK", the user
+has an additional 5 minutes to complete the payment in Vipps on the
+phone. Thus, the total time before timeout with a laptop/desktop device
+is around 10 minutes.
+
+See the [Cancel](#cancel) endpoint for details.
 
 ### Initiate payment flows
 
@@ -487,22 +528,16 @@ The landing page is not involved in this case.
 
 #### Skip landing page
 
-There are certain scenarios where you want to skip the
-landing page. For example cash register
+*Only available for whitelisted sale units.*
 
-This is done on a sale unit level, and needs to be white listed by
-Vipps.
+If this property is set to `true`,
+it will cause a push notification to be sent to the given phone number immediately,
+without loading the landing page.
 
-Enable this flow by adding the parameter to the initiate calls
-`skipLandingPage: true`
+If the sale unit is not whitelisted, this property is ignored.
 
-In order to support this the mobile number is required
-
-``` json
-"customerInfo": {
-   "mobileNumber": 91234567
- },
- ```
+If you need to be whitelisted, instructions for this can be found in the
+[FAQ](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-faq.md#is-it-possible-to-skip-the-landing-page).
 
 ### URL Validation
 
@@ -696,13 +731,32 @@ Example if end user reject the payment request:
 Capture payment allows the merchant to capture the reserved amount.
 The API allows for both a _full amount capture_ and a _partial amount capture_.
 
-The amount to capture cannot be higher than the reserved amount. According to Norwegian regulations, capture can not be done before the goods have been shipped. The transaction text is mandatory, and is displayed to end user in Vipps.
+The amount to capture cannot be higher than the reserved amount. According to
+Norwegian regulations, capture can not be done before the goods have been shipped.
+The transaction text is mandatory, and is displayed to end user in Vipps.
 
-Partial capture may be used if not the entire order is shipped or for other reasons. Partial capture may be called as many times as required as long as there is a remaining reserved amount to capture.
+### Partial capture
 
-There is only a need to specify the `amount` when doing a partial capture. To perform capture of the entire amount `amount` can be set to `null` or `0`
+Partial capture may be used if not the entire order is shipped or for other
+reasons. Partial capture may be called as many times as required as long as
+there is a remaining reserved amount to capture.
 
-In a capture request the merchant may also use the `X-Request-Id`header. This header is an idempotency header ensuring that if the merchant retries a request with the same `X-Request-Id` the retried request will not make additional changes.
+If one or more partial captures have been made, the remaining amount
+(if there is one) will be automatically refunded after a few days.
+See the FAQ for
+[details](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#for-how-long-is-an-initiated-payment-reserved).
+It is not possible to refund the remaining amount (since it has not been captured),
+and it is not possible to cancel the reservation, since some of it has been captured.
+
+There is only a need to specify the `amount` when doing a partial capture.
+To perform capture of the entire amount `amount` can be set to `null` or `0`
+
+### Idempotency
+
+In a capture request the merchant may also use the `X-Request-Id`header.
+This header is an idempotency header ensuring that if the merchant retries
+a request with the same `X-Request-Id` the retried request will not make
+additional changes.
 
 **Request**
 
@@ -946,15 +1000,18 @@ to executing the service call again.
 
 If the communication is broken during payment process for some reason, and
 Vipps is not able to execute callback, then callback will not be retried.
+
 In other words, if the merchant doesn’t receive any confirmation on payment
-request call within callback timeframe, merchant should call get payment
-details service to get the response of payment request.
+request call within callback timeframe, merchant should call
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
+to get the response of payment request.
 
 ### PSP connection issues
 
 In a case when Vipps experiences communication problems with PSP, service call
-will respond with 402 HTTP Error. Merchant should make a call to Get Payment
-Details to check if the transaction request is processed before making service
+will respond with 402 HTTP Error. Merchant should make a call to
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
+to check if the transaction request is processed before making service
 call (with same idempotency key) again.
 
 
