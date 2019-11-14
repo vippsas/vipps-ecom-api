@@ -362,18 +362,19 @@ A minimal example:
 
 ```json
 {
-    "merchantInfo": {
-      "merchantSerialNumber": "123456",
-      "callbackPrefix":"https://example.com/vipps/callbacks-for-payment-update",
-      "fallBack": "https://example.com/vipps/fallback-result-page/order123abc"
-    },
-    "customerInfo": {
-    },
-    "transaction": {
-      "orderId": "order123abc",
-      "amount": 20000,
-      "transactionText": "One pair of Vipps socks"
-    }
+  "customerInfo": {
+      "mobileNumber": "48059528"
+  },
+  "merchantInfo": {
+    "merchantSerialNumber": "123456",
+    "callbackPrefix":"https://example.com/vipps/callbacks-for-payment-update",
+    "fallBack": "https://example.com/vipps/fallback-result-page/order123abc"
+  },
+  "transaction": {
+    "orderId": "order123abc",
+    "amount": 20000,
+    "transactionText": "One pair of Vipps socks"
+  }
 }
 ```
 

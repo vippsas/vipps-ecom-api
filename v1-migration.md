@@ -25,22 +25,19 @@ See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.
 #### Request Body
 ```
 {
-   "customerInfo": {
-       "mobileNumber": "48059528"
-   },
-   "merchantInfo": {
-       "callbackPrefix": "https://www.callback.com/",
-       "fallBack": "https://fallback.com/",
-       "merchantSerialNumber": "210462",
-       "isApp": true
-   },
-   "transaction": {
-       "amount": 1234,
-       "orderId": "id170",
-       "timeStamp":"2020-06-24T08:34:25-07:00",
-       "requestId": "1234",
-       "transactionText": "Initiate Payment"
-   }
+  "customerInfo": {
+      "mobileNumber": "48059528"
+  },
+  "merchantInfo": {
+    "merchantSerialNumber": "123456",
+    "callbackPrefix":"https://example.com/vipps/callbacks-for-payment-update",
+    "fallBack": "https://example.com/vipps/fallback-result-page/order123abc"
+  },
+  "transaction": {
+    "orderId": "order123abc",
+    "amount": 20000,
+    "transactionText": "One pair of Vipps socks"
+  }
 }
 ```
 
@@ -54,7 +51,7 @@ See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.
 
 ## Fallback URL is required
 
-The initiate payment must contain a fallback URL. This is where the user will be redirect to after the payment. This is set in the initiate payment body. 
+The initiate payment must contain a fallback URL. This is where the user will be redirect to after the payment. This is set in the initiate payment body.
 
 For apps, this URL will be the appswitch-URL.
 
@@ -63,7 +60,7 @@ See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.
 # Migration
 
 If you have already signed an agreement with Vipps, and have API keys for v1, you can use the same API keys
-for v2. 
+for v2.
 
 ## Subscription keys
 
