@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.0.14.
+Document version 1.0.15.
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
@@ -363,7 +363,6 @@ A minimal example:
 ```json
 {
   "customerInfo": {
-      "mobileNumber": "48059528"
   },
   "merchantInfo": {
     "merchantSerialNumber": "123456",
@@ -383,10 +382,10 @@ An express payment example with more parameters provided:
 ```json
 {
   "customerInfo": {
-    "mobileNumber": 91234567
+    "mobileNumber": "48059528"
   },
   "merchantInfo": {
-    "authToken": "string",
+    "authToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni <snip>",
     "callbackPrefix": "https://example.com/vipps/callbacks-for-payment-update",
     "consentRemovalPrefix": "https://example.com/vipps/consents/",
     "fallBack": "https://example.com/vipps/fallback-result-page/order123abc",

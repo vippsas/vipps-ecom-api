@@ -1,5 +1,8 @@
-# Disclaimer
-This is a work in progress. Issues and PRs are welcome.
+# Migration from eCom API v1 to eCom API v2
+
+Document version 1.0.1.
+
+Issues and PRs are welcome.
 
 # Key differences
 
