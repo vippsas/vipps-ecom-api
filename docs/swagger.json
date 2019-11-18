@@ -1,8 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "description": "# Vipps eCommerce API\nAdditional API documentation: https://github.com/vippsas/vipps-ecom-api/\n",
-    "version": "1.0.16",
+    "description": "# Vipps eCommerce API\nAdditional API documentation: https://github.com/vippsas/vipps-ecom-api/\nversion: 1.0.17\n",
     "title": "Vipps eCommerce API"
   },
   "tags": [
@@ -135,7 +134,7 @@
         "tags": [
           "Endpoints required by Vipps from the merchant"
         ],
-        "summary": "Fetch Shipping Cost & Method",
+        "summary": "Fetch Shipping Cost & Method (for express checkout)",
         "description": "This API endpoint on the merchant side allows Vipps to get the shipping cost and method based on the provided address and product details. The primary use of this service is Vipps Hurtigkasse (express checkout) where Vipps needs to present shipping cost and method to the Vipps user. Vipps will add `/v2/payments/{orderId}/shippingDetails` to the end of this URL. Vipps has a *10 second timeout* for these requests, and thus requires a quick reply from the merchant's server for successful payments. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.",
         "operationId": "fetchShippingCostUsingPOST",
         "parameters": [
@@ -327,7 +326,7 @@
           "shippingDetails": {
             "{$request.body#/merchantInfo/shippingDetailsPrefix}/v2/payments/{$request.body#/transaction/orderId}/shippingDetails": {
               "post": {
-                "summary": "Fetch Shipping Cost & Method",
+                "summary": "Fetch Shipping Cost & Method (for express checkout)",
                 "description": "This API endpoint on the merchant side allows Vipps to get the shipping cost and method based on the provided address and product details. The primary use of this service is Vipps Hurtigkasse (express checkout) where Vipps needs to present shipping cost and method to the Vipps user. Vipps will add `/v2/payments/{orderId}/shippingDetails` to the end of this URL. Vipps has a *10 second timeout* for these requests, and thus requires a quick reply from the merchant's server for successful payments. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.",
                 "operationId": "fetchShippingCostUsingPOST",
                 "parameters": [
@@ -822,6 +821,7 @@
     },
     "/ecomm/v2/payments/{orderId}/status": {
       "get": {
+        "deprecated": true,
         "tags": [
           "Vipps eCom API"
         ],
@@ -934,7 +934,7 @@
           "addressLine1": {
             "type": "string",
             "description": "Address Line 1",
-            "example": "Dronning Eufemias gate 42"
+            "example": "Robert Levins gate 5"
           },
           "addressLine2": {
             "type": "string",
@@ -957,7 +957,7 @@
           "postCode": {
             "type": "string",
             "description": "Post Code",
-            "example": "0191"
+            "example": 108
           }
         }
       },
@@ -973,7 +973,7 @@
           "addressLine1": {
             "type": "string",
             "description": "Address Line 1",
-            "example": "Dronning Eufemias gate 42"
+            "example": "Robert Levins gate 5"
           },
           "addressLine2": {
             "type": "string",
@@ -996,7 +996,7 @@
           "zipCode": {
             "type": "string",
             "description": "Post Code",
-            "example": 387
+            "example": 108
           }
         }
       },
@@ -1024,7 +1024,8 @@
             "maxLength": 256
           },
           "shippingMethodId": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 100
           }
         }
       },
@@ -1459,7 +1460,8 @@
             "maxLength": 256
           },
           "shippingMethodId": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 100
           }
         }
       },
@@ -1573,7 +1575,8 @@
             "maxLength": 256
           },
           "shippingMethodId": {
-            "type": "string"
+            "type": "string",
+            "maxLength": 100
           }
         }
       },
@@ -1629,6 +1632,12 @@
             "description": "Transaction text to be displayed in Vipps",
             "example": "One pair of Vipps socks",
             "maxLength": 100
+          },
+          "skipLandingPage": {
+            "type": "boolean",
+            "example": false,
+            "default": false,
+            "description": "Skips the landing page for whitelisted sale units. Requires a valid customerInfo.mobileNumber."
           }
         }
       },
@@ -1644,7 +1653,7 @@
             "type": "string",
             "description": "Authorization token that the merchant could share to make callbacks more secure. If provided this token will be returned as an `Authorization` header for our callbacks. This includes shipping details and callback.",
             "maxLength": 255,
-            "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni"
+            "example": "iOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImllX3FXQ1hoWHh0MXpJ"
           },
           "callbackPrefix": {
             "type": "string",
@@ -1662,7 +1671,7 @@
             "type": "string",
             "description": "Vipps will use the fallBack URL to redirect the Vipps user to the merchant’s confirmation page once the payment is completed in Vipps. This is normally the “success page”, although the “fallback” name is ambiguous (the same URL is also used if payment was not successful). In other words: This is the URL Vipps sends the Vipps user back to. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).",
             "maxLength": 255,
-            "example": "https://example.com/vipps/fallback-success-page/order123abc"
+            "example": "https://example.com/vipps/fallback-result-page/order123abc"
           },
           "isApp": {
             "type": "boolean",
@@ -1756,7 +1765,7 @@
           },
           "addressLine1": {
             "type": "string",
-            "example": "Dronning Eufemias gate 42"
+            "example": "Robert Levins gate 5"
           },
           "addressLine2": {
             "type": "string"
@@ -1775,7 +1784,7 @@
             "type": "string",
             "description": "Four digits",
             "pattern": "^\\d{4}$",
-            "example": "0603"
+            "example": "0154"
           },
           "addressType": {
             "type": "string",

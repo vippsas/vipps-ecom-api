@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-    version: 1.0.16
+    version: 1.0.17
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -1504,7 +1504,7 @@ components:
             field
         addressLine1:
           type: string
-          example: Dronning Eufemias gate 42
+          example: Robert Levins gate 5
         addressLine2:
           type: string
         city:
@@ -1519,7 +1519,7 @@ components:
           type: string
           description: Four digits
           pattern: '^\d{4}$'
-          example: '0603'
+          example: '0154'
         addressType:
           type: string
           example: H
