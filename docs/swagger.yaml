@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.0.16
+    version: 1.0.16
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
