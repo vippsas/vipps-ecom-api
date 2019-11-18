@@ -3,7 +3,11 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
+<<<<<<< HEAD
   version: 1.0.16
+=======
+  version: 1.0.15
+>>>>>>> newlanding
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -154,15 +158,19 @@ paths:
         - Vipps eCom API
       summary: Initiate Payment
       description: >-
-        This API call allows the merchants to initiate a payment flow by using
-        Vipps. In order to identify which sales channel payments are coming
-        from, a merchantSerialNumber is used to distinguish between them. Please
-        note that a single payment is uniquely identified by a composite of merchantSerialNumber and orderId. The
-        Merchant provided orderId must be unique per sales channel. Once the
+        This API call allows the merchants to initiate payments.
+        In order to identify which sales channel payments are coming
+        from, a merchantSerialNumber is used to distinguish between them.
+        Please note that a single payment is uniquely identified by a composite
+        of merchantSerialNumber and orderId.
+        The merchant-provided orderId must be unique per sales channel. Once the
         transaction is successfully initiated in Vipps, you will receive a
-        URL in response which will direct the customer to the landing page. The landing page will have functionality to
-        identify and differentiate request coming from mobile browser/desktop
-        browser. The merchant may also pass the 'isApp' parameter that will make Vipps respond with a app-switch deeplink that will take the customer directly to the Vipps app. URLs passed to Vipps should be URL-encoded, and must validate
+        URL in response which will direct the customer to the Vipps landing page.
+        The landing page detects if the requests comes from a mobile browser or desktop browser.
+        The merchant may also pass the 'isApp' parameter that will make Vipps
+        respond with a app-switch deeplink that will take the customer directly
+        to the Vipps app.
+        URLs passed to Vipps should be URL-encoded, and must validate
         with the Apache Commons
         [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
       operationId: initiatePaymentV3UsingPOST
