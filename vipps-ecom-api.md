@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.0.16.
+Document version 1.0.17.
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
@@ -1090,16 +1090,16 @@ The sections below explain, in detail, how to integrate for browsers and apps.
 For mobile and desktop browsers, integration is handled by Vipps using the Vipps landing page.
 
 The merchant needs to provide a valid `fallBack`.
-When Vipps has completed the operation, the `fallbackUrl` will be opened in the browser.
-To maintain the session, the merchant can pass along a session identifier in the `fallbackUrl`.
+When Vipps has completed the operation, the `fallBack` URL will be opened in the browser.
+To maintain the session, the merchant can pass along a session identifier in the `fallBack` URL.
 
 ### App-switch on iOS
 
 1. The Vipps app on iOS requires a URL scheme in order to support app-switch.
-2. The merchant need to pass the URI Scheme of app into `fallbackUrl` the in Vipps backend API.
+2. The merchant need to pass the URI Scheme of app into `fallBack` URL the in Vipps backend API.
 3. The merchant will open the URL received from Vipps backend API.
-4. Once the operation in the Vipps app is completed, Vipps will open the URL specified in `fallbackUrl`.
-5. From the Vipps mobile application appropriate status code will be appended to `fallbackUrl` as a query string, such as `merchantApp://result?myAppData&status=301`.
+4. Once the operation in the Vipps app is completed, Vipps will open the URL specified in `fallBack` URL.
+5. From the Vipps mobile application appropriate status code will be appended to `fallBack` URL as a query string, such as `merchantApp://result?myAppData&status=301`.
 
 #### Switch from merchant app to the Vipps app
 
@@ -1127,10 +1127,10 @@ the URL scheme is the same for both. A workaround is to only have one of the app
 
 Once the operation in the Vipps app is completed, the Vipps app will open the frontend URL.
 For app-to-app integration, merchant app needs to be registered for a URL scheme
-and pass the URL scheme in `fallbackUrl` in the Vipps backend API.
+and pass the URL scheme in `fallBack` URL in the Vipps backend API.
 The Vipps mobile application will use the URL to launch the merchant application.
 
-For example, if your `fallbackUrl` is `merchantApp://result?myAppData`, Vipps
+For example, if your `fallBack` URL is `merchantApp://result?myAppData`, Vipps
 will append the status like: `merchantApp://result?myAppData&status=301`.
 
 ##### Registering a 3rd party app with URL scheme and handling custom URL calls
@@ -1142,9 +1142,9 @@ See Apple's documentation:
 
 Vipps supports two ways to do app-switch:
 
-* Android intent, using “startActivityForResult”. In order to use this the merchant need to set a `fallbackUrl` as “INTENT”. In this way of communication there is no need to register for URL scheme.
+* Android intent, using “startActivityForResult”. In order to use this the merchant need to set a `fallBack` URL as “INTENT”. In this way of communication there is no need to register for URL scheme.
 
-* URL scheme: The app needs to be registered for URL scheme, and then pass the URL scheme in `fallbackUrl`.
+* URL scheme: The app needs to be registered for URL scheme, and then pass the URL scheme in `fallBack` URL.
 
 #### App-switch: Android Intent
 
@@ -1261,10 +1261,10 @@ For Example:
 </activity>
 ```
 
-Note: The scheme should be same specified in `fallbackUrl`.
+Note: The scheme should be same specified in `fallBack` URL.
 
 The Vipps application will send the result to the merchant app by
-starting a new activity with the `fallbackUrl` as a URI parameter in the intent.
+starting a new activity with the `fallBack` URL as a URI parameter in the intent.
 The merchant app can make their receiving activity as a `singleInstance`
 to handle the response in same activity.
 
