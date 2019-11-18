@@ -1,7 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "description": "# Vipps eCommerce API\nAdditional API documentation: https://github.com/vippsas/vipps-ecom-api/\nversion: 1.0.17\n",
+    "description": "# Vipps eCommerce API\nAdditional API documentation: https://github.com/vippsas/vipps-ecom-api/\n",
+    "version": "1.0.18",
     "title": "Vipps eCommerce API"
   },
   "tags": [
@@ -1778,16 +1779,23 @@
           "country": {
             "type": "string",
             "description": "The only country supported is Norway",
+            "default": "NO",
             "example": "NO"
           },
           "postCode": {
             "type": "string",
-            "description": "Four digits",
+            "description": "Four digits for Norway.",
             "pattern": "^\\d{4}$",
             "example": "0154"
           },
-          "addressType": {
+          "type": {
             "type": "string",
+            "description": "The type of address: Home, business.",
+            "pattern": "^\\[A-Z]$",
+            "enum": [
+              "H",
+              "B"
+            ],
             "example": "H"
           }
         }
@@ -1797,7 +1805,7 @@
         "properties": {
           "mobileNumber": {
             "type": "string",
-            "description": "Mobile number of the user who has to pay for the transation from Vipps. Allowed format: xxxxxxxx",
+            "description": "Mobile number of the user who has to pay for the transation from Vipps. Allowed format: xxxxxxxx. No country code.",
             "minLength": 8,
             "maxLength": 8,
             "example": 91234567,
