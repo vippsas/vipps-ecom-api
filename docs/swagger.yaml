@@ -1,9 +1,9 @@
-openapi: 3.0.0
+openapi: '3.0.0'
 info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-    version: 1.0.17
+  version: 1.0.18
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -1514,14 +1514,20 @@ components:
         country:
           type: string
           description: The only country supported is Norway
+          default: 'NO'
           example: 'NO'
         postCode:
           type: string
-          description: Four digits
+          description: Four digits for Norway.
           pattern: '^\d{4}$'
           example: '0154'
         addressType:
           type: string
+          description: 'The type of address: Home, business.'
+          pattern: '^\[A-Z]$'
+          enum:
+            - 'H'
+            - 'B'
           example: H
     CustomerInfoDto:
       type: object
@@ -1530,7 +1536,7 @@ components:
           type: string
           description: >-
             Mobile number of the user who has to pay for the transation from
-            Vipps. Allowed format: xxxxxxxx
+            Vipps. Allowed format: xxxxxxxx. No country code.
           minLength: 8
           maxLength: 8
           example: 91234567
