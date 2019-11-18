@@ -2,11 +2,7 @@
 
 API version: 2.0
 
-<<<<<<< HEAD
 Document version 1.0.15.
-=======
-Document version 1.1.0
->>>>>>> newlanding
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
