@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.0.12
+Document version 1.0.15.
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
@@ -21,6 +21,7 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
     + [Desktop browsers and mobile browsers](#desktop-browsers-and-mobile-browsers)
     + [Express checkout payments](#express-checkout-payments)
       - [API endpoints required by Vipps from the merchant for express checkout](#api-endpoints-required-by-vipps-from-the-merchant-for-express-checkout)
+    + [Recurring eCommerce payments](#recurring-ecommerce-payments)
   * [Flow diagram](#flow-diagram)
     + [Flow diagram details](#flow-diagram-details)
 - [API endpoints](#api-endpoints)
@@ -28,6 +29,12 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
     + [Access token](#access-token)
       - [HTTP response codes](#http-response-codes)
   * [Initiate payment](#initiate-payment)
+    + [Detailed information for request calls](#detailed-information-for-request-calls)
+      - [Orderid recommendations](#orderid-recommendations)
+      - [Callback ports](#callback-ports)
+    + [Timeouts](#timeouts)
+      - [Using a phone](#using-a-phone)
+      - [Using a laptop/desktop](#using-a-laptop-desktop)
     + [Initiate payment flows](#initiate-payment-flows)
       - [Mobile browser initiated payments](#mobile-browser-initiated-payments)
         * [Vipps app installed](#vipps-app-installed)
@@ -39,6 +46,8 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
   * [Reserve](#reserve)
   * [Cancel](#cancel)
   * [Capture](#capture)
+    + [Partial capture](#partial-capture)
+    + [Idempotency](#idempotency)
   * [Refund](#refund)
 - [HTTP response codes](#http-response-codes-1)
   * [Exception handling](#exception-handling)
@@ -164,6 +173,11 @@ These endpoints are included in the Swagger file for reference.
 | Remove user consent | Used to inform merchant when the Vipps user removes consent to share information.  | [`DELETE:/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/removeUserConsentUsingDELETE)  |
 | Callback : Transaction Update | A callback to the merchant for receiving post-payment information. | [`POST:/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)  |
 | Get shipping cost and method | Used to fetch shipping information | [`POST:/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/fetchShippingCostUsingPOST)  |
+
+### Recurring eCommerce payments
+
+Recurring eCommerce is its own seperate product and can be found descriped in details in
+our [Recurring Repo.](https://github.com/vippsas/vipps-recurring-api)
 
 ## Flow diagram
 
@@ -346,21 +360,20 @@ HTTP headers.
 
 A minimal example:
 
-
 ```json
 {
-    "merchantInfo": {
-      "merchantSerialNumber": "123456",
-      "callbackPrefix":"https://example.com/vipps/callbacks-for-payment-update",
-      "fallBack": "https://example.com/vipps/fallback-result-page/order123abc"
-    },
-    "customerInfo": {
-    },
-    "transaction": {
-      "orderId": "order123abc",
-      "amount": 20000,
-      "transactionText": "One pair of Vipps socks"
-    }
+  "customerInfo": {
+  },
+  "merchantInfo": {
+    "merchantSerialNumber": "123456",
+    "callbackPrefix":"https://example.com/vipps/callbacks-for-payment-update",
+    "fallBack": "https://example.com/vipps/fallback-result-page/order123abc"
+  },
+  "transaction": {
+    "orderId": "order123abc",
+    "amount": 20000,
+    "transactionText": "One pair of Vipps socks"
+  }
 }
 ```
 
@@ -369,10 +382,10 @@ An express payment example with more parameters provided:
 ```json
 {
   "customerInfo": {
-    "mobileNumber": 91234567
+    "mobileNumber": "48059528"
   },
   "merchantInfo": {
-    "authToken": "string",
+    "authToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni <snip>",
     "callbackPrefix": "https://example.com/vipps/callbacks-for-payment-update",
     "consentRemovalPrefix": "https://example.com/vipps/consents/",
     "fallBack": "https://example.com/vipps/fallback-result-page/order123abc",
@@ -405,20 +418,35 @@ An express payment example with more parameters provided:
   }
 }
 ```
+### Detailed information for request calls
 
-A payment is uniquely identified by the combination of `merchantSerialNumber` and `orderId`:
+A payment is uniquely identified by the combination of `merchantSerialNumber`
+and `orderId`:
 * `merchantSerialNumber`: The merchant's Vipps id.
 * `orderId`: Must be unique for the `merchantSerialNumber`.
 
-To initiate an express checkout payment the payment initiation call must include the `"paymentType":"eComm Express Payment"` parameter. If this parameter is not passed, the payment type will default to regular payment.
+To initiate an express checkout payment the payment initiation call must include
+the `"paymentType":"eComm Express Payment"` parameter. If this parameter is not
+passed, the payment type will default to regular payment.
 
-To add authentication to the callbacks made by Vipps the merchant may provide an `authToken`. This token will then be returned as a `Authorization` header in the callback and shipping details requests made by Vipps for that order.
+To add authentication to the callbacks made by Vipps the merchant may provide
+an `authToken`. This token will then be returned as a `Authorization` header
+in the callback and shipping details requests made by Vipps for that order.
 
 Once successfully initiated, a response with a redirect URL is returned.
 
-**Note:** While the minimum length for `orderId` is 1, we suggest making them longer. Using both numbers and characters of length 6 or more lets us more easily identify the order in our event logs.
+#### Orderid recommendations
 
-**Note:** We do not send requests to `callbackPrefix`, `shippingDetails` or `consentsRemovalPrefix` for all ports. To be safe use common port numbers such as: 80, 443, 8080.
+While the minimum length for `orderId` is 1, we recommend
+using at least 6 characters, and a combination of numbers and characters.
+Leading zeros should be avoided, as some applications (like Excel)
+tend to remove them, and this may cause misunderstandings.
+
+#### Callback ports
+
+We do not send requests to `callbackPrefix`, `shippingDetails` or
+`consentsRemovalPrefix` for all ports. To be safe use common port numbers
+such as: 80, 443, 8080.
 
 **Initiate response example:**
 ```http
@@ -446,7 +474,24 @@ The URL depends on whether the `initiate` request was provided the `isApp` param
 * For `true`, the URL is for an deeplink to the Vipps app.
 * For `false` or not provided, the URL is for the Vipps "landing page".
 
-**Note:** this URL will timeout after 5 minutes.
+### Timeouts
+
+#### Using a phone
+
+This deeplink URL will timeout after 5 minutes: If the user does not act
+on the payment (after the app-switch) request within 5 minutes,
+the payment times out.
+
+#### Using a laptop/desktop
+
+If the user is using a laptop/desktop device, and the landing page is
+displayed to the user, an additional timeout may occur. When the
+user is shown the Vipps landing page and clicks "OK", the user
+has an additional 5 minutes to complete the payment in Vipps on the
+phone. Thus, the total time before timeout with a laptop/desktop device
+is around 10 minutes.
+
+See the [Cancel](#cancel) endpoint for details.
 
 ### Initiate payment flows
 
@@ -961,15 +1006,18 @@ to executing the service call again.
 
 If the communication is broken during payment process for some reason, and
 Vipps is not able to execute callback, then callback will not be retried.
+
 In other words, if the merchant doesn’t receive any confirmation on payment
-request call within callback timeframe, merchant should call get payment
-details service to get the response of payment request.
+request call within callback timeframe, merchant should call
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
+to get the response of payment request.
 
 ### PSP connection issues
 
 In a case when Vipps experiences communication problems with PSP, service call
-will respond with 402 HTTP Error. Merchant should make a call to Get Payment
-Details to check if the transaction request is processed before making service
+will respond with 402 HTTP Error. Merchant should make a call to
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
+to check if the transaction request is processed before making service
 call (with same idempotency key) again.
 
 

@@ -1,5 +1,8 @@
-# Disclaimer
-This is a work in progress. Issues and PRs are welcome.
+# Migration from eCom API v1 to eCom API v2
+
+Document version 1.0.1.
+
+Issues and PRs are welcome.
 
 # Key differences
 
@@ -25,22 +28,19 @@ See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.
 #### Request Body
 ```
 {
-   "customerInfo": {
-       "mobileNumber": "48059528"
-   },
-   "merchantInfo": {
-       "callbackPrefix": "https://www.callback.com/",
-       "fallBack": "https://fallback.com/",
-       "merchantSerialNumber": "210462",
-       "isApp": true
-   },
-   "transaction": {
-       "amount": 1234,
-       "orderId": "id170",
-       "timeStamp":"2020-06-24T08:34:25-07:00",
-       "requestId": "1234",
-       "transactionText": "Initiate Payment"
-   }
+  "customerInfo": {
+      "mobileNumber": "48059528"
+  },
+  "merchantInfo": {
+    "merchantSerialNumber": "123456",
+    "callbackPrefix":"https://example.com/vipps/callbacks-for-payment-update",
+    "fallBack": "https://example.com/vipps/fallback-result-page/order123abc"
+  },
+  "transaction": {
+    "orderId": "order123abc",
+    "amount": 20000,
+    "transactionText": "One pair of Vipps socks"
+  }
 }
 ```
 
@@ -70,7 +70,8 @@ See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.
 
 # Migration
 
-If you have already signed an agreement with Vipps, and have API keys for v1, you can use the same API keys for v2.
+If you have already signed an agreement with Vipps, and have API keys for v1, you can use the same API keys
+for v2.
 
 ## Subscription keys
 
