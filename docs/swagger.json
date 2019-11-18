@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "description": "# Vipps eCommerce API\nAdditional API documentation: https://github.com/vippsas/vipps-ecom-api/\n",
-    "version": "1.0.15",
+    "version": "1.0.16",
     "title": "Vipps eCommerce API"
   },
   "tags": [
