@@ -1521,7 +1521,7 @@ components:
           description: Four digits for Norway.
           pattern: '^\d{4}$'
           example: '0154'
-        type:
+        addressType:
           type: string
           description: 'The type of address: Home, business.'
           pattern: '^\[A-Z]$'
