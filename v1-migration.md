@@ -1,6 +1,6 @@
 # Migration from eCom API v1 to eCom API v2
 
-Document version 1.0.2.
+Document version 1.1.0.
 
 Issues and PRs are welcome.
 
@@ -15,6 +15,15 @@ The initiate payment response will contain a unique URL for each order. Either a
 <img src="images/landing-page.png" width="300">
 
 *Note: On mobile devices "Universal Linking" will be used for `https` URLs, which will automatically open [Vipps](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#desktop-browsers-and-mobile-browsers).*
+
+### Skip landing page
+
+Skipping the landing page is reserved for special cases, where displaying it is not possible. 
+See the details in the 
+[skip landing page section](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#skip-landing-page)
+in the API guide.
+
+See the [FAQ](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-faq.md#is-it-possible-to-skip-the-landing-page).
 
 ## Phone number is optional
 
