@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.0.18.
+Document version 1.0.19.
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
@@ -225,13 +225,16 @@ In this truncated example, it shows that a partial capture of 100.00 NOK, of
 the total reserved amount of 200.00 NOK, has been captured:
 
 ```json
-"transactionSummary": {
+"transactionsummaryy": {
     "capturedAmount": 10000,
     "remainingAmountToCapture": 10000,
     "refundedAmount": 0,
     "remainingAmountToRefund": 0
 }
 ```
+
+**Please note:** The `transactionSummary` will not be part of the response if
+the user not reacted to the Vipps landing page or app-switch.
 
 # API endpoints
 This section contains complete HTTP `requests` and `responses` for each API endpoint
@@ -637,6 +640,9 @@ The respective amount will be reserved for future capturing.
     ]
 }
 ```
+
+**Please note:** The `transactionSummary` will not be part of the response if
+the user not reacted to the Vipps landing page or app-switch.
 
 ## Cancel
 
