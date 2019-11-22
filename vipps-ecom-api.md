@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.0.17.
+Document version 1.0.18.
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
@@ -542,9 +542,10 @@ The landing page is not involved in this case.
 
 *Only available for whitelisted sale units.*
 
-If this property is set to `true`,
-it will cause a push notification to be sent to the given phone number immediately,
-without loading the landing page.
+If the `skipLandingPage` property is set to `true` in the
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
+call, it will cause a push notification to be sent to the given phone number
+immediately, without loading the landing page.
 
 If the sale unit is not whitelisted, this property is ignored.
 
