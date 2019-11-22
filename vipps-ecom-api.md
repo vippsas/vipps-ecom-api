@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.0.19.
+Document version 1.0.20.
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
@@ -29,6 +29,7 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
     + [Access token](#access-token)
       - [HTTP response codes](#http-response-codes)
   * [Initiate payment](#initiate-payment)
+    + [The orderId](#the-orderid) 
     + [Detailed information for request calls](#detailed-information-for-request-calls)
       - [Orderid recommendations](#orderid-recommendations)
       - [Callback ports](#callback-ports)
@@ -208,7 +209,8 @@ This table shows the from- and to-state, and the operation returned from
 | 4   | Cancel     | --       | A final state: Payment cancelled              | -              |
 | 5   | Refund     | --       | A final state: Payment refunded               | -              |
 
-Please note that the response from Get payment details [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET))
+Please note that the response from
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET))
 always contain _the entire history_ of payments for the order, not just the current status.
 In this truncated example, it shows that the full amount (200.00 NOK) has been captured:
 
@@ -225,7 +227,7 @@ In this truncated example, it shows that a partial capture of 100.00 NOK, of
 the total reserved amount of 200.00 NOK, has been captured:
 
 ```json
-"transactionsummaryy": {
+"transactionsummary": {
     "capturedAmount": 10000,
     "remainingAmountToCapture": 10000,
     "refundedAmount": 0,
@@ -314,7 +316,9 @@ JWT properties:
 | `resource`                  | For the product for which token has been issued. |
 | `access_token`              | The actual access token that needs to be used in `Authorization` request header. |
 
-**Please note:** The access token is valid for 1 hour in MT and 24 hours in Production. To be sure that you are using correct time please use `expires_in` or `expires_on`. 
+**Please note:** The access token is valid for 1 hour in MT (Merchant Test)
+and 24 hours in Production. To be sure that you are using correct time please
+use `expires_in` or `expires_on`.
 
 Example of an error response body (formatted for readability):
 
@@ -427,6 +431,25 @@ An express payment example with more parameters provided:
   }
 }
 ```
+
+#### The `orderId`
+
+A `orderId` must be unique for the MSN (Merchant Serial Number, the id of
+the sale unit). The `orderId` does not need to be globally unique, so several
+MSNs may use the same `orderId`, as long as it is unique for each sale unit.
+
+The maximum length of an `orderId` is 30 alphanumeric characters:
+a-z, A-Z, 0-9 and '-'.
+
+We _strongly_ recommend to use `orderId` format that makes it easy to
+search for them in logs. This means that `abc-123-def-456` is a better
+format than `123456`.
+
+With multiple sale units, prefixing the `orderId` with the MSN
+for each sale unit is recommended: If the MSN is `654321`, the
+`orderId`s could start at `654321-0000-0000-0001` and increment by 1
+for each order, or some similar, unique and readable pattern.
+
 ### Detailed information for request calls
 
 A payment is uniquely identified by the combination of `merchantSerialNumber`
