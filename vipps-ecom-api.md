@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.0.21.
+Document version 1.0.22.
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
@@ -583,6 +583,10 @@ All URLs in Vipps eCommerce API are validated with the
 
 If `isApp` is true, the `fallBack` is not validated with Apache Commons UrlValidator,
 as the app-switch URL may be something like `vipps://`, which is not a valid URL.
+
+The URLs must be publicly available and not require authentication.
+
+URLs that start with `https://localhost` will not work.
 
 Here is a simple Java class suitable for testing URLs,
 using the dummy URL `https://example.com/vipps/fallback-result-page/order123abc`:
