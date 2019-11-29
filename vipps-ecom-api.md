@@ -584,9 +584,9 @@ All URLs in Vipps eCommerce API are validated with the
 If `isApp` is true, the `fallBack` is not validated with Apache Commons UrlValidator,
 as the app-switch URL may be something like `vipps://`, which is not a valid URL.
 
-The URLs must be publicly available and not require authentication.
+The endpoints required by Vipps must be publicly available.
 
-URLs that start with `https://localhost` will not work.
+URLs that start with `https://localhost` will be rejected. If you want to use localhost as fallback, please use `http://127.0.0.1`.
 
 Here is a simple Java class suitable for testing URLs,
 using the dummy URL `https://example.com/vipps/fallback-result-page/order123abc`:
