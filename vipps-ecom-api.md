@@ -16,11 +16,12 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
   * [Checklist](#checklist)
   * [Payment types](#payment-types)
     + [Regular eCommerce payments](#regular-ecommerce-payments)
+    + [Express checkout payments](#express-checkout-payments)
+      - [API endpoints required by Vipps for express checkout](#api-endpoints-required-by-vipps-for-express-checkout)
+    + [Capture types](#Capture-types)
       - [Reserve capture](#reserve-capture)
       - [Direct capture](#direct-capture)
     + [Desktop browsers and mobile browsers: The Vipps landing page](#desktop-browsers-and-mobile-browsers-the-vipps-landing-page)
-    + [Express checkout payments](#express-checkout-payments)
-      - [API endpoints required by Vipps from the merchant for express checkout](#api-endpoints-required-by-vipps-from-the-merchant-for-express-checkout)
     + [Recurring eCommerce payments](#recurring-ecommerce-payments)
   * [Flow diagram](#flow-diagram)
     + [Flow diagram details](#flow-diagram-details)
@@ -98,6 +99,7 @@ Vipps eCommerce API offers 2 types of payments
 
 ### Regular eCommerce payments
 
+
 When you initiate a payment it will be reserved until you capture it.
 Vipps supports both _reserve capture_ and _direct capture_.
 
@@ -113,11 +115,47 @@ For more information, please see the Consumer Authority's
 Merchants do not choose between _reserve capture_ and _direct capture_ themselves,
 the type of capture is configured by Vipps after the additional compliance checks have been completed.
 
+
+### Express checkout payments
+
+Express checkout is an solution for automaticly providing shipping alternatives. To perform an express checkout, the 
+merchant needs to send `"paymentType": "eComm Express Payment"` as part of initiate payment, and support the 
+`shippingDetails` and `consent` endpoints.
+
+These are payments related to Vipps Hurtigkasse, where Vipps reduces the typical purchase process for the customer to 
+a few simple steps:
+
+1. The user clicks on the "Vipps Hurtigkasse" button.
+2. The user consents to sharing address information.
+3. The user confirms the amount, delivery address and delivery method in the Vipps app.
+
+The shipping methods presented to the user is provided by the merchant through the `shippingDetails` endpoint.
+
+Vipps complies with GDPR, and requires the user's consent before any information
+is shared with the merchant. The merchant must provide a URL (`consentRemovalPrefix`)
+that Vipps can call to delete the data. The Vipps app gives the Vipps user an
+
+#### API endpoints required by Vipps for express checkout
+
+The below endpoints are provided by the _merchant_ and consumed by Vipps during express checkout payments.
+These endpoints are included in the Swagger file for reference.
+
+| Operation           | Description         | Endpoint          |
+| ------------------- | ------------------- | ----------------- |
+| Remove user consent | Used to inform merchant when the Vipps user removes consent to share information.  | [`DELETE:/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/removeUserConsentUsingDELETE)  |
+| Callback : Transaction Update | A callback to the merchant for receiving post-payment information. | [`POST:/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)  |
+| Get shipping cost and method | Used to fetch shipping information | [`POST:/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/fetchShippingCostUsingPOST)  |
+
+
+### Capture types
+
+
 #### Reserve capture
 
 _Reserve capture_ is the normal flow.
 
-When then end user approves an initiated payment it will be reserved until you capture it.
+When then end user approves an initiated payment it will be reserved until you capture it. When the order is reserved 
+the amount is marked as reserved by the bank, but not transferred. 
 
 #### Direct capture
 
@@ -153,32 +191,9 @@ The user's phone number can be set in the payment initiation call:
 The user's phone number is remembered by the user's browser,
 eliminating the need for re-typing it on subsequent purchases.
 
-### Express checkout payments
-
-These are payments related to Vipps Hurtigkasse, where Vipps reduces the typical purchase process to a few simple steps:
-
-1. The user clicks on the "Vipps Hurtigkasse" button
-2. The user confirms the amount, delivery address and delivery method in the Vipps app
-3. The merchant receives shipping information and user details and shows a confirmation page
-
-Vipps retrieves the shipping methods and shipping price from merchant via the `shippingDetails` endpoint based
-on the address the end user selects in the Vipps app.
-
-Vipps complies with GDPR, and requires the user's consent before any information
-is shared with the merchant. The merchant must provide a URL (`consentRemovalPrefix`)
-that Vipps can call to delete the data. The Vipps app gives the Vipps user an
 overview of "Companies with access", where the user can manage the consents.
 
-#### API endpoints required by Vipps from the merchant for express checkout
 
-The below endpoints are provided by the _merchant_ and consumed by Vipps during express checkout payments.
-These endpoints are included in the Swagger file for reference.
-
-| Operation           | Description         | Endpoint          |
-| ------------------- | ------------------- | ----------------- |
-| Remove user consent | Used to inform merchant when the Vipps user removes consent to share information.  | [`DELETE:/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/removeUserConsentUsingDELETE)  |
-| Callback : Transaction Update | A callback to the merchant for receiving post-payment information. | [`POST:/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)  |
-| Get shipping cost and method | Used to fetch shipping information | [`POST:/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/fetchShippingCostUsingPOST)  |
 
 ### Recurring eCommerce payments
 
