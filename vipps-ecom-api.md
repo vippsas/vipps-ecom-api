@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.0.22.
+Document version 1.0.23.
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
@@ -118,11 +118,11 @@ the type of capture is configured by Vipps after the additional compliance check
 
 ### Express checkout payments
 
-Express checkout is an solution for automaticly providing shipping alternatives. To perform an express checkout, the 
-merchant needs to send `"paymentType": "eComm Express Payment"` as part of initiate payment, and support the 
+Express checkout is an solution for automaticly providing shipping alternatives. To perform an express checkout, the
+merchant needs to send `"paymentType": "eComm Express Payment"` as part of initiate payment, and support the
 `shippingDetails` and `consent` endpoints.
 
-These are payments related to Vipps Hurtigkasse, where Vipps reduces the typical purchase process for the customer to 
+These are payments related to Vipps Hurtigkasse, where Vipps reduces the typical purchase process for the customer to
 a few simple steps:
 
 1. The user clicks on the "Vipps Hurtigkasse" button.
@@ -154,8 +154,8 @@ These endpoints are included in the Swagger file for reference.
 
 _Reserve capture_ is the normal flow.
 
-When then end user approves an initiated payment it will be reserved until you capture it. When the order is reserved 
-the amount is marked as reserved by the bank, but not transferred. 
+When then end user approves an initiated payment it will be reserved until you capture it. When the order is reserved
+the amount is marked as reserved by the bank, but not transferred.
 
 #### Direct capture
 
@@ -191,9 +191,7 @@ The user's phone number can be set in the payment initiation call:
 The user's phone number is remembered by the user's browser,
 eliminating the need for re-typing it on subsequent purchases.
 
-overview of "Companies with access", where the user can manage the consents.
-
-
+See also: [Skip landing page](#skip-landing-page).
 
 ### Recurring eCommerce payments
 
