@@ -254,14 +254,6 @@ and
 [Vipps PSP API](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-checklist.md)
 for examples.
 
-# Is it possible to skip the landing page?
-
-Skipping the landing page is reserved for special cases, where displaying it would not possible.
-This feature has to be enabled by Vipps for eligible sale units.
-Typically only physical points of sale are eligible.
-
-To request this feature, [contact Vipps](https://github.com/vippsas/vipps-developers/blob/master/contact.md).
-
 # Questions?
 
 We're always happy to help with code or other questions you might have! Please create an [issue](https://github.com/vippsas/vipps-recurring-api/issues),
