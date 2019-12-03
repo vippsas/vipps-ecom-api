@@ -6,7 +6,7 @@ See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.0.0.
+Document version 1.1.0.
 
 # Table of contents
 
@@ -16,6 +16,7 @@ Document version 1.0.0.
 - [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
 - [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
 - [How do I turn _direct capture_ on or off?](#How-do-I-turn-direct-capture-on-or-off)
+- [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page-)
 - [How can I refund a payment?](how-can-i-refund-a-payment)
 - [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
 - [Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
@@ -95,6 +96,18 @@ See [Regular eCommerce payments](https://github.com/vippsas/vipps-ecom-api/blob/
 # How do I turn _direct capture_ on or off?
 
 You can't turn _direct capture_ on or off as a merchant, and this must be requested of your KAM. To get both _direct capture_ and _reserve capture_ you must request two different sale units.
+
+# Is it possible to skip the landing page?
+
+Skipping the landing page is reserved for special cases, where displaying it is not possible.
+See the details in the 
+[skip landing page section](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#skip-landing-page) 
+in the API guide.
+
+This feature has to be specially enabled by Vipps for eligible sale units: The sale units must be whitelisted by Vipps.
+This functionality is typically used at physical points of sale, where there is no display available.
+
+To request this feature, [contact Vipps](https://github.com/vippsas/vipps-developers/blob/master/contact.md) with a detailed description of why it is not possible to display the landing page.
 
 # How can I refund a payment?
 
