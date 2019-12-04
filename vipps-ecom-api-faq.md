@@ -6,13 +6,14 @@ See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.1.0.
+Document version 1.2.0.
 
 # Table of contents
 
+- [What are the requirements for Vipps merchants?](#what-are-the-requirements-for-vipps-merchants)
+- [Can I use my "Vipps-nummer" in my webshop?](#can-i-use-my-vipps-nummer-in-my-webshop)
 - [Why do payments fail?](#why-do-payments-fail)
 - [Why does capture fail?](#why-does-capture-fail)
-- [Can I use my "Vipps-nummer" in my webshop?](#can-i-use-my-vipps-nummer-in-my-webshop)
 - [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
 - [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
 - [How do I turn _direct capture_ on or off?](#How-do-I-turn-direct-capture-on-or-off)
@@ -20,6 +21,7 @@ Document version 1.1.0.
 - [How can I refund a payment?](how-can-i-refund-a-payment)
 - [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
 - [Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
+- [Can I split payments to charge a fee?](#can-i-split-payments-to-charge-a-fee)
 - [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-cant-find-it)
 - [How long is an initiated order valid, if the user does not confirm in the Vipps app?](#how-long-is-an-initiated-order-valid-if-the-user-does-not-confirm-in-the-vipps-app)
 - [How long does it take until the money is in my account?](#how-long-does-it-take-until-the-money-is-in-my-account)
@@ -33,25 +35,39 @@ Document version 1.1.0.
 - [How do I perform "testing in production"?](#how-do-i-perform-testing-in-production)
 - [What do we have to do with PSD2's SCA requirements?](#what-do-we-have-to-do-with-psd2s-sca-requirements)
 
-# Why do payments fail?
+# What are the requirements for Vipps merchants?
 
-The most common reasons are:
-1. The debit/credit card has expired
-2. The debit/credit is no longer valid (typically when a user has received a new card, but the previous card's expiry date has not yet been reached)
-3. Insufficient funds on the debit/credit card (not enough money in the debit card's bank account, or not enough credit left on the credit card)
-4. The debit/credit card has been rejected by the issuer
-5. Payment limit reached, the user needs to authenticate with bankID in the Vipps app
-6. The payment has timed out (this happens if the user does not confirm in the Vipps app within 5 minutes - typically of the user has deactivcated push notifications)
-7. Attempt to capture an amount that exceeds the reserved amount
-8. Attempt to capture an amount that has not been reserved
-
-We are continuously improving the error messages in the Vipps app. Please note that we are not allowed to give detailed information about all errors to the merchant, as some information should only be provided to the Vipps user.
+Vipps merchants (corporate customers) must have a Norwegian organization number
+and applications must be signed with Norwegian BankID. Vipps must follow the
+regulatory requirements for KYC (Know Your Customer), AML (Anti Money Laundering)
+and other risk assessment procedures.
 
 # Can I use my "Vipps-nummer" in my webshop?
 
-No. According to Norwegian law you must be able to offer refunds.
-This is not supported with [Vipps-nummer](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/ta-betalt-med-vipps/).
-You need [Vipps på Nett](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).
+No. You need [Vipps på Nett](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).
+
+# Why do payments fail?
+
+The most common reasons are:
+
+1. The debit/credit card has expired
+2. The debit/credit is no longer valid (typically when a user has received a new
+   card, but the previous card's expiry date has not yet been reached)
+3. Insufficient funds on the debit/credit card (not enough money in the debit
+   card's bank account, or not enough credit left on the credit card)
+4. The debit/credit card has been rejected by the issuer
+5. Payment limit reached, the user needs to authenticate with bankID in Vipps.
+6. The payment has timed out (this happens if the user does not confirm in Vipps
+   within 5 minutes - typically if the user has deactivated push notifications)
+7. Attempt to capture an amount that exceeds the reserved amount
+8. Attempt to capture an amount that has not been reserved
+
+We are continuously improving the error messages in the Vipps app. Please note
+that we are not allowed to give detailed information about all errors to the
+merchant, as some information should only be provided to the Vipps user.
+
+See the API guide for
+[all errors](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes).
 
 # Why does capture fail?
 
@@ -100,8 +116,8 @@ You can't turn _direct capture_ on or off as a merchant, and this must be reques
 # Is it possible to skip the landing page?
 
 Skipping the landing page is reserved for special cases, where displaying it is not possible.
-See the details in the 
-[skip landing page section](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#skip-landing-page) 
+See the details in the
+[skip landing page section](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#skip-landing-page)
 in the API guide.
 
 This feature has to be specially enabled by Vipps for eligible sale units: The sale units must be whitelisted by Vipps.
@@ -127,6 +143,21 @@ in the bank (normally 2-3 days later), the money will automatically be available
 No. Vipps users have not consented to Vipps providing any information to
 third parties, and Vipps does not allow it. There is no API to look up
 a user's address, retrieve a user's purchases, etc.
+
+# Can I split payments to charge a fee?
+
+Vipps does not support splitting payments to charge a fee.
+
+If you want to charge a fee (like 3 %) of your payments, you can:
+
+1. Receive the full payment, take your 3 %, and then pay the remaining
+   97 %. In order to receive payments in this way, you may need approval
+   from Finanstilsynet.
+2. Have your customer receive the full payment directly, then send an
+   invoice for your 3 % fee.
+
+Companies that receive payments through Vipps needs to be Vipps customers.
+See [What are the requirements for Vipps merchants?](#what-are-the-requirements-for-vipps-merchants)
 
 # I have initiated an order but I can't find it!
 
