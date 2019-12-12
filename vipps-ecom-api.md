@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.0.23.
+Document version 1.0.24.
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
