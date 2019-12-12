@@ -1153,7 +1153,7 @@ To maintain the session, the merchant can pass along a session identifier in the
 2. The merchant need to pass the URI Scheme of app into `fallBack` URL the in Vipps backend API.
 3. The merchant will open the URL received from Vipps backend API.
 4. Once the operation in the Vipps app is completed, Vipps will open the URL specified in `fallBack` URL.
-5. From the Vipps mobile application appropriate status code will be appended to `fallBack` URL as a query string, such as `merchantApp://result?myAppData&status=301`.
+5. The merchant app should query the ecom API for updated status on the payment once user returns from the Vipps app.
 
 #### Switch from merchant app to the Vipps app
 
@@ -1179,7 +1179,7 @@ the URL scheme is the same for both. A workaround is to only have one of the app
 
 #### Redirect back to the merchant app from Vipps app
 
-Once the operation in the Vipps app is completed, the Vipps app will open the frontend URL.
+Once the operation in the Vipps app is completed, the Vipps app will open the fallback URL.
 For app-to-app integration, merchant app needs to be registered for a URL scheme
 and pass the URL scheme in `fallBack` URL in the Vipps backend API.
 The Vipps mobile application will use the URL to launch the merchant application.
@@ -1194,23 +1194,18 @@ See Apple's documentation:
 
 ### App-switch on Android
 
-Vipps supports two ways to do app-switch:
+Vipps is launched with a standard intent, using the url returned from the ecom api when the payment is created ("url": "vipps://?token=eyJraWQiOiJqd3RrZXki..")
 
-* Android intent, using “startActivityForResult”. In order to use this the merchant need to set a `fallBack` URL as “INTENT”. In this way of communication there is no need to register for URL scheme.
+#### Switching from merchant app to the Vipps app
 
-* URL scheme: The app needs to be registered for URL scheme, and then pass the URL scheme in `fallBack` URL.
-
-#### App-switch: Android Intent
-
-In case of Android Intent system, in backend API call(defined later) “INTENT”
-should be passed in fallbackURL. And below code should be used to launch Vipps application.
+Example of how to open the Vipps app:
 
 ```java
 try {
   PackageManager pm = context.getPackageManager();
   PackageInfo info = pm.getPackageInfo( , PackageManager.GET_ACTIVITIES);
   if(versionCompare(info.versionName,   ) >= 0) {
-    String uri = deeplinkURL; // Use deeplink url provided in API response
+    String uri = deeplinkURL; // Use deeplink url provided in ecom API response
     Intent intent = new Intent(Intent.ACTION_VIEW);
     intent.setData(Uri.parse(uri));
     startActivityForResult(intent,requestCode);
@@ -1226,83 +1221,24 @@ try {
 }
 ```
 
-Example of a deeplinkURL:
-`vipps://?token=eyJraWQiOiJqd3RrZXkiLCJhbGciOiJSUzI1NiJ9.ey <snip>`
 
-##### Redirect back to merchant app
+#### Switching back to the merchant app from Vipps app
 
-Register the activity in manifest file which will handle result of Vipps response. For Example:
+Once the user has paid (or cancelled), the Vipps app supports two ways to return to the merchant native app:
 
-```html
-<activity
-  android:name=".MainActivity"
-  android:label="@string/app_name">
-</activity>
-```
+  1: Let the vipps app deeplink back into the merchant app using their url scheme (eg. merchantapp://). This is the default/suggested approach.
 
-Receiving activity has to override onActivityResult method to handle result sent by Vipps application.
-For Example:
+  2: Just close the Vipps app, fall back to the merchant app, pick up the thread again there in onActivityResult().
 
-```java
-@Override
-protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-  if (resultCode == RESULT_OK) {
-    if (requestCode == 1) {
-      String url = null;
-      if (data != null && data.getExtras() != null) {
-        Bundle mBundle = data.getExtras();
-        if (mBundle.get("data") != null) {
-          try {
-            url = URLDecoder.decode(mBundle.get("data").toString(), "UTF-8"); Uri parseUri = Uri.parse(url);
-            String status = parseUri.getQueryParameter("status");
-            //Handle status
-          } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-          }
-        }
-      }
-    }
-  }
-}
-```
+In both cases, the merchant app should query the ecom API for updated status on the payment once user returns from the Vipps app.
 
+##### 1: Return back to merchant app by actively deeplinking into it from Vipps
 
+With this approach, the merchant app has to have its own uri scheme registered so the Vipps app can actively open the merchant app again after payment/cancellation.
 
-#### App-switch: Android URL Scheme
+In the example below, `MainActivity` is the receiving activity and the Vipps app opens it once the payment is done. 
 
-```java
-try {
-  PackageManager pm = context.getPackageManager();
-  PackageInfo info = pm.getPackageInfo , PackageManager.GET_ACTIVITIES);
-  if (versionCompare(info.versionName,   ) >= 0) {
-    String uri = deeplinkURL; // Use deeplink url provided in API response
-    Intent intent = new Intent(Intent.ACTION_VIEW);
-    intent.setData(Uri.parse(uri));
-    startActivity(intent);
-  } else {
-    // Notify user to download the latest version of Vipps application.
-  }
-} catch (PackageManager.NameNotFoundException e) {
-  // No Vipps app! Open play store page.
-  String url = " https://play.google.com/store/apps/details?id=no.dnb.vipps";
-  Intent storeIntent = new Intent(Intent.ACTION_VIEW);
-  storeIntent.setData(Uri.parse(url));
-  startActivity(storeIntent);
-}
-```
-
-Example of a `deeplinkURL`:
-`vipps://?token=eyJraWQiOiJqd3RrZXkiLCJhbGciOiJSUzI1NiJ9.ey <snip>`
-
-##### Redirect back to merchant app
-
-Set a filter in the Manifest file: To receive a call back from the Vipps application
-to an activity, a filter has to be set for that activity. In the example
-below, `MainActivity` is the receiving activity and the Vipps app sends a
-response to the activity. For this activity one can set a custom URL scheme
-inside the intent filter.
-
-For Example:
+To receive a call back from the Vipps application to an activity, a filter has to be set for that activity. In the merchant app, set a filter in the Manifest file:
 
 ```xml
 <activity android:name=".MainActivity" android:label="@string/app_name" android:launchMode="singleInstance">
@@ -1315,64 +1251,44 @@ For Example:
 </activity>
 ```
 
-Note: The scheme should be same specified in `fallBack` URL.
+Note: The scheme should be same specified in `fallBack` URL sent to the ecom api when the payment is created.
 
 The Vipps application will send the result to the merchant app by
 starting a new activity with the `fallBack` URL as a URI parameter in the intent.
-The merchant app can make their receiving activity as a `singleInstance`
+
+The merchant app can make their receiving activity a `singleInstance`
 to handle the response in same activity.
 
-The receiving activity has to override the `onNewIntent` method to handle
-result send by the Vipps app.
+The receiving MainActivity has to override the `onNewIntent` method to handle
+result send by the Vipps app:
 
 ```java
 @Override
 protected void onNewIntent(Intent intent) {
-  super.onNewIntent(intent);
-  String url = null;
-  if (intent != null && intent.getData() != null) {
-    try {
-      url = URLDecoder.decode(intent.getData().toString(),"UTF-8");
-      Uri parseUri = Uri.parse(url);
-      String status = parseUri.getQueryParameter("status");
-      //Handle status
-    } catch(UnsupportedEncodingException e) {
-      e.printStackTrace();
-    }
-  }
+      // Call the ecom api, check the status of the ecom payment
 }
 ```
 
-## Error codes for deeplinking
+###### 2: Redirect back to merchant app by simply closing the Vipps app
 
-The following are the identified status codes merchant may receive from Vipps app.
+With this approach, the merchant app does not have to register/handle deeplink urls.
 
-| Status Code	| Description |
-| ----------- | ----------- |
-|100 |	Success |
-|202 |  User canceling action. Either an expiration or active user Cancel |
-|302 |	User doesn’t have Vipps profile |
-|303 |	Login failed (login max attempt reached) |
-|304 |	Vipps doesn’t support this action, please update Vipps |
-|401 |	Request timed out or Token has expired |
-|451 |	The user was selected for fraud validation |
-|999 |	Failed |
+In order to use this approach, when creating the payment in the merchant has to pass fallback attribute like this: 
 
-The following are the status code ranges which Vipps maintains for future purposes.
+```"fallBack": "INTENT" ```
 
-| Status Code	| Description |
-| ----------- | ----------- |
-| 1XX | Success |
-| 200 - 250 | Input Error |
-| 250 - 299 | User Actions |
-| 3XX | Authentication / User Profile / Merchant Profile / Configuration related error |
-| 400 - 450 | Transaction related error |
-| 450 - 499 | Fraud related error |
-| 5XX | Reserved for future use |
-| 6XX | Reserved for future use |
-| 7XX | Reserved for future use |
-| 8XX | Reserved for future use |
-| 9XX | Other |
+(and *only* "INTENT"", no parameters etc.) 
+
+This will cause the Vipps app to simply close after a successful or canceled ecom payment, and fall back to the calling merchant app.
+
+The merchant app activity that resumes again (after the Vipps app closes) has to override onActivityResult method to pick up the thread again here. Example:
+
+```java
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    // Call the ecom api, check the status of the ecom payment
+}
+```
 
 # API endpoints required by Vipps from the merchant
 
