@@ -83,9 +83,8 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
 
 # Overview
 
-The Vipps eCommerce API (eCom API) offers functionality for online payments,
-both using web browsers on websites and in native apps for iOS and Android,
-using app-switching.
+The Vipps eCommerce API (eCom API) offers functionality for online payments. 
+Payments are supported in both web browsers and in native apps (via deep-linking).
 
 ## Checklist
 
@@ -93,7 +92,7 @@ See the [eCom API checklist](https://github.com/vippsas/vipps-ecom-api/blob/mast
 
 ## Payment types
 
-Vipps eCommerce API offers 2 types of payments
+Vipps eCommerce API offers 2 types of payments:
 1. Regular eCommerce payments
 2. Express checkout payments
 
@@ -118,8 +117,9 @@ the type of capture is configured by Vipps after the additional compliance check
 
 ### Express checkout payments
 
-Express checkout is an solution for automaticly providing shipping alternatives. To perform an express checkout, the
-merchant needs to send `"paymentType": "eComm Express Payment"` as part of initiate payment, and support the
+Express checkout is an solution for letting the user automatically share their vipps profile address information with merchant and choose a shipping option.
+
+To perform an express checkout, the merchant needs to send `"paymentType": "eComm Express Payment"` as part of initiate payment, and support the
 `shippingDetails` and `consent` endpoints.
 
 These are payments related to Vipps Hurtigkasse, where Vipps reduces the typical purchase process for the customer to
@@ -133,7 +133,8 @@ The shipping methods presented to the user is provided by the merchant through t
 
 Vipps complies with GDPR, and requires the user's consent before any information
 is shared with the merchant. The merchant must provide a URL (`consentRemovalPrefix`)
-that Vipps can call to delete the data. The Vipps app gives the Vipps user an
+that Vipps can call to delete the data. The Vipps app allows the user to later remove this consent 
+(Via the profile-security-"access to your information"-"companies that remember you" screen).
 
 #### API endpoints required by Vipps for express checkout
 
@@ -178,7 +179,7 @@ detects whether user is using a desktop browser or a mobile browser:
 * In a mobile browser, the landing page detects if the Vipps app is installed,
   and automatically switches to the Vipps app if it is.
 * In a desktop browser, the landing page prompts the user for the phone number (the number may also be pre-filled).
-  The user enters or confirms the phone number, and the Vipps app prompts for confirmation on the phone.
+  The user enters or confirms the phone number. Then on their phone, the user gets a push notification and the Vipps app then prompts for confirmation.
 
 The Vipps landing page is mandatory, and provides a consistent and recognizable user experience,
 that helps guide the user through the payment flow.
@@ -521,7 +522,7 @@ The URL depends on whether the `initiate` request was provided the `isApp` param
 
 #### Using a phone
 
-This deeplink URL will timeout after 5 minutes: If the user does not act
+This deeplink URL will time out after 5 minutes: If the user does not act
 on the payment (after the app-switch) request within 5 minutes,
 the payment times out.
 
@@ -540,40 +541,41 @@ See the [Cancel](#cancel) endpoint for details.
 
 #### Mobile browser initiated payments
 
-The landing page will detect if the Vipps app is installed.
+The landing page will detect if the Vipps native app is installed on the phone.
 
 ##### Vipps app installed
 
 1. The Vipps app is invoked and the landing page is closed.
-2. The Vipps user accepts or rejects the payment request
-3. Once payment process is completed, Vipps app redirects to `fallBack`
+2. The Vipps user accepts or rejects the payment request.
+3. Once payment process is completed, Vipps app redirects to the `fallBack` URI that merchant provided earlier (see above).
 
 ##### Vipps app not installed
 
 1. The user is prompted for the mobile number.
 2. Vipps sends a push notification to corresponding Vipps profile, if it exists. The landing page is not closed in this case.
 3. The Vipps user accepts or rejects the payment request.
-4. Once payment process is completed, Vipps app redirects to `fallBack`
+4. Once payment process is completed, Vipps app redirects to the `fallBack` URI that merchant provided earlier (see above).
 
 #### Desktop browser initiated payments
 
-1. The landing page will be opened in the desktop browser
-2. The landing page will prompt for user’s mobile number
-3. Vipps sends a push notification to corresponding Vipps profile, if it exists. The landing page is not closed in this case
-4. The Vipps user accepts or rejects the payment request
-5. Once payment process is completed, the landing page will redirect to `fallBack`
+1. The landing page will be opened in the desktop browser.
+2. The landing page will prompt for user’s mobile number.
+3. Vipps sends a push notification to corresponding Vipps profile, if it exists. The landing page is not closed in this case.
+4. The Vipps user accepts or rejects the payment request.
+5. Once payment process is completed, the landing page will redirect to the `fallBack` URI that merchant provided earlier (see above).
 
-#### App initated payments
+#### App initiated payments
 
-Vipps will identify the request coming from merchant's app by the `isApp:true` parameter.
-In this case, the Vipps backend will send the URI use by the merchant to invoke the Vipps app.
-The landing page is not involved in this case.
+Merchants can signal that the request is coming from their native app by passing the `isApp:true` parameter.
+In this case, the Vipps backend returns an URI that works as a native app deeplink to the vipps app (eg. with a "vipps://" scheme)
+
+The landing page is not involved in this case, since the merchant app is expected to use the vipps:// uri to deeplink straight to the native Vipps app.
 
 1. Merchant initiates the payment with `isApp:true` parameter.
-2. Vipps sends a `deeplink` URI as response to initiate payment.
+2. Vipps returns a `deeplink` URI as response to initiate payment.
 3. The merchant uses the URI to invoke the Vipps app.
 4. The Vipps user accepts or rejects the payment request.
-5. Once payment process is completed, Vipps app redirects to `fallBack`
+5. Once payment process is completed, Vipps app redirects to the `fallBack` URI
 
 #### Skip landing page
 
@@ -1122,19 +1124,26 @@ call (with same idempotency key) again.
 
 # App integration
 
-Merchants may implement “app-switch” or “deeplinking” to trigger the Vipps app.
+Merchants may implement deep-linking, to trigger the Vipps app (we refer to this as "app-switch" here).
+
 This may be done in two ways:
 
 1. From a mobile or desktop browser
-2. From an iOS or Android app
+2. From an iOS or Android native app
 
-The sections below explain, in detail, how to integrate for browsers and apps.
+After the user has finished (or cancelled) the payment in the Vipps app, the user is returned back to the browser or native app that started the payment flow (via a the fallback URI provided by the merchant when the order is created). The merchant app or website should then query the ecom API for the updated state of the payment operation.
+
+*NOTE:* When the user arrives back in the merchant app or website, we strongly recommend that you perform a call to the ecom api to check the state of the transaction. 
+While some of the state of the ecom operation *can* be derived from things like wether or not user returned successfully from the native app, the most reliable 
+approach to know the state of the payment flow is always to query the ecom API once you arrive back in the merchant app/website.
+
+The sections below explain in more detail how to integrate for browsers and apps.
 
 ## App-switch between mobile or desktop browsers and the Vipps app
 
 For mobile and desktop browsers, integration is handled by Vipps using the Vipps landing page.
 
-The merchant needs to provide a valid `fallBack`.
+The merchant needs to provide a valid `fallBack` URI.
 When Vipps has completed the operation, the `fallBack` URL will be opened in the browser.
 To maintain the session, the merchant can pass along a session identifier in the `fallBack` URL.
 
