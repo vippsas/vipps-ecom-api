@@ -2,7 +2,7 @@
 
 This is the message we sent to communicate the deprecation of the API.
 
-Document version 1.0.0.
+Document version 1.1.0.
 
 <br/>
 <br/>
@@ -46,9 +46,10 @@ feature to skip the landing page. Customers who can not display the landing page
 can see more details about the "skipLandingPage" functionality
 [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#skip-landing-page).
 
-Vipps will also pilot a solution for payment terminal integration in December 2019.
-To get updates about the availability of this solution, please
-[register here](https://forms.office.com/Pages/ResponsePage.aspx?id=XcJbgGSO1k6NJDiDyQaMWuVjn37JcrJJgJkaJ8cPvvVUQVdLVk9PTkZTRDBLSFRRNzQxTlc2VThZMS4u).
+Vipps is piloting a solution for tokenised BankAxept-payments in payment terminals using Vipps 
+as a wallet. To learn about availability, contact your payment terminal provider.
+
+Vipps is currently designing and developing solutions for direct integration into POS systems, electronic cash registers and vending machines. For more information about this, please [register here](https://forms.office.com/Pages/ResponsePage.aspx?id=XcJbgGSO1k6NJDiDyQaMWuVjn37JcrJJgJkaJ8cPvvVUQVdLVk9PTkZTRDBLSFRRNzQxTlc2VThZMS4u).
 
 If you have any questions about the eCom v2 API, please see the GitHub documentation.
 You can contact Vipps Integration if you have questions. See contact information,
