@@ -1261,7 +1261,7 @@ protected void onNewIntent(Intent intent) {
 }
 ```
 
-###### 2: Redirect back to merchant app by simply closing the Vipps app
+##### 2: Redirect back to merchant app by simply closing the Vipps app
 
 With this approach, the merchant app does not have to register/handle deeplink urls.
 
