@@ -75,7 +75,7 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
 
 # Overview
 
-The Vipps eCommerce API (eCom API) offers functionality for online payments. 
+The Vipps eCommerce API (eCom API) offers functionality for online payments.
 Payments are supported in both web browsers and in native apps (via deep-linking).
 
 ## Checklist
@@ -125,7 +125,7 @@ The shipping methods presented to the user is provided by the merchant through t
 
 Vipps complies with GDPR, and requires the user's consent before any information
 is shared with the merchant. The merchant must provide a URL (`consentRemovalPrefix`)
-that Vipps can call to delete the data. The Vipps app allows the user to later remove this consent 
+that Vipps can call to delete the data. The Vipps app allows the user to later remove this consent
 (Via the profile-security-"access to your information"-"companies that remember you" screen).
 
 #### API endpoints required by Vipps for express checkout
@@ -512,22 +512,27 @@ The URL depends on whether the `initiate` request was provided the `isApp` param
 
 ### Timeouts
 
-#### Using a phone
+Both the deeplink URL, which causes the app-switch to Vipps, and the landing
+page displayed in browsers, is valid for 5 minutes.
 
-This deeplink URL will time out after 5 minutes: If the user does not act
-on the payment (after the app-switch) request within 5 minutes,
-the payment times out.
+If the user does not act on the app-switch (such as not attempting to log into
+Vipps) within 5 minutes, the payment times out.
+
+After the app-switch to Vipps, the user has another 5 minutes to complete the
+payment in Vipps.
+
+This means that the user has a total of 10 minutes to complete the payment.
 
 #### Using a laptop/desktop
 
-If the user is using a laptop/desktop device, and the landing page is
-displayed to the user, an additional timeout may occur. When the
-user is shown the Vipps landing page and clicks "OK", the user
-has an additional 5 minutes to complete the payment in Vipps on the
-phone. Thus, the total time before timeout with a laptop/desktop device
-is around 10 minutes.
+If the user is using a laptop/desktop device, and the user must confirm or
+enter the phone number on the landing page within 5 minutes.
+If the user does not do so, the payment times out.
 
-See the [Cancel](#cancel) endpoint for details.
+After the user has clicked "OK" on the landing page, the user
+has an additional 5 minutes to complete the payment in Vipps.
+
+This means that the user has a total of 10 minutes to complete the payment.
 
 ### Initiate payment flows
 
@@ -1125,8 +1130,8 @@ This may be done in two ways:
 
 After the user has finished (or cancelled) the payment in the Vipps app, the user is returned back to the browser or native app that started the payment flow (via a the fallback URI provided by the merchant when the order is created). The merchant app or website should then query the ecom API for the updated state of the payment operation.
 
-*NOTE:* When the user arrives back in the merchant app or website, we strongly recommend that you perform a call to the ecom api to check the state of the transaction. 
-While some of the state of the ecom operation *can* be derived from things like wether or not user returned successfully from the native app, the most reliable 
+*NOTE:* When the user arrives back in the merchant app or website, we strongly recommend that you perform a call to the ecom api to check the state of the transaction.
+While some of the state of the ecom operation *can* be derived from things like wether or not user returned successfully from the native app, the most reliable
 approach to know the state of the payment flow is always to query the ecom API once you arrive back in the merchant app/website.
 
 The sections below explain in more detail how to integrate for browsers and apps.
@@ -1228,7 +1233,7 @@ In both cases, the merchant app should query the ecom API for updated status on 
 
 With this approach, the merchant app has to have its own uri scheme registered so the Vipps app can actively open the merchant app again after payment/cancellation.
 
-In the example below, `MainActivity` is the receiving activity and the Vipps app opens it once the payment is done. 
+In the example below, `MainActivity` is the receiving activity and the Vipps app opens it once the payment is done.
 
 To receive a call back from the Vipps application to an activity, a filter has to be set for that activity. In the merchant app, set a filter in the Manifest file:
 
@@ -1265,11 +1270,11 @@ protected void onNewIntent(Intent intent) {
 
 With this approach, the merchant app does not have to register/handle deeplink urls.
 
-In order to use this approach, when creating the payment in the merchant has to pass fallback attribute like this: 
+In order to use this approach, when creating the payment in the merchant has to pass fallback attribute like this:
 
 ```"fallBack": "INTENT" ```
 
-(and *only* "INTENT"", no parameters etc.) 
+(and *only* "INTENT"", no parameters etc.)
 
 This will cause the Vipps app to simply close after a successful or canceled ecom payment, and fall back to the calling merchant app.
 
