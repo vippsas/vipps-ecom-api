@@ -512,6 +512,8 @@ The URL depends on whether the `initiate` request was provided the `isApp` param
 
 ### Timeouts
 
+#### Using a phone
+
 Both the deeplink URL, which causes the app-switch to Vipps, and the landing
 page displayed in browsers, is valid for 5 minutes.
 
