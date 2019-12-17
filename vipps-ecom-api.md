@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.0.25.
+Document version 1.0.26.
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
@@ -218,6 +218,15 @@ Please note that the response from
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET))
 always contain _the entire history_ of payments for the order, not just the current status.
 In this truncated example, it shows that the full amount (200.00 NOK) has been captured:
+
+General guidelines for When to start polling with
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET):
+1. Start after 5 seconds.
+2. Check every 2 seconds.
+
+These are reasonable values, but different merchants have different use cases,
+and values should be adapted to the specific case.
+See [Timeouts](#timeouts) for details about timeouts.
 
 ```json
 "transactionSummary": {
