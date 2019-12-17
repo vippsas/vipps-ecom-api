@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.0.24.
+Document version 1.0.25.
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
@@ -453,6 +453,10 @@ an `authToken`. This token will then be returned as a `Authorization` header
 in the callback and shipping details requests made by Vipps for that order.
 
 Once successfully initiated, a response with a redirect URL is returned.
+
+Please note that Vipps only makes _one_ request for the callback and shipping
+details endpoints. There is no retry functionality, so the merchant's
+server must be able to respond.
 
 #### Orderid recommendations
 
