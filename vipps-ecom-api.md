@@ -492,7 +492,7 @@ Please make sure that the callback URLs are reachable:
 These are the statuses provided by Vipps in the callbacks by
 [`[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST):
 
-| Callback         | Response         | Description                                 |
+| Callback type    | Response         | Description                                 |
 | ---------------- | ---------------- | ------------------------------------------- |
 | Regular checkout | `RESERVED`       | Payment reserved, by user accepting the payment in Vipps |
 |                  | `SALE`           | Payment captured with direct capture, by merchant (after `RESERVED`)  |
