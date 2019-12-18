@@ -82,9 +82,13 @@ checklist and the [FAQ](vipps-ecom-api-faq.md).
 
 ## Flow diagram
 
-
+This diagram shows a simplified payment flow:
 
 ![Vipps checkout flow chart](images/vipps-ecom-flow-chart.svg)
+
+See [Get payment status](#get-payment-status) for more details about
+the detailed flow, and [Payment states](#payment-states) for the corresponding
+states.
 
 # API endpoints
 
