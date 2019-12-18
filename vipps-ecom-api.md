@@ -549,13 +549,14 @@ The documentation is included in the Swagger file for reference only - these end
 
 #### Get shipping details
 
-[`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/fetchShippingCostUsingPOST)
-
 This API call is for express payments, and allows Vipps to get the shipping
 cost and method based on the provided address and product details. This is only
 relevant for express checkout payments where Vipps needs to present shipping
 cost and method to the Vipps user.
 This service must be implemented by the merchant.
+
+Swagger: [`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/fetchShippingCostUsingPOST)
+
 
 Request:
 
@@ -737,9 +738,9 @@ After cancellation, the order gets a new status:
 * If an order is cancelled by the merchant, it gets the status `VOID`.
 * If an order is cancelled by the user, it gets the status `CANCEL`.
 
-**Request**
+Swagger: [`PUT:/ecomm/v2/payments/order123abc/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/cancelPaymentRequestUsingPUT)
 
-[`PUT:/ecomm/v2/payments/order123abc/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/cancelPaymentRequestUsingPUT)
+Request:
 
 ```json
 {
@@ -752,7 +753,7 @@ After cancellation, the order gets a new status:
 }
 ```
 
-**Response**
+Response:
 
 ```json
 {
@@ -783,9 +784,9 @@ The refunded amount cannot be larger than the captured amount.
 
 In a capture request the merchant may also use the `X-Request-Id`header. This header is an idempotency header ensuring that if the merchant retries a request with the same `X-Request-Id` the retried request will not make additional changes.
 
-**Request**
+Swagger: [`POST:/ecomm/v2/payments/order123abc/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/refundPaymentUsingPOST)
 
-[`POST:/ecomm/v2/payments/order123abc/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/refundPaymentUsingPOST)
+Request:
 
 ```json
 {
@@ -799,7 +800,7 @@ In a capture request the merchant may also use the `X-Request-Id`header. This he
  }
 ```
 
-**Response**
+Response:
 
 ```json
 {
@@ -828,7 +829,10 @@ our [Recurring Repo.](https://github.com/vippsas/vipps-recurring-api)
 
 # Get payment details
 
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
+Retrieves the full history of a payment, and whether the operations were
+successful or not.
+
+Swagger: [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
 
 ## Payment states
 
@@ -863,8 +867,6 @@ The `operationSuccess` filed indicates whether an operation was successful or no
 | `VOID`     | Payment canceled, by merchant |
 
 ## Example Get payment details
-
-[`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
 
 ```json
 {
@@ -924,16 +926,13 @@ the user not reacted to the Vipps landing page or app-switch.
 General guidelines for When to start polling with
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET):
 
-1. Start after 5 seconds.
-2. Check every 2 seconds.
+1. Start after 5 seconds
+2. Check every 2 seconds
 
 These are reasonable values, but different merchants have different use cases,
 and values should be adapted to the specific case.
 
 See [Timeouts](#timeouts) for details about timeouts.
-
-**Please note:** The `transactionSummary` will not be part of the response if
-the user not reacted to the Vipps landing page or app-switch.
 
 # Get payment status
 
@@ -977,6 +976,7 @@ client_id: <client_id>
 client_secret: <client_secret>
 Ocp-Apim-Subscription-Key: <Ocp-Apim-Subscription-Key>
 ```
+
 (We are aware that this is a `POST`, without a body, to an endpoint with
 `get` in the URL, and hope to fix it in a later version of the API.)
 
@@ -999,6 +999,7 @@ Response:
 ````http
 HTTP 200 OK
 ````
+
 ```json
 {
   "token_type": "Bearer",
@@ -1046,7 +1047,8 @@ Example of an error response body (formatted for readability):
 
 # HTTP response codes
 
-This API returns the following HTTP statuses in the responses:
+This API returns the following HTTP statuses in the responses.
+See the [Swagger specification](./) for more details.
 
 | HTTP status             | Description                                             |
 | ----------------------- | ------------------------------------------------------- |
