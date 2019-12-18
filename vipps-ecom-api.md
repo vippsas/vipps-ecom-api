@@ -28,6 +28,7 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
   * [orderId recommendations](#orderid-recommendations)
   * [URL Validation](#url-validation)
   * [Callbacks](#callbacks)
+    + [Authorization](#authorization)
     + [Vipps callback servers](#vipps-callback-servers)
     + [URLs must be reachable](#urls-must-be-reachable)
     + [Callback statuses](#callback-statuses)
@@ -44,18 +45,18 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
   * [Skip landing page](#skip-landing-page)
 - [Reserve](#reserve)
   * [The Vipps landing page](#the-vipps-landing-page)
-    + [Example Get payment details](#example-get-payment-details)
+  * [Example Get payment details](#example-get-payment-details)
 - [Capture](#capture)
   * [Reserve capture](#reserve-capture)
   * [Direct capture](#direct-capture)
   * [Partial capture](#partial-capture)
   * [Recurring eCommerce payments](#recurring-ecommerce-payments)
 - [Cancel](#cancel)
-  * [Example Get payment details](#example-get-payment-details-1)
 - [Refund](#refund)
-  * [Example Get payment details](#example-get-payment-details-2)
+  * [Example Get payment details](#example-get-payment-details-1)
 - [Get payment details](#get-payment-details)
   * [Polling guidelines](#polling-guidelines)
+- [Get payment status](#get-payment-status)
 - [Authentication](#authentication)
   * [Access token](#access-token)
 - [HTTP response codes](#http-response-codes)
@@ -114,25 +115,8 @@ _**TODO: Move to respective endpoint section.**_
 | [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/capturePaymentUsingPOST) | `Captured` - Payment Captured when merchant called for capture. |
 | [`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/cancelPaymentRequestUsingPUT)  | `Cancelled` - Payment cancel status when merchant called for cancel. |
 | [`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/refundPaymentUsingPOST)  | `Refund` - Payment refunded when merchant called for refund.  |
-| [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)  | `INITIATE` - Merchant initiated the transaction. Stage-1.
-|   |  `RESERVE` - Payment Reserved by user accepting transaction in App. Stage-3. |
-|   |  `SALE` - Payment Captured with direct capture. Stage-4. |
-|   |  `CAPTURE` - Payment Captured when merchant called for capture - Stage-6. |
-|   |  `REFUND` - Payment refunded when merchant called for refund - Stage-7. |
-|   |  `CANCEL` - Payment cancel status when user canceled payment in App. |
-|   |  `VOID` - Payment cancel status when merchant called for cancel. |
-| [`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getOrderStatusUsingGET)  | **This endpoint is deprecated, please use:** [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET) |
-|   |  `INITIATE`  -  Merchant initiates the transaction. Stage-1, Status - 101. |
-|   |  `REGISTER`  - Vipps registers payment for Reserve. Stage-2, Stage-3, Status - 101.|
-|   |  `RESERVE` -  Payment Reserved by user accepting transaction in App. Stage-3, Status - 101. |
-|   |  `SALE` - Payment Captured with direct capture. Stage-4, status - 101. |
-|   |  `CAPTURE` - Payment Captured when merchant called for capture - Stage-6, Status - 101. |
-|   |  `REFUND` - Payment refunded when merchant called for refund - Stage-7, Status - 101. |
-|   |  `CANCEL` - Payment cancel status when user canceled payment in App. |
-|   |  `VOID` - Payment cancel status when merchant calls for cancel API. |
-|   |  `FAILED` - Payment failed failed because of no coverage, outdated card details or similar. - Status - 102. |
-|   |  `REJECTED` - No user action in the Vipps app, i.e timeout. |
-
+| [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)  | See [Get payment details](#get-payment-details) |
+| [`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getOrderStatusUsingGET)  | **Deprecated, please use:** [Get payment details](#get-payment-details). For reference only: [Get payment status](#get-payment-status) |
 
 
 # Initiate
@@ -146,18 +130,22 @@ Vipps eCommerce API offers 2 types of payments:
 When you initiate a payment it will be reserved until you capture it.
 Vipps supports both _reserve capture_ and _direct capture_.
 
-_Reserve capture_ is the default. When you initiate a payment it will be reserved until you capture it.
+_Reserve capture_ is the default. When you initiate a payment it will be
+reserved until you capture it.
 
-When _direct capture_ is activated, all payment reservations will instantly be captured.
-This is intended for situations where the product or service is immediately provided to the customer, e.g. digital services.
-
-According to Norwegian regulations you should _not_ capture a payment until the product or service is provided to the customer.
+According to Norwegian regulations you should _not_ capture a payment until
+the product or service is provided to the customer.
 For more information, please see the Consumer Authority's
 [Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
 
+_Direct capture_ causes all payment reservations to be instantly be captured.
+This is intended for situations where the product or service is immediately
+provided to the customer, e.g. digital services.
+
 Merchants do not choose between _reserve capture_ and _direct capture_ themselves,
 the type of capture is configured by Vipps after the additional compliance checks have been completed.
-
+See the
+[FAQ](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#what-is-the-difference-between-reserve-capture-and-direct-capture).
 
 ## Express checkout payments
 
@@ -212,16 +200,17 @@ If the Vipps app is installed, it is automatically opened.
 
 Merchants can signal that the request is coming from their native app by passing
 the `isApp:true` parameter. In this case, the Vipps backend returns an URL that
-works as a native app deeplink to the Vipps app (eg. with a `vipps://` scheme)
+works as a native app deeplink to the Vipps app (eg. with a `vipps://` scheme).
 
 The landing page is not involved in this case, since the merchant app is
-expected to use the `vipps://` URL to deeplink straight to the native Vipps app.
+expected to use the `vipps://` URL to deeplink straight to the Vipps app.
 
-1. Merchant initiates the payment with `isApp:true` parameter.
+1. Merchant initiates the payment with `isApp:true` parameter: [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST).
 2. Vipps returns a `deeplink` URL as response to initiate payment.
-3. The merchant uses the URL to invoke the Vipps app.
-4. The Vipps user accepts or rejects the payment request.
-5. Once payment process is completed, Vipps app redirects to the `fallBack` URL
+3. The merchant uses the `vipps://` URL to invoke the Vipps app.
+4. Vipps is automatically opened.
+5. The user accepts or rejects the payment request in Vipps.
+6. When the payment process is completed, Vipps redirects to the merchant using the `fallBack` URL.
 
 ## Initiate payment flow: API calls
 
@@ -230,6 +219,7 @@ Initiate payment is used to create a new payment order in Vipps:
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST)
 
 **Initiate request headers example:**
+
 ```json
 {
     "Authorization": "Bearer jfewioIJffruJIfewiyYUdweiLMfnewUQiwmdcLnfewjNj <snip>",
@@ -310,19 +300,21 @@ An express payment example with more parameters provided:
 
 A payment is uniquely identified by the combination of `merchantSerialNumber`
 and `orderId`:
-* `merchantSerialNumber`: The merchant's Vipps id.
-* `orderId`: Must be unique for the `merchantSerialNumber`.
+
+* `merchantSerialNumber`: The merchant's Vipps id. Excample: `123456`.
+* `orderId`: Must be unique for the `merchantSerialNumber`. Example: `order123abc`.
 
 To initiate an express checkout payment the payment initiation call must include
-the `"paymentType":"eComm Express Payment"` parameter. If this parameter is not
+the `"paymentType": "eComm Express Payment"` parameter. If this parameter is not
 passed, the payment type will default to regular payment.
 
-To add authentication to the callbacks made by Vipps the merchant may provide
-an `authToken`. This token will then be returned as a `Authorization` header
-in the callback and shipping details requests made by Vipps for that order.
+To add authentication to the callbacks made by Vipps to the merchant,
+the merchanbt may provide an `authToken`. This token will then be returned as
+an `Authorization` header in the callback and shipping details requests made by
+Vipps for that order. Please not that this is unrelated to the authentication
+required by the Vipps API.
 
-Once successfully initiated, a response with a redirect URL is returned.
-
+When the payment is successfully initiated, a response with a redirect URL is returned.
 Please note that Vipps only makes _one_ request for the callback and shipping
 details endpoints. There is no retry functionality, so the merchant's
 server must be able to respond.
@@ -403,10 +395,13 @@ to get the status of the payment.
 The callback body received from Vipps will depend on whether the payment
 type is set to `"eComm Express Payment"` or `"eComm Regular Payment"`.
 
-If `authToken` was used in the initiate payment request these requests will have a `Authorization` header. These headers will have the same value as the one provided in `authToken`.
+### Authorization
+
+If `authToken` was used in the initiate payment request these requests will
+have a `Authorization` header. These headers will have the same value as the
+one provided in `authToken`.
 
 API details: [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)
-
 
 ### Vipps callback servers
 
@@ -415,15 +410,19 @@ The callbacks from Vipps are made from the servers described in
 
 Please make sure that requests from these servers are allowed through firewalls, etc.
 
-**Note:** Vipps may change the IP addresses that we make callbacks from. To ensure that you are whitelisting the corrects IP addresses please use these hostnames.  
+**Note:** Vipps may change the IP addresses that we make callbacks from. To
+ensure that you are whitelisting the corrects IP addresses please use these
+hostnames.  
 
 
 ### URLs must be reachable
 
 Please make sure that the callback URLs are valid:
 
-* Vipps does _not_ support sending requests to all ports, so to be safe use common port numbers such as: 80, 443, 8080.
-* Vipps does _not_ support callback URLs that return `HTTP 301 Redirect` or `HTTP 302 Permanently Moved`. The callback URLs _must_ be directly reachable.
+* Vipps does _not_ support sending requests to all ports, so to be safe use
+  common port numbers such as: 80, 443, 8080.
+* Vipps does _not_ support callback URLs that return `HTTP 301 Redirect` or
+  `HTTP 302 Permanently Moved`. The callback URLs _must_ be directly reachable.
 
 Example: Regular Checkout Callback:
 
@@ -477,7 +476,7 @@ Example: Express Checkout Callback:
 }
 ```
 
-Example: Response body for `"isApp":false`
+Example: Response body for `"isApp":false`:
 
 ```json
 {
@@ -485,7 +484,7 @@ Example: Response body for `"isApp":false`
     "url": "https://api.vipps.no/deeplink/vippsgateway?token=eyJraWQiOiJqd3R <snip>"
 }
 ```
-Example: Response body for `"isApp":true`
+Example: Response body for `"isApp":true`:
 
 ```json
 {
@@ -499,7 +498,6 @@ The `url` is slightly simplified, but the format is correct.
 The URL depends on whether the `initiate` request was provided the `isApp` parameter:
 * For `true`, the URL is for an deeplink to the Vipps app.
 * For `false` or not provided, the URL is for the Vipps "landing page".
-
 
 ### Callback statuses
 
@@ -572,13 +570,13 @@ The documentation is included in the Swagger file for reference only - these end
 
 #### Get shipping details
 
-This API call allows Vipps to get the shipping cost and method based on the provided address and product details. This is only relevant for express checkout payments where Vipps needs to present shipping cost and method to the Vipps user. This service is to be implemented by merchants.
+[`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/fetchShippingCostUsingPOST)
 
-If `authToken` was used in the initiate payment request these requests will have a `Authorization` header. These headers will have the same value as the one provided in `authToken`.
-
-API details: [`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/fetchShippingCostUsingPOST)
-
-**Note:** We do not send requests to all ports so to be safe use common port numbers such as: 80, 443, 8080.
+This API call is for express payments, and allows Vipps to get the shipping
+cost and method based on the provided address and product details. This is only
+relevant for express checkout payments where Vipps needs to present shipping
+cost and method to the Vipps user.
+This service must be implemented by the merchant.
 
 #### Example Request Shipping Details Callback
 ```json
@@ -625,16 +623,13 @@ A callback to the merchant for receiving post-payment information:
 
 ### Remove User Consent
 
+[`DELETE:[consetRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/removeUserConsentUsingDELETE)
+
 This allows Vipps to send an end user's consent removal request to merchant.
 This endpoint is required for express checkout. When receiving this request,
 the merchant is obliged to handle the user details as per the GDPR guidelines.
 The request path will include a `userId` that Vipps will have provided as
 part of callback, and also made accessible through [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET).
-
-API details: [`DELETE:[consetRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/removeUserConsentUsingDELETE)
-
-**Note:** We do not send requests to all ports so to be safe use common port numbers such as: 80, 443, 8080.
-
 
 ## Skip landing page
 
@@ -679,26 +674,26 @@ eliminating the need for re-typing it on subsequent purchases.
 
 See also: [Skip landing page](#skip-landing-page).
 
-
-### Example Get payment details
-
-[`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
+*Example Get payment details** - [`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
 
 ```json
 {
     "orderId": "order123abc",
-    "transactionSummary": {
-        "capturedAmount": 0,
-        "remainingAmountToCapture": 20000,
-        "refundedAmount": 0,
-        "remainingAmountToRefund": 0
-    },
     "transactionLogHistory": [
         {
             "amount": 20000,
             "transactionText": "One pair of Vipps socks",
-            "transactionId": "5001420062",
-            "timeStamp": "2018-11-14T15:21:22.126Z",
+            "transactionId": "5001420061",
+            "timeStamp": "2018-11-14T15:31:09.946Z",
+            "operation": "VOID",
+            "requestId": "",
+            "operationSuccess": true
+        },
+        {
+            "amount": 20000,
+            "transactionText": "One pair of Vipps socks",
+            "transactionId": "5001420061",
+            "timeStamp": "2018-11-14T15:30:55.467Z",
             "operation": "RESERVE",
             "requestId": "",
             "operationSuccess": true
@@ -706,8 +701,8 @@ See also: [Skip landing page](#skip-landing-page).
         {
             "amount": 20000,
             "transactionText": "One pair of Vipps socks",
-            "transactionId": "5001420062",
-            "timeStamp": "2018-11-14T15:21:04.697Z",
+            "transactionId": "5001420061",
+            "timeStamp": "2018-11-14T15:30:41.002Z",
             "operation": "INITIATE",
             "requestId": "",
             "operationSuccess": true
@@ -716,8 +711,22 @@ See also: [Skip landing page](#skip-landing-page).
 }
 ```
 
-**Please note:** The `transactionSummary` will not be part of the response if
-the user not reacted to the Vipps landing page or app-switch.
+## Example Get payment details
+
+[`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
+
+Example if end user reject the payment request:
+```json
+{
+    "orderId": "order123abc",
+    "transactionInfo": {
+        "amount": 2000,
+        "status": "CANCEL",
+        "transactionId": "5001420067",
+        "timeStamp": "2018-11-14T16:18:57.393Z"
+    }
+}
+```
 
 
 # Capture
@@ -821,62 +830,6 @@ After cancellation, the order gets a new status:
     }
 }
 ```
-
-**Example Get payment details** - [`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
-
-```json
-{
-    "orderId": "order123abc",
-    "transactionLogHistory": [
-        {
-            "amount": 20000,
-            "transactionText": "One pair of Vipps socks",
-            "transactionId": "5001420061",
-            "timeStamp": "2018-11-14T15:31:09.946Z",
-            "operation": "VOID",
-            "requestId": "",
-            "operationSuccess": true
-        },
-        {
-            "amount": 20000,
-            "transactionText": "One pair of Vipps socks",
-            "transactionId": "5001420061",
-            "timeStamp": "2018-11-14T15:30:55.467Z",
-            "operation": "RESERVE",
-            "requestId": "",
-            "operationSuccess": true
-        },
-        {
-            "amount": 20000,
-            "transactionText": "One pair of Vipps socks",
-            "transactionId": "5001420061",
-            "timeStamp": "2018-11-14T15:30:41.002Z",
-            "operation": "INITIATE",
-            "requestId": "",
-            "operationSuccess": true
-        }
-    ]
-}
-```
-
-## Example Get payment details
-
-[`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
-
-Example if end user reject the payment request:
-```json
-{
-    "orderId": "order123abc",
-    "transactionInfo": {
-        "amount": 2000,
-        "status": "CANCEL",
-        "transactionId": "5001420067",
-        "timeStamp": "2018-11-14T16:18:57.393Z"
-    }
-}
-```
-
-
 
 # Refund
 
@@ -998,6 +951,16 @@ This table shows the from- and to-state, and the operation returned from
 | 4   | Cancel     | --       | A final state: Payment cancelled              | -              |
 | 5   | Refund     | --       | A final state: Payment refunded               | -              |
 
+| Request                              | Response "Status" or "Operation" |
+| ------------------------------------ | -------------------------------- |
+| [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)  | `INITIATE` - Merchant initiated the transaction. Stage-1.
+|   |  `RESERVE` - Payment Reserved by user accepting transaction in App. Stage-3. |
+|   |  `SALE` - Payment Captured with direct capture. Stage-4. |
+|   |  `CAPTURE` - Payment Captured when merchant called for capture - Stage-6. |
+|   |  `REFUND` - Payment refunded when merchant called for refund - Stage-7. |
+|   |  `CANCEL` - Payment cancel status when user canceled payment in App. |
+|   |  `VOID` - Payment cancel status when merchant called for cancel. |
+
 Please note that the response from
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET))
 always contain _the entire history_ of payments for the order, not just the current status.
@@ -1022,6 +985,44 @@ Example Get payment details:
     ]
 }
 ```
+
+[`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
+
+```json
+{
+    "orderId": "order123abc",
+    "transactionSummary": {
+        "capturedAmount": 0,
+        "remainingAmountToCapture": 20000,
+        "refundedAmount": 0,
+        "remainingAmountToRefund": 0
+    },
+    "transactionLogHistory": [
+        {
+            "amount": 20000,
+            "transactionText": "One pair of Vipps socks",
+            "transactionId": "5001420062",
+            "timeStamp": "2018-11-14T15:21:22.126Z",
+            "operation": "RESERVE",
+            "requestId": "",
+            "operationSuccess": true
+        },
+        {
+            "amount": 20000,
+            "transactionText": "One pair of Vipps socks",
+            "transactionId": "5001420062",
+            "timeStamp": "2018-11-14T15:21:04.697Z",
+            "operation": "INITIATE",
+            "requestId": "",
+            "operationSuccess": true
+        }
+    ]
+}
+```
+
+**Please note:** The `transactionSummary` will not be part of the response if
+the user not reacted to the Vipps landing page or app-switch.
+
 
 ## Polling guidelines
 
@@ -1058,6 +1059,23 @@ the total reserved amount of 200.00 NOK, has been captured:
 **Please note:** The `transactionSummary` will not be part of the response if
 the user not reacted to the Vipps landing page or app-switch.
 
+# Get payment status
+
+**IMPORTANT: This endpoint is deprecated. Use [Get payment details](#get-payment-details).**
+
+| Request                              | Response "Status" or "Operation" |
+| ------------------------------------ | -------------------------------- |
+| [`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getOrderStatusUsingGET)  | **This endpoint is deprecated, please use:** [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET) |
+|   |  `INITIATE`  -  Merchant initiates the transaction. Stage-1, Status - 101. |
+|   |  `REGISTER`  - Vipps registers payment for Reserve. Stage-2, Stage-3, Status - 101.|
+|   |  `RESERVE` -  Payment Reserved by user accepting transaction in App. Stage-3, Status - 101. |
+|   |  `SALE` - Payment Captured with direct capture. Stage-4, status - 101. |
+|   |  `CAPTURE` - Payment Captured when merchant called for capture - Stage-6, Status - 101. |
+|   |  `REFUND` - Payment refunded when merchant called for refund - Stage-7, Status - 101. |
+|   |  `CANCEL` - Payment cancel status when user canceled payment in App. |
+|   |  `VOID` - Payment cancel status when merchant calls for cancel API. |
+|   |  `FAILED` - Payment failed failed because of no coverage, outdated card details or similar. - Status - 102. |
+|   |  `REJECTED` - No user action in the Vipps app, i.e timeout. |
 
 # Authentication
 
