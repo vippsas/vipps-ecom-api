@@ -123,8 +123,6 @@ Vipps eCommerce API offers 2 types of payments:
 1. Regular eCommerce payments
 2. Express checkout payments
 
-![Push notification](images/figma-push-notification.png)
-
 ![Regular and express checkout](images/figma-regular-express-checkout.png)
 
 ## Regular eCommerce payments
@@ -170,6 +168,7 @@ is shared with the merchant. The merchant must provide a URL (`consentRemovalPre
 that Vipps can call to delete the data. The Vipps app allows the user to later remove this consent
 (Via the profile-security-"access to your information"-"companies that remember you" screen).
 
+
 ## Initiate payment flow: Phone and browser
 
 The Vipps landing page will detect if the Vipps native app is installed on the phone.
@@ -197,6 +196,10 @@ If the Vipps app is installed, it is automatically opened.
 4. The Vipps user accepts or rejects the payment request.
 5. Once payment process is completed, the landing page will redirect to the
    `fallBack` URL that merchant provided earlier (see above).
+
+The push notification, and Vipps after opening the notification:
+
+![Push notification](images/figma-push-notification.png)
 
 #### Payments initiated in an app
 
