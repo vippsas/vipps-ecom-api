@@ -5,12 +5,12 @@ scale 1.5
 left to right direction
 
 [*] --> Initiate
-Initiate --> Reserve
-Reserve --> Capture
-Reserve --> Cancel
-Capture --> Refund
+Initiate --> Reserve: User confirms
+Reserve --> Capture: Merchant captures
+Reserve --> Cancel: User cancels
+Capture --> Refund: Merchant refunds
 Capture --> [*]
 Cancel --> [*]
 Refund --> [*]
-Initiate --> Cancel
+Initiate --> Cancel: Timeout, or Merchant cancels
 @enduml
