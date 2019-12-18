@@ -99,7 +99,7 @@ _**TODO: Add simple diagram and screenshots form the app.**_
 | [Refund payment](#refund) | The merchant may refund a captured amount. | [`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/refundPaymentUsingPOST)  |
 | [Get payment details](#get-payment-details) | The full history of the payment.  | [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)  |
 | Access Token | Fetch the access token | [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-ecom-api/#/Authorization_Service/fetchAuthorizationTokenUsingPost) |
-| Get order status    | Deprecated, use [Get payment details](#get-payment-details) | [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET). |
+| Get order status    | Deprecated, use [Get payment details](#get-payment-details) | [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET) |
 
 See the
 [eCom API checklist](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md).
@@ -900,6 +900,8 @@ our [Recurring Repo.](https://github.com/vippsas/vipps-recurring-api)
 
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
 
+## States
+
 | #   | From-state | To-state | Description                                   | Operation |
 | --- | ---------- | -------- | --------------------------------------------- | -------------- |
 | 0   | -          | Initiate | Payment initiation                            | `INITIATE`     |
@@ -913,6 +915,13 @@ our [Recurring Repo.](https://github.com/vippsas/vipps-recurring-api)
 | 4   | Cancel     | --       | A final state: Payment cancelled              | -              |
 | 5   | Refund     | --       | A final state: Payment refunded               | -              |
 
+## Requests and responses
+
+Please note that the response from
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET))
+always contain _the entire history_ of payments for the order, not just the current status.
+The `operationSuccess` filed indicates whether an operation was successful or not.
+
 | Request                              | Response |
 | ------------------------------------ | -------------------------------- |
 | [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)  | `INITIATE` - Merchant initiated the transaction. Stage-1.
@@ -923,10 +932,6 @@ our [Recurring Repo.](https://github.com/vippsas/vipps-recurring-api)
 |   |  `CANCEL` - Payment cancel status when user canceled payment in App. |
 |   |  `VOID` - Payment cancel status when merchant called for cancel. |
 
-Please note that the response from
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET))
-always contain _the entire history_ of payments for the order, not just the current status.
-The `operationSuccess` filed indicates whether an operation was successful or not.
 
 ## Example Get payment details
 
