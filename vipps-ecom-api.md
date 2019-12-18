@@ -53,9 +53,9 @@ checklist and the [FAQ](vipps-ecom-api-faq.md).
   * [Example response](#example-response)
   * [Polling guidelines](#polling-guidelines)
 - [Get payment status](#get-payment-status)
+- [HTTP response codes](#http-response-codes)
 - [Authentication](#authentication)
   * [Access token](#access-token)
-- [HTTP response codes](#http-response-codes)
 - [Idempotency](#idempotency)
   * [Exception handling](#exception-handling)
     + [Connection timeout](#connection-timeout)
@@ -959,6 +959,32 @@ See [Timeouts](#timeouts) for details about timeouts.
 |   |  `FAILED` - Payment failed failed because of no coverage, outdated card details or similar. - Status - 102. |
 |   |  `REJECTED` - No user action in the Vipps app, i.e timeout. |
 
+
+# HTTP response codes
+
+This API returns the following HTTP statuses in the responses.
+See the [Swagger specification](./) for more details.
+
+| HTTP status             | Description                                             |
+| ----------------------- | ------------------------------------------------------- |
+| `200 OK`                | Request successful                                      |
+| `201 Created`           | Request successful, resource created                    |
+| `204 No Content`        | Request successful, but empty result                    |
+| `400 Bad Request`       | Invalid request, see the error for details              |
+| `401 Unauthorized`      | Invalid credentials                                     |
+| `403 Forbidden`         | Authentication ok, but credentials lacks authorization  |
+| `404 Not Found`         | The resource was not found                              |
+| `409 Conflict`          | Unsuccessful due to conflicting resource                |
+| `429 Too Many Requests` | There is currently a limit of max 200 calls per second  |
+| `500 Server Error`      | An internal Vipps problem.                              |
+
+HTTP requests that are being stopped in the application gateway will result in
+an error JSON object, while requests that are produced from the backend will
+receive an array with a JSON object. Error codes that are produced from the
+application gateway include `401`, `403` and `422`.
+
+See [Errors](#errors).
+
 # Authentication
 
 All API calls are authenticated and authorized based on the application access
@@ -1051,31 +1077,6 @@ Example of an error response body (formatted for readability):
   "correlation_id": "bb2f4093-70af-446a-a26d-ed8becca1a1a"
 }
 ```
-
-# HTTP response codes
-
-This API returns the following HTTP statuses in the responses.
-See the [Swagger specification](./) for more details.
-
-| HTTP status             | Description                                             |
-| ----------------------- | ------------------------------------------------------- |
-| `200 OK`                | Request successful                                      |
-| `201 Created`           | Request successful, resource created                    |
-| `204 No Content`        | Request successful, but empty result                    |
-| `400 Bad Request`       | Invalid request, see the error for details              |
-| `401 Unauthorized`      | Invalid credentials                                     |
-| `403 Forbidden`         | Authentication ok, but credentials lacks authorization  |
-| `404 Not Found`         | The resource was not found                              |
-| `409 Conflict`          | Unsuccessful due to conflicting resource                |
-| `429 Too Many Requests` | There is currently a limit of max 200 calls per second  |
-| `500 Server Error`      | An internal Vipps problem.                              |
-
-HTTP requests that are being stopped in the application gateway will result in
-an error JSON object, while requests that are produced from the backend will
-receive an array with a JSON object. Error codes that are produced from the
-application gateway include `401`, `403` and `422`.
-
-See [Errors](#errors).
 
 # Idempotency
 
