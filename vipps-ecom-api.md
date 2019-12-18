@@ -50,11 +50,11 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
   * [Reserve capture](#reserve-capture)
   * [Direct capture](#direct-capture)
   * [Partial capture](#partial-capture)
-  * [Recurring eCommerce payments](#recurring-ecommerce-payments)
 - [Cancel](#cancel)
 - [Refund](#refund)
-  * [Example Get payment details](#example-get-payment-details-1)
+  * [Recurring eCommerce payments](#recurring-ecommerce-payments)
 - [Get payment details](#get-payment-details)
+  * [Example Get payment details](#example-get-payment-details-1)
   * [Polling guidelines](#polling-guidelines)
 - [Get payment status](#get-payment-status)
 - [Authentication](#authentication)
@@ -775,12 +775,26 @@ and it is not possible to cancel the reservation, since some of it has been capt
 There is only a need to specify the `amount` when doing a partial capture.
 To perform capture of the entire amount `amount` can be set to `null` or `0`
 
+These two truncated examples show the responses for a reservation of
+200.00 NOK, and a partial capture of 100.00 NOK:
 
-## Recurring eCommerce payments
+```json
+"transactionSummary": {
+    "capturedAmount": 20000,
+    "remainingAmountToCapture": 0,
+    "refundedAmount": 0,
+    "remainingAmountToRefund": 0
+}
+```
 
-Recurring eCommerce is its own seperate product and can be found descriped in details in
-our [Recurring Repo.](https://github.com/vippsas/vipps-recurring-api)
-
+```json
+"transactionsummary": {
+    "capturedAmount": 10000,
+    "remainingAmountToCapture": 10000,
+    "refundedAmount": 0,
+    "remainingAmountToRefund": 0
+}
+```
 
 # Cancel
 
@@ -878,6 +892,44 @@ In a capture request the merchant may also use the `X-Request-Id`header. This he
 }
 ```
 
+## Recurring eCommerce payments
+
+Recurring eCommerce is its own seperate product and can be found descriped in details in
+our [Recurring Repo.](https://github.com/vippsas/vipps-recurring-api)
+
+
+# Get payment details
+
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
+
+| #   | From-state | To-state | Description                                   | Operation |
+| --- | ---------- | -------- | --------------------------------------------- | -------------- |
+| 0   | -          | Initiate | Payment initiation                            | `INITIATE`     |
+| 1   | Initiate   | -        | The merchant has initiated the payment        | `INITIATE`     |
+| -   |            | Reserve  | The user has accepted the payment and amount has been reserved | `RESERVE`      |
+| -   |            | Cancel   | The user cancels the order                    | `CANCEL`       |
+| 2   | Reserve    | Capture  | The merchant captures the payment, and ships  | `CAPTURE`      |
+| -   |            | Cancel   | The merchant cancels the order                | `VOID`         |
+| 3   | Capture    | --       | A final state: Payment fully processed        | `CAPTURE`      |
+| -   |            | Refund   | The merchant refunds the money to the user    | `REFUND`     |
+| 4   | Cancel     | --       | A final state: Payment cancelled              | -              |
+| 5   | Refund     | --       | A final state: Payment refunded               | -              |
+
+| Request                              | Response |
+| ------------------------------------ | -------------------------------- |
+| [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)  | `INITIATE` - Merchant initiated the transaction. Stage-1.
+|   |  `RESERVE` - Payment Reserved by user accepting transaction in App. Stage-3. |
+|   |  `SALE` - Payment Captured with direct capture. Stage-4. |
+|   |  `CAPTURE` - Payment Captured when merchant called for capture - Stage-6. |
+|   |  `REFUND` - Payment refunded when merchant called for refund - Stage-7. |
+|   |  `CANCEL` - Payment cancel status when user canceled payment in App. |
+|   |  `VOID` - Payment cancel status when merchant called for cancel. |
+
+Please note that the response from
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET))
+always contain _the entire history_ of payments for the order, not just the current status.
+The `operationSuccess` filed indicates whether an operation was successful or not.
+
 ## Example Get payment details
 
 [`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
@@ -932,129 +984,21 @@ In a capture request the merchant may also use the `X-Request-Id`header. This he
 }
 ```
 
-# Get payment details
-
-This table shows the from- and to-state, and the operation returned from
-"Get order details"
-([`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET), [[Redoc](https://vippsas.github.io/vipps-ecom-api/redoc.html#operation/getPaymentDetailsUsingGET)], [[Swagger](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)]).
-
-| #   | From-state | To-state | Description                                   | Operation |
-| --- | ---------- | -------- | --------------------------------------------- | -------------- |
-| 0   | -          | Initiate | Payment initiation                            | `INITIATE`     |
-| 1   | Initiate   | -        | The merchant has initiated the payment        | `INITIATE`     |
-| -   |            | Reserve  | The user has accepted the payment and amount has been reserved | `RESERVE`      |
-| -   |            | Cancel   | The user cancels the order                    | `CANCEL`       |
-| 2   | Reserve    | Capture  | The merchant captures the payment, and ships  | `CAPTURE`      |
-| -   |            | Cancel   | The merchant cancels the order                | `VOID`         |
-| 3   | Capture    | --       | A final state: Payment fully processed        | `CAPTURE`      |
-| -   |            | Refund   | The merchant refunds the money to the user    | `REFUND`     |
-| 4   | Cancel     | --       | A final state: Payment cancelled              | -              |
-| 5   | Refund     | --       | A final state: Payment refunded               | -              |
-
-| Request                              | Response "Status" or "Operation" |
-| ------------------------------------ | -------------------------------- |
-| [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)  | `INITIATE` - Merchant initiated the transaction. Stage-1.
-|   |  `RESERVE` - Payment Reserved by user accepting transaction in App. Stage-3. |
-|   |  `SALE` - Payment Captured with direct capture. Stage-4. |
-|   |  `CAPTURE` - Payment Captured when merchant called for capture - Stage-6. |
-|   |  `REFUND` - Payment refunded when merchant called for refund - Stage-7. |
-|   |  `CANCEL` - Payment cancel status when user canceled payment in App. |
-|   |  `VOID` - Payment cancel status when merchant called for cancel. |
-
-Please note that the response from
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET))
-always contain _the entire history_ of payments for the order, not just the current status.
-
-Example Get payment details:
-
-[`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
-
-```json
-{
-    "orderId": "order123abc",
-    "transactionLogHistory": [
-        {
-            "amount": 20000,
-            "transactionText": "One pair of Vipps socks",
-            "transactionId": "5001420062",
-            "timeStamp": "2018-11-14T15:17:30.684Z",
-            "operation": "INITIATE",
-            "requestId": "",
-            "operationSuccess": true
-        }
-    ]
-}
-```
-
-[`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
-
-```json
-{
-    "orderId": "order123abc",
-    "transactionSummary": {
-        "capturedAmount": 0,
-        "remainingAmountToCapture": 20000,
-        "refundedAmount": 0,
-        "remainingAmountToRefund": 0
-    },
-    "transactionLogHistory": [
-        {
-            "amount": 20000,
-            "transactionText": "One pair of Vipps socks",
-            "transactionId": "5001420062",
-            "timeStamp": "2018-11-14T15:21:22.126Z",
-            "operation": "RESERVE",
-            "requestId": "",
-            "operationSuccess": true
-        },
-        {
-            "amount": 20000,
-            "transactionText": "One pair of Vipps socks",
-            "transactionId": "5001420062",
-            "timeStamp": "2018-11-14T15:21:04.697Z",
-            "operation": "INITIATE",
-            "requestId": "",
-            "operationSuccess": true
-        }
-    ]
-}
-```
-
 **Please note:** The `transactionSummary` will not be part of the response if
 the user not reacted to the Vipps landing page or app-switch.
-
 
 ## Polling guidelines
 
 General guidelines for When to start polling with
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET):
+
 1. Start after 5 seconds.
 2. Check every 2 seconds.
 
 These are reasonable values, but different merchants have different use cases,
 and values should be adapted to the specific case.
+
 See [Timeouts](#timeouts) for details about timeouts.
-
-```json
-"transactionSummary": {
-    "capturedAmount": 20000,
-    "remainingAmountToCapture": 0,
-    "refundedAmount": 0,
-    "remainingAmountToRefund": 0
-}
-```
-
-In this truncated example, it shows that a partial capture of 100.00 NOK, of
-the total reserved amount of 200.00 NOK, has been captured:
-
-```json
-"transactionsummary": {
-    "capturedAmount": 10000,
-    "remainingAmountToCapture": 10000,
-    "refundedAmount": 0,
-    "remainingAmountToRefund": 0
-}
-```
 
 **Please note:** The `transactionSummary` will not be part of the response if
 the user not reacted to the Vipps landing page or app-switch.
