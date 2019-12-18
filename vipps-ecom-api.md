@@ -204,6 +204,7 @@ expected to use the `vipps://` URL to deeplink straight to the Vipps app.
 
 ## Initiate payment flow: API calls
 
+Swagger:
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST)
 
 A minimal example:
@@ -267,11 +268,14 @@ An express payment example with more parameters provided:
 }
 ```
 
+Vipps responds with an URL.
 The URL depends on whether the `initiate` request was provided the `isApp` parameter:
-* For `true`, the URL is for an deeplink to the Vipps app.
-* For `false` or not provided, the URL is for the Vipps "landing page".
 
-Example: Response body for `"isApp":false`:
+* `"isApp":false` (or not provided): The URL is for the Vipps "landing page", with `https://`.
+* `"isApp": true`: The URL is for an deeplink, for app-switch to the Vipps app, with `vipps://`.
+
+
+Example: Response body for `"isApp":false`, to the landing page:
 
 ```json
 {
@@ -279,7 +283,7 @@ Example: Response body for `"isApp":false`:
     "url": "https://api.vipps.no/deeplink/vippsgateway?token=eyJraWQiOiJqd3R <snip>"
 }
 ```
-Example: Response body for `"isApp":true`:
+Example: Response body for `"isApp":true`, with a deeplink for app-switch:
 
 ```json
 {
@@ -289,7 +293,6 @@ Example: Response body for `"isApp":true`:
 ```
 
 The `url` is slightly simplified, but the format is correct.
-
 
 ## Payment identification
 
