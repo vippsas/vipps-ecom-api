@@ -4,11 +4,9 @@ API version: 2.0
 
 Document version 2.0.0.
 
-See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
-
-API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
-[swagger.yaml](https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/docs/swagger.yaml),
-[swagger.json](https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/docs/swagger.json).
+See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
+with Swagger specifications, Postman collections, example code, integration
+checklist and the [FAQ](vipps-ecom-api-faq.md).
 
 # Table of contents
 
