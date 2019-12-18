@@ -489,20 +489,21 @@ Please make sure that the callback URLs are reachable:
 
 ### Callback statuses
 
-These are the statuses provided by Vipps in the callbacks:
+These are the statuses provided by Vipps in the callbacks by
+[`[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST):
 
-| Callback | Response "Status" or "Operation"    |
-| -------------- | ----- |
-| Callback for *regular* checkout: [`[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST) | `RESERVED` - When user approved and payment is reserved. |
-|   |  `SALE` - When user approved and payment type is Direct capture.  |
-|   |  `RESERVE_FAILED` - Reserve failed because of no coverage, outdated card details or similar. |
-|   |  `SALE_FAILED` - Direct capture failed because of no coverage, outdated card details or similar. |
-|   |  `CANCELLED` - User rejected the payment. |
-|   |  `REJECTED` - User didn't act on the payment. |
-| Callback for *express* checkout: [`[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)  | `RESERVE` - When user approved and payment is reserved. (It _is_ correct that this is different from `RESERVED` for regular checkout.)|
-|    | `SALE` - When user approved and payment type is Direct capture.  |
-|    | `CANCELLED` - User rejected the payment.  |
-|    | `REJECTED` - User didn't act on the payment.  |
+| Callback         | Response         | Description                                 |
+| ---------------- | ---------------- | ------------------------------------------- |
+| Regular checkout | `RESERVED`       | Payment reserved, by user accepting the payment in Vipps |
+|                  | `SALE`           | Payment captured with direct capture, by merchant (after `RESERVED`)  |
+|                  | `RESERVE_FAILED` | Reserve failed because of insufficient funds, invalid card, or similar |
+|                  | `SALE_FAILED`    | Direct failed because of insufficient funds, invalid card, or similar |
+|                  | `CANCELLED`      | Payment canceled, by user in Vipps |
+|                  | `REJECTED`       | User did not act on the payment (timeout, etc) |
+| Express checkout | `RESERVE`        | Payment reserved, by user accepting the payment in Vipps (it _is_ correct that this is different from `RESERVED` for regular checkout - sorry)|
+|                  | `SALE`           | Payment captured with direct capture, by merchant (after `RESERVE`)  |
+|                  | `CANCELLED`      | Payment canceled, by user in Vipps  |
+|                  | `REJECTED`       | User did not act on the payment (timeout, etc)  |
 
 See also: [Get payment details](#get-payment-details).
 
