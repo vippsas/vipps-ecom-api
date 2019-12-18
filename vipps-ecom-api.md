@@ -86,7 +86,7 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
 The Vipps eCommerce API (eCom API) offers functionality for online payments.
 Payments are supported in both web browsers and in native apps (via deep-linking).
 
-TODO: Add screenshots form the app.
+_**TODO: Add simple diagram and screenshots form the app.**_
 
 ## API endpoints
 
@@ -105,6 +105,8 @@ See the
 
 
 ## API endpoints: Responses
+
+_**TODO: Move to respective endpoint section.**_
 
 | Request                              | Response "Status" or "Operation" |
 | ------------------------------------ | -------------------------------- |
