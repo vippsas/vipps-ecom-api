@@ -186,7 +186,7 @@ The push notification, and Vipps after opening the notification:
 
 ![Push notification](images/figma-push-notification.png)
 
-#### Payments initiated in an app
+### Payments initiated in an app
 
 Merchants can signal that the request is coming from their native app by passing
 the `isApp:true` parameter. In this case, the Vipps backend returns an URL that
@@ -267,6 +267,10 @@ An express payment example with more parameters provided:
 }
 ```
 
+The URL depends on whether the `initiate` request was provided the `isApp` parameter:
+* For `true`, the URL is for an deeplink to the Vipps app.
+* For `false` or not provided, the URL is for the Vipps "landing page".
+
 Example: Response body for `"isApp":false`:
 
 ```json
@@ -286,9 +290,6 @@ Example: Response body for `"isApp":true`:
 
 The `url` is slightly simplified, but the format is correct.
 
-The URL depends on whether the `initiate` request was provided the `isApp` parameter:
-* For `true`, the URL is for an deeplink to the Vipps app.
-* For `false` or not provided, the URL is for the Vipps "landing page".
 
 ## Payment identification
 
@@ -369,28 +370,26 @@ and normally offer at better (and faster) user experience than relying on
 polling
 [GET:/ecomm/v2/payments/{orderId}/details](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET).
 
-The callback body depends whether the payment type is set to
+The request body contains different information depending on  whether the payment type is set to
 `"eComm Regular Payment"` or `"eComm Express Payment"`:
 
 * `"eComm Regular Payment"`: The callback contains the order and transaction details.
 * `"eComm Express Payment"`: The callback contains the order and transaction details
   _and in addition_ the user details and shipping details.
 
-The callback will be performed _only once_ during a payment process: When the
-payment is successful, fails, is rejected or times out.
+The callback will be performed _only once_ during a payment process, for the
+following events:
+* Payment successful
+* Payment failed
+* Payment rejected
+* Payment timed out
 
 If the communication is broken during the process for some reason, and Vipps
 is not able to execute callback to the merchant's server, the callback will
 not be retried. In other words, if the merchant does not receive any
-confirmation on the payment request, the merchant must call
+confirmation on the payment request, the merchant _must_ call
 [GET:/ecomm/v2/payments/{orderId}/details](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
 to get the status of the payment.
-
-To add authentication to the callbacks made by Vipps to the merchant,
-the merchant may provide an `authToken`. This token will then be returned as
-an `Authorization` header in the callback and shipping details requests made by
-Vipps for that order. Please not that this is unrelated to the authentication
-required by the Vipps API.
 
 ### Callback endpoints
 
@@ -461,11 +460,15 @@ Example: `"eComm Express Payment"` callback:
 
 ### Authorization for callbacks
 
-If `authToken` was used in the initiate payment request these requests will
-have a `Authorization` header. These headers will have the same value as the
-one provided in `authToken`.
 
-API details: [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)
+To add authentication to the callbacks made by Vipps to the merchant,
+the merchant may provide an `authToken`. This token will then be returned as
+an `Authorization` header in the callback and shipping details requests made by
+Vipps for that order. Please not that this is unrelated to the authentication
+required by the Vipps API: See [Authentication](#authentication).
+
+Swagger:
+[`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)
 
 ### Vipps callback servers
 
@@ -474,8 +477,8 @@ The callbacks from Vipps are made from the servers described in
 
 Please make sure that requests from these servers are allowed through firewalls, etc.
 
-**Please note:** Vipps may change the IP addresses that we make callbacks from. To
-ensure that you are whitelisting the corrects IP addresses please use these
+**Please note:** Vipps may change the IP addresses that we make callbacks from.
+To ensure that you are whitelisting the corrects IP addresses please use these
 hostnames.  
 
 ### Callback URLs must be reachable
@@ -867,7 +870,7 @@ The `operationSuccess` filed indicates whether an operation was successful or no
 | `SALE`     | Payment captured with direct capture, by merchant |   
 | `VOID`     | Payment canceled, by merchant |
 
-## Example Get payment details
+## Example response
 
 ```json
 {
