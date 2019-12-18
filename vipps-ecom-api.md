@@ -45,7 +45,6 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
   * [Skip landing page](#skip-landing-page)
 - [Reserve](#reserve)
   * [The Vipps landing page](#the-vipps-landing-page)
-  * [Example Get payment details](#example-get-payment-details)
 - [Capture](#capture)
   * [Reserve capture](#reserve-capture)
   * [Direct capture](#direct-capture)
@@ -54,7 +53,9 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
 - [Refund](#refund)
   * [Recurring eCommerce payments](#recurring-ecommerce-payments)
 - [Get payment details](#get-payment-details)
-  * [Example Get payment details](#example-get-payment-details-1)
+  * [States](#states)
+  * [Requests and responses](#requests-and-responses)
+  * [Example Get payment details](#example-get-payment-details)
   * [Polling guidelines](#polling-guidelines)
 - [Get payment status](#get-payment-status)
 - [Authentication](#authentication)
@@ -63,10 +64,10 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
 - [Idempotency](#idempotency)
   * [Exception handling](#exception-handling)
     + [Connection timeout](#connection-timeout)
-    + [Callback aborted/interrupted](#callback-aborted-interrupted)
+    + [Callback aborted or interrupted](#callback-aborted-or-interrupted)
     + [PSP connection issues](#psp-connection-issues)
 - [App integration](#app-integration)
-  * [App-switch between mobile or desktop browsers and the Vipps app](#app-switch-between-mobile-or-desktop-browsers-and-the-vipps-app)
+  * [App-switch between browser and the Vipps app](#app-switch-between-browser-and-the-vipps-app)
     + [App-switch on iOS](#app-switch-on-ios)
       - [Switch from merchant app to the Vipps app](#switch-from-merchant-app-to-the-vipps-app)
       - [Redirect back to the merchant app from Vipps app](#redirect-back-to-the-merchant-app-from-vipps-app)
@@ -415,7 +416,7 @@ The callbacks from Vipps are made from the servers described in
 
 Please make sure that requests from these servers are allowed through firewalls, etc.
 
-**Note:** Vipps may change the IP addresses that we make callbacks from. To
+**Please note:** Vipps may change the IP addresses that we make callbacks from. To
 ensure that you are whitelisting the corrects IP addresses please use these
 hostnames.  
 
@@ -683,63 +684,7 @@ eliminating the need for re-typing it on subsequent purchases.
 
 See also: [Skip landing page](#skip-landing-page).
 
-*Example Get payment details** - [`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
-
-```json
-{
-    "orderId": "order123abc",
-    "transactionLogHistory": [
-        {
-            "amount": 20000,
-            "transactionText": "One pair of Vipps socks",
-            "transactionId": "5001420061",
-            "timeStamp": "2018-11-14T15:31:09.946Z",
-            "operation": "VOID",
-            "requestId": "",
-            "operationSuccess": true
-        },
-        {
-            "amount": 20000,
-            "transactionText": "One pair of Vipps socks",
-            "transactionId": "5001420061",
-            "timeStamp": "2018-11-14T15:30:55.467Z",
-            "operation": "RESERVE",
-            "requestId": "",
-            "operationSuccess": true
-        },
-        {
-            "amount": 20000,
-            "transactionText": "One pair of Vipps socks",
-            "transactionId": "5001420061",
-            "timeStamp": "2018-11-14T15:30:41.002Z",
-            "operation": "INITIATE",
-            "requestId": "",
-            "operationSuccess": true
-        }
-    ]
-}
-```
-
-## Example Get payment details
-
-[`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
-
-Example if end user reject the payment request:
-```json
-{
-    "orderId": "order123abc",
-    "transactionInfo": {
-        "amount": 2000,
-        "status": "CANCEL",
-        "transactionId": "5001420067",
-        "timeStamp": "2018-11-14T16:18:57.393Z"
-    }
-}
-```
-
-
 # Capture
-
 
 ## Reserve capture
 
@@ -1136,7 +1081,10 @@ This API returns the following HTTP statuses in the responses:
 | `429 Too Many Requests` | There is currently a limit of max 200 calls per second\* |
 | `500 Server Error`      | An internal Vipps problem.                              |
 
-HTTP requests that are being stopped in the application gateway will result in an error JSON object, while requests that are produced from the backend will receive an array with a JSON object. Error codes that are produced from the application gateway include 401, 403 and 422.
+HTTP requests that are being stopped in the application gateway will result in
+an error JSON object, while requests that are produced from the backend will
+receive an array with a JSON object. Error codes that are produced from the
+application gateway include `401`, `403` and `422`.
 
 ```json
 [
@@ -1155,8 +1103,8 @@ HTTP requests that are being stopped in the application gateway will result in a
     "message": "Access denied due to invalid subscription key. Make sure to provide a valid key for an active subscription."
 }
 ```
- See [Errors](#errors).
 
+See [Errors](#errors).
 
 # Idempotency
 
@@ -1165,7 +1113,7 @@ This header is an idempotency header ensuring that if the merchant retries
 a request with the same `X-Request-Id` the retried request will not make
 additional changes.
 
-**Request**
+Request:
 
 [`POST:/ecomm/v2/payments/order123abc/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/capturePaymentUsingPOST)
 
@@ -1181,7 +1129,7 @@ additional changes.
  }
 ```
 
-**Response**
+Response:
 
 ```json
 {
@@ -1202,59 +1150,16 @@ additional changes.
 }
 ```
 
-**Example Get payment details** - [`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
-
-```json
-{
-    "orderId": "order123abc",
-    "transactionSummary": {
-        "capturedAmount": 20000,
-        "remainingAmountToCapture": 0,
-        "refundedAmount": 0,
-        "remainingAmountToRefund": 20000
-    },
-    "transactionLogHistory": [
-        {
-            "amount": 20000,
-            "transactionText": "Socks on the way! Tracking code: abc-tracking-123",
-            "transactionId": "5001420058",
-            "timeStamp": "2018-11-14T15:22:46.680Z",
-            "operation": "CAPTURE",
-            "requestId": "1542208966",
-            "operationSuccess": true
-        },
-        {
-            "amount": 20000,
-            "transactionText": "One pair of Vipps socks",
-            "transactionId": "5001420062",
-            "timeStamp": "2018-11-14T15:21:22.126Z",
-            "operation": "RESERVE",
-            "requestId": "",
-            "operationSuccess": true
-        },
-        {
-            "amount": 20000,
-            "transactionText": "One pair of Vipps socks",
-            "transactionId": "5001420062",
-            "timeStamp": "2018-11-14T15:21:04.697Z",
-            "operation": "INITIATE",
-            "requestId": "",
-            "operationSuccess": true
-        }
-    ]
-}
-```
-
 ## Exception handling
 
-Every system, especially those that includes complex integrations and/or
-participation of many users, is prone to unexpected conditions. Below section
-explains how Vipps handles different exception and error situations in detail.
+The section below explains how Vipps handles different exception and errors.
+
+See also [Errors](#errors).
 
 ### Connection timeout
 
 Defining a socket timeout period is the common measure to protect server
-resources and is expected. However, the time needed to fulfill a service requests
+resources and is expected. However, the time needed to fulfil a service requests
 depends on several systems, which impose longer timeout period than usually
 required.
 
@@ -1266,7 +1171,7 @@ A good practice is, if/when the socket read timeout occurs, to call
 and check status of last transaction in transaction history prior
 to executing the service call again.
 
-### Callback aborted/interrupted
+### Callback aborted or interrupted
 
 If the communication is broken during payment process for some reason, and
 Vipps is not able to execute callback, then callback will not be retried.
@@ -1278,12 +1183,13 @@ to get the response of payment request.
 
 ### PSP connection issues
 
-In a case when Vipps experiences communication problems with PSP, service call
-will respond with 402 HTTP Error. Merchant should make a call to
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
-to check if the transaction request is processed before making service
-call (with same idempotency key) again.
+In cases of communication problems with Vipps' PSP, the response from Vipps
+will be an error (see [Errors](#errors)).
 
+The merchant should then call
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
+to check if the transaction request is processed before making a new call,
+using same idempotency key (see [Idempotency](#idempotency)).
 
 # App integration
 
@@ -1296,13 +1202,17 @@ This may be done in two ways:
 
 After the user has finished (or cancelled) the payment in the Vipps app, the user is returned back to the browser or native app that started the payment flow (via a the fallback URL provided by the merchant when the order is created). The merchant app or website should then query the ecom API for the updated state of the payment operation.
 
-*NOTE:* When the user arrives back in the merchant app or website, we strongly recommend that you perform a call to the ecom api to check the state of the transaction.
-While some of the state of the ecom operation *can* be derived from things like wether or not user returned successfully from the native app, the most reliable
-approach to know the state of the payment flow is always to query the ecom API once you arrive back in the merchant app/website.
+**Please note:** When the user arrives back in the merchant app or website, we
+_strongly_ recommend that you perform a call to the eCom API to check the state
+of the transaction. While some of the state of the eCom operation *can* be
+derived from things like wether or not user returned successfully from the
+native app, the most reliable approach to know the state of the payment flow
+is always to query the eCom API once you arrive back in the merchant app/website:
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET).
 
 The sections below explain in more detail how to integrate for browsers and apps.
 
-## App-switch between mobile or desktop browsers and the Vipps app
+## App-switch between browser and the Vipps app
 
 For mobile and desktop browsers, integration is handled by Vipps using the Vipps landing page.
 
@@ -1416,7 +1326,7 @@ To receive a call back from the Vipps application to an activity, a filter has t
 </activity>
 ```
 
-Note: The scheme should be same specified in `fallBack` URL sent to the ecom api when the payment is created.
+**Please note:** The scheme should be same specified in `fallBack` URL sent to the ecom api when the payment is created.
 
 The Vipps application will send the result to the merchant app by
 starting a new activity with the `fallBack` URL as a URL parameter in the intent.
