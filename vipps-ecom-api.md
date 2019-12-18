@@ -11,7 +11,7 @@ checklist and the [FAQ](vipps-ecom-api-faq.md).
 # Table of contents
 
 - [API endpoints](#api-endpoints)
-  * [Flow diagram](#flow diagram)
+  * [Flow diagram](#flow-diagram)
 - [Initiate](#initiate)
   * [Regular eCommerce payments](#regular-ecommerce-payments)
   * [Express checkout payments](#express-checkout-payments)
