@@ -24,18 +24,18 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
     + [Desktop browser initiated payments](#desktop-browser-initiated-payments)
       - [Payments initiated in an app](#payments-initiated-in-an-app)
   * [Initiate payment flow: API calls](#initiate-payment-flow--api-calls)
-  * [Detailed information for API calls](#detailed-information-for-api-calls)
-      - [Recommendations for orderId](#recommendations-for-orderid)
+  * [Payment identification](#payment-identification)
+  * [orderId recommendations](#orderid-recommendations)
   * [URL Validation](#url-validation)
   * [Callbacks](#callbacks)
     + [Vipps callback servers](#vipps-callback-servers)
-    + [Callback URLs must be reachable](#callback-urls-must-be-reachable)
+    + [URLs must be reachable](#urls-must-be-reachable)
     + [Callback statuses](#callback-statuses)
         * [Callback endpoints](#callback-endpoints)
   * [Timeouts](#timeouts)
     + [Using a phone](#using-a-phone)
     + [Using a laptop/desktop](#using-a-laptop-desktop)
-  * [API endpoints required by Vipps for express checkout](#api-endpoints-required-by-vipps-for-express-checkout)
+  * [Express checkout API endpoints required on the merchant side](#express-checkout-api-endpoints-required-on-the-merchant-side)
       - [Get shipping details](#get-shipping-details)
       - [Example Request Shipping Details Callback](#example-request-shipping-details-callback)
       - [Example Response for Shipping Details Callback](#example-response-for-shipping-details-callback)
@@ -43,7 +43,7 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
     + [Remove User Consent](#remove-user-consent)
   * [Skip landing page](#skip-landing-page)
 - [Reserve](#reserve)
-  * [Desktop browsers and mobile browsers: The Vipps landing page](#desktop-browsers-and-mobile-browsers--the-vipps-landing-page)
+  * [The Vipps landing page](#the-vipps-landing-page)
     + [Example Get payment details](#example-get-payment-details)
 - [Capture](#capture)
   * [Reserve capture](#reserve-capture)
@@ -55,6 +55,7 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
 - [Refund](#refund)
   * [Example Get payment details](#example-get-payment-details-2)
 - [Get payment details](#get-payment-details)
+  * [Polling guidelines](#polling-guidelines)
 - [Authentication](#authentication)
   * [Access token](#access-token)
 - [HTTP response codes](#http-response-codes)
@@ -72,8 +73,8 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
     + [App-switch on Android](#app-switch-on-android)
       - [Switching from merchant app to the Vipps app](#switching-from-merchant-app-to-the-vipps-app)
       - [Switching back to the merchant app from Vipps app](#switching-back-to-the-merchant-app-from-vipps-app)
-        * [1: Return back to merchant app by actively deeplinking into it from Vipps](#1--return-back-to-merchant-app-by-actively-deeplinking-into-it-from-vipps)
-        * [2: Redirect back to merchant app by simply closing the Vipps app](#2--redirect-back-to-merchant-app-by-simply-closing-the-vipps-app)
+        * [Return back to merchant app by actively deeplinking into it from Vipps](#return-back-to-merchant-app-by-actively-deeplinking-into-it-from-vipps)
+        * [Redirect back to merchant app by simply closing the Vipps app](#redirect-back-to-merchant-app-by-simply-closing-the-vipps-app)
 - [Errors](#errors)
   * [Error groups](#error-groups)
   * [Error codes](#error-codes)
@@ -303,7 +304,7 @@ An express payment example with more parameters provided:
 }
 ```
 
-## Detailed information for API calls
+## Payment identification
 
 A payment is uniquely identified by the combination of `merchantSerialNumber`
 and `orderId`:
@@ -324,7 +325,7 @@ Please note that Vipps only makes _one_ request for the callback and shipping
 details endpoints. There is no retry functionality, so the merchant's
 server must be able to respond.
 
-#### Recommendations for orderId
+## orderId recommendations
 
 A `orderId` must be unique for the MSN (Merchant Serial Number, the id of
 the sale unit). The `orderId` does not need to be globally unique, so several
@@ -380,30 +381,6 @@ public class UrlValidate {
 }
 ```
 
-**Example Get payment details** - [`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
-
-```json
-{
-    "orderId": "order123abc",
-    "transactionLogHistory": [
-        {
-            "amount": 20000,
-            "transactionText": "One pair of Vipps socks",
-            "transactionId": "5001420062",
-            "timeStamp": "2018-11-14T15:17:30.684Z",
-            "operation": "INITIATE",
-            "requestId": "",
-            "operationSuccess": true
-        }
-    ]
-}
-```
-
-
-
-
-
-
 
 ## Callbacks
 
@@ -439,7 +416,7 @@ Please make sure that requests from these servers are allowed through firewalls,
 **Note:** Vipps may change the IP addresses that we make callbacks from. To ensure that you are whitelisting the corrects IP addresses please use these hostnames.  
 
 
-### Callback URLs must be reachable
+### URLs must be reachable
 
 Please make sure that the callback URLs are valid:
 
@@ -577,7 +554,7 @@ has an additional 5 minutes to complete the payment in Vipps.
 This means that the user has a total of 10 minutes to complete the payment.
 
 
-## API endpoints required by Vipps for express checkout
+## Express checkout API endpoints required on the merchant side
 
 The below endpoints are provided by the _merchant_ and consumed by Vipps during express checkout payments.
 These endpoints are included in the Swagger file for reference.
@@ -677,7 +654,7 @@ If you need to be whitelisted, instructions for this can be found in the
 When the user confirms, the payment status changes to `RESERVE`.
 The respective amount will be reserved for future capturing.
 
-## Desktop browsers and mobile browsers: The Vipps landing page
+## The Vipps landing page
 
 When a user has selected Vipps for payment, the Vipps landing page
 detects whether user is using a desktop browser or a mobile browser:
@@ -1022,7 +999,29 @@ This table shows the from- and to-state, and the operation returned from
 Please note that the response from
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET))
 always contain _the entire history_ of payments for the order, not just the current status.
-In this truncated example, it shows that the full amount (200.00 NOK) has been captured:
+
+Example Get payment details:
+
+[`GET:/ecomm/v2/payments/order123abc/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
+
+```json
+{
+    "orderId": "order123abc",
+    "transactionLogHistory": [
+        {
+            "amount": 20000,
+            "transactionText": "One pair of Vipps socks",
+            "transactionId": "5001420062",
+            "timeStamp": "2018-11-14T15:17:30.684Z",
+            "operation": "INITIATE",
+            "requestId": "",
+            "operationSuccess": true
+        }
+    ]
+}
+```
+
+## Polling guidelines
 
 General guidelines for When to start polling with
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET):
@@ -1357,11 +1356,12 @@ else {
 ```
 
 Example of a `deeplinkURL`:
+
 `vipps://?token=eyJraWQiOiJqd3RrZXkiLCJhbGciOiJSUzI1NiJ9.ey <snip>`
 
 **Please note:** If you have both the official Vipps app from App Store _and_ the test Vipps app from TestFlight installed,
 the app switch may open either one. There is no way to open one of them specifically, as
-the URL scheme is the same for both. A workaround is to only have one of the apps installed on the device.
+the URL scheme is the same for both. We recommend to only have one of the apps installed on the device.
 
 #### Redirect back to the merchant app from Vipps app
 
@@ -1375,12 +1375,13 @@ will append the status like: `merchantApp://result?myAppData&status=301`.
 
 ##### Registering a 3rd party app with URL scheme and handling custom URL calls
 
-See Apple's documentation:
+See the official Apple documentation:
 [Defining a Custom URL Scheme for Your App](https://developer.apple.com/documentation/uikit/core_app/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app)
 
 ### App-switch on Android
 
-Vipps is launched with a standard intent, using the url returned from the ecom api when the payment is created ("url": "vipps://?token=eyJraWQiOiJqd3RrZXki..")
+Vipps is launched with a standard intent, using the url returned from the eCom
+API when the payment is created ("url": "vipps://?token=eyJraWQiOiJqd3RrZXki..")
 
 #### Switching from merchant app to the Vipps app
 
@@ -1418,7 +1419,7 @@ Once the user has paid (or cancelled), the Vipps app supports two ways to return
 
 In both cases, the merchant app should query the ecom API for updated status on the payment once user returns from the Vipps app.
 
-##### 1: Return back to merchant app by actively deeplinking into it from Vipps
+##### Return back to merchant app by actively deeplinking into it from Vipps
 
 With this approach, the merchant app has to have its own URL scheme registered so the Vipps app can actively open the merchant app again after payment/cancellation.
 
@@ -1451,11 +1452,11 @@ result send by the Vipps app:
 ```java
 @Override
 protected void onNewIntent(Intent intent) {
-      // Call the ecom api, check the status of the ecom payment
+      // Call the eCom api, check the status of the eCom payment
 }
 ```
 
-##### 2: Redirect back to merchant app by simply closing the Vipps app
+##### Redirect back to merchant app by simply closing the Vipps app
 
 With this approach, the merchant app does not have to register/handle deeplink urls.
 
@@ -1472,7 +1473,7 @@ The merchant app activity that resumes again (after the Vipps app closes) has to
 ```java
 @Override
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-    // Call the ecom api, check the status of the ecom payment
+    // Call the eCom api, check the status of the eCom payment
 }
 ```
 
@@ -1491,6 +1492,10 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 | Merchant   | Errors regarding the merchant  |
 
 ## Error codes
+
+Please note that Vipps is only allowed to provide some of these errors through
+the API, and that we have to send `VippsError` (99) in cases where we are not
+allowed to provide more details.
 
 | Error groups | Error Code | Error Message | Comment |
 | ----- | ---- | ----------- |------|
