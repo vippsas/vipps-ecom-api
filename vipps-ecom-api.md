@@ -12,8 +12,7 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
 
 # Table of contents
 
-- [Overview](#overview)
-  * [API endpoints](#api-endpoints)
+- [API endpoints](#api-endpoints)
 - [Initiate](#initiate)
   * [Regular eCommerce payments](#regular-ecommerce-payments)
   * [Express checkout payments](#express-checkout-payments)
@@ -82,14 +81,10 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
   * [Error codes](#error-codes)
 - [Questions?](#questions-)
 
-# Overview
+# API endpoints
 
 The Vipps eCommerce API (eCom API) offers functionality for online payments.
 Payments are supported in both web browsers and in native apps (via deep-linking).
-
-_**TODO: Add simple diagram and screenshots form the app.**_
-
-## API endpoints
 
 | Operation           | Description         | Endpoint          |
 | ------------------- | ------------------- | ----------------- |
@@ -110,51 +105,57 @@ Vipps eCommerce API offers 2 types of payments:
 1. Regular eCommerce payments
 2. Express checkout payments
 
+Examples from a demo website:
+
 ![Regular and express checkout](images/figma-regular-express-checkout.png)
 
 ## Regular eCommerce payments
 
-When you initiate a payment it will be reserved until you capture it.
-Vipps supports both _reserve capture_ and _direct capture_.
+When you initiate a payment it will only be _reserved_ until you capture it.
+Vipps supports both _reserve capture_ and _direct capture_ payment flows.
 
-_Reserve capture_ is the default. When you initiate a payment it will be
+**Reserve capture** is the default. When you initiate a payment it will be
 reserved until you capture it.
 
-According to Norwegian regulations you should _not_ capture a payment until
-the product or service is provided to the customer.
-For more information, please see the Consumer Authority's
+According to Norwegian regulations you can _not_ capture a payment until
+the product or service is provided to the customer. For more information,
+please see the Consumer Authority's
 [Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
 
-_Direct capture_ causes all payment reservations to be instantly be captured.
+**Direct capture** causes all payment reservations to be instantly be captured.
 This is intended for situations where the product or service is immediately
 provided to the customer, e.g. digital services.
 
-Merchants do not choose between _reserve capture_ and _direct capture_ themselves,
-the type of capture is configured by Vipps after the additional compliance checks have been completed.
+Merchants can not choose between _reserve capture_ and _direct capture_
+themselves, the type of capture is configured by Vipps after the additional
+compliance checks, required by the authorities, have been completed.
 See the
 [FAQ](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#what-is-the-difference-between-reserve-capture-and-direct-capture).
 
 ## Express checkout payments
 
-Express checkout is an solution for letting the user automatically share their vipps profile address information with merchant and choose a shipping option.
+Express checkout is an solution for letting the user automatically share their
+Vipps profile address information with merchant and choose a shipping option.
 
-To perform an express checkout, the merchant needs to send `"paymentType": "eComm Express Payment"` as part of initiate payment, and support the
-`shippingDetails` and `consent` endpoints.
+To perform an express checkout, the merchant needs to send
+`"paymentType": "eComm Express Payment"` as part of initiate payment, and
+support the `shippingDetails` and `consent` endpoints.
 
-These are payments related to Vipps Hurtigkasse, where Vipps reduces the typical purchase process for the customer to
-a few simple steps:
+These are payments related to Vipps Hurtigkasse (express checkout), where Vipps
+simplifies the purchase process for the customer to a few simple steps:
 
-1. The user clicks on the "Vipps Hurtigkasse" button.
-2. The user consents to sharing address information.
-3. The user confirms the amount, delivery address and delivery method in the Vipps app.
+1. The user clicks the "Vipps Hurtigkasse" button.
+2. The user consents to sharing address information in Vipps.
+3. The user confirms the amount, delivery address and delivery method in Vipps.
 
-The shipping methods presented to the user is provided by the merchant through the `shippingDetails` endpoint.
+The shipping methods presented to the user is provided by the merchant through
+the `shippingDetails` endpoint.
 
 Vipps complies with GDPR, and requires the user's consent before any information
 is shared with the merchant. The merchant must provide a URL (`consentRemovalPrefix`)
-that Vipps can call to delete the data. The Vipps app allows the user to later remove this consent
-(Via the profile-security-"access to your information"-"companies that remember you" screen).
-
+that Vipps can call to delete the data. The Vipps app allows the user to later
+remove this consent (via the Profile -> Security -> "Access to your information"
+-> "Companies that remember you" screens).
 
 ## Initiate payment flow: Phone and browser
 
@@ -274,23 +275,12 @@ An express payment example with more parameters provided:
 A payment is uniquely identified by the combination of `merchantSerialNumber`
 and `orderId`:
 
-* `merchantSerialNumber`: The merchant's Vipps id. Excample: `123456`.
+* `merchantSerialNumber`: The merchant's Vipps id. Example: `123456`.
 * `orderId`: Must be unique for the `merchantSerialNumber`. Example: `order123abc`.
 
 To initiate an express checkout payment the payment initiation call must include
 the `"paymentType": "eComm Express Payment"` parameter. If this parameter is not
 passed, the payment type will default to regular payment.
-
-To add authentication to the callbacks made by Vipps to the merchant,
-the merchanbt may provide an `authToken`. This token will then be returned as
-an `Authorization` header in the callback and shipping details requests made by
-Vipps for that order. Please not that this is unrelated to the authentication
-required by the Vipps API.
-
-When the payment is successfully initiated, a response with a redirect URL is returned.
-Please note that Vipps only makes _one_ request for the callback and shipping
-details endpoints. There is no retry functionality, so the merchant's
-server must be able to respond.
 
 ## orderId recommendations
 
@@ -327,7 +317,10 @@ as the app-switch URL may be something like `vipps://`, which is not a valid URL
 
 The endpoints required by Vipps must be publicly available.
 
-URLs that start with `https://localhost` will be rejected. If you want to use localhost as fallback, please use `http://127.0.0.1`.
+URLs that start with `https://localhost` will be rejected. If you want to use
+localhost as fallback, please use `http://127.0.0.1`.
+It is, naturally, not possible to use `https://localhost` or
+`http://127.0.0.1` for the callback, as the Vipps backend would then call itself.
 
 Here is a simple Java class suitable for testing URLs,
 using the dummy URL `https://example.com/vipps/fallback-result-page/order123abc`:
@@ -351,22 +344,35 @@ public class UrlValidate {
 
 ## Callbacks
 
-Callbacks allow Vipps to send the payment order details to the merchant.
-During regular eCommerce payment, order and transaction details will be shared.
-During express checkout payment it will provide user details and shipping
-details addition to the order and transaction details.
+Callbacks allow Vipps to send the payment order details to the merchant,
+and normally offer at better (and faster) user experience than relying on
+polling
+[GET:/ecomm/v2/payments/{orderId}/details](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET).
 
-This call will be performed once during a payment process, when the
-payment is successful, failed, rejected or timed out. If the communication
-is broken during the process for some reason, and Vipps is not able to
-execute callback, then callback will not be retried. In other words,
-if the merchant doesn’t receive any confirmation on payment request
-call within callback timeframe, merchant should call
+The callback body provided in the callback from Vipps will depend on whether the payment
+type is set to `"eComm Express Payment"` or `"eComm Regular Payment"`:
+
+* For regular eCommerce payment, the callback request from Vipps will
+contain the order and transaction details.
+* For express checkout payment, the callback request from Vipps will
+contain the order and transaction details
+_and in addition_ the user details and shipping details.
+
+The callback will be performed only once during a payment process, when the
+payment is successful, fails, is rejected or times out.
+
+If the communication is broken during the process for some reason, and Vipps
+is not able to execute callback to the merchant's server, the callback will
+not be retried. In other words, if the merchant does not receive any
+confirmation on the payment request, the merchant must call
 [GET:/ecomm/v2/payments/{orderId}/details](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
 to get the status of the payment.
 
-The callback body received from Vipps will depend on whether the payment
-type is set to `"eComm Express Payment"` or `"eComm Regular Payment"`.
+To add authentication to the callbacks made by Vipps to the merchant,
+the merchant may provide an `authToken`. This token will then be returned as
+an `Authorization` header in the callback and shipping details requests made by
+Vipps for that order. Please not that this is unrelated to the authentication
+required by the Vipps API.
 
 ### Authorization
 
