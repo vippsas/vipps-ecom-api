@@ -47,7 +47,7 @@ checklist and the [FAQ](vipps-ecom-api-faq.md).
 - [Refund](#refund)
   * [Recurring eCommerce payments](#recurring-ecommerce-payments)
 - [Get payment details](#get-payment-details)
-  * [States](#states)
+  * [Payment states](#payment-states)
   * [Requests and responses](#requests-and-responses)
   * [Example Get payment details](#example-get-payment-details)
   * [Polling guidelines](#polling-guidelines)
@@ -826,7 +826,7 @@ our [Recurring Repo.](https://github.com/vippsas/vipps-recurring-api)
 
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
 
-## States
+## Payment states
 
 | #   | From-state | To-state | Description                                   | Operation |
 | --- | ---------- | -------- | --------------------------------------------- | -------------- |
@@ -848,16 +848,15 @@ Please note that the response from
 always contain _the entire history_ of payments for the order, not just the current status.
 The `operationSuccess` filed indicates whether an operation was successful or not.
 
-| Request                              | Response |
-| ------------------------------------ | -------------------------------- |
-| [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)  | `INITIATE` - Merchant initiated the transaction. Stage-1.
-|   |  `RESERVE` - Payment Reserved by user accepting transaction in App. Stage-3. |
-|   |  `SALE` - Payment Captured with direct capture. Stage-4. |
-|   |  `CAPTURE` - Payment Captured when merchant called for capture - Stage-6. |
-|   |  `REFUND` - Payment refunded when merchant called for refund - Stage-7. |
-|   |  `CANCEL` - Payment cancel status when user canceled payment in App. |
-|   |  `VOID` - Payment cancel status when merchant called for cancel. |
-
+| Request    | Response |
+| ---------- | --------------------------------------------------------- |
+| `INITIATE` | Payment initiated, by merchant |
+| `RESERVE`  | Payment reserved, by user accepting the payment in Vipps |
+| `CAPTURE`  | Payment captured, by merchant (after `RESERVE`) |
+| `REFUND`   | Payment refunded, by merchant (after `CAPTURE`) |
+| `CANCEL`   | Payment canceled, by user in Vipps |
+| `SALE`     | Payment captured with direct capture, by merchant |   
+| `VOID`     | Payment canceled, by merchant |
 
 ## Example Get payment details
 
