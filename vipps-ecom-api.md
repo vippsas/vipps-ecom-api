@@ -14,7 +14,6 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
 
 - [Overview](#overview)
   * [API endpoints](#api-endpoints)
-  * [API endpoints: Responses](#api-endpoints--responses)
 - [Initiate](#initiate)
   * [Regular eCommerce payments](#regular-ecommerce-payments)
   * [Express checkout payments](#express-checkout-payments)
@@ -78,10 +77,10 @@ API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
         * [Return back to merchant app by actively deeplinking into it from Vipps](#return-back-to-merchant-app-by-actively-deeplinking-into-it-from-vipps)
         * [Redirect back to merchant app by simply closing the Vipps app](#redirect-back-to-merchant-app-by-simply-closing-the-vipps-app)
 - [Errors](#errors)
+  * [Error object in the response](#error-object-in-the-response)
   * [Error groups](#error-groups)
   * [Error codes](#error-codes)
 - [Questions?](#questions-)
-
 
 # Overview
 
@@ -104,19 +103,6 @@ _**TODO: Add simple diagram and screenshots form the app.**_
 
 See the
 [eCom API checklist](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md).
-
-
-## API endpoints: Responses
-
-| Request                              | Response |
-| ------------------------------------ | -------------------------------- |
-| [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST)                | `Initiate` - Merchant initiated the transaction.  |
-| [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/capturePaymentUsingPOST) | `Captured` - Payment Captured when merchant called for capture. |
-| [`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/cancelPaymentRequestUsingPUT)  | `Cancelled` - Payment cancel status when merchant called for cancel. |
-| [`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/refundPaymentUsingPOST)  | `Refund` - Payment refunded when merchant called for refund.  |
-| [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)  | See [Get payment details](#get-payment-details) for all responses. |
-| [`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getOrderStatusUsingGET)  | **Deprecated, please use:** [Get payment details](#get-payment-details). For reference only: [Get payment status](#get-payment-status) |
-
 
 # Initiate
 
@@ -220,26 +206,7 @@ expected to use the `vipps://` URL to deeplink straight to the Vipps app.
 
 ## Initiate payment flow: API calls
 
-Initiate payment is used to create a new payment order in Vipps:
-
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST)
-
-**Initiate request headers example:**
-
-```json
-{
-    "Authorization": "Bearer jfewioIJffruJIfewiyYUdweiLMfnewUQiwmdcLnfewjNj <snip>",
-    "Content-Type": "application/json",
-    "Ocp-Apim-Subscription-Key": "12345678901234567890123456789012"
-}
-```
-
-A request is authorized by the `Authorization` and `Ocp-Apim-Subscription-Key` included in the
-HTTP headers.
-* `Authorization`: The word Bearer followed by the token from a Access Token request.
-* `Ocp-Apim-Subscription-Key`: Subscription key for the eCommerce Product.
-
-**Initiate request body example:**
 
 A minimal example:
 
@@ -993,11 +960,10 @@ and these headers are required:
 
 ## Access token
 
-The Access Token API provides the JWT bearer token.
-
-**Request**
-
+The Access Token API provides the JWT bearer token:
 [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-ecom-api/#/Authorization_Service/fetchAuthorizationTokenUsingPost).
+
+Request:
 
 ```http
 POST https://apitest.vipps.no/accessToken/get
@@ -1005,7 +971,10 @@ client_id: <client_id>
 client_secret: <client_secret>
 Ocp-Apim-Subscription-Key: <Ocp-Apim-Subscription-Key>
 ```
-All headers are per merchantSerialNumber and can be found on [portal.vipps.no](https://portal.vipps.no).
+(We are aware that this is a `POST`, without a body, to an endpoint with
+`get` in the URL, and hope to fix it in a later version of the API.)
+
+All headers are unique per `merchantSerialNumber` and can be found on [portal.vipps.no](https://portal.vipps.no).
 
 | Header Name | Header Value | Description |
 | ----------- | ------------ | ----------- |
@@ -1013,9 +982,14 @@ All headers are per merchantSerialNumber and can be found on [portal.vipps.no](h
 | `client_secret` | Base 64 encoded string | Client Secret for the merchant |
 | `Ocp-Apim-Subscription-Key` | Base 64 encoded string | Subscription key for the product |
 
-For the subscription `Vipps-eCommerce-Services-API` the `Ocp-Apim-Subscription-Key` for a access token request will be the same as for eCommerce requests. While for other subscriptions they will use different keys. See [getting started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md) for a guide.
+For the subscription `Vipps-eCommerce-Services-API` the `Ocp-Apim-Subscription-Key`
+for an access token request will be the same as for eCommerce requests. While
+for other subscriptions they will use different keys. See
+[getting started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
+for more details.
 
-**Response**
+Response:
+
 ````http
 HTTP 200 OK
 ````
@@ -1078,31 +1052,13 @@ This API returns the following HTTP statuses in the responses:
 | `403 Forbidden`         | Authentication ok, but credentials lacks authorization  |
 | `404 Not Found`         | The resource was not found                              |
 | `409 Conflict`          | Unsuccessful due to conflicting resource                |
-| `429 Too Many Requests` | There is currently a limit of max 200 calls per second\* |
+| `429 Too Many Requests` | There is currently a limit of max 200 calls per second  |
 | `500 Server Error`      | An internal Vipps problem.                              |
 
 HTTP requests that are being stopped in the application gateway will result in
 an error JSON object, while requests that are produced from the backend will
 receive an array with a JSON object. Error codes that are produced from the
 application gateway include `401`, `403` and `422`.
-
-```json
-[
-  {
-    "errorGroup": "Payment",
-    "errorMessage": "Refused by issuer because of expired card",
-    "errorCode": "44"
- }
-]
-```
-
-
-```json
-{
-    "statusCode": 401,
-    "message": "Access denied due to invalid subscription key. Make sure to provide a valid key for an active subscription."
-}
-```
 
 See [Errors](#errors).
 
@@ -1368,6 +1324,27 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 # Errors
 
+## Error object in the response
+
+See [HTTP response codes](#http-response-codes).
+
+```json
+[
+  {
+    "errorGroup": "Payment",
+    "errorMessage": "Refused by issuer because of expired card",
+    "errorCode": "44"
+ }
+]
+```
+
+```json
+{
+    "statusCode": 401,
+    "message": "Access denied due to invalid subscription key. Make sure to provide a valid key for an active subscription."
+}
+```
+
 ## Error groups
 
 | Error groups      | Description |
@@ -1376,7 +1353,7 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 | Payment   |  Failure while doing a payment authorization |
 | InvalidRequest  |  Request contains invalid parameters |
 | VippsError  |  Internal Vipps application error |
-| user  | Error raised because of Vipps user (Example: The user is not a Vipps user)  |
+| User  | Error related to the Vipps user (Example: Not a Vipps user)  |
 | Merchant   | Errors regarding the merchant  |
 
 ## Error codes
