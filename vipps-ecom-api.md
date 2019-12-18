@@ -123,6 +123,10 @@ Vipps eCommerce API offers 2 types of payments:
 1. Regular eCommerce payments
 2. Express checkout payments
 
+![Push notification](images/figma-push-notification.png)
+
+![Regular and express checkout](images/figma-regular-express-checkout.png)
+
 ## Regular eCommerce payments
 
 When you initiate a payment it will be reserved until you capture it.
@@ -646,10 +650,14 @@ If you need to be whitelisted, instructions for this can be found in the
 
 # Reserve
 
+![Payment confirmation](images/figma-payment-confirmation.png)
+
 When the user confirms, the payment status changes to `RESERVE`.
 The respective amount will be reserved for future capturing.
 
 ## The Vipps landing page
+
+![The Vipps landing page](images/figma-vipps-landing-page.png)
 
 When a user has selected Vipps for payment, the Vipps landing page
 detects whether user is using a desktop browser or a mobile browser:
