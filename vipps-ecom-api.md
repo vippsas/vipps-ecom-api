@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.0.0.
+Document version 2.0.1.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with Swagger specifications, Postman collections, example code, integration
@@ -619,12 +619,7 @@ Response:
 ### Transaction update
 
 A callback to the merchant for receiving post-payment information:
-[`POST:/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST).
-
-### Callback prefix
-
-Vipps makes a callbacks to inform the merchant abouyt the status:
-[`[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST):
+[`POST:[callbackprefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST).
 
 See: [Callback statuses](#callback-statuses).
 
