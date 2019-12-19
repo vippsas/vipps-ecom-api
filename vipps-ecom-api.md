@@ -957,19 +957,18 @@ See [Timeouts](#timeouts) for details about timeouts.
 
 **IMPORTANT: This endpoint is deprecated. Use [Get payment details](#get-payment-details).**
 
-| Request                              | Response "Status" or "Operation" |
-| ------------------------------------ | -------------------------------- |
-| [`GET:/ecomm/v2/payments/{orderId}/status`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getOrderStatusUsingGET)  | **This endpoint is deprecated, please use:** [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET) |
-|   |  `INITIATE`  -  Merchant initiates the transaction. Stage-1, Status - 101. |
-|   |  `REGISTER`  - Vipps registers payment for Reserve. Stage-2, Stage-3, Status - 101.|
-|   |  `RESERVE` -  Payment Reserved by user accepting transaction in App. Stage-3, Status - 101. |
-|   |  `SALE` - Payment Captured with direct capture. Stage-4, status - 101. |
-|   |  `CAPTURE` - Payment Captured when merchant called for capture - Stage-6, Status - 101. |
-|   |  `REFUND` - Payment refunded when merchant called for refund - Stage-7, Status - 101. |
-|   |  `CANCEL` - Payment cancel status when user canceled payment in App. |
-|   |  `VOID` - Payment cancel status when merchant calls for cancel API. |
-|   |  `FAILED` - Payment failed failed because of no coverage, outdated card details or similar. - Status - 102. |
-|   |  `REJECTED` - No user action in the Vipps app, i.e timeout. |
+| Status     | Description                      |
+| ---------- | -------------------------------- |
+| `INITIATE` | Merchant initiates the transaction. |
+| `REGISTER` | Vipps registers payment for Reserve. |
+| `RESERVE`  | Payment Reserved by user accepting transaction in App.  |
+| `SALE`     | Payment Captured with direct capture.  |
+| `CAPTURE`  | Payment Captured when merchant called for capture. |
+| `REFUND`   | Payment refunded when merchant called for refund. |
+| `CANCEL`   | Payment cancel status when user canceled payment in App. |
+| `VOID`     | Payment cancel status when merchant calls for cancel API. |
+| `FAILED`   | Payment failed failed because of no coverage, outdated card details or similar. |
+| `REJECTED` | No user action in the Vipps app, i.e timeout. |
 
 
 # HTTP response codes
