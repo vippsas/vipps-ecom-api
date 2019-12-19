@@ -621,6 +621,13 @@ Response:
 A callback to the merchant for receiving post-payment information:
 [`POST:/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST).
 
+### Callback prefix
+
+Vipps makes a callbacks to inform the merchant abouyt the status:
+[`[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST):
+
+See: [Callback statuses](#callback-statuses).
+
 ### Remove User Consent
 
 [`DELETE:[consetRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/removeUserConsentUsingDELETE)
@@ -749,6 +756,7 @@ These two truncated examples show the responses for a reservation of
 Reservations can be cancelled, and the payment flow aborted, under certain circumstances:
 
 * When the user cancels (rejects) the initiated payment in the Vipps app.
+* When the merchant cancels.
 * Timeouts: If the user does not confirm, etc.
 
 Partially captured reservations can not be cancelled.
@@ -990,7 +998,7 @@ See the [Swagger specification](./) for more details.
 | `500 Server Error`      | An internal Vipps problem.                              |
 
 HTTP responses with errors from the application gateway contain one error JSON object.
-Error responses produced from the application gateway include `401`, `403` and `422`.
+Error responses produced from the application gateway include `401`, `403`, `422` and `429`.
 
 HTTP responses with errors from the Vipps backend will contain an _array_ of JSON objects.
 
@@ -1188,7 +1196,7 @@ After the user has finished (or cancelled) the payment in the Vipps app, the use
 **Please note:** When the user arrives back in the merchant app or website, we
 _strongly_ recommend that you perform a call to the eCom API to check the state
 of the transaction. While some of the state of the eCom operation *can* be
-derived from things like wether or not user returned successfully from the
+derived from things like whether or not user returned successfully from the
 native app, the most reliable approach to know the state of the payment flow
 is always to query the eCom API once you arrive back in the merchant app/website:
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET).
