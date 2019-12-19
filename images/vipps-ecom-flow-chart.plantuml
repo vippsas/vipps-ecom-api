@@ -7,10 +7,10 @@ left to right direction
 [*] --> Initiate
 Initiate --> Reserve: User confirms
 Reserve --> Capture: Merchant captures
-Reserve --> Cancel: User cancels
+Reserve --> Cancel: Merchant cancels (potentially on behalf of the user)
 Capture --> Refund: Merchant refunds
 Capture --> [*]
 Cancel --> [*]
 Refund --> [*]
-Initiate --> Cancel: Timeout, or Merchant cancels
+Initiate --> Cancel: User cancels, or timeout
 @enduml
