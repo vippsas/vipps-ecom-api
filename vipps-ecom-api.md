@@ -989,12 +989,12 @@ See the [Swagger specification](./) for more details.
 | `429 Too Many Requests` | There is currently a limit of max 200 calls per second  |
 | `500 Server Error`      | An internal Vipps problem.                              |
 
-HTTP requests that are being stopped in the application gateway will result in
-an error JSON object, while requests that are produced from the backend will
-receive an array with a JSON object. Error codes that are produced from the
-application gateway include `401`, `403` and `422`.
+HTTP responses with errors from the application gateway contain one error JSON object.
+Error responses produced from the application gateway include `401`, `403` and `422`.
 
-See [Errors](#errors).
+HTTP responses with errors from the Vipps backend will contain an _array_ of JSON objects.
+
+See [Errors](#errors) for more details.
 
 # Authentication
 
