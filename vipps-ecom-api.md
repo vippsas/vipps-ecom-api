@@ -959,14 +959,14 @@ See [Timeouts](#timeouts) for details about timeouts.
 
 | Status     | Description                      |
 | ---------- | -------------------------------- |
-| `INITIATE` | Merchant initiates the transaction. |
+| `INITIATE` | Payment initiated, by merchant |
 | `REGISTER` | Vipps registers payment for Reserve. |
-| `RESERVE`  | Payment Reserved by user accepting transaction in App.  |
-| `SALE`     | Payment Captured with direct capture.  |
-| `CAPTURE`  | Payment Captured when merchant called for capture. |
-| `REFUND`   | Payment refunded when merchant called for refund. |
-| `CANCEL`   | Payment cancel status when user canceled payment in App. |
-| `VOID`     | Payment cancel status when merchant calls for cancel API. |
+| `RESERVE`  | Payment reserved, by user accepting the payment in Vipps.  |
+| `SALE`     | Payment captured with direct capture, by merchant  |
+| `CAPTURE`  | Payment captured with reserve capture, by merchant |
+| `REFUND`   | Payment refunded, by merchant.|
+| `CANCEL`   | Payment canceled, by user in Vipps |
+| `VOID`     | Payment canceled, by merchant |
 | `FAILED`   | Payment failed failed because of no coverage, outdated card details or similar. |
 | `REJECTED` | No user action in the Vipps app, i.e timeout. |
 
