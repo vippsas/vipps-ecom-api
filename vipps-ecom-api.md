@@ -10,74 +10,74 @@ checklist and the [FAQ](vipps-ecom-api-faq.md).
 
 # Table of contents
 
-- [Flow diagram](#flow-diagram)
+- [Vipps eCommerce API](#vipps-ecommerce-api)
+- [Table of contents](#table-of-contents)
+  - [Flow diagram](#flow-diagram)
 - [API endpoints](#api-endpoints)
 - [Initiate](#initiate)
-  * [Regular eCommerce payments](#regular-ecommerce-payments)
-  * [Express checkout payments](#express-checkout-payments)
-  * [Initiate payment flow: Phone and browser](#initiate-payment-flow--phone-and-browser)
+  - [Regular eCommerce payments](#regular-ecommerce-payments)
+  - [Express checkout payments](#express-checkout-payments)
+  - [Initiate payment flow: Phone and browser](#initiate-payment-flow-phone-and-browser)
       - [Vipps installed](#vipps-installed)
       - [Vipps not installed](#vipps-not-installed)
-    + [Desktop browser initiated payments](#desktop-browser-initiated-payments)
-    + [Payments initiated in an app](#payments-initiated-in-an-app)
-  * [Initiate payment flow: API calls](#initiate-payment-flow--api-calls)
-  * [Payment identification](#payment-identification)
-  * [orderId recommendations](#orderid-recommendations)
-  * [URL Validation](#url-validation)
-  * [Callbacks](#callbacks)
-    + [Callback endpoints](#callback-endpoints)
-    + [Callback examples](#callback-examples)
-    + [Authorization for callbacks](#authorization-for-callbacks)
-    + [Vipps callback servers](#vipps-callback-servers)
-    + [Callback URLs must be reachable](#callback-urls-must-be-reachable)
-    + [Callback statuses](#callback-statuses)
-  * [Timeouts](#timeouts)
-    + [Using a phone](#using-a-phone)
-    + [Using a laptop/desktop](#using-a-laptop-desktop)
-  * [Express checkout API endpoints required on the merchant side](#express-checkout-api-endpoints-required-on-the-merchant-side)
+    - [Desktop browser initiated payments](#desktop-browser-initiated-payments)
+    - [Payments initiated in an app](#payments-initiated-in-an-app)
+  - [Initiate payment flow: API calls](#initiate-payment-flow-api-calls)
+  - [Payment identification](#payment-identification)
+  - [orderId recommendations](#orderid-recommendations)
+  - [URL Validation](#url-validation)
+  - [Callbacks](#callbacks)
+    - [Callback endpoints](#callback-endpoints)
+    - [Callback examples](#callback-examples)
+    - [Authorization for callbacks](#authorization-for-callbacks)
+    - [Vipps callback servers](#vipps-callback-servers)
+    - [Callback URLs must be reachable](#callback-urls-must-be-reachable)
+    - [Callback statuses](#callback-statuses)
+  - [Timeouts](#timeouts)
+    - [Using a phone](#using-a-phone)
+    - [Using a laptop/desktop](#using-a-laptopdesktop)
+  - [Express checkout API endpoints required on the merchant side](#express-checkout-api-endpoints-required-on-the-merchant-side)
       - [Get shipping details](#get-shipping-details)
-    + [Transaction update](#transaction-update)
-    + [Remove User Consent](#remove-user-consent)
-  * [Skip landing page](#skip-landing-page)
+    - [Transaction update](#transaction-update)
+    - [Remove User Consent](#remove-user-consent)
+  - [Skip landing page](#skip-landing-page)
 - [Reserve](#reserve)
-  * [The Vipps landing page](#the-vipps-landing-page)
+  - [The Vipps landing page](#the-vipps-landing-page)
 - [Capture](#capture)
-  * [Reserve capture](#reserve-capture)
-  * [Direct capture](#direct-capture)
-  * [Partial capture](#partial-capture)
+  - [Reserve capture](#reserve-capture)
+  - [Direct capture](#direct-capture)
+  - [Partial capture](#partial-capture)
 - [Cancel](#cancel)
 - [Refund](#refund)
-  * [Recurring eCommerce payments](#recurring-ecommerce-payments)
+  - [Recurring eCommerce payments](#recurring-ecommerce-payments)
 - [Get payment details](#get-payment-details)
-  * [Payment states](#payment-states)
-  * [Requests and responses](#requests-and-responses)
-  * [Example response](#example-response)
-  * [Polling guidelines](#polling-guidelines)
+  - [Payment states](#payment-states)
+  - [Requests and responses](#requests-and-responses)
+  - [Example response](#example-response)
+  - [Polling guidelines](#polling-guidelines)
 - [Get payment status](#get-payment-status)
 - [HTTP response codes](#http-response-codes)
 - [Authentication](#authentication)
-  * [Access token](#access-token)
+  - [Access token](#access-token)
 - [Idempotency](#idempotency)
-  * [Exception handling](#exception-handling)
-    + [Connection timeout](#connection-timeout)
-    + [Callback aborted or interrupted](#callback-aborted-or-interrupted)
-    + [PSP connection issues](#psp-connection-issues)
+  - [Exception handling](#exception-handling)
+    - [Connection timeout](#connection-timeout)
+    - [Callback aborted or interrupted](#callback-aborted-or-interrupted)
+    - [PSP connection issues](#psp-connection-issues)
 - [App integration](#app-integration)
-  * [App-switch between browser and the Vipps app](#app-switch-between-browser-and-the-vipps-app)
-    + [App-switch on iOS](#app-switch-on-ios)
+  - [App-switch between browser and the Vipps app](#app-switch-between-browser-and-the-vipps-app)
+    - [App-switch on iOS](#app-switch-on-ios)
       - [Switch from merchant app to the Vipps app](#switch-from-merchant-app-to-the-vipps-app)
       - [Redirect back to the merchant app from Vipps app](#redirect-back-to-the-merchant-app-from-vipps-app)
-        * [Registering a 3rd party app with URL scheme and handling custom URL calls](#registering-a-3rd-party-app-with-url-scheme-and-handling-custom-url-calls)
-    + [App-switch on Android](#app-switch-on-android)
+        - [Registering a 3rd party app with URL scheme and handling custom URL calls](#registering-a-3rd-party-app-with-url-scheme-and-handling-custom-url-calls)
+    - [App-switch on Android](#app-switch-on-android)
       - [Switching from merchant app to the Vipps app](#switching-from-merchant-app-to-the-vipps-app)
       - [Switching back to the merchant app from Vipps app](#switching-back-to-the-merchant-app-from-vipps-app)
-        * [Return back to merchant app by actively deeplinking into it from Vipps](#return-back-to-merchant-app-by-actively-deeplinking-into-it-from-vipps)
-        * [Redirect back to merchant app by simply closing the Vipps app](#redirect-back-to-merchant-app-by-simply-closing-the-vipps-app)
-- [Errors](#errors)
-  * [Error object in the response](#error-object-in-the-response)
-  * [Error groups](#error-groups)
-  * [Error codes](#error-codes)
-- [Questions?](#questions-)
+        - [Return back to merchant app by actively deeplinking into it from Vipps](#return-back-to-merchant-app-by-actively-deeplinking-into-it-from-vipps)
+        - [Redirect back to merchant app by simply closing the Vipps app](#redirect-back-to-merchant-app-by-simply-closing-the-vipps-app)
+  - [Error groups](#error-groups)
+  - [Error codes](#error-codes)
+- [Questions?](#questions)
 
 
 ## Flow diagram
@@ -116,7 +116,7 @@ Vipps eCommerce API offers 2 types of payments:
 
 Examples from a demo website:
 
-![Regular and express checkout](images/figma-regular-express-checkout.png)
+![Regular and express checkout](images/vipps-flow-web.png)
 
 ## Regular eCommerce payments
 
@@ -196,7 +196,7 @@ If the Vipps app is installed, it is automatically opened.
 
 The push notification, and Vipps after opening the notification:
 
-![Push notification](images/figma-push-notification.png)
+![Push notification](images/vipps-flow-device.png)
 
 ### Payments initiated in an app
 
@@ -650,14 +650,14 @@ If you need to be whitelisted, instructions for this can be found in the
 
 # Reserve
 
-![Payment confirmation](images/figma-payment-confirmation.png)
+![Payment confirmation](images/vipps-flow-reserve.png)
 
 When the user confirms, the payment status changes to `RESERVE`.
 The respective amount will be reserved for future capturing.
 
 ## The Vipps landing page
 
-![The Vipps landing page](images/figma-vipps-landing-page.png)
+![The Vipps landing page](images/vipps-flow-landing-page.png)
 
 When a user has selected Vipps for payment, the Vipps landing page
 detects whether user is using a desktop browser or a mobile browser:
