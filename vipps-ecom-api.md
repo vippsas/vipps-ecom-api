@@ -9,9 +9,7 @@ with Swagger specifications, Postman collections, example code, integration
 checklist and the [FAQ](vipps-ecom-api-faq.md).
 
 # Table of contents
-- [Vipps eCommerce API](#vipps-ecommerce-api)
-- [Table of contents](#table-of-contents)
-  - [Flow diagram](#flow-diagram)
+- [Flow diagram](#flow-diagram)
 - [API endpoints](#api-endpoints)
 - [Initiate](#initiate)
   - [Regular eCommerce payments](#regular-ecommerce-payments)
