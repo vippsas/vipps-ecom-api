@@ -9,7 +9,9 @@ with Swagger specifications, Postman collections, example code, integration
 checklist and the [FAQ](vipps-ecom-api-faq.md).
 
 # Table of contents
-- [Flow diagram](#flow-diagram)
+- [Vipps eCommerce API](#vipps-ecommerce-api)
+- [Table of contents](#table-of-contents)
+  - [Flow diagram](#flow-diagram)
 - [API endpoints](#api-endpoints)
 - [Initiate](#initiate)
   - [Regular eCommerce payments](#regular-ecommerce-payments)
@@ -81,7 +83,7 @@ checklist and the [FAQ](vipps-ecom-api-faq.md).
 
 This diagram shows a simplified payment flow:
 
-![Vipps checkout flow chart](images/vipps-ecom-flow-chart.svg)
+![Vipps checkout flow chart](images/flow-diagram.png)
 
 See [Get payment status](#get-payment-status) for more details about
 the detailed flow, and [Payment states](#payment-states) for the corresponding
