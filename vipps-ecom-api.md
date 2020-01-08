@@ -894,7 +894,8 @@ The `operationSuccess` filed indicates whether an operation was successful or no
         "capturedAmount": 20000,
         "remainingAmountToCapture": 0,
         "refundedAmount": 20000,
-        "remainingAmountToRefund": 0
+        "remainingAmountToRefund": 0,
+        "bankIdentificationNumber": 492560
     },
     "transactionLogHistory": [
         {
