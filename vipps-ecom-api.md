@@ -77,7 +77,7 @@ checklist and the [FAQ](vipps-ecom-api-faq.md).
 - [Questions?](#questions)
 
 
-## Flow diagram
+# Flow diagram
 
 This diagram shows a simplified payment flow:
 
