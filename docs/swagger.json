@@ -2002,6 +2002,11 @@
             "format": "int32",
             "description": "Total remaining amount to refund",
             "example": 20000
+          },
+          "bankIdentificationNumber": {
+            "type": "string",
+            "description": "Bank Identification Number, first 6 digit of card number",
+            "example": 123456
           }
         }
       },
