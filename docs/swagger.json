@@ -736,6 +736,94 @@
         }
       }
     },
+    "/ecomm/v2/integration-test/payments/{orderId}/approve": {
+      "post": {
+        "tags": [
+          "Vipps eCom API"
+        ],
+        "summary": "Force Approve Payment ",
+        "description": "The force approve endpoint allows developers to approve a payment through the Vipps eCom API without the use of the Vipps App. This is useful for automated testing. The endpoint is  only available in our Test environment. Attempted use of the endpoint in production will  not be tolerated.",
+        "operationId": "integrationTestApprovePayment",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "description": "Order id specified in the request body of initiate payment.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Authorization-token is obtained by running the /accesstoken/get request.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "Content-Type",
+            "description": "`application/json`",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "Ocp-Apim-Subscription-Key",
+            "description": "The subscription-key for your product is available on portal.vipps.no, under the 'Utvikler' tab.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "X-Request-Id",
+            "description": "Id used for making requests idempotent. Adding this ID will allow the merchant to retry requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Max 30 characters.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/ForceApproveRequest"
+        },
+        "responses": {
+          "200": {
+            "description": "Force approve payment response"
+          },
+          "400": {
+            "description": "Bad request (Missing a required parameter or bad request format)"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "402": {
+            "description": "Payment Failed"
+          },
+          "403": {
+            "description": "Request Forbidden"
+          },
+          "404": {
+            "description": "Resource Not Found"
+          },
+          "405": {
+            "description": "Request method not supported"
+          },
+          "415": {
+            "description": "Unsupported media type"
+          },
+          "500": {
+            "description": "Something went wrong from Vipps Server side"
+          }
+        }
+      }
+    },
     "/ecomm/v2/payments/{orderId}/details": {
       "get": {
         "tags": [
@@ -909,6 +997,17 @@
         },
         "description": "paymentActionsRequest",
         "required": true
+      },
+      "ForceApproveRequest": {
+        "content": {
+          "application/json;charset=UTF-8": {
+            "schema": {
+              "$ref": "#/components/schemas/ForceApproveRequest"
+            }
+          }
+        },
+        "description": "ForceApproveRequest",
+        "required": true
       }
     },
     "schemas": {
@@ -920,6 +1019,19 @@
           },
           "transaction": {
             "$ref": "#/components/schemas/Transaction"
+          }
+        }
+      },
+      "ForceApproveRequest": {
+        "type": "object",
+        "properties": {
+          "customerPhoneNumber": {
+            "type": "string",
+            "description": "Target customer phone number"
+          },
+          "token": {
+            "type": "string",
+            "description": "The token value recieved in the `url` property in the Initiate response"
           }
         }
       },
