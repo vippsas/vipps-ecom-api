@@ -17,6 +17,10 @@ Click the link underneath to get access to the eCommerce Postman collection.
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/02daf42d90cd59dfd63a)
 
+Alternatively, manually import the collection by following the steps below:
+1. Click `Import` in the upper left corner.
+2. Import the [vipps-ecom-api-postman-collection.json](https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/tools/vipps-ecom-api-postman-collection.json) file
+
 #### Step 2: Import the Postman Environment
 
 1. Click `Import` in the upper left corner.
