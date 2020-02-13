@@ -499,8 +499,10 @@ Please make sure that the callback URLs are reachable:
 
 * Vipps does _not_ support sending requests to all ports, so to be safe use
   common port numbers such as: 80, 443, 8080.
-* Vipps does _not_ support callback URLs that return `HTTP 301 Redirect` or
-  `HTTP 302 Permanently Moved`. The callback URLs _must_ be directly reachable.
+* Vipps does _not_ support callback URLs that return `HTTP 301 Redirect`,
+  `HTTP 302 Permanently Moved` or `HTTP 307 Temporary Redirect`.
+  Vipps will not follow to a `Location`.
+  The callback URLs _must_ be directly reachable. 
 
 ### Callback statuses
 
