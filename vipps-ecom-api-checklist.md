@@ -6,7 +6,7 @@ Document version 1.1.1
 
 For examples of requests and responses, see the Postman collection in [tools](tools/)
 
-# Checklist
+## Checklist
 
 - [ ] Integrate _all_ the [API endpoints](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints):
     - [ ] Initiate [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
@@ -22,7 +22,7 @@ For examples of requests and responses, see the Postman collection in [tools](to
     - [ ] The Merchant _must not_ rely on `fallback` alone
     - [ ] The Vipps branding must be according to the [Vipps design guidelines](https://github.com/vippsas/vipps-design-guidelines)
 
-# Flow to go live for direct integrations
+## Flow to go live for direct integrations
 
 1. The merchant orders [Vipps på Nett](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).
 2. Vipps completes customer control (KYC, PEP, AML, etc).
