@@ -4,9 +4,9 @@ Document version 1.1.0.
 
 Issues and PRs are welcome.
 
-# Key differences
+## Key differences
 
-## Landing page
+### Landing page
 
 Universal payment flows are essential for a good user experience. This is why the eCom v2 API has a single, mandatory landing page for all non-mobile payments.
 
@@ -16,7 +16,7 @@ The initiate payment response will contain a unique URL for each order. Either a
 
 *Note: On mobile devices "Universal Linking" will be used for `https` URLs, which will automatically open [Vipps](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#desktop-browsers-and-mobile-browsers).*
 
-### Skip landing page
+#### Skip landing page
 
 Skipping the landing page is reserved for special cases, where displaying it is not possible. 
 See the details in the 
@@ -25,17 +25,17 @@ in the API guide.
 
 See the [FAQ](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-faq.md#is-it-possible-to-skip-the-landing-page).
 
-## Phone number is optional
+### Phone number is optional
 
 The initiate payment call no longer requires a phone number. Instead, the user will be asked to fill in the phone number on the landing page. If phone number is included in the initiate payment body, then the landing page wil be "pre-filled" with that number.
 
-## `isApp: true/false`
+### `isApp: true/false`
 
 If `isApp` is `false` in the initiate payment body, then a `https` URL with a unique token for that specific order will be generated.
 
 If `isApp` is `true` then an appswitch deeplink URL with a unique token for that specific order will be generated.
 
-### Initiate payment example
+#### Initiate payment example
 
 See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#initiate-payment-flows) for full overview of initiate payment.
 
@@ -77,7 +77,7 @@ See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.
 }
 ```
 
-## Fallback URL is required
+### Fallback URL is required
 
 The initiate payment must contain a `fallBack` URL. This is where the user will be redirect to after the payment. 
 This is set in the initiate payment body.
@@ -86,7 +86,7 @@ For apps, this URL will be the appswitch URL.
 
 See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation) for details.
 
-# Migration
+## Migration
 
 If you have already signed an agreement with Vipps, and have API keys for eCom v1, you can use the same API keys
 for eCom v2. 
