@@ -8,7 +8,7 @@ See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-ap
 with Swagger specifications, Postman collections, example code, integration
 checklist and the [FAQ](vipps-ecom-api-faq.md).
 
-# Table of contents
+## Table of contents
 - [Flow diagram](#flow-diagram)
 - [API endpoints](#api-endpoints)
 - [Initiate](#initiate)
@@ -77,7 +77,7 @@ checklist and the [FAQ](vipps-ecom-api-faq.md).
 - [Questions?](#questions)
 
 
-# Flow diagram
+## Flow diagram
 
 This diagram shows a simplified payment flow:
 
@@ -87,7 +87,7 @@ See [Get payment status](#get-payment-status) for more details about
 the detailed flow, and [Payment states](#payment-states) for the corresponding
 states.
 
-# API endpoints
+## API endpoints
 
 The Vipps eCommerce API (eCom API) offers functionality for online payments.
 Payments are supported in both web browsers and in native apps (via deep-linking).
@@ -105,7 +105,7 @@ Payments are supported in both web browsers and in native apps (via deep-linking
 See the
 [eCom API checklist](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md).
 
-# Initiate
+## Initiate
 
 Vipps eCommerce API offers 2 types of payments:
 1. Regular eCommerce payments
@@ -140,7 +140,7 @@ See the
 
 ## Express checkout payments
 
-Express checkout is an solution for letting the user automatically share their
+The Express checkout is a solution for letting the user automatically share their
 Vipps profile address information with merchant and choose a shipping option.
 
 To perform an express checkout, the merchant needs to send
@@ -168,13 +168,13 @@ remove this consent (via the Profile -> Security -> "Access to your information"
 The Vipps landing page will detect if the Vipps native app is installed on the phone.
 If the Vipps app is installed, it is automatically opened.
 
-#### Vipps installed
+### Vipps installed
 
 1. Vipps is invoked.
 2. The user accepts or rejects the payment request in Vipps.
 3. Once payment process is completed, Vipps redirects to the `fallBack` URL that merchant provided earlier (see above).
 
-#### Vipps not installed
+### Vipps not installed
 
 1. The user is prompted for the mobile number on the Vipps landing page.
 2. Vipps sends a push notification. The landing page is not closed in this case.
@@ -211,7 +211,7 @@ expected to use the `vipps://` URL to deeplink straight to the Vipps app.
 5. The user accepts or rejects the payment request in Vipps.
 6. When the payment process is completed, Vipps redirects to the merchant using the `fallBack` URL.
 
-## Initiate payment flow: API calls
+### Initiate payment flow: API calls
 
 Swagger:
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST)
@@ -565,7 +565,7 @@ These endpoints are included in the Swagger file for reference.
 The following endpoints are to be implemented by merchants, in order for Vipps to make calls to them.
 The documentation is included in the Swagger file for reference only - these endpoints are _not_ callable at Vipps.
 
-#### Get shipping details
+### Get shipping details
 
 This API call is for express payments, and allows Vipps to get the shipping
 cost and method based on the provided address and product details. This is only
@@ -647,7 +647,7 @@ If you need to be whitelisted, instructions for this can be found in the
 [FAQ](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-faq.md#is-it-possible-to-skip-the-landing-page).
 
 
-# Reserve
+## Reserve
 
 ![Payment confirmation](images/vipps-flow-reserve.png)
 
@@ -679,7 +679,7 @@ eliminating the need for re-typing it on subsequent purchases.
 
 See also: [Skip landing page](#skip-landing-page).
 
-# Capture
+## Capture
 
 ## Reserve capture
 
@@ -745,7 +745,7 @@ These two truncated examples show the responses for a reservation of
 }
 ```
 
-# Cancel
+## Cancel
 
 Reservations can be cancelled, and the payment flow aborted, under certain circumstances:
 
@@ -795,7 +795,7 @@ Response:
 }
 ```
 
-# Refund
+## Refund
 
 The merchant can initiate a refund of the captured amount.
 The refund can be a partial or full.
@@ -848,14 +848,14 @@ Recurring eCommerce is its own seperate product and can be found descriped in de
 our [Recurring Repo.](https://github.com/vippsas/vipps-recurring-api)
 
 
-# Get payment details
+## Get payment details
 
 Retrieves the full history of a payment, and whether the operations were
 successful or not.
 
 Swagger: [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
 
-## Payment states
+### Payment states
 
 | #   | From-state | To-state | Description                                   | Operation |
 | --- | ---------- | -------- | --------------------------------------------- | -------------- |
@@ -887,7 +887,7 @@ The `operationSuccess` filed indicates whether an operation was successful or no
 | `SALE`     | Payment captured with direct capture, by merchant |   
 | `VOID`     | Payment canceled, by merchant |
 
-## Example response
+### Example response
 
 ```json
 {
@@ -956,7 +956,7 @@ and values should be adapted to the specific case.
 
 See [Timeouts](#timeouts) for details about timeouts.
 
-# Get payment status
+## Get payment status
 
 **IMPORTANT: This endpoint is deprecated. Use [Get payment details](#get-payment-details).**
 
@@ -974,7 +974,7 @@ See [Timeouts](#timeouts) for details about timeouts.
 | `REJECTED` | No user action in the Vipps app, i.e timeout. |
 
 
-# HTTP response codes
+## HTTP response codes
 
 This API returns the following HTTP statuses in the responses.
 See the [Swagger specification](./) for more details.
@@ -999,7 +999,7 @@ HTTP responses with errors from the Vipps backend will contain an _array_ of JSO
 
 See [Errors](#errors) for more details.
 
-# Authentication
+## Authentication
 
 All API calls are authenticated and authorized based on the application access
 token (JWT bearer token) and a subscription key (`Ocp-Apim-Subscription-Key`),
@@ -1010,7 +1010,7 @@ and these headers are required:
 | `Authorization` | `Bearer <JWT access token>` | Type: Authorization token. This is available on [portal.vipps.no](https://portal.vipps.no). |
 | `Ocp-Apim-Subscription-Key` | Base 64 encoded string | The subscription key for the eCom API. This is available on [portal.vipps.no](https://portal.vipps.no). |
 
-## Access token
+### Access token
 
 The Access Token API provides the JWT bearer token:
 [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-ecom-api/#/Authorization_Service/fetchAuthorizationTokenUsingPost).
@@ -1092,7 +1092,7 @@ Example of an error response body (formatted for readability):
 }
 ```
 
-# Idempotency
+## Idempotency
 
 In a capture request the merchant may also use the `X-Request-Id`header.
 This header is an idempotency header ensuring that if the merchant retries
@@ -1177,7 +1177,7 @@ The merchant should then call
 to check if the transaction request is processed before making a new call,
 using same idempotency key (see [Idempotency](#idempotency)).
 
-# App integration
+## App integration
 
 Merchants may implement deep-linking, to trigger the Vipps app (we refer to this as "app-switch" here).
 
@@ -1247,7 +1247,7 @@ The Vipps mobile application will use the URL to launch the merchant application
 For example, if your `fallBack` URL is `merchantApp://result?myAppData`, Vipps
 will append the status like: `merchantApp://result?myAppData&status=301`.
 
-##### Registering a 3rd party app with URL scheme and handling custom URL calls
+#### Registering a 3rd party app with URL scheme and handling custom URL calls
 
 See the official Apple documentation:
 [Defining a Custom URL Scheme for Your App](https://developer.apple.com/documentation/uikit/core_app/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app)
@@ -1293,7 +1293,7 @@ Once the user has paid (or cancelled), the Vipps app supports two ways to return
 
 In both cases, the merchant app should query the ecom API for updated status on the payment once user returns from the Vipps app.
 
-##### Return back to merchant app by actively deeplinking into it from Vipps
+#### Return back to merchant app by actively deeplinking into it from Vipps
 
 With this approach, the merchant app has to have its own URL scheme registered so the Vipps app can actively open the merchant app again after payment/cancellation.
 
@@ -1330,7 +1330,7 @@ protected void onNewIntent(Intent intent) {
 }
 ```
 
-##### Redirect back to merchant app by simply closing the Vipps app
+#### Redirect back to merchant app by simply closing the Vipps app
 
 With this approach, the merchant app does not have to register/handle deeplink urls.
 
@@ -1352,9 +1352,9 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 ```
 
 
-# Errors
+## Errors
 
-## Error object in the response
+### Error object in the response
 
 See [HTTP response codes](#http-response-codes).
 
@@ -1431,7 +1431,7 @@ allowed to provide more details.
 
 
 
-# Questions?
+## Questions?
 
 We're always happy to help with code or other questions you might have!
 Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),
