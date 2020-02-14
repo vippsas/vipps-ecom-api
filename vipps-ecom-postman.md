@@ -1,4 +1,4 @@
-## Postman
+# Postman
 
 [Postman](https://www.getpostman.com/) is a common tool for working with REST APIs.
 We offer a [Postman Collection](https://www.getpostman.com/collection) to make development easier.
@@ -9,9 +9,9 @@ endpoints, and see the full `request` and `response` for each call.
 
 We also have a short [getting started guide to Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
 
-### Setting up Postman
+## Setting up Postman
 
-#### Step 1: Get the Postman Collection
+### Step 1: Get the Postman Collection
 
 Click the link underneath to get access to the eCommerce Postman collection.
 
@@ -21,12 +21,12 @@ Alternatively, manually import the collection by following the steps below:
 1. Click `Import` in the upper left corner.
 2. Import the [vipps-ecom-api-postman-collection.json](https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/tools/vipps-ecom-api-postman-collection.json) file
 
-#### Step 2: Import the Postman Environment
+### Step 2: Import the Postman Environment
 
 1. Click `Import` in the upper left corner.
 2. Import the [vipps-ecom-api-postman-enviroment.json](https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/tools/vipps-ecom-api-postman-enviroment.json) file
 
-#### Step 3: Setup Postman Environment
+### Step 3: Setup Postman Environment
 
 1. Click the "eye" icon in the top right corner.
 2. In the dropdown window, click `Edit` in the top right corner.
@@ -36,7 +36,7 @@ Alternatively, manually import the collection by following the steps below:
    - `merchantSerialNumber`
    - `Ocp-Apim-Subscription-Key`
 
-# Questions?
+## Questions?
 
 We're always happy to help with code or other questions you might have!
 Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),
