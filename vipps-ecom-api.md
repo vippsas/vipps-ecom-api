@@ -502,7 +502,7 @@ Please make sure that the callback URLs are reachable:
 * Vipps does _not_ support callback URLs that return `HTTP 301 Redirect`,
   `HTTP 302 Permanently Moved` or `HTTP 307 Temporary Redirect`.
   Vipps will not follow to a `Location`.
-  The callback URLs _must_ be directly reachable. 
+  The callback URLs _must_ be directly reachable.
 
 ### Callback statuses
 
@@ -553,8 +553,13 @@ This means that the user has a total of 10 minutes to complete the payment.
 
 ## Express checkout API endpoints required on the merchant side
 
-The below endpoints are provided by the _merchant_ and consumed by Vipps during express checkout payments.
-These endpoints are included in the Swagger file for reference.
+The below endpoints are provided by the _merchant_ and consumed by Vipps during
+express checkout payments. These endpoints are not required when using
+regular checkout.
+
+These endpoints are to be implemented by merchants in order for Vipps
+to make calls to them. The documentation is included in the Swagger file for
+reference only - these endpoints are _not_ callable at Vipps.
 
 | Operation           | Description         | Endpoint          |
 | ------------------- | ------------------- | ----------------- |
@@ -562,8 +567,9 @@ These endpoints are included in the Swagger file for reference.
 | Transaction Update | A callback to the merchant for receiving post-payment information. | [`POST:/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)  |
 | Remove user consent | Used to inform merchant when the Vipps user removes consent to share information.  | [`DELETE:/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/removeUserConsentUsingDELETE)  |
 
-The following endpoints are to be implemented by merchants, in order for Vipps to make calls to them.
-The documentation is included in the Swagger file for reference only - these endpoints are _not_ callable at Vipps.
+Please not that if the shipping details are static (do not vary based on the
+address), the parameter `staticShippingDetails` can be used. See the
+Swagger file for details.
 
 ### Get shipping details
 
