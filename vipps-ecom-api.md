@@ -568,7 +568,11 @@ reference only - these endpoints are _not_ callable at Vipps.
 | Remove user consent | Used to inform merchant when the Vipps user removes consent to share information.  | [`DELETE:/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/removeUserConsentUsingDELETE)  |
 
 Please not that if the shipping details are static (do not vary based on the
-address), the parameter `staticShippingDetails` can be used. See the
+address), the parameter `staticShippingDetails` can be used in the initiate call.
+If so, there is no need to implement
+[`POST:/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/fetchShippingCostUsingPOST).
+
+See the
 Swagger file for details, and the
 [example here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#initiate-payment-flow-api-calls).
 
