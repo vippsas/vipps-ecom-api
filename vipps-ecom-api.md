@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.0.1.
+Document version 2.0.2.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with Swagger specifications, Postman collections, example code, integration
@@ -729,6 +729,7 @@ If one or more partial captures have been made, the remaining amount
 (if there is one) will be automatically refunded after a few days.
 See the FAQ for
 [details](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#for-how-long-is-an-initiated-payment-reserved).
+
 It is not possible to refund the remaining amount (since it has not been captured),
 and it is not possible to cancel the reservation, since some of it has been captured.
 
@@ -815,6 +816,8 @@ Partial refunds are done by specifying an `amount` which is lower than the captu
 The refunded amount cannot be larger than the captured amount.
 
 In a capture request the merchant may also use the `X-Request-Id`header. This header is an idempotency header ensuring that if the merchant retries a request with the same `X-Request-Id` the retried request will not make additional changes.
+
+Refunds can be made up to 365 days after capture. 
 
 Swagger: [`POST:/ecomm/v2/payments/order123abc/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/refundPaymentUsingPOST)
 
