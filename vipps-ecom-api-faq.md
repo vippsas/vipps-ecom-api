@@ -6,7 +6,7 @@ See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.2.0.
+Document version 1.2.1.
 
 ## Table of contents
 
@@ -130,6 +130,8 @@ To request this feature, [contact Vipps](https://github.com/vippsas/vipps-develo
 This depends on your eCommerce solution. The Vipps API supports refunds with
 [`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/refundPaymentUsingPOST).
 For details on how to offer refunds, please refer to the documentation for your eCommerce solution.
+
+Refunds can be made up to 365 days after capture. 
 
 ## How can I refund only a part of a payment?
 
