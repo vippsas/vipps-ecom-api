@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.0.2.
+Document version 2.0.3.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with Swagger specifications, Postman collections, example code, integration
@@ -277,8 +277,13 @@ An express payment example with more parameters provided:
 }
 ```
 
-Vipps responds with an URL.
-The URL depends on whether the `initiate` request was provided the `isApp` parameter:
+**Please note:** Do not send sensitive information in the `transactionText` field.
+See
+[Datatilsynet's information](https://www.datatilsynet.no/rettigheter-og-plikter/personopplysninger/)
+about which types of information is sensitive (in Norwegian).
+
+Vipps responds to the4 initiate request with an URL.
+The URL depends on whether the initiate request was provided the `isApp` parameter:
 
 * `"isApp":false` (or not provided): The URL is for the Vipps "landing page", with `https://`.
 * `"isApp": true`: The URL is for an deeplink, for app-switch to the Vipps app, with `vipps://`.
@@ -817,7 +822,7 @@ The refunded amount cannot be larger than the captured amount.
 
 In a capture request the merchant may also use the `X-Request-Id`header. This header is an idempotency header ensuring that if the merchant retries a request with the same `X-Request-Id` the retried request will not make additional changes.
 
-Refunds can be made up to 365 days after capture. 
+Refunds can be made up to 365 days after capture.
 
 Swagger: [`POST:/ecomm/v2/payments/order123abc/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/refundPaymentUsingPOST)
 
