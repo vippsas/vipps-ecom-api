@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.0.3.
+Document version 2.0.4.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with Swagger specifications, Postman collections, example code, integration
@@ -21,6 +21,7 @@ checklist and the [FAQ](vipps-ecom-api-faq.md).
     - [Payments initiated in an app](#payments-initiated-in-an-app)
   - [Initiate payment flow: API calls](#initiate-payment-flow-api-calls)
   - [Payment identification](#payment-identification)
+  - [Payment retries](#payment-retries)
   - [orderId recommendations](#orderid-recommendations)
   - [URL Validation](#url-validation)
   - [Callbacks](#callbacks)
@@ -320,6 +321,16 @@ To initiate an express checkout payment the payment initiation call must include
 the `"paymentType": "eComm Express Payment"` parameter. If this parameter is not
 passed, the payment type will default to regular payment.
 
+## Payment retries
+
+If a user cancels, or does not act, on a payment, there is no way to "retry"
+a payment.
+
+The initiate call is not idempotent, so the closest to a "retry"
+is to make a new initiate call with a new `orderId`. Vipps has no concept
+of relation between orders, so the "retry" payment is in no way connected
+to the first payment atempt.
+
 ## orderId recommendations
 
 A `orderId` must be unique for the MSN (Merchant Serial Number, the id of
@@ -343,7 +354,6 @@ With multiple sale units, prefixing the `orderId` with the MSN
 for each sale unit is recommended: If the MSN is `654321`, the
 `orderId`s could start at `654321-0000-0000-0001` and increment by 1
 for each order, or some similar, unique and readable pattern.
-
 
 ## URL Validation
 
