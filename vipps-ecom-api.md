@@ -329,7 +329,7 @@ a payment.
 The initiate call is not idempotent, so the closest to a "retry"
 is to make a new initiate call with a new `orderId`. Vipps has no concept
 of relation between orders, so the "retry" payment is in no way connected
-to the first payment atempt.
+to the first payment attempt.
 
 ## orderId recommendations
 
