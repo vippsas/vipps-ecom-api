@@ -6,7 +6,7 @@ See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.2.1.
+Document version 1.3.1.
 
 ## Table of contents
 
@@ -20,6 +20,7 @@ Document version 1.2.1.
 - [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page-)
 - [How can I refund a payment?](how-can-i-refund-a-payment)
 - [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
+- [Is it possible for a merchant to pay a Vipps user?](is-it-possible-for-a-merchant-to-pay-a-vipps-user-)
 - [Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
 - [Can I split payments to charge a fee?](#can-i-split-payments-to-charge-a-fee)
 - [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-cant-find-it)
@@ -131,7 +132,7 @@ This depends on your eCommerce solution. The Vipps API supports refunds with
 [`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/refundPaymentUsingPOST).
 For details on how to offer refunds, please refer to the documentation for your eCommerce solution.
 
-Refunds can be made up to 365 days after capture. 
+Refunds can be made up to 365 days after capture.
 
 ## How can I refund only a part of a payment?
 
@@ -139,6 +140,10 @@ Case: A customer has placed an order of of two items for a total of 1000 NOK. Yo
 
 It's not possible to cancel the remaining reservation after a partial capture through Vipps, but when the payment is confirmed
 in the bank (normally 2-3 days later), the money will automatically be available to the customer.
+
+## Is it possible for a merchant to pay a Vipps user?
+
+No, Vipps has no functionality for paying to a Vipps user.
 
 ## Is there an API for retrieving information about a Vipps user?
 
