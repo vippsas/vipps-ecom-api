@@ -970,7 +970,7 @@ The `operationSuccess` filed indicates whether an operation was successful or no
 ```
 
 **Please note:** The `transactionSummary` will not be part of the response if
-the user not reacted to the Vipps landing page or app-switch.
+the user not reacted to the Vipps landing page or app-switch. `bankIdentificationNumber` will be part of `transactionSummary` only in the response of `GET:/ecomm/v2/payments/{orderId}/details` endpoint.
 
 ## Polling guidelines
 
