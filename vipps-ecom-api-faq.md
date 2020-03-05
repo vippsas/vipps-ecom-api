@@ -143,7 +143,8 @@ in the bank (normally 2-3 days later), the money will automatically be available
 
 ## Is it possible for a merchant to pay a Vipps user?
 
-No, Vipps has no functionality for paying to a Vipps user.
+No, Vipps has no functionality for paying to a Vipps user,
+except for refunding (part of) a payment.
 
 ## Is there an API for retrieving information about a Vipps user?
 
