@@ -323,7 +323,7 @@ to which sale units. You decide what the `orderId` contains, and it may be up to
 [orderId recommendation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#orderid-recommendations).
 You will use the same API keys for all stores.
 
-2: Multiple sale units: One sale unit per store. Each sale un it will have it's
+2: Multiple sale units: One sale unit per store. Each sale unit will have it's
 own MSN (Merchant Serial Number), and the `orderId` may be whatever you want.
 You will need separate API keys for each sale unit (store).
 
