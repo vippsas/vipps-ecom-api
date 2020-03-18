@@ -36,7 +36,7 @@ Document version 1.2.0.
 - [How do I perform "testing in production"?](#how-do-i-perform-testing-in-production)
 - [What do we have to do with PSD2's SCA requirements?](#what-do-we-have-to-do-with-psd2s-sca-requirements)
 - [What about webhooks?](#what-about-webhooks)
-- [How to I set up multiple sale units?](#how-do-i-set-up-multiple-sale-units)
+- [How do I set up multiple sale units?](#how-do-i-set-up-multiple-sale-units)
 
 ## What are the requirements for Vipps merchants?
 
@@ -295,7 +295,7 @@ and
 [Vipps PSP API](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-checklist.md)
 for examples.
 
-## How to I set up multiple sale units?
+## How do I set up multiple sale units?
 
 This is typically needed for organization numbers with multiple stores.
 
