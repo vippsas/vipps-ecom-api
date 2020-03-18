@@ -6,7 +6,7 @@ See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.3.1.
+Document version 1.2.0.
 
 ## Table of contents
 
@@ -35,6 +35,8 @@ Document version 1.3.1.
 - [Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`](#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked)
 - [How do I perform "testing in production"?](#how-do-i-perform-testing-in-production)
 - [What do we have to do with PSD2's SCA requirements?](#what-do-we-have-to-do-with-psd2s-sca-requirements)
+- [What about webhooks?](#what-about-webhooks)
+- [How do I set up multiple sale units?](#how-do-i-set-up-multiple-sale-units)
 
 ## What are the requirements for Vipps merchants?
 
@@ -292,6 +294,38 @@ See the checklists for
 and
 [Vipps PSP API](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-checklist.md)
 for examples.
+
+## How do I set up multiple sale units?
+
+This is typically needed for organization numbers with multiple stores.
+
+The bank account number for a sale unit must belong to the organization number
+of the company that has the customer relationship with Vipps.
+
+A legal entity, called "merchant" from now on, may have one or more sale units.
+It is possible for one merchant to have multiple sale units with a separate
+bank account number for each one, as long as the bank accounts belong to the
+organization number that the sale unit belongs to.
+
+If the organization has the required financial regulatory approval to "split"
+payments between sale units, it is possible to have only one sale unit and
+identify the payments of a store using the `orderId` - for instance by prefixing the
+`orderId` with the store's id, name or number.
+
+Alternatively each store, if they each have their own organization number,
+are set up with their own merchant and sale units.
+
+If all sale units have the same organization number, there are two alternatives:
+
+1: Use only one sale unit for all stores., and use the `orderId` to identify which orders belong
+to which sale units. You decide what the `orderId` contains, and it may be up to
+30 characters. See
+[orderId recommendation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#orderid-recommendations).
+You will use the same API keys for all stores.
+
+2: Multiple sale units: One sale unit per store. Each sale unit will have it's
+own MSN (Merchant Serial Number), and the `orderId` may be whatever you want.
+You will need separate API keys for each sale unit (store).
 
 ## Questions?
 
