@@ -298,6 +298,23 @@ for examples.
 ## How to I set up multiple sale units?
 
 This is typically needed for organization numbers with multiple stores.
+
+The bank account number for a sale unit must belong to the organization number
+of the company that has the customer relationship with Vipps.
+
+A legal entity, called "merchant" from now on, may have one or more sale units.
+It is possible for one merchant to have multiple sale units with a separate
+bank account number for each one, as long as the bank accounts belong to the
+organization number that the sale unit belongs to.
+
+If the organization has the required financial regulatory approval to "split"
+payments between sale units, it is possible to have only one sale unit and
+identify the payments of a store using the `orderId` - for instance by prefixing the
+`orderId` with the store's id, name or number.
+
+Alternatively each store, if they each have their own organization number,
+are set up with their own merchant and sale units.
+
 If all sale units have the same organization number, there are two alternatives:
 
 1: Use only one sale unit for all stores., and use the `orderId` to identify which orders belong
