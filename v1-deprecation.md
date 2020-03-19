@@ -2,7 +2,7 @@
 
 This is the message we sent to communicate the deprecation of the API.
 
-Document version 1.1.0.
+Document version 1.2.0.
 
 <br/>
 <br/>
@@ -17,7 +17,7 @@ The Vipps eCom API was superseded by the eCom v2 API around two years ago.
 This means that the eCom v1 API is technologically outdated.
 Therefore:
 
-**The Vipps eCom v1 API will be shut down on June 1 2020.**
+**The Vipps eCom v1 API will be shut down on September 1 2020.**
 
 The eCom v2 API has all the functionality of eCom v1, and there is no reason
 for not upgrading to eCom v2.
