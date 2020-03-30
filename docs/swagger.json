@@ -1611,7 +1611,7 @@
           "amount": {
             "type": "integer",
             "format": "int32",
-            "description": "Amount in øre. 32 bit Integer (2147483647)",
+            "description": "Amount in øre. 32 bit Integer (2147483647). Must be non-zero.",
             "pattern": "^\\d{3,}$",
             "example": 20000
           },

@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.0.5.
+Document version 2.0.6.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with Swagger specifications, Postman collections, example code, integration
@@ -117,6 +117,8 @@ Examples from a demo website:
 ![Regular and express checkout](images/vipps-flow-web.png)
 
 ## Regular eCommerce payments
+
+Payment amounts must be larger than zero.
 
 When you initiate a payment it will only be _reserved_ until you capture it.
 Vipps supports both _reserve capture_ and _direct capture_ payment flows.
