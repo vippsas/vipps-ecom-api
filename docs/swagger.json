@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "description": "# Vipps eCommerce API\nAdditional API documentation: https://github.com/vippsas/vipps-ecom-api/\n",
-    "version": "1.0.18",
+    "version": "1.0.19",
     "title": "Vipps eCommerce API"
   },
   "tags": [
@@ -99,7 +99,7 @@
             "description": "Unsupported media type"
           },
           "500": {
-            "description": "Something went wrong from Vipps Server side"
+            "description": "A server-side error"
           }
         }
       }
@@ -401,7 +401,7 @@
             "description": "Unsupported media type"
           },
           "500": {
-            "description": "Something went wrong from Vipps Server side"
+            "description": "A server-side error"
           }
         }
       }
@@ -541,7 +541,7 @@
             "description": "Unsupported media type"
           },
           "500": {
-            "description": "Something went wrong from Vipps Server side"
+            "description": "A server-side error"
           }
         }
       }
@@ -636,7 +636,7 @@
             "description": "Unsupported media type"
           },
           "500": {
-            "description": "Something went wrong from Vipps Server side"
+            "description": "A server-side error"
           }
         }
       }
@@ -731,7 +731,7 @@
             "description": "Unsupported media type"
           },
           "500": {
-            "description": "Something went wrong from Vipps Server side"
+            "description": "A server-side error"
           }
         }
       }
@@ -815,7 +815,7 @@
             "description": "Unsupported media type"
           },
           "500": {
-            "description": "Something went wrong from Vipps Server side"
+            "description": "A server-side error"
           }
         }
       }
@@ -891,7 +891,7 @@
             "description": "Unsupported media type"
           },
           "500": {
-            "description": "Something went wrong from Vipps Server side"
+            "description": "A server-side error"
           }
         }
       }

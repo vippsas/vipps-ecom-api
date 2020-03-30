@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.0.18
+  version: 1.0.19
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -74,7 +74,7 @@ paths:
         '415':
           description: Unsupported media type
         '500':
-          description: Something went wrong from Vipps Server side
+          description: A server-side error
   '[consentRemovalPrefix]/v2/consents/{userId}':
     delete:
       tags:
@@ -341,7 +341,7 @@ paths:
         '415':
           description: Unsupported media type
         '500':
-          description: Something went wrong from Vipps Server side
+          description: A server-side error
   '[callbackPrefix]/v2/payments/{orderId}':
     post:
       tags:
@@ -457,7 +457,7 @@ paths:
         '415':
           description: Unsupported media type
         '500':
-          description: Something went wrong from Vipps Server side
+          description: A server-side error
   '/ecomm/v2/payments/{orderId}/cancel':
     put:
       tags:
@@ -529,7 +529,7 @@ paths:
         '415':
           description: Unsupported media type
         '500':
-          description: Something went wrong from Vipps Server side
+          description: A server-side error
   '/ecomm/v2/payments/{orderId}/refund':
     post:
       tags:
@@ -608,7 +608,7 @@ paths:
         '415':
           description: Unsupported media type
         '500':
-          description: Something went wrong from Vipps Server side
+          description: A server-side error
   '/ecomm/v2/payments/{orderId}/details':
     get:
       tags:
@@ -670,7 +670,7 @@ paths:
         '415':
           description: Unsupported media type
         '500':
-          description: Something went wrong from Vipps Server side
+          description: A server-side error
   '/ecomm/v2/payments/{orderId}/status':
     get:
       deprecated: true
@@ -726,7 +726,7 @@ paths:
         '415':
           description: Unsupported media type
         '500':
-          description: Something went wrong from Vipps Server side
+          description: A server-side error
 components:
   requestBodies:
     PaymentActionsRequest:
