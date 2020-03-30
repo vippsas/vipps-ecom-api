@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.0.4.
+Document version 2.0.5.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with Swagger specifications, Postman collections, example code, integration
@@ -904,9 +904,10 @@ Swagger: [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/
 Please note that the response from
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET))
 always contain _the entire history_ of payments for the order, not just the current status.
-The `operationSuccess` filed indicates whether an operation was successful or not.
 
-| Request    | Response |
+**Important:** The `operationSuccess` filed indicates whether an operation was successful or not.
+
+| Response    | Description |
 | ---------- | --------------------------------------------------------- |
 | `INITIATE` | Payment initiated, by merchant |
 | `RESERVE`  | Payment reserved, by user accepting the payment in Vipps |
