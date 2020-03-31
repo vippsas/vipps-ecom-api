@@ -6,7 +6,7 @@ See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.2.0.
+Document version 1.3.0.
 
 ## Table of contents
 
@@ -37,6 +37,13 @@ Document version 1.2.0.
 - [What do we have to do with PSD2's SCA requirements?](#what-do-we-have-to-do-with-psd2s-sca-requirements)
 - [What about webhooks?](#what-about-webhooks)
 - [How do I set up multiple sale units?](#how-do-i-set-up-multiple-sale-units)
+- [Frequently Asked Questions for Vipps eCommerce API for POS integrations](#frequently-asked-questions-for-vipps-ecommerce-api-for-pos-integrations)
+  * [How can we be whitelisted for `skipLandingPage`?](#how-can-we-be-whitelisted-for--skiplandingpage--)
+  * [Do we need to support callbacks?](#do-we-need-to-support-callbacks-)
+  * [How can I check if a person has Vipps?](#how-can-i-check-if-a-person-has-vipps-)
+  * [How can we mass sign up merchants?](#how-can-we-mass-sign-up-merchants-)
+  * [Where can I find information about settlements?](#where-can-i-find-information-about-settlements-)
+- [Questions?](#questions-)
 
 ## What are the requirements for Vipps merchants?
 
@@ -327,7 +334,36 @@ You will use the same API keys for all stores.
 own MSN (Merchant Serial Number), and the `orderId` may be whatever you want.
 You will need separate API keys for each sale unit (store).
 
-## Questions?
+# Frequently Asked Questions for Vipps eCommerce API for POS integrations
+
+## How can we be whitelisted for `skipLandingPage`?
+
+See [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page-).
+
+## Do we need to support callbacks?
+
+If it is not possible for your POS to support callbacks (no fixed hostname/IP, etc),
+you must actively check the payment status with
+[``GET:/ecomm/v2/payments/{orderId}/details``](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details).
+
+## How can I check if a person has Vipps?
+
+There is no separate API for this, but
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST)
+will fail with error 81, "User not registered with Vipps".
+See [Error codes](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes).
+
+## How can we mass sign up merchants?
+
+You can use the
+[Signup API](https://github.com/vippsas/vipps-signup-api),
+but all merchants must sign their Vipps application with BankID.
+
+## Where can I find information about settlements?
+
+Here: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
+
+# Questions?
 
 We're always happy to help with code or other questions you might have! Please create an [issue](https://github.com/vippsas/vipps-recurring-api/issues),
 a [pull request](https://github.com/vippsas/vipps-recurring-api/pulls),
