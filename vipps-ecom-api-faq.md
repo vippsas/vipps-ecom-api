@@ -6,7 +6,7 @@ See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.3.1.
+Document version 1.3.2.
 
 ## Table of contents
 
@@ -39,6 +39,7 @@ Document version 1.3.1.
 - [How do I set up multiple sale units?](#how-do-i-set-up-multiple-sale-units)
 - [Frequently Asked Questions for POS integrations](#frequently-asked-questions-for-pos-integrations)
   * [How can we be whitelisted for `skipLandingPage`?](#how-can-we-be-whitelisted-for-skiplandingpage)
+  * [Which API keys should I use?](#which-api-keys-should-i-use)
   * [Do we need to support callbacks?](#do-we-need-to-support-callbacks)
   * [How can I check if a person has Vipps?](#how-can-i-check-if-a-person-has-vipps)
   * [How can I save the customer's phone number?](#how-can-i-save-the-customers-phone-number)
@@ -340,6 +341,12 @@ You will need separate API keys for each sale unit (store).
 ## How can we be whitelisted for `skipLandingPage`?
 
 See [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
+
+## Which API keys should I use?
+
+You need to use the merchant's API keys when using the Vipps eCom API.
+
+You can _not_ use your "supermerchant" API keys (if you have those).
 
 ## Do we need to support callbacks?
 
