@@ -217,7 +217,16 @@
             "schema": {
               "type": "string"
             }
-          }
+          },
+          {
+            "in": "header",
+            "name": "Merchant-Serial-Number",
+            "description": "Unique id for the merchant's sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send the merchant serial number of the sale unit to whom the order belongs to.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }          
         ],
         "requestBody": {
           "content": {
@@ -503,7 +512,16 @@
             "schema": {
               "type": "string"
             }
-          }
+          },
+          {
+            "in": "header",
+            "name": "Merchant-Serial-Number",
+            "description": "Unique id for the merchant's sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send the merchant serial number of the sale unit to whom the order belongs to.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }          
         ],
         "requestBody": {
           "$ref": "#/components/requestBodies/PaymentActionsRequest"
@@ -590,7 +608,16 @@
             "schema": {
               "type": "string"
             }
-          }
+          },
+          {
+            "in": "header",
+            "name": "Merchant-Serial-Number",
+            "description": "Unique id for the merchant's sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send the merchant serial number of the sale unit to whom the order belongs to.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }          
         ],
         "requestBody": {
           "content": {
@@ -693,7 +720,16 @@
             "schema": {
               "type": "string"
             }
-          }
+          },
+          {
+            "in": "header",
+            "name": "Merchant-Serial-Number",
+            "description": "Unique id for the merchant's sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send the merchant serial number of the sale unit to whom the order belongs to.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }          
         ],
         "requestBody": {
           "$ref": "#/components/requestBodies/PaymentActionsRequest"
@@ -780,7 +816,16 @@
             "schema": {
               "type": "string"
             }
-          }
+          },
+          {
+            "in": "header",
+            "name": "Merchant-Serial-Number",
+            "description": "Unique id for the merchant's sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send the merchant serial number of the sale unit to whom the order belongs to.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }          
         ],
         "responses": {
           "200": {
