@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.0.6.
+Document version 2.0.7.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with Swagger specifications, Postman collections, example code, integration
@@ -14,11 +14,13 @@ checklist and the [FAQ](vipps-ecom-api-faq.md).
 - [Initiate](#initiate)
   - [Regular eCommerce payments](#regular-ecommerce-payments)
   - [Express checkout payments](#express-checkout-payments)
-  - [Initiate payment flow: Phone and browser](#initiate-payment-flow-phone-and-browser)
+  - [Initiate payment flow: Phone and browser](#initiate-payment-flow--phone-and-browser)
+    - [Phone flow](#phone-flow)
       - [Vipps installed](#vipps-installed)
       - [Vipps not installed](#vipps-not-installed)
-    - [Desktop browser initiated payments](#desktop-browser-initiated-payments)
-    - [Payments initiated in an app](#payments-initiated-in-an-app)
+    - [PC/Mac flow](#pc-mac-flow)
+      - [Desktop browser initiated payments](#desktop-browser-initiated-payments)
+      - [Payments initiated in an app](#payments-initiated-in-an-app)
   - [Initiate payment flow: API calls](#initiate-payment-flow-api-calls)
   - [Payment identification](#payment-identification)
   - [Payment retries](#payment-retries)
@@ -143,19 +145,20 @@ See the
 
 ## Express checkout payments
 
-The Express checkout is a solution for letting the user automatically share their
-Vipps profile address information with merchant and choose a shipping option.
+The Express checkout (Vipps Hurtigkasse) is a solution for letting the user
+automatically share the Vipps profile address information with merchant and
+choose a shipping option:
+
+1. The user clicks the "Vipps Hurtigkasse" button.
+2. The user consents to sharing address information in Vipps.
+3. The user confirms the amount, delivery address and delivery method in Vipps.
 
 To perform an express checkout, the merchant needs to send
 `"paymentType": "eComm Express Payment"` as part of initiate payment, and
 support the `shippingDetails` and `consent` endpoints.
 
-These are payments related to Vipps Hurtigkasse (express checkout), where Vipps
-simplifies the purchase process for the customer to a few simple steps:
-
-1. The user clicks the "Vipps Hurtigkasse" button.
-2. The user consents to sharing address information in Vipps.
-3. The user confirms the amount, delivery address and delivery method in Vipps.
+If the shipping cost is known in advance, `staticShippingDetails` may be used
+to avoid an extra roundtrip between the Vipps backend and the merchant's server.
 
 The shipping methods presented to the user is provided by the merchant through
 the `shippingDetails` endpoint.
@@ -168,43 +171,58 @@ remove this consent (via the Profile -> Security -> "Access to your information"
 
 ## Initiate payment flow: Phone and browser
 
-The Vipps landing page will detect if the Vipps native app is installed on the phone.
-If the Vipps app is installed, it is automatically opened.
+A payment is initiated with a call to
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST).
 
-### Vipps installed
+### Phone flow
+
+![Push notification](images/vipps-flow-device.png)
+
+Triggered by the payment initiation, the Vipps landing page will automatically
+detect if is being invoked on a phone, and whether Vipps is installed on the phone.
+If Vipps is installed, Vipps will automatically be opened.
+
+#### Vipps installed
 
 1. Vipps is invoked.
 2. The user accepts or rejects the payment request in Vipps.
-3. Once payment process is completed, Vipps redirects to the `fallBack` URL that merchant provided earlier (see above).
+3. The Vipps backend makes a call to the merchant's `callbackUrl` with information about the payment.
+4. Once payment process is completed, Vipps redirects to the
+   `fallBack` URL that merchant provided earlier (see above).
 
-### Vipps not installed
+#### Vipps not installed
 
-1. The user is prompted for the mobile number on the Vipps landing page.
-2. Vipps sends a push notification. The landing page is not closed in this case.
+1. The landing page prompts the user for the phone number.
+2. Vipps sends a push notification, with a notification on the landing page
+   to continue the payment on the phone.
 3. The user accepts or rejects the payment in Vipps.
-4. Once payment process is completed, Vipps redirects to the `fallBack` URL that the merchant provided earlier.
+4. The Vipps backend makes a call to the merchant's `callbackUrl` with information about the payment.
+5. Once payment process is completed, Vipps redirects to the
+   `fallBack` URL that the merchant provided earlier.
+
+## PC/Mac flow
 
 ### Desktop browser initiated payments
 
 1. The landing page will be opened in the desktop browser.
 2. The landing page will prompt for user’s mobile number.
-3. Vipps sends a push notification to corresponding Vipps profile, if it exists.
-   The landing page is not closed in this case.
+2. Vipps sends a push notification, with a notification on the landing page
+   to continue the payment on the phone.
 4. The Vipps user accepts or rejects the payment request.
-5. Once payment process is completed, the landing page will redirect to the
+5. The Vipps backend makes a call to the merchant's `callbackUrl` with information about the payment.
+6. Once payment process is completed, the landing page will redirect to the
    `fallBack` URL that merchant provided earlier (see above).
-
-The push notification, and Vipps after opening the notification:
-
-![Push notification](images/vipps-flow-device.png)
 
 ### Payments initiated in an app
 
 Merchants can signal that the request is coming from their native app by passing
-the `isApp:true` parameter. In this case, the Vipps backend returns an URL that
-works as a native app deeplink to the Vipps app (eg. with a `vipps://` scheme).
+the `isApp:true` parameter.
 
-The landing page is not involved in this case, since the merchant app is
+In this case, the Vipps backend returns an URL that
+works as a native app deeplink to the Vipps app (eg. with a `vipps://` scheme),
+which automatically opens the Vipps app with app-switch.
+
+The landing page is not involved in this flow, since the merchant app is
 expected to use the `vipps://` URL to deeplink straight to the Vipps app.
 
 1. Merchant initiates the payment with `isApp:true` parameter: [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST).
@@ -212,7 +230,8 @@ expected to use the `vipps://` URL to deeplink straight to the Vipps app.
 3. The merchant uses the `vipps://` URL to invoke the Vipps app.
 4. Vipps is automatically opened.
 5. The user accepts or rejects the payment request in Vipps.
-6. When the payment process is completed, Vipps redirects to the merchant using the `fallBack` URL.
+6. The Vipps backend makes a call to the merchant's `callbackUrl` with information about the payment.
+7. When the payment process is completed, Vipps redirects to the merchant using the `fallBack` URL.
 
 ### Initiate payment flow: API calls
 
