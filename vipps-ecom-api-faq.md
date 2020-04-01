@@ -6,7 +6,7 @@ See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.3.0.
+Document version 1.3.1.
 
 ## Table of contents
 
@@ -363,7 +363,7 @@ enters the phone number on the Vipps landing page, that is only used by Vipps
 to send a push alert in Vipps. The number is not passed on to the merchant.
 
 If the POS integration is implemented so that the customer's phone number
-is entered in the POS, the merchant can of course save it - of course
+is entered in the POS, the merchant can of course save it -
 complying with GDPR, etc.
 
 ## How can we mass sign up merchants?
