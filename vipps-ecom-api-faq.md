@@ -355,6 +355,16 @@ with a phone number that is not registered with Vipps will fail with error 81,
 `User not registered with Vipps`.
 See [Error codes](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes).
 
+## How can I save the customer's phone number?
+
+Vipps does not send the customer's phone number to the merchant. When a customer
+enters the phone number on the Vipps landing page, that is only used by Vipps
+to send a push alert in Vipps. The number is not passed on to the merchant.
+
+If the POS integration is implemented so that the customer's phone number
+is entered in the POS, the merchant can of course save it - of course
+complying with GDPR, etc.
+
 ## How can we mass sign up merchants?
 
 You can use the
