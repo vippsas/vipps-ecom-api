@@ -41,6 +41,7 @@ Document version 1.3.0.
   * [How can we be whitelisted for `skipLandingPage`?](#how-can-we-be-whitelisted-for-skiplandingpage)
   * [Do we need to support callbacks?](#do-we-need-to-support-callbacks)
   * [How can I check if a person has Vipps?](#how-can-i-check-if-a-person-has-vipps)
+  * [How can I save the customer's phone number?](#how-can-i-save-the-customers-phone-number)
   * [How can we mass sign up merchants?](#how-can-we-mass-sign-up-merchants)
   * [Where can I find information about settlements?](#where-can-i-find-information-about-settlements)
 - [Questions?](#questions)
