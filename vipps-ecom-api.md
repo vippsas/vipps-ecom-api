@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.0.7.
+Document version 2.0.8.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with Swagger specifications, Postman collections, example code, integration
@@ -14,7 +14,7 @@ checklist and the [FAQ](vipps-ecom-api-faq.md).
 - [Initiate](#initiate)
   - [Regular eCommerce payments](#regular-ecommerce-payments)
   - [Express checkout payments](#express-checkout-payments)
-  - [Initiate payment flow: Phone and browser](#initiate-payment-flow--phone-and-browser)
+  - [Initiate payment flow: Phone and browser](#initiate-payment-flow-phone-and-browser)
     - [Phone flow](#phone-flow)
       - [Vipps installed](#vipps-installed)
       - [Vipps not installed](#vipps-not-installed)
@@ -201,6 +201,8 @@ If Vipps is installed, Vipps will automatically be opened.
    `fallBack` URL that the merchant provided earlier.
 
 ## PC/Mac flow
+
+![Desktop lanfing page](images/vipps-ecom-screenshot-landing-page.png)
 
 ### Desktop browser initiated payments
 
