@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.0.8.
+Document version 2.0.9.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with Swagger specifications, Postman collections, example code, integration
@@ -184,7 +184,7 @@ If Vipps is installed, Vipps will automatically be opened.
 
 #### Vipps installed
 
-1. Vipps is invoked.
+1. Vipps is invoked (with app-switch).
 2. The user accepts or rejects the payment request in Vipps.
 3. The Vipps backend makes a call to the merchant's `callbackUrl` with information about the payment.
 4. Once payment process is completed, Vipps redirects to the
@@ -192,7 +192,7 @@ If Vipps is installed, Vipps will automatically be opened.
 
 #### Vipps not installed
 
-1. The landing page prompts the user for the phone number.
+1. The landing page (in the browser) prompts the user for the phone number.
 2. Vipps sends a push notification, with a notification on the landing page
    to continue the payment on the phone.
 3. The user accepts or rejects the payment in Vipps.
@@ -207,10 +207,10 @@ If Vipps is installed, Vipps will automatically be opened.
 ### Desktop browser initiated payments
 
 1. The landing page will be opened in the desktop browser.
-2. The landing page will prompt for user’s mobile number.
+2. The landing page will prompt for the user’s phone number.
 2. Vipps sends a push notification, with a notification on the landing page
    to continue the payment on the phone.
-4. The Vipps user accepts or rejects the payment request.
+4. The user accepts or rejects the payment in Vipps.
 5. The Vipps backend makes a call to the merchant's `callbackUrl` with information about the payment.
 6. Once payment process is completed, the landing page will redirect to the
    `fallBack` URL that merchant provided earlier (see above).
