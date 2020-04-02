@@ -6,7 +6,7 @@ See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.3.2.
+Document version 1.3.3.
 
 ## Table of contents
 
@@ -38,6 +38,7 @@ Document version 1.3.2.
 - [What about webhooks?](#what-about-webhooks)
 - [How do I set up multiple sale units?](#how-do-i-set-up-multiple-sale-units)
 - [Frequently Asked Questions for POS integrations](#frequently-asked-questions-for-pos-integrations)
+  * [What is the process to go live in production?](#what-is-the-process-to-go-live-in-production)
   * [How can we be whitelisted for `skipLandingPage`?](#how-can-we-be-whitelisted-for-skiplandingpage)
   * [Which API keys should I use?](#which-api-keys-should-i-use)
   * [Do we need to support callbacks?](#do-we-need-to-support-callbacks)
@@ -337,6 +338,32 @@ own MSN (Merchant Serial Number), and the `orderId` may be whatever you want.
 You will need separate API keys for each sale unit (store).
 
 # Frequently Asked Questions for POS integrations
+
+We will improve this section as we learn more. Please suggest improvements
+in [Questions](#questions) below.
+
+## What is the process to go live in production?
+
+1. The partner establishes a customer relationship with Vipps.
+   [Apply here](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/vipps-i-kassa/).
+2. The partner integrates the POS with Vipps and completes
+   [the integration checklist](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md).
+   The partner now has a working POS integration.
+   This process normally takes 1-4 days.
+3. The partner's merchant establishes a customer relationship with Vipps.
+   [Apply here](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/vipps-i-kassa/).
+   This process normally takes 1-4 days.
+4. If the merchant already has a customer relationship with Vipps, a new sales
+   unit must be created, with `skipLandingPage` activated.
+   The
+   [Vipps Kundesenter](https://vipps.no/hjelp/vipps/)
+   can help with this.
+   See the [FAQ](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#is-it-possible-to-skip-the-landing-page).
+5. The merchant
+   [retrieves the API keys](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#getting-the-api-keys)
+   and provides them to the partner.
+6. The partner configures the merchant's POS for Vipps.
+7. The merchant can now accept Vipps payments in the POS.
 
 ## How can we be whitelisted for `skipLandingPage`?
 
