@@ -407,6 +407,9 @@ You can use the
 but all merchants must sign their Vipps application with BankID.
 This is a legal requirement.
 
+Merchant can of course also
+[sign up themselves](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/vipps-i-kassa/).
+
 ## Where can I find information about settlements?
 
 Here: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
