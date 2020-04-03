@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.1.1
+Document version 1.2.1
 
 For examples of requests and responses, see the Postman collection in [tools](tools/)
 
@@ -36,3 +36,15 @@ For examples of requests and responses, see the Postman collection in [tools](to
     - A complete order ending in `REFUND` ([`/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST) request).
     - A complete order ending in `VOID` ([`/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT) request).
 8. The Merchant goes live 🎉
+
+## Flow to go live for direct integrations for partners
+
+1. The partner becomes a partner by [applying here](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/vipps-i-kassa/#kom-i-gang-med-vipps-i-kassa-category-3)
+2. The partner completes the integration, with the API test keys
+3. The partner [contacts Vipps](https://github.com/vippsas/vipps-developers/blob/master/contact.md) with test IDs (`orderId`) in the [Vipps test environment](https://github.com/vippsas/vipps-developers#the-vipps-test-environment-mt), showing that all checklist items have been fulfilled.
+    - A complete order ending in `REFUND` ([`/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST) request).
+    - A complete order ending in `VOID` ([`/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT) request).
+4. The partner receives an email from Vipps saying that the implementation is OK.
+5. Vipps adds the partner to vipps.no, including the signup forms for merchants.
+6. The partner add its merchant to their solution, usually by configuring the POS with the merchant's API keys.
+7. The Merchant goes live 🎉
