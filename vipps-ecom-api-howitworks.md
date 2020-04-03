@@ -2,9 +2,14 @@
 
 This is how payment with Vipps eCommerce works.
 
-For technical documentation go to: [Vipps eCom API](https://github.com/vippsas/vipps-ecom-api),
-with Swagger specifications, Postman collections, example code, integration
-checklist and the [FAQ](vipps-ecom-api-faq.md).
+For technical documentation go to:
+[Vipps eCom API](https://github.com/vippsas/vipps-ecom-api),
+with
+[Swagger specifications](https://vippsas.github.io/vipps-ecom-api/),
+[Postman collections](tools/),
+[example code](https://github.com/vippsas/vipps-developers/tree/master/code-examples/ecom_python_example), 
+[integration checklist](vipps-ecom-api-checklist.md)
+and the [FAQ](vipps-ecom-api-faq.md).
 
 ## The ecommerce payment process
 
@@ -20,7 +25,7 @@ The user chooses “Pay with Vipps”, either in the checkout, or on the product
 ## 2. The Vipps landing page
 
 If the payment was started on a desktop device the user will be sent to the Vipps landing page.
-The user confirms their number, and is prompted to log in to Vipps. 
+The user confirms their number, and is prompted to log in to Vipps.
 
 If the payment was started from a mobile device, the app wil automatically switch over to Vipps.
 
