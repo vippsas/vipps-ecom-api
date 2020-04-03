@@ -13,7 +13,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 ## The ecommerce payment process
 
-![Ecom process](images/vipps-ecom-process.png)
+![Ecom process](images/vipps-ecom-process-w.png)
 
 
 ## 1. Pay with Vipps
