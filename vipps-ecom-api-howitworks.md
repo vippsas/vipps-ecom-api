@@ -13,7 +13,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 ## The ecommerce payment process
 
-![Ecom process](images/vipps-ecom-process-w.png)
+![Ecom process](images/vipps-ecom-process-svg.svg)
 
 
 ## 1. Pay with Vipps
@@ -25,7 +25,7 @@ The user chooses “Pay with Vipps”, either in the checkout, or on the product
 ## 2. The Vipps landing page
 
 If the payment was started on a desktop device the user will be sent to the Vipps landing page.
-The user confirms their number, and is prompted to log in to Vipps.
+The user confirms their number, and is prompted to log in to Vipps. 
 
 If the payment was started from a mobile device, the app wil automatically switch over to Vipps.
 
@@ -43,19 +43,16 @@ For express checkout they also have to choose a shipping cost alternative.
 
 The user is redirected back to the merchant’s store, and the order is confirmed.
 
-![Order confirmation](images/vipps-ecom-step4.png)
+<img src="images/vipps-ecom-step4.png" alt="Order confirmation" width="500">
 
 ## 5. Completing the order and shipping
 
 The merchant completes the order, and ships the order to the customer.
 
-![Shipping](images/vipps-ecom-step5.png)
 
 ## 6. Money in the bank
 
 The payment is transferred to the merchant’s account. This may take 2-3 days depending on your bank.
-
-![Money](images/vipps-ecom-step6.png)
 
 ## Great! Now you know how the payment process works.
 
