@@ -25,7 +25,7 @@ The user chooses “Pay with Vipps”, either in the checkout, or on the product
 ## 2. The Vipps landing page
 
 If the payment was started on a desktop device the user will be sent to the Vipps landing page.
-The user confirms their number, and is prompted to log in to Vipps. 
+The user confirms their number, and is prompted to log in to Vipps.
 
 If the payment was started from a mobile device, the app wil automatically switch over to Vipps.
 
