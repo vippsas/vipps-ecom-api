@@ -2,11 +2,17 @@
 
 API version: 2.0
 
-Document version 2.0.9.
+Document version 2.0.10.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
-with Swagger specifications, Postman collections, example code, integration
-checklist and the [FAQ](vipps-ecom-api-faq.md).
+with
+[Swagger specifications](https://vippsas.github.io/vipps-ecom-api/),
+[Postman collections](tools/),
+[example code](https://github.com/vippsas/vipps-developers/tree/master/code-examples/ecom_python_example),
+[integration checklist](vipps-ecom-api-checklist.md)
+and the [FAQ](vipps-ecom-api-faq.md).
+
+See also: [How it works](vipps-ecom-api-howitworks.md).
 
 ## Table of contents
 - [Flow diagram](#flow-diagram)

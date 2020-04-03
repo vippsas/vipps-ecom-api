@@ -2,13 +2,18 @@
 
 This is how payment with Vipps eCommerce works.
 
-For technical documentation go to: [Vipps eCom API](https://github.com/vippsas/vipps-ecom-api),
-with Swagger specifications, Postman collections, example code, integration
-checklist and the [FAQ](vipps-ecom-api-faq.md).
+For technical documentation go to:
+[Vipps eCom API](https://github.com/vippsas/vipps-ecom-api),
+with
+[Swagger specifications](https://vippsas.github.io/vipps-ecom-api/),
+[Postman collections](tools/),
+[example code](https://github.com/vippsas/vipps-developers/tree/master/code-examples/ecom_python_example), 
+[integration checklist](vipps-ecom-api-checklist.md)
+and the [FAQ](vipps-ecom-api-faq.md).
 
 ## The ecommerce payment process
 
-![Ecom process](images/vipps-ecom-process.png)
+![Ecom process](images/vipps-ecom-process-w.png)
 
 
 ## 1. Pay with Vipps
@@ -44,10 +49,13 @@ The user is redirected back to the merchant’s store, and the order is confirme
 
 The merchant completes the order, and ships the order to the customer.
 
+![Shipping](images/vipps-ecom-step5.png)
 
 ## 6. Money in the bank
 
 The payment is transferred to the merchant’s account. This may take 2-3 days depending on your bank.
+
+![Money](images/vipps-ecom-step6.png)
 
 ## Great! Now you know how the payment process works.
 
