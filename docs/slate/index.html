@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Vipps eCommerce API v1.0.20</title>
+    <title>Vipps eCommerce API v1.0.21</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -266,10 +266,10 @@
             <a href="#vipps-ecommerce-api-merchant-endpoints" class="toc-h1 toc-link" data-title="Merchant Endpoints">Merchant Endpoints</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#remove-user-consent-for-express-checkout" class="toc-h2 toc-link" data-title="Remove User Consent (for express checkout)">Remove User Consent (for express checkout)</a>
+                    <a href="#remove-user-consent-for-vipps-hurtigkasse-express-checkout" class="toc-h2 toc-link" data-title="Remove User Consent (for Vipps Hurtigkasse (express checkout))">Remove User Consent (for Vipps Hurtigkasse (express checkout))</a>
                   </li>
                   <li>
-                    <a href="#fetch-shipping-cost-amp-method-for-express-checkout" class="toc-h2 toc-link" data-title="Fetch Shipping Cost &amp; Method (for express checkout)">Fetch Shipping Cost &amp; Method (for express checkout)</a>
+                    <a href="#fetch-shipping-cost-amp-method-for-vipps-hurtigkasse-express-checkout" class="toc-h2 toc-link" data-title="Fetch Shipping Cost &amp; Method (for Vipps Hurtigkasse (express checkout))">Fetch Shipping Cost &amp; Method (for Vipps Hurtigkasse (express checkout))</a>
                   </li>
                   <li>
                     <a href="#callback-transaction-update" class="toc-h2 toc-link" data-title="Callback : Transaction Update">Callback : Transaction Update</a>
@@ -708,15 +708,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments <span class="se">\</span
     "merchantSerialNumber": 123456,
     "paymentType": "eComm Regular Payment",
     "shippingDetailsPrefix": "https://example.com/vipps/shipping/",
-    "staticShippingDetails": [
-      {
-        "isDefault": "Y",
-        "priority": 0,
-        "shippingCost": 0,
-        "shippingMethod": "Posten Servicepakke",
-        "shippingMethodId": "string"
-      }
-    ]
+    "staticShippingDetails": "Posten Servicepakke"
   },
   "transaction": {
     "amount": 20000,
@@ -856,7 +848,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments <span class="se">\</span
 </span></code></pre>
 <p><code>POST /ecomm/v2/payments</code></p>
 
-<p>This API call allows the merchants to initiate payments. In order to identify which sales channel payments are coming from, a merchantSerialNumber is used to distinguish between them. Please note that a single payment is uniquely identified by a composite of merchantSerialNumber and orderId. The merchant-provided orderId must be unique per sales channel. Once the transaction is successfully initiated in Vipps, you will receive a URL in response which will direct the customer to the Vipps landing page. The landing page detects if the requests comes from a mobile browser or desktop browser. The merchant may also pass the &#39;isApp&#39; parameter that will make Vipps respond with a app-switch deeplink that will take the customer directly to the Vipps app. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons <a href="https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html">UrlValidator</a>.</p>
+<p>This API call allows the merchants to initiate payments. The <code>merchantSerialNumber</code> (MSN) specifies which sales unit the payments is for. Payments are uniquely identified with the merchantSerialNumber and orderId together. The merchant-provided orderId must be unique per sales channel. Once the transaction is successfully initiated in Vipps, you will receive a response with a <code>fallBack</code> URL which will direct the customer to the Vipps landing page. The landing page detects if the request comes from a mobile or laptop/desktop device, and if on a mobile device automatically switches to the Vipps app if it is intalled. The merchant may also pass the &#39;isApp: true&#39; parameter that will make Vipps respond with a app-switch deeplink that will take the customer directly to the Vipps app. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons <a href="https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html">UrlValidator</a>.</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -874,15 +866,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments <span class="se">\</span
     </span><span class="s2">"merchantSerialNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
     </span><span class="s2">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eComm Regular Payment"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"shippingDetailsPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/shipping/"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"staticShippingDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"shippingMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"shippingMethodId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="s2">"staticShippingDetails"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
@@ -909,7 +893,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments <span class="se">\</span
 <td>header</td>
 <td>string</td>
 <td>true</td>
-<td>Authorization-token is obtained by appending the access_token obtained by using the /accesstoken/get request to &#39;Bearer &#39;.</td>
+<td>Authorization-token is obtained by appending the access_token obtained by using the <code>/accesstoken/get</code> request to &#39;Bearer &#39;.</td>
 </tr>
 <tr>
 <td>Content-Type</td>
@@ -923,14 +907,14 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments <span class="se">\</span
 <td>header</td>
 <td>string</td>
 <td>true</td>
-<td>The subscription-key for your product is available on portal.vipps.no, under the &#39;Utvikler&#39; tab.</td>
+<td>The subscription key for your product is available on portal.vipps.no, under the &#39;Utvikler&#39; tab.</td>
 </tr>
 <tr>
 <td>Merchant-Serial-Number</td>
 <td>header</td>
 <td>string</td>
 <td>false</td>
-<td>Unique id for the merchant&#39;s sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating  on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send the merchant serial number of the sale unit to whom the order belongs to.</td>
+<td>Unique id for the sale unit. Mandatory parameter if you are a Vipps eCom partner integrating on behalf of your merchants. Optional, but recommended, for regular Vipps merchants.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -979,7 +963,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments <span class="se">\</span
 <td>body</td>
 <td>string</td>
 <td>false</td>
-<td>Required for express checkout payments. This callback URL will be used by Vipps to inform the merchant that the user has revoked his/her consent: This Vipps user does do not want the merchant to store or use his/her personal information anymore. Required by GDPR. Vipps will add <code>/v2/consents/{userId}</code> to the end or this URL. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons <a href="https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html">UrlValidator</a>. We don&#39;t send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.</td>
+<td>Required for Vipps Hurtigkasse (express checkout) payments. This callback URL will be used by Vipps to inform the merchant that the user has revoked his/her consent: This Vipps user does do not want the merchant to store or use his/her personal information anymore. Required by GDPR. Vipps will add <code>/v2/consents/{userId}</code> to the end or this URL. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons <a href="https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html">UrlValidator</a>. We don&#39;t send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.</td>
 </tr>
 <tr>
 <td>»» fallBack</td>
@@ -1007,21 +991,21 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments <span class="se">\</span
 <td>body</td>
 <td>string</td>
 <td>false</td>
-<td>This parameter will identify difference between a regular ecomm payment and ecomm express payment. For express checkout, use: &quot;eComm Express Payment&quot;. Express checkouts require <code>consentRemovalPrefix</code>.</td>
+<td>This parameter will identify difference between a regular ecomm payment and ecomm express payment. For Vipps Hurtigkasse (express checkout), use: &quot;eComm Express Payment&quot;. Express checkouts requires <code>consentRemovalPrefix</code>.</td>
 </tr>
 <tr>
 <td>»» shippingDetailsPrefix</td>
 <td>body</td>
 <td>string</td>
 <td>false</td>
-<td>In case of express checkout payment, merchant should pass this prefix to let Vipps fetch shipping cost and method related details. Vipps will add <code>/v2/payments/{orderId}/shippingDetails</code> to the end or this URL. We don&#39;t send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.</td>
+<td>In case of Vipps Hurtigkasse (express checkout) payment, merchant should pass this prefix to let Vipps fetch shipping cost and method related details. Vipps will add <code>/v2/payments/{orderId}/shippingDetails</code> to the end or this URL. We don&#39;t send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.</td>
 </tr>
 <tr>
 <td>»» staticShippingDetails</td>
 <td>body</td>
 <td>[<a href="#schemashippingdetails">ShippingDetails</a>]</td>
 <td>false</td>
-<td>If shipping method and cost are always a fixed value, for example 50kr, then the method and price can be provided during the initiate call. The shippingDetailsPrefix callback will not be used if this value is provided.</td>
+<td>If shipping method and cost are always a fixed value, for example 50 NOK, then the method and price can be provided during the initiate call. The shippingDetailsPrefix callback will not be used if this value is provided. This will result in a faster checkout and a better customer experience.</td>
 </tr>
 <tr>
 <td>»»» isDefault</td>
@@ -1430,14 +1414,14 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>
 <td>header</td>
 <td>string</td>
 <td>false</td>
-<td>Id used for making requests idempotent. Adding this ID will allow the merchant to retry requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Max 30 characters.</td>
+<td>Used for making requests idempotent. Adding X-Request-Id will allow the merchant to retry requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Max 30 characters.</td>
 </tr>
 <tr>
 <td>Merchant-Serial-Number</td>
 <td>header</td>
 <td>string</td>
 <td>false</td>
-<td>Unique id for the merchant&#39;s sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating  on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send the merchant serial number of the sale unit to whom the order belongs to.</td>
+<td>Unique id for the sale unit. Mandatory parameter if you are a Vipps eCom partner integrating on behalf of your merchants. Optional, but recommended, for regular Vipps merchants.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -1791,7 +1775,7 @@ curl -X PUT https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>o
 <td>header</td>
 <td>string</td>
 <td>false</td>
-<td>Unique id for the merchant&#39;s sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating  on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send the merchant serial number of the sale unit to whom the order belongs to.</td>
+<td>Unique id for the sale unit. Mandatory parameter if you are a Vipps eCom partner integrating on behalf of your merchants. Optional, but recommended, for regular Vipps merchants.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -2154,7 +2138,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>
 <td>header</td>
 <td>string</td>
 <td>false</td>
-<td>Unique id for the merchant&#39;s sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating  on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send the merchant serial number of the sale unit to whom the order belongs to.</td>
+<td>Unique id for the sale unit. Mandatory parameter if you are a Vipps eCom partner integrating on behalf of your merchants. Optional, but recommended, for regular Vipps merchants.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -2440,7 +2424,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/integration-test/payments/<span c
 </span></code></pre>
 <p><code>POST /ecomm/v2/integration-test/payments/{orderId}/approve</code></p>
 
-<p>The force approve endpoint allows developers to approve a payment through the Vipps eCom API without the use of the Vipps App. This is useful for automated testing. The endpoint is  only available in our Test environment. Attempted use of the endpoint in production will  not be tolerated.</p>
+<p>The force approve endpoint allows developers to approve a payment through the Vipps eCom API without the use of the Vipps App. This is useful for automated testing. The endpoint is only available in our Test environment. Attempted use of the endpoint in production will not be tolerated.</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -2778,7 +2762,7 @@ curl -X GET https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>o
 <td>header</td>
 <td>string</td>
 <td>false</td>
-<td>Unique id for the merchant&#39;s sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating  on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send the merchant serial number of the sale unit to whom the order belongs to.</td>
+<td>Unique id for the sale unit. Mandatory parameter if you are a Vipps eCom partner integrating on behalf of your merchants. Optional, but recommended, for regular Vipps merchants.</td>
 </tr>
 </tbody></table>
 
@@ -3150,7 +3134,7 @@ curl -X GET https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>o
 <h1 id="vipps-ecommerce-api-merchant-endpoints">Merchant Endpoints</h1>
 
 <p>These endpoints must be implemented by the merchant, and are called by Vipps.</p>
-<h2 id='remove-user-consent-for-express-checkout'>Remove User Consent (for express checkout)</h2>
+<h2 id='remove-user-consent-for-vipps-hurtigkasse-express-checkout'>Remove User Consent (for Vipps Hurtigkasse (express checkout))</h2>
 <p><a id="opIdremoveUserConsentUsingDELETE"></a></p>
 
 <blockquote>
@@ -3250,7 +3234,7 @@ curl -X DELETE https://apitest.vipps.no[consentRemovalPrefix]/v2/consents/<span 
 
 <p>This API endpoint on the merchant side allows Vipps to send consent removal requests to the merchant. When receiving requests the merchant is obliged to remove the user details permanently, as per the GDPR guidelines. Vipps will add <code>/v2/consents/{userId}</code> to the end of this URL. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons <a href="https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html">UrlValidator</a>. We don&#39;t send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.</p>
 
-<h3 id="remove-user-consent-(for-express-checkout)-parameters">Parameters</h3>
+<h3 id="remove-user-consent-(for-vipps-hurtigkasse-(express-checkout))-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -3270,7 +3254,7 @@ curl -X DELETE https://apitest.vipps.no[consentRemovalPrefix]/v2/consents/<span 
 </tr>
 </tbody></table>
 
-<h3 id="remove-user-consent-(for-express-checkout)-responses">Responses</h3>
+<h3 id="remove-user-consent-(for-vipps-hurtigkasse-(express-checkout))-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -3283,11 +3267,11 @@ curl -X DELETE https://apitest.vipps.no[consentRemovalPrefix]/v2/consents/<span 
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Remove User Consent (for express checkout)</td>
+<td>Remove User Consent (for Vipps Hurtigkasse (express checkout))</td>
 <td>None</td>
 </tr>
 </tbody></table>
-<h2 id='fetch-shipping-cost-amp-method-for-express-checkout'>Fetch Shipping Cost &amp; Method (for express checkout)</h2>
+<h2 id='fetch-shipping-cost-amp-method-for-vipps-hurtigkasse-express-checkout'>Fetch Shipping Cost &amp; Method (for Vipps Hurtigkasse (express checkout))</h2>
 <p><a id="opIdfetchShippingCostUsingPOST"></a></p>
 
 <blockquote>
@@ -3444,7 +3428,7 @@ curl -X POST https://apitest.vipps.no[shippingDetailsPrefix]/v2/payments/<span c
   </span><span class="s2">"addressType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"H"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="fetch-shipping-cost-&-method-(for-express-checkout)-parameters">Parameters</h3>
+<h3 id="fetch-shipping-cost-&-method-(for-vipps-hurtigkasse-(express-checkout))-parameters">Parameters</h3>
 
 <table><thead>
 <tr>
@@ -3562,7 +3546,7 @@ curl -X POST https://apitest.vipps.no[shippingDetailsPrefix]/v2/payments/<span c
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<h3 id="fetch-shipping-cost-&-method-(for-express-checkout)-responses">Responses</h3>
+<h3 id="fetch-shipping-cost-&-method-(for-vipps-hurtigkasse-(express-checkout))-responses">Responses</h3>
 
 <table><thead>
 <tr>
@@ -3743,7 +3727,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 </span></code></pre>
 <p><code>POST [callbackPrefix]/v2/payments/{orderId}</code></p>
 
-<p>This API call allows Vipps to send the transaction details. During regular ecomm payment order and transaction details will be shared. During express checkout payment it will provide user details and shipping details addition to the order and transaction details. Vipps will add <code>/v2/payments/{orderId}</code> to the end of this URL. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons <a href="https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html">UrlValidator</a>. We don&#39;t send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.</p>
+<p>This API call allows Vipps to send the transaction details. For regular ecomm payments the order and transaction details will be shared. For Vipps Hurtigkasse (express checkout) payments it will provide user details and shipping details addition to the order and transaction details. Vipps will add <code>/v2/payments/{orderId}</code> to the end of this URL. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons <a href="https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html">UrlValidator</a>. We don&#39;t send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.</p>
 
 <blockquote>
 <p>Body parameter</p>
@@ -4319,7 +4303,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Optional date of birth infomation, must be requested during onboarding.</td>
+<td>Optional date of birth infomation, must be requested during onboarding. Please note: This will change to ISO 8601 soon: YYYY-MM-DD</td>
 </tr>
 <tr>
 <td>email</td>
@@ -5346,15 +5330,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
     </span><span class="s2">"merchantSerialNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
     </span><span class="s2">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eComm Regular Payment"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"shippingDetailsPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/shipping/"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"staticShippingDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"shippingMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"shippingMethodId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+    </span><span class="s2">"staticShippingDetails"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
@@ -5478,15 +5454,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"merchantSerialNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
   </span><span class="s2">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eComm Regular Payment"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"shippingDetailsPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/shipping/"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"staticShippingDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"shippingMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"shippingMethodId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"staticShippingDetails"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-25'>Properties</h3>
@@ -5518,7 +5486,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Required for express checkout payments. This callback URL will be used by Vipps to inform the merchant that the user has revoked his/her consent: This Vipps user does do not want the merchant to store or use his/her personal information anymore. Required by GDPR. Vipps will add <code>/v2/consents/{userId}</code> to the end or this URL. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons <a href="https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html">UrlValidator</a>. We don&#39;t send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.</td>
+<td>Required for Vipps Hurtigkasse (express checkout) payments. This callback URL will be used by Vipps to inform the merchant that the user has revoked his/her consent: This Vipps user does do not want the merchant to store or use his/her personal information anymore. Required by GDPR. Vipps will add <code>/v2/consents/{userId}</code> to the end or this URL. URLs passed to Vipps should be URL-encoded, and must validate with the Apache Commons <a href="https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html">UrlValidator</a>. We don&#39;t send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.</td>
 </tr>
 <tr>
 <td>fallBack</td>
@@ -5546,21 +5514,21 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>This parameter will identify difference between a regular ecomm payment and ecomm express payment. For express checkout, use: &quot;eComm Express Payment&quot;. Express checkouts require <code>consentRemovalPrefix</code>.</td>
+<td>This parameter will identify difference between a regular ecomm payment and ecomm express payment. For Vipps Hurtigkasse (express checkout), use: &quot;eComm Express Payment&quot;. Express checkouts requires <code>consentRemovalPrefix</code>.</td>
 </tr>
 <tr>
 <td>shippingDetailsPrefix</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>In case of express checkout payment, merchant should pass this prefix to let Vipps fetch shipping cost and method related details. Vipps will add <code>/v2/payments/{orderId}/shippingDetails</code> to the end or this URL. We don&#39;t send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.</td>
+<td>In case of Vipps Hurtigkasse (express checkout) payment, merchant should pass this prefix to let Vipps fetch shipping cost and method related details. Vipps will add <code>/v2/payments/{orderId}/shippingDetails</code> to the end or this URL. We don&#39;t send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.</td>
 </tr>
 <tr>
 <td>staticShippingDetails</td>
 <td>[<a href="#schemashippingdetails">ShippingDetails</a>]</td>
 <td>false</td>
 <td>none</td>
-<td>If shipping method and cost are always a fixed value, for example 50kr, then the method and price can be provided during the initiate call. The shippingDetailsPrefix callback will not be used if this value is provided.</td>
+<td>If shipping method and cost are always a fixed value, for example 50 NOK, then the method and price can be provided during the initiate call. The shippingDetailsPrefix callback will not be used if this value is provided. This will result in a faster checkout and a better customer experience.</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-13'>Enumerated Values</h4>
