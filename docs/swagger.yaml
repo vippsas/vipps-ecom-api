@@ -3,14 +3,14 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.0.19
+  version: 1.0.20
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
     description: Authorization Service
   - name: Vipps eCom API
     description: Functionality provided by the Vipps eCommerce API
-  - name: Endpoints required by Vipps from the merchant
+  - name: Merchant Endpoints
     description: >-
       These endpoints must be implemented by the merchant, and are called by Vipps.
 servers:
@@ -78,7 +78,7 @@ paths:
   '[consentRemovalPrefix]/v2/consents/{userId}':
     delete:
       tags:
-        - Endpoints required by Vipps from the merchant
+        - Merchant Endpoints
       summary: Remove User Consent (for express checkout)
       description: >-
         This API endpoint on the merchant side allows Vipps to send consent
@@ -104,7 +104,7 @@ paths:
   '[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails':
     post:
       tags:
-        - Endpoints required by Vipps from the merchant
+        - Merchant Endpoints
       summary: Fetch Shipping Cost & Method (for express checkout)
       description: >-
         This API endpoint on the merchant side allows Vipps to get the shipping
@@ -354,7 +354,7 @@ paths:
   '[callbackPrefix]/v2/payments/{orderId}':
     post:
       tags:
-        - Endpoints required by Vipps from the merchant
+        - Merchant Endpoints
       summary: 'Callback : Transaction Update'
       description: >-
         This API call allows Vipps to send the transaction details. During
@@ -718,7 +718,7 @@ paths:
     get:
       tags:
         - Vipps eCom API
-      summary: Get payment Details
+      summary: Get Payment Details
       description: >-
         This API call allows merchant to get the details of a payment
         transaction. Service call returns detailed transaction history of given
@@ -790,7 +790,7 @@ paths:
       deprecated: true
       tags:
         - Vipps eCom API
-      summary: Get order status
+      summary: 'Deprecated: Get Order Status'
       description: >-
         This API call allows the merchant to get the status of the last payment
         transaction. Primarily use of this service is meant for inApp where

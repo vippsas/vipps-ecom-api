@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+    paths: 
+    - '.github/workflows/slate.yml' 
+    - 'docs/swagger.yaml'
+    - 'docs/openapi.yaml'
+  pull_request:
+    branches: [ master ]
+    paths: 
+    - '.github/workflows/slate.yml' 
+    - 'docs/swagger.yaml'
+    - 'docs/openapi.yaml'
+
+jobs:
+  slate-builder:
+    env:
+        openapi_path: ./docs/swagger.yaml
+        slate_output_path: ./docs/slate
+        slate_resources_path: ./docs/slate/resources
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@master
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    - uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.6'
+    - uses: actions/cache@v1
+      with:
+        path: ../slate/vendor/bundle
+        key: ${{ runner.os }}-slate-
+#    - name: Clone slate resources
+#      run: |
+#        git init $slate_resources_path
+#        cd $slate_resources_path
+#        git pull ____
+    - name: Install and run Widdershins
+      run: |
+        npm install widdershins -g
+        widdershins $openapi_path -o ./docs/index.html.md --expandBody --user_templates $slate_resources_path/templates_widder --summary
+    - name: Install Slate
+      run: |
+        git init ../slate
+        cd ../slate
+        gem install bundler:2.0.2
+        bundle config path ./vendor/bundle
+        git pull https://github.com/slatedocs/slate
+        bundle install
+    - name: Build Slate
+      run: |
+        cp ./docs/index.html.md ../slate/source/index.html.md
+        cp $slate_resources_path/other/logo.png ../slate/source/images/logo.png
+        cp -r $slate_resources_path/slate_stylesheets/. ../slate/source/stylesheets
+        cd ../slate
+        bundle exec middleman build --clean
+    - name: Push new build
+      continue-on-error: true
+      run: |
+        cp -r ../slate/build/. $slate_output_path
+        git config --local user.email "actions@example.com"
+        git config --local user.name "github actions"
+        git add $slate_output_path
+        git commit -m "Slate update"
+        git push
+      env:
+        CI: true
