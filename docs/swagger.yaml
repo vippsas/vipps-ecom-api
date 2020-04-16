@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.0.20
+  version: 1.0.21
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -650,8 +650,8 @@ paths:
       summary: 'Force Approve Payment '
       description: >-
         The force approve endpoint allows developers to approve a payment through the Vipps eCom API
-        without the use of the Vipps App. This is useful for automated testing. The endpoint is 
-        only available in our Test environment. Attempted use of the endpoint in production will 
+        without the use of the Vipps App. This is useful for automated testing. The endpoint is
+        only available in our Test environment. Attempted use of the endpoint in production will
         not be tolerated.
       operationId: integrationTestApprovePayment
       parameters:
