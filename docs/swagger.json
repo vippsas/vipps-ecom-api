@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "description": "# Vipps eCommerce API\nAdditional API documentation: https://github.com/vippsas/vipps-ecom-api/\n",
-    "version": "1.0.18",
+    "version": "1.0.19",
     "title": "Vipps eCommerce API"
   },
   "tags": [
@@ -99,7 +99,7 @@
             "description": "Unsupported media type"
           },
           "500": {
-            "description": "Something went wrong from Vipps Server side"
+            "description": "A server-side error"
           }
         }
       }
@@ -217,7 +217,16 @@
             "schema": {
               "type": "string"
             }
-          }
+          },
+          {
+            "in": "header",
+            "name": "Merchant-Serial-Number",
+            "description": "Unique id for the merchant's sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send the merchant serial number of the sale unit to whom the order belongs to.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }          
         ],
         "requestBody": {
           "content": {
@@ -401,7 +410,7 @@
             "description": "Unsupported media type"
           },
           "500": {
-            "description": "Something went wrong from Vipps Server side"
+            "description": "A server-side error"
           }
         }
       }
@@ -503,7 +512,16 @@
             "schema": {
               "type": "string"
             }
-          }
+          },
+          {
+            "in": "header",
+            "name": "Merchant-Serial-Number",
+            "description": "Unique id for the merchant's sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send the merchant serial number of the sale unit to whom the order belongs to.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }          
         ],
         "requestBody": {
           "$ref": "#/components/requestBodies/PaymentActionsRequest"
@@ -541,7 +559,7 @@
             "description": "Unsupported media type"
           },
           "500": {
-            "description": "Something went wrong from Vipps Server side"
+            "description": "A server-side error"
           }
         }
       }
@@ -590,7 +608,16 @@
             "schema": {
               "type": "string"
             }
-          }
+          },
+          {
+            "in": "header",
+            "name": "Merchant-Serial-Number",
+            "description": "Unique id for the merchant's sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send the merchant serial number of the sale unit to whom the order belongs to.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }          
         ],
         "requestBody": {
           "content": {
@@ -636,7 +663,7 @@
             "description": "Unsupported media type"
           },
           "500": {
-            "description": "Something went wrong from Vipps Server side"
+            "description": "A server-side error"
           }
         }
       }
@@ -693,7 +720,16 @@
             "schema": {
               "type": "string"
             }
-          }
+          },
+          {
+            "in": "header",
+            "name": "Merchant-Serial-Number",
+            "description": "Unique id for the merchant's sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send the merchant serial number of the sale unit to whom the order belongs to.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }          
         ],
         "requestBody": {
           "$ref": "#/components/requestBodies/PaymentActionsRequest"
@@ -731,7 +767,7 @@
             "description": "Unsupported media type"
           },
           "500": {
-            "description": "Something went wrong from Vipps Server side"
+            "description": "A server-side error"
           }
         }
       }
@@ -868,7 +904,16 @@
             "schema": {
               "type": "string"
             }
-          }
+          },
+          {
+            "in": "header",
+            "name": "Merchant-Serial-Number",
+            "description": "Unique id for the merchant's sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send the merchant serial number of the sale unit to whom the order belongs to.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }          
         ],
         "responses": {
           "200": {
@@ -903,7 +948,7 @@
             "description": "Unsupported media type"
           },
           "500": {
-            "description": "Something went wrong from Vipps Server side"
+            "description": "A server-side error"
           }
         }
       }
@@ -979,7 +1024,7 @@
             "description": "Unsupported media type"
           },
           "500": {
-            "description": "Something went wrong from Vipps Server side"
+            "description": "A server-side error"
           }
         }
       }
@@ -1723,7 +1768,7 @@
           "amount": {
             "type": "integer",
             "format": "int32",
-            "description": "Amount in øre. 32 bit Integer (2147483647)",
+            "description": "Amount in øre. 32 bit Integer (2147483647). Must be non-zero.",
             "pattern": "^\\d{3,}$",
             "example": 20000
           },

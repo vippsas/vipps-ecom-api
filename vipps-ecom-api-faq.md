@@ -6,9 +6,9 @@ See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.2.0.
+Document version 1.3.3.
 
-# Table of contents
+## Table of contents
 
 - [What are the requirements for Vipps merchants?](#what-are-the-requirements-for-vipps-merchants)
 - [Can I use my "Vipps-nummer" in my webshop?](#can-i-use-my-vipps-nummer-in-my-webshop)
@@ -17,9 +17,10 @@ Document version 1.2.0.
 - [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
 - [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
 - [How do I turn _direct capture_ on or off?](#How-do-I-turn-direct-capture-on-or-off)
-- [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page-)
-- [How can I refund a payment?](how-can-i-refund-a-payment)
+- [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
+- [How can I refund a payment?](#how-can-i-refund-a-payment)
 - [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
+- [Is it possible for a merchant to pay a Vipps user?]("is-it-possible-for-a-merchant-to-pay-a-vipps-user)
 - [Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
 - [Can I split payments to charge a fee?](#can-i-split-payments-to-charge-a-fee)
 - [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-cant-find-it)
@@ -34,19 +35,31 @@ Document version 1.2.0.
 - [Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`](#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked)
 - [How do I perform "testing in production"?](#how-do-i-perform-testing-in-production)
 - [What do we have to do with PSD2's SCA requirements?](#what-do-we-have-to-do-with-psd2s-sca-requirements)
+- [What about webhooks?](#what-about-webhooks)
+- [How do I set up multiple sale units?](#how-do-i-set-up-multiple-sale-units)
+- [Frequently Asked Questions for POS integrations](#frequently-asked-questions-for-pos-integrations)
+  * [What is the process to go live in production?](#what-is-the-process-to-go-live-in-production)
+  * [How can we be whitelisted for `skipLandingPage`?](#how-can-we-be-whitelisted-for-skiplandingpage)
+  * [Which API keys should I use?](#which-api-keys-should-i-use)
+  * [Do we need to support callbacks?](#do-we-need-to-support-callbacks)
+  * [How can I check if a person has Vipps?](#how-can-i-check-if-a-person-has-vipps)
+  * [How can I save the customer's phone number?](#how-can-i-save-the-customers-phone-number)
+  * [How can we mass sign up merchants?](#how-can-we-mass-sign-up-merchants)
+  * [Where can I find information about settlements?](#where-can-i-find-information-about-settlements)
+- [Questions?](#questions)
 
-# What are the requirements for Vipps merchants?
+## What are the requirements for Vipps merchants?
 
 Vipps merchants (corporate customers) must have a Norwegian organization number
 and applications must be signed with Norwegian BankID. Vipps must follow the
 regulatory requirements for KYC (Know Your Customer), AML (Anti Money Laundering)
 and other risk assessment procedures.
 
-# Can I use my "Vipps-nummer" in my webshop?
+## Can I use my "Vipps-nummer" in my webshop?
 
 No. You need [Vipps på Nett](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).
 
-# Why do payments fail?
+## Why do payments fail?
 
 The most common reasons are:
 
@@ -69,7 +82,7 @@ merchant, as some information should only be provided to the Vipps user.
 See the API guide for
 [all errors](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes).
 
-# Why does capture fail?
+## Why does capture fail?
 
 If the reserved amount is too low for shipping costs to be included, the capture will fail.
 The reserved amount must at least as high as the amount that is captured.
@@ -78,7 +91,7 @@ Example: If the value of the shopping cart is 1000 NOK, and the reserved amount 
 the shipping cost must be maximum 100 NOK. If the shipping cost is 150 kr, a capture of
 1000 + 150 kr = 1150 NOK will fail.
 
-# Why does Vipps Hurtigkasse (express checkout) fail?
+## Why does Vipps Hurtigkasse (express checkout) fail?
 
 When using Vipps Hurtigkasse (express checkout), Vipps makes a
 [callback](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#1-callback)
@@ -91,7 +104,7 @@ Some third party plugins do not work with Vipps Hurtigkasse. Please ask for help
 [support forum](https://wordpress.org/support/plugin/woo-vipps),
 and include information about the plugins you have installed.
 
-# What is the difference between "Reserve Capture" and "Direct Capture"?
+## What is the difference between "Reserve Capture" and "Direct Capture"?
 
 When you initiate a payment it will be reserved until you capture it.
 Vipps supports both _reserve-capture_ and _direct capture_.
@@ -109,11 +122,11 @@ To request _direct capture_, please contact your KAM.
 
 See [Regular eCommerce payments](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#regular-ecommerce-payments) for more details.
 
-# How do I turn _direct capture_ on or off?
+## How do I turn direct capture on or off?
 
 You can't turn _direct capture_ on or off as a merchant, and this must be requested of your KAM. To get both _direct capture_ and _reserve capture_ you must request two different sale units.
 
-# Is it possible to skip the landing page?
+## Is it possible to skip the landing page?
 
 Skipping the landing page is reserved for special cases, where displaying it is not possible.
 See the details in the
@@ -125,26 +138,33 @@ This functionality is typically used at physical points of sale, where there is 
 
 To request this feature, [contact Vipps](https://github.com/vippsas/vipps-developers/blob/master/contact.md) with a detailed description of why it is not possible to display the landing page.
 
-# How can I refund a payment?
+## How can I refund a payment?
 
 This depends on your eCommerce solution. The Vipps API supports refunds with
 [`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/refundPaymentUsingPOST).
 For details on how to offer refunds, please refer to the documentation for your eCommerce solution.
 
-# How can I refund only a part of a payment?
+Refunds can be made up to 365 days after capture.
+
+## How can I refund only a part of a payment?
 
 Case: A customer has placed an order of of two items for a total of 1000 NOK. You have initiated a payment of 1000 NOK, but the customer has changed her mind and only bought one of the items, with a price of 750 NOK. You have performed a partial capture of 750 NOK, and need to refund the reamining 250 NOK.
 
 It's not possible to cancel the remaining reservation after a partial capture through Vipps, but when the payment is confirmed
 in the bank (normally 2-3 days later), the money will automatically be available to the customer.
 
-# Is there an API for retrieving information about a Vipps user?
+## Is it possible for a merchant to pay a Vipps user?
+
+No, Vipps has no functionality for paying to a Vipps user,
+except for refunding (part of) a payment.
+
+## Is there an API for retrieving information about a Vipps user?
 
 No. Vipps users have not consented to Vipps providing any information to
 third parties, and Vipps does not allow it. There is no API to look up
 a user's address, retrieve a user's purchases, etc.
 
-# Can I split payments to charge a fee?
+## Can I split payments to charge a fee?
 
 Vipps does not support splitting payments to charge a fee.
 
@@ -159,7 +179,7 @@ If you want to charge a fee (like 3 %) of your payments, you can:
 Companies that receive payments through Vipps needs to be Vipps customers.
 See [What are the requirements for Vipps merchants?](#what-are-the-requirements-for-vipps-merchants)
 
-# I have initiated an order but I can't find it!
+## I have initiated an order but I can't find it!
 
 Have you, or the ecommerce solution you are using, successfully implemented
 [``GET:/ecomm/v2/payments/{orderId}/details``](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details)? This is a requirement, see the [API checklist](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md).
@@ -173,13 +193,13 @@ You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/po
 to manually do API calls, like the two above.
 See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
 
-# How long is an initiated order valid, if the user does not confirm in the Vipps app?
+## How long is an initiated order valid, if the user does not confirm in the Vipps app?
 
 Vipps orders have a max timeout of 10 minutes.
 It's important that the merchant waits at least as long, otherwise the Vipps user may
 confirm in the Vipps app, and right after get an error from the merchant that the order has been cancelled.
 
-# How long does it take until the money is in my account?
+## How long does it take until the money is in my account?
 
 The settlement flow is as follows:
 
@@ -190,11 +210,11 @@ The settlement flow is as follows:
 
 See also [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
 
-# How long does it take from a refund is made until the money is in the customer's account?
+## How long does it take from a refund is made until the money is in the customer's account?
 
 Normally 2-3 _bank days_, depending on the bank.
 
-# Where can I find reports on transactions?
+## Where can I find reports on transactions?
 
 The [Vipps portal](https://portal.vipps.no/login/) provides information about
 your transactions, sale units and settlement reports.
@@ -202,7 +222,7 @@ You can also subscribe to daily or monthly transaction reports.
 
 More information: https://github.com/vippsas/vipps-developers/tree/master/settlements
 
-# For how long is an initiated payment reserved?
+## For how long is an initiated payment reserved?
 
 Most banks keep reservations for 7 days, however this varies depending on which bank the customer is using.
 Some banks only keep reservations for 4 days.
@@ -216,7 +236,7 @@ If the user's account has insufficient funds at this time, the payment will fail
 In many cases the bank will have a register of expired reservations and they will force it through if the account allows this.
 This will put the account in the negative.
 
-# I am getting `401 Unauthorized` error - and I have double checked all my keys!
+## I am getting `401 Unauthorized` error - and I have double checked all my keys!
 
 `HTTP 401 Unauthorized` occurs when there is a mismatch between the subscription keys and the
 merchant sales unit. Please follow these steps to make sure everything is correct:
@@ -230,7 +250,7 @@ You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/po
 to manually do API calls, like the two above.
 See [API endpoints](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
 
-# Why do I get `500 Internal Server Error` (or similar)?
+## Why do I get `500 Internal Server Error` (or similar)?
 
 Something _might_ be wrong on our side and we are working to fix it!
 
@@ -240,7 +260,7 @@ You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/po
 to manually do API calls, just to be sure.
 See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
 
-# Why do I not get callbacks from Vipps?
+## Why do I not get callbacks from Vipps?
 
 It could be because your firewall is blocking our requests.
 Please see [Vipps request servers](https://github.com/vippsas/vipps-developers/blob/master/README.md#vipps-request-servers).
@@ -248,18 +268,18 @@ Please see [Vipps request servers](https://github.com/vippsas/vipps-developers/b
 If you need help solving a callback-related problem, please send us a
 complete HTTP request, and any other related details, so we can investigate.
 
-# Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`
+## Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`
 
 This happens if the test merchant is not being used for some time. Please
 [contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md), and we will reactivate the merchant.
 
-# How do I perform "testing in production"?
+## How do I perform "testing in production"?
 
 To do this you need a live Vipps account.
 We recommend testing with 2 NOK, even though 1 NOK is the smallest possible amount.
 1 NOK is not reliable, as it gets low priority in some systems.
 
-# What do we have to do with PSD2's SCA requirements?
+## What do we have to do with PSD2's SCA requirements?
 
 SCA (Strong customer authentication) is a security requirement, related to PSD2, to reduce the risk of fraud and protect customers data.
 
@@ -267,7 +287,7 @@ Delegated SCA will be Vipps' primary way of solving the SCA requirements. For th
 
 There is no need for any changes to your Vipps implementation.
 
-# What about webhooks?
+## What about webhooks?
 
 Vipps has, so far (and this _may_ change), used `GET` methods for retrieving information.
 We have varying success when depending on systems on the merchant side, especially
@@ -284,6 +304,115 @@ See the checklists for
 and
 [Vipps PSP API](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-checklist.md)
 for examples.
+
+## How do I set up multiple sale units?
+
+This is typically needed for organization numbers with multiple stores.
+
+The bank account number for a sale unit must belong to the organization number
+of the company that has the customer relationship with Vipps.
+
+A legal entity, called "merchant" from now on, may have one or more sale units.
+It is possible for one merchant to have multiple sale units with a separate
+bank account number for each one, as long as the bank accounts belong to the
+organization number that the sale unit belongs to.
+
+If the organization has the required financial regulatory approval to "split"
+payments between sale units, it is possible to have only one sale unit and
+identify the payments of a store using the `orderId` - for instance by prefixing the
+`orderId` with the store's id, name or number.
+
+Alternatively each store, if they each have their own organization number,
+are set up with their own merchant and sale units.
+
+If all sale units have the same organization number, there are two alternatives:
+
+1: Use only one sale unit for all stores., and use the `orderId` to identify which orders belong
+to which sale units. You decide what the `orderId` contains, and it may be up to
+30 characters. See
+[orderId recommendation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#orderid-recommendations).
+You will use the same API keys for all stores.
+
+2: Multiple sale units: One sale unit per store. Each sale unit will have it's
+own MSN (Merchant Serial Number), and the `orderId` may be whatever you want.
+You will need separate API keys for each sale unit (store).
+
+# Frequently Asked Questions for POS integrations
+
+We will improve this section as we learn more. Please suggest improvements
+in [Questions](#questions) below.
+
+## What is the process to go live in production?
+
+1. The partner establishes a customer relationship with Vipps.
+   [Apply here](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/vipps-i-kassa/).
+2. The partner integrates the POS with Vipps and completes
+   [the integration checklist](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md).
+   The partner now has a working POS integration.
+   This process normally takes 1-4 days.
+3. The partner's merchant establishes a customer relationship with Vipps.
+   [Apply here](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/vipps-i-kassa/).
+   This process normally takes 1-4 days.
+4. If the merchant already has a customer relationship with Vipps, a new sales
+   unit must be created, with `skipLandingPage` activated.
+   The
+   [Vipps Kundesenter](https://vipps.no/hjelp/vipps/)
+   can help with this.
+   See the [FAQ](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#is-it-possible-to-skip-the-landing-page).
+5. The merchant
+   [retrieves the API keys](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#getting-the-api-keys)
+   and provides them to the partner.
+6. The partner configures the merchant's POS for Vipps.
+7. The merchant can now accept Vipps payments in the POS.
+
+## How can we be whitelisted for `skipLandingPage`?
+
+See [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
+
+## Which API keys should I use?
+
+You need to use the merchant's API keys when using the Vipps eCom API.
+
+You can _not_ use your "supermerchant" API keys (if you have those).
+
+## Do we need to support callbacks?
+
+If it is not possible for your POS to support callbacks (no fixed hostname/IP, etc),
+you must actively check the payment status with
+[``GET:/ecomm/v2/payments/{orderId}/details``](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details).
+This is also required if you do support callbacks.
+
+## How can I check if a person has Vipps?
+
+There is no separate API for this, but an attempt to
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST)
+with a phone number that is not registered with Vipps will fail with error 81,
+`User not registered with Vipps`.
+See [Error codes](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes).
+
+## How can I save the customer's phone number?
+
+Vipps does not send the customer's phone number to the merchant. When a customer
+enters the phone number on the Vipps landing page, that is only used by Vipps
+to send a push alert in Vipps. The number is not passed on to the merchant.
+
+If the POS integration is implemented so that the customer's phone number
+is entered in the POS, the merchant can of course save it -
+complying with GDPR, etc.
+
+## How can we mass sign up merchants?
+
+You can use the
+[Signup API](https://github.com/vippsas/vipps-signup-api),
+but all merchants must sign their Vipps application with BankID.
+This is a legal requirement.
+
+Merchant can of course also
+[sign up themselves](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/vipps-i-kassa/).
+
+## Where can I find information about settlements?
+
+Here: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
 
 # Questions?
 

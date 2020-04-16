@@ -2,9 +2,8 @@
 
 Document version 1.1.0.
 
-Issues and PRs are welcome.
-
-# Key differences
+Issues and PRs are welcome. 
+This document explains the key differences between eCom API v1 and eCom API v2.
 
 ## Landing page
 
@@ -16,7 +15,8 @@ The initiate payment response will contain a unique URL for each order. Either a
 
 *Note: On mobile devices "Universal Linking" will be used for `https` URLs, which will automatically open [Vipps](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#desktop-browsers-and-mobile-browsers).*
 
-### Skip landing page
+
+## Skip landing page
 
 Skipping the landing page is reserved for special cases, where displaying it is not possible. 
 See the details in the 
@@ -24,6 +24,7 @@ See the details in the
 in the API guide.
 
 See the [FAQ](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-faq.md#is-it-possible-to-skip-the-landing-page).
+
 
 ## Phone number is optional
 
@@ -39,7 +40,7 @@ If `isApp` is `true` then an appswitch deeplink URL with a unique token for that
 
 See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#initiate-payment-flows) for full overview of initiate payment.
 
-#### Request Body
+### Request Body
 
 ```
 {
@@ -59,7 +60,7 @@ See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.
 }
 ```
 
-#### Response body App Switch (`isApp: true`)
+### Response body App Switch (`isApp: true`)
 
 ```
 {
@@ -68,7 +69,7 @@ See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.
 }
 ```
 
-#### Response body HTTPS (`isApp: false`)
+### Response body HTTPS (`isApp: false`)
 
 ```
 {
@@ -86,7 +87,7 @@ For apps, this URL will be the appswitch URL.
 
 See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation) for details.
 
-# Migration
+## Migration
 
 If you have already signed an agreement with Vipps, and have API keys for eCom v1, you can use the same API keys
 for eCom v2. 

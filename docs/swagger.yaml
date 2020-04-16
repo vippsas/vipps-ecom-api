@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.0.18
+  version: 1.0.19
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -74,7 +74,7 @@ paths:
         '415':
           description: Unsupported media type
         '500':
-          description: Something went wrong from Vipps Server side
+          description: A server-side error
   '[consentRemovalPrefix]/v2/consents/{userId}':
     delete:
       tags:
@@ -191,6 +191,15 @@ paths:
           required: true
           schema:
             type: string
+        - in: header
+          name: Merchant-Serial-Number
+          description: >-
+            Unique id for the merchant's sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating 
+            on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send
+            the merchant serial number of the sale unit to whom the order belongs to.
+          required: false
+          schema:
+            type: string                    
       requestBody:
         content:
           application/json;charset=UTF-8:
@@ -341,7 +350,7 @@ paths:
         '415':
           description: Unsupported media type
         '500':
-          description: Something went wrong from Vipps Server side
+          description: A server-side error
   '[callbackPrefix]/v2/payments/{orderId}':
     post:
       tags:
@@ -433,6 +442,15 @@ paths:
             characters.
           schema:
             type: string
+        - in: header
+          name: Merchant-Serial-Number
+          description: >-
+            Unique id for the merchant's sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating 
+            on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send
+            the merchant serial number of the sale unit to whom the order belongs to.
+          required: false
+          schema:
+            type: string                                 
       requestBody:
         $ref: '#/components/requestBodies/PaymentActionsRequest'
       responses:
@@ -457,7 +475,7 @@ paths:
         '415':
           description: Unsupported media type
         '500':
-          description: Something went wrong from Vipps Server side
+          description: A server-side error
   '/ecomm/v2/payments/{orderId}/cancel':
     put:
       tags:
@@ -500,6 +518,15 @@ paths:
           required: true
           schema:
             type: string
+        - in: header
+          name: Merchant-Serial-Number
+          description: >-
+            Unique id for the merchant's sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating 
+            on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send
+            the merchant serial number of the sale unit to whom the order belongs to.
+          required: false
+          schema:
+            type: string            
       requestBody:
         content:
           application/json;charset=UTF-8:
@@ -529,7 +556,7 @@ paths:
         '415':
           description: Unsupported media type
         '500':
-          description: Something went wrong from Vipps Server side
+          description: A server-side error
   '/ecomm/v2/payments/{orderId}/refund':
     post:
       tags:
@@ -584,6 +611,15 @@ paths:
             characters.
           schema:
             type: string
+        - in: header
+          name: Merchant-Serial-Number
+          description: >-
+            Unique id for the merchant's sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating 
+            on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send
+            the merchant serial number of the sale unit to whom the order belongs to.
+          required: false
+          schema:
+            type: string            
       requestBody:
         $ref: '#/components/requestBodies/PaymentActionsRequest'
       responses:
@@ -608,7 +644,7 @@ paths:
         '415':
           description: Unsupported media type
         '500':
-          description: Something went wrong from Vipps Server side
+          description: A server-side error
   '/ecomm/v2/integration-test/payments/{orderId}/approve':
     post:
       tags:
@@ -677,7 +713,7 @@ paths:
         '415':
           description: Unsupported media type
         '500':
-          description: Something went wrong from Vipps Server side
+          description: A server-side error
   '/ecomm/v2/payments/{orderId}/details':
     get:
       tags:
@@ -717,6 +753,15 @@ paths:
           required: true
           schema:
             type: string
+        - in: header
+          name: Merchant-Serial-Number
+          description: >-
+            Unique id for the merchant's sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating 
+            on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send
+            the merchant serial number of the sale unit to whom the order belongs to.
+          required: false
+          schema:
+            type: string            
       responses:
         '200':
           description: Get payment Details
@@ -739,7 +784,7 @@ paths:
         '415':
           description: Unsupported media type
         '500':
-          description: Something went wrong from Vipps Server side
+          description: A server-side error
   '/ecomm/v2/payments/{orderId}/status':
     get:
       deprecated: true
@@ -795,7 +840,7 @@ paths:
         '415':
           description: Unsupported media type
         '500':
-          description: Something went wrong from Vipps Server side
+          description: A server-side error
 components:
   requestBodies:
     PaymentActionsRequest:
@@ -1410,7 +1455,7 @@ components:
         amount:
           type: integer
           format: int32
-          description: Amount in øre. 32 bit Integer (2147483647)
+          description: Amount in øre. 32 bit Integer (2147483647). Must be non-zero.
           pattern: '^\d{3,}$'
           example: 20000
         orderId:
