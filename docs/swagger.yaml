@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.0.21
+  version: 1.0.22
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -647,12 +647,12 @@ paths:
     post:
       tags:
         - Vipps eCom API
-      summary: 'Force Approve Payment '
+      summary: 'Force Approve Payment'
       description: >-
-        The force approve endpoint allows developers to approve a payment through the Vipps eCom API
-        without the use of the Vipps App. This is useful for automated testing. The endpoint is
-        only available in our Test environment. Attempted use of the endpoint in production will
-        not be tolerated.
+        This endpoint allows developers to approve a payment through the Vipps eCom API
+        without the use of the Vipps app. This is useful for automated testing.
+        The endpoint is only available in our Test environment.
+        Attempted use of the endpoint in production is not allowed, and will fail.
       operationId: integrationTestApprovePayment
       parameters:
         - name: orderId
@@ -1031,7 +1031,7 @@ components:
             - N
         dateOfBirth:
           type: string
-          description: "Optional date of birth infomation, must be requested during onboarding. Please note: This will change to ISO 8601 soon: YYYY-MM-DD"
+          description: "Optional date of birth information, must be requested during onboarding. Please note: This will change to ISO 8601 soon: YYYY-MM-DD"
           example: 12-3-1988
         email:
           type: string
@@ -1308,7 +1308,8 @@ components:
             open Vipps app, if isApp was set as true. The landing page will
             also redirect a user to the app if the user is using a mobile browser.
             This link will timeout after 5 minutes.
-          example: 'https://example.com'
+            This example is a shortened deeplink URL.
+          example: 'https://api.vipps.no/deeplink/vippsgateway?token=eyJraWQiOiJqd3R'
     ShippingDetailsRequest:
       type: object
       required:
@@ -1334,6 +1335,7 @@ components:
         shippingMethodId:
           type: string
           maxLength: 100
+          example: posten-servicepakke
     TransactionResponseCancel:
       type: object
       required:
@@ -1429,6 +1431,7 @@ components:
         shippingMethodId:
           type: string
           maxLength: 100
+          example: posten-servicepakke
     InitiatePaymentCommand:
       type: object
       required:
