@@ -3,14 +3,14 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.0.19
+  version: 1.0.20
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
     description: Authorization Service
   - name: Vipps eCom API
     description: Functionality provided by the Vipps eCommerce API
-  - name: Endpoints required by Vipps from the merchant
+  - name: Merchant Endpoints
     description: >-
       These endpoints must be implemented by the merchant, and are called by Vipps.
 servers:
@@ -78,7 +78,7 @@ paths:
   '[consentRemovalPrefix]/v2/consents/{userId}':
     delete:
       tags:
-        - Endpoints required by Vipps from the merchant
+        - Merchant Endpoints
       summary: Remove User Consent (for Vipps Hurtigkasse (express checkout))
       description: >-
         This API endpoint on the merchant side allows Vipps to send consent
@@ -104,7 +104,7 @@ paths:
   '[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails':
     post:
       tags:
-        - Endpoints required by Vipps from the merchant
+        - Merchant Endpoints
       summary: Fetch Shipping Cost & Method (for Vipps Hurtigkasse (express checkout))
       description: >-
         This API endpoint on the merchant side allows Vipps to get the shipping
@@ -354,7 +354,7 @@ paths:
   '[callbackPrefix]/v2/payments/{orderId}':
     post:
       tags:
-        - Endpoints required by Vipps from the merchant
+        - Merchant Endpoints
       summary: 'Callback : Transaction Update'
       description: >-
         This API call allows Vipps to send the transaction details.
@@ -643,11 +643,80 @@ paths:
           description: Unsupported media type
         '500':
           description: A server-side error
+  '/ecomm/v2/integration-test/payments/{orderId}/approve':
+    post:
+      tags:
+        - Vipps eCom API
+      summary: 'Force Approve Payment '
+      description: >-
+        The force approve endpoint allows developers to approve a payment through the Vipps eCom API
+        without the use of the Vipps App. This is useful for automated testing. The endpoint is 
+        only available in our Test environment. Attempted use of the endpoint in production will 
+        not be tolerated.
+      operationId: integrationTestApprovePayment
+      parameters:
+        - name: orderId
+          in: path
+          description: Order id specified in the request body of initiate payment.
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          description: >-
+            Authorization-token is obtained by running the /accesstoken/get
+            request.
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Content-Type
+          description: '`application/json`'
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Ocp-Apim-Subscription-Key
+          description: >-
+            The subscription-key for your product is available on portal.vipps.no, under the 'Utvikler' tab.
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: X-Request-Id
+          description: >-
+            Id used for making requests idempotent. Adding this ID will allow
+            the merchant to retry requests without it making additional changes.
+            Unique for orderId, merchantSerialNumber and endpoint. Max 30
+            characters.
+          schema:
+            type: string
+      requestBody:
+        $ref: '#/components/requestBodies/ForceApproveRequest'
+      responses:
+        '200':
+          description: Force approve payment response
+        '400':
+          description: Bad request (Missing a required parameter or bad request format)
+        '401':
+          description: Unauthorized
+        '402':
+          description: Payment Failed
+        '403':
+          description: Request Forbidden
+        '404':
+          description: Resource Not Found
+        '405':
+          description: Request method not supported
+        '415':
+          description: Unsupported media type
+        '500':
+          description: A server-side error
   '/ecomm/v2/payments/{orderId}/details':
     get:
       tags:
         - Vipps eCom API
-      summary: Get payment Details
+      summary: Get Payment Details
       description: >-
         This API call allows merchant to get the details of a payment
         transaction. Service call returns detailed transaction history of given
@@ -718,7 +787,7 @@ paths:
       deprecated: true
       tags:
         - Vipps eCom API
-      summary: Get order status
+      summary: 'Deprecated: Get Order Status'
       description: >-
         This API call allows the merchant to get the status of the last payment
         transaction. Primarily use of this service is meant for inApp where
@@ -778,6 +847,13 @@ components:
             $ref: '#/components/schemas/PaymentActionsRequest'
       description: paymentActionsRequest
       required: true
+    ForceApproveRequest:
+      content:
+        application/json;charset=UTF-8:
+          schema:
+            $ref: '#/components/schemas/ForceApproveRequest'
+      description: ForceApproveRequest
+      required: true
   schemas:
     PaymentActionsRequest:
       type: object
@@ -786,6 +862,15 @@ components:
           $ref: '#/components/schemas/MerchantInfoPayment'
         transaction:
           $ref: '#/components/schemas/Transaction'
+    ForceApproveRequest:
+      type: object
+      properties:
+        customerPhoneNumber:
+          type: string
+          description: Target customer phone number
+        token:
+          type: string
+          description: The token value recieved in the `url` property in the Initiate response
     Address:
       type: object
       required:
