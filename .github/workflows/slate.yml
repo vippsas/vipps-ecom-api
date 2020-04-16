@@ -7,12 +7,6 @@ on:
     - '.github/workflows/slate.yml' 
     - 'docs/swagger.yaml'
     - 'docs/openapi.yaml'
-  pull_request:
-    branches: [ master ]
-    paths: 
-    - '.github/workflows/slate.yml' 
-    - 'docs/swagger.yaml'
-    - 'docs/openapi.yaml'
 
 jobs:
   slate-builder:
