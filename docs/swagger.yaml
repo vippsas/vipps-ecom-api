@@ -79,7 +79,7 @@ paths:
     delete:
       tags:
         - Endpoints required by Vipps from the merchant
-      summary: Remove User Consent (for express checkout)
+      summary: Remove User Consent (for Vipps Hurtigkasse (express checkout))
       description: >-
         This API endpoint on the merchant side allows Vipps to send consent
         removal requests to the merchant. When receiving requests the merchant
@@ -100,12 +100,12 @@ paths:
             type: string
       responses:
         '200':
-          description: Remove User Consent (for express checkout)
+          description: Remove User Consent (for Vipps Hurtigkasse (express checkout))
   '[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails':
     post:
       tags:
         - Endpoints required by Vipps from the merchant
-      summary: Fetch Shipping Cost & Method (for express checkout)
+      summary: Fetch Shipping Cost & Method (for Vipps Hurtigkasse (express checkout))
       description: >-
         This API endpoint on the merchant side allows Vipps to get the shipping
         cost and method based on the provided address and product details. The
@@ -155,15 +155,14 @@ paths:
       summary: Initiate Payment
       description: >-
         This API call allows the merchants to initiate payments.
-        In order to identify which sales channel payments are coming
-        from, a merchantSerialNumber is used to distinguish between them.
-        Please note that a single payment is uniquely identified by a composite
-        of merchantSerialNumber and orderId.
-        The merchant-provided orderId must be unique per sales channel. Once the
-        transaction is successfully initiated in Vipps, you will receive a
-        URL in response which will direct the customer to the Vipps landing page.
-        The landing page detects if the requests comes from a mobile browser or desktop browser.
-        The merchant may also pass the 'isApp' parameter that will make Vipps
+        The `merchantSerialNumber` (MSN) specifies which sales unit the payments is for.
+        Payments are uniquely identified with the merchantSerialNumber and orderId together.
+        The merchant-provided orderId must be unique per sales channel.
+        Once the transaction is successfully initiated in Vipps, you will receive a
+        response with a `fallBack` URL which will direct the customer to the Vipps landing page.
+        The landing page detects if the request comes from a mobile or laptop/desktop device,
+        and if on a mobile device automatically switches to the Vipps app if it is intalled.
+        The merchant may also pass the 'isApp: true' parameter that will make Vipps
         respond with a app-switch deeplink that will take the customer directly
         to the Vipps app.
         URLs passed to Vipps should be URL-encoded, and must validate
@@ -174,7 +173,7 @@ paths:
         - in: header
           name: Authorization
           description: >-
-            Authorization-token is obtained by appending the access_token obtained by using the /accesstoken/get request to 'Bearer '.
+            Authorization-token is obtained by appending the access_token obtained by using the `/accesstoken/get` request to 'Bearer '.
           required: true
           schema:
             type: string
@@ -187,19 +186,18 @@ paths:
         - in: header
           name: Ocp-Apim-Subscription-Key
           description: >-
-            The subscription-key for your product is available on portal.vipps.no, under the 'Utvikler' tab.
+            The subscription key for your product is available on portal.vipps.no, under the 'Utvikler' tab.
           required: true
           schema:
             type: string
         - in: header
           name: Merchant-Serial-Number
           description: >-
-            Unique id for the merchant's sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating 
-            on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send
-            the merchant serial number of the sale unit to whom the order belongs to.
+            Unique id for the sale unit. Mandatory parameter if you are a Vipps eCom partner integrating
+            on behalf of your merchants. Optional, but recommended, for regular Vipps merchants.
           required: false
           schema:
-            type: string                    
+            type: string
       requestBody:
         content:
           application/json;charset=UTF-8:
@@ -213,11 +211,11 @@ paths:
             post:
               summary: 'Callback : Transaction Update'
               description: >-
-                This API call allows Vipps to send the transaction details. During
-                regular ecomm payment order and transaction details will be shared.
-                During express checkout payment it will provide user details and
-                shipping details addition to the order and transaction details. Vipps
-                will add `/v2/payments/{orderId}` to the end of this URL. URLs passed to
+                This API call allows Vipps to send the transaction details to the merchant.
+                For regular ecomm payments the order and transaction details will be shared.
+                For Vipps Hurtigkasse (express checkout) payments it will provide user details and
+                shipping details addition to the order and transaction details.
+                Vipps will add `/v2/payments/{orderId}` to the end of this URL. URLs passed to
                 Vipps should be URL-encoded, and must validate with the Apache Commons
                 [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
               operationId: InitiatePaymentTransactionUpdateCallbackForRegularPaymentUsingPOSTExpress
@@ -241,11 +239,11 @@ paths:
             post:
               summary: 'Callback : Transaction Update'
               description: >-
-                This API call allows Vipps to send the transaction details. During
-                regular ecomm payment order and transaction details will be shared.
-                During express checkout payment it will provide user details and
-                shipping details addition to the order and transaction details. Vipps
-                will add `/v2/payments/{orderId}` to the end of this URL. URLs passed to
+                This API call allows Vipps to send the transaction details to the merchant.
+                For regular ecomm payments the order and transaction details will be shared.
+                For Vipps Hurtigkasse (express checkout) payments it will provide user details and
+                shipping details addition to the order and transaction details.
+                Vipps will add `/v2/payments/{orderId}` to the end of this URL. URLs passed to
                 Vipps should be URL-encoded, and must validate with the Apache Commons
                 [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
               operationId: InitiatePaymentTransactionUpdateCallbackForRegularPaymentUsingPOSTExpress
@@ -267,7 +265,7 @@ paths:
         consentRemoval:
           '{$request.body#/merchantInfo/consentRemovalPrefix}/v2/consents/{userId}':
             delete:
-              summary: Remove User Consent (for express checkout)
+              summary: Remove User Consent (for Vipps Hurtigkasse (express checkout))
               description: >-
                 This API endpoint on the merchant side allows Vipps to send consent
                 removal requests to merchant. When receiving requests the merchant is
@@ -292,7 +290,7 @@ paths:
         shippingDetails:
           '{$request.body#/merchantInfo/shippingDetailsPrefix}/v2/payments/{$request.body#/transaction/orderId}/shippingDetails':
                 post:
-                  summary: Fetch Shipping Cost & Method (for express checkout)
+                  summary: Fetch Shipping Cost & Method (for Vipps Hurtigkasse (express checkout))
                   description: >-
                     This API endpoint on the merchant side allows Vipps to get the shipping
                     cost and method based on the provided address and product details. The
@@ -302,6 +300,8 @@ paths:
                     this URL.
                     Vipps has a *10 second timeout* for these requests, and thus requires
                     a quick reply from the merchant's server for successful payments.
+                    If the merchant does not respond in time, the user will get an
+                    error in Vipps saying "No shipping methods found".
                     URLs passed to Vipps should be URL-encoded, and must validate
                     with the Apache Commons
                     [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
@@ -357,10 +357,11 @@ paths:
         - Endpoints required by Vipps from the merchant
       summary: 'Callback : Transaction Update'
       description: >-
-        This API call allows Vipps to send the transaction details. During
-        regular ecomm payment order and transaction details will be shared.
-        During express checkout payment it will provide user details and
-        shipping details addition to the order and transaction details. Vipps
+        This API call allows Vipps to send the transaction details.
+        For regular ecomm payments the order and transaction details will be shared.
+        For Vipps Hurtigkasse (express checkout) payments it will provide user details and
+        shipping details addition to the order and transaction details.
+        Vipps
         will add `/v2/payments/{orderId}` to the end of this URL. URLs passed to
         Vipps should be URL-encoded, and must validate with the Apache Commons
         [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
@@ -436,7 +437,7 @@ paths:
         - in: header
           name: X-Request-Id
           description: >-
-            Id used for making requests idempotent. Adding this ID will allow
+            Used for making requests idempotent. Adding X-Request-Id will allow
             the merchant to retry requests without it making additional changes.
             Unique for orderId, merchantSerialNumber and endpoint. Max 30
             characters.
@@ -445,12 +446,11 @@ paths:
         - in: header
           name: Merchant-Serial-Number
           description: >-
-            Unique id for the merchant's sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating 
-            on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send
-            the merchant serial number of the sale unit to whom the order belongs to.
+            Unique id for the sale unit. Mandatory parameter if you are a Vipps eCom partner integrating
+            on behalf of your merchants. Optional, but recommended, for regular Vipps merchants.
           required: false
           schema:
-            type: string                                 
+            type: string
       requestBody:
         $ref: '#/components/requestBodies/PaymentActionsRequest'
       responses:
@@ -521,12 +521,11 @@ paths:
         - in: header
           name: Merchant-Serial-Number
           description: >-
-            Unique id for the merchant's sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating 
-            on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send
-            the merchant serial number of the sale unit to whom the order belongs to.
+            Unique id for the sale unit. Mandatory parameter if you are a Vipps eCom partner integrating
+            on behalf of your merchants. Optional, but recommended, for regular Vipps merchants.
           required: false
           schema:
-            type: string            
+            type: string
       requestBody:
         content:
           application/json;charset=UTF-8:
@@ -614,12 +613,11 @@ paths:
         - in: header
           name: Merchant-Serial-Number
           description: >-
-            Unique id for the merchant's sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating 
-            on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send
-            the merchant serial number of the sale unit to whom the order belongs to.
+            Unique id for the sale unit. Mandatory parameter if you are a Vipps eCom partner integrating
+            on behalf of your merchants. Optional, but recommended, for regular Vipps merchants.
           required: false
           schema:
-            type: string            
+            type: string
       requestBody:
         $ref: '#/components/requestBodies/PaymentActionsRequest'
       responses:
@@ -687,12 +685,11 @@ paths:
         - in: header
           name: Merchant-Serial-Number
           description: >-
-            Unique id for the merchant's sale unit on behalf of whom the API call is initiated. Mandatory parameter if you are a Vipps eCom partner integrating 
-            on behalf of your merchants. Optional for regular Vipps merchants in the header. Vipps partner is expected to send
-            the merchant serial number of the sale unit to whom the order belongs to.
+            Unique id for the sale unit. Mandatory parameter if you are a Vipps eCom partner integrating
+            on behalf of your merchants. Optional, but recommended, for regular Vipps merchants.
           required: false
           schema:
-            type: string            
+            type: string
       responses:
         '200':
           description: Get payment Details
@@ -949,7 +946,7 @@ components:
             - N
         dateOfBirth:
           type: string
-          description: Optional date of birth infomation, must be requested during onboarding.
+          description: "Optional date of birth infomation, must be requested during onboarding. Please note: This will change to ISO 8601 soon: YYYY-MM-DD"
           example: 12-3-1988
         email:
           type: string
@@ -1428,7 +1425,7 @@ components:
         consentRemovalPrefix:
           type: string
           description: >-
-            Required for express checkout payments. This callback URL will be
+            Required for Vipps Hurtigkasse (express checkout) payments. This callback URL will be
             used by Vipps to inform the merchant that the user has revoked
             his/her consent: This Vipps user does do not want the merchant to
             store or use his/her personal information anymore. Required by GDPR.
@@ -1474,8 +1471,8 @@ components:
           type: string
           description: >-
             This parameter will identify difference between a regular ecomm
-            payment and ecomm express payment. For express checkout, use: "eComm
-            Express Payment". Express checkouts require `consentRemovalPrefix`.
+            payment and ecomm express payment. For Vipps Hurtigkasse (express checkout), use: "eComm
+            Express Payment". Express checkouts requires `consentRemovalPrefix`.
           enum:
             - eComm Regular Payment
             - eComm Express Payment
@@ -1484,7 +1481,7 @@ components:
         shippingDetailsPrefix:
           type: string
           description: >-
-            In case of express checkout payment, merchant should pass this
+            In case of Vipps Hurtigkasse (express checkout) payment, merchant should pass this
             prefix to let Vipps fetch shipping cost and method related details.
             Vipps will add `/v2/payments/{orderId}/shippingDetails` to the end
             or this URL.
@@ -1496,9 +1493,11 @@ components:
           items:
             $ref: '#/components/schemas/ShippingDetails'
           description: >-
-            If shipping method and cost are always a fixed value, for example 50kr,
+            If shipping method and cost are always a fixed value, for example 50 NOK,
             then the method and price can be provided during the initiate call.
             The shippingDetailsPrefix callback will not be used if this value is provided.
+            This will result in a faster checkout and a better customer experience.
+          example: "Posten Servicepakke"
     GetPaymentStatusResponse:
       type: object
       properties:

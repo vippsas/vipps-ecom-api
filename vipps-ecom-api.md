@@ -1490,7 +1490,7 @@ allowed to provide more details.
 
 
 
-## Questions?
+# Questions?
 
 We're always happy to help with code or other questions you might have!
 Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),
