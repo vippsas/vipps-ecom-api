@@ -1585,7 +1585,6 @@ components:
             then the method and price can be provided during the initiate call.
             The shippingDetailsPrefix callback will not be used if this value is provided.
             This will result in a faster checkout and a better customer experience.
-          example: "Posten Servicepakke"
     GetPaymentStatusResponse:
       type: object
       properties:
