@@ -708,7 +708,15 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments <span class="se">\</span
     "merchantSerialNumber": 123456,
     "paymentType": "eComm Regular Payment",
     "shippingDetailsPrefix": "https://example.com/vipps/shipping/",
-    "staticShippingDetails": "Posten Servicepakke"
+    "staticShippingDetails": [
+      {
+        "isDefault": "Y",
+        "priority": 0,
+        "shippingCost": 0,
+        "shippingMethod": "Posten Servicepakke",
+        "shippingMethodId": "posten-servicepakke"
+      }
+    ]
   },
   "transaction": {
     "amount": 20000,
@@ -866,7 +874,15 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments <span class="se">\</span
     </span><span class="s2">"merchantSerialNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
     </span><span class="s2">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eComm Regular Payment"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"shippingDetailsPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/shipping/"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"staticShippingDetails"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="w">
+    </span><span class="s2">"staticShippingDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"shippingMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"shippingMethodId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"posten-servicepakke"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
@@ -5330,7 +5346,15 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
     </span><span class="s2">"merchantSerialNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
     </span><span class="s2">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eComm Regular Payment"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"shippingDetailsPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/shipping/"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"staticShippingDetails"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="w">
+    </span><span class="s2">"staticShippingDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"shippingMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"shippingMethodId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"posten-servicepakke"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
@@ -5454,7 +5478,15 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"merchantSerialNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
   </span><span class="s2">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eComm Regular Payment"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"shippingDetailsPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/shipping/"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"staticShippingDetails"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="w">
+  </span><span class="s2">"staticShippingDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"shippingMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"shippingMethodId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"posten-servicepakke"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-25'>Properties</h3>
