@@ -148,10 +148,12 @@ Refunds can be made up to 365 days after capture.
 
 ## How can I refund only a part of a payment?
 
-Case: A customer has placed an order of of two items for a total of 1000 NOK. You have initiated a payment of 1000 NOK, but the customer has changed her mind and only bought one of the items, with a price of 750 NOK. You have performed a partial capture of 750 NOK, and need to refund the reamining 250 NOK.
+Case: A customer has placed an order of of two items for a total of 1000 NOK. You have initiated a payment of 1000 NOK, but the customer has changed her mind and only bought one of the items, with a price of 750 NOK. You have performed a partial capture of 750 NOK, and need to refund the remaining 250 NOK.
 
 It's not possible to cancel the remaining reservation after a partial capture through Vipps, but when the payment is confirmed
 in the bank (normally 2-3 days later), the money will automatically be available to the customer.
+
+See also [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
 
 ## Is it possible for a merchant to pay a Vipps user?
 
