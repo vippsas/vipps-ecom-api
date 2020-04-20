@@ -54,7 +54,7 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
   - [Direct capture](#direct-capture)
   - [Partial capture](#partial-capture)
 - [Cancel](#cancel)
-  - [Cancelling a pendingorder](#Cancelling-a-pending-order)
+  - [Cancelling a pending order](#Cancelling-a-pending-order)
 - [Refund](#refund)
   - [Recurring eCommerce payments](#recurring-ecommerce-payments)
 - [Get payment details](#get-payment-details)
