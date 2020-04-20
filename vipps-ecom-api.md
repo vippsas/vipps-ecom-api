@@ -54,6 +54,7 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
   - [Direct capture](#direct-capture)
   - [Partial capture](#partial-capture)
 - [Cancel](#cancel)
+  - [Cancelling a pendingorder](#Cancelling-a-pending-order)
 - [Refund](#refund)
   - [Recurring eCommerce payments](#recurring-ecommerce-payments)
 - [Get payment details](#get-payment-details)
@@ -850,6 +851,25 @@ Response:
     }
 }
 ```
+
+### Cancelling a pending order
+
+If you wish to cancel a transaction before the customer can finish you can send a cancel request while the transaction is in the "Initate" stage. This is intended for situations where you for example have a face to face situation where a customers phone runs out of battery. This should not be considered a consistent guranteed operation as the Cancel request by you the Merchant is independent by any actions taken by the user in the app.
+
+This will lead to the transaction, being if successful:
+
+``` 
+transactionInfo.status: "Cancelled"
+```
+in the `/cancel` response.
+
+and represented in `/details` as
+
+```
+$.transactionLogHistory.0.operation: "CANCEL"
+```
+
+regardless of wether or not the transaction has been reserved. Note this will not work if the User is in a 3DSecure session.
 
 ## Refund
 
