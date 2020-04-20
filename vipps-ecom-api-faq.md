@@ -6,7 +6,7 @@ See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.3.4.
+Document version 1.3.5.
 
 ## Table of contents
 
@@ -200,6 +200,8 @@ See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-e
 Vipps orders have a max timeout of 10 minutes.
 It's important that the merchant waits at least as long, otherwise the Vipps user may
 confirm in the Vipps app, and right after get an error from the merchant that the order has been cancelled.
+
+See also: [Timeouts](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#timeouts).
 
 ## How long does it take until the money is in my account?
 
