@@ -6,7 +6,7 @@ See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.3.3.
+Document version 1.3.4.
 
 ## Table of contents
 
@@ -214,13 +214,15 @@ See also [Settlements](https://github.com/vippsas/vipps-developers/tree/master/s
 
 Normally 2-3 _bank days_, depending on the bank.
 
+See also [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
+
 ## Where can I find reports on transactions?
 
 The [Vipps portal](https://portal.vipps.no/login/) provides information about
 your transactions, sale units and settlement reports.
 You can also subscribe to daily or monthly transaction reports.
 
-More information: https://github.com/vippsas/vipps-developers/tree/master/settlements
+See also [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
 
 ## For how long is an initiated payment reserved?
 
@@ -262,8 +264,12 @@ See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-e
 
 ## Why do I not get callbacks from Vipps?
 
+Please make sure the URLs you provide to Vipps are reachable from outside your
+own environment.
+
 It could be because your firewall is blocking our requests.
-Please see [Vipps request servers](https://github.com/vippsas/vipps-developers/blob/master/README.md#vipps-request-servers).
+Please see
+[Vipps request servers](https://github.com/vippsas/vipps-developers/blob/master/README.md#vipps-request-servers).
 
 If you need help solving a callback-related problem, please send us a
 complete HTTP request, and any other related details, so we can investigate.
@@ -271,11 +277,13 @@ complete HTTP request, and any other related details, so we can investigate.
 ## Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`
 
 This happens if the test merchant is not being used for some time. Please
-[contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md), and we will reactivate the merchant.
+[contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md),
+and we will reactivate the merchant.
 
 ## How do I perform "testing in production"?
 
 To do this you need a live Vipps account.
+
 We recommend testing with 2 NOK, even though 1 NOK is the smallest possible amount.
 1 NOK is not reliable, as it gets low priority in some systems.
 
@@ -294,6 +302,7 @@ We have varying success when depending on systems on the merchant side, especial
 during peak traffic periods. With webhooks, and also callbacks, Vipps
 takes the responsibility of providing information to the merchant, while being
 dependent on systems on the merchant side, network stability, etc.
+
 In our experience, `GET` methods is the safest way for merchants to get
 information from Vipps. We also provide callbacks, but merchants _must not_
 rely on this alone - being able to actively retrieving information with `GET` methods
