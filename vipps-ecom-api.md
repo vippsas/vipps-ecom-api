@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.0.10.
+Document version 2.0.12.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -854,22 +854,33 @@ Response:
 
 ### Cancelling a pending order
 
-If you wish to cancel a transaction before the customer can finish you can send a cancel request while the transaction is in the "Initate" stage. This is intended for situations where you for example have a face to face situation where a customers phone runs out of battery. This should not be considered a consistent guranteed operation as the Cancel request by you the Merchant is independent by any actions taken by the user in the app.
+If you wish to cancel a transaction before the customer can confirm the payment
+in Vipps, you can send a
+[`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
+request while the transaction is in the `INITIATE` stage.
 
-This will lead to the transaction, being if successful:
+This may be useful in face-to-face situations where a customer's phone runs out
+of battery. This should not be considered a consistent or guaranteed operation,
+as the `/cancel` request is independent by any actions taken by the user in the app.
 
-``` 
+If the
+[`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
+request is successful, the payment state will be:
+
+```
 transactionInfo.status: "Cancelled"
 ```
-in the `/cancel` response.
 
-and represented in `/details` as
+A call to
+[`GET:/ecomm/v2/payments/{orderId}/details](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
+for the same order will return the following, regardless of whether the
+transaction has been reserved:
 
 ```
 $.transactionLogHistory.0.operation: "CANCEL"
 ```
 
-regardless of wether or not the transaction has been reserved. Note this will not work if the User is in a 3DSecure session.
+**Note_**  If the user is in a 3DSecure session, the payment can not be cancelled as described above.
 
 ## Refund
 
@@ -1509,14 +1520,14 @@ allowed to provide more details.
 
 # Testing
 
-To facilitate automated testing in the Vipps test environment the Vipps eCom API 
-provides a Force Approve endpoint to avoid manual intervention required by the 
+To facilitate automated testing in the Vipps test environment the Vipps eCom API
+provides a Force Approve endpoint to avoid manual intervention required by the
 Vipps App.
 
-The force approve endpoint ([`POST:/ecomm/v2/integration-test/payments/{orderId}/approve`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/integrationTestApprovePayment)) 
-allows developers to approve a payment through the Vipps 
-eCom API without the use of the Vipps App. This is useful for automated testing. 
-The endpoint is only available in our Test environment. Attempted use of the 
+The force approve endpoint ([`POST:/ecomm/v2/integration-test/payments/{orderId}/approve`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/integrationTestApprovePayment))
+allows developers to approve a payment through the Vipps
+eCom API without the use of the Vipps App. This is useful for automated testing.
+The endpoint is only available in our Test environment. Attempted use of the
 endpoint in production will not be tolerated.
 
 
