@@ -6,7 +6,7 @@ See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.3.6.
+Document version 1.3.7.
 
 ## Table of contents
 
@@ -161,10 +161,21 @@ Refunds can be made up to 365 days after capture.
 
 ## How can I refund only a part of a payment?
 
-Case: A customer has placed an order of of two items for a total of 1000 NOK. You have initiated a payment of 1000 NOK, but the customer has changed her mind and only bought one of the items, with a price of 750 NOK. You have performed a partial capture of 750 NOK, and need to refund the remaining 250 NOK.
+Example: A customer has placed an order of of two items for a total of 1000 NOK.
+The merchant has initiated a payment of 1000 NOK, but the customer has changed
+her mind and only bought one of the items, with a price of 750 NOK. The merchant
+has therefore made a _partial capture_ of 750 NOK, and need to refund the
+remaining 250 NOK.
 
-It's not possible to cancel the remaining reservation after a partial capture through Vipps, but when the payment is confirmed
-in the bank (normally 2-3 days later), the money will automatically be available to the customer.
+The short version: This is done automatically by the bank after a few days.
+
+The long version: It's not possible to cancel the remaining reservation after a
+partial capture through Vipps, because our payment processor does not have this
+functionality. The partial capture (the 750 of the 1000 NOK in the example above)
+is normally confirmed in the bank after 3-10 days, but it sometimes takes even
+longer. When this is done, the bank will make the remaining (250 NOK) available
+in the customer's account again. This process depends entirely on the customer's
+bank, and Vipps can not speed it up.
 
 See also [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
 
@@ -269,12 +280,15 @@ You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/po
 to manually do API calls, like the two above.
 See [API endpoints](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
 
+You can also log in to the Vipps portal to double check your API keys,
+sale units and API products: https://portal.vipps.no.
+
 ## Why do I get `500 Internal Server Error` (or similar)?
 
 Something _might_ be wrong on our side and we are working to fix it!
 
 It _might_ also be a problem with your request, and that our validation does not catch it.
-In other words: We should have returned `HTTP 400 Bad Request`.
+In other words: We should perhaps have returned `HTTP 400 Bad Request`.
 You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
 to manually do API calls, just to be sure.
 See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
@@ -293,9 +307,10 @@ complete HTTP request, and any other related details, so we can investigate.
 
 ## Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`
 
-This happens if the test merchant is not being used for some time. Please
+This can happen if the test merchant is not being used for a long time. Please
 [contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md),
-and we will reactivate the merchant.
+and we will reactivate the merchant. We no longer automatically deactivate
+test merchants.
 
 ## How do I perform "testing in production"?
 
@@ -306,9 +321,14 @@ We recommend testing with 2 NOK, even though 1 NOK is the smallest possible amou
 
 ## What do we have to do with PSD2's SCA requirements?
 
-SCA (Strong customer authentication) is a security requirement, related to PSD2, to reduce the risk of fraud and protect customers data.
+SCA (Strong customer authentication) is a security requirement, related to PSD2,
+to reduce the risk of fraud and protect customers data.
 
-Delegated SCA will be Vipps' primary way of solving the SCA requirements. For this solution Vipps is developing a SCA compliant solution that consists of a two factor authentication featuring either PIN or biometrics in addition to device possession. In addition Vipps will implement a Dynamic Linking according to the requirements.
+Delegated SCA will be Vipps' primary way of solving the SCA requirements. For
+this solution Vipps is developing a SCA compliant solution that consists of a
+two-factor authentication featuring either PIN or biometrics in addition to
+device possession. In addition Vipps will implement a Dynamic Linking according
+to the requirements.
 
 There is no need for any changes to your Vipps implementation.
 
@@ -442,6 +462,7 @@ Here: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/sett
 
 # Questions?
 
-We're always happy to help with code or other questions you might have! Please create an [issue](https://github.com/vippsas/vipps-recurring-api/issues),
+We're always happy to help with code or other questions you might have!
+Please create an [issue](https://github.com/vippsas/vipps-recurring-api/issues),
 a [pull request](https://github.com/vippsas/vipps-recurring-api/pulls),
 or [contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md).
