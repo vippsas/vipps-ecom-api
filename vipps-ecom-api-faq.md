@@ -6,7 +6,7 @@ See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.3.7.
+Document version 1.3.8.
 
 ## Table of contents
 
@@ -176,6 +176,15 @@ is normally confirmed in the bank after 3-10 days, but it sometimes takes even
 longer. When this is done, the bank will make the remaining (250 NOK) available
 in the customer's account again. This process depends entirely on the customer's
 bank, and Vipps can not speed it up.
+
+Banks keep reservations for the same number of days regardless of whether there
+has been one or more captures. Banks do not extend the reservation if a partial
+capture has been made.
+
+If a partial capture has been made, the bank cancels the reservation for the
+remaining amount. If no capture has been made, the entire reserved amount is
+cancelled. Banks "count the days" from when the reservation was made, so the
+merchant must make the capture, or all captures, before the reservation expires.
 
 See also [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
 
