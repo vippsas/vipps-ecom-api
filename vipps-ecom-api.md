@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.0.12.
+Document version 2.0.13.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -93,7 +93,7 @@ This diagram shows a simplified payment flow:
 
 ![Vipps checkout flow chart](images/flow-diagram.png)
 
-See [Get payment status](#get-payment-status) for more details about
+See [Get payment details](#get-payment-details) for more details about
 the detailed flow, and [Payment states](#payment-states) for the corresponding
 states.
 
