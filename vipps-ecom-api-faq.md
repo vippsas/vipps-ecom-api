@@ -6,7 +6,7 @@ See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.3.5.
+Document version 1.3.6.
 
 ## Table of contents
 
@@ -109,12 +109,25 @@ and include information about the plugins you have installed.
 When you initiate a payment it will be reserved until you capture it.
 Vipps supports both _reserve-capture_ and _direct capture_.
 
-_Reserve capture_ is the default. When you initiate a payment it will be reserved until you capture it.
+_Reserve capture_ is the default. When you initiate a payment it will be
+reserved until you capture it.
 
-When _direct capture_ is activated, all payment reservations will instantly be captured.
-This is intended for situations where the product or service is immediately provided to the customer, e.g. digital services.
+When _direct capture_ is activated, all payment reservations will instantly be
+captured. This is intended for situations where the product or service is
+immediately provided to the customer, and there is no chance that the
+service is not available or sold out, e.g. digital services.
 
-According to Norwegian regulations you should _not_ capture a payment until the product or service is provided to the customer.
+If a payment has been _reserved_, the merchant can make a `/cancel` call to
+immediately release the reservation and make available in the customer's account.
+
+If a payment has been _captured_, the merchant has to
+make a `/refund` call, and it then takes a few days before the amount is
+available in the customer's account.
+See:
+[How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
+
+According to Norwegian regulations you should _not_ capture a payment until the
+product or service is provided to the customer.
 For more information, please see the Consumer Authority's
 [Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
 
