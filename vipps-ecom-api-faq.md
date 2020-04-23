@@ -6,7 +6,7 @@ See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.3.8.
+Document version 1.4.0.
 
 ## Table of contents
 
@@ -22,6 +22,7 @@ Document version 1.3.8.
 - [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
 - [Is it possible for a merchant to pay a Vipps user?]("is-it-possible-for-a-merchant-to-pay-a-vipps-user)
 - [Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
+- [Is there an API for retrieving information about a merchant's payments?](#is-there-an-api-for-retrieving-information-about-a-merchants-payments)
 - [Can I split payments to charge a fee?](#can-i-split-payments-to-charge-a-fee)
 - [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-cant-find-it)
 - [How long is an initiated order valid, if the user does not confirm in the Vipps app?](#how-long-is-an-initiated-order-valid-if-the-user-does-not-confirm-in-the-vipps-app)
@@ -198,6 +199,16 @@ except for refunding (part of) a payment.
 No. Vipps users have not consented to Vipps providing any information to
 third parties, and Vipps does not allow it. There is no API to look up
 a user's address, retrieve a user's purchases, etc.
+
+## Is there an API for retrieving information about a merchant's payments?
+
+Not for aggregated data.
+There is an API to retrieve all details for a known `orderId`:
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET).
+
+And there is
+[Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements)
+with information about settlement reports in various formats.
 
 ## Can I split payments to charge a fee?
 
