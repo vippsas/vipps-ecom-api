@@ -17,7 +17,7 @@ For direct integration, see the [Vipps eCommerce API Checklist](vipps-ecom-api-c
 We have made some example code available, in the hope that it may be useful:
 [Vipps eCom python example](https://github.com/vippsas/vipps-developers/tree/master/code-examples/ecom_python_example).
 
-See the [Vipps Developers repository](https://github.com/vippsas/vipps-developers) 
+See the [Vipps Developers repository](https://github.com/vippsas/vipps-developers)
 for
 contact information,
 contribution guidelines,
@@ -26,3 +26,12 @@ etc.
 You can peruse the API reference documentation as [Swagger](https://vippsas.github.io/vipps-ecom-api/), [ReDoc](https://vippsas.github.io/vipps-ecom-api/redoc.html) or [Slate](https://vippsas.github.io/vipps-ecom-api/slate/ ).
 
 The flow of settlements and how to retrieve them are described in [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements)
+
+# Questions?
+
+We're always happy to help with code or other questions you might have!
+Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),
+a [pull request](https://github.com/vippsas/vipps-ecom-api/pulls),
+or [contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md).
+
+Sign up for our [Technical newsletter for developers](https://github.com/vippsas/vipps-developers/tree/master/newsletters).

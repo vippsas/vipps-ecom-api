@@ -2,7 +2,7 @@
 
 Document version 1.1.0.
 
-Issues and PRs are welcome. 
+Issues and PRs are welcome.
 This document explains the key differences between eCom API v1 and eCom API v2.
 
 ## Landing page
@@ -18,8 +18,8 @@ The initiate payment response will contain a unique URL for each order. Either a
 
 ## Skip landing page
 
-Skipping the landing page is reserved for special cases, where displaying it is not possible. 
-See the details in the 
+Skipping the landing page is reserved for special cases, where displaying it is not possible.
+See the details in the
 [skip landing page section](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#skip-landing-page)
 in the API guide.
 
@@ -80,7 +80,7 @@ See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.
 
 ## Fallback URL is required
 
-The initiate payment must contain a `fallBack` URL. This is where the user will be redirect to after the payment. 
+The initiate payment must contain a `fallBack` URL. This is where the user will be redirect to after the payment.
 This is set in the initiate payment body.
 
 For apps, this URL will be the appswitch URL.
@@ -90,7 +90,7 @@ See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.
 ## Migration
 
 If you have already signed an agreement with Vipps, and have API keys for eCom v1, you can use the same API keys
-for eCom v2. 
+for eCom v2.
 
 ## Subscription keys
 
@@ -106,3 +106,12 @@ The eCom v2 API is available at ```ecomm/v2/payments```:
 ## Documentation
 
 The eCom v2 API documentation is available here: https://github.com/vippsas/vipps-ecom-api
+
+# Questions?
+
+We're always happy to help with code or other questions you might have!
+Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),
+a [pull request](https://github.com/vippsas/vipps-ecom-api/pulls),
+or [contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md).
+
+Sign up for our [Technical newsletter for developers](https://github.com/vippsas/vipps-developers/tree/master/newsletters).

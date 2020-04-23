@@ -48,3 +48,12 @@ For examples of requests and responses, see the Postman collection in [tools](to
 5. Vipps adds the partner to vipps.no, including the signup forms for merchants.
 6. The partner add its merchant to their solution, usually by configuring the POS with the merchant's API keys.
 7. The Merchant goes live 🎉
+
+# Questions?
+
+We're always happy to help with code or other questions you might have!
+Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),
+a [pull request](https://github.com/vippsas/vipps-ecom-api/pulls),
+or [contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md).
+
+Sign up for our [Technical newsletter for developers](https://github.com/vippsas/vipps-developers/tree/master/newsletters).

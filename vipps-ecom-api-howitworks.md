@@ -7,7 +7,7 @@ For technical documentation go to:
 with
 [Swagger specifications](https://vippsas.github.io/vipps-ecom-api/),
 [Postman collections](tools/),
-[example code](https://github.com/vippsas/vipps-developers/tree/master/code-examples/ecom_python_example), 
+[example code](https://github.com/vippsas/vipps-developers/tree/master/code-examples/ecom_python_example),
 [integration checklist](vipps-ecom-api-checklist.md)
 and the [FAQ](vipps-ecom-api-faq.md).
 
@@ -25,7 +25,7 @@ The user chooses “Pay with Vipps”, either in the checkout, or on the product
 ## 2. The Vipps landing page
 
 If the payment was started on a desktop device the user will be sent to the Vipps landing page.
-The user confirms their number, and is prompted to log in to Vipps. 
+The user confirms their number, and is prompted to log in to Vipps.
 
 If the payment was started from a mobile device, the app wil automatically switch over to Vipps.
 
@@ -68,3 +68,5 @@ We're always happy to help with code or other questions you might have!
 Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),
 a [pull request](https://github.com/vippsas/vipps-ecom-api/pulls),
 or [contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md).
+
+Sign up for our [Technical newsletter for developers](https://github.com/vippsas/vipps-developers/tree/master/newsletters).

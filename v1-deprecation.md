@@ -46,7 +46,7 @@ feature to skip the landing page. Customers who can not display the landing page
 can see more details about the "skipLandingPage" functionality
 [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#skip-landing-page).
 
-Vipps is piloting a solution for tokenised BankAxept-payments in payment terminals using Vipps 
+Vipps is piloting a solution for tokenised BankAxept-payments in payment terminals using Vipps
 as a wallet. To learn about availability, contact your payment terminal provider.
 
 Vipps is currently designing and developing solutions for direct integration into POS systems, electronic cash registers and vending machines. For more information about this, please [register here](https://forms.office.com/Pages/ResponsePage.aspx?id=XcJbgGSO1k6NJDiDyQaMWuVjn37JcrJJgJkaJ8cPvvVUQVdLVk9PTkZTRDBLSFRRNzQxTlc2VThZMS4u).
@@ -69,8 +69,11 @@ See also our
 [partners](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/#kom-i-gang-med-vipps-pa-nett-category-1),
 who offer various Vipps services and integrations.
 
+# Questions?
 
-Vipps Integration  
-[Contact info](https://github.com/vippsas/vipps-developers/blob/master/contact.md)  
-[Vipps on GitHub](https://github.com/vippsas)  
-[Technical newsletter for developers](https://cloud.hei.vipps.no/utv)  
+We're always happy to help with code or other questions you might have!
+Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),
+a [pull request](https://github.com/vippsas/vipps-ecom-api/pulls),
+or [contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md).
+
+Sign up for our [Technical newsletter for developers](https://github.com/vippsas/vipps-developers/tree/master/newsletters).
