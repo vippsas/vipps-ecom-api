@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Vipps eCommerce API v1.0.22</title>
+    <title>Vipps eCommerce API v1.0.23</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -701,18 +701,18 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments <span class="se">\</span
   },
   "merchantInfo": {
     "authToken": "iOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImllX3FXQ1hoWHh0MXpJ",
-    "callbackPrefix": "https://example.com/vipps/callbacks-for-payment-update",
+    "callbackPrefix": "https://example.com/vipps/callbacks-for-payment-updates",
     "consentRemovalPrefix": "https://example.com/vipps",
-    "fallBack": "https://example.com/vipps/fallback-result-page/order123abc",
+    "fallBack": "https://example.com/vipps/fallback-order-result-page/order123abc",
     "isApp": false,
     "merchantSerialNumber": 123456,
     "paymentType": "eComm Regular Payment",
-    "shippingDetailsPrefix": "https://example.com/vipps/shipping/",
+    "shippingDetailsPrefix": "https://example.com/vipps/shipping",
     "staticShippingDetails": [
       {
         "isDefault": "Y",
         "priority": 0,
-        "shippingCost": 0,
+        "shippingCost": 9900,
         "shippingMethod": "Posten Servicepakke",
         "shippingMethodId": "posten-servicepakke"
       }
@@ -867,18 +867,18 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments <span class="se">\</span
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"merchantInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"authToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImllX3FXQ1hoWHh0MXpJ"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"callbackPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/callbacks-for-payment-update"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"callbackPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/callbacks-for-payment-updates"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"consentRemovalPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fallBack"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/fallback-result-page/order123abc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fallBack"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/fallback-order-result-page/order123abc"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"isApp"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"merchantSerialNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
     </span><span class="s2">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eComm Regular Payment"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"shippingDetailsPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/shipping/"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shippingDetailsPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/shipping"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"staticShippingDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">9900</span><span class="p">,</span><span class="w">
         </span><span class="s2">"shippingMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"shippingMethodId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"posten-servicepakke"</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -2312,8 +2312,8 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/integration-test/payments/<span c
 </span><span class="err">X-Request-Id</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
 
 </span></code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
-  "customerPhoneNumber": "string",
-  "token": "string"
+  "customerPhoneNumber": 91234567,
+  "token": "eyJraWQiOiJqd3R"
 }'</span><span class="p">;</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
@@ -2446,8 +2446,8 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/integration-test/payments/<span c
 <p>Body parameter</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"customerPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="s2">"customerPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">91234567</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJraWQiOiJqd3R"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="force-approve-payment-parameters">Parameters</h3>
@@ -2508,7 +2508,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/integration-test/payments/<span c
 <td>body</td>
 <td>string</td>
 <td>false</td>
-<td>Target customer phone number</td>
+<td>Target customer phone number. 8 digits.</td>
 </tr>
 <tr>
 <td>» token</td>
@@ -2825,7 +2825,7 @@ curl -X GET https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>o
     </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ada"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lovelace"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mobileNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mobileNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"91234567"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uiJskNQ6qNN1iwN891uuob=="</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -3306,7 +3306,7 @@ curl -X POST https://apitest.vipps.no[shippingDetailsPrefix]/v2/payments/<span c
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">string</span>
 
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
-  "addressId": 0,
+  "addressId": 100,
   "addressLine1": "Robert Levins gate 5",
   "addressLine2": "string",
   "city": "Oslo",
@@ -3435,7 +3435,7 @@ curl -X POST https://apitest.vipps.no[shippingDetailsPrefix]/v2/payments/<span c
 <p>Body parameter</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"addressId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"addressId"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
   </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robert Levins gate 5"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oslo"</span><span class="p">,</span><span class="w">
@@ -3555,7 +3555,7 @@ curl -X POST https://apitest.vipps.no[shippingDetailsPrefix]/v2/payments/<span c
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">9900</span><span class="p">,</span><span class="w">
       </span><span class="s2">"shippingMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"shippingMethodId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"posten-servicepakke"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -3607,7 +3607,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
       "country": "Norway",
       "zipCode": 154
     },
-    "shippingCost": 0,
+    "shippingCost": 9900,
     "shippingMethod": "Posten Servicepakke",
     "shippingMethodId": "posten-servicepakke"
   },
@@ -3623,7 +3623,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
     "email": "user@example.com",
     "firstName": "Ada",
     "lastName": "Lovelace",
-    "mobileNumber": "12345678",
+    "mobileNumber": "91234567",
     "ssn": "12345678901",
     "userId": "uiJskNQ6qNN1iwN891uuob=="
   },
@@ -3759,7 +3759,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
       </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Norway"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">154</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">9900</span><span class="p">,</span><span class="w">
     </span><span class="s2">"shippingMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"shippingMethodId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"posten-servicepakke"</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -3775,7 +3775,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
     </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ada"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lovelace"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mobileNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mobileNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"91234567"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uiJskNQ6qNN1iwN891uuob=="</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -3891,8 +3891,8 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <a id="tocSforceapproverequest"></a>
 <a id="tocsforceapproverequest"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"customerPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="s2">"customerPhoneNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">91234567</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJraWQiOiJqd3R"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-2'>Properties</h3>
@@ -3910,7 +3910,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Target customer phone number</td>
+<td>Target customer phone number. 8 digits.</td>
 </tr>
 <tr>
 <td>token</td>
@@ -4292,7 +4292,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ada"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lovelace"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"mobileNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"mobileNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"91234567"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uiJskNQ6qNN1iwN891uuob=="</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -4885,7 +4885,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
     </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ada"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lovelace"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mobileNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mobileNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"91234567"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uiJskNQ6qNN1iwN891uuob=="</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -4993,7 +4993,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
     </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Norway"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">154</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">9900</span><span class="p">,</span><span class="w">
   </span><span class="s2">"shippingMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"shippingMethodId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"posten-servicepakke"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -5020,7 +5020,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>number(double)</td>
 <td>true</td>
 <td>none</td>
-<td>Shipping cost</td>
+<td>Shipping cost, in øre.</td>
 </tr>
 <tr>
 <td>shippingMethod</td>
@@ -5257,7 +5257,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">9900</span><span class="p">,</span><span class="w">
   </span><span class="s2">"shippingMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"shippingMethodId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"posten-servicepakke"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -5339,18 +5339,18 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"merchantInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"authToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImllX3FXQ1hoWHh0MXpJ"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"callbackPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/callbacks-for-payment-update"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"callbackPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/callbacks-for-payment-updates"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"consentRemovalPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fallBack"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/fallback-result-page/order123abc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fallBack"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/fallback-order-result-page/order123abc"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"isApp"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="s2">"merchantSerialNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
     </span><span class="s2">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eComm Regular Payment"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"shippingDetailsPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/shipping/"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shippingDetailsPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/shipping"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"staticShippingDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="s2">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">9900</span><span class="p">,</span><span class="w">
         </span><span class="s2">"shippingMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"shippingMethodId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"posten-servicepakke"</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -5471,18 +5471,18 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <a id="tocsmerchantinfodto"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"authToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImllX3FXQ1hoWHh0MXpJ"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"callbackPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/callbacks-for-payment-update"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"callbackPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/callbacks-for-payment-updates"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"consentRemovalPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fallBack"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/fallback-result-page/order123abc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fallBack"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/fallback-order-result-page/order123abc"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"isApp"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
   </span><span class="s2">"merchantSerialNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
   </span><span class="s2">"paymentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eComm Regular Payment"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"shippingDetailsPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/shipping/"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"shippingDetailsPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/shipping"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"staticShippingDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">9900</span><span class="p">,</span><span class="w">
       </span><span class="s2">"shippingMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"shippingMethodId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"posten-servicepakke"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -5672,7 +5672,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <a id="tocSfetchshippingcostandmethod"></a>
 <a id="tocsfetchshippingcostandmethod"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"addressId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"addressId"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
   </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robert Levins gate 5"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oslo"</span><span class="p">,</span><span class="w">
@@ -5851,7 +5851,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
       </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Norway"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">154</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">9900</span><span class="p">,</span><span class="w">
     </span><span class="s2">"shippingMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"shippingMethodId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"posten-servicepakke"</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -5867,7 +5867,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
     </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ada"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lovelace"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mobileNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mobileNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"91234567"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uiJskNQ6qNN1iwN891uuob=="</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -6090,7 +6090,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"isDefault"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"priority"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">9900</span><span class="p">,</span><span class="w">
       </span><span class="s2">"shippingMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"shippingMethodId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"posten-servicepakke"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -6212,7 +6212,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
       </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Norway"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">154</span><span class="w">
     </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">9900</span><span class="p">,</span><span class="w">
     </span><span class="s2">"shippingMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"shippingMethodId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"posten-servicepakke"</span><span class="w">
   </span><span class="p">},</span><span class="w">
@@ -6228,7 +6228,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
     </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ada"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lovelace"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"mobileNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mobileNumber"</span><span class="p">:</span><span class="w"> </span><span class="s2">"91234567"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"ssn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12345678901"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uiJskNQ6qNN1iwN891uuob=="</span><span class="w">
   </span><span class="p">},</span><span class="w">
