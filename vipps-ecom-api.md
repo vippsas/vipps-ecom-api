@@ -313,7 +313,7 @@ See
 [Datatilsynet's information](https://www.datatilsynet.no/rettigheter-og-plikter/personopplysninger/)
 about which types of information is sensitive (in Norwegian).
 
-Vipps responds to the4 initiate request with an URL.
+Vipps responds to the initiate request with an URL.
 The URL depends on whether the initiate request was provided the `isApp` parameter:
 
 * `"isApp":false` (or not provided): The URL is for the Vipps "landing page", with `https://`.
