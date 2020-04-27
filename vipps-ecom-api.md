@@ -564,6 +564,8 @@ These are the statuses provided by Vipps in the callbacks by
 |                  | `REJECTED`       | User did not act on the payment (timeout, etc) |
 | Express checkout | `RESERVE`        | Payment reserved, by user accepting the payment in Vipps (it _is_ correct that this is different from `RESERVED` for regular checkout - sorry)|
 |                  | `SALE`           | Payment captured with direct capture, by merchant (after `RESERVE`)  |
+|                  | `RESERVE_FAILED` | Reserve failed because of insufficient funds, invalid card, or similar |
+|                  | `SALE_FAILED`    | Direct failed because of insufficient funds, invalid card, or similar |
 |                  | `CANCELLED`      | Payment canceled, by user in Vipps  |
 |                  | `REJECTED`       | User did not act on the payment (timeout, etc)  |
 
