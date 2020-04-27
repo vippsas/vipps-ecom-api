@@ -716,11 +716,9 @@ The respective amount will be reserved for future capturing.
 
 ![The Vipps landing page](images/vipps-flow-landing-page.png)
 
-When a user has selected Vipps for payment, the Vipps landing page
-detects whether user is using a desktop browser or a mobile browser:
+When a user is directed to the `url` from initiate payment, they will either be taken to the Vipps app or to the Vipps landing page:
 
-* In a mobile browser, the landing page detects if the Vipps app is installed,
-  and automatically switches to the Vipps app if it is.
+* In a mobile browser, the user will be redirected to the Vipps app.
 * In a desktop browser, the landing page prompts the user for the phone number (the number may also be pre-filled).
   The user enters or confirms the phone number. Then on their phone, the user gets a push notification and the Vipps app then prompts for confirmation.
 
