@@ -307,7 +307,10 @@
                     <a href="#tocS_callbackErrorInfo" class="toc-h2 toc-link" data-title="callbackErrorInfo">callbackErrorInfo</a>
                   </li>
                   <li>
-                    <a href="#tocS_CallbackTransactionInfoStatus" class="toc-h2 toc-link" data-title="CallbackTransactionInfoStatus">CallbackTransactionInfoStatus</a>
+                    <a href="#tocS_CallbackTransactionInfoRegular" class="toc-h2 toc-link" data-title="CallbackTransactionInfoRegular">CallbackTransactionInfoRegular</a>
+                  </li>
+                  <li>
+                    <a href="#tocS_CallbackTransactionInfoExpress" class="toc-h2 toc-link" data-title="CallbackTransactionInfoExpress">CallbackTransactionInfoExpress</a>
                   </li>
                   <li>
                     <a href="#tocS_OrderStatusInfoTransactionInfo" class="toc-h2 toc-link" data-title="OrderStatusInfoTransactionInfo">OrderStatusInfoTransactionInfo</a>
@@ -4428,14 +4431,14 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 </tr>
 </tbody></table>
 
-<h2 id="tocS_CallbackTransactionInfoStatus">CallbackTransactionInfoStatus</h2>
+<h2 id="tocS_CallbackTransactionInfoRegular">CallbackTransactionInfoRegular</h2>
 
 <!-- backwards compatibility -->
 
-<p><a id="schemacallbacktransactioninfostatus"></a>
-<a id="schema_CallbackTransactionInfoStatus"></a>
-<a id="tocScallbacktransactioninfostatus"></a>
-<a id="tocscallbacktransactioninfostatus"></a></p>
+<p><a id="schemacallbacktransactioninforegular"></a>
+<a id="schema_CallbackTransactionInfoRegular"></a>
+<a id="tocScallbacktransactioninforegular"></a>
+<a id="tocscallbacktransactioninforegular"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESERVE"</span><span class="p">,</span><span class="w">
@@ -4491,6 +4494,97 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 </thead><tbody>
 <tr>
 <td>status</td>
+<td>RESERVED</td>
+</tr>
+<tr>
+<td>status</td>
+<td>SALE</td>
+</tr>
+<tr>
+<td>status</td>
+<td>CANCELLED</td>
+</tr>
+<tr>
+<td>status</td>
+<td>REJECTED</td>
+</tr>
+<tr>
+<td>status</td>
+<td>AUTO_CANCEL</td>
+</tr>
+<tr>
+<td>status</td>
+<td>SALE_FAILED</td>
+</tr>
+<tr>
+<td>status</td>
+<td>RESERVE_FAILED</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_CallbackTransactionInfoExpress">CallbackTransactionInfoExpress</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemacallbacktransactioninfoexpress"></a>
+<a id="schema_CallbackTransactionInfoExpress"></a>
+<a id="tocScallbacktransactioninfoexpress"></a>
+<a id="tocscallbacktransactioninfoexpress"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RESERVE"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timeStamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-12T11:18:38.246Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5001420062"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-11'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>amount</td>
+<td>number(double)</td>
+<td>true</td>
+<td>none</td>
+<td>Ordered amount in øre</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Status which gives the current state of the payment within Vipps. See the <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callbacks">API guide</a> for more information.</td>
+</tr>
+<tr>
+<td>timeStamp</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Timestamp in ISO-8601 representing when the operation was performed.</td>
+</tr>
+<tr>
+<td>transactionId</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Vipps transaction id</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-8'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
 <td>RESERVE</td>
 </tr>
 <tr>
@@ -4509,6 +4603,14 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>status</td>
 <td>AUTO_CANCEL</td>
 </tr>
+<tr>
+<td>status</td>
+<td>SALE_FAILED</td>
+</tr>
+<tr>
+<td>status</td>
+<td>RESERVE_FAILED</td>
+</tr>
 </tbody></table>
 
 <h2 id="tocS_OrderStatusInfoTransactionInfo">OrderStatusInfoTransactionInfo</h2>
@@ -4526,7 +4628,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5001420062"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-11'>Properties</h3>
+</span></code></pre><h3 id='properties-12'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4565,7 +4667,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>Vipps transaction id</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-8'>Enumerated Values</h4>
+<h4 id='enumerated-values-9'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -4630,7 +4732,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"transactionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One pair of Vipps socks"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-12'>Properties</h3>
+</span></code></pre><h3 id='properties-13'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4676,7 +4778,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>Transaction text to be displayed in Vipps</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-9'>Enumerated Values</h4>
+<h4 id='enumerated-values-10'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -4705,7 +4807,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"transactionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One pair of Vipps socks"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-13'>Properties</h3>
+</span></code></pre><h3 id='properties-14'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4751,7 +4853,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>Transaction text to be displayed in Vipps</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-10'>Enumerated Values</h4>
+<h4 id='enumerated-values-11'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -4780,7 +4882,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"transactionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One pair of Vipps socks"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-14'>Properties</h3>
+</span></code></pre><h3 id='properties-15'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4826,7 +4928,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>Transaction text to be displayed in Vipps</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-11'>Enumerated Values</h4>
+<h4 id='enumerated-values-12'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -4891,7 +4993,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-15'>Properties</h3>
+</span></code></pre><h3 id='properties-16'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4951,7 +5053,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.vipps.no/deeplink/vippsgateway?token=eyJraWQiOiJqd3R"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-16'>Properties</h3>
+</span></code></pre><h3 id='properties-17'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4998,7 +5100,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"shippingMethodId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"posten-servicepakke"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-17'>Properties</h3>
+</span></code></pre><h3 id='properties-18'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5064,7 +5166,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-18'>Properties</h3>
+</span></code></pre><h3 id='properties-19'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5123,7 +5225,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-19'>Properties</h3>
+</span></code></pre><h3 id='properties-20'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5182,7 +5284,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-20'>Properties</h3>
+</span></code></pre><h3 id='properties-21'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5227,7 +5329,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"merchantSerialNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-21'>Properties</h3>
+</span></code></pre><h3 id='properties-22'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5262,7 +5364,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"shippingMethodId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"posten-servicepakke"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-22'>Properties</h3>
+</span></code></pre><h3 id='properties-23'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5308,7 +5410,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-12'>Enumerated Values</h4>
+<h4 id='enumerated-values-13'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -5365,7 +5467,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-23'>Properties</h3>
+</span></code></pre><h3 id='properties-24'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5414,7 +5516,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"skipLandingPage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-24'>Properties</h3>
+</span></code></pre><h3 id='properties-25'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5489,7 +5591,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-25'>Properties</h3>
+</span></code></pre><h3 id='properties-26'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5563,7 +5665,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>If shipping method and cost are always a fixed value, for example 50 NOK, then the method and price can be provided during the initiate call. The shippingDetailsPrefix callback will not be used if this value is provided. This will result in a faster checkout and a better customer experience.</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-13'>Enumerated Values</h4>
+<h4 id='enumerated-values-14'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -5598,7 +5700,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-26'>Properties</h3>
+</span></code></pre><h3 id='properties-27'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5637,7 +5739,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"transactionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One pair of Vipps socks"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-27'>Properties</h3>
+</span></code></pre><h3 id='properties-28'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5681,7 +5783,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"addressType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"H"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-28'>Properties</h3>
+</span></code></pre><h3 id='properties-29'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5741,7 +5843,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>The type of address: Home, business.</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-14'>Enumerated Values</h4>
+<h4 id='enumerated-values-15'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -5770,7 +5872,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"mobileNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">91234567</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-29'>Properties</h3>
+</span></code></pre><h3 id='properties-30'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5806,7 +5908,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-30'>Properties</h3>
+</span></code></pre><h3 id='properties-31'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5878,7 +5980,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-31'>Properties</h3>
+</span></code></pre><h3 id='properties-32'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5911,7 +6013,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 </tr>
 <tr>
 <td>transactionInfo</td>
-<td><a href="#schemacallbacktransactioninfostatus">CallbackTransactionInfoStatus</a></td>
+<td><a href="#schemacallbacktransactioninfoexpress">CallbackTransactionInfoExpress</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -5956,7 +6058,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-32'>Properties</h3>
+</span></code></pre><h3 id='properties-33'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5982,7 +6084,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 </tr>
 <tr>
 <td>transactionInfo</td>
-<td><a href="#schemacallbacktransactioninfostatus">CallbackTransactionInfoStatus</a></td>
+<td><a href="#schemacallbacktransactioninforegular">CallbackTransactionInfoRegular</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -6014,7 +6116,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-33'>Properties</h3>
+</span></code></pre><h3 id='properties-34'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6097,7 +6199,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-34'>Properties</h3>
+</span></code></pre><h3 id='properties-35'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6146,7 +6248,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"bankIdentificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-35'>Properties</h3>
+</span></code></pre><h3 id='properties-36'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6239,7 +6341,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-36'>Properties</h3>
+</span></code></pre><h3 id='properties-37'>Properties</h3>
 <p>oneOf</p>
 
 <table><thead>
