@@ -476,6 +476,8 @@ paths:
           description: Unsupported media type
         '500':
           description: A server-side error
+        '503':
+          description: Service Unavailable
   '/ecomm/v2/payments/{orderId}/cancel':
     put:
       tags:
@@ -556,6 +558,8 @@ paths:
           description: Unsupported media type
         '500':
           description: A server-side error
+        '503':
+          description: Service Unavailable
   '/ecomm/v2/payments/{orderId}/refund':
     post:
       tags:
@@ -643,6 +647,8 @@ paths:
           description: Unsupported media type
         '500':
           description: A server-side error
+        '503':
+          description: Service Unavailable
   '/ecomm/v2/integration-test/payments/{orderId}/approve':
     post:
       tags:
@@ -782,6 +788,8 @@ paths:
           description: Unsupported media type
         '500':
           description: A server-side error
+        '503':
+          description: Service Unavailable
   '/ecomm/v2/payments/{orderId}/status':
     get:
       deprecated: true
