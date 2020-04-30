@@ -560,6 +560,9 @@
           },
           "500": {
             "description": "A server-side error"
+          },
+          "503": {
+            "description": "Service Unavailable"
           }
         }
       }
@@ -664,6 +667,9 @@
           },
           "500": {
             "description": "A server-side error"
+          },
+          "503": {
+            "description": "Service Unavailable"
           }
         }
       }
@@ -768,6 +774,9 @@
           },
           "500": {
             "description": "A server-side error"
+          },
+          "503": {
+            "description": "Service Unavailable"
           }
         }
       }
@@ -856,6 +865,9 @@
           },
           "500": {
             "description": "A server-side error"
+          },
+          "503": {
+            "description": "Service Unavailable"
           }
         }
       }
@@ -949,6 +961,9 @@
           },
           "500": {
             "description": "A server-side error"
+          },
+          "503": {
+            "description": "Service Unavailable"
           }
         }
       }
