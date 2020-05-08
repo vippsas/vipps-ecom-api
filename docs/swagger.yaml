@@ -523,7 +523,7 @@ paths:
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/TransactionResponseCapture'
+                $ref: '#/components/schemas/TransactionResponse'
         '400':
           description: Bad request (Missing a required parameter or bad request format)
           content:
@@ -641,7 +641,7 @@ paths:
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/TransactionResponseCancel'
+                $ref: '#/components/schemas/TransactionResponse'
         '400':
           description: Bad request (Missing a required parameter or bad request format)
           content:
@@ -766,7 +766,7 @@ paths:
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/TransactionResponseRefund'
+                $ref: '#/components/schemas/TransactionResponse'
         '400':
           description: Bad request (Missing a required parameter or bad request format)
           content:
