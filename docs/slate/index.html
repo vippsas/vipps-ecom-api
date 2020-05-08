@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Vipps eCommerce API v1.3.0</title>
+    <title>Vipps eCommerce API v1.3.1</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -1477,13 +1477,24 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>
 <blockquote>
 <p>Example responses</p>
 
-<p>400 Response</p>
+<p>200 Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"errorGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Refused by issuer because of expired card"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"contextId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f70b8bf7-c843-4bea-95d9-94725b19895f"</span><span class="w">
+  </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order123abc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"transactionInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Captured"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timeStamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-12T11:18:38.246Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5001420062"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"transactionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One pair of Vipps socks"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"transactionSummary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"capturedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"refundedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"remainingAmountToCapture"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"remainingAmountToRefund"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bankIdentificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="capture-payment--responses">Responses</h3>
@@ -1500,7 +1511,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Capture payment response</td>
-<td>None</td>
+<td><a href="#schematransactionresponse">TransactionResponse</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -1557,10 +1568,6 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>
 <td><a href="#schemaerror">Error</a></td>
 </tr>
 </tbody></table>
-
-<h3 id="capture-payment--responseschema">Response Schema</h3>
-
-<p>undefined</p>
 <h2 id='cancel-payment'>Cancel Payment</h2>
 <p><a id="opIdcancelPaymentRequestUsingPUT"></a></p>
 
@@ -1823,13 +1830,24 @@ curl -X PUT https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>o
 <blockquote>
 <p>Example responses</p>
 
-<p>400 Response</p>
+<p>200 Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"errorGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Refused by issuer because of expired card"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"contextId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f70b8bf7-c843-4bea-95d9-94725b19895f"</span><span class="w">
+  </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order123abc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"transactionInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Captured"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timeStamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-12T11:18:38.246Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5001420062"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"transactionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One pair of Vipps socks"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"transactionSummary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"capturedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"refundedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"remainingAmountToCapture"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"remainingAmountToRefund"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bankIdentificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="cancel-payment-responses">Responses</h3>
@@ -1846,7 +1864,7 @@ curl -X PUT https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>o
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Cancel payment response</td>
-<td>None</td>
+<td><a href="#schematransactionresponse">TransactionResponse</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -1903,10 +1921,6 @@ curl -X PUT https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>o
 <td><a href="#schemaerror">Error</a></td>
 </tr>
 </tbody></table>
-
-<h3 id="cancel-payment-responseschema">Response Schema</h3>
-
-<p>undefined</p>
 <h2 id='refund-payment'>Refund Payment</h2>
 <p><a id="opIdrefundPaymentUsingPOST"></a></p>
 
@@ -2192,13 +2206,24 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>
 <blockquote>
 <p>Example responses</p>
 
-<p>400 Response</p>
+<p>200 Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"errorGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Refused by issuer because of expired card"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"contextId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f70b8bf7-c843-4bea-95d9-94725b19895f"</span><span class="w">
+  </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order123abc"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"transactionInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Captured"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timeStamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-12T11:18:38.246Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5001420062"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"transactionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One pair of Vipps socks"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"transactionSummary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"capturedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"refundedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"remainingAmountToCapture"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"remainingAmountToRefund"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"bankIdentificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="refund-payment--responses">Responses</h3>
@@ -2215,7 +2240,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Refund payment response</td>
-<td>None</td>
+<td><a href="#schematransactionresponse">TransactionResponse</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -2272,10 +2297,6 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>
 <td><a href="#schemaerror">Error</a></td>
 </tr>
 </tbody></table>
-
-<h3 id="refund-payment--responseschema">Response Schema</h3>
-
-<p>undefined</p>
 <h2 id='force-approve-payment'>Force Approve Payment</h2>
 <p><a id="opIdintegrationTestApprovePayment"></a></p>
 
