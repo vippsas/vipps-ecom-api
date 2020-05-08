@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Vipps eCommerce API v1.1.1</title>
+    <title>Vipps eCommerce API v1.3.0</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -313,31 +313,19 @@
                     <a href="#tocS_OrderStatusInfoTransactionInfo" class="toc-h2 toc-link" data-title="OrderStatusInfoTransactionInfo">OrderStatusInfoTransactionInfo</a>
                   </li>
                   <li>
-                    <a href="#tocS_TransactionInfoCancel" class="toc-h2 toc-link" data-title="TransactionInfoCancel">TransactionInfoCancel</a>
+                    <a href="#tocS_TransactionInfo" class="toc-h2 toc-link" data-title="TransactionInfo">TransactionInfo</a>
                   </li>
                   <li>
-                    <a href="#tocS_TransactionInfoRefund" class="toc-h2 toc-link" data-title="TransactionInfoRefund">TransactionInfoRefund</a>
+                    <a href="#tocS_TransactionDetails" class="toc-h2 toc-link" data-title="TransactionDetails">TransactionDetails</a>
                   </li>
                   <li>
-                    <a href="#tocS_TransactionInfoCapture" class="toc-h2 toc-link" data-title="TransactionInfoCapture">TransactionInfoCapture</a>
-                  </li>
-                  <li>
-                    <a href="#tocS_GetTransactionDetails" class="toc-h2 toc-link" data-title="GetTransactionDetails">GetTransactionDetails</a>
-                  </li>
-                  <li>
-                    <a href="#tocS_InitiatePaymentV2Representation" class="toc-h2 toc-link" data-title="InitiatePaymentV2Representation">InitiatePaymentV2Representation</a>
+                    <a href="#tocS_PaymentInitiationResponse" class="toc-h2 toc-link" data-title="PaymentInitiationResponse">PaymentInitiationResponse</a>
                   </li>
                   <li>
                     <a href="#tocS_ShippingDetailsRequest" class="toc-h2 toc-link" data-title="ShippingDetailsRequest">ShippingDetailsRequest</a>
                   </li>
                   <li>
-                    <a href="#tocS_TransactionResponseCancel" class="toc-h2 toc-link" data-title="TransactionResponseCancel">TransactionResponseCancel</a>
-                  </li>
-                  <li>
-                    <a href="#tocS_TransactionResponseCapture" class="toc-h2 toc-link" data-title="TransactionResponseCapture">TransactionResponseCapture</a>
-                  </li>
-                  <li>
-                    <a href="#tocS_TransactionResponseRefund" class="toc-h2 toc-link" data-title="TransactionResponseRefund">TransactionResponseRefund</a>
+                    <a href="#tocS_TransactionResponse" class="toc-h2 toc-link" data-title="TransactionResponse">TransactionResponse</a>
                   </li>
                   <li>
                     <a href="#tocS_MerchantInfoPayment" class="toc-h2 toc-link" data-title="MerchantInfoPayment">MerchantInfoPayment</a>
@@ -349,22 +337,22 @@
                     <a href="#tocS_InitiatePaymentCommand" class="toc-h2 toc-link" data-title="InitiatePaymentCommand">InitiatePaymentCommand</a>
                   </li>
                   <li>
-                    <a href="#tocS_TransactionInfoInitiateDTO" class="toc-h2 toc-link" data-title="TransactionInfoInitiateDTO">TransactionInfoInitiateDTO</a>
+                    <a href="#tocS_TransactionInfoInitiate" class="toc-h2 toc-link" data-title="TransactionInfoInitiate">TransactionInfoInitiate</a>
                   </li>
                   <li>
-                    <a href="#tocS_MerchantInfoDto" class="toc-h2 toc-link" data-title="MerchantInfoDto">MerchantInfoDto</a>
+                    <a href="#tocS_MerchantInfo" class="toc-h2 toc-link" data-title="MerchantInfo">MerchantInfo</a>
                   </li>
                   <li>
-                    <a href="#tocS_GetPaymentStatusResponse" class="toc-h2 toc-link" data-title="GetPaymentStatusResponse">GetPaymentStatusResponse</a>
+                    <a href="#tocS_PaymentStatus" class="toc-h2 toc-link" data-title="PaymentStatus">PaymentStatus</a>
                   </li>
                   <li>
                     <a href="#tocS_Transaction" class="toc-h2 toc-link" data-title="Transaction">Transaction</a>
                   </li>
                   <li>
-                    <a href="#tocS_FetchShippingCostAndMethod" class="toc-h2 toc-link" data-title="FetchShippingCostAndMethod">FetchShippingCostAndMethod</a>
+                    <a href="#tocS_ShippingCostAndMethod" class="toc-h2 toc-link" data-title="ShippingCostAndMethod">ShippingCostAndMethod</a>
                   </li>
                   <li>
-                    <a href="#tocS_CustomerInfoDto" class="toc-h2 toc-link" data-title="CustomerInfoDto">CustomerInfoDto</a>
+                    <a href="#tocS_CustomerInfo" class="toc-h2 toc-link" data-title="CustomerInfo">CustomerInfo</a>
                   </li>
                   <li>
                     <a href="#tocS_CancelPaymentActionRequest" class="toc-h2 toc-link" data-title="CancelPaymentActionRequest">CancelPaymentActionRequest</a>
@@ -945,7 +933,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments <span class="se">\</span
 <tr>
 <td>» customerInfo</td>
 <td>body</td>
-<td><a href="#schemacustomerinfodto">CustomerInfoDto</a></td>
+<td><a href="#schemacustomerinfo">CustomerInfo</a></td>
 <td>true</td>
 <td>none</td>
 </tr>
@@ -959,7 +947,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments <span class="se">\</span
 <tr>
 <td>» merchantInfo</td>
 <td>body</td>
-<td><a href="#schemamerchantinfodto">MerchantInfoDto</a></td>
+<td><a href="#schemamerchantinfo">MerchantInfo</a></td>
 <td>true</td>
 <td>none</td>
 </tr>
@@ -1064,7 +1052,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments <span class="se">\</span
 <tr>
 <td>» transaction</td>
 <td>body</td>
-<td><a href="#schematransactioninfoinitiatedto">TransactionInfoInitiateDTO</a></td>
+<td><a href="#schematransactioninfoinitiate">TransactionInfoInitiate</a></td>
 <td>true</td>
 <td>none</td>
 </tr>
@@ -1153,7 +1141,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments <span class="se">\</span
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Response for Initiate Payment</td>
-<td><a href="#schemainitiatepaymentv2representation">InitiatePaymentV2Representation</a></td>
+<td><a href="#schemapaymentinitiationresponse">PaymentInitiationResponse</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -1489,24 +1477,13 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>
 <blockquote>
 <p>Example responses</p>
 
-<p>200 Response</p>
+<p>400 Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order123abc"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"transactionInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Captured"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"timeStamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-12T11:18:38.246Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5001420062"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"transactionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One pair of Vipps socks"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"transactionSummary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"capturedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"refundedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"remainingAmountToCapture"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"remainingAmountToRefund"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bankIdentificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="s2">"errorGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Refused by issuer because of expired card"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"contextId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f70b8bf7-c843-4bea-95d9-94725b19895f"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="capture-payment--responses">Responses</h3>
@@ -1523,7 +1500,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Capture payment response</td>
-<td><a href="#schematransactionresponsecapture">TransactionResponseCapture</a></td>
+<td>None</td>
 </tr>
 <tr>
 <td>400</td>
@@ -1580,6 +1557,10 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>
 <td><a href="#schemaerror">Error</a></td>
 </tr>
 </tbody></table>
+
+<h3 id="capture-payment--responseschema">Response Schema</h3>
+
+<p>undefined</p>
 <h2 id='cancel-payment'>Cancel Payment</h2>
 <p><a id="opIdcancelPaymentRequestUsingPUT"></a></p>
 
@@ -1842,24 +1823,13 @@ curl -X PUT https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>o
 <blockquote>
 <p>Example responses</p>
 
-<p>200 Response</p>
+<p>400 Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order123abc"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"transactionInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cancelled"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"timeStamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-12T11:18:38.246Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5001420062"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"transactionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One pair of Vipps socks"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"transactionSummary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"capturedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"refundedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"remainingAmountToCapture"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"remainingAmountToRefund"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bankIdentificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="s2">"errorGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Refused by issuer because of expired card"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"contextId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f70b8bf7-c843-4bea-95d9-94725b19895f"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="cancel-payment-responses">Responses</h3>
@@ -1876,7 +1846,7 @@ curl -X PUT https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>o
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Cancel payment response</td>
-<td><a href="#schematransactionresponsecancel">TransactionResponseCancel</a></td>
+<td>None</td>
 </tr>
 <tr>
 <td>400</td>
@@ -1933,6 +1903,10 @@ curl -X PUT https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>o
 <td><a href="#schemaerror">Error</a></td>
 </tr>
 </tbody></table>
+
+<h3 id="cancel-payment-responseschema">Response Schema</h3>
+
+<p>undefined</p>
 <h2 id='refund-payment'>Refund Payment</h2>
 <p><a id="opIdrefundPaymentUsingPOST"></a></p>
 
@@ -2218,24 +2192,13 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>
 <blockquote>
 <p>Example responses</p>
 
-<p>200 Response</p>
+<p>400 Response</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order123abc"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Refund"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"timeStamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-12T11:18:38.246Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5001420062"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"transactionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One pair of Vipps socks"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"transactionSummary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"capturedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"refundedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"remainingAmountToCapture"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"remainingAmountToRefund"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bankIdentificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="s2">"errorGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Refused by issuer because of expired card"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"contextId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f70b8bf7-c843-4bea-95d9-94725b19895f"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="refund-payment--responses">Responses</h3>
@@ -2252,7 +2215,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Refund payment response</td>
-<td><a href="#schematransactionresponserefund">TransactionResponseRefund</a></td>
+<td>None</td>
 </tr>
 <tr>
 <td>400</td>
@@ -2309,6 +2272,10 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>
 <td><a href="#schemaerror">Error</a></td>
 </tr>
 </tbody></table>
+
+<h3 id="refund-payment--responseschema">Response Schema</h3>
+
+<p>undefined</p>
 <h2 id='force-approve-payment'>Force Approve Payment</h2>
 <p><a id="opIdintegrationTestApprovePayment"></a></p>
 
@@ -2884,7 +2851,7 @@ curl -X GET https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>o
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Get payment Details</td>
-<td><a href="#schemagettransactiondetails">GetTransactionDetails</a></td>
+<td><a href="#schematransactiondetails">TransactionDetails</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -3140,7 +3107,7 @@ curl -X GET https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>o
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Get order status</td>
-<td><a href="#schemagetpaymentstatusresponse">GetPaymentStatusResponse</a></td>
+<td><a href="#schemapaymentstatus">PaymentStatus</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -3517,9 +3484,9 @@ curl -X POST https://apitest.vipps.no[shippingDetailsPrefix]/v2/payments/<span c
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemafetchshippingcostandmethod">FetchShippingCostAndMethod</a></td>
+<td><a href="#schemashippingcostandmethod">ShippingCostAndMethod</a></td>
 <td>true</td>
-<td>fetchShippingCostAndMethod</td>
+<td>ShippingCostAndMethod</td>
 </tr>
 <tr>
 <td>» addressId</td>
@@ -4240,7 +4207,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Timestamp in ISO-8601 representing when the operation was perfomed.</td>
+<td>Timestamp in ISO-8601 representing when the operation was performed.</td>
 </tr>
 <tr>
 <td>transactionId</td>
@@ -4654,7 +4621,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>Timestamp in ISO-8601 representing when the status operation was performed.</td>
+<td>Timestamp in ISO-8601 representing when the operation was performed.</td>
 </tr>
 <tr>
 <td>transactionId</td>
@@ -4713,17 +4680,17 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 </tr>
 </tbody></table>
 
-<h2 id="tocS_TransactionInfoCancel">TransactionInfoCancel</h2>
+<h2 id="tocS_TransactionInfo">TransactionInfo</h2>
 
 <!-- backwards compatibility -->
 
-<p><a id="schematransactioninfocancel"></a>
-<a id="schema_TransactionInfoCancel"></a>
-<a id="tocStransactioninfocancel"></a>
-<a id="tocstransactioninfocancel"></a></p>
+<p><a id="schematransactioninfo"></a>
+<a id="schema_TransactionInfo"></a>
+<a id="tocStransactioninfo"></a>
+<a id="tocstransactioninfo"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cancelled"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Captured"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"timeStamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-12T11:18:38.246Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5001420062"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"transactionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One pair of Vipps socks"</span><span class="w">
@@ -4758,7 +4725,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>Timestamp in ISO-8601 representing when the order was cancelled.</td>
+<td>Timestamp in ISO-8601 representing when the order was performed.</td>
 </tr>
 <tr>
 <td>transactionId</td>
@@ -4786,166 +4753,24 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>status</td>
 <td>Cancelled</td>
 </tr>
-</tbody></table>
-
-<h2 id="tocS_TransactionInfoRefund">TransactionInfoRefund</h2>
-
-<!-- backwards compatibility -->
-
-<p><a id="schematransactioninforefund"></a>
-<a id="schema_TransactionInfoRefund"></a>
-<a id="tocStransactioninforefund"></a>
-<a id="tocstransactioninforefund"></a></p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Refund"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"timeStamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-12T11:18:38.246Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5001420062"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"transactionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One pair of Vipps socks"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre><h3 id='properties-13'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>amount</td>
-<td>number(double)</td>
-<td>true</td>
-<td>none</td>
-<td>Ordered amount in øre</td>
-</tr>
 <tr>
 <td>status</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>Status which gives the current state of the payment within Vipps. See the <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#responses-from-requests">API guide</a> for more information.</td>
+<td>Captured</td>
 </tr>
-<tr>
-<td>timeStamp</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>Timestamp in ISO-8601 representing when the order was refunded.</td>
-</tr>
-<tr>
-<td>transactionId</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>Vipps transaction id</td>
-</tr>
-<tr>
-<td>transactionText</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>Transaction text to be displayed in Vipps</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-11'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
 <tr>
 <td>status</td>
 <td>Refund</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocS_TransactionInfoCapture">TransactionInfoCapture</h2>
+<h2 id="tocS_TransactionDetails">TransactionDetails</h2>
 
 <!-- backwards compatibility -->
 
-<p><a id="schematransactioninfocapture"></a>
-<a id="schema_TransactionInfoCapture"></a>
-<a id="tocStransactioninfocapture"></a>
-<a id="tocstransactioninfocapture"></a></p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Captured"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"timeStamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-12T11:18:38.246Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5001420062"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"transactionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One pair of Vipps socks"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre><h3 id='properties-14'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>amount</td>
-<td>number(double)</td>
-<td>true</td>
-<td>none</td>
-<td>Ordered amount in øre</td>
-</tr>
-<tr>
-<td>status</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>Status which gives the current state of the payment within Vipps. See the <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#responses-from-requests">API guide</a> for more information.</td>
-</tr>
-<tr>
-<td>timeStamp</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>Timestamp in ISO-8601 representing when the order was captured.</td>
-</tr>
-<tr>
-<td>transactionId</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>Vipps transaction id</td>
-</tr>
-<tr>
-<td>transactionText</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>Transaction text to be displayed in Vipps</td>
-</tr>
-</tbody></table>
-<h4 id='enumerated-values-12'>Enumerated Values</h4>
-<table><thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>Captured</td>
-</tr>
-</tbody></table>
-
-<h2 id="tocS_GetTransactionDetails">GetTransactionDetails</h2>
-
-<!-- backwards compatibility -->
-
-<p><a id="schemagettransactiondetails"></a>
-<a id="schema_GetTransactionDetails"></a>
-<a id="tocSgettransactiondetails"></a>
-<a id="tocsgettransactiondetails"></a></p>
+<p><a id="schematransactiondetails"></a>
+<a id="schema_TransactionDetails"></a>
+<a id="tocStransactiondetails"></a>
+<a id="tocstransactiondetails"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order123abc"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"shippingDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4990,7 +4815,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-15'>Properties</h3>
+</span></code></pre><h3 id='properties-13'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5037,20 +4862,20 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 </tr>
 </tbody></table>
 
-<h2 id="tocS_InitiatePaymentV2Representation">InitiatePaymentV2Representation</h2>
+<h2 id="tocS_PaymentInitiationResponse">PaymentInitiationResponse</h2>
 
 <!-- backwards compatibility -->
 
-<p><a id="schemainitiatepaymentv2representation"></a>
-<a id="schema_InitiatePaymentV2Representation"></a>
-<a id="tocSinitiatepaymentv2representation"></a>
-<a id="tocsinitiatepaymentv2representation"></a></p>
+<p><a id="schemapaymentinitiationresponse"></a>
+<a id="schema_PaymentInitiationResponse"></a>
+<a id="tocSpaymentinitiationresponse"></a>
+<a id="tocspaymentinitiationresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order123abc"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.vipps.no/deeplink/vippsgateway?token=eyJraWQiOiJqd3R"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-16'>Properties</h3>
+</span></code></pre><h3 id='properties-14'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5097,7 +4922,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"shippingMethodId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"posten-servicepakke"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-17'>Properties</h3>
+</span></code></pre><h3 id='properties-15'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5137,73 +4962,14 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 </tr>
 </tbody></table>
 
-<h2 id="tocS_TransactionResponseCancel">TransactionResponseCancel</h2>
+<h2 id="tocS_TransactionResponse">TransactionResponse</h2>
 
 <!-- backwards compatibility -->
 
-<p><a id="schematransactionresponsecancel"></a>
-<a id="schema_TransactionResponseCancel"></a>
-<a id="tocStransactionresponsecancel"></a>
-<a id="tocstransactionresponsecancel"></a></p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order123abc"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"transactionInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cancelled"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"timeStamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-12T11:18:38.246Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5001420062"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"transactionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One pair of Vipps socks"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"transactionSummary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"capturedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"refundedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"remainingAmountToCapture"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"remainingAmountToRefund"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bankIdentificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre><h3 id='properties-18'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>orderId</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z, 0-9 and &#39;-&#39;.</td>
-</tr>
-<tr>
-<td>transactionInfo</td>
-<td><a href="#schematransactioninfocancel">TransactionInfoCancel</a></td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>transactionSummary</td>
-<td><a href="#schematransactionsummary">TransactionSummary</a></td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<h2 id="tocS_TransactionResponseCapture">TransactionResponseCapture</h2>
-
-<!-- backwards compatibility -->
-
-<p><a id="schematransactionresponsecapture"></a>
-<a id="schema_TransactionResponseCapture"></a>
-<a id="tocStransactionresponsecapture"></a>
-<a id="tocstransactionresponsecapture"></a></p>
+<p><a id="schematransactionresponse"></a>
+<a id="schema_TransactionResponse"></a>
+<a id="tocStransactionresponse"></a>
+<a id="tocstransactionresponse"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order123abc"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"transactionInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -5222,7 +4988,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-19'>Properties</h3>
+</span></code></pre><h3 id='properties-16'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5241,66 +5007,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 </tr>
 <tr>
 <td>transactionInfo</td>
-<td><a href="#schematransactioninfocapture">TransactionInfoCapture</a></td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>transactionSummary</td>
-<td><a href="#schematransactionsummary">TransactionSummary</a></td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<h2 id="tocS_TransactionResponseRefund">TransactionResponseRefund</h2>
-
-<!-- backwards compatibility -->
-
-<p><a id="schematransactionresponserefund"></a>
-<a id="schema_TransactionResponseRefund"></a>
-<a id="tocStransactionresponserefund"></a>
-<a id="tocstransactionresponserefund"></a></p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order123abc"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"transaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Refund"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"timeStamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-12T11:18:38.246Z"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5001420062"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"transactionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One pair of Vipps socks"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"transactionSummary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"capturedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"refundedAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"remainingAmountToCapture"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"remainingAmountToRefund"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bankIdentificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre><h3 id='properties-20'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>orderId</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z, 0-9 and &#39;-&#39;.</td>
-</tr>
-<tr>
-<td>transaction</td>
-<td><a href="#schematransactioninforefund">TransactionInfoRefund</a></td>
+<td><a href="#schematransactioninfo">TransactionInfo</a></td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
@@ -5326,7 +5033,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"merchantSerialNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-21'>Properties</h3>
+</span></code></pre><h3 id='properties-17'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5361,7 +5068,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"shippingMethodId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"posten-servicepakke"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-22'>Properties</h3>
+</span></code></pre><h3 id='properties-18'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5407,7 +5114,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>none</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-13'>Enumerated Values</h4>
+<h4 id='enumerated-values-11'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -5464,7 +5171,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-23'>Properties</h3>
+</span></code></pre><h3 id='properties-19'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5476,35 +5183,35 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 </thead><tbody>
 <tr>
 <td>customerInfo</td>
-<td><a href="#schemacustomerinfodto">CustomerInfoDto</a></td>
+<td><a href="#schemacustomerinfo">CustomerInfo</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>merchantInfo</td>
-<td><a href="#schemamerchantinfodto">MerchantInfoDto</a></td>
+<td><a href="#schemamerchantinfo">MerchantInfo</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>transaction</td>
-<td><a href="#schematransactioninfoinitiatedto">TransactionInfoInitiateDTO</a></td>
+<td><a href="#schematransactioninfoinitiate">TransactionInfoInitiate</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
 </tr>
 </tbody></table>
 
-<h2 id="tocS_TransactionInfoInitiateDTO">TransactionInfoInitiateDTO</h2>
+<h2 id="tocS_TransactionInfoInitiate">TransactionInfoInitiate</h2>
 
 <!-- backwards compatibility -->
 
-<p><a id="schematransactioninfoinitiatedto"></a>
-<a id="schema_TransactionInfoInitiateDTO"></a>
-<a id="tocStransactioninfoinitiatedto"></a>
-<a id="tocstransactioninfoinitiatedto"></a></p>
+<p><a id="schematransactioninfoinitiate"></a>
+<a id="schema_TransactionInfoInitiate"></a>
+<a id="tocStransactioninfoinitiate"></a>
+<a id="tocstransactioninfoinitiate"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">20000</span><span class="p">,</span><span class="w">
   </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order123abc"</span><span class="p">,</span><span class="w">
@@ -5513,7 +5220,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"skipLandingPage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-24'>Properties</h3>
+</span></code></pre><h3 id='properties-20'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5560,14 +5267,14 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 </tr>
 </tbody></table>
 
-<h2 id="tocS_MerchantInfoDto">MerchantInfoDto</h2>
+<h2 id="tocS_MerchantInfo">MerchantInfo</h2>
 
 <!-- backwards compatibility -->
 
-<p><a id="schemamerchantinfodto"></a>
-<a id="schema_MerchantInfoDto"></a>
-<a id="tocSmerchantinfodto"></a>
-<a id="tocsmerchantinfodto"></a></p>
+<p><a id="schemamerchantinfo"></a>
+<a id="schema_MerchantInfo"></a>
+<a id="tocSmerchantinfo"></a>
+<a id="tocsmerchantinfo"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"authToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImllX3FXQ1hoWHh0MXpJ"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"callbackPrefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/vipps/callbacks-for-payment-updates"</span><span class="p">,</span><span class="w">
@@ -5588,7 +5295,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-25'>Properties</h3>
+</span></code></pre><h3 id='properties-21'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5662,7 +5369,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>If shipping method and cost are always a fixed value, for example 50 NOK, then the method and price can be provided during the initiate call. The shippingDetailsPrefix callback will not be used if this value is provided. This will result in a faster checkout and a better customer experience.</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-14'>Enumerated Values</h4>
+<h4 id='enumerated-values-12'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -5679,14 +5386,14 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 </tr>
 </tbody></table>
 
-<h2 id="tocS_GetPaymentStatusResponse">GetPaymentStatusResponse</h2>
+<h2 id="tocS_PaymentStatus">PaymentStatus</h2>
 
 <!-- backwards compatibility -->
 
-<p><a id="schemagetpaymentstatusresponse"></a>
-<a id="schema_GetPaymentStatusResponse"></a>
-<a id="tocSgetpaymentstatusresponse"></a>
-<a id="tocsgetpaymentstatusresponse"></a></p>
+<p><a id="schemapaymentstatus"></a>
+<a id="schema_PaymentStatus"></a>
+<a id="tocSpaymentstatus"></a>
+<a id="tocspaymentstatus"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"orderId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"order123abc"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"transactionInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -5697,7 +5404,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-26'>Properties</h3>
+</span></code></pre><h3 id='properties-22'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5736,7 +5443,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"transactionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One pair of Vipps socks"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-27'>Properties</h3>
+</span></code></pre><h3 id='properties-23'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5762,14 +5469,14 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 </tr>
 </tbody></table>
 
-<h2 id="tocS_FetchShippingCostAndMethod">FetchShippingCostAndMethod</h2>
+<h2 id="tocS_ShippingCostAndMethod">ShippingCostAndMethod</h2>
 
 <!-- backwards compatibility -->
 
-<p><a id="schemafetchshippingcostandmethod"></a>
-<a id="schema_FetchShippingCostAndMethod"></a>
-<a id="tocSfetchshippingcostandmethod"></a>
-<a id="tocsfetchshippingcostandmethod"></a></p>
+<p><a id="schemashippingcostandmethod"></a>
+<a id="schema_ShippingCostAndMethod"></a>
+<a id="tocSshippingcostandmethod"></a>
+<a id="tocsshippingcostandmethod"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"addressId"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
   </span><span class="s2">"addressLine1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robert Levins gate 5"</span><span class="p">,</span><span class="w">
@@ -5780,7 +5487,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"addressType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"H"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-28'>Properties</h3>
+</span></code></pre><h3 id='properties-24'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5840,7 +5547,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>The type of address: Home, business.</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-15'>Enumerated Values</h4>
+<h4 id='enumerated-values-13'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
@@ -5857,19 +5564,19 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 </tr>
 </tbody></table>
 
-<h2 id="tocS_CustomerInfoDto">CustomerInfoDto</h2>
+<h2 id="tocS_CustomerInfo">CustomerInfo</h2>
 
 <!-- backwards compatibility -->
 
-<p><a id="schemacustomerinfodto"></a>
-<a id="schema_CustomerInfoDto"></a>
-<a id="tocScustomerinfodto"></a>
-<a id="tocscustomerinfodto"></a></p>
+<p><a id="schemacustomerinfo"></a>
+<a id="schema_CustomerInfo"></a>
+<a id="tocScustomerinfo"></a>
+<a id="tocscustomerinfo"></a></p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"mobileNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">91234567</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-29'>Properties</h3>
+</span></code></pre><h3 id='properties-25'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5905,7 +5612,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-30'>Properties</h3>
+</span></code></pre><h3 id='properties-26'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5978,7 +5685,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-31'>Properties</h3>
+</span></code></pre><h3 id='properties-27'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6057,7 +5764,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-32'>Properties</h3>
+</span></code></pre><h3 id='properties-28'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6115,7 +5822,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-33'>Properties</h3>
+</span></code></pre><h3 id='properties-29'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6198,7 +5905,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-34'>Properties</h3>
+</span></code></pre><h3 id='properties-30'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6247,7 +5954,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"bankIdentificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-35'>Properties</h3>
+</span></code></pre><h3 id='properties-31'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6341,7 +6048,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-36'>Properties</h3>
+</span></code></pre><h3 id='properties-32'>Properties</h3>
 <p>oneOf</p>
 
 <table><thead>
@@ -6397,7 +6104,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"contextId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f70b8bf7-c843-4bea-95d9-94725b19895f"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-37'>Properties</h3>
+</span></code></pre><h3 id='properties-33'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6436,7 +6143,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>A unique id for this error, useful for searching in logs</td>
 </tr>
 </tbody></table>
-<h4 id='enumerated-values-16'>Enumerated Values</h4>
+<h4 id='enumerated-values-14'>Enumerated Values</h4>
 <table><thead>
 <tr>
 <th>Property</th>
