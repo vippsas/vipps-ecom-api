@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.1.0
+  version: 1.1.1
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -1183,7 +1183,7 @@ components:
         postCode:
           type: string
           description: Post Code
-          example: 0154
+          example: '0154'
     AddressExpress:
       type: object
       required:
@@ -1212,8 +1212,8 @@ components:
             - Norway
         zipCode:
           type: string
-          description: Post Code
-          example: 0154
+          description: "Postcode (apologies for not useing `postCode` as elsewhere)"
+          example: "0154"
     PaymentShippingDetails:
       type: object
       required:
@@ -1270,19 +1270,19 @@ components:
           description: If the corrosponding operation was successfull.
           example: true
         requestId:
+          type: string
           description: >-
             The idempotent request id provided by the merchant for the
             operation.
           example: 12983921873981899000
-          type: string
         timeStamp:
           type: string
           description: Timestamp in ISO-8601 representing when the operation was perfomed.
           example: '2019-02-05T12:27:42.311Z'
         transactionId:
+          type: string
           description: Identifies the transaction
           example: 5001446662
-          type: string
         transactionText:
           type: string
           description: Transaction text to be displayed in Vipps
@@ -1314,7 +1314,7 @@ components:
             - N
         dateOfBirth:
           type: string
-          description: "Optional date of birth information, must be requested during onboarding. Please note: This will change to ISO 8601 soon: YYYY-MM-DD"
+          description: "Optional date of birth information, must be requested during onboarding. Please note: We will at some point move to ISO 8601: YYYY-MM-DD"
           example: 12-3-1988
         email:
           type: string
@@ -1348,20 +1348,6 @@ components:
           maxLength: 50
           description: Identifies a user in Vipps. Merchant is required to store this field for future references.
           pattern: '^[\d\w\/=+]+$'
-    callbackErrorInfo:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          example: '45'
-          description: The number code for the error.
-        errorGroup:
-          type: string
-          example: PAYMENTS
-        errorMessage:
-          type: string
-          description: Description of the error
-          example: User has cancelled or not acted upon the payment
     CallbackTransactionInfoRegular:
       type: object
       required:
@@ -2036,7 +2022,7 @@ components:
         userDetails:
           $ref: '#/components/schemas/UserDetails'
         errorInfo:
-          $ref: '#/components/schemas/callbackErrorInfo'
+          $ref: '#/components/schemas/Error'
     RegularCheckOutPaymentRequest:
       type: object
       required:
@@ -2064,7 +2050,7 @@ components:
         transactionInfo:
           $ref: '#/components/schemas/CallbackTransactionInfoRegular'
         errorInfo:
-          $ref: '#/components/schemas/callbackErrorInfo'
+          $ref: '#/components/schemas/Error'
     AuthorizationTokenResponse:
       type: object
       required:
@@ -2168,7 +2154,6 @@ components:
         - errorGroup
         - errorCode
         - errorMessage
-        - contextId
       properties:
         errorGroup:
           type: string
