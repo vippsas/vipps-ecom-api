@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.1.1
+  version: 1.3.0
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -170,8 +170,8 @@ paths:
         content:
           application/json;charset=UTF-8:
             schema:
-              $ref: '#/components/schemas/FetchShippingCostAndMethod'
-        description: fetchShippingCostAndMethod
+              $ref: '#/components/schemas/ShippingCostAndMethod'
+        description: ShippingCostAndMethod
         required: true
       responses:
         '200':
@@ -357,8 +357,8 @@ paths:
                     content:
                       application/json;charset=UTF-8:
                         schema:
-                          $ref: '#/components/schemas/FetchShippingCostAndMethod'
-                    description: fetchShippingCostAndMethod
+                          $ref: '#/components/schemas/ShippingCostAndMethod'
+                    description: ShippingCostAndMethod
                     required: true
       responses:
         '200':
@@ -366,7 +366,7 @@ paths:
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/InitiatePaymentV2Representation'
+                $ref: '#/components/schemas/PaymentInitiationResponse'
         '400':
           description: Bad request (Missing a required parameter or bad request format)
           content:
@@ -975,7 +975,7 @@ paths:
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/GetTransactionDetails'
+                $ref: '#/components/schemas/TransactionDetails'
         '400':
           description: Bad request (Missing a required parameter or bad request format)
           content:
@@ -1069,7 +1069,7 @@ paths:
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/GetPaymentStatusResponse'
+                $ref: '#/components/schemas/PaymentStatus'
         '400':
           description: Bad request (Missing a required parameter or bad request format)
           content:
@@ -1462,7 +1462,7 @@ components:
           type: string
           description: Vipps transaction id
           example: '5001420062'
-    TransactionInfoCancel:
+    TransactionInfo:
       type: object
       required:
         - amount
@@ -1480,7 +1480,9 @@ components:
           type: string
           enum:
             - Cancelled
-          example: Cancelled
+            - Captured
+            - Refund
+          example: Captured
           description: >-
             Status which gives the current state of the payment within Vipps.
             See the [API
@@ -1493,87 +1495,14 @@ components:
         transactionId:
           type: string
           description: Vipps transaction id
+          pattern: '^\d{10}$'
           example: '5001420062'
         transactionText:
           type: string
           description: Transaction text to be displayed in Vipps
           example: One pair of Vipps socks
           maxLength: 100
-    TransactionInfoRefund:
-      type: object
-      required:
-        - amount
-        - status
-        - timeStamp
-        - transactionId
-        - transactionText
-      properties:
-        amount:
-          type: number
-          format: double
-          description: Ordered amount in øre
-          example: 20000
-        status:
-          type: string
-          enum:
-            - Refund
-          example: Refund
-          description: >-
-            Status which gives the current state of the payment within Vipps.
-            See the [API
-            guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#responses-from-requests)
-            for more information.
-        timeStamp:
-          type: string
-          description: Timestamp in ISO-8601 representing when the order was refunded.
-          example: '2018-12-12T11:18:38.246Z'
-        transactionId:
-          type: string
-          description: Vipps transaction id
-          example: '5001420062'
-        transactionText:
-          type: string
-          description: Transaction text to be displayed in Vipps
-          example: One pair of Vipps socks
-          maxLength: 100
-    TransactionInfoCapture:
-      type: object
-      required:
-        - amount
-        - status
-        - timeStamp
-        - transactionId
-        - transactionText
-      properties:
-        amount:
-          type: number
-          format: double
-          description: Ordered amount in øre
-          example: 20000
-        status:
-          type: string
-          enum:
-            - Captured
-          example: Captured
-          description: >-
-            Status which gives the current state of the payment within Vipps.
-            See the [API
-            guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#responses-from-requests)
-            for more information.
-        timeStamp:
-          type: string
-          description: Timestamp in ISO-8601 representing when the order was captured.
-          example: '2018-12-12T11:18:38.246Z'
-        transactionId:
-          type: string
-          description: Vipps transaction id
-          example: '5001420062'
-        transactionText:
-          type: string
-          description: Transaction text to be displayed in Vipps
-          example: One pair of Vipps socks
-          maxLength: 100
-    GetTransactionDetails:
+    TransactionDetails:
       type: object
       properties:
         orderId:
@@ -1595,7 +1524,7 @@ components:
           $ref: '#/components/schemas/TransactionSummary'
         userDetails:
           $ref: '#/components/schemas/UserDetails'
-    InitiatePaymentV2Representation:
+    PaymentInitiationResponse:
       type: object
       required:
         - orderId
@@ -1645,7 +1574,7 @@ components:
           type: string
           maxLength: 100
           example: posten-servicepakke
-    TransactionResponseCancel:
+    TransactionResponse:
       type: object
       required:
         - orderId
@@ -1659,41 +1588,7 @@ components:
           pattern: '^[a-zA-Z0-9-]{1,30}$'
           maxLength: 30
         transactionInfo:
-          $ref: '#/components/schemas/TransactionInfoCancel'
-        transactionSummary:
-          $ref: '#/components/schemas/TransactionSummary'
-    TransactionResponseCapture:
-      type: object
-      required:
-        - orderId
-      properties:
-        orderId:
-          type: string
-          description: >-
-            Id which uniquely identifies a payment. Maximum length is 30
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
-          example: order123abc
-          pattern: '^[a-zA-Z0-9-]{1,30}$'
-          maxLength: 30
-        transactionInfo:
-          $ref: '#/components/schemas/TransactionInfoCapture'
-        transactionSummary:
-          $ref: '#/components/schemas/TransactionSummary'
-    TransactionResponseRefund:
-      type: object
-      required:
-        - orderId
-      properties:
-        orderId:
-          type: string
-          description: >-
-            Id which uniquely identifies a payment. Maximum length is 30
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
-          example: order123abc
-          pattern: '^[a-zA-Z0-9-]{1,30}$'
-          maxLength: 30
-        transaction:
-          $ref: '#/components/schemas/TransactionInfoRefund'
+          $ref: '#/components/schemas/TransactionInfo'
         transactionSummary:
           $ref: '#/components/schemas/TransactionSummary'
     MerchantInfoPayment:
@@ -1750,12 +1645,12 @@ components:
         - transaction
       properties:
         customerInfo:
-          $ref: '#/components/schemas/CustomerInfoDto'
+          $ref: '#/components/schemas/CustomerInfo'
         merchantInfo:
-          $ref: '#/components/schemas/MerchantInfoDto'
+          $ref: '#/components/schemas/MerchantInfo'
         transaction:
-          $ref: '#/components/schemas/TransactionInfoInitiateDTO'
-    TransactionInfoInitiateDTO:
+          $ref: '#/components/schemas/TransactionInfoInitiate'
+    TransactionInfoInitiate:
       type: object
       required:
         - amount
@@ -1791,7 +1686,7 @@ components:
           example: false
           default: false
           description: Skips the landing page for whitelisted sale units. Requires a valid customerInfo.mobileNumber.
-    MerchantInfoDto:
+    MerchantInfo:
       type: object
       required:
         - callbackPrefix
@@ -1895,7 +1790,7 @@ components:
             then the method and price can be provided during the initiate call.
             The shippingDetailsPrefix callback will not be used if this value is provided.
             This will result in a faster checkout and a better customer experience.
-    GetPaymentStatusResponse:
+    PaymentStatus:
       type: object
       properties:
         orderId:
@@ -1926,7 +1821,7 @@ components:
           description: Transaction text to be displayed in Vipps
           example: One pair of Vipps socks
           maxLength: 100
-    FetchShippingCostAndMethod:
+    ShippingCostAndMethod:
       type: object
       required:
         - addressId
@@ -1970,7 +1865,7 @@ components:
             - 'B'
           default: 'H'
           example: H
-    CustomerInfoDto:
+    CustomerInfo:
       type: object
       properties:
         mobileNumber:
