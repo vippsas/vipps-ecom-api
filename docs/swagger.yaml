@@ -1277,7 +1277,7 @@ components:
           example: 12983921873981899000
         timeStamp:
           type: string
-          description: Timestamp in ISO-8601 representing when the operation was perfomed.
+          description: Timestamp in ISO-8601 representing when the operation was performed.
           example: '2019-02-05T12:27:42.311Z'
         transactionId:
           type: string
@@ -1456,7 +1456,7 @@ components:
         timeStamp:
           type: string
           description: >-
-            Timestamp in ISO-8601 representing when the status operation was performed.
+            Timestamp in ISO-8601 representing when the operation was performed.
           example: '2018-12-12T11:18:38.246Z'
         transactionId:
           type: string
@@ -1490,7 +1490,7 @@ components:
             for more information.
         timeStamp:
           type: string
-          description: Timestamp in ISO-8601 representing when the order was cancelled.
+          description: Timestamp in ISO-8601 representing when the order was performed.
           example: '2018-12-12T11:18:38.246Z'
         transactionId:
           type: string
