@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Vipps eCommerce API v1.0.23</title>
+    <title>Vipps eCommerce API v1.1.0</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -390,6 +390,9 @@
                   <li>
                     <a href="#tocS_TransactionUpdateCallbackOneOf" class="toc-h2 toc-link" data-title="TransactionUpdateCallbackOneOf">TransactionUpdateCallbackOneOf</a>
                   </li>
+                  <li>
+                    <a href="#tocS_Error" class="toc-h2 toc-link" data-title="Error">Error</a>
+                  </li>
               </ul>
           </li>
       </ul>
@@ -625,49 +628,49 @@ curl -X POST https://apitest.vipps.no/accesstoken/get <span class="se">\</span>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>Bad request (Missing a required parameter or bad request format)</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>401</td>
 <td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
 <td>Unauthorized</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>402</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.2">Payment Required</a></td>
 <td>Payment Failed</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>403</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
 <td>Request Forbidden</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>Resource Not Found</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>405</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
 <td>Request method not supported</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>415</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">Unsupported Media Type</a></td>
 <td>Unsupported media type</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>500</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
 <td>A server-side error</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 </tbody></table>
 
@@ -1159,49 +1162,49 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments <span class="se">\</span
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>Bad request (Missing a required parameter or bad request format)</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>401</td>
 <td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
 <td>Unauthorized</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>402</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.2">Payment Required</a></td>
 <td>Payment Failed</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>403</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
 <td>Request Forbidden</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>Resource Not Found</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>405</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
 <td>Request method not supported</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>415</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">Unsupported Media Type</a></td>
 <td>Unsupported media type</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>500</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
 <td>A server-side error</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 </tbody></table>
 <h2 id='capture-payment'>Capture Payment</h2>
@@ -1529,55 +1532,55 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>Bad request (Missing a required parameter or bad request format)</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>401</td>
 <td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
 <td>Unauthorized</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>402</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.2">Payment Required</a></td>
 <td>Payment Failed</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>403</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
 <td>Request Forbidden</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>Resource Not Found</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>405</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
 <td>Request method not supported</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>415</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">Unsupported Media Type</a></td>
 <td>Unsupported media type</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>500</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
 <td>A server-side error</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>503</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td>
 <td>Service Unavailable</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 </tbody></table>
 <h2 id='cancel-payment'>Cancel Payment</h2>
@@ -1882,55 +1885,55 @@ curl -X PUT https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>o
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>Bad request (Missing a required parameter or bad request format)</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>401</td>
 <td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
 <td>Unauthorized</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>402</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.2">Payment Required</a></td>
 <td>Payment Failed</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>403</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
 <td>Request Forbidden</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>Resource Not Found</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>405</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
 <td>Request method not supported</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>415</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">Unsupported Media Type</a></td>
 <td>Unsupported media type</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>500</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
 <td>A server-side error</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>503</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td>
 <td>Service Unavailable</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 </tbody></table>
 <h2 id='refund-payment'>Refund Payment</h2>
@@ -2258,55 +2261,55 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>Bad request (Missing a required parameter or bad request format)</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>401</td>
 <td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
 <td>Unauthorized</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>402</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.2">Payment Required</a></td>
 <td>Payment Failed</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>403</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
 <td>Request Forbidden</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>Resource Not Found</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>405</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
 <td>Request method not supported</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>415</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">Unsupported Media Type</a></td>
 <td>Unsupported media type</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>500</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
 <td>A server-side error</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>503</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td>
 <td>Service Unavailable</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 </tbody></table>
 <h2 id='force-approve-payment'>Force Approve Payment</h2>
@@ -2318,6 +2321,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>
 <pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl -X POST https://apitest.vipps.no/ecomm/v2/integration-test/payments/<span class="o">{</span>orderId<span class="o">}</span>/approve <span class="se">\</span>
   -H <span class="s1">'Content-Type: application/json;charset=UTF-8'</span> <span class="se">\</span>
+  -H <span class="s1">'Accept: application/json;charset=UTF-8'</span> <span class="se">\</span>
   -H <span class="s1">'Authorization: string'</span> <span class="se">\</span>
   -H <span class="s1">'Content-Type: string'</span> <span class="se">\</span>
   -H <span class="s1">'Ocp-Apim-Subscription-Key: string'</span> <span class="se">\</span>
@@ -2326,18 +2330,19 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/integration-test/payments/<span c
 </code></pre><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://apitest.vipps.no/ecomm/v2/integration-test/payments/{orderId}/approve</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">apitest.vipps.no</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">Ocp-Apim-Subscription-Key</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">X-Request-Id</span><span class="p">:</span> <span class="s">string</span>
 
-<span class="err">Authorization</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
-</span><span class="err">Content-Type</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
-</span><span class="err">Ocp-Apim-Subscription-Key</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
-</span><span class="err">X-Request-Id</span><span class="p">:</span><span class="w"> </span><span class="err">string</span><span class="w">
-
-</span></code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="s1">'{
   "customerPhoneNumber": 91234567,
   "token": "eyJraWQiOiJqd3R"
 }'</span><span class="p">;</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
+  <span class="s1">'Accept'</span><span class="p">:</span><span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
   <span class="s1">'Authorization'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'Content-Type'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'Ocp-Apim-Subscription-Key'</span><span class="p">:</span><span class="s1">'string'</span><span class="p">,</span>
@@ -2361,6 +2366,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/integration-test/payments/<span c
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
+  <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
   <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
   <span class="s1">'Ocp-Apim-Subscription-Key'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
@@ -2376,6 +2382,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/integration-test/payments/<span c
 </code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json;charset=UTF-8'</span><span class="p">,</span>
+  <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json;charset=UTF-8'</span><span class="p">,</span>
   <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'string'</span><span class="p">,</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'string'</span><span class="p">,</span>
   <span class="s">'Ocp-Apim-Subscription-Key'</span><span class="p">:</span> <span class="s">'string'</span><span class="p">,</span>
@@ -2392,6 +2399,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/integration-test/payments/<span c
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
+    <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
     <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
     <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
     <span class="s1">'Ocp-Apim-Subscription-Key'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
@@ -2443,6 +2451,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/integration-test/payments/<span c
 
     </span><span class="n">headers</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span><span class="x">
         </span><span class="s">"Content-Type"</span><span class="o">:</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json;charset=UTF-8"</span><span class="p">},</span><span class="x">
+        </span><span class="s">"Accept"</span><span class="o">:</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json;charset=UTF-8"</span><span class="p">},</span><span class="x">
         </span><span class="s">"Authorization"</span><span class="o">:</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"string"</span><span class="p">},</span><span class="x">
         </span><span class="s">"Content-Type"</span><span class="o">:</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"string"</span><span class="p">},</span><span class="x">
         </span><span class="s">"Ocp-Apim-Subscription-Key"</span><span class="o">:</span><span class="x"> </span><span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"string"</span><span class="p">},</span><span class="x">
@@ -2540,6 +2549,18 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/integration-test/payments/<span c
 </tr>
 </tbody></table>
 
+<blockquote>
+<p>Example responses</p>
+
+<p>400 Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"errorGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Refused by issuer because of expired card"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"contextId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f70b8bf7-c843-4bea-95d9-94725b19895f"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <h3 id="force-approve-payment-responses">Responses</h3>
 
 <table><thead>
@@ -2560,49 +2581,49 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/integration-test/payments/<span c
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>Bad request (Missing a required parameter or bad request format)</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>401</td>
 <td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
 <td>Unauthorized</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>402</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.2">Payment Required</a></td>
 <td>Payment Failed</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>403</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
 <td>Request Forbidden</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>Resource Not Found</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>405</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
 <td>Request method not supported</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>415</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">Unsupported Media Type</a></td>
 <td>Unsupported media type</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>500</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
 <td>A server-side error</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 </tbody></table>
 <h2 id='get-payment-details'>Get Payment Details</h2>
@@ -2872,55 +2893,55 @@ curl -X GET https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>o
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>Bad request (Missing a required parameter or bad request format)</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>401</td>
 <td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
 <td>Unauthorized</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>402</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.2">Payment Required</a></td>
 <td>Payment Failed</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>403</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
 <td>Request Forbidden</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>Resource Not Found</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>405</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
 <td>Request method not supported</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>415</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">Unsupported Media Type</a></td>
 <td>Unsupported media type</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>500</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
 <td>A server-side error</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>503</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td>
 <td>Service Unavailable</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 </tbody></table>
 <h2 id='deprecated-get-order-status'>Deprecated: Get Order Status</h2>
@@ -3128,49 +3149,49 @@ curl -X GET https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>o
 <td>400</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
 <td>Bad request (Missing a required parameter or bad request format)</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>401</td>
 <td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
 <td>Unauthorized</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>402</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.2">Payment Required</a></td>
 <td>Payment Failed</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>403</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
 <td>Request Forbidden</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>404</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
 <td>Resource Not Found</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>405</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
 <td>Request method not supported</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>415</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">Unsupported Media Type</a></td>
 <td>Unsupported media type</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 <tr>
 <td>500</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
 <td>A server-side error</td>
-<td>None</td>
+<td><a href="#schemaerror">Error</a></td>
 </tr>
 </tbody></table>
 
@@ -6403,6 +6424,93 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>false</td>
 <td>none</td>
 <td>none</td>
+</tr>
+</tbody></table>
+
+<h2 id="tocS_Error">Error</h2>
+
+<!-- backwards compatibility -->
+
+<p><a id="schemaerror"></a>
+<a id="schema_Error"></a>
+<a id="tocSerror"></a>
+<a id="tocserror"></a></p>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"errorGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Refused by issuer because of expired card"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"contextId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f70b8bf7-c843-4bea-95d9-94725b19895f"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='properties-38'>Properties</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errorGroup</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>The error group. See: https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-groups</td>
+</tr>
+<tr>
+<td>errorCode</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>The error code. See: https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes</td>
+</tr>
+<tr>
+<td>errorMessage</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>A description of what went wrong. See https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#errors</td>
+</tr>
+<tr>
+<td>contextId</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>A unique id for this error, useful for searching in logs</td>
+</tr>
+</tbody></table>
+<h4 id='enumerated-values-16'>Enumerated Values</h4>
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>errorGroup</td>
+<td>Authentication</td>
+</tr>
+<tr>
+<td>errorGroup</td>
+<td>Payment</td>
+</tr>
+<tr>
+<td>errorGroup</td>
+<td>InvalidRequest</td>
+</tr>
+<tr>
+<td>errorGroup</td>
+<td>VippsError</td>
+</tr>
+<tr>
+<td>errorGroup</td>
+<td>User</td>
+</tr>
+<tr>
+<td>errorGroup</td>
+<td>Merchant</td>
 </tr>
 </tbody></table>
 
