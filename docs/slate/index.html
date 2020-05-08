@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Vipps eCommerce API v1.1.0</title>
+    <title>Vipps eCommerce API v1.1.1</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -302,9 +302,6 @@
                   </li>
                   <li>
                     <a href="#tocS_UserDetails" class="toc-h2 toc-link" data-title="UserDetails">UserDetails</a>
-                  </li>
-                  <li>
-                    <a href="#tocS_callbackErrorInfo" class="toc-h2 toc-link" data-title="callbackErrorInfo">callbackErrorInfo</a>
                   </li>
                   <li>
                     <a href="#tocS_CallbackTransactionInfoRegular" class="toc-h2 toc-link" data-title="CallbackTransactionInfoRegular">CallbackTransactionInfoRegular</a>
@@ -2837,7 +2834,7 @@ curl -X GET https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>o
       </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Att: Rune Garborg"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oslo"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Norway"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"postCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">154</span><span class="w">
+      </span><span class="s2">"postCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0154"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
     </span><span class="s2">"shippingMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="p">,</span><span class="w">
@@ -3653,7 +3650,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
       "addressLine2": "Att: Rune Garborg",
       "city": "Oslo",
       "country": "Norway",
-      "zipCode": 154
+      "zipCode": "0154"
     },
     "shippingCost": 9900,
     "shippingMethod": "Posten Servicepakke",
@@ -3676,9 +3673,10 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
     "userId": "uiJskNQ6qNN1iwN891uuob=="
   },
   "errorInfo": {
-    "errorCode": "45",
-    "errorGroup": "PAYMENTS",
-    "errorMessage": "User has cancelled or not acted upon the payment"
+    "errorGroup": "Payment",
+    "errorCode": "44",
+    "errorMessage": "Refused by issuer because of expired card",
+    "contextId": "f70b8bf7-c843-4bea-95d9-94725b19895f"
   }
 }'</span><span class="p">;</span>
 <span class="kr">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
@@ -3805,7 +3803,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
       </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Att: Rune Garborg"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oslo"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Norway"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">154</span><span class="w">
+      </span><span class="s2">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0154"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">9900</span><span class="p">,</span><span class="w">
     </span><span class="s2">"shippingMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="p">,</span><span class="w">
@@ -3828,9 +3826,10 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
     </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uiJskNQ6qNN1iwN891uuob=="</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"errorInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"errorGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAYMENTS"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User has cancelled or not acted upon the payment"</span><span class="w">
+    </span><span class="s2">"errorGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Refused by issuer because of expired card"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contextId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f70b8bf7-c843-4bea-95d9-94725b19895f"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -3982,7 +3981,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Att: Rune Garborg"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oslo"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Norway"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"postCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">154</span><span class="w">
+  </span><span class="s2">"postCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0154"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-3'>Properties</h3>
@@ -4057,7 +4056,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Att: Rune Garborg"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oslo"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Norway"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">154</span><span class="w">
+  </span><span class="s2">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0154"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h3 id='properties-4'>Properties</h3>
@@ -4103,7 +4102,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Post Code</td>
+<td>Postcode (apologies for not useing <code>postCode</code> as elsewhere)</td>
 </tr>
 </tbody></table>
 <h4 id='enumerated-values-4'>Enumerated Values</h4>
@@ -4133,7 +4132,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
     </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Att: Rune Garborg"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oslo"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Norway"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"postCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">154</span><span class="w">
+    </span><span class="s2">"postCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0154"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
   </span><span class="s2">"shippingMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="p">,</span><span class="w">
@@ -4367,7 +4366,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Optional date of birth information, must be requested during onboarding. Please note: This will change to ISO 8601 soon: YYYY-MM-DD</td>
+<td>Optional date of birth information, must be requested during onboarding. Please note: We will at some point move to ISO 8601: YYYY-MM-DD</td>
 </tr>
 <tr>
 <td>email</td>
@@ -4429,53 +4428,6 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 </tr>
 </tbody></table>
 
-<h2 id="tocS_callbackErrorInfo">callbackErrorInfo</h2>
-
-<!-- backwards compatibility -->
-
-<p><a id="schemacallbackerrorinfo"></a>
-<a id="schema_callbackErrorInfo"></a>
-<a id="tocScallbackerrorinfo"></a>
-<a id="tocscallbackerrorinfo"></a></p>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"errorGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAYMENTS"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User has cancelled or not acted upon the payment"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre><h3 id='properties-9'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>errorCode</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>The number code for the error.</td>
-</tr>
-<tr>
-<td>errorGroup</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>errorMessage</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>Description of the error</td>
-</tr>
-</tbody></table>
-
 <h2 id="tocS_CallbackTransactionInfoRegular">CallbackTransactionInfoRegular</h2>
 
 <!-- backwards compatibility -->
@@ -4491,7 +4443,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5001420062"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-10'>Properties</h3>
+</span></code></pre><h3 id='properties-9'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4582,7 +4534,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5001420062"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-11'>Properties</h3>
+</span></code></pre><h3 id='properties-10'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4673,7 +4625,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5001420062"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-12'>Properties</h3>
+</span></code></pre><h3 id='properties-11'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4777,7 +4729,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"transactionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One pair of Vipps socks"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-13'>Properties</h3>
+</span></code></pre><h3 id='properties-12'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4852,7 +4804,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"transactionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One pair of Vipps socks"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-14'>Properties</h3>
+</span></code></pre><h3 id='properties-13'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -4927,7 +4879,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"transactionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One pair of Vipps socks"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-15'>Properties</h3>
+</span></code></pre><h3 id='properties-14'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5002,7 +4954,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
       </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Att: Rune Garborg"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oslo"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Norway"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"postCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">154</span><span class="w">
+      </span><span class="s2">"postCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0154"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
     </span><span class="s2">"shippingMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="p">,</span><span class="w">
@@ -5038,7 +4990,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-16'>Properties</h3>
+</span></code></pre><h3 id='properties-15'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5098,7 +5050,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.vipps.no/deeplink/vippsgateway?token=eyJraWQiOiJqd3R"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-17'>Properties</h3>
+</span></code></pre><h3 id='properties-16'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5138,14 +5090,14 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
     </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Att: Rune Garborg"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oslo"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Norway"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">154</span><span class="w">
+    </span><span class="s2">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0154"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">9900</span><span class="p">,</span><span class="w">
   </span><span class="s2">"shippingMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"shippingMethodId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"posten-servicepakke"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-18'>Properties</h3>
+</span></code></pre><h3 id='properties-17'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5211,7 +5163,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-19'>Properties</h3>
+</span></code></pre><h3 id='properties-18'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5270,7 +5222,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-20'>Properties</h3>
+</span></code></pre><h3 id='properties-19'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5329,7 +5281,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-21'>Properties</h3>
+</span></code></pre><h3 id='properties-20'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5374,7 +5326,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"merchantSerialNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-22'>Properties</h3>
+</span></code></pre><h3 id='properties-21'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5409,7 +5361,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"shippingMethodId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"posten-servicepakke"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-23'>Properties</h3>
+</span></code></pre><h3 id='properties-22'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5512,7 +5464,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-24'>Properties</h3>
+</span></code></pre><h3 id='properties-23'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5561,7 +5513,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"skipLandingPage"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-25'>Properties</h3>
+</span></code></pre><h3 id='properties-24'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5636,7 +5588,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-26'>Properties</h3>
+</span></code></pre><h3 id='properties-25'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5745,7 +5697,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-27'>Properties</h3>
+</span></code></pre><h3 id='properties-26'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5784,7 +5736,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"transactionText"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One pair of Vipps socks"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-28'>Properties</h3>
+</span></code></pre><h3 id='properties-27'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5828,7 +5780,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"addressType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"H"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-29'>Properties</h3>
+</span></code></pre><h3 id='properties-28'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5917,7 +5869,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"mobileNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">91234567</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-30'>Properties</h3>
+</span></code></pre><h3 id='properties-29'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5953,7 +5905,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-31'>Properties</h3>
+</span></code></pre><h3 id='properties-30'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -5996,7 +5948,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
       </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Att: Rune Garborg"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oslo"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Norway"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">154</span><span class="w">
+      </span><span class="s2">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0154"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">9900</span><span class="p">,</span><span class="w">
     </span><span class="s2">"shippingMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="p">,</span><span class="w">
@@ -6019,13 +5971,14 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
     </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uiJskNQ6qNN1iwN891uuob=="</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"errorInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"errorGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAYMENTS"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User has cancelled or not acted upon the payment"</span><span class="w">
+    </span><span class="s2">"errorGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Refused by issuer because of expired card"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contextId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f70b8bf7-c843-4bea-95d9-94725b19895f"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-32'>Properties</h3>
+</span></code></pre><h3 id='properties-31'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6072,7 +6025,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 </tr>
 <tr>
 <td>errorInfo</td>
-<td><a href="#schemacallbackerrorinfo">callbackErrorInfo</a></td>
+<td><a href="#schemaerror">Error</a></td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
@@ -6097,13 +6050,14 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
     </span><span class="s2">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5001420062"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"errorInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"errorGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAYMENTS"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User has cancelled or not acted upon the payment"</span><span class="w">
+    </span><span class="s2">"errorGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Refused by issuer because of expired card"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contextId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f70b8bf7-c843-4bea-95d9-94725b19895f"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-33'>Properties</h3>
+</span></code></pre><h3 id='properties-32'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6136,7 +6090,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 </tr>
 <tr>
 <td>errorInfo</td>
-<td><a href="#schemacallbackerrorinfo">callbackErrorInfo</a></td>
+<td><a href="#schemaerror">Error</a></td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
@@ -6161,7 +6115,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-34'>Properties</h3>
+</span></code></pre><h3 id='properties-33'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6244,7 +6198,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-35'>Properties</h3>
+</span></code></pre><h3 id='properties-34'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6293,7 +6247,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"bankIdentificationNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-36'>Properties</h3>
+</span></code></pre><h3 id='properties-35'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6357,7 +6311,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
       </span><span class="s2">"addressLine2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Att: Rune Garborg"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oslo"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Norway"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="mi">154</span><span class="w">
+      </span><span class="s2">"zipCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0154"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"shippingCost"</span><span class="p">:</span><span class="w"> </span><span class="mi">9900</span><span class="p">,</span><span class="w">
     </span><span class="s2">"shippingMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Posten Servicepakke"</span><span class="p">,</span><span class="w">
@@ -6380,13 +6334,14 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
     </span><span class="s2">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uiJskNQ6qNN1iwN891uuob=="</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="s2">"errorInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"errorGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PAYMENTS"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User has cancelled or not acted upon the payment"</span><span class="w">
+    </span><span class="s2">"errorGroup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"44"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"errorMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Refused by issuer because of expired card"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contextId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f70b8bf7-c843-4bea-95d9-94725b19895f"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-37'>Properties</h3>
+</span></code></pre><h3 id='properties-36'>Properties</h3>
 <p>oneOf</p>
 
 <table><thead>
@@ -6442,7 +6397,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
   </span><span class="s2">"contextId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f70b8bf7-c843-4bea-95d9-94725b19895f"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h3 id='properties-38'>Properties</h3>
+</span></code></pre><h3 id='properties-37'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -6476,7 +6431,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o
 <tr>
 <td>contextId</td>
 <td>string</td>
-<td>true</td>
+<td>false</td>
 <td>none</td>
 <td>A unique id for this error, useful for searching in logs</td>
 </tr>
