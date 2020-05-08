@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "description": "# Vipps eCommerce API\nAdditional API documentation: https://github.com/vippsas/vipps-ecom-api/\n",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "title": "Vipps eCommerce API"
   },
   "tags": [
@@ -1606,7 +1606,7 @@
           "postCode": {
             "type": "string",
             "description": "Post Code",
-            "example": 108
+            "example": "0154"
           }
         }
       },
@@ -1644,8 +1644,8 @@
           },
           "zipCode": {
             "type": "string",
-            "description": "Post Code",
-            "example": 108
+            "description": "Postcode (apologies for not useing `postCode` as elsewhere)",
+            "example": "0154"
           }
         }
       },
@@ -1711,9 +1711,9 @@
             "example": true
           },
           "requestId": {
+            "type": "string",
             "description": "The idempotent request id provided by the merchant for the operation.",
-            "example": 12983921873981899000,
-            "type": "string"
+            "example": 12983921873981899000
           },
           "timeStamp": {
             "type": "string",
@@ -1721,9 +1721,9 @@
             "example": "2019-02-05T12:27:42.311Z"
           },
           "transactionId": {
+            "type": "string",
             "description": "Identifies the transaction",
-            "example": 5001446662,
-            "type": "string"
+            "example": 5001446662
           },
           "transactionText": {
             "type": "string",
@@ -1765,7 +1765,7 @@
           },
           "dateOfBirth": {
             "type": "string",
-            "description": "Optional date of birth information, must be requested during onboarding. Please note: This will change to ISO 8601 soon: YYYY-MM-DD",
+            "description": "Optional date of birth information, must be requested during onboarding. Please note: We will at some point move to ISO 8601: YYYY-MM-DD",
             "example": "12-3-1988"
           },
           "email": {
@@ -1805,25 +1805,6 @@
             "maxLength": 50,
             "description": "Identifies a user in Vipps. Merchant is required to store this field for future references.",
             "pattern": "^[\\d\\w\\/=+]+$"
-          }
-        }
-      },
-      "callbackErrorInfo": {
-        "type": "object",
-        "properties": {
-          "errorCode": {
-            "type": "string",
-            "example": "45",
-            "description": "The number code for the error."
-          },
-          "errorGroup": {
-            "type": "string",
-            "example": "PAYMENTS"
-          },
-          "errorMessage": {
-            "type": "string",
-            "description": "Description of the error",
-            "example": "User has cancelled or not acted upon the payment"
           }
         }
       },
@@ -2553,7 +2534,7 @@
             "$ref": "#/components/schemas/UserDetails"
           },
           "errorInfo": {
-            "$ref": "#/components/schemas/callbackErrorInfo"
+            "$ref": "#/components/schemas/Error"
           }
         }
       },
@@ -2584,7 +2565,7 @@
             "$ref": "#/components/schemas/CallbackTransactionInfoRegular"
           },
           "errorInfo": {
-            "$ref": "#/components/schemas/callbackErrorInfo"
+            "$ref": "#/components/schemas/Error"
           }
         }
       },
@@ -2719,8 +2700,7 @@
         "required": [
           "errorGroup",
           "errorCode",
-          "errorMessage",
-          "contextId"
+          "errorMessage"
         ],
         "properties": {
           "errorGroup": {
