@@ -6,7 +6,7 @@ See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.4.0.
+Document version 1.5.0.
 
 ## Table of contents
 
@@ -23,6 +23,8 @@ Document version 1.4.0.
 - [Is it possible for a merchant to pay a Vipps user?]("is-it-possible-for-a-merchant-to-pay-a-vipps-user)
 - [Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
 - [Is there an API for retrieving information about a merchant's payments?](#is-there-an-api-for-retrieving-information-about-a-merchants-payments)
+- [Can a company pay a person with Vipps?](#can-a-company-pay-a-person-with-vipps)
+- [Can I create a service to match buyers and sellers?](#can-i-create-a-service-to-match-buyers-and-sellers)
 - [Can I split payments to charge a fee?](#can-i-split-payments-to-charge-a-fee)
 - [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-cant-find-it)
 - [How long is an initiated order valid, if the user does not confirm in the Vipps app?](#how-long-is-an-initiated-order-valid-if-the-user-does-not-confirm-in-the-vipps-app)
@@ -209,6 +211,29 @@ There is an API to retrieve all details for a known `orderId`:
 And there is
 [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements)
 with information about settlement reports in various formats.
+
+## Can a company pay a person with Vipps?
+
+Vipps only has APIs for paying from a person to a company.
+
+It is not possible to pay from a company to another company,
+or to pay from a company to a person.
+
+## Can I create a service to match buyers and sellers?
+
+Companies that receive payments through Vipps must be Vipps customers.
+
+If the service receives payment from a buyer and then pays the seller,
+so that the service "holds" the money even for a short time, the service
+will need the regulatory approval as
+[e-pengeforetak](https://www.finanstilsynet.no/konsesjon/e-pengeforetak/).
+
+If the service sells access, in the form of a subscription or per-use, the
+service is _most likely_ a regular Vipps eCom customer, and can use
+the
+[Vipps eCom API](https://github.com/vippsas/vipps-ecom-api)
+or one of our
+[plugins](https://github.com/vippsas/vipps-developers#plugins).
 
 ## Can I split payments to charge a fee?
 
