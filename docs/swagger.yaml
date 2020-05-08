@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.0.23
+  version: 1.1.0
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -61,20 +61,52 @@ paths:
                 $ref: '#/components/schemas/AuthorizationTokenResponse'
         '400':
           description: Bad request (Missing a required parameter or bad request format)
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           description: Unauthorized
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '402':
           description: Payment Failed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '403':
           description: Request Forbidden
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '404':
           description: Resource Not Found
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '405':
           description: Request method not supported
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '415':
           description: Unsupported media type
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '500':
           description: A server-side error
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
   '[consentRemovalPrefix]/v2/consents/{userId}':
     delete:
       tags:
@@ -337,20 +369,52 @@ paths:
                 $ref: '#/components/schemas/InitiatePaymentV2Representation'
         '400':
           description: Bad request (Missing a required parameter or bad request format)
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           description: Unauthorized
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '402':
           description: Payment Failed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '403':
           description: Request Forbidden
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '404':
           description: Resource Not Found
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '405':
           description: Request method not supported
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '415':
           description: Unsupported media type
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '500':
           description: A server-side error
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
   '[callbackPrefix]/v2/payments/{orderId}':
     post:
       tags:
@@ -462,22 +526,58 @@ paths:
                 $ref: '#/components/schemas/TransactionResponseCapture'
         '400':
           description: Bad request (Missing a required parameter or bad request format)
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           description: Unauthorized
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '402':
           description: Payment Failed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '403':
           description: Request Forbidden
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '404':
           description: Resource Not Found
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '405':
           description: Request method not supported
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '415':
           description: Unsupported media type
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '500':
           description: A server-side error
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '503':
           description: Service Unavailable
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
   '/ecomm/v2/payments/{orderId}/cancel':
     put:
       tags:
@@ -544,22 +644,58 @@ paths:
                 $ref: '#/components/schemas/TransactionResponseCancel'
         '400':
           description: Bad request (Missing a required parameter or bad request format)
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           description: Unauthorized
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '402':
           description: Payment Failed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '403':
           description: Request Forbidden
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '404':
           description: Resource Not Found
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '405':
           description: Request method not supported
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '415':
           description: Unsupported media type
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '500':
           description: A server-side error
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '503':
           description: Service Unavailable
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
   '/ecomm/v2/payments/{orderId}/refund':
     post:
       tags:
@@ -633,22 +769,58 @@ paths:
                 $ref: '#/components/schemas/TransactionResponseRefund'
         '400':
           description: Bad request (Missing a required parameter or bad request format)
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           description: Unauthorized
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '402':
           description: Payment Failed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '403':
           description: Request Forbidden
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '404':
           description: Resource Not Found
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '405':
           description: Request method not supported
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '415':
           description: Unsupported media type
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '500':
           description: A server-side error
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '503':
           description: Service Unavailable
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
   '/ecomm/v2/integration-test/payments/{orderId}/approve':
     post:
       tags:
@@ -704,20 +876,52 @@ paths:
           description: Force approve payment response
         '400':
           description: Bad request (Missing a required parameter or bad request format)
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           description: Unauthorized
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '402':
           description: Payment Failed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '403':
           description: Request Forbidden
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '404':
           description: Resource Not Found
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '405':
           description: Request method not supported
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '415':
           description: Unsupported media type
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '500':
           description: A server-side error
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
   '/ecomm/v2/payments/{orderId}/details':
     get:
       tags:
@@ -774,22 +978,58 @@ paths:
                 $ref: '#/components/schemas/GetTransactionDetails'
         '400':
           description: Bad request (Missing a required parameter or bad request format)
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           description: Unauthorized
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '402':
           description: Payment Failed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '403':
           description: Request Forbidden
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '404':
           description: Resource Not Found
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '405':
           description: Request method not supported
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '415':
           description: Unsupported media type
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '500':
           description: A server-side error
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '503':
           description: Service Unavailable
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
   '/ecomm/v2/payments/{orderId}/status':
     get:
       deprecated: true
@@ -832,20 +1072,52 @@ paths:
                 $ref: '#/components/schemas/GetPaymentStatusResponse'
         '400':
           description: Bad request (Missing a required parameter or bad request format)
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           description: Unauthorized
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '402':
           description: Payment Failed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '403':
           description: Request Forbidden
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '404':
           description: Resource Not Found
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '405':
           description: Request method not supported
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '415':
           description: Unsupported media type
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '500':
           description: A server-side error
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   requestBodies:
     PaymentActionsRequest:
@@ -1890,3 +2162,34 @@ components:
       oneOf:
         - $ref: '#/components/schemas/ExpressCheckOutPaymentRequest'
         - $ref: '#/components/schemas/RegularCheckOutPaymentRequest'
+    Error:
+      type: object
+      required:
+        - errorGroup
+        - errorCode
+        - errorMessage
+        - contextId
+      properties:
+        errorGroup:
+          type: string
+          description: "The error group. See: https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-groups"
+          enum:
+            - Authentication
+            - Payment
+            - InvalidRequest
+            - VippsError
+            - User
+            - Merchant
+          example: "Payment"
+        errorCode:
+          type: string
+          description: "The error code. See: https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes"
+          example: "44"
+        errorMessage:
+          type: string
+          description: "A description of what went wrong. See https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#errors"
+          example: "Refused by issuer because of expired card"
+        contextId:
+          type: string
+          description: "A unique id for this error, useful for searching in logs"
+          example: f70b8bf7-c843-4bea-95d9-94725b19895f
