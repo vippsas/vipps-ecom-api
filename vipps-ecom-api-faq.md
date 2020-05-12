@@ -6,7 +6,7 @@ See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.5.0.
+Document version 1.5.1.
 
 ## Table of contents
 
@@ -20,7 +20,7 @@ Document version 1.5.0.
 - [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
 - [How can I refund a payment?](#how-can-i-refund-a-payment)
 - [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
-- [Is it possible for a merchant to pay a Vipps user?]("is-it-possible-for-a-merchant-to-pay-a-vipps-user)
+- [Is it possible for a merchant to pay a Vipps user?](#is-it-possible-for-a-merchant-to-pay-a-vipps-user)
 - [Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
 - [Is there an API for retrieving information about a merchant's payments?](#is-there-an-api-for-retrieving-information-about-a-merchants-payments)
 - [Can a company pay a person with Vipps?](#can-a-company-pay-a-person-with-vipps)
