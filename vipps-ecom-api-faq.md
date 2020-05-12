@@ -463,6 +463,8 @@ See [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landi
 ## Which API keys should I use?
 
 You need to use the merchant's API keys when using the Vipps eCom API.
+The API calls are normal eCom API calls - see the
+[API guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md).
 
 You can _not_ use your "supermerchant" API keys (if you have those).
 
