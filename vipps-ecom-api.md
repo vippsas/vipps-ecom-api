@@ -122,12 +122,12 @@ We recommend using following _optional_ HTTP headers for all reaquests to the
 Vipps eCom API. The headers provide metadata about the merchant's system,
 which help Vipps improve our services.
 
-| Header                        | Description                           | Example value        |
-| ----------------------------- | ------------------------------------- | -------------------- |
-| `Vipps-System-Name`           | The name of the ecommerce solution    | `woocommerce`        |
-| `Vipps-System-Version`        | The version of the ecommerce solution | `5.4`                |
-| `Vipps-System-Plugin-Name`    | The name of the plugin                | `vipps-woocommerce`  |
-| `Vipps-System-Plugin-Version` | The version of the plugin             | `1.4.1`              |
+| Header                        | Description                                  | Example value        |
+| ----------------------------- | -------------------------------------------- | -------------------- |
+| `Vipps-System-Name`           | The name of the ecommerce solution           | `woocommerce`        |
+| `Vipps-System-Version`        | The version number of the ecommerce solution | `5.4`                |
+| `Vipps-System-Plugin-Name`    | The name of the plugin                       | `vipps-woocommerce`  |
+| `Vipps-System-Plugin-Version` | The version number of the plugin             | `1.4.1`              |
 
 These headers are sent by the recent versions of
 [the official Vipps plugins](https://github.com/vippsas/vipps-developers#plugins)
