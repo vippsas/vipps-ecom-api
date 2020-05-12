@@ -126,8 +126,8 @@ which help Vipps improve our services.
 | ----------------------------- | -------------------------------------------- | -------------------- |
 | `Vipps-System-Name`           | The name of the ecommerce solution           | `woocommerce`        |
 | `Vipps-System-Version`        | The version number of the ecommerce solution | `5.4`                |
-| `Vipps-System-Plugin-Name`    | The name of the plugin                       | `vipps-woocommerce`  |
-| `Vipps-System-Plugin-Version` | The version number of the plugin             | `1.4.1`              |
+| `Vipps-System-Plugin-Name`    | The name of the ecommerce plugin             | `vipps-woocommerce`  |
+| `Vipps-System-Plugin-Version` | The version number of the ecommerce plugin   | `1.4.1`              |
 
 These headers are sent by the recent versions of
 [the official Vipps plugins](https://github.com/vippsas/vipps-developers#plugins)
