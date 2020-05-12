@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.0.13.
+Document version 2.1.0.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -17,6 +17,7 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
 ## Table of contents
 - [Flow diagram](#flow-diagram)
 - [API endpoints](#api-endpoints)
+- [Optional Vipps HTTP headers](#optional-vipps-http-headers)
 - [Initiate](#initiate)
   - [Regular eCommerce payments](#regular-ecommerce-payments)
   - [Express checkout payments](#express-checkout-payments)
@@ -114,6 +115,23 @@ Payments are supported in both web browsers and in native apps (via deep-linking
 
 See the
 [eCom API checklist](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md).
+
+## Optional Vipps HTTP headers
+
+We recommend using following _optional_ HTTP headers for all reaquests to the
+Vipps eCom API. The headers provide metadata about the merchant's system,
+which help Vipps improve our services.
+
+| Header                        | Description                           | Example value        |
+| ----------------------------- | ------------------------------------- | -------------------- |
+| `Vipps-System-Name`           | The name of the ecommerce solution    | `woocommerce`        |
+| `Vipps-System-Version`        | The version of the ecommerce solution | `5.4`                |
+| `Vipps-System-Plugin-Name`    | The name of the plugin                | `vipps-woocommerce`  |
+| `Vipps-System-Plugin-Version` | The version of the plugin             | `1.4.1`              |
+
+These headers are sent by the recent versions of
+[the official Vipps plugins](https://github.com/vippsas/vipps-developers#plugins)
+and we recommend all customers with direct integration with the API to also do so.
 
 ## Initiate
 
