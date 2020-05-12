@@ -118,9 +118,9 @@ See the
 
 ## Optional Vipps HTTP headers
 
-We recommend using following _optional_ HTTP headers for all reaquests to the
-Vipps eCom API. The headers provide metadata about the merchant's system,
-which help Vipps improve our services.
+We recommend using the following _optional_ HTTP headers for all requests to the
+Vipps eCom API. These headers provide useful metadata about the merchant's system,
+which help Vipps improve our services, and also help in investigating problems.
 
 | Header                        | Description                                  | Example value        |
 | ----------------------------- | -------------------------------------------- | -------------------- |
@@ -135,7 +135,7 @@ and we recommend all customers with direct integration with the API to also do s
 
 ## Initiate
 
-Vipps eCommerce API offers 2 types of payments:
+Vipps eCommerce API offers two types of payments:
 1. Regular eCommerce payments
 2. Express checkout payments
 
