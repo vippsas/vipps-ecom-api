@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.0.13.
+Document version 2.1.1.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -17,6 +17,7 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
 ## Table of contents
 - [Flow diagram](#flow-diagram)
 - [API endpoints](#api-endpoints)
+- [Optional Vipps HTTP headers](#optional-vipps-http-headers)
 - [Initiate](#initiate)
   - [Regular eCommerce payments](#regular-ecommerce-payments)
   - [Express checkout payments](#express-checkout-payments)
@@ -115,9 +116,26 @@ Payments are supported in both web browsers and in native apps (via deep-linking
 See the
 [eCom API checklist](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md).
 
+## Optional Vipps HTTP headers
+
+We recommend using the following _optional_ HTTP headers for all requests to the
+Vipps eCom API. These headers provide useful metadata about the merchant's system,
+which help Vipps improve our services, and also help in investigating problems.
+
+| Header                        | Description                                  | Example value        |
+| ----------------------------- | -------------------------------------------- | -------------------- |
+| `Vipps-System-Name`           | The name of the ecommerce solution           | `woocommerce`        |
+| `Vipps-System-Version`        | The version number of the ecommerce solution | `5.4`                |
+| `Vipps-System-Plugin-Name`    | The name of the ecommerce plugin             | `vipps-woocommerce`  |
+| `Vipps-System-Plugin-Version` | The version number of the ecommerce plugin   | `1.4.1`              |
+
+These headers are sent by the recent versions of
+[the official Vipps plugins](https://github.com/vippsas/vipps-developers#plugins)
+and we recommend all customers with direct integration with the API to also do so.
+
 ## Initiate
 
-Vipps eCommerce API offers 2 types of payments:
+Vipps eCommerce API offers two types of payments:
 1. Regular eCommerce payments
 2. Express checkout payments
 
@@ -1113,9 +1131,9 @@ Request:
 
 ```http
 POST https://apitest.vipps.no/accessToken/get
-client_id: <client_id>
-client_secret: <client_secret>
-Ocp-Apim-Subscription-Key: <Ocp-Apim-Subscription-Key>
+client_id: fb492b5e-7907-4d83-ba20-c7fb60ca35de
+client_secret: Y8Kteew6GE2ZmeycEt6egg==
+Ocp-Apim-Subscription-Key: 0f14ebcab0ec4b29ae0cb90d91b4a84a
 ```
 
 (We are aware that this is a `POST`, without a body, to an endpoint with

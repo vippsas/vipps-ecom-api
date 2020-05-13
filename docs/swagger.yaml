@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.3.1
+  version: 1.4.0
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -31,6 +31,7 @@ paths:
           schema:
             type: string
             format: guid
+          example: fb492b5e-7907-4d83-ba20-c7fb60ca35de
         - name: client_secret
           in: header
           description: >-
@@ -38,6 +39,7 @@ paths:
           required: true
           schema:
             type: string
+          example: Y8Kteew6GE2ZmeycEt6egg==
         - name: Ocp-Apim-Subscription-Key
           in: header
           description: >-
@@ -45,6 +47,7 @@ paths:
           required: true
           schema:
             type: string
+          example: 0f14ebcab0ec4b29ae0cb90d91b4a84a
       description: >-
         Authorization token API endpoint helps to get the JWT Bearer token that
         needs to be passed in every API request in the Authorization header. The
@@ -235,6 +238,30 @@ paths:
           required: false
           schema:
             type: string
+        - name: Vipps-System-Name
+          in: header
+          description: The name of the ecommerce solution
+          schema:
+            type: string
+          example: woocommerce
+        - name: Vipps-System-Version
+          in: header
+          description: The version number of the ecommerce solution
+          schema:
+            type: string
+          example: "5.4"
+        - name: Vipps-System-Plugin-Name
+          in: header
+          description: The name of the ecommerce plugin
+          schema:
+            type: string
+          example: "vipps-woocommerce"
+        - name: Vipps-System-Plugin-Version
+          in: header
+          description: The version number of the ecommerce plugin
+          schema:
+            type: string
+          example: "1.2.1"
       requestBody:
         content:
           application/json;charset=UTF-8:
@@ -520,6 +547,30 @@ paths:
           required: false
           schema:
             type: string
+        - name: Vipps-System-Name
+          in: header
+          description: The name of the ecommerce solution
+          schema:
+            type: string
+          example: woocommerce
+        - name: Vipps-System-Version
+          in: header
+          description: The version number of the ecommerce solution
+          schema:
+            type: string
+          example: "5.4"
+        - name: Vipps-System-Plugin-Name
+          in: header
+          description: The name of the ecommerce plugin
+          schema:
+            type: string
+          example: "vipps-woocommerce"
+        - name: Vipps-System-Plugin-Version
+          in: header
+          description: The version number of the ecommerce plugin
+          schema:
+            type: string
+          example: "1.2.1"
       requestBody:
         $ref: '#/components/requestBodies/PaymentActionsRequest'
       responses:
@@ -633,6 +684,30 @@ paths:
           required: false
           schema:
             type: string
+        - name: Vipps-System-Name
+          in: header
+          description: The name of the ecommerce solution
+          schema:
+            type: string
+          example: woocommerce
+        - name: Vipps-System-Version
+          in: header
+          description: The version number of the ecommerce solution
+          schema:
+            type: string
+          example: "5.4"
+        - name: Vipps-System-Plugin-Name
+          in: header
+          description: The name of the ecommerce plugin
+          schema:
+            type: string
+          example: "vipps-woocommerce"
+        - name: Vipps-System-Plugin-Version
+          in: header
+          description: The version number of the ecommerce plugin
+          schema:
+            type: string
+          example: "1.2.1"
       requestBody:
         content:
           application/json;charset=UTF-8:
@@ -763,6 +838,30 @@ paths:
           required: false
           schema:
             type: string
+        - name: Vipps-System-Name
+          in: header
+          description: The name of the ecommerce solution
+          schema:
+            type: string
+          example: woocommerce
+        - name: Vipps-System-Version
+          in: header
+          description: The version number of the ecommerce solution
+          schema:
+            type: string
+          example: "5.4"
+        - name: Vipps-System-Plugin-Name
+          in: header
+          description: The name of the ecommerce plugin
+          schema:
+            type: string
+          example: "vipps-woocommerce"
+        - name: Vipps-System-Plugin-Version
+          in: header
+          description: The version number of the ecommerce plugin
+          schema:
+            type: string
+          example: "1.2.1"
       requestBody:
         $ref: '#/components/requestBodies/PaymentActionsRequest'
       responses:
@@ -874,6 +973,30 @@ paths:
             characters.
           schema:
             type: string
+        - name: Vipps-System-Name
+          in: header
+          description: The name of the ecommerce solution
+          schema:
+            type: string
+          example: woocommerce
+        - name: Vipps-System-Version
+          in: header
+          description: The version number of the ecommerce solution
+          schema:
+            type: string
+          example: "5.4"
+        - name: Vipps-System-Plugin-Name
+          in: header
+          description: The name of the ecommerce plugin
+          schema:
+            type: string
+          example: "vipps-woocommerce"
+        - name: Vipps-System-Plugin-Version
+          in: header
+          description: The version number of the ecommerce plugin
+          schema:
+            type: string
+          example: "1.2.1"
       requestBody:
         $ref: '#/components/requestBodies/ForceApproveRequest'
       responses:
@@ -974,6 +1097,30 @@ paths:
           required: false
           schema:
             type: string
+        - name: Vipps-System-Name
+          in: header
+          description: The name of the ecommerce solution
+          schema:
+            type: string
+          example: woocommerce
+        - name: Vipps-System-Version
+          in: header
+          description: The version number of the ecommerce solution
+          schema:
+            type: string
+          example: "5.4"
+        - name: Vipps-System-Plugin-Name
+          in: header
+          description: The name of the ecommerce plugin
+          schema:
+            type: string
+          example: "vipps-woocommerce"
+        - name: Vipps-System-Plugin-Version
+          in: header
+          description: The version number of the ecommerce plugin
+          schema:
+            type: string
+          example: "1.2.1"
       responses:
         '200':
           description: Get payment Details

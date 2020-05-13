@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.2.1
+Document version 1.3.0
 
 For examples of requests and responses, see the Postman collection in [tools](tools/)
 
@@ -32,10 +32,11 @@ For examples of requests and responses, see the Postman collection in [tools](to
     - A complete order ending in `REFUND` ([`/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST) request).
     - A complete order ending in `VOID` ([`/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT) request).
 6. The merchant receives an email from Vipps saying that the orders are OK.
-7. The Merchant [contacts Vipps](https://github.com/vippsas/vipps-developers/blob/master/contact.md) to verify the integration in the production environment:
+7. The merchant and Vipps go through the integration together to verify that everything is OK.
+8. The Merchant [contacts Vipps](https://github.com/vippsas/vipps-developers/blob/master/contact.md) to verify the integration in the production environment:
     - A complete order ending in `REFUND` ([`/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST) request).
     - A complete order ending in `VOID` ([`/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT) request).
-8. The Merchant goes live 🎉
+9. The Merchant goes live 🎉
 
 ## Flow to go live for direct integrations for partners
 
