@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.1.2.
+Document version 2.1.3.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -347,7 +347,7 @@ Example: Response body for `"isApp":false`, to the landing page:
 ```json
 {
     "orderId": "order123abc",
-    "url": "https://apitest.vipps.no/dwo-api-application/v1/deeplink/vippsgateway?v=2&token=eyJraWQiOiJqd3RrZXkiLC <snip>"
+    "url": "https://api.vipps.no/dwo-api-application/v1/deeplink/vippsgateway?v=2&token=eyJraWQiOiJqd3RrZXkiLC <snip>"
 }
 ```
 Example: Response body for `"isApp":true`, with a deeplink for app-switch:

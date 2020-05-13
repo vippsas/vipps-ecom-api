@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.4.0
+  version: 1.4.1
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -21,12 +21,12 @@ paths:
     post:
       tags:
         - Authorization Service
-      summary: Fetch Authorization token
+      summary: Fetch authorization token
       parameters:
         - name: client_id
           in: header
           description: >-
-            Client id is available on portal.vipps.no, under the 'Utvikler' tab.
+            The `client_id` is available on portal.vipps.no, under the 'Utvikler' tab.
           required: true
           schema:
             type: string
@@ -35,7 +35,8 @@ paths:
         - name: client_secret
           in: header
           description: >-
-            Client secret is available on portal.vipps.no, under the 'Utvikler' tab.
+            The `client_secret` is available on portal.vipps.no, under the 'Utvikler' tab.
+            Keep it secret.
           required: true
           schema:
             type: string
@@ -43,17 +44,19 @@ paths:
         - name: Ocp-Apim-Subscription-Key
           in: header
           description: >-
-            The subscription-key for Authorization token is available on portal.vipps.no, under the 'Utvikler' tab.
+            The subscription key for the authorization token is available on portal.vipps.no, under the 'Utvikler' tab.
+            Keep it secret.
           required: true
           schema:
             type: string
           example: 0f14ebcab0ec4b29ae0cb90d91b4a84a
       description: >-
-        Authorization token API endpoint helps to get the JWT Bearer token that
-        needs to be passed in every API request in the Authorization header. The
-        merchant application use the API to get a JWT access token. JWT access
-        token is a base 64 encoded string value that must be aquire first before
-        making any Vipps api calls
+        The access token endpoint is used to get the JWT (JSON Web Token) that
+        must be passed in every API request in the Authorization header.
+        The access token token is a base64-encoded string value that must be
+        aquired first before making any Vipps api calls.
+        The access token is valid for 1 hour in the test environment
+        and 24 hours in the production environment.
       operationId: fetchAuthorizationTokenUsingPost
       responses:
         '200':
@@ -128,11 +131,12 @@ paths:
         - name: userId
           in: path
           description: >-
-            URL encoded userId provided when requesting user information from Vipps.
-            Received by callback or get detail request.
+            URL-encoded `userId` provided when requesting user information from Vipps.
+            Received by callback or with `/detail` request.
           required: true
           schema:
             type: string
+          example:
       responses:
         '200':
           description: Remove User Consent (for Vipps Hurtigkasse (express checkout))
@@ -162,6 +166,7 @@ paths:
           required: true
           schema:
             type: string
+          example: order123abc
         - name: Authorization
           in: header
           description: >-
@@ -169,6 +174,7 @@ paths:
             `authToken`. Used so that the merchant may authenticate the request.
           schema:
             type: string
+          example: ae0cb90d91b4a84a
       requestBody:
         content:
           application/json;charset=UTF-8:
@@ -208,23 +214,29 @@ paths:
         - in: header
           name: Authorization
           description: >-
-            Authorization-token is obtained by appending the access_token obtained by using the `/accesstoken/get` request to 'Bearer '.
+            The access token token is a base64-encoded string that is required for all API calls.
+            It is a JWT (JSON Web Token).
+            The access token is fetched from the `POST:/accesstoken/get` endpoint.
+            It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
             type: string
         - in: header
           name: Content-Type
-          description: application/json
+          description: "The content type must be `application/json`"
           required: true
           schema:
             type: string
+          example: application/json
         - in: header
           name: Ocp-Apim-Subscription-Key
           description: >-
-            The subscription key for your product is available on portal.vipps.no, under the 'Utvikler' tab.
+            The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab.
+            Keep it secret.
           required: true
           schema:
             type: string
+          example: 0f14ebcab0ec4b29ae0cb90d91b4a84a
         - in: header
           name: Merchant-Serial-Number
           description: >-
@@ -238,27 +250,28 @@ paths:
           required: false
           schema:
             type: string
+          example: 123456
         - name: Vipps-System-Name
           in: header
-          description: The name of the ecommerce solution
+          description: The name of the ecommerce solution. One word in lowercase letters is good.
           schema:
             type: string
           example: woocommerce
         - name: Vipps-System-Version
           in: header
-          description: The version number of the ecommerce solution
+          description: The version number of the ecommerce solution.
           schema:
             type: string
           example: "5.4"
         - name: Vipps-System-Plugin-Name
           in: header
-          description: The name of the ecommerce plugin
+          description: The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.
           schema:
             type: string
           example: "vipps-woocommerce"
         - name: Vipps-System-Plugin-Version
           in: header
-          description: The version number of the ecommerce plugin
+          description: The version number of the ecommerce plugin (if applicable).
           schema:
             type: string
           example: "1.2.1"
@@ -290,6 +303,7 @@ paths:
                   required: true
                   schema:
                     type: string
+                  example: order123abc
               responses:
                 '200':
                   description: Vipps does not require a response for this request.
@@ -318,6 +332,7 @@ paths:
                   required: true
                   schema:
                     type: string
+                  example: order123abc
               responses:
                 '200':
                   description: Vipps does not require a response for this request.
@@ -469,6 +484,7 @@ paths:
           required: true
           schema:
             type: string
+          example: order123abc
         - name: Authorization
           in: header
           description: >-
@@ -512,24 +528,29 @@ paths:
         - in: header
           name: Authorization
           description: >-
-            Authorization-token is obtained by running the /accesstoken/get
-            request.
+            The access token token is a base64-encoded string that is required for all API calls.
+            It is a JWT (JSON Web Token).
+            The access token is fetched from the `POST:/accesstoken/get` endpoint.
+            It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
             type: string
         - in: header
           name: Content-Type
-          description: '`application/json`'
+          description: "The content type must be `application/json`"
           required: true
           schema:
             type: string
+          example: application/json
         - in: header
           name: Ocp-Apim-Subscription-Key
           description: >-
-            The subscription-key for your product is available on portal.vipps.no, under the 'Utvikler' tab.
+            The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab.
+            Keep it secret.
           required: true
           schema:
             type: string
+          example: 0f14ebcab0ec4b29ae0cb90d91b4a84a
         - in: header
           name: X-Request-Id
           description: >-
@@ -542,32 +563,38 @@ paths:
         - in: header
           name: Merchant-Serial-Number
           description: >-
-            Unique id for the sale unit. Mandatory parameter if you are a Vipps eCom partner integrating
-            on behalf of your merchants. Optional, but recommended, for regular Vipps merchants.
+            The Merchant Serial Number (MSN) is a unique id for the sale unit
+            that this payment is made for.
+            This is a required parameter if you are a Vipps eCom partner
+            making payments on behalf of a merchant.
+            The partner must use the merchant's MSN (not the partner's MSN).
+            This parameter is optional, and recommended, for regular Vipps
+            merchants making payments for themselves.
           required: false
           schema:
             type: string
+          example: 123456
         - name: Vipps-System-Name
           in: header
-          description: The name of the ecommerce solution
+          description: The name of the ecommerce solution. One word in lowercase letters is good.
           schema:
             type: string
           example: woocommerce
         - name: Vipps-System-Version
           in: header
-          description: The version number of the ecommerce solution
+          description: The version number of the ecommerce solution.
           schema:
             type: string
           example: "5.4"
         - name: Vipps-System-Plugin-Name
           in: header
-          description: The name of the ecommerce plugin
+          description: The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.
           schema:
             type: string
           example: "vipps-woocommerce"
         - name: Vipps-System-Plugin-Version
           in: header
-          description: The version number of the ecommerce plugin
+          description: The version number of the ecommerce plugin (if applicable).
           schema:
             type: string
           example: "1.2.1"
@@ -658,53 +685,64 @@ paths:
         - in: header
           name: Authorization
           description: >-
-            Authorization-token is obtained by running the /accesstoken/get
-            request.
+            The access token token is a base64-encoded string that is required for all API calls.
+            It is a JWT (JSON Web Token).
+            The access token is fetched from the `POST:/accesstoken/get` endpoint.
+            It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
             type: string
         - in: header
           name: Content-Type
-          description: '`application/json`'
+          description: "The content type must be `application/json`"
           required: true
           schema:
             type: string
+          example: application/json
         - in: header
           name: Ocp-Apim-Subscription-Key
           description: >-
-            The subscription-key for your product is available on portal.vipps.no, under the 'Utvikler' tab.
+            The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab.
+            Keep it secret.
           required: true
           schema:
             type: string
+          example: 0f14ebcab0ec4b29ae0cb90d91b4a84a
         - in: header
           name: Merchant-Serial-Number
           description: >-
-            Unique id for the sale unit. Mandatory parameter if you are a Vipps eCom partner integrating
-            on behalf of your merchants. Optional, but recommended, for regular Vipps merchants.
+            The Merchant Serial Number (MSN) is a unique id for the sale unit
+            that this payment is made for.
+            This is a required parameter if you are a Vipps eCom partner
+            making payments on behalf of a merchant.
+            The partner must use the merchant's MSN (not the partner's MSN).
+            This parameter is optional, and recommended, for regular Vipps
+            merchants making payments for themselves.
           required: false
           schema:
             type: string
+          example: 123456
         - name: Vipps-System-Name
           in: header
-          description: The name of the ecommerce solution
+          description: The name of the ecommerce solution. One word in lowercase letters is good.
           schema:
             type: string
           example: woocommerce
         - name: Vipps-System-Version
           in: header
-          description: The version number of the ecommerce solution
+          description: The version number of the ecommerce solution.
           schema:
             type: string
           example: "5.4"
         - name: Vipps-System-Plugin-Name
           in: header
-          description: The name of the ecommerce plugin
+          description: The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.
           schema:
             type: string
           example: "vipps-woocommerce"
         - name: Vipps-System-Plugin-Version
           in: header
-          description: The version number of the ecommerce plugin
+          description: The version number of the ecommerce plugin (if applicable).
           schema:
             type: string
           example: "1.2.1"
@@ -803,24 +841,29 @@ paths:
         - in: header
           name: Authorization
           description: >-
-            Authorization-token is obtained by running the /accesstoken/get
-            request.
+            The access token token is a base64-encoded string that is required for all API calls.
+            It is a JWT (JSON Web Token).
+            The access token is fetched from the `POST:/accesstoken/get` endpoint.
+            It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
             type: string
         - in: header
           name: Content-Type
-          description: '`application/json`'
+          description: "The content type must be `application/json`"
           required: true
           schema:
             type: string
+          example: application/json
         - in: header
           name: Ocp-Apim-Subscription-Key
           description: >-
-            The subscription-key for your product is available on portal.vipps.no, under the 'Utvikler' tab.
+            The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab.
+            Keep it secret.
           required: true
           schema:
             type: string
+          example: 0f14ebcab0ec4b29ae0cb90d91b4a84a
         - in: header
           name: X-Request-Id
           description: >-
@@ -833,32 +876,38 @@ paths:
         - in: header
           name: Merchant-Serial-Number
           description: >-
-            Unique id for the sale unit. Mandatory parameter if you are a Vipps eCom partner integrating
-            on behalf of your merchants. Optional, but recommended, for regular Vipps merchants.
+            The Merchant Serial Number (MSN) is a unique id for the sale unit
+            that this payment is made for.
+            This is a required parameter if you are a Vipps eCom partner
+            making payments on behalf of a merchant.
+            The partner must use the merchant's MSN (not the partner's MSN).
+            This parameter is optional, and recommended, for regular Vipps
+            merchants making payments for themselves.
           required: false
           schema:
             type: string
+          example: 123456
         - name: Vipps-System-Name
           in: header
-          description: The name of the ecommerce solution
+          description: The name of the ecommerce solution. One word in lowercase letters is good.
           schema:
             type: string
           example: woocommerce
         - name: Vipps-System-Version
           in: header
-          description: The version number of the ecommerce solution
+          description: The version number of the ecommerce solution.
           schema:
             type: string
           example: "5.4"
         - name: Vipps-System-Plugin-Name
           in: header
-          description: The name of the ecommerce plugin
+          description: The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.
           schema:
             type: string
           example: "vipps-woocommerce"
         - name: Vipps-System-Plugin-Version
           in: header
-          description: The version number of the ecommerce plugin
+          description: The version number of the ecommerce plugin (if applicable).
           schema:
             type: string
           example: "1.2.1"
@@ -946,24 +995,29 @@ paths:
         - in: header
           name: Authorization
           description: >-
-            Authorization-token is obtained by running the /accesstoken/get
-            request.
+            The access token token is a base64-encoded string that is required for all API calls.
+            It is a JWT (JSON Web Token).
+            The access token is fetched from the `POST:/accesstoken/get` endpoint.
+            It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
             type: string
         - in: header
           name: Content-Type
-          description: '`application/json`'
+          description: "The content type must be `application/json`"
           required: true
           schema:
             type: string
+          example: application/json
         - in: header
           name: Ocp-Apim-Subscription-Key
           description: >-
-            The subscription-key for your product is available on portal.vipps.no, under the 'Utvikler' tab.
+            The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab.
+            Keep it secret.
           required: true
           schema:
             type: string
+          example: 0f14ebcab0ec4b29ae0cb90d91b4a84a
         - in: header
           name: X-Request-Id
           description: >-
@@ -975,25 +1029,25 @@ paths:
             type: string
         - name: Vipps-System-Name
           in: header
-          description: The name of the ecommerce solution
+          description: The name of the ecommerce solution. One word in lowercase letters is good.
           schema:
             type: string
           example: woocommerce
         - name: Vipps-System-Version
           in: header
-          description: The version number of the ecommerce solution
+          description: The version number of the ecommerce solution.
           schema:
             type: string
           example: "5.4"
         - name: Vipps-System-Plugin-Name
           in: header
-          description: The name of the ecommerce plugin
+          description: The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.
           schema:
             type: string
           example: "vipps-woocommerce"
         - name: Vipps-System-Plugin-Version
           in: header
-          description: The version number of the ecommerce plugin
+          description: The version number of the ecommerce plugin (if applicable).
           schema:
             type: string
           example: "1.2.1"
@@ -1071,53 +1125,64 @@ paths:
         - in: header
           name: Authorization
           description: >-
-            Authorization-token is obtained by running the `/accesstoken/get`
-            request.
+            The access token token is a base64-encoded string that is required for all API calls.
+            It is a JWT (JSON Web Token).
+            The access token is fetched from the `POST:/accesstoken/get` endpoint.
+            It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
             type: string
         - in: header
           name: Content-Type
-          description: '`application/json`'
+          description: "The content type must be `application/json`"
           required: true
           schema:
             type: string
+          example: application/json
         - in: header
           name: Ocp-Apim-Subscription-Key
           description: >-
-            The subscription-key for your product is available on portal.vipps.no, under the 'Utvikler' tab.
+            The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab.
+            Keep it secret.
           required: true
           schema:
             type: string
+          example: 0f14ebcab0ec4b29ae0cb90d91b4a84a
         - in: header
           name: Merchant-Serial-Number
           description: >-
-            Unique id for the sale unit. Mandatory parameter if you are a Vipps eCom partner integrating
-            on behalf of your merchants. Optional, but recommended, for regular Vipps merchants.
+            The Merchant Serial Number (MSN) is a unique id for the sale unit
+            that this payment is made for.
+            This is a required parameter if you are a Vipps eCom partner
+            making payments on behalf of a merchant.
+            The partner must use the merchant's MSN (not the partner's MSN).
+            This parameter is optional, and recommended, for regular Vipps
+            merchants making payments for themselves.
           required: false
           schema:
             type: string
+          example: 123456
         - name: Vipps-System-Name
           in: header
-          description: The name of the ecommerce solution
+          description: The name of the ecommerce solution. One word in lowercase letters is good.
           schema:
             type: string
           example: woocommerce
         - name: Vipps-System-Version
           in: header
-          description: The version number of the ecommerce solution
+          description: The version number of the ecommerce solution.
           schema:
             type: string
           example: "5.4"
         - name: Vipps-System-Plugin-Name
           in: header
-          description: The name of the ecommerce plugin
+          description: The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.
           schema:
             type: string
           example: "vipps-woocommerce"
         - name: Vipps-System-Plugin-Version
           in: header
-          description: The version number of the ecommerce plugin
+          description: The version number of the ecommerce plugin (if applicable).
           schema:
             type: string
           example: "1.2.1"
@@ -1203,18 +1268,22 @@ paths:
         - in: header
           name: Authorization
           description: >-
-            Authorization-token is obtained by running the /accesstoken/get
-            request.
+            The access token token is a base64-encoded string that is required for all API calls.
+            It is a JWT (JSON Web Token).
+            The access token is fetched from the `POST:/accesstoken/get` endpoint.
+            It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
             type: string
         - in: header
           name: Ocp-Apim-Subscription-Key
           description: >-
-            The subscription-key for your product is available on portal.vipps.no, under the 'Utvikler' tab.
+            The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab.
+            Keep it secret.
           required: true
           schema:
             type: string
+          example: 0f14ebcab0ec4b29ae0cb90d91b4a84a
       responses:
         '200':
           description: Get order status
@@ -1694,11 +1763,12 @@ components:
           type: string
           description: >-
             URL to redirect the user to Vipps landing page or a deeplink URL to
-            open Vipps app, if isApp was set as true. The landing page will
+            open Vipps app, if `isApp` was set as true. The landing page will
             also redirect a user to the app if the user is using a mobile browser.
             This link will timeout after 5 minutes.
             This example is a shortened deeplink URL.
-          example: 'https://api.vipps.no/deeplink/vippsgateway?token=eyJraWQiOiJqd3R'
+            The URL received fromn Vipps should not be changed, and the format may change without notice.
+          example: 'https://api.vipps.no/dwo-api-application/v1/deeplink/vippsgateway?v=2&token=eyJraWQiOiJqd3RrZXkiLC <snip>'
     ShippingDetailsRequest:
       type: object
       required:
@@ -1994,6 +2064,7 @@ components:
           example: Robert Levins gate 5
         addressLine2:
           type: string
+          example: c/o Rune Garborg
         city:
           type: string
           description: City
