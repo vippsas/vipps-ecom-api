@@ -6,7 +6,7 @@ See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.5.1.
+Document version 1.6.0.
 
 ## Table of contents
 
@@ -34,6 +34,7 @@ Document version 1.5.1.
 - [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
 - [I am getting `401 Unauthorized` error - and I have double checked all my keys!](#i-am-getting-401-unauthorized-error---and-i-have-double-checked-all-my-keys)
 - [Why do I get `500 Internal Server Error` (or similar)?](#why-do-i-get-500-internal-server-error-or-similar)
+- [In which sequence are callbacks and fallbacks done?](#in-which-sequence-are-callbacks-and-fallbacks-done)
 - [Why do I not get callbacks from Vipps?](#why-do-i-not-get-callbacks-from-vipps)
 - [Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`](#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked)
 - [How do I perform "testing in production"?](#how-do-i-perform-testing-in-production)
@@ -337,6 +338,15 @@ In other words: We should perhaps have returned `HTTP 400 Bad Request`.
 You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
 to manually do API calls, just to be sure.
 See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
+
+## In which sequence are callbacks and fallbacks done?
+
+Vipps can not guarantee a particular sequence, as this depends on user
+actions, network connectivity/speed, etc. Because og this, it is not
+possible to base an integration on a specific sequence of events.
+
+More details:
+[Initiate payment flow: Phone and browser](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#initiate-payment-flow-phone-and-browser)
 
 ## Why do I not get callbacks from Vipps?
 

@@ -207,6 +207,10 @@ If Vipps is installed, Vipps will automatically be opened.
 5. Once payment process is completed, Vipps redirects to the
    `fallBack` URL that the merchant provided earlier.
 
+**Please note:** Vipps can not guarantee a particular sequence, as this depends on user
+actions, network connectivity/speed, etc. Because og this, it is not
+possible to base an integration on a specific sequence of events.
+
 ## PC/Mac flow
 
 ![Desktop lanfing page](images/vipps-ecom-screenshot-landing-page.png)
