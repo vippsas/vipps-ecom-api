@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.1.1.
+Document version 2.1.2.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -347,7 +347,7 @@ Example: Response body for `"isApp":false`, to the landing page:
 ```json
 {
     "orderId": "order123abc",
-    "url": "https://api.vipps.no/deeplink/vippsgateway?token=eyJraWQiOiJqd3R <snip>"
+    "url": "https://apitest.vipps.no/dwo-api-application/v1/deeplink/vippsgateway?v=2&token=eyJraWQiOiJqd3RrZXkiLC <snip>"
 }
 ```
 Example: Response body for `"isApp":true`, with a deeplink for app-switch:
@@ -355,11 +355,11 @@ Example: Response body for `"isApp":true`, with a deeplink for app-switch:
 ```json
 {
     "orderId": "order123abc",
-    "url": "vipps://?token=eyJraWQiOiJqd3RrZXkiLCJhbGciOiJSUzI1NiJ9.eyJzdWIi <snip>"
+    "url": "vipps://?token=eyJraWQiOiJqd3RrZXkiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiO <snip>"
 }
 ```
 
-The `url` is slightly simplified, but the format is correct.
+The `url` is truncated, but the format is correct.
 
 ## Payment identification
 
