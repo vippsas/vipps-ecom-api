@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Vipps eCommerce API v1.4.1</title>
+    <title>Vipps eCommerce API v1.4.2</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -553,7 +553,7 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/accesstoken/get <s
 </code></pre></div>
 <p><code>POST /accesstoken/get</code></p>
 
-<p>The access token endpoint is used to get the JWT (JSON Web Token) that must be passed in every API request in the Authorization header. The access token token is a base64-encoded string value that must be aquired first before making any Vipps api calls. The access token is valid for 1 hour in the test environment and 24 hours in the production environment.</p>
+<p>The access token endpoint is used to get the JWT (JSON Web Token) that must be passed in every API request in the Authorization header. The access token is a base64-encoded string value that must be aquired first before making any Vipps api calls. The access token is valid for 1 hour in the test environment and 24 hours in the production environment.</p>
 
 <h3 id="fetch-authorization-token-parameters">Parameters</h3>
 
@@ -601,7 +601,7 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/accesstoken/get <s
   </span><span class="nl">"expires_on"</span><span class="p">:</span><span class="w"> </span><span class="mi">1547823408</span><span class="p">,</span><span class="w">
   </span><span class="nl">"not_before"</span><span class="p">:</span><span class="w"> </span><span class="mi">1547819508</span><span class="p">,</span><span class="w">
   </span><span class="nl">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000002-0000-0000-c000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni"</span><span class="w">
+  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <h3 id="fetch-authorization-token-responses">Responses</h3>
@@ -683,7 +683,7 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/accesstoken/get <s
 curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json;charset=UTF-8'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json;charset=UTF-8'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Ocp-Apim-Subscription-Key: 0f14ebcab0ec4b29ae0cb90d91b4a84a'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Merchant-Serial-Number: 123456'</span> <span class="se">\</span>
@@ -696,7 +696,7 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments 
 <span class="na">Host</span><span class="p">:</span> <span class="s">apitest.vipps.no</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Ocp-Apim-Subscription-Key</span><span class="p">:</span> <span class="s">0f14ebcab0ec4b29ae0cb90d91b4a84a</span>
 <span class="na">Merchant-Serial-Number</span><span class="p">:</span> <span class="s">123456</span>
@@ -739,7 +739,7 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments 
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json;charset=UTF-8</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json;charset=UTF-8</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">string</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Ocp-Apim-Subscription-Key</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">0f14ebcab0ec4b29ae0cb90d91b4a84a</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Merchant-Serial-Number</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">123456</span><span class="dl">'</span><span class="p">,</span>
@@ -767,7 +767,7 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
   <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
-  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span><span class="p">,</span>
   <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'Ocp-Apim-Subscription-Key'</span> <span class="o">=&gt;</span> <span class="s1">'0f14ebcab0ec4b29ae0cb90d91b4a84a'</span><span class="p">,</span>
   <span class="s1">'Merchant-Serial-Number'</span> <span class="o">=&gt;</span> <span class="s1">'123456'</span><span class="p">,</span>
@@ -787,7 +787,7 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json;charset=UTF-8'</span><span class="p">,</span>
   <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json;charset=UTF-8'</span><span class="p">,</span>
-  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'string'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span><span class="p">,</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
   <span class="s">'Ocp-Apim-Subscription-Key'</span><span class="p">:</span> <span class="s">'0f14ebcab0ec4b29ae0cb90d91b4a84a'</span><span class="p">,</span>
   <span class="s">'Merchant-Serial-Number'</span><span class="p">:</span> <span class="s">'123456'</span><span class="p">,</span>
@@ -808,7 +808,7 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
     <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
-    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span><span class="p">,</span>
     <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
     <span class="s1">'Ocp-Apim-Subscription-Key'</span> <span class="o">=&gt;</span> <span class="s1">'0f14ebcab0ec4b29ae0cb90d91b4a84a'</span><span class="p">,</span>
     <span class="s1">'Merchant-Serial-Number'</span> <span class="o">=&gt;</span> <span class="s1">'123456'</span><span class="p">,</span>
@@ -864,7 +864,7 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments 
     <span class="n">headers</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
         <span class="s">"Content-Type"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json;charset=UTF-8"</span><span class="p">},</span>
         <span class="s">"Accept"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json;charset=UTF-8"</span><span class="p">},</span>
-        <span class="s">"Authorization"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"string"</span><span class="p">},</span>
+        <span class="s">"Authorization"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."</span><span class="p">},</span>
         <span class="s">"Content-Type"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json"</span><span class="p">},</span>
         <span class="s">"Ocp-Apim-Subscription-Key"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"0f14ebcab0ec4b29ae0cb90d91b4a84a"</span><span class="p">},</span>
         <span class="s">"Merchant-Serial-Number"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"123456"</span><span class="p">},</span>
@@ -939,7 +939,7 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments 
 <td>header</td>
 <td>string</td>
 <td>true</td>
-<td>The access token token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the <code>POST:/accesstoken/get</code> endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.</td>
+<td>The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the <code>POST:/accesstoken/get</code> endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.</td>
 </tr>
 <tr>
 <td>Content-Type</td>
@@ -1269,10 +1269,10 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments 
 curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>orderId<span class="o">}</span>/capture <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json;charset=UTF-8'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json;charset=UTF-8'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Ocp-Apim-Subscription-Key: 0f14ebcab0ec4b29ae0cb90d91b4a84a'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'X-Request-Id: string'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'X-Request-Id: kRk3uEeiogxLu1yGSZRlNgsIv3TuNS'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Merchant-Serial-Number: 123456'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Vipps-System-Name: woocommerce'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Vipps-System-Version: 5.4'</span> <span class="se">\</span>
@@ -1283,10 +1283,10 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments/
 <span class="na">Host</span><span class="p">:</span> <span class="s">apitest.vipps.no</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Ocp-Apim-Subscription-Key</span><span class="p">:</span> <span class="s">0f14ebcab0ec4b29ae0cb90d91b4a84a</span>
-<span class="na">X-Request-Id</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">X-Request-Id</span><span class="p">:</span> <span class="s">kRk3uEeiogxLu1yGSZRlNgsIv3TuNS</span>
 <span class="na">Merchant-Serial-Number</span><span class="p">:</span> <span class="s">123456</span>
 <span class="na">Vipps-System-Name</span><span class="p">:</span> <span class="s">woocommerce</span>
 <span class="na">Vipps-System-Version</span><span class="p">:</span> <span class="s">5.4</span>
@@ -1305,10 +1305,10 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments/
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json;charset=UTF-8</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json;charset=UTF-8</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">string</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Ocp-Apim-Subscription-Key</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">0f14ebcab0ec4b29ae0cb90d91b4a84a</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">X-Request-Id</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">string</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">X-Request-Id</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">kRk3uEeiogxLu1yGSZRlNgsIv3TuNS</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Merchant-Serial-Number</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">123456</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Vipps-System-Name</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">woocommerce</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Vipps-System-Version</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">5.4</span><span class="dl">'</span><span class="p">,</span>
@@ -1334,10 +1334,10 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments/
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
   <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
-  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span><span class="p">,</span>
   <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'Ocp-Apim-Subscription-Key'</span> <span class="o">=&gt;</span> <span class="s1">'0f14ebcab0ec4b29ae0cb90d91b4a84a'</span><span class="p">,</span>
-  <span class="s1">'X-Request-Id'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'X-Request-Id'</span> <span class="o">=&gt;</span> <span class="s1">'kRk3uEeiogxLu1yGSZRlNgsIv3TuNS'</span><span class="p">,</span>
   <span class="s1">'Merchant-Serial-Number'</span> <span class="o">=&gt;</span> <span class="s1">'123456'</span><span class="p">,</span>
   <span class="s1">'Vipps-System-Name'</span> <span class="o">=&gt;</span> <span class="s1">'woocommerce'</span><span class="p">,</span>
   <span class="s1">'Vipps-System-Version'</span> <span class="o">=&gt;</span> <span class="s1">'5.4'</span><span class="p">,</span>
@@ -1355,10 +1355,10 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments/
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json;charset=UTF-8'</span><span class="p">,</span>
   <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json;charset=UTF-8'</span><span class="p">,</span>
-  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'string'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span><span class="p">,</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
   <span class="s">'Ocp-Apim-Subscription-Key'</span><span class="p">:</span> <span class="s">'0f14ebcab0ec4b29ae0cb90d91b4a84a'</span><span class="p">,</span>
-  <span class="s">'X-Request-Id'</span><span class="p">:</span> <span class="s">'string'</span><span class="p">,</span>
+  <span class="s">'X-Request-Id'</span><span class="p">:</span> <span class="s">'kRk3uEeiogxLu1yGSZRlNgsIv3TuNS'</span><span class="p">,</span>
   <span class="s">'Merchant-Serial-Number'</span><span class="p">:</span> <span class="s">'123456'</span><span class="p">,</span>
   <span class="s">'Vipps-System-Name'</span><span class="p">:</span> <span class="s">'woocommerce'</span><span class="p">,</span>
   <span class="s">'Vipps-System-Version'</span><span class="p">:</span> <span class="s">'5.4'</span><span class="p">,</span>
@@ -1377,10 +1377,10 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments/
 <span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
     <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
-    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span><span class="p">,</span>
     <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
     <span class="s1">'Ocp-Apim-Subscription-Key'</span> <span class="o">=&gt;</span> <span class="s1">'0f14ebcab0ec4b29ae0cb90d91b4a84a'</span><span class="p">,</span>
-    <span class="s1">'X-Request-Id'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
+    <span class="s1">'X-Request-Id'</span> <span class="o">=&gt;</span> <span class="s1">'kRk3uEeiogxLu1yGSZRlNgsIv3TuNS'</span><span class="p">,</span>
     <span class="s1">'Merchant-Serial-Number'</span> <span class="o">=&gt;</span> <span class="s1">'123456'</span><span class="p">,</span>
     <span class="s1">'Vipps-System-Name'</span> <span class="o">=&gt;</span> <span class="s1">'woocommerce'</span><span class="p">,</span>
     <span class="s1">'Vipps-System-Version'</span> <span class="o">=&gt;</span> <span class="s1">'5.4'</span><span class="p">,</span>
@@ -1434,10 +1434,10 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments/
     <span class="n">headers</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
         <span class="s">"Content-Type"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json;charset=UTF-8"</span><span class="p">},</span>
         <span class="s">"Accept"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json;charset=UTF-8"</span><span class="p">},</span>
-        <span class="s">"Authorization"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"string"</span><span class="p">},</span>
+        <span class="s">"Authorization"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."</span><span class="p">},</span>
         <span class="s">"Content-Type"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json"</span><span class="p">},</span>
         <span class="s">"Ocp-Apim-Subscription-Key"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"0f14ebcab0ec4b29ae0cb90d91b4a84a"</span><span class="p">},</span>
-        <span class="s">"X-Request-Id"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"string"</span><span class="p">},</span>
+        <span class="s">"X-Request-Id"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"kRk3uEeiogxLu1yGSZRlNgsIv3TuNS"</span><span class="p">},</span>
         <span class="s">"Merchant-Serial-Number"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"123456"</span><span class="p">},</span>
         <span class="s">"Vipps-System-Name"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"woocommerce"</span><span class="p">},</span>
         <span class="s">"Vipps-System-Version"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"5.4"</span><span class="p">},</span>
@@ -1488,14 +1488,14 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments/
 <td>path</td>
 <td>string</td>
 <td>true</td>
-<td>Order id specified in the request body of initiate payment.</td>
+<td>The <code>orderId</code>is specified when initiating the paymemt.</td>
 </tr>
 <tr>
 <td>Authorization</td>
 <td>header</td>
 <td>string</td>
 <td>true</td>
-<td>The access token token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the <code>POST:/accesstoken/get</code> endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.</td>
+<td>The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the <code>POST:/accesstoken/get</code> endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.</td>
 </tr>
 <tr>
 <td>Content-Type</td>
@@ -1516,7 +1516,7 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments/
 <td>header</td>
 <td>string</td>
 <td>false</td>
-<td>Used for making requests idempotent. Adding X-Request-Id will allow the merchant to retry requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Max 30 characters.</td>
+<td>Used for making requests idempotent. Adding X-Request-Id will allow repeated requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Max 30 characters.</td>
 </tr>
 <tr>
 <td>Merchant-Serial-Number</td>
@@ -1911,14 +1911,14 @@ curl <span class="nt">-X</span> PUT https://apitest.vipps.no/ecomm/v2/payments/<
 <td>path</td>
 <td>string</td>
 <td>true</td>
-<td>Order id specified in the request body of initiate payment.</td>
+<td>The <code>orderId</code>is specified when initiating the paymemt.</td>
 </tr>
 <tr>
 <td>Authorization</td>
 <td>header</td>
 <td>string</td>
 <td>true</td>
-<td>The access token token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the <code>POST:/accesstoken/get</code> endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.</td>
+<td>The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the <code>POST:/accesstoken/get</code> endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.</td>
 </tr>
 <tr>
 <td>Content-Type</td>
@@ -2110,10 +2110,10 @@ curl <span class="nt">-X</span> PUT https://apitest.vipps.no/ecomm/v2/payments/<
 curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>orderId<span class="o">}</span>/refund <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json;charset=UTF-8'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json;charset=UTF-8'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Ocp-Apim-Subscription-Key: 0f14ebcab0ec4b29ae0cb90d91b4a84a'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'X-Request-Id: string'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'X-Request-Id: kRk3uEeiogxLu1yGSZRlNgsIv3TuNS'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Merchant-Serial-Number: 123456'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Vipps-System-Name: woocommerce'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Vipps-System-Version: 5.4'</span> <span class="se">\</span>
@@ -2124,10 +2124,10 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments/
 <span class="na">Host</span><span class="p">:</span> <span class="s">apitest.vipps.no</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Ocp-Apim-Subscription-Key</span><span class="p">:</span> <span class="s">0f14ebcab0ec4b29ae0cb90d91b4a84a</span>
-<span class="na">X-Request-Id</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">X-Request-Id</span><span class="p">:</span> <span class="s">kRk3uEeiogxLu1yGSZRlNgsIv3TuNS</span>
 <span class="na">Merchant-Serial-Number</span><span class="p">:</span> <span class="s">123456</span>
 <span class="na">Vipps-System-Name</span><span class="p">:</span> <span class="s">woocommerce</span>
 <span class="na">Vipps-System-Version</span><span class="p">:</span> <span class="s">5.4</span>
@@ -2146,10 +2146,10 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments/
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json;charset=UTF-8</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json;charset=UTF-8</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">string</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Ocp-Apim-Subscription-Key</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">0f14ebcab0ec4b29ae0cb90d91b4a84a</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">X-Request-Id</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">string</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">X-Request-Id</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">kRk3uEeiogxLu1yGSZRlNgsIv3TuNS</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Merchant-Serial-Number</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">123456</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Vipps-System-Name</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">woocommerce</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Vipps-System-Version</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">5.4</span><span class="dl">'</span><span class="p">,</span>
@@ -2175,10 +2175,10 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments/
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
   <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
-  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span><span class="p">,</span>
   <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'Ocp-Apim-Subscription-Key'</span> <span class="o">=&gt;</span> <span class="s1">'0f14ebcab0ec4b29ae0cb90d91b4a84a'</span><span class="p">,</span>
-  <span class="s1">'X-Request-Id'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'X-Request-Id'</span> <span class="o">=&gt;</span> <span class="s1">'kRk3uEeiogxLu1yGSZRlNgsIv3TuNS'</span><span class="p">,</span>
   <span class="s1">'Merchant-Serial-Number'</span> <span class="o">=&gt;</span> <span class="s1">'123456'</span><span class="p">,</span>
   <span class="s1">'Vipps-System-Name'</span> <span class="o">=&gt;</span> <span class="s1">'woocommerce'</span><span class="p">,</span>
   <span class="s1">'Vipps-System-Version'</span> <span class="o">=&gt;</span> <span class="s1">'5.4'</span><span class="p">,</span>
@@ -2196,10 +2196,10 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments/
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json;charset=UTF-8'</span><span class="p">,</span>
   <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json;charset=UTF-8'</span><span class="p">,</span>
-  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'string'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span><span class="p">,</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
   <span class="s">'Ocp-Apim-Subscription-Key'</span><span class="p">:</span> <span class="s">'0f14ebcab0ec4b29ae0cb90d91b4a84a'</span><span class="p">,</span>
-  <span class="s">'X-Request-Id'</span><span class="p">:</span> <span class="s">'string'</span><span class="p">,</span>
+  <span class="s">'X-Request-Id'</span><span class="p">:</span> <span class="s">'kRk3uEeiogxLu1yGSZRlNgsIv3TuNS'</span><span class="p">,</span>
   <span class="s">'Merchant-Serial-Number'</span><span class="p">:</span> <span class="s">'123456'</span><span class="p">,</span>
   <span class="s">'Vipps-System-Name'</span><span class="p">:</span> <span class="s">'woocommerce'</span><span class="p">,</span>
   <span class="s">'Vipps-System-Version'</span><span class="p">:</span> <span class="s">'5.4'</span><span class="p">,</span>
@@ -2218,10 +2218,10 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments/
 <span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
     <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
-    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span><span class="p">,</span>
     <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
     <span class="s1">'Ocp-Apim-Subscription-Key'</span> <span class="o">=&gt;</span> <span class="s1">'0f14ebcab0ec4b29ae0cb90d91b4a84a'</span><span class="p">,</span>
-    <span class="s1">'X-Request-Id'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
+    <span class="s1">'X-Request-Id'</span> <span class="o">=&gt;</span> <span class="s1">'kRk3uEeiogxLu1yGSZRlNgsIv3TuNS'</span><span class="p">,</span>
     <span class="s1">'Merchant-Serial-Number'</span> <span class="o">=&gt;</span> <span class="s1">'123456'</span><span class="p">,</span>
     <span class="s1">'Vipps-System-Name'</span> <span class="o">=&gt;</span> <span class="s1">'woocommerce'</span><span class="p">,</span>
     <span class="s1">'Vipps-System-Version'</span> <span class="o">=&gt;</span> <span class="s1">'5.4'</span><span class="p">,</span>
@@ -2275,10 +2275,10 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments/
     <span class="n">headers</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
         <span class="s">"Content-Type"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json;charset=UTF-8"</span><span class="p">},</span>
         <span class="s">"Accept"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json;charset=UTF-8"</span><span class="p">},</span>
-        <span class="s">"Authorization"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"string"</span><span class="p">},</span>
+        <span class="s">"Authorization"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."</span><span class="p">},</span>
         <span class="s">"Content-Type"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json"</span><span class="p">},</span>
         <span class="s">"Ocp-Apim-Subscription-Key"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"0f14ebcab0ec4b29ae0cb90d91b4a84a"</span><span class="p">},</span>
-        <span class="s">"X-Request-Id"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"string"</span><span class="p">},</span>
+        <span class="s">"X-Request-Id"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"kRk3uEeiogxLu1yGSZRlNgsIv3TuNS"</span><span class="p">},</span>
         <span class="s">"Merchant-Serial-Number"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"123456"</span><span class="p">},</span>
         <span class="s">"Vipps-System-Name"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"woocommerce"</span><span class="p">},</span>
         <span class="s">"Vipps-System-Version"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"5.4"</span><span class="p">},</span>
@@ -2329,14 +2329,14 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments/
 <td>path</td>
 <td>string</td>
 <td>true</td>
-<td>Order id specified in the request body of initiate payment.</td>
+<td>The <code>orderId</code>is specified when initiating the paymemt.</td>
 </tr>
 <tr>
 <td>Authorization</td>
 <td>header</td>
 <td>string</td>
 <td>true</td>
-<td>The access token token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the <code>POST:/accesstoken/get</code> endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.</td>
+<td>The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the <code>POST:/accesstoken/get</code> endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.</td>
 </tr>
 <tr>
 <td>Content-Type</td>
@@ -2357,7 +2357,7 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments/
 <td>header</td>
 <td>string</td>
 <td>false</td>
-<td>Id used for making requests idempotent. Adding this ID will allow the merchant to retry requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Max 30 characters.</td>
+<td>Used for making requests idempotent. Adding X-Request-Id will allow repeated requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Max 30 characters.</td>
 </tr>
 <tr>
 <td>Merchant-Serial-Number</td>
@@ -2542,10 +2542,10 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/payments/
 curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/integration-test/payments/<span class="o">{</span>orderId<span class="o">}</span>/approve <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json;charset=UTF-8'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json;charset=UTF-8'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Ocp-Apim-Subscription-Key: 0f14ebcab0ec4b29ae0cb90d91b4a84a'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'X-Request-Id: string'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'X-Request-Id: kRk3uEeiogxLu1yGSZRlNgsIv3TuNS'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Vipps-System-Name: woocommerce'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Vipps-System-Version: 5.4'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Vipps-System-Plugin-Name: vipps-woocommerce'</span> <span class="se">\</span>
@@ -2555,10 +2555,10 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/integrati
 <span class="na">Host</span><span class="p">:</span> <span class="s">apitest.vipps.no</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Ocp-Apim-Subscription-Key</span><span class="p">:</span> <span class="s">0f14ebcab0ec4b29ae0cb90d91b4a84a</span>
-<span class="na">X-Request-Id</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">X-Request-Id</span><span class="p">:</span> <span class="s">kRk3uEeiogxLu1yGSZRlNgsIv3TuNS</span>
 <span class="na">Vipps-System-Name</span><span class="p">:</span> <span class="s">woocommerce</span>
 <span class="na">Vipps-System-Version</span><span class="p">:</span> <span class="s">5.4</span>
 <span class="na">Vipps-System-Plugin-Name</span><span class="p">:</span> <span class="s">vipps-woocommerce</span>
@@ -2571,10 +2571,10 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/integrati
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json;charset=UTF-8</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json;charset=UTF-8</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">string</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Ocp-Apim-Subscription-Key</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">0f14ebcab0ec4b29ae0cb90d91b4a84a</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">X-Request-Id</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">string</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">X-Request-Id</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">kRk3uEeiogxLu1yGSZRlNgsIv3TuNS</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Vipps-System-Name</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">woocommerce</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Vipps-System-Version</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">5.4</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Vipps-System-Plugin-Name</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">vipps-woocommerce</span><span class="dl">'</span><span class="p">,</span>
@@ -2599,10 +2599,10 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/integrati
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
   <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
-  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span><span class="p">,</span>
   <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'Ocp-Apim-Subscription-Key'</span> <span class="o">=&gt;</span> <span class="s1">'0f14ebcab0ec4b29ae0cb90d91b4a84a'</span><span class="p">,</span>
-  <span class="s1">'X-Request-Id'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'X-Request-Id'</span> <span class="o">=&gt;</span> <span class="s1">'kRk3uEeiogxLu1yGSZRlNgsIv3TuNS'</span><span class="p">,</span>
   <span class="s1">'Vipps-System-Name'</span> <span class="o">=&gt;</span> <span class="s1">'woocommerce'</span><span class="p">,</span>
   <span class="s1">'Vipps-System-Version'</span> <span class="o">=&gt;</span> <span class="s1">'5.4'</span><span class="p">,</span>
   <span class="s1">'Vipps-System-Plugin-Name'</span> <span class="o">=&gt;</span> <span class="s1">'vipps-woocommerce'</span><span class="p">,</span>
@@ -2619,10 +2619,10 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/integrati
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json;charset=UTF-8'</span><span class="p">,</span>
   <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json;charset=UTF-8'</span><span class="p">,</span>
-  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'string'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span><span class="p">,</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
   <span class="s">'Ocp-Apim-Subscription-Key'</span><span class="p">:</span> <span class="s">'0f14ebcab0ec4b29ae0cb90d91b4a84a'</span><span class="p">,</span>
-  <span class="s">'X-Request-Id'</span><span class="p">:</span> <span class="s">'string'</span><span class="p">,</span>
+  <span class="s">'X-Request-Id'</span><span class="p">:</span> <span class="s">'kRk3uEeiogxLu1yGSZRlNgsIv3TuNS'</span><span class="p">,</span>
   <span class="s">'Vipps-System-Name'</span><span class="p">:</span> <span class="s">'woocommerce'</span><span class="p">,</span>
   <span class="s">'Vipps-System-Version'</span><span class="p">:</span> <span class="s">'5.4'</span><span class="p">,</span>
   <span class="s">'Vipps-System-Plugin-Name'</span><span class="p">:</span> <span class="s">'vipps-woocommerce'</span><span class="p">,</span>
@@ -2640,10 +2640,10 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/integrati
 <span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
     <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
-    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span><span class="p">,</span>
     <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
     <span class="s1">'Ocp-Apim-Subscription-Key'</span> <span class="o">=&gt;</span> <span class="s1">'0f14ebcab0ec4b29ae0cb90d91b4a84a'</span><span class="p">,</span>
-    <span class="s1">'X-Request-Id'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
+    <span class="s1">'X-Request-Id'</span> <span class="o">=&gt;</span> <span class="s1">'kRk3uEeiogxLu1yGSZRlNgsIv3TuNS'</span><span class="p">,</span>
     <span class="s1">'Vipps-System-Name'</span> <span class="o">=&gt;</span> <span class="s1">'woocommerce'</span><span class="p">,</span>
     <span class="s1">'Vipps-System-Version'</span> <span class="o">=&gt;</span> <span class="s1">'5.4'</span><span class="p">,</span>
     <span class="s1">'Vipps-System-Plugin-Name'</span> <span class="o">=&gt;</span> <span class="s1">'vipps-woocommerce'</span><span class="p">,</span>
@@ -2696,10 +2696,10 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/integrati
     <span class="n">headers</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
         <span class="s">"Content-Type"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json;charset=UTF-8"</span><span class="p">},</span>
         <span class="s">"Accept"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json;charset=UTF-8"</span><span class="p">},</span>
-        <span class="s">"Authorization"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"string"</span><span class="p">},</span>
+        <span class="s">"Authorization"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."</span><span class="p">},</span>
         <span class="s">"Content-Type"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json"</span><span class="p">},</span>
         <span class="s">"Ocp-Apim-Subscription-Key"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"0f14ebcab0ec4b29ae0cb90d91b4a84a"</span><span class="p">},</span>
-        <span class="s">"X-Request-Id"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"string"</span><span class="p">},</span>
+        <span class="s">"X-Request-Id"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"kRk3uEeiogxLu1yGSZRlNgsIv3TuNS"</span><span class="p">},</span>
         <span class="s">"Vipps-System-Name"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"woocommerce"</span><span class="p">},</span>
         <span class="s">"Vipps-System-Version"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"5.4"</span><span class="p">},</span>
         <span class="s">"Vipps-System-Plugin-Name"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"vipps-woocommerce"</span><span class="p">},</span>
@@ -2744,14 +2744,14 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/integrati
 <td>path</td>
 <td>string</td>
 <td>true</td>
-<td>Order id specified in the request body of initiate payment.</td>
+<td>The <code>orderId</code>is specified when initiating the paymemt.</td>
 </tr>
 <tr>
 <td>Authorization</td>
 <td>header</td>
 <td>string</td>
 <td>true</td>
-<td>The access token token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the <code>POST:/accesstoken/get</code> endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.</td>
+<td>The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the <code>POST:/accesstoken/get</code> endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.</td>
 </tr>
 <tr>
 <td>Content-Type</td>
@@ -2911,7 +2911,7 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no/ecomm/v2/integrati
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> GET https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>orderId<span class="o">}</span>/details <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json;charset=UTF-8'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Ocp-Apim-Subscription-Key: 0f14ebcab0ec4b29ae0cb90d91b4a84a'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Merchant-Serial-Number: 123456'</span> <span class="se">\</span>
@@ -2923,7 +2923,7 @@ curl <span class="nt">-X</span> GET https://apitest.vipps.no/ecomm/v2/payments/<
 </code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://apitest.vipps.no/ecomm/v2/payments/{orderId}/details</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">apitest.vipps.no</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Ocp-Apim-Subscription-Key</span><span class="p">:</span> <span class="s">0f14ebcab0ec4b29ae0cb90d91b4a84a</span>
 <span class="na">Merchant-Serial-Number</span><span class="p">:</span> <span class="s">123456</span>
@@ -2935,7 +2935,7 @@ curl <span class="nt">-X</span> GET https://apitest.vipps.no/ecomm/v2/payments/<
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json;charset=UTF-8</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">string</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Ocp-Apim-Subscription-Key</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">0f14ebcab0ec4b29ae0cb90d91b4a84a</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Merchant-Serial-Number</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">123456</span><span class="dl">'</span><span class="p">,</span>
@@ -2962,7 +2962,7 @@ curl <span class="nt">-X</span> GET https://apitest.vipps.no/ecomm/v2/payments/<
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
-  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span><span class="p">,</span>
   <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
   <span class="s1">'Ocp-Apim-Subscription-Key'</span> <span class="o">=&gt;</span> <span class="s1">'0f14ebcab0ec4b29ae0cb90d91b4a84a'</span><span class="p">,</span>
   <span class="s1">'Merchant-Serial-Number'</span> <span class="o">=&gt;</span> <span class="s1">'123456'</span><span class="p">,</span>
@@ -2981,7 +2981,7 @@ curl <span class="nt">-X</span> GET https://apitest.vipps.no/ecomm/v2/payments/<
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json;charset=UTF-8'</span><span class="p">,</span>
-  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'string'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span><span class="p">,</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json'</span><span class="p">,</span>
   <span class="s">'Ocp-Apim-Subscription-Key'</span><span class="p">:</span> <span class="s">'0f14ebcab0ec4b29ae0cb90d91b4a84a'</span><span class="p">,</span>
   <span class="s">'Merchant-Serial-Number'</span><span class="p">:</span> <span class="s">'123456'</span><span class="p">,</span>
@@ -3001,7 +3001,7 @@ curl <span class="nt">-X</span> GET https://apitest.vipps.no/ecomm/v2/payments/<
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
-    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span><span class="p">,</span>
     <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json'</span><span class="p">,</span>
     <span class="s1">'Ocp-Apim-Subscription-Key'</span> <span class="o">=&gt;</span> <span class="s1">'0f14ebcab0ec4b29ae0cb90d91b4a84a'</span><span class="p">,</span>
     <span class="s1">'Merchant-Serial-Number'</span> <span class="o">=&gt;</span> <span class="s1">'123456'</span><span class="p">,</span>
@@ -3056,7 +3056,7 @@ curl <span class="nt">-X</span> GET https://apitest.vipps.no/ecomm/v2/payments/<
 
     <span class="n">headers</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
         <span class="s">"Accept"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json;charset=UTF-8"</span><span class="p">},</span>
-        <span class="s">"Authorization"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"string"</span><span class="p">},</span>
+        <span class="s">"Authorization"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."</span><span class="p">},</span>
         <span class="s">"Content-Type"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json"</span><span class="p">},</span>
         <span class="s">"Ocp-Apim-Subscription-Key"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"0f14ebcab0ec4b29ae0cb90d91b4a84a"</span><span class="p">},</span>
         <span class="s">"Merchant-Serial-Number"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"123456"</span><span class="p">},</span>
@@ -3096,14 +3096,14 @@ curl <span class="nt">-X</span> GET https://apitest.vipps.no/ecomm/v2/payments/<
 <td>path</td>
 <td>string</td>
 <td>true</td>
-<td>Order id specified in the request body of initiate payment.</td>
+<td>The <code>orderId</code>is specified when initiating the paymemt.</td>
 </tr>
 <tr>
 <td>Authorization</td>
 <td>header</td>
 <td>string</td>
 <td>true</td>
-<td>The access token token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the <code>POST:/accesstoken/get</code> endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.</td>
+<td>The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the <code>POST:/accesstoken/get</code> endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.</td>
 </tr>
 <tr>
 <td>Content-Type</td>
@@ -3285,19 +3285,19 @@ curl <span class="nt">-X</span> GET https://apitest.vipps.no/ecomm/v2/payments/<
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> GET https://apitest.vipps.no/ecomm/v2/payments/<span class="o">{</span>orderId<span class="o">}</span>/status <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Accept: application/json;charset=UTF-8'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Authorization: string'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Ocp-Apim-Subscription-Key: 0f14ebcab0ec4b29ae0cb90d91b4a84a'</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://apitest.vipps.no/ecomm/v2/payments/{orderId}/status</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">apitest.vipps.no</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">string</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...</span>
 <span class="na">Ocp-Apim-Subscription-Key</span><span class="p">:</span> <span class="s">0f14ebcab0ec4b29ae0cb90d91b4a84a</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Accept</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json;charset=UTF-8</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">string</span><span class="dl">'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...</span><span class="dl">'</span><span class="p">,</span>
   <span class="dl">'</span><span class="s1">Ocp-Apim-Subscription-Key</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">0f14ebcab0ec4b29ae0cb90d91b4a84a</span><span class="dl">'</span>
 <span class="p">};</span>
 
@@ -3318,7 +3318,7 @@ curl <span class="nt">-X</span> GET https://apitest.vipps.no/ecomm/v2/payments/<
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
-  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span><span class="p">,</span>
   <span class="s1">'Ocp-Apim-Subscription-Key'</span> <span class="o">=&gt;</span> <span class="s1">'0f14ebcab0ec4b29ae0cb90d91b4a84a'</span>
 <span class="p">}</span>
 
@@ -3331,7 +3331,7 @@ curl <span class="nt">-X</span> GET https://apitest.vipps.no/ecomm/v2/payments/<
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Accept'</span><span class="p">:</span> <span class="s">'application/json;charset=UTF-8'</span><span class="p">,</span>
-  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'string'</span><span class="p">,</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span><span class="p">,</span>
   <span class="s">'Ocp-Apim-Subscription-Key'</span><span class="p">:</span> <span class="s">'0f14ebcab0ec4b29ae0cb90d91b4a84a'</span>
 <span class="p">}</span>
 
@@ -3345,7 +3345,7 @@ curl <span class="nt">-X</span> GET https://apitest.vipps.no/ecomm/v2/payments/<
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">'Accept'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
-    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...'</span><span class="p">,</span>
     <span class="s1">'Ocp-Apim-Subscription-Key'</span> <span class="o">=&gt;</span> <span class="s1">'0f14ebcab0ec4b29ae0cb90d91b4a84a'</span><span class="p">,</span>
 <span class="p">);</span>
 
@@ -3394,7 +3394,7 @@ curl <span class="nt">-X</span> GET https://apitest.vipps.no/ecomm/v2/payments/<
 
     <span class="n">headers</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
         <span class="s">"Accept"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json;charset=UTF-8"</span><span class="p">},</span>
-        <span class="s">"Authorization"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"string"</span><span class="p">},</span>
+        <span class="s">"Authorization"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."</span><span class="p">},</span>
         <span class="s">"Ocp-Apim-Subscription-Key"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"0f14ebcab0ec4b29ae0cb90d91b4a84a"</span><span class="p">},</span>
     <span class="p">}</span>
 
@@ -3428,14 +3428,14 @@ curl <span class="nt">-X</span> GET https://apitest.vipps.no/ecomm/v2/payments/<
 <td>path</td>
 <td>string</td>
 <td>true</td>
-<td>Order id specified in the request body of initiate payment.</td>
+<td>The <code>orderId</code>is specified when initiating the paymemt.</td>
 </tr>
 <tr>
 <td>Authorization</td>
 <td>header</td>
 <td>string</td>
 <td>true</td>
-<td>The access token token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the <code>POST:/accesstoken/get</code> endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.</td>
+<td>The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the <code>POST:/accesstoken/get</code> endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.</td>
 </tr>
 <tr>
 <td>Ocp-Apim-Subscription-Key</td>
@@ -3968,13 +3968,13 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no[shippingDetailsPre
 <div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># You can also use wget</span>
 curl <span class="nt">-X</span> POST https://apitest.vipps.no[callbackPrefix]/v2/payments/<span class="o">{</span>orderId<span class="o">}</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json;charset=UTF-8'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Authorization: string'</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: ae0cb90d91b4a84a'</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://apitest.vipps.no[callbackPrefix]/v2/payments/{orderId}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">apitest.vipps.no</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json;charset=UTF-8</span>
 
-<span class="err">Authorization:</span><span class="w"> </span><span class="err">string</span><span class="w">
+<span class="err">Authorization:</span><span class="w"> </span><span class="err">ae</span><span class="mi">0</span><span class="err">cb</span><span class="mi">90</span><span class="err">d</span><span class="mi">91</span><span class="err">b</span><span class="mi">4</span><span class="err">a</span><span class="mi">84</span><span class="err">a</span><span class="w">
 
 </span></code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">inputBody</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">{
   "merchantSerialNumber": 123456,
@@ -4016,7 +4016,7 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no[callbackPrefix]/v2
 }</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">application/json;charset=UTF-8</span><span class="dl">'</span><span class="p">,</span>
-  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">string</span><span class="dl">'</span>
+  <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span><span class="dl">'</span><span class="s1">ae0cb90d91b4a84a</span><span class="dl">'</span>
 <span class="p">};</span>
 
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://apitest.vipps.no[callbackPrefix]/v2/payments/{orderId}</span><span class="dl">'</span><span class="p">,</span>
@@ -4036,7 +4036,7 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no[callbackPrefix]/v2
 
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
-  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span>
+  <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'ae0cb90d91b4a84a'</span>
 <span class="p">}</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="no">RestClient</span><span class="p">.</span><span class="nf">post</span> <span class="s1">'https://apitest.vipps.no[callbackPrefix]/v2/payments/{orderId}'</span><span class="p">,</span>
@@ -4048,7 +4048,7 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no[callbackPrefix]/v2
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
   <span class="s">'Content-Type'</span><span class="p">:</span> <span class="s">'application/json;charset=UTF-8'</span><span class="p">,</span>
-  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'string'</span>
+  <span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'ae0cb90d91b4a84a'</span>
 <span class="p">}</span>
 
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s">'https://apitest.vipps.no[callbackPrefix]/v2/payments/{orderId}'</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
@@ -4061,7 +4061,7 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no[callbackPrefix]/v2
 
 <span class="nv">$headers</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">'Content-Type'</span> <span class="o">=&gt;</span> <span class="s1">'application/json;charset=UTF-8'</span><span class="p">,</span>
-    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'string'</span><span class="p">,</span>
+    <span class="s1">'Authorization'</span> <span class="o">=&gt;</span> <span class="s1">'ae0cb90d91b4a84a'</span><span class="p">,</span>
 <span class="p">);</span>
 
 <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\GuzzleHttp\Client</span><span class="p">();</span>
@@ -4109,7 +4109,7 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no[callbackPrefix]/v2
 
     <span class="n">headers</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">][]</span><span class="kt">string</span><span class="p">{</span>
         <span class="s">"Content-Type"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"application/json;charset=UTF-8"</span><span class="p">},</span>
-        <span class="s">"Authorization"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"string"</span><span class="p">},</span>
+        <span class="s">"Authorization"</span><span class="o">:</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"ae0cb90d91b4a84a"</span><span class="p">},</span>
     <span class="p">}</span>
 
     <span class="n">data</span> <span class="o">:=</span> <span class="n">bytes</span><span class="o">.</span><span class="n">NewBuffer</span><span class="p">([]</span><span class="kt">byte</span><span class="p">{</span><span class="n">jsonReq</span><span class="p">})</span>
@@ -6187,7 +6187,7 @@ curl <span class="nt">-X</span> POST https://apitest.vipps.no[callbackPrefix]/v2
   </span><span class="nl">"expires_on"</span><span class="p">:</span><span class="w"> </span><span class="mi">1547823408</span><span class="p">,</span><span class="w">
   </span><span class="nl">"not_before"</span><span class="p">:</span><span class="w"> </span><span class="mi">1547819508</span><span class="p">,</span><span class="w">
   </span><span class="nl">"resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"00000002-0000-0000-c000-000000000000"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni"</span><span class="w">
+  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div><h3 id='properties-29'>Properties</h3>
