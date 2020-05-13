@@ -225,8 +225,13 @@ paths:
         - in: header
           name: Merchant-Serial-Number
           description: >-
-            Unique id for the sale unit. Mandatory parameter if you are a Vipps eCom partner integrating
-            on behalf of your merchants. Optional, but recommended, for regular Vipps merchants.
+            The erchant Serial Number (MSN) is a unique id for the sale unit
+            that this payment is made for.
+            This is a required parameter if you are a Vipps eCom partner
+            making payments on behalf of your merchants.
+            The partner must use the merchant's MSN (not the partner's MSN).
+            It is an optional, but recommended, parameter for regular Vipps
+            merchants making payments for themselves.
           required: false
           schema:
             type: string
