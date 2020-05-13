@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.4.1
+  version: 1.4.2
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -53,7 +53,7 @@ paths:
       description: >-
         The access token endpoint is used to get the JWT (JSON Web Token) that
         must be passed in every API request in the Authorization header.
-        The access token token is a base64-encoded string value that must be
+        The access token is a base64-encoded string value that must be
         aquired first before making any Vipps api calls.
         The access token is valid for 1 hour in the test environment
         and 24 hours in the production environment.
@@ -136,7 +136,7 @@ paths:
           required: true
           schema:
             type: string
-          example:
+          example: 'uiJskNQ6qNN1iwN891uuob=='
       responses:
         '200':
           description: Remove User Consent (for Vipps Hurtigkasse (express checkout))
@@ -214,13 +214,14 @@ paths:
         - in: header
           name: Authorization
           description: >-
-            The access token token is a base64-encoded string that is required for all API calls.
+            The access token is a base64-encoded string that is required for all API calls.
             It is a JWT (JSON Web Token).
             The access token is fetched from the `POST:/accesstoken/get` endpoint.
             It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
             type: string
+          example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
         - in: header
           name: Content-Type
           description: "The content type must be `application/json`"
@@ -363,6 +364,7 @@ paths:
                   required: true
                   schema:
                     type: string
+                  example: 'uiJskNQ6qNN1iwN891uuob=='
               responses:
                 '200':
                   description: 'OK'
@@ -492,6 +494,7 @@ paths:
             `authToken`. Used so that the merchant may authenticate the request.
           schema:
             type: string
+          example: ae0cb90d91b4a84a
       requestBody:
         content:
           application/json;charset=UTF-8:
@@ -521,20 +524,22 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: Order id specified in the request body of initiate payment.
+          description: The `orderId`is specified when initiating the paymemt.
           required: true
           schema:
             type: string
+          example: order123abc
         - in: header
           name: Authorization
           description: >-
-            The access token token is a base64-encoded string that is required for all API calls.
+            The access token is a base64-encoded string that is required for all API calls.
             It is a JWT (JSON Web Token).
             The access token is fetched from the `POST:/accesstoken/get` endpoint.
             It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
             type: string
+          example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
         - in: header
           name: Content-Type
           description: "The content type must be `application/json`"
@@ -555,11 +560,12 @@ paths:
           name: X-Request-Id
           description: >-
             Used for making requests idempotent. Adding X-Request-Id will allow
-            the merchant to retry requests without it making additional changes.
-            Unique for orderId, merchantSerialNumber and endpoint. Max 30
-            characters.
+            repeated requests without it making additional changes.
+            Unique for orderId, merchantSerialNumber and endpoint.
+            Max 30 characters.
           schema:
             type: string
+          example: kRk3uEeiogxLu1yGSZRlNgsIv3TuNS
         - in: header
           name: Merchant-Serial-Number
           description: >-
@@ -678,14 +684,14 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: Order id specified in the request body of initiate payment.
+          description: The `orderId`is specified when initiating the paymemt.
           required: true
           schema:
             type: string
         - in: header
           name: Authorization
           description: >-
-            The access token token is a base64-encoded string that is required for all API calls.
+            The access token is a base64-encoded string that is required for all API calls.
             It is a JWT (JSON Web Token).
             The access token is fetched from the `POST:/accesstoken/get` endpoint.
             It is valid for 1 hour in the test environment and 24 hours in the production environment.
@@ -834,20 +840,22 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: Order id specified in the request body of initiate payment.
+          description: The `orderId`is specified when initiating the paymemt.
           required: true
           schema:
             type: string
+          example: order123abc
         - in: header
           name: Authorization
           description: >-
-            The access token token is a base64-encoded string that is required for all API calls.
+            The access token is a base64-encoded string that is required for all API calls.
             It is a JWT (JSON Web Token).
             The access token is fetched from the `POST:/accesstoken/get` endpoint.
             It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
             type: string
+          example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
         - in: header
           name: Content-Type
           description: "The content type must be `application/json`"
@@ -867,12 +875,13 @@ paths:
         - in: header
           name: X-Request-Id
           description: >-
-            Id used for making requests idempotent. Adding this ID will allow
-            the merchant to retry requests without it making additional changes.
-            Unique for orderId, merchantSerialNumber and endpoint. Max 30
-            characters.
+            Used for making requests idempotent. Adding X-Request-Id will allow
+            repeated requests without it making additional changes.
+            Unique for orderId, merchantSerialNumber and endpoint.
+            Max 30 characters.
           schema:
             type: string
+          example: kRk3uEeiogxLu1yGSZRlNgsIv3TuNS
         - in: header
           name: Merchant-Serial-Number
           description: >-
@@ -988,20 +997,21 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: Order id specified in the request body of initiate payment.
+          description: The `orderId`is specified when initiating the paymemt.
           required: true
           schema:
             type: string
         - in: header
           name: Authorization
           description: >-
-            The access token token is a base64-encoded string that is required for all API calls.
+            The access token is a base64-encoded string that is required for all API calls.
             It is a JWT (JSON Web Token).
             The access token is fetched from the `POST:/accesstoken/get` endpoint.
             It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
             type: string
+          example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
         - in: header
           name: Content-Type
           description: "The content type must be `application/json`"
@@ -1027,6 +1037,7 @@ paths:
             characters.
           schema:
             type: string
+          example: kRk3uEeiogxLu1yGSZRlNgsIv3TuNS
         - name: Vipps-System-Name
           in: header
           description: The name of the ecommerce solution. One word in lowercase letters is good.
@@ -1118,20 +1129,22 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: Order id specified in the request body of initiate payment.
+          description: The `orderId`is specified when initiating the paymemt.
           required: true
           schema:
             type: string
+          example: order123abc
         - in: header
           name: Authorization
           description: >-
-            The access token token is a base64-encoded string that is required for all API calls.
+            The access token is a base64-encoded string that is required for all API calls.
             It is a JWT (JSON Web Token).
             The access token is fetched from the `POST:/accesstoken/get` endpoint.
             It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
             type: string
+          example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
         - in: header
           name: Content-Type
           description: "The content type must be `application/json`"
@@ -1261,20 +1274,21 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: Order id specified in the request body of initiate payment.
+          description: The `orderId`is specified when initiating the paymemt.
           required: true
           schema:
             type: string
         - in: header
           name: Authorization
           description: >-
-            The access token token is a base64-encoded string that is required for all API calls.
+            The access token is a base64-encoded string that is required for all API calls.
             It is a JWT (JSON Web Token).
             The access token is fetched from the `POST:/accesstoken/get` endpoint.
             It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
             type: string
+          example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
         - in: header
           name: Ocp-Apim-Subscription-Key
           description: >-
@@ -2207,7 +2221,7 @@ components:
         access_token:
           type: string
           format: byte
-          example: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni
+          example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
     FetchShippingCostResponse:
       type: object
       required:
