@@ -6,7 +6,7 @@ See also the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.6.0.
+Document version 1.7.0.
 
 ## Table of contents
 
@@ -23,7 +23,6 @@ Document version 1.6.0.
 - [Is it possible for a merchant to pay a Vipps user?](#is-it-possible-for-a-merchant-to-pay-a-vipps-user)
 - [Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
 - [Is there an API for retrieving information about a merchant's payments?](#is-there-an-api-for-retrieving-information-about-a-merchants-payments)
-- [Can a company pay a person with Vipps?](#can-a-company-pay-a-person-with-vipps)
 - [Can I create a service to match buyers and sellers?](#can-i-create-a-service-to-match-buyers-and-sellers)
 - [Can I split payments to charge a fee?](#can-i-split-payments-to-charge-a-fee)
 - [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-cant-find-it)
@@ -197,6 +196,11 @@ See also [Settlements](https://github.com/vippsas/vipps-developers/tree/master/s
 No, Vipps has no functionality for paying to a Vipps user,
 except for refunding (part of) a payment.
 
+Vipps only has APIs for paying from a person to a merchant.
+
+It is not possible to pay from one merchant to another merchant,
+or to pay from a merchant to a person.
+
 ## Is there an API for retrieving information about a Vipps user?
 
 No. Vipps users have not consented to Vipps providing any information to
@@ -212,13 +216,6 @@ There is an API to retrieve all details for a known `orderId`:
 And there is
 [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements)
 with information about settlement reports in various formats.
-
-## Can a company pay a person with Vipps?
-
-Vipps only has APIs for paying from a person to a company.
-
-It is not possible to pay from a company to another company,
-or to pay from a company to a person.
 
 ## Can I create a service to match buyers and sellers?
 
