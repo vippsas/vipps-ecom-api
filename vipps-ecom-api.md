@@ -1101,7 +1101,7 @@ See the [Swagger specification](./) for more details.
 | `403 Forbidden`         | Authentication ok, but credentials lacks authorization  |
 | `404 Not Found`         | The resource was not found                              |
 | `409 Conflict`          | Unsuccessful due to conflicting resource                |
-| `429 Too Many Requests` | There is currently a limit of max 200 calls per second  |
+| `429 Too Many Requests` | There is a limit of max 200 API calls per second per `client_id`. There is also a limit on the number of payment requests per Vipps user. |
 | `500 Server Error`      | An internal Vipps problem.                              |
 
 HTTP responses with errors from the application gateway contain one error JSON object.
