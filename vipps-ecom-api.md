@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.1.3.
+Document version 2.1.4.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
