@@ -15,7 +15,7 @@ For more information about this product, please see
 You can peruse the API reference documentation as:
 * [Swagger](https://vippsas.github.io/vipps-ecom-api/)
 * [ReDoc](https://vippsas.github.io/vipps-ecom-api/redoc.html)
-* [Slate](https://vippsas.github.io/vipps-ecom-api/slate/)
+* [Shins](https://vippsas.github.io/vipps-ecom-api/shins/index.html)
 
 The flow of settlements and how to retrieve them are described in
 [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
