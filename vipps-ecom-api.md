@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.1.4.
+Document version 2.1.6.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -714,7 +714,14 @@ part of callback, and also made accessible through [`GET:/ecomm/v2/payments/{ord
 
 ## Skip landing page
 
-*Only available for whitelisted sale units.*
+*This functionality is only available for special cases.*
+
+Skipping the landing page is reserved for special cases, where displaying it is not possible.
+
+This feature has to be specially enabled by Vipps for eligible sale units:
+The sale units must be whitelisted by Vipps.
+Skipping the landing page is typically used at physical points of sale,
+where there is no display available.
 
 If the `skipLandingPage` property is set to `true` in the
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
@@ -723,9 +730,14 @@ immediately, without loading the landing page.
 
 If the sale unit is not whitelisted, this property is ignored.
 
-If you need to be whitelisted, instructions for this can be found in the
-[FAQ](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-faq.md#is-it-possible-to-skip-the-landing-page).
+If you want to check if a sale unit is allowed to use `skipLandingPage`:
+1. Initiate a normal payment with `"skipLandingPage": true`.
+2. Check if the returned URL is to the landing page or not.
+   The API will (soon!) also return an error if attempting to use
+   `skipLandingPage` without being whitelisted.
 
+If you need to be whitelisted, instructions can be found in the
+[FAQ](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-faq.md#is-it-possible-to-skip-the-landing-page).
 
 ## Reserve
 
