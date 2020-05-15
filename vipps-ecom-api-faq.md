@@ -1,4 +1,4 @@
-# Frequently Asked Questions for Vipps eCommerce API
+# Vipps eCommerce API: Frequently Asked Questions
 
 See the
 [Vipps eCommerce API](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md)
@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.7.2.
+Document version 1.7.3.
 
 ## Table of contents
 
