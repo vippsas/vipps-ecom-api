@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.7.3.
+Document version 1.7.4.
 
 ## Table of contents
 
@@ -150,14 +150,22 @@ You can't turn _direct capture_ on or off as a merchant, and this must be reques
 ## Is it possible to skip the landing page?
 
 Skipping the landing page is reserved for special cases, where displaying it is not possible.
+
+This feature has to be specially enabled by Vipps for eligible sale units:
+The sale units must be whitelisted by Vipps.
+Skipping the landing page is typically used at physical points of sale,
+where there is no display available.
+
 See the details in the
 [skip landing page section](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#skip-landing-page)
 in the API guide.
 
-This feature has to be specially enabled by Vipps for eligible sale units: The sale units must be whitelisted by Vipps.
-This functionality is typically used at physical points of sale, where there is no display available.
+If you need to skip the landing page in a Point of Sale (POS) solution, see:
+[What is the process to go live in production?](#what-is-the-process-to-go-live-in-production).
 
-To request this feature, [contact Vipps](https://github.com/vippsas/vipps-developers/blob/master/contact.md) with a detailed description of why it is not possible to display the landing page.
+If you need to skip the landing page for a different reason:
+[contact Vipps](https://github.com/vippsas/vipps-developers/blob/master/contact.md)
+with a detailed description of why it is not possible to display the landing page.
 
 ## How can I refund a payment?
 
