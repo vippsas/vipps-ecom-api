@@ -5,13 +5,13 @@ See the
 for all the details.
 
 See also:
-[Vipps Recurring API FAQ](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-recurring-api-faq.md).
+[Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md).
 
 See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.7.1.
+Document version 1.7.2.
 
 ## Table of contents
 
