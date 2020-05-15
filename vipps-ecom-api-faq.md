@@ -4,7 +4,10 @@ See the
 [Vipps eCommerce API](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md)
 for all the details.
 
-See also the
+See also:
+[Vipps Recurring API FAQ](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-recurring-api-faq.md).
+
+See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
@@ -20,7 +23,6 @@ Document version 1.7.1.
 - [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
 - [How do I turn _direct capture_ on or off?](#How-do-I-turn-direct-capture-on-or-off)
 - [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
-- [Can I send an SMS or an email with a link directly to a Vipps payment??](#can-i-send-an-sms-or-an-email-with-a-link-directly-to-a-vipps-payment)
 - [How can I refund a payment?](#how-can-i-refund-a-payment)
 - [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
 - [Is it possible for a merchant to pay a Vipps user?](#is-it-possible-for-a-merchant-to-pay-a-vipps-user)
@@ -156,17 +158,6 @@ This feature has to be specially enabled by Vipps for eligible sale units: The s
 This functionality is typically used at physical points of sale, where there is no display available.
 
 To request this feature, [contact Vipps](https://github.com/vippsas/vipps-developers/blob/master/contact.md) with a detailed description of why it is not possible to display the landing page.
-
-## Can I send an SMS or an email with a link directly to a Vipps payment?
-
-No. If you send an SMS or an email to a Vipps payment it must be to a website
-where the user can start the payment process.
-
-Sending a "deeplink" URL directly is incorrect usage of Vipps, and not
-allowed.
-
-A Vipps "deeplink" URL is only valid for five minutes, and the payment
-will therefore fail for all users that do not pay within five minutes.
 
 ## How can I refund a payment?
 
