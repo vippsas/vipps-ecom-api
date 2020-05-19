@@ -11,10 +11,11 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.8.0.
+Document version 1.8.1.
 
 ## Table of contents
 
+### General
 - [What are the requirements for Vipps merchants?](#what-are-the-requirements-for-vipps-merchants)
 - [Can I use my "Vipps-nummer" in my webshop?](#can-i-use-my-vipps-nummer-in-my-webshop)
 - [Why do payments fail?](#why-do-payments-fail)
@@ -355,6 +356,9 @@ You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/po
 to manually do API calls, like the two above.
 See [API endpoints](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
 
+Please check the HTTP response from our API.
+For most errors there is an explanation of what went wrong.
+
 You can also log in to the Vipps portal to double check your API keys,
 sale units and API products: https://portal.vipps.no.
 
@@ -367,6 +371,9 @@ In other words: We should perhaps have returned `HTTP 400 Bad Request`.
 You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
 to manually do API calls, just to be sure.
 See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
+
+Please check the HTTP response from our API.
+For most errors there is an explanation of what went wrong.
 
 ## In which sequence are callbacks and fallbacks done?
 
