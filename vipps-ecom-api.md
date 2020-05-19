@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.1.6.
+Document version 2.1.7.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -29,6 +29,7 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
       - [Desktop browser initiated payments](#desktop-browser-initiated-payments)
       - [Payments initiated in an app](#payments-initiated-in-an-app)
   - [Initiate payment flow: API calls](#initiate-payment-flow-api-calls)
+    - [The Vipps deeplink URL](#the-vipps-deeplink-url)
   - [Payment identification](#payment-identification)
   - [Payment retries](#payment-retries)
   - [orderId recommendations](#orderid-recommendations)
@@ -335,7 +336,9 @@ See
 [Datatilsynet's information](https://www.datatilsynet.no/rettigheter-og-plikter/personopplysninger/)
 about which types of information is sensitive (in Norwegian).
 
-Vipps responds to the initiate request with an URL.
+#### The Vipps deeplink URL
+
+Vipps responds to the initiate payment request with an URL.
 The URL depends on whether the initiate request was provided the `isApp` parameter:
 
 * `"isApp":false` (or not provided): The URL is for the Vipps "landing page", with `https://`.
@@ -360,6 +363,12 @@ Example: Response body for `"isApp":true`, with a deeplink for app-switch:
 ```
 
 The `url` is truncated, but the format is correct.
+
+The deeplink URL is only valid for five minutes.
+Attempts at using it after that will result in a timeout and an error.
+
+See the FAQ:
+[Can I send a Vipps payment link in an SMS or email?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#can-i-send-a-vipps-payment-link-in-an-sms-or-email).
 
 ## Payment identification
 

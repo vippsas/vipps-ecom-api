@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.7.4.
+Document version 1.8.0.
 
 ## Table of contents
 
@@ -22,6 +22,7 @@ Document version 1.7.4.
 - [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
 - [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
 - [How do I turn _direct capture_ on or off?](#How-do-I-turn-direct-capture-on-or-off)
+- [Can I send a Vipps payment link in an SMS or email?](#can-i-send-a-vipps-payment-link-in-an-sms-or-email)
 - [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
 - [How can I refund a payment?](#how-can-i-refund-a-payment)
 - [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
@@ -146,6 +147,24 @@ See [Regular eCommerce payments](https://github.com/vippsas/vipps-ecom-api/blob/
 ## How do I turn direct capture on or off?
 
 You can't turn _direct capture_ on or off as a merchant, and this must be requested of your KAM. To get both _direct capture_ and _reserve capture_ you must request two different sale units.
+
+## Can I send a Vipps payment link in an SMS or email?
+
+No. The Vipps "deeplink" is an integrated part of the Vipps payment process,
+and the link should never be sent in an SMS or email. The deeplink is only valid
+for 5 minutes, so users that do not act quickly will not be able to pay.
+
+Instead of sending a Vipps deeplink: Send a link to your website, and let
+the user start the Vipps payment there. It can be a very simple page with a link
+or a button. You then have the opportunity to give the user additional
+information, and also a proper confirmation page after the payment has been completed.
+
+You can also use
+[Vipps Logg Inn](https://github.com/vippsas/vipps-login-api)
+for easy registration and login.
+
+See the API Guide:
+[The Vipps deeplink URL](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#the-vipps-deeplink-url).
 
 ## Is it possible to skip the landing page?
 
