@@ -15,7 +15,6 @@ Document version 1.8.1.
 
 ## Table of contents
 
-### General
 - [What are the requirements for Vipps merchants?](#what-are-the-requirements-for-vipps-merchants)
 - [Can I use my "Vipps-nummer" in my webshop?](#can-i-use-my-vipps-nummer-in-my-webshop)
 - [Why do payments fail?](#why-do-payments-fail)
