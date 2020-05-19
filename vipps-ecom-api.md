@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.1.7.
+Document version 2.1.8.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -21,6 +21,8 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
 - [Initiate](#initiate)
   - [Regular eCommerce payments](#regular-ecommerce-payments)
   - [Express checkout payments](#express-checkout-payments)
+    - [Shipping and static shipping details](#shipping-details-and-static-shipping-details)
+    - [Consent and GDPR](#consent-and-gdpr)
   - [Initiate payment flow: Phone and browser](#initiate-payment-flow-phone-and-browser)
     - [Phone flow](#phone-flow)
       - [Vipps installed](#vipps-installed)
@@ -183,11 +185,24 @@ To perform an express checkout, the merchant needs to send
 `"paymentType": "eComm Express Payment"` as part of initiate payment, and
 support the `shippingDetails` and `consent` endpoints.
 
-If the shipping cost is known in advance, `staticShippingDetails` may be used
-to avoid an extra roundtrip between the Vipps backend and the merchant's server.
+### Shipping and static shipping details
 
-The shipping methods presented to the user is provided by the merchant through
-the `shippingDetails` endpoint.
+The shipping methods presented to the user is in Vipps are provided by the
+merchant through the `shippingDetails` endpoint.
+
+If the shipping cost can be known in advance, `staticShippingDetails` may be used
+to avoid an extra roundtrip between the Vipps backend and the merchant's server.
+The shipping costs for the available shipping methods is then sent directly,
+eliminating the need for the user to first select shipping method and then
+for the merchant to calculate the cost for it.
+
+We recommend using `staticShippingDetails` if possible, as it gives a faster
+payment process and a better user experience.
+
+Use of `staticShippingDetails` also eliminates timeout problems caused by
+delays in the merchant's or shipping partner's calculations of cost.
+
+### Consent and GDPR
 
 Vipps complies with GDPR, and requires the user's consent before any information
 is shared with the merchant. The merchant must provide a URL (`consentRemovalPrefix`)
@@ -645,7 +660,7 @@ reference only - these endpoints are _not_ callable at Vipps.
 | Transaction Update | A callback to the merchant for receiving post-payment information. | [`POST:/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)  |
 | Remove user consent | Used to inform merchant when the Vipps user removes consent to share information.  | [`DELETE:/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/removeUserConsentUsingDELETE)  |
 
-Please not that if the shipping details are static (do not vary based on the
+Please note that if the shipping details are static (do not vary based on the
 address), the parameter `staticShippingDetails` can be used in the initiate call.
 If so, there is no need to implement
 [`POST:/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/fetchShippingCostUsingPOST).
