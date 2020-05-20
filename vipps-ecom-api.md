@@ -1246,7 +1246,7 @@ Example of an error response body (formatted for readability):
 
 ### Partner Keys
 
-If you are a Vipps Partner that is managing transactions on behalf of a Vipps Merchants you an use your own credentials to authenticate, and then send the Merchant-Serial-Number to identify
+If you are a Vipps Partner that is managing transactions on behalf of a Vipps Merchants you can use your own credentials to authenticate, and then send the Merchant-Serial-Number to identify
 which of your Vipps Merchant you are acting on behalf of. The Merchant-Serial-Number must be sent in the header of all requests. as described in our swagger documentation 
 
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
