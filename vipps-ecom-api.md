@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.2.0.
+Document version 2.2.1.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -206,14 +206,20 @@ support the `shippingDetails` and `consent` endpoints.
 
 ### Shipping and static shipping details
 
-The shipping methods presented to the user is in Vipps are provided by the
-merchant through the `shippingDetails` endpoint.
+The shipping methods presented to the user is in Vipps are retrieved from the merchant's
+[`POST:[shippingDetailsPrefix]​/v2​/payments​/{orderId}​/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Merchant%20Endpoints/fetchShippingCostUsingPOST)
+endpoint, which Vipps uses to
+retrieve the shipping details from the merchant.
 
-If the shipping cost can be known in advance, `staticShippingDetails` may be used
-to avoid an extra roundtrip between the Vipps backend and the merchant's server.
-The shipping costs for the available shipping methods is then sent directly,
-eliminating the need for the user to first select shipping method and then
-for the merchant to calculate the cost for it.
+If the shipping cost can be known in advance, the `staticShippingDetails` field in the
+[`POST:​/ecomm​/v2​/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
+call to initiate the payment may be used to provide the shipping details
+up front, and thereby avoid an extra roundtrip between the Vipps backend and
+the merchant's server.
+
+When using `staticShippingDetails` the shipping costs for the available
+shipping methods are then sent directly, eliminating the need for the user to
+first select shipping method and then for the merchant to calculate the cost for it.
 
 We recommend using `staticShippingDetails` if possible, as it gives a faster
 payment process and a better user experience.
