@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.1.9.
+Document version 2.2.0.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -22,6 +22,9 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
   - [Optional Vipps HTTP headers](#optional-vipps-http-headers)
   - [Initiate](#initiate)
   - [Regular eCommerce payments](#regular-ecommerce-payments)
+    - [Reserve capture](#reserve-capture)
+    - [Direct capture](#direct-capture)
+    - [When to use reserve capture and direct capture](#when-to-use-reserve-capture-and-direct-capture)
   - [Express checkout payments](#express-checkout-payments)
     - [Shipping and static shipping details](#shipping-and-static-shipping-details)
     - [Consent and GDPR](#consent-and-gdpr)
@@ -157,6 +160,8 @@ Payment amounts must be larger than zero.
 When you initiate a payment it will only be _reserved_ until you capture it.
 Vipps supports both _reserve capture_ and _direct capture_ payment flows.
 
+### Reserve capture
+
 **Reserve capture** is the default. When you initiate a payment it will be
 reserved until you capture it.
 
@@ -165,13 +170,23 @@ the product or service is provided to the customer. For more information,
 please see the Consumer Authority's
 [Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
 
+### Direct capture
+
 **Direct capture** causes all payment reservations to be instantly be captured.
 This is intended for situations where the product or service is immediately
 provided to the customer, e.g. digital services.
 
+When using direct capture, payments can not be cancelled as easily as
+with reserve capture. A payment done with direct capture must be
+_refunded_, and it then takes a few days before the money is available
+in the customer's account.
+
+### When to use reserve capture and direct capture
+
 Merchants can not choose between _reserve capture_ and _direct capture_
 themselves, the type of capture is configured by Vipps after the additional
 compliance checks, required by the authorities, have been completed.
+
 See the
 [FAQ](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#what-is-the-difference-between-reserve-capture-and-direct-capture).
 
