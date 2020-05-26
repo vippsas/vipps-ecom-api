@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.4.2
+  version: 1.4.3
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -520,6 +520,8 @@ paths:
         Transaction text is not optional and is used as a proof of delivery
         (tracking code, consignment number etc.). In a case of direct capture,
         both fund reservation and capture are executed in a single operation.
+        It is important to check the response, and the capture is only
+        successful when the response is `HTTP 200 OK`.
       operationId: capturePaymentUsingPOST
       parameters:
         - name: orderId
