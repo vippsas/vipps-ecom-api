@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Vipps eCommerce API v1.4.2</title>
+    <title>Vipps eCommerce API v1.4.3</title>
 
     <style>
     </style>
@@ -2942,7 +2942,7 @@ System.out.println(response.toString());
 
 </code></pre>
 <p><code>POST /ecomm/v2/payments/{orderId}/capture</code></p>
-<p>This API call allows merchant to capture the reserved amount. Amount to capture cannot be higher than reserved. The API also allows capturing partial amount of the reserved amount. Partial capture can be called as many times as required so long there is reserved amount to capture. Transaction text is not optional and is used as a proof of delivery (tracking code, consignment number etc.). In a case of direct capture, both fund reservation and capture are executed in a single operation.</p>
+<p>This API call allows merchant to capture the reserved amount. Amount to capture cannot be higher than reserved. The API also allows capturing partial amount of the reserved amount. Partial capture can be called as many times as required so long there is reserved amount to capture. Transaction text is not optional and is used as a proof of delivery (tracking code, consignment number etc.). In a case of direct capture, both fund reservation and capture are executed in a single operation. It is important to check the response, and the capture is only successful when the response is <code>HTTP 200 OK</code>.</p>
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
