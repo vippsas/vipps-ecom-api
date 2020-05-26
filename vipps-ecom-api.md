@@ -777,12 +777,11 @@ If the `skipLandingPage` property is set to `true` in the
 call, it will cause a push notification to be sent to the given phone number
 immediately, without loading the landing page.
 
-If the sale unit is not whitelisted, this property is ignored.
+If the sale unit is not whitelisted, the request will fail and an error message will be returned
 
 If you want to check if a sale unit is allowed to use `skipLandingPage`:
 1. Initiate a normal payment with `"skipLandingPage": true`.
-2. Check if the returned URL is to the landing page or not.
-   The API will (soon!) also return an error if attempting to use
+2. Check the response code and message. The API will return an error if attempting to use
    `skipLandingPage` without being whitelisted.
 
 If you need to be whitelisted, instructions can be found in the
@@ -1612,6 +1611,7 @@ allowed to provide more details.
 | Merchant | 35 | Registered order not found ||
 | Merchant | 36 | Merchant agreement not signed ||
 | Merchant | 37 | Merchant not available, deactivated or blocked ||
+| Merchant | 38 | Sale unit is not allowed to skip the landing page ||
 | Merchant | 21 | Reference Order ID is not valid ||
 | Merchant | 22 | Reference Order ID is not in valid state ||
 
