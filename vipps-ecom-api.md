@@ -284,10 +284,10 @@ remove this consent (via the Profile -> Security -> "Access to your information"
 ## Userinfo
 
 ```
-Early draft, this should be considered pilot functionality that we are currently rolling out in our test environemnt
+Early draft, this should be considered pilot functionality that we are currently rolling out in our test environemnt.
 ```
 
-Vipps offers a functionality to ask for a generic conset to access Userinfo. This is based on the [Vipps Login](https://github.com/vippsas/vipps-login-api) solution, but you as a merchant can seemlessly combine the two functionalites in a single user session. Combining both the userinfo and payment elements. This means that a merchant needs both a Vipps Login integration, and a Vipps Ecom integration.
+Vipps offers a functionality to ask for a generic conset to access Userinfo. This is based on the [Vipps Login](https://github.com/vippsas/vipps-login-api) solution, but you as a merchant can seemlessly combine the two functionalites in a single user session. Combining both the userinfo and payment elements. This means that a merchant needs be registered with both Vipps Login, and Vipps Ecom functionality.
 
 When you initiate a payment add the parameter "Scopes:" to ask for a users consent to share these details. For example like be email, address and name. The scopes are based on [Vipps Login's list of socopes](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api.md#scopes).
 
