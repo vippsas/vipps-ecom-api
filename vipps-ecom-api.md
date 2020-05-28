@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.2.1. 
+Document version 2.2.1.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -289,17 +289,16 @@ Early draft, this should be considered pilot functionality that we are currently
 
 Vipps offers a functionality to ask for a generic conset to access Userinfo. This is based on the [Vipps Login](https://github.com/vippsas/vipps-login-api) solution, but you as a merchant can seemlessly combine the two functionalites in a single user session. Combining both the userinfo and payment elements. This means that a merchant needs be registered with both Vipps Login, and Vipps Ecom functionality.
 
-When you initiate a payment add the parameter "Scopes:" to ask for a users consent to share these details. For example like be email, address and name. The scopes are based on [Vipps Login's list of socopes](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api.md#scopes).
+When you initiate a payment add the parameter `Scopes` to ask for a users consent to share these details. For example like be email, address and name. The scopes are based on [Vipps Login's list of socopes](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api.md#scopes).
 
 To request these scopes add the scopes to the initial call to
 [`POST:​/ecomm​/v2​/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
 
 The user then consents and pays in the app.
 
-```
-This operation has an all or nothing approach, a user must complete a valid payment and consent to all
+>This operation has an all or nothing approach, a user must complete a valid payment and consent to all
 values in order to complete the session. If a user chooses to reject the terms the payment will not be processed.
-```
+
 
 Once the user completes the session a unique identifier "sub" can be retrieved in the 
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET) endpoint. 
