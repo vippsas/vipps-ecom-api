@@ -1625,8 +1625,7 @@ Vipps App.
 The force approve endpoint ([`POST:/ecomm/v2/integration-test/payments/{orderId}/approve`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/integrationTestApprovePayment))
 allows developers to approve a payment through the Vipps
 eCom API without the use of the Vipps App. This is useful for automated testing.
-The endpoint is only available in our Test environment. Attempted use of the
-endpoint in production will not be tolerated.
+The endpoint is only available in our test environment.
 
 
 # Questions?
