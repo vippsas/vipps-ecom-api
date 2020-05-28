@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.2.1.
+Document version 2.2.1. 
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -28,6 +28,7 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
   - [Express checkout payments](#express-checkout-payments)
     - [Shipping and static shipping details](#shipping-and-static-shipping-details)
     - [Consent and GDPR](#consent-and-gdpr)
+  - [Userinfo](#userinfo)
   - [Initiate payment flow: Phone and browser](#initiate-payment-flow-phone-and-browser)
     - [Phone flow](#phone-flow)
       - [Vipps installed](#vipps-installed)
@@ -279,6 +280,40 @@ is shared with the merchant. The merchant must provide a URL (`consentRemovalPre
 that Vipps can call to delete the data. The Vipps app allows the user to later
 remove this consent (via the Profile -> Security -> "Access to your information"
 -> "Companies that remember you" screens).
+
+## Userinfo
+
+```
+Early draft, this should be considered pilot functionality that we are currently rolling out in our test environemnt
+```
+
+Vipps offers a functionality to ask for a generic conset to access Userinfo. This is based on the [Vipps Login](https://github.com/vippsas/vipps-login-api) solution, but you as a merchant can seemlessly combine the two functionalites in a single user session. Combining both the userinfo and payment elements. This means that a merchant needs both a Vipps Login integration, and a Vipps Ecom integration.
+
+When you initiate a payment add the parameter "Scopes:" to ask for a users consent to share these details. For example like be email, address and name. The scopes are based on [Login's list of socopes](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api.md#scopes).
+
+To request these scopes add the scopes to the initial call to
+[`POST:​/ecomm​/v2​/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
+
+The user then consents and pays in the app.
+
+```
+This operation has considered an all or nothing approach, a user must complete a valid payment and consent to all
+values in order to complete the session. If a user chooses to reject the terms the payment will not be processed.
+```
+
+Once the user completes the session a unique identifier "Psub" can be retrieved in the 
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET) endpoint. 
+
+
+```
+psub format: string
+```
+
+This psub is a link between the Merchant and the user's consent and can used to retrieve the users detail from the Vipps Login Solution in the format for 
+[`GET:/userinfo/{psub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo), special note, accessing the Login userinfo endpoint requires the login access token. [`POST:/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/oauth2Token). 
+
+
+
 
 ## Initiate payment flow: Phone and browser
 
