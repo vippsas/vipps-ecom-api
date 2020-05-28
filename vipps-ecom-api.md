@@ -1627,6 +1627,7 @@ allows developers to approve a payment through the Vipps
 eCom API without the use of the Vipps App. This is useful for automated testing.
 The endpoint is only available in our test environment.
 
+Express checkout is not supported by the force approve endpoint.
 
 # Questions?
 

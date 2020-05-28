@@ -993,6 +993,7 @@ paths:
       description: >-
         This endpoint allows developers to approve a payment through the Vipps eCom API
         without the use of the Vipps app. This is useful for automated testing.
+        Express checkout is not supported for this endpoint.
         The endpoint is only available in our Test environment.
         Attempted use of the endpoint in production is not allowed, and will fail.
       operationId: integrationTestApprovePayment
