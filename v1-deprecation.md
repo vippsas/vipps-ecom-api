@@ -31,7 +31,7 @@ This eCom v1 API shutdown means that:
   is [well documented](https://github.com/vippsas/vipps-ecom-api), with an
   extensive guide, Swagger specification, Postman collection, integration
   checklist and a migration guide.
-* Integrations using the eCom v1 API will stop working on June 1 2020.
+* Integrations using the eCom v1 API will stop working on September 1 2020.
 
 The main benefits of the eCom v2 API:
 
