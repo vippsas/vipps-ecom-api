@@ -92,6 +92,8 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
       - [Switching back to the merchant app from Vipps app](#switching-back-to-the-merchant-app-from-vipps-app)
       - [Return back to merchant app by actively deeplinking into it from Vipps](#return-back-to-merchant-app-by-actively-deeplinking-into-it-from-vipps)
       - [Redirect back to merchant app by simply closing the Vipps app](#redirect-back-to-merchant-app-by-simply-closing-the-vipps-app)
+  - [Errors](#errors)
+    - [Error object in the response](#error-object-in-the-response)
   - [Error groups](#error-groups)
   - [Error codes](#error-codes)
 - [Testing](#testing)
