@@ -1,16 +1,16 @@
-openapi: 3.0.0
+openapi: '3.0.0'
 info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.0.15
+  version: 1.4.3
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
     description: Authorization Service
   - name: Vipps eCom API
     description: Functionality provided by the Vipps eCommerce API
-  - name: Endpoints required by Vipps from the merchant
+  - name: Merchant Endpoints
     description: >-
       These endpoints must be implemented by the merchant, and are called by Vipps.
 servers:
@@ -21,36 +21,42 @@ paths:
     post:
       tags:
         - Authorization Service
-      summary: Fetch Authorization token
+      summary: Fetch authorization token
       parameters:
         - name: client_id
           in: header
           description: >-
-            Client id is available on portal.vipps.no, under the 'Utvikler' tab.
+            The `client_id` is available on portal.vipps.no, under the 'Utvikler' tab.
           required: true
           schema:
             type: string
             format: guid
+          example: fb492b5e-7907-4d83-ba20-c7fb60ca35de
         - name: client_secret
           in: header
           description: >-
-            Client secret is available on portal.vipps.no, under the 'Utvikler' tab.
+            The `client_secret` is available on portal.vipps.no, under the 'Utvikler' tab.
+            Keep it secret.
           required: true
           schema:
             type: string
+          example: Y8Kteew6GE2ZmeycEt6egg==
         - name: Ocp-Apim-Subscription-Key
           in: header
           description: >-
-            The subscription-key for Authorization token is available on portal.vipps.no, under the 'Utvikler' tab.
+            The subscription key for the authorization token is available on portal.vipps.no, under the 'Utvikler' tab.
+            Keep it secret.
           required: true
           schema:
             type: string
+          example: 0f14ebcab0ec4b29ae0cb90d91b4a84a
       description: >-
-        Authorization token API endpoint helps to get the JWT Bearer token that
-        needs to be passed in every API request in the Authorization header. The
-        merchant application use the API to get a JWT access token. JWT access
-        token is a base 64 encoded string value that must be aquire first before
-        making any Vipps api calls
+        The access token endpoint is used to get the JWT (JSON Web Token) that
+        must be passed in every API request in the Authorization header.
+        The access token is a base64-encoded string value that must be
+        aquired first before making any Vipps api calls.
+        The access token is valid for 1 hour in the test environment
+        and 24 hours in the production environment.
       operationId: fetchAuthorizationTokenUsingPost
       responses:
         '200':
@@ -61,25 +67,57 @@ paths:
                 $ref: '#/components/schemas/AuthorizationTokenResponse'
         '400':
           description: Bad request (Missing a required parameter or bad request format)
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           description: Unauthorized
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '402':
           description: Payment Failed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '403':
           description: Request Forbidden
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '404':
           description: Resource Not Found
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '405':
           description: Request method not supported
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '415':
           description: Unsupported media type
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '500':
-          description: Something went wrong from Vipps Server side
+          description: A server-side error
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
   '[consentRemovalPrefix]/v2/consents/{userId}':
     delete:
       tags:
-        - Endpoints required by Vipps from the merchant
-      summary: Remove User Consent (for express checkout)
+        - Merchant Endpoints
+      summary: Remove User Consent (for Vipps Hurtigkasse (express checkout))
       description: >-
         This API endpoint on the merchant side allows Vipps to send consent
         removal requests to the merchant. When receiving requests the merchant
@@ -93,19 +131,20 @@ paths:
         - name: userId
           in: path
           description: >-
-            URL encoded userId provided when requesting user information from Vipps.
-            Received by callback or get detail request.
+            URL-encoded `userId` provided when requesting user information from Vipps.
+            Received by callback or with `/detail` request.
           required: true
           schema:
             type: string
+          example: 'uiJskNQ6qNN1iwN891uuob=='
       responses:
         '200':
-          description: Remove User Consent (for express checkout)
+          description: Remove User Consent (for Vipps Hurtigkasse (express checkout))
   '[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails':
     post:
       tags:
-        - Endpoints required by Vipps from the merchant
-      summary: Fetch Shipping Cost & Method
+        - Merchant Endpoints
+      summary: Fetch Shipping Cost & Method (for Vipps Hurtigkasse (express checkout))
       description: >-
         This API endpoint on the merchant side allows Vipps to get the shipping
         cost and method based on the provided address and product details. The
@@ -127,6 +166,7 @@ paths:
           required: true
           schema:
             type: string
+          example: order123abc
         - name: Authorization
           in: header
           description: >-
@@ -134,12 +174,13 @@ paths:
             `authToken`. Used so that the merchant may authenticate the request.
           schema:
             type: string
+          example: ae0cb90d91b4a84a
       requestBody:
         content:
           application/json;charset=UTF-8:
             schema:
-              $ref: '#/components/schemas/FetchShippingCostAndMethod'
-        description: fetchShippingCostAndMethod
+              $ref: '#/components/schemas/ShippingCostAndMethod'
+        description: ShippingCostAndMethod
         required: true
       responses:
         '200':
@@ -154,15 +195,18 @@ paths:
         - Vipps eCom API
       summary: Initiate Payment
       description: >-
-        This API call allows the merchants to initiate a payment flow by using
-        Vipps. In order to identify which sales channel payments are coming
-        from, a merchantSerialNumber is used to distinguish between them. Please
-        note that a single payment is uniquely identified by a composite of merchantSerialNumber and orderId. The
-        Merchant provided orderId must be unique per sales channel. Once the
-        transaction is successfully initiated in Vipps, you will receive a
-        URL in response which will direct the customer to the landing page. The landing page will have functionality to
-        identify and differentiate request coming from mobile browser/desktop
-        browser. The merchant may also pass the 'isApp' parameter that will make Vipps respond with a app-switch deeplink that will take the customer directly to the Vipps app. URLs passed to Vipps should be URL-encoded, and must validate
+        This API call allows the merchants to initiate payments.
+        The `merchantSerialNumber` (MSN) specifies which sales unit the payments is for.
+        Payments are uniquely identified with the merchantSerialNumber and orderId together.
+        The merchant-provided orderId must be unique per sales channel.
+        Once the transaction is successfully initiated in Vipps, you will receive a
+        response with a `fallBack` URL which will direct the customer to the Vipps landing page.
+        The landing page detects if the request comes from a mobile or laptop/desktop device,
+        and if on a mobile device automatically switches to the Vipps app if it is intalled.
+        The merchant may also pass the 'isApp: true' parameter that will make Vipps
+        respond with a app-switch deeplink that will take the customer directly
+        to the Vipps app.
+        URLs passed to Vipps should be URL-encoded, and must validate
         with the Apache Commons
         [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
       operationId: initiatePaymentV3UsingPOST
@@ -170,23 +214,68 @@ paths:
         - in: header
           name: Authorization
           description: >-
-            Authorization-token is obtained by appending the access_token obtained by using the /accesstoken/get request to 'Bearer '.
+            The access token is a base64-encoded string that is required for all API calls.
+            It is a JWT (JSON Web Token).
+            The access token is fetched from the `POST:/accesstoken/get` endpoint.
+            It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
             type: string
+          example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
         - in: header
           name: Content-Type
-          description: application/json
+          description: "The content type must be `application/json`"
           required: true
           schema:
             type: string
+          example: application/json
         - in: header
           name: Ocp-Apim-Subscription-Key
           description: >-
-            The subscription-key for your product is available on portal.vipps.no, under the 'Utvikler' tab.
+            The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab.
+            Keep it secret.
           required: true
           schema:
             type: string
+          example: 0f14ebcab0ec4b29ae0cb90d91b4a84a
+        - in: header
+          name: Merchant-Serial-Number
+          description: >-
+            The Merchant Serial Number (MSN) is a unique id for the sale unit
+            that this payment is made for.
+            This is a required parameter if you are a Vipps eCom partner
+            making payments on behalf of a merchant.
+            The partner must use the merchant's MSN (not the partner's MSN).
+            This parameter is optional, and recommended, for regular Vipps
+            merchants making payments for themselves.
+          required: false
+          schema:
+            type: string
+          example: 123456
+        - name: Vipps-System-Name
+          in: header
+          description: The name of the ecommerce solution. One word in lowercase letters is good.
+          schema:
+            type: string
+          example: woocommerce
+        - name: Vipps-System-Version
+          in: header
+          description: The version number of the ecommerce solution.
+          schema:
+            type: string
+          example: "5.4"
+        - name: Vipps-System-Plugin-Name
+          in: header
+          description: The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.
+          schema:
+            type: string
+          example: "vipps-woocommerce"
+        - name: Vipps-System-Plugin-Version
+          in: header
+          description: The version number of the ecommerce plugin (if applicable).
+          schema:
+            type: string
+          example: "1.2.1"
       requestBody:
         content:
           application/json;charset=UTF-8:
@@ -200,11 +289,11 @@ paths:
             post:
               summary: 'Callback : Transaction Update'
               description: >-
-                This API call allows Vipps to send the transaction details. During
-                regular ecomm payment order and transaction details will be shared.
-                During express checkout payment it will provide user details and
-                shipping details addition to the order and transaction details. Vipps
-                will add `/v2/payments/{orderId}` to the end of this URL. URLs passed to
+                This API call allows Vipps to send the transaction details to the merchant.
+                For regular ecomm payments the order and transaction details will be shared.
+                For Vipps Hurtigkasse (express checkout) payments it will provide user details and
+                shipping details addition to the order and transaction details.
+                Vipps will add `/v2/payments/{orderId}` to the end of this URL. URLs passed to
                 Vipps should be URL-encoded, and must validate with the Apache Commons
                 [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
               operationId: InitiatePaymentTransactionUpdateCallbackForRegularPaymentUsingPOSTExpress
@@ -215,6 +304,7 @@ paths:
                   required: true
                   schema:
                     type: string
+                  example: order123abc
               responses:
                 '200':
                   description: Vipps does not require a response for this request.
@@ -228,11 +318,11 @@ paths:
             post:
               summary: 'Callback : Transaction Update'
               description: >-
-                This API call allows Vipps to send the transaction details. During
-                regular ecomm payment order and transaction details will be shared.
-                During express checkout payment it will provide user details and
-                shipping details addition to the order and transaction details. Vipps
-                will add `/v2/payments/{orderId}` to the end of this URL. URLs passed to
+                This API call allows Vipps to send the transaction details to the merchant.
+                For regular ecomm payments the order and transaction details will be shared.
+                For Vipps Hurtigkasse (express checkout) payments it will provide user details and
+                shipping details addition to the order and transaction details.
+                Vipps will add `/v2/payments/{orderId}` to the end of this URL. URLs passed to
                 Vipps should be URL-encoded, and must validate with the Apache Commons
                 [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
               operationId: InitiatePaymentTransactionUpdateCallbackForRegularPaymentUsingPOSTExpress
@@ -243,6 +333,7 @@ paths:
                   required: true
                   schema:
                     type: string
+                  example: order123abc
               responses:
                 '200':
                   description: Vipps does not require a response for this request.
@@ -254,7 +345,7 @@ paths:
         consentRemoval:
           '{$request.body#/merchantInfo/consentRemovalPrefix}/v2/consents/{userId}':
             delete:
-              summary: Remove User Consent (for express checkout)
+              summary: Remove User Consent (for Vipps Hurtigkasse (express checkout))
               description: >-
                 This API endpoint on the merchant side allows Vipps to send consent
                 removal requests to merchant. When receiving requests the merchant is
@@ -273,13 +364,14 @@ paths:
                   required: true
                   schema:
                     type: string
+                  example: 'uiJskNQ6qNN1iwN891uuob=='
               responses:
                 '200':
                   description: 'OK'
         shippingDetails:
           '{$request.body#/merchantInfo/shippingDetailsPrefix}/v2/payments/{$request.body#/transaction/orderId}/shippingDetails':
                 post:
-                  summary: Fetch Shipping Cost & Method
+                  summary: Fetch Shipping Cost & Method (for Vipps Hurtigkasse (express checkout))
                   description: >-
                     This API endpoint on the merchant side allows Vipps to get the shipping
                     cost and method based on the provided address and product details. The
@@ -289,6 +381,8 @@ paths:
                     this URL.
                     Vipps has a *10 second timeout* for these requests, and thus requires
                     a quick reply from the merchant's server for successful payments.
+                    If the merchant does not respond in time, the user will get an
+                    error in Vipps saying "No shipping methods found".
                     URLs passed to Vipps should be URL-encoded, and must validate
                     with the Apache Commons
                     [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
@@ -312,8 +406,8 @@ paths:
                     content:
                       application/json;charset=UTF-8:
                         schema:
-                          $ref: '#/components/schemas/FetchShippingCostAndMethod'
-                    description: fetchShippingCostAndMethod
+                          $ref: '#/components/schemas/ShippingCostAndMethod'
+                    description: ShippingCostAndMethod
                     required: true
       responses:
         '200':
@@ -321,33 +415,66 @@ paths:
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/InitiatePaymentV2Representation'
+                $ref: '#/components/schemas/PaymentInitiationResponse'
         '400':
           description: Bad request (Missing a required parameter or bad request format)
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           description: Unauthorized
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '402':
           description: Payment Failed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '403':
           description: Request Forbidden
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '404':
           description: Resource Not Found
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '405':
           description: Request method not supported
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '415':
           description: Unsupported media type
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '500':
-          description: Something went wrong from Vipps Server side
+          description: A server-side error
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
   '[callbackPrefix]/v2/payments/{orderId}':
     post:
       tags:
-        - Endpoints required by Vipps from the merchant
+        - Merchant Endpoints
       summary: 'Callback : Transaction Update'
       description: >-
-        This API call allows Vipps to send the transaction details. During
-        regular ecomm payment order and transaction details will be shared.
-        During express checkout payment it will provide user details and
-        shipping details addition to the order and transaction details. Vipps
+        This API call allows Vipps to send the transaction details.
+        For regular ecomm payments the order and transaction details will be shared.
+        For Vipps Hurtigkasse (express checkout) payments it will provide user details and
+        shipping details addition to the order and transaction details.
+        Vipps
         will add `/v2/payments/{orderId}` to the end of this URL. URLs passed to
         Vipps should be URL-encoded, and must validate with the Apache Commons
         [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
@@ -359,6 +486,7 @@ paths:
           required: true
           schema:
             type: string
+          example: order123abc
         - name: Authorization
           in: header
           description: >-
@@ -366,6 +494,7 @@ paths:
             `authToken`. Used so that the merchant may authenticate the request.
           schema:
             type: string
+          example: ae0cb90d91b4a84a
       requestBody:
         content:
           application/json;charset=UTF-8:
@@ -391,44 +520,92 @@ paths:
         Transaction text is not optional and is used as a proof of delivery
         (tracking code, consignment number etc.). In a case of direct capture,
         both fund reservation and capture are executed in a single operation.
+        It is important to check the response, and the capture is only
+        successful when the response is `HTTP 200 OK`.
       operationId: capturePaymentUsingPOST
       parameters:
         - name: orderId
           in: path
-          description: Order id specified in the request body of initiate payment.
+          description: The `orderId`is specified when initiating the paymemt.
           required: true
           schema:
             type: string
+          example: order123abc
         - in: header
           name: Authorization
           description: >-
-            Authorization-token is obtained by running the /accesstoken/get
-            request.
+            The access token is a base64-encoded string that is required for all API calls.
+            It is a JWT (JSON Web Token).
+            The access token is fetched from the `POST:/accesstoken/get` endpoint.
+            It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
             type: string
+          example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
         - in: header
           name: Content-Type
-          description: '`application/json`'
+          description: "The content type must be `application/json`"
           required: true
           schema:
             type: string
+          example: application/json
         - in: header
           name: Ocp-Apim-Subscription-Key
           description: >-
-            The subscription-key for your product is available on portal.vipps.no, under the 'Utvikler' tab.
+            The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab.
+            Keep it secret.
           required: true
           schema:
             type: string
+          example: 0f14ebcab0ec4b29ae0cb90d91b4a84a
         - in: header
           name: X-Request-Id
           description: >-
-            Id used for making requests idempotent. Adding this ID will allow
-            the merchant to retry requests without it making additional changes.
-            Unique for orderId, merchantSerialNumber and endpoint. Max 30
-            characters.
+            Used for making requests idempotent. Adding X-Request-Id will allow
+            repeated requests without it making additional changes.
+            Unique for orderId, merchantSerialNumber and endpoint.
+            Max 30 characters.
           schema:
             type: string
+          example: kRk3uEeiogxLu1yGSZRlNgsIv3TuNS
+        - in: header
+          name: Merchant-Serial-Number
+          description: >-
+            The Merchant Serial Number (MSN) is a unique id for the sale unit
+            that this payment is made for.
+            This is a required parameter if you are a Vipps eCom partner
+            making payments on behalf of a merchant.
+            The partner must use the merchant's MSN (not the partner's MSN).
+            This parameter is optional, and recommended, for regular Vipps
+            merchants making payments for themselves.
+          required: false
+          schema:
+            type: string
+          example: 123456
+        - name: Vipps-System-Name
+          in: header
+          description: The name of the ecommerce solution. One word in lowercase letters is good.
+          schema:
+            type: string
+          example: woocommerce
+        - name: Vipps-System-Version
+          in: header
+          description: The version number of the ecommerce solution.
+          schema:
+            type: string
+          example: "5.4"
+        - name: Vipps-System-Plugin-Name
+          in: header
+          description: The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.
+          schema:
+            type: string
+          example: "vipps-woocommerce"
+        - name: Vipps-System-Plugin-Version
+          in: header
+          description: The version number of the ecommerce plugin (if applicable).
+          schema:
+            type: string
+          example: "1.2.1"
       requestBody:
         $ref: '#/components/requestBodies/PaymentActionsRequest'
       responses:
@@ -437,23 +614,61 @@ paths:
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/TransactionResponseCapture'
+                $ref: '#/components/schemas/TransactionResponse'
         '400':
           description: Bad request (Missing a required parameter or bad request format)
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           description: Unauthorized
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '402':
           description: Payment Failed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '403':
           description: Request Forbidden
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '404':
           description: Resource Not Found
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '405':
           description: Request method not supported
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '415':
           description: Unsupported media type
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '500':
-          description: Something went wrong from Vipps Server side
+          description: A server-side error
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
   '/ecomm/v2/payments/{orderId}/cancel':
     put:
       tags:
@@ -471,31 +686,74 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: Order id specified in the request body of initiate payment.
+          description: The `orderId`is specified when initiating the paymemt.
           required: true
           schema:
             type: string
         - in: header
           name: Authorization
           description: >-
-            Authorization-token is obtained by running the /accesstoken/get
-            request.
+            The access token is a base64-encoded string that is required for all API calls.
+            It is a JWT (JSON Web Token).
+            The access token is fetched from the `POST:/accesstoken/get` endpoint.
+            It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
             type: string
         - in: header
           name: Content-Type
-          description: '`application/json`'
+          description: "The content type must be `application/json`"
           required: true
           schema:
             type: string
+          example: application/json
         - in: header
           name: Ocp-Apim-Subscription-Key
           description: >-
-            The subscription-key for your product is available on portal.vipps.no, under the 'Utvikler' tab.
+            The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab.
+            Keep it secret.
           required: true
           schema:
             type: string
+          example: 0f14ebcab0ec4b29ae0cb90d91b4a84a
+        - in: header
+          name: Merchant-Serial-Number
+          description: >-
+            The Merchant Serial Number (MSN) is a unique id for the sale unit
+            that this payment is made for.
+            This is a required parameter if you are a Vipps eCom partner
+            making payments on behalf of a merchant.
+            The partner must use the merchant's MSN (not the partner's MSN).
+            This parameter is optional, and recommended, for regular Vipps
+            merchants making payments for themselves.
+          required: false
+          schema:
+            type: string
+          example: 123456
+        - name: Vipps-System-Name
+          in: header
+          description: The name of the ecommerce solution. One word in lowercase letters is good.
+          schema:
+            type: string
+          example: woocommerce
+        - name: Vipps-System-Version
+          in: header
+          description: The version number of the ecommerce solution.
+          schema:
+            type: string
+          example: "5.4"
+        - name: Vipps-System-Plugin-Name
+          in: header
+          description: The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.
+          schema:
+            type: string
+          example: "vipps-woocommerce"
+        - name: Vipps-System-Plugin-Version
+          in: header
+          description: The version number of the ecommerce plugin (if applicable).
+          schema:
+            type: string
+          example: "1.2.1"
       requestBody:
         content:
           application/json;charset=UTF-8:
@@ -509,23 +767,61 @@ paths:
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/TransactionResponseCancel'
+                $ref: '#/components/schemas/TransactionResponse'
         '400':
           description: Bad request (Missing a required parameter or bad request format)
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           description: Unauthorized
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '402':
           description: Payment Failed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '403':
           description: Request Forbidden
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '404':
           description: Resource Not Found
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '405':
           description: Request method not supported
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '415':
           description: Unsupported media type
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '500':
-          description: Something went wrong from Vipps Server side
+          description: A server-side error
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
   '/ecomm/v2/payments/{orderId}/refund':
     post:
       tags:
@@ -546,31 +842,195 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: Order id specified in the request body of initiate payment.
+          description: The `orderId`is specified when initiating the paymemt.
+          required: true
+          schema:
+            type: string
+          example: order123abc
+        - in: header
+          name: Authorization
+          description: >-
+            The access token is a base64-encoded string that is required for all API calls.
+            It is a JWT (JSON Web Token).
+            The access token is fetched from the `POST:/accesstoken/get` endpoint.
+            It is valid for 1 hour in the test environment and 24 hours in the production environment.
+          required: true
+          schema:
+            type: string
+          example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+        - in: header
+          name: Content-Type
+          description: "The content type must be `application/json`"
+          required: true
+          schema:
+            type: string
+          example: application/json
+        - in: header
+          name: Ocp-Apim-Subscription-Key
+          description: >-
+            The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab.
+            Keep it secret.
+          required: true
+          schema:
+            type: string
+          example: 0f14ebcab0ec4b29ae0cb90d91b4a84a
+        - in: header
+          name: X-Request-Id
+          description: >-
+            Used for making requests idempotent. Adding X-Request-Id will allow
+            repeated requests without it making additional changes.
+            Unique for orderId, merchantSerialNumber and endpoint.
+            Max 30 characters.
+          schema:
+            type: string
+          example: kRk3uEeiogxLu1yGSZRlNgsIv3TuNS
+        - in: header
+          name: Merchant-Serial-Number
+          description: >-
+            The Merchant Serial Number (MSN) is a unique id for the sale unit
+            that this payment is made for.
+            This is a required parameter if you are a Vipps eCom partner
+            making payments on behalf of a merchant.
+            The partner must use the merchant's MSN (not the partner's MSN).
+            This parameter is optional, and recommended, for regular Vipps
+            merchants making payments for themselves.
+          required: false
+          schema:
+            type: string
+          example: 123456
+        - name: Vipps-System-Name
+          in: header
+          description: The name of the ecommerce solution. One word in lowercase letters is good.
+          schema:
+            type: string
+          example: woocommerce
+        - name: Vipps-System-Version
+          in: header
+          description: The version number of the ecommerce solution.
+          schema:
+            type: string
+          example: "5.4"
+        - name: Vipps-System-Plugin-Name
+          in: header
+          description: The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.
+          schema:
+            type: string
+          example: "vipps-woocommerce"
+        - name: Vipps-System-Plugin-Version
+          in: header
+          description: The version number of the ecommerce plugin (if applicable).
+          schema:
+            type: string
+          example: "1.2.1"
+      requestBody:
+        $ref: '#/components/requestBodies/PaymentActionsRequest'
+      responses:
+        '200':
+          description: Refund payment response
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+        '400':
+          description: Bad request (Missing a required parameter or bad request format)
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '402':
+          description: Payment Failed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Request Forbidden
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Resource Not Found
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Request method not supported
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '415':
+          description: Unsupported media type
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: A server-side error
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
+  '/ecomm/v2/integration-test/payments/{orderId}/approve':
+    post:
+      tags:
+        - Vipps eCom API
+      summary: 'Force Approve Payment'
+      description: >-
+        This endpoint allows developers to approve a payment through the Vipps eCom API
+        without the use of the Vipps app. This is useful for automated testing.
+        Express checkout is not supported for this endpoint.
+        The endpoint is only available in our Test environment.
+        Attempted use of the endpoint in production is not allowed, and will fail.
+      operationId: integrationTestApprovePayment
+      parameters:
+        - name: orderId
+          in: path
+          description: The `orderId`is specified when initiating the paymemt.
           required: true
           schema:
             type: string
         - in: header
           name: Authorization
           description: >-
-            Authorization-token is obtained by running the /accesstoken/get
-            request.
+            The access token is a base64-encoded string that is required for all API calls.
+            It is a JWT (JSON Web Token).
+            The access token is fetched from the `POST:/accesstoken/get` endpoint.
+            It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
             type: string
+          example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
         - in: header
           name: Content-Type
-          description: '`application/json`'
+          description: "The content type must be `application/json`"
           required: true
           schema:
             type: string
+          example: application/json
         - in: header
           name: Ocp-Apim-Subscription-Key
           description: >-
-            The subscription-key for your product is available on portal.vipps.no, under the 'Utvikler' tab.
+            The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab.
+            Keep it secret.
           required: true
           schema:
             type: string
+          example: 0f14ebcab0ec4b29ae0cb90d91b4a84a
         - in: header
           name: X-Request-Id
           description: >-
@@ -580,36 +1040,89 @@ paths:
             characters.
           schema:
             type: string
+          example: kRk3uEeiogxLu1yGSZRlNgsIv3TuNS
+        - name: Vipps-System-Name
+          in: header
+          description: The name of the ecommerce solution. One word in lowercase letters is good.
+          schema:
+            type: string
+          example: woocommerce
+        - name: Vipps-System-Version
+          in: header
+          description: The version number of the ecommerce solution.
+          schema:
+            type: string
+          example: "5.4"
+        - name: Vipps-System-Plugin-Name
+          in: header
+          description: The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.
+          schema:
+            type: string
+          example: "vipps-woocommerce"
+        - name: Vipps-System-Plugin-Version
+          in: header
+          description: The version number of the ecommerce plugin (if applicable).
+          schema:
+            type: string
+          example: "1.2.1"
       requestBody:
-        $ref: '#/components/requestBodies/PaymentActionsRequest'
+        $ref: '#/components/requestBodies/ForceApproveRequest'
       responses:
         '200':
-          description: Refund payment response
+          description: Force approve payment response
+        '400':
+          description: Bad request (Missing a required parameter or bad request format)
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/TransactionResponseRefund'
-        '400':
-          description: Bad request (Missing a required parameter or bad request format)
+                $ref: '#/components/schemas/Error'
         '401':
           description: Unauthorized
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '402':
           description: Payment Failed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '403':
           description: Request Forbidden
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '404':
           description: Resource Not Found
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '405':
           description: Request method not supported
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '415':
           description: Unsupported media type
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '500':
-          description: Something went wrong from Vipps Server side
+          description: A server-side error
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
   '/ecomm/v2/payments/{orderId}/details':
     get:
       tags:
         - Vipps eCom API
-      summary: Get payment Details
+      summary: Get Payment Details
       description: >-
         This API call allows merchant to get the details of a payment
         transaction. Service call returns detailed transaction history of given
@@ -619,60 +1132,143 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: Order id specified in the request body of initiate payment.
+          description: The `orderId`is specified when initiating the paymemt.
           required: true
           schema:
             type: string
+          example: order123abc
         - in: header
           name: Authorization
           description: >-
-            Authorization-token is obtained by running the `/accesstoken/get`
-            request.
+            The access token is a base64-encoded string that is required for all API calls.
+            It is a JWT (JSON Web Token).
+            The access token is fetched from the `POST:/accesstoken/get` endpoint.
+            It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
             type: string
+          example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
         - in: header
           name: Content-Type
-          description: '`application/json`'
+          description: "The content type must be `application/json`"
           required: true
           schema:
             type: string
+          example: application/json
         - in: header
           name: Ocp-Apim-Subscription-Key
           description: >-
-            The subscription-key for your product is available on portal.vipps.no, under the 'Utvikler' tab.
+            The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab.
+            Keep it secret.
           required: true
           schema:
             type: string
+          example: 0f14ebcab0ec4b29ae0cb90d91b4a84a
+        - in: header
+          name: Merchant-Serial-Number
+          description: >-
+            The Merchant Serial Number (MSN) is a unique id for the sale unit
+            that this payment is made for.
+            This is a required parameter if you are a Vipps eCom partner
+            making payments on behalf of a merchant.
+            The partner must use the merchant's MSN (not the partner's MSN).
+            This parameter is optional, and recommended, for regular Vipps
+            merchants making payments for themselves.
+          required: false
+          schema:
+            type: string
+          example: 123456
+        - name: Vipps-System-Name
+          in: header
+          description: The name of the ecommerce solution. One word in lowercase letters is good.
+          schema:
+            type: string
+          example: woocommerce
+        - name: Vipps-System-Version
+          in: header
+          description: The version number of the ecommerce solution.
+          schema:
+            type: string
+          example: "5.4"
+        - name: Vipps-System-Plugin-Name
+          in: header
+          description: The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.
+          schema:
+            type: string
+          example: "vipps-woocommerce"
+        - name: Vipps-System-Plugin-Version
+          in: header
+          description: The version number of the ecommerce plugin (if applicable).
+          schema:
+            type: string
+          example: "1.2.1"
       responses:
         '200':
           description: Get payment Details
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/GetTransactionDetails'
+                $ref: '#/components/schemas/TransactionDetails'
         '400':
           description: Bad request (Missing a required parameter or bad request format)
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           description: Unauthorized
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '402':
           description: Payment Failed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '403':
           description: Request Forbidden
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '404':
           description: Resource Not Found
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '405':
           description: Request method not supported
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '415':
           description: Unsupported media type
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '500':
-          description: Something went wrong from Vipps Server side
+          description: A server-side error
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
   '/ecomm/v2/payments/{orderId}/status':
     get:
       deprecated: true
       tags:
         - Vipps eCom API
-      summary: Get order status
+      summary: 'Deprecated: Get Order Status'
       description: >-
         This API call allows the merchant to get the status of the last payment
         transaction. Primarily use of this service is meant for inApp where
@@ -681,48 +1277,85 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: Order id specified in the request body of initiate payment.
+          description: The `orderId`is specified when initiating the paymemt.
           required: true
           schema:
             type: string
         - in: header
           name: Authorization
           description: >-
-            Authorization-token is obtained by running the /accesstoken/get
-            request.
+            The access token is a base64-encoded string that is required for all API calls.
+            It is a JWT (JSON Web Token).
+            The access token is fetched from the `POST:/accesstoken/get` endpoint.
+            It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
             type: string
+          example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
         - in: header
           name: Ocp-Apim-Subscription-Key
           description: >-
-            The subscription-key for your product is available on portal.vipps.no, under the 'Utvikler' tab.
+            The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab.
+            Keep it secret.
           required: true
           schema:
             type: string
+          example: 0f14ebcab0ec4b29ae0cb90d91b4a84a
       responses:
         '200':
           description: Get order status
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/GetPaymentStatusResponse'
+                $ref: '#/components/schemas/PaymentStatus'
         '400':
           description: Bad request (Missing a required parameter or bad request format)
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '401':
           description: Unauthorized
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '402':
           description: Payment Failed
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '403':
           description: Request Forbidden
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '404':
           description: Resource Not Found
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '405':
           description: Request method not supported
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '415':
           description: Unsupported media type
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
         '500':
-          description: Something went wrong from Vipps Server side
+          description: A server-side error
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   requestBodies:
     PaymentActionsRequest:
@@ -732,6 +1365,13 @@ components:
             $ref: '#/components/schemas/PaymentActionsRequest'
       description: paymentActionsRequest
       required: true
+    ForceApproveRequest:
+      content:
+        application/json;charset=UTF-8:
+          schema:
+            $ref: '#/components/schemas/ForceApproveRequest'
+      description: ForceApproveRequest
+      required: true
   schemas:
     PaymentActionsRequest:
       type: object
@@ -740,6 +1380,18 @@ components:
           $ref: '#/components/schemas/MerchantInfoPayment'
         transaction:
           $ref: '#/components/schemas/Transaction'
+    ForceApproveRequest:
+      type: object
+      properties:
+        customerPhoneNumber:
+          type: string
+          description: Target customer phone number. 8 digits.
+          example: 91234567
+          pattern: '^\d{8}$'
+        token:
+          type: string
+          description: The token value recieved in the `url` property in the Initiate response
+          example: eyJraWQiOiJqd3R
     Address:
       type: object
       required:
@@ -751,7 +1403,7 @@ components:
         addressLine1:
           type: string
           description: Address Line 1
-          example: Dronning Eufemias gate 42
+          example: Robert Levins gate 5
         addressLine2:
           type: string
           description: Address Line 2
@@ -769,7 +1421,7 @@ components:
         postCode:
           type: string
           description: Post Code
-          example: 0191
+          example: '0154'
     AddressExpress:
       type: object
       required:
@@ -781,7 +1433,7 @@ components:
         addressLine1:
           type: string
           description: Address Line 1
-          example: Dronning Eufemias gate 42
+          example: Robert Levins gate 5
         addressLine2:
           type: string
           description: Address Line 2
@@ -798,8 +1450,8 @@ components:
             - Norway
         zipCode:
           type: string
-          description: Post Code
-          example: 0603
+          description: "Postcode (apologies for not useing `postCode` as elsewhere)"
+          example: "0154"
     PaymentShippingDetails:
       type: object
       required:
@@ -824,6 +1476,7 @@ components:
           maxLength: 256
         shippingMethodId:
           type: string
+          maxLength: 100
     TransactionLogHistory:
       type: object
       required:
@@ -855,19 +1508,19 @@ components:
           description: If the corrosponding operation was successfull.
           example: true
         requestId:
+          type: string
           description: >-
             The idempotent request id provided by the merchant for the
             operation.
           example: 12983921873981899000
-          type: string
         timeStamp:
           type: string
-          description: Timestamp in ISO-8601 representing when the operation was perfomed.
+          description: Timestamp in ISO-8601 representing when the operation was performed.
           example: '2019-02-05T12:27:42.311Z'
         transactionId:
+          type: string
           description: Identifies the transaction
           example: 5001446662
-          type: string
         transactionText:
           type: string
           description: Transaction text to be displayed in Vipps
@@ -899,7 +1552,7 @@ components:
             - N
         dateOfBirth:
           type: string
-          description: Optional date of birth infomation, must be requested during onboarding.
+          description: "Optional date of birth information, must be requested during onboarding. Please note: We will at some point move to ISO 8601: YYYY-MM-DD"
           example: 12-3-1988
         email:
           type: string
@@ -916,10 +1569,10 @@ components:
         mobileNumber:
           type: string
           description: Mobile number
-          example: '12345678'
+          example: '91234567'
           minLength: 8
-          maxLength: 12
-          pattern: '^\d{8,12}$'
+          maxLength: 8
+          pattern: '^\d{8}$'
         ssn:
           type: string
           description: Optional social security number for the user, must be requested during onboarding.
@@ -933,27 +1586,49 @@ components:
           maxLength: 50
           description: Identifies a user in Vipps. Merchant is required to store this field for future references.
           pattern: '^[\d\w\/=+]+$'
-    callbackErrorInfo:
-      type: object
-      properties:
-        errorCode:
-          type: string
-          example: '45'
-          description: The number code for the error.
-        errorGroup:
-          type: string
-          example: PAYMENTS
-        errorMessage:
-          type: string
-          description: Description of the error
-          example: User has cancelled or not acted upon the payment
-    CallbackTransactionInfoStatus:
+    CallbackTransactionInfoRegular:
       type: object
       required:
         - amount
         - status
         - timeStamp
-        - transactionId
+      properties:
+        amount:
+          type: number
+          format: double
+          description: Ordered amount in øre
+          example: 20000
+        status:
+          type: string
+          enum:
+            - RESERVED
+            - SALE
+            - CANCELLED
+            - REJECTED
+            - AUTO_CANCEL
+            - SALE_FAILED
+            - RESERVE_FAILED
+          description: >-
+            Status which gives the current state of the payment within Vipps.
+            See the [API
+            guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callbacks)
+            for more information.
+          example: RESERVE
+        timeStamp:
+          type: string
+          description: >-
+            Timestamp in ISO-8601 representing when the operation was performed.
+          example: '2018-12-12T11:18:38.246Z'
+        transactionId:
+          type: string
+          description: Vipps transaction id
+          example: '5001420062'
+    CallbackTransactionInfoExpress:
+      type: object
+      required:
+        - amount
+        - status
+        - timeStamp
       properties:
         amount:
           type: number
@@ -968,6 +1643,8 @@ components:
             - CANCELLED
             - REJECTED
             - AUTO_CANCEL
+            - SALE_FAILED
+            - RESERVE_FAILED
           description: >-
             Status which gives the current state of the payment within Vipps.
             See the [API
@@ -989,7 +1666,6 @@ components:
         - amount
         - status
         - timeStamp
-        - transactionId
       properties:
         amount:
           type: number
@@ -1018,13 +1694,13 @@ components:
         timeStamp:
           type: string
           description: >-
-            Timestamp in ISO-8601 representing when the status operation was performed.
+            Timestamp in ISO-8601 representing when the operation was performed.
           example: '2018-12-12T11:18:38.246Z'
         transactionId:
           type: string
           description: Vipps transaction id
           example: '5001420062'
-    TransactionInfoCancel:
+    TransactionInfo:
       type: object
       required:
         - amount
@@ -1042,80 +1718,8 @@ components:
           type: string
           enum:
             - Cancelled
-          example: Cancelled
-          description: >-
-            Status which gives the current state of the payment within Vipps.
-            See the [API
-            guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#responses-from-requests)
-            for more information.
-        timeStamp:
-          type: string
-          description: Timestamp in ISO-8601 representing when the order was cancelled.
-          example: '2018-12-12T11:18:38.246Z'
-        transactionId:
-          type: string
-          description: Vipps transaction id
-          example: '5001420062'
-        transactionText:
-          type: string
-          description: Transaction text to be displayed in Vipps
-          example: One pair of Vipps socks
-          maxLength: 100
-    TransactionInfoRefund:
-      type: object
-      required:
-        - amount
-        - status
-        - timeStamp
-        - transactionId
-        - transactionText
-      properties:
-        amount:
-          type: number
-          format: double
-          description: Ordered amount in øre
-          example: 20000
-        status:
-          type: string
-          enum:
-            - Refund
-          example: Refund
-          description: >-
-            Status which gives the current state of the payment within Vipps.
-            See the [API
-            guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#responses-from-requests)
-            for more information.
-        timeStamp:
-          type: string
-          description: Timestamp in ISO-8601 representing when the order was refunded.
-          example: '2018-12-12T11:18:38.246Z'
-        transactionId:
-          type: string
-          description: Vipps transaction id
-          example: '5001420062'
-        transactionText:
-          type: string
-          description: Transaction text to be displayed in Vipps
-          example: One pair of Vipps socks
-          maxLength: 100
-    TransactionInfoCapture:
-      type: object
-      required:
-        - amount
-        - status
-        - timeStamp
-        - transactionId
-        - transactionText
-      properties:
-        amount:
-          type: number
-          format: double
-          description: Ordered amount in øre
-          example: 20000
-        status:
-          type: string
-          enum:
             - Captured
+            - Refund
           example: Captured
           description: >-
             Status which gives the current state of the payment within Vipps.
@@ -1124,18 +1728,19 @@ components:
             for more information.
         timeStamp:
           type: string
-          description: Timestamp in ISO-8601 representing when the order was captured.
+          description: Timestamp in ISO-8601 representing when the order was performed.
           example: '2018-12-12T11:18:38.246Z'
         transactionId:
           type: string
           description: Vipps transaction id
+          pattern: '^\d{10}$'
           example: '5001420062'
         transactionText:
           type: string
           description: Transaction text to be displayed in Vipps
           example: One pair of Vipps socks
           maxLength: 100
-    GetTransactionDetails:
+    TransactionDetails:
       type: object
       properties:
         orderId:
@@ -1157,7 +1762,7 @@ components:
           $ref: '#/components/schemas/TransactionSummary'
         userDetails:
           $ref: '#/components/schemas/UserDetails'
-    InitiatePaymentV2Representation:
+    PaymentInitiationResponse:
       type: object
       required:
         - orderId
@@ -1175,10 +1780,12 @@ components:
           type: string
           description: >-
             URL to redirect the user to Vipps landing page or a deeplink URL to
-            open Vipps app, if isApp was set as true. The landing page will
+            open Vipps app, if `isApp` was set as true. The landing page will
             also redirect a user to the app if the user is using a mobile browser.
             This link will timeout after 5 minutes.
-          example: 'https://example.com'
+            This example is a shortened deeplink URL.
+            The URL received fromn Vipps should not be changed, and the format may change without notice.
+          example: 'https://api.vipps.no/dwo-api-application/v1/deeplink/vippsgateway?v=2&token=eyJraWQiOiJqd3RrZXkiLC <snip>'
     ShippingDetailsRequest:
       type: object
       required:
@@ -1192,7 +1799,8 @@ components:
         shippingCost:
           type: number
           format: double
-          description: Shipping cost
+          description: Shipping cost, in øre.
+          example: 9900
         shippingMethod:
           type: string
           description: >-
@@ -1203,7 +1811,9 @@ components:
           maxLength: 256
         shippingMethodId:
           type: string
-    TransactionResponseCancel:
+          maxLength: 100
+          example: posten-servicepakke
+    TransactionResponse:
       type: object
       required:
         - orderId
@@ -1217,41 +1827,7 @@ components:
           pattern: '^[a-zA-Z0-9-]{1,30}$'
           maxLength: 30
         transactionInfo:
-          $ref: '#/components/schemas/TransactionInfoCancel'
-        transactionSummary:
-          $ref: '#/components/schemas/TransactionSummary'
-    TransactionResponseCapture:
-      type: object
-      required:
-        - orderId
-      properties:
-        orderId:
-          type: string
-          description: >-
-            Id which uniquely identifies a payment. Maximum length is 30
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
-          example: order123abc
-          pattern: '^[a-zA-Z0-9-]{1,30}$'
-          maxLength: 30
-        transactionInfo:
-          $ref: '#/components/schemas/TransactionInfoCapture'
-        transactionSummary:
-          $ref: '#/components/schemas/TransactionSummary'
-    TransactionResponseRefund:
-      type: object
-      required:
-        - orderId
-      properties:
-        orderId:
-          type: string
-          description: >-
-            Id which uniquely identifies a payment. Maximum length is 30
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
-          example: order123abc
-          pattern: '^[a-zA-Z0-9-]{1,30}$'
-          maxLength: 30
-        transaction:
-          $ref: '#/components/schemas/TransactionInfoRefund'
+          $ref: '#/components/schemas/TransactionInfo'
         transactionSummary:
           $ref: '#/components/schemas/TransactionSummary'
     MerchantInfoPayment:
@@ -1287,6 +1863,7 @@ components:
         shippingCost:
           type: number
           format: double
+          example: 9900
         shippingMethod:
           type: string
           description: >-
@@ -1297,6 +1874,8 @@ components:
           maxLength: 256
         shippingMethodId:
           type: string
+          maxLength: 100
+          example: posten-servicepakke
     InitiatePaymentCommand:
       type: object
       required:
@@ -1305,12 +1884,12 @@ components:
         - transaction
       properties:
         customerInfo:
-          $ref: '#/components/schemas/CustomerInfoDto'
+          $ref: '#/components/schemas/CustomerInfo'
         merchantInfo:
-          $ref: '#/components/schemas/MerchantInfoDto'
+          $ref: '#/components/schemas/MerchantInfo'
         transaction:
-          $ref: '#/components/schemas/TransactionInfoInitiateDTO'
-    TransactionInfoInitiateDTO:
+          $ref: '#/components/schemas/TransactionInfoInitiate'
+    TransactionInfoInitiate:
       type: object
       required:
         - amount
@@ -1320,7 +1899,7 @@ components:
         amount:
           type: integer
           format: int32
-          description: Amount in øre. 32 bit Integer (2147483647)
+          description: Amount in øre. 32 bit Integer (2147483647). Must be non-zero.
           pattern: '^\d{3,}$'
           example: 20000
         orderId:
@@ -1341,7 +1920,12 @@ components:
           description: Transaction text to be displayed in Vipps
           example: One pair of Vipps socks
           maxLength: 100
-    MerchantInfoDto:
+        skipLandingPage:
+          type: boolean
+          example: false
+          default: false
+          description: Skips the landing page for whitelisted sale units. Requires a valid customerInfo.mobileNumber.
+    MerchantInfo:
       type: object
       required:
         - callbackPrefix
@@ -1369,11 +1953,11 @@ components:
             must validate with the Apache Commons
             [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
           maxLength: 255
-          example: 'https://example.com/vipps/callbacks-for-payment-update'
+          example: 'https://example.com/vipps/callbacks-for-payment-updates'
         consentRemovalPrefix:
           type: string
           description: >-
-            Required for express checkout payments. This callback URL will be
+            Required for Vipps Hurtigkasse (express checkout) payments. This callback URL will be
             used by Vipps to inform the merchant that the user has revoked
             his/her consent: This Vipps user does do not want the merchant to
             store or use his/her personal information anymore. Required by GDPR.
@@ -1395,7 +1979,7 @@ components:
             URL-encoded, and must validate with the Apache Commons
             [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
           maxLength: 255
-          example: 'https://example.com/vipps/fallback-result-page/order123abc'
+          example: 'https://example.com/vipps/fallback-order-result-page/order123abc'
         isApp:
           type: boolean
           example: false
@@ -1419,8 +2003,8 @@ components:
           type: string
           description: >-
             This parameter will identify difference between a regular ecomm
-            payment and ecomm express payment. For express checkout, use: "eComm
-            Express Payment". Express checkouts require `consentRemovalPrefix`.
+            payment and ecomm express payment. For Vipps Hurtigkasse (express checkout), use: "eComm
+            Express Payment". Express checkouts requires `consentRemovalPrefix`.
           enum:
             - eComm Regular Payment
             - eComm Express Payment
@@ -1429,22 +2013,23 @@ components:
         shippingDetailsPrefix:
           type: string
           description: >-
-            In case of express checkout payment, merchant should pass this
+            In case of Vipps Hurtigkasse (express checkout) payment, merchant should pass this
             prefix to let Vipps fetch shipping cost and method related details.
             Vipps will add `/v2/payments/{orderId}/shippingDetails` to the end
             or this URL.
             We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
           maxLength: 255
-          example: 'https://example.com/vipps/shipping/'
+          example: 'https://example.com/vipps/shipping'
         staticShippingDetails:
           type: array
           items:
             $ref: '#/components/schemas/ShippingDetails'
           description: >-
-            If shipping method and cost are always a fixed value, for example 50kr,
+            If shipping method and cost are always a fixed value, for example 50 NOK,
             then the method and price can be provided during the initiate call.
             The shippingDetailsPrefix callback will not be used if this value is provided.
-    GetPaymentStatusResponse:
+            This will result in a faster checkout and a better customer experience.
+    PaymentStatus:
       type: object
       properties:
         orderId:
@@ -1475,7 +2060,7 @@ components:
           description: Transaction text to be displayed in Vipps
           example: One pair of Vipps socks
           maxLength: 100
-    FetchShippingCostAndMethod:
+    ShippingCostAndMethod:
       type: object
       required:
         - addressId
@@ -1490,11 +2075,13 @@ components:
           description: >-
             Vipps Provided address Id. To be returned in response in the same
             field
+          example: 100
         addressLine1:
           type: string
-          example: Dronning Eufemias gate 42
+          example: Robert Levins gate 5
         addressLine2:
           type: string
+          example: c/o Rune Garborg
         city:
           type: string
           description: City
@@ -1502,23 +2089,30 @@ components:
         country:
           type: string
           description: The only country supported is Norway
+          default: 'NO'
           example: 'NO'
         postCode:
           type: string
-          description: Four digits
+          description: Four digits for Norway.
           pattern: '^\d{4}$'
-          example: '0603'
+          example: '0154'
         addressType:
           type: string
+          description: 'The type of address: Home, business.'
+          pattern: '^\[A-Z]$'
+          enum:
+            - 'H'
+            - 'B'
+          default: 'H'
           example: H
-    CustomerInfoDto:
+    CustomerInfo:
       type: object
       properties:
         mobileNumber:
           type: string
           description: >-
             Mobile number of the user who has to pay for the transation from
-            Vipps. Allowed format: xxxxxxxx
+            Vipps. Allowed format: xxxxxxxx. No country code.
           minLength: 8
           maxLength: 8
           example: 91234567
@@ -1559,11 +2153,11 @@ components:
         shippingDetails:
           $ref: '#/components/schemas/ShippingDetailsRequest'
         transactionInfo:
-          $ref: '#/components/schemas/CallbackTransactionInfoStatus'
+          $ref: '#/components/schemas/CallbackTransactionInfoExpress'
         userDetails:
           $ref: '#/components/schemas/UserDetails'
         errorInfo:
-          $ref: '#/components/schemas/callbackErrorInfo'
+          $ref: '#/components/schemas/Error'
     RegularCheckOutPaymentRequest:
       type: object
       required:
@@ -1589,9 +2183,9 @@ components:
           pattern: '^[a-zA-Z0-9-]{1,30}$'
           maxLength: 30
         transactionInfo:
-          $ref: '#/components/schemas/CallbackTransactionInfoStatus'
+          $ref: '#/components/schemas/CallbackTransactionInfoRegular'
         errorInfo:
-          $ref: '#/components/schemas/callbackErrorInfo'
+          $ref: '#/components/schemas/Error'
     AuthorizationTokenResponse:
       type: object
       required:
@@ -1630,7 +2224,7 @@ components:
         access_token:
           type: string
           format: byte
-          example: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni
+          example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
     FetchShippingCostResponse:
       type: object
       required:
@@ -1681,7 +2275,41 @@ components:
           format: int32
           description: Total remaining amount to refund
           example: 20000
+        bankIdentificationNumber:
+          type: string
+          description: Bank Identification Number, first 6 digit of card number
+          example: 123456
     TransactionUpdateCallbackOneOf:
       oneOf:
         - $ref: '#/components/schemas/ExpressCheckOutPaymentRequest'
         - $ref: '#/components/schemas/RegularCheckOutPaymentRequest'
+    Error:
+      type: object
+      required:
+        - errorGroup
+        - errorCode
+        - errorMessage
+      properties:
+        errorGroup:
+          type: string
+          description: "The error group. See: https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-groups"
+          enum:
+            - Authentication
+            - Payment
+            - InvalidRequest
+            - VippsError
+            - User
+            - Merchant
+          example: "Payment"
+        errorCode:
+          type: string
+          description: "The error code. See: https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes"
+          example: "44"
+        errorMessage:
+          type: string
+          description: "A description of what went wrong. See https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#errors"
+          example: "Refused by issuer because of expired card"
+        contextId:
+          type: string
+          description: "A unique id for this error, useful for searching in logs"
+          example: f70b8bf7-c843-4bea-95d9-94725b19895f

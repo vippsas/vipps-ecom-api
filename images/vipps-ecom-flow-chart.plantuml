@@ -1,19 +1,16 @@
 @startuml
 skinparam monochrome true
 
-Title Flow chart for Vipps checkout
-
 scale 1.5
-'scale 1.5 | scale 200 width | scale 100 height | scale [max] 200x100
+left to right direction
 
 [*] --> Initiate
-Initiate --> Reserve :T1
-Initiate --> Cancel :T2
-Reserve --> Capture :T3
-Reserve --> Cancel  :T4
-Capture --> Refund  :T5
+Initiate --> Reserve: User confirms
+Reserve --> Capture: Merchant captures
+Reserve --> Cancel: Merchant cancels (potentially on behalf of the user)
+Capture --> Refund: Merchant refunds
 Capture --> [*]
-Cancel --> [*] 
+Cancel --> [*]
 Refund --> [*]
-
+Initiate --> Cancel: User cancels, or timeout
 @enduml
