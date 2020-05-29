@@ -353,7 +353,7 @@ possible to base an integration on a specific sequence of events.
 
 ## PC/Mac flow
 
-![Desktop lanfing page](images/vipps-ecom-screenshot-landing-page.png)
+![Desktop landing page](images/vipps-ecom-screenshot-landing-page.png)
 
 ### Desktop browser initiated payments
 
