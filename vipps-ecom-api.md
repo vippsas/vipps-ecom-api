@@ -240,10 +240,11 @@ remove this consent (via the Profile -> Security -> "Access to your information"
 ## Userinfo
 
 ```
-Early draft, this should be considered pilot functionality that we are currently rolling out in our test environemnt.
+Early draft, this should be considered pilot functionality that 
+we are currently rolling out in our test environemnt.
 ```
 
-Vipps offers a functionality to ask for a generic conset to access Userinfo. This is based on the [Vipps Login](https://github.com/vippsas/vipps-login-api) solution, but you as a merchant can seemlessly combine the two functionalites in a single user session. Combining both the userinfo and payment elements. This means that a merchant needs be registered with both Vipps Login, and Vipps Ecom functionality.
+Vipps offers a functionality to ask for a generic consent to access Userinfo. This is based on the [Vipps Login](https://github.com/vippsas/vipps-login-api) solution, but you as a merchant can seamlessly combine both the userinfo and payment elements. This means that a merchant needs be registered with both Vipps Login, and Vipps Ecom functionality.
 
 When you initiate a payment add the parameter `scopes` to ask for a users consent to share these details. For example like be email, address and name. The scopes are based on [Vipps Login's list of socopes](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api.md#scopes).
 
@@ -253,7 +254,7 @@ To request these scopes add the scopes to the initial call to
 The user then consents and pays in the app.
 
 >This operation has an all or nothing approach, a user must complete a valid payment and consent to all
-values in order to complete the session. If a user chooses to reject the terms the payment will not be processed.
+values in order to complete the session. If a user chooses to reject the terms the payment will not be processed. Unless the whole flow is completed, this will be handled as a failed payment in ecom APIs
 
 
 Once the user completes the session a unique identifier "sub" can be retrieved in the 
@@ -268,7 +269,8 @@ sub example format:
 ```
 
 This sub is a link between the Merchant and the user and can used to retrieve the users detail from the Vipps Login Solution in the endpoint 
-[`GET:/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo), special note, accessing the Login userinfo endpoint requires the login access token. [`POST:/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/oauth2Token). 
+[`GET:/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)
+**special note:** accessing the Login userinfo endpoint requires the login access token. [`POST:/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/oauth2Token). 
 
 ![Userinfo sequence](images/Userinfo_Direct.png)
 
