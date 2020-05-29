@@ -239,8 +239,11 @@ remove this consent (via the Profile -> Security -> "Access to your information"
 
 ## Userinfo
 
+
 **Important:** This is an early draft, this should be considered pilot
-functionality that we are currently rolling out in our test environemnt.
+functionality that we are currently rolling out in our test environemnt. 
+Swagger will be fully updated
+shortly
 
 Vipps offers a functionality to ask for a generic consent to access Userinfo.
 This is based on the
@@ -258,13 +261,12 @@ The scopes are based on
 To request these scopes add the scopes to the initial call to
 [`POST:​/ecomm​/v2​/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
 
-The user then consents and pays in the Vipps app.
+The user then consents and pays in the app.
 
-**Please note:** This operation has an "all or nothing" approach: A user must
-complete a valid payment and consent to _all_ values in order to complete the
-session. If a user chooses to reject the terms the payment will not be processed.
+>This operation has an all or nothing approach, a user must complete a valid payment and consent to all
+values in order to complete the session. If a user chooses to reject the terms the payment will not be processed. Unless the whole flow is completed, this will be handled as a failed payment in ecom APIs
 
-Once the user completes the session a unique identifier "sub" can be retrieved in the
+Once the user completes the session a unique identifier `sub` can be retrieved in the
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET) endpoint.
 
 Example `sub` format:
@@ -274,7 +276,8 @@ Example `sub` format:
 ```
 
 This `sub` is a link between the Merchant and the user and can used to retrieve the users detail from the Vipps Login Solution in the endpoint
-[`GET:/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo), special note, accessing the Login userinfo endpoint requires the login access token. [`POST:/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/oauth2Token).
+[`GET:/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)
+**special note:** accessing the Login userinfo endpoint requires the login access token. [`POST:/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/oauth2Token). 
 
 ![Userinfo sequence](images/Userinfo_Direct.png)
 
