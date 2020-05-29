@@ -2,55 +2,6 @@
 
 API version: 2.0
 
-<<<<<<< HEAD
-Document version 1.0.1'
-
-See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
-
-API details: [Swagger UI](https://vippsas.github.io/vipps-ecom-api/#/),
-[swagger.yaml](https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/docs/swagger.yaml),
-[swagger.json](https://raw.githubusercontent.com/vippsas/vipps-ecom-api/master/docs/swagger.json).
-
-# Table of contents
-
-- [Overview](#overview)
-  * [Checklist](#checklist)
-  * [Payment types](#payment-types)
-    + [Regular eCommerce payments](#regular-ecommerce-payments)
-      - [Reserve capture](#reserve-capture)
-      - [Direct capture](#direct-capture)
-    + [Desktop browsers and mobile browsers](#desktop-browsers-and-mobile-browsers)
-    + [Express checkout payments](#express-checkout-payments)
-      - [API endpoints required by Vipps from the merchant for express checkout](#api-endpoints-required-by-vipps-from-the-merchant-for-express-checkout)
-  * [Flow diagram](#flow-diagram)
-    + [Flow diagram details](#flow-diagram-details)
-- [API endpoints](#api-endpoints)
-  * [Authentication](#authentication)
-    + [Access token](#access-token)
-      - [HTTP response codes](#http-response-codes)
-  * [Initiate payment](#initiate-payment)
-    + [Initiate payment flows](#initiate-payment-flows)
-      - [Mobile browser initiated payments](#mobile-browser-initiated-payments)
-        * [Vipps app installed](#vipps-app-installed)
-        * [Vipps app not installed](#vipps-app-not-installed)
-      - [Desktop browser initiated payments](#desktop-browser-initiated-payments)
-      - [App initated payments](#app-initated-payments)
-    + [URL Validation](#url-validation)
-  * [Reserve](#reserve)
-  * [Cancel](#cancel)
-  * [Capture](#capture)
-  * [Refund](#refund)
-- [HTTP response codes](#http-response-codes-1)
-  * [Exception handling](#exception-handling)
-    + [Connection timeout](#connection-timeout)
-    + [Callback aborted/interrupted](#callback-aborted-interrupted)
-    + [PSP connection issues](#psp-connection-issues)
-  * [Error groups](#error-groups)
-  * [Error codes](#error-codes)
-- [App integration](#app-integration)
-  * [App-switch between mobile or desktop browsers and the Vipps app](#app-switch-between-mobile-or-desktop-browsers-and-the-vipps-app)
-    + [App-switch on iOS](#app-switch-on-ios)
-=======
 Document version 2.2.1.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
@@ -133,7 +84,6 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
   - [App integration](#app-integration)
   - [App-switch between browser and the Vipps app](#app-switch-between-browser-and-the-vipps-app)
     - [App-switch on iOS](#app-switch-on-ios)
->>>>>>> 5514dec1550848d7bbe7c4cf1f035b6abb3793c9
       - [Switch from merchant app to the Vipps app](#switch-from-merchant-app-to-the-vipps-app)
       - [Redirect back to the merchant app from Vipps app](#redirect-back-to-the-merchant-app-from-vipps-app)
       - [Registering a 3rd party app with URL scheme and handling custom URL calls](#registering-a-3rd-party-app-with-url-scheme-and-handling-custom-url-calls)
@@ -1450,14 +1400,6 @@ To maintain the session, the merchant can pass along a session identifier in the
 3. The merchant will open the URL received from Vipps backend API.
 4. Once the operation in the Vipps app is completed, Vipps will open the URL specified in `fallBack` URL.
 5. The merchant app should query the ecom API for updated status on the payment once user returns from the Vipps app.
-
-**Please note:** It is not possible for a user to choose another default browser on iOS.
-The phone's operation system, iOS, will always open links in Safari. Because of this,
-payments that have been started in a non-standarad browser, such as Chrome, will
-continue on Safari when the user is sent to the `fallbackURL`.
-Similar challenges occur when initiating payments in embedded browsers,
-such as Instagram and Facebook: iOS will open the URLs in Safari, not in
-the embedded browser.
 
 #### Switch from merchant app to the Vipps app
 
