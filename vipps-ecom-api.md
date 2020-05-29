@@ -270,7 +270,7 @@ sub example format:
 This sub is a link between the Merchant and the user and can used to retrieve the users detail from the Vipps Login Solution in the endpoint 
 [`GET:/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo), special note, accessing the Login userinfo endpoint requires the login access token. [`POST:/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/oauth2Token). 
 
-![Userinfo sequence](images/userinfo_Direct.png)
+![Userinfo sequence](images/Userinfo_Direct.png)
 
 ## Initiate payment flow: Phone and browser
 
