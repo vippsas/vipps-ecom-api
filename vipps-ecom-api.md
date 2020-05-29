@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.0.10
+Document version 1.0.1'
 
 See also the [Vipps eCommerce FAQ](vipps-ecom-api-faq.md)
 
@@ -1012,6 +1012,14 @@ To maintain the session, the merchant can pass along a session identifier throug
 3. The merchant will open the URL received from Vipps backend API.
 4. Once the operation in the Vipps app is completed, Vipps will open the URL specified in `fallbackURL`.
 5. From the Vipps mobile application appropriate status code will be appended to `fallbackURL` as a query string, such as `merchantApp://result?myAppData&status=301`.
+
+**Please note:** It is not possible for a user to choose another default browser on iOS.
+The phone's operation system, iOS, will always open links in Safari. Because of this,
+payments that have been started in a non-standarad browser, such as Chrome, will
+continue on Safari when the user is sent to the `fallbackURL`.
+Similar challenges occur when initiating payments in embedded browsers,
+such as Instagram and Facebook: iOS will open the URLs in Safari, not in
+the embedded browser.
 
 #### Switch from merchant app to the Vipps app
 
