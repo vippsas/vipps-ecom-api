@@ -264,7 +264,8 @@ To request these scopes add the scopes to the initial call to
 The user then consents and pays in the app.
 
 >This operation has an all or nothing approach, a user must complete a valid payment and consent to all
-values in order to complete the session. If a user chooses to reject the terms the payment will not be processed. Unless the whole flow is completed, this will be handled as a failed payment in ecom APIs
+values in order to complete the session. If a user chooses to reject the terms the payment will not be processed. Unless the whole flow is completed, 
+this will be handled as regular a failed payment by the ecom APIs
 
 Once the user completes the session a unique identifier `sub` can be retrieved in the
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET) endpoint.
