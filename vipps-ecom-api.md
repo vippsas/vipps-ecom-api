@@ -256,7 +256,7 @@ Vipps eCom functionality.
 When you initiate a payment add the parameter `scopes` to ask for a user's
 consent to share these details. For example like be email, address and name.
 The scopes are based on
-[Vipps Login's list of socopes](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api.md#scopes).
+[Vipps Login's list of scopes](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api.md#scopes).
 
 To request these scopes add the scopes to the initial call to
 [`POST:​/ecomm​/v2​/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
