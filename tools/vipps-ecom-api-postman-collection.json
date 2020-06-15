@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c7bc6058-1f3f-4394-992c-fcadfbbe8baf",
+		"_postman_id": "cd875290-3a64-4c8e-b56c-83d821428e3c",
 		"name": "eCommerce API v2 - Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,7 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "e82847b6-91eb-4ce3-9fb5-8198d399ff0a",
+						"id": "b6c10987-4510-4579-b9e5-77f802582775",
 						"exec": [
 							"pm.environment.set(\"access_token\", pm.response.json().access_token);"
 						],
@@ -58,7 +58,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "1c0a421f-d8b3-49f5-a04b-efb1c5d63bd0",
+						"id": "307aae54-572a-49b9-91c5-fb963efbb6c9",
 						"exec": [
 							"pm.environment.set('orderId',pm.environment.get('merchantSerialNumber') + (new Date()).getTime());"
 						],
@@ -80,6 +80,33 @@
 					{
 						"key": "Authorization",
 						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Vipps-System-Name",
+						"value": "{{vipps_system_name}}",
+						"type": "text"
+					},
+					{
+						"key": "Vipps-System-Version",
+						"value": "{{collection_version}}",
+						"type": "text"
+					},
+					{
+						"key": "Vipps-System-Plugin-Name",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Vipps-System-Plugin-Version",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Merchant-Serial-Number",
+						"value": "{{merchantSerialNumber}}",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -107,7 +134,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "1c0a421f-d8b3-49f5-a04b-efb1c5d63bd0",
+						"id": "1181af8e-c838-48d5-9036-6b66d7330a35",
 						"exec": [
 							"pm.environment.set('orderId',pm.environment.get('merchantSerialNumber') + (new Date()).getTime());"
 						],
@@ -129,6 +156,33 @@
 					{
 						"key": "Authorization",
 						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Vipps-System-Name",
+						"value": "{{vipps_system_name}}",
+						"type": "text"
+					},
+					{
+						"key": "Vipps-System-Version",
+						"value": "{{collection_version}}",
+						"type": "text"
+					},
+					{
+						"key": "Vipps-System-Plugin-Name",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Vipps-System-Plugin-Version",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Merchant-Serial-Number",
+						"value": "{{merchantSerialNumber}}",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -156,7 +210,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "28dcc2df-296c-4c0d-a05b-4e171230b6e1",
+						"id": "8a626d25-f73f-45fb-b65f-495a1dbde57b",
 						"exec": [
 							""
 						],
@@ -209,6 +263,33 @@
 					{
 						"key": "Ocp-Apim-Subscription-Key",
 						"value": "{{Ocp-Apim-Subscription-Key}}"
+					},
+					{
+						"key": "Vipps-System-Name",
+						"value": "{{vipps_system_name}}",
+						"type": "text"
+					},
+					{
+						"key": "Vipps-System-Version",
+						"value": "{{collection_version}}",
+						"type": "text"
+					},
+					{
+						"key": "Vipps-System-Plugin-Name",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Vipps-System-Plugin-Version",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Merchant-Serial-Number",
+						"value": "{{merchantSerialNumber}}",
+						"type": "text"
 					}
 				],
 				"url": {
@@ -243,6 +324,33 @@
 					{
 						"key": "Authorization",
 						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Vipps-System-Name",
+						"value": "{{vipps_system_name}}",
+						"type": "text"
+					},
+					{
+						"key": "Vipps-System-Version",
+						"value": "{{collection_version}}",
+						"type": "text"
+					},
+					{
+						"key": "Vipps-System-Plugin-Name",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Vipps-System-Plugin-Version",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Merchant-Serial-Number",
+						"value": "{{merchantSerialNumber}}",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -271,7 +379,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "c81cb9b3-5b95-43ea-a7c0-3421b7f3bd58",
+						"id": "a4e7391d-283f-4438-8cf6-7724c318e3c8",
 						"exec": [
 							""
 						],
@@ -297,6 +405,33 @@
 					{
 						"key": "X-Request-Id",
 						"value": "{{orderId}}XIDC1"
+					},
+					{
+						"key": "Vipps-System-Name",
+						"value": "{{vipps_system_name}}",
+						"type": "text"
+					},
+					{
+						"key": "Vipps-System-Version",
+						"value": "{{collection_version}}",
+						"type": "text"
+					},
+					{
+						"key": "Vipps-System-Plugin-Name",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Vipps-System-Plugin-Version",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Merchant-Serial-Number",
+						"value": "{{merchantSerialNumber}}",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -325,20 +460,47 @@
 				"method": "POST",
 				"header": [
 					{
-						"key": "Authorization",
-						"value": "Bearer {{access_token}}"
+						"key": "Content-Type",
+						"value": "application/json"
 					},
 					{
 						"key": "Ocp-Apim-Subscription-Key",
 						"value": "{{Ocp-Apim-Subscription-Key}}"
 					},
 					{
-						"key": "Content-Type",
-						"value": "application/json"
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
 					},
 					{
 						"key": "X-Request-Id",
 						"value": "{{orderId}}XIDR1"
+					},
+					{
+						"key": "Vipps-System-Name",
+						"value": "{{vipps_system_name}}",
+						"type": "text"
+					},
+					{
+						"key": "Vipps-System-Version",
+						"value": "{{collection_version}}",
+						"type": "text"
+					},
+					{
+						"key": "Vipps-System-Plugin-Name",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Vipps-System-Plugin-Version",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Merchant-Serial-Number",
+						"value": "{{merchantSerialNumber}}",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -361,5 +523,42 @@
 			},
 			"response": []
 		}
-	]
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "50da7547-a380-473f-b271-93790d8c5d6d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "4bb99196-e494-418e-a8ca-fab51f617671",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "11b0ba0e-e653-4da1-af83-837f854b7ba2",
+			"key": "collection_version",
+			"value": "2020-06-15",
+			"type": "string"
+		},
+		{
+			"id": "bccd9037-a154-4cbd-8a5d-faf260bee4d1",
+			"key": "vipps_system_name",
+			"value": "postman",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
 }
