@@ -548,13 +548,13 @@
 	],
 	"variable": [
 		{
-			"id": "edbff12f-ab32-4c24-9c10-4ce3db33f095",
+			"id": "11b0ba0e-e653-4da1-af83-837f854b7ba2",
 			"key": "collection_version",
-			"value": "2020-05-15",
+			"value": "2020-06-15",
 			"type": "string"
 		},
 		{
-			"id": "2746258c-240e-4b5b-be87-2cf51027ede1",
+			"id": "bccd9037-a154-4cbd-8a5d-faf260bee4d1",
 			"key": "vipps_system_name",
 			"value": "postman",
 			"type": "string"
