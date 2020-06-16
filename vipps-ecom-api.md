@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.2.2.
+Document version 2.3.0.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -15,88 +15,87 @@ and the [FAQ](vipps-ecom-api-faq.md).
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
 ## Table of contents
-- [Vipps eCommerce API](#vipps-ecommerce-api)
-  - [Table of contents](#table-of-contents)
-  - [Flow diagram](#flow-diagram)
-  - [API endpoints](#api-endpoints)
-  - [Optional Vipps HTTP headers](#optional-vipps-http-headers)
-  - [Initiate](#initiate)
-  - [Regular eCommerce payments](#regular-ecommerce-payments)
-    - [Reserve capture](#reserve-capture)
-    - [Direct capture](#direct-capture)
-    - [When to use reserve capture and direct capture](#when-to-use-reserve-capture-and-direct-capture)
-  - [Express checkout payments](#express-checkout-payments)
-    - [Shipping and static shipping details](#shipping-and-static-shipping-details)
-    - [Consent and GDPR](#consent-and-gdpr)
-  - [Userinfo](#userinfo)
-  - [Initiate payment flow: Phone and browser](#initiate-payment-flow-phone-and-browser)
-    - [Phone flow](#phone-flow)
-      - [Vipps installed](#vipps-installed)
-      - [Vipps not installed](#vipps-not-installed)
-  - [PC/Mac flow](#pcmac-flow)
-    - [Desktop browser initiated payments](#desktop-browser-initiated-payments)
-    - [Payments initiated in an app](#payments-initiated-in-an-app)
-    - [Initiate payment flow: API calls](#initiate-payment-flow-api-calls)
-      - [The Vipps deeplink URL](#the-vipps-deeplink-url)
-  - [Payment identification](#payment-identification)
-  - [Payment retries](#payment-retries)
-  - [orderId recommendations](#orderid-recommendations)
-  - [URL Validation](#url-validation)
-  - [Callbacks](#callbacks)
-    - [Callback endpoints](#callback-endpoints)
-    - [Callback examples](#callback-examples)
-    - [Authorization for callbacks](#authorization-for-callbacks)
-    - [Vipps callback servers](#vipps-callback-servers)
-    - [Callback URLs must be reachable](#callback-urls-must-be-reachable)
-    - [Callback statuses](#callback-statuses)
-  - [Timeouts](#timeouts)
-    - [Using a phone](#using-a-phone)
-    - [Using a laptop/desktop](#using-a-laptopdesktop)
-  - [Express checkout API endpoints required on the merchant side](#express-checkout-api-endpoints-required-on-the-merchant-side)
-    - [Get shipping details](#get-shipping-details)
-    - [Transaction update](#transaction-update)
-    - [Remove User Consent](#remove-user-consent)
-  - [Skip landing page](#skip-landing-page)
-  - [Reserve](#reserve)
-  - [The Vipps landing page](#the-vipps-landing-page)
-  - [Capture](#capture)
-  - [Reserve capture](#reserve-capture-1)
-  - [Direct capture](#direct-capture-1)
-  - [Partial capture](#partial-capture)
-  - [Cancel](#cancel)
-    - [Cancelling a pending order](#cancelling-a-pending-order)
-  - [Refund](#refund)
-  - [Recurring eCommerce payments](#recurring-ecommerce-payments)
-  - [Get payment details](#get-payment-details)
-    - [Payment states](#payment-states)
-  - [Requests and responses](#requests-and-responses)
-    - [Example response](#example-response)
-  - [Polling guidelines](#polling-guidelines)
-  - [Get payment status](#get-payment-status)
-  - [HTTP response codes](#http-response-codes)
-  - [Authentication](#authentication)
-    - [Access token](#access-token)
-    - [Partner Keys](#partner-keys)
-  - [Idempotency](#idempotency)
-  - [Exception handling](#exception-handling)
-    - [Connection timeout](#connection-timeout)
-    - [Callback aborted or interrupted](#callback-aborted-or-interrupted)
-    - [PSP connection issues](#psp-connection-issues)
-  - [App integration](#app-integration)
-  - [App-switch between browser and the Vipps app](#app-switch-between-browser-and-the-vipps-app)
-    - [App-switch on iOS](#app-switch-on-ios)
-      - [Switch from merchant app to the Vipps app](#switch-from-merchant-app-to-the-vipps-app)
-      - [Redirect back to the merchant app from Vipps app](#redirect-back-to-the-merchant-app-from-vipps-app)
-      - [Registering a 3rd party app with URL scheme and handling custom URL calls](#registering-a-3rd-party-app-with-url-scheme-and-handling-custom-url-calls)
-    - [App-switch on Android](#app-switch-on-android)
-      - [Switching from merchant app to the Vipps app](#switching-from-merchant-app-to-the-vipps-app)
-      - [Switching back to the merchant app from Vipps app](#switching-back-to-the-merchant-app-from-vipps-app)
-      - [Return back to merchant app by actively deeplinking into it from Vipps](#return-back-to-merchant-app-by-actively-deeplinking-into-it-from-vipps)
-      - [Redirect back to merchant app by simply closing the Vipps app](#redirect-back-to-merchant-app-by-simply-closing-the-vipps-app)
-  - [Errors](#errors)
-    - [Error object in the response](#error-object-in-the-response)
-  - [Error groups](#error-groups)
-  - [Error codes](#error-codes)
+
+- [Flow diagram](#flow-diagram)
+- [API endpoints](#api-endpoints)
+- [Optional Vipps HTTP headers](#optional-vipps-http-headers)
+- [Initiate](#initiate)
+- [Regular eCommerce payments](#regular-ecommerce-payments)
+  - [Reserve capture](#reserve-capture)
+  - [Direct capture](#direct-capture)
+  - [When to use reserve capture and direct capture](#when-to-use-reserve-capture-and-direct-capture)
+- [Express checkout payments](#express-checkout-payments)
+  - [Shipping and static shipping details](#shipping-and-static-shipping-details)
+  - [Consent and GDPR](#consent-and-gdpr)
+- [Initiate payment flow: Phone and browser](#initiate-payment-flow-phone-and-browser)
+  - [Phone flow](#phone-flow)
+    - [Vipps installed](#vipps-installed)
+    - [Vipps not installed](#vipps-not-installed)
+- [PC/Mac flow](#pcmac-flow)
+  - [Desktop browser initiated payments](#desktop-browser-initiated-payments)
+  - [Payments initiated in an app](#payments-initiated-in-an-app)
+  - [Initiate payment flow: API calls](#initiate-payment-flow-api-calls)
+    - [The Vipps deeplink URL](#the-vipps-deeplink-url)
+- [Payment identification](#payment-identification)
+- [Payment retries](#payment-retries)
+- [orderId recommendations](#orderid-recommendations)
+- [URL Validation](#url-validation)
+- [Callbacks](#callbacks)
+  - [Callback endpoints](#callback-endpoints)
+  - [Callback examples](#callback-examples)
+  - [Authorization for callbacks](#authorization-for-callbacks)
+  - [Vipps callback servers](#vipps-callback-servers)
+  - [Callback URLs must be reachable](#callback-urls-must-be-reachable)
+  - [Callback statuses](#callback-statuses)
+- [Timeouts](#timeouts)
+  - [Using a phone](#using-a-phone)
+  - [Using a laptop/desktop](#using-a-laptopdesktop)
+- [Express checkout API endpoints required on the merchant side](#express-checkout-api-endpoints-required-on-the-merchant-side)
+  - [Get shipping details](#get-shipping-details)
+  - [Transaction update](#transaction-update)
+  - [Remove User Consent](#remove-user-consent)
+- [Skip landing page](#skip-landing-page)
+- [Reserve](#reserve)
+- [The Vipps landing page](#the-vipps-landing-page)
+- [Capture](#capture)
+- [Reserve capture](#reserve-capture-1)
+- [Direct capture](#direct-capture-1)
+- [Partial capture](#partial-capture)
+- [Cancel](#cancel)
+  - [Cancelling a pending order](#cancelling-a-pending-order)
+- [Refund](#refund)
+- [Recurring eCommerce payments](#recurring-ecommerce-payments)
+- [Get payment details](#get-payment-details)
+  - [Payment states](#payment-states)
+- [Requests and responses](#requests-and-responses)
+  - [Example response](#example-response)
+- [Polling guidelines](#polling-guidelines)
+- [Get payment status](#get-payment-status)
+- [Userinfo](#userinfo)
+- [HTTP response codes](#http-response-codes)
+- [Authentication](#authentication)
+  - [Access token](#access-token)
+  - [Partner Keys](#partner-keys)
+- [Idempotency](#idempotency)
+- [Exception handling](#exception-handling)
+  - [Connection timeout](#connection-timeout)
+  - [Callback aborted or interrupted](#callback-aborted-or-interrupted)
+  - [PSP connection issues](#psp-connection-issues)
+- [App integration](#app-integration)
+- [App-switch between browser and the Vipps app](#app-switch-between-browser-and-the-vipps-app)
+  - [App-switch on iOS](#app-switch-on-ios)
+    - [Switch from merchant app to the Vipps app](#switch-from-merchant-app-to-the-vipps-app)
+    - [Redirect back to the merchant app from Vipps app](#redirect-back-to-the-merchant-app-from-vipps-app)
+    - [Registering a 3rd party app with URL scheme and handling custom URL calls](#registering-a-3rd-party-app-with-url-scheme-and-handling-custom-url-calls)
+  - [App-switch on Android](#app-switch-on-android)
+    - [Switching from merchant app to the Vipps app](#switching-from-merchant-app-to-the-vipps-app)
+    - [Switching back to the merchant app from Vipps app](#switching-back-to-the-merchant-app-from-vipps-app)
+    - [Return back to merchant app by actively deeplinking into it from Vipps](#return-back-to-merchant-app-by-actively-deeplinking-into-it-from-vipps)
+    - [Redirect back to merchant app by simply closing the Vipps app](#redirect-back-to-merchant-app-by-simply-closing-the-vipps-app)
+- [Errors](#errors)
+  - [Error object in the response](#error-object-in-the-response)
+- [Error groups](#error-groups)
+- [Error codes](#error-codes)
 - [Testing](#testing)
 - [Questions?](#questions)
 
@@ -236,51 +235,6 @@ is shared with the merchant. The merchant must provide a URL (`consentRemovalPre
 that Vipps can call to delete the data. The Vipps app allows the user to later
 remove this consent (via the Profile -> Security -> "Access to your information"
 -> "Companies that remember you" screens).
-
-## Userinfo
-
-
-**Important:** This is an early draft, this should be considered pilot
-functionality that we are currently rolling out in our test environemnt. 
-Swagger will be fully updated
-shortly
-
-Vipps offers a functionality to ask for a generic consent to access Userinfo.
-This is based on the
-[Vipps Login](https://github.com/vippsas/vipps-login-api)
-solution, but you as a merchant can seamlessly combine the two functionalites
-in a single user session. Combining both the userinfo and payment elements.
-This means that a merchant needs be registered with both Vipps Login, and
-Vipps eCom functionality.
-
-When you initiate a payment add the parameter `scopes` to ask for a user's
-consent to share these details. For example like be email, address and name.
-The scopes are based on
-[Vipps Login's list of scopes](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api.md#scopes).
-
-To request these scopes add the scopes to the initial call to
-[`POST:​/ecomm​/v2​/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
-
-The user then consents and pays in the app.
-
->This operation has an all or nothing approach, a user must complete a valid payment and consent to all
-values in order to complete the session. If a user chooses to reject the terms the payment will not be processed. Unless the whole flow is completed, 
-this will be handled as regular a failed payment by the ecom APIs
-
-Once the user completes the session a unique identifier `sub` can be retrieved in the
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET) endpoint.
-
-Example `sub` format:
-
-```
-"sub": "c06c4afe-d9e1-4c5d-939a-177d752a0944",
-```
-
-This `sub` is a link between the Merchant and the user and can used to retrieve the users detail from the Vipps Login Solution in the endpoint
-[`GET:/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)
-**special note:** accessing the Login userinfo endpoint requires the login access token. [`POST:/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/oauth2Token). 
-
-![Userinfo sequence](images/userinfo-direct.png)
 
 ## Initiate payment flow: Phone and browser
 
@@ -1196,6 +1150,55 @@ See [Timeouts](#timeouts) for details about timeouts.
 | `FAILED`   | Payment failed failed because of no coverage, outdated card details or similar. |
 | `REJECTED` | No user action in the Vipps app, i.e timeout. |
 
+## Userinfo
+
+**Important:** This is an early draft, this should be considered pilot
+functionality that we are currently rolling out in our test environemnt.
+Swagger will be fully updated
+shortly
+
+Vipps offers a functionality to ask for a generic consent to access Userinfo.
+This is based on the
+[Vipps Login](https://github.com/vippsas/vipps-login-api)
+solution, but merchants can seamlessly combine the two functionalites
+in a single user session. Combining both the userinfo and payment elements
+requires the merchant to be registered with both Vipps Login and
+Vipps eCom APIs.
+
+When you initiate a payment add the parameter `scopes` to ask for a user's
+consent to share these details, such as email, address and name.
+The scopes are based on
+[Vipps Login's list of scopes](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api.md#scopes).
+
+To request these scopes add the scopes to the initial call to
+[`POST:​/ecomm​/v2​/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
+
+The user then consents and pays in the app.
+
+**Please note:** This operation has an all or nothing approach, a user must
+complete a valid payment and consent to all values in order to complete the
+session. If a user chooses to reject the terms the payment will not be
+processed. Unless the whole flow is completed, this will be handled as regular
+a failed payment by the ecom APIs
+
+Once the user completes the session a unique identifier `sub` can be retrieved in the
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET) endpoint.
+
+Example `sub` format:
+
+```
+"sub": "c06c4afe-d9e1-4c5d-939a-177d752a0944",
+```
+
+This `sub` is a link between the merchant and the user and can used to retrieve
+the user's details from Vipps Login:
+[`GET:/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)
+
+**Please note:** accessing the Login `userinfo` endpoint requires the
+Vipps Login access token:
+[`POST:/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/oauth2Token).
+
+![Userinfo sequence](images/userinfo-direct.png)
 
 ## HTTP response codes
 
