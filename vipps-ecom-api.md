@@ -891,7 +891,9 @@ call. The capture is only successful when the response is
 
 ## Cancel
 
-Reservations can be cancelled, and the payment flow aborted, under certain circumstances:
+The Cancel request allows the merchant to cancel a reserved or initiated transaction.
+
+The payment flow can be aborted, under certain circumstances:
 
 * When the user cancels (rejects) the initiated payment in the Vipps app.
 * When the merchant cancels.
