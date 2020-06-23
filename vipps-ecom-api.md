@@ -1109,7 +1109,7 @@ always contain _the entire history_ of payments for the order, not just the curr
         {
             "amount": 20000,
             "transactionText": "One pair of Vipps socks",
-            "transactionId": "5001420061",
+            "transactionId": "5001420062",
             "timeStamp": "2018-11-14T15:21:04.697Z",
             "operation": "INITIATE",
             "requestId": "",
