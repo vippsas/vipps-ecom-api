@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.1.
+Document version 2.3.2.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -1246,7 +1246,7 @@ The Access Token API provides the JWT bearer token:
 Request:
 
 ```http
-POST https://apitest.vipps.no/accessToken/get
+POST https://apitest.vipps.no/accesstoken/get
 client_id: fb492b5e-7907-4d83-ba20-c7fb60ca35de
 client_secret: Y8Kteew6GE2ZmeycEt6egg==
 Ocp-Apim-Subscription-Key: 0f14ebcab0ec4b29ae0cb90d91b4a84a
