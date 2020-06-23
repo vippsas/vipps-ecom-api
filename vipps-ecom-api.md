@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.0.
+Document version 2.3.1.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -1109,7 +1109,7 @@ always contain _the entire history_ of payments for the order, not just the curr
         {
             "amount": 20000,
             "transactionText": "One pair of Vipps socks",
-            "transactionId": "5001420062",
+            "transactionId": "5001420061",
             "timeStamp": "2018-11-14T15:21:04.697Z",
             "operation": "INITIATE",
             "requestId": "",
