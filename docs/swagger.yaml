@@ -677,7 +677,7 @@ paths:
         - Vipps eCom API
       summary: Cancel Payment
       description: >-
-        The API call allows merchant to cancel the reserved transaction, The API
+        The API call allows merchant to cancel the reserved or initiated transaction. The API
         will not allow partial cancellation which has the consequence that
         partially captured transactions cannot be cancelled. Please note that in
         a case of communication errors during initiate payment service call

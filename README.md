@@ -11,6 +11,7 @@ For more information about this product, please see
 * [Frequently Asked Questions](vipps-ecom-api-faq.md): Questions and answers.
 * [Postman guide](vipps-ecom-postman.md): Guide for using our Postman collection.
 * [Vipps eCom python example](https://github.com/vippsas/vipps-developers/tree/master/code-examples/ecom_python_example): Example code, in the hope that it may be useful.
+* [Vipps In Store](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-in-store-howitworks.md): How the Vipps ecom API can be integrated in your POS system.
 
 You can peruse the API reference documentation as:
 * [Swagger](https://vippsas.github.io/vipps-ecom-api/)
