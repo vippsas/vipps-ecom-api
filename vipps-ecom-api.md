@@ -1607,7 +1607,7 @@ See [HTTP response codes](#http-response-codes).
 ]
 ```
 
-```json
+```json 
 {
     "statusCode": 401,
     "message": "Access denied due to invalid subscription key. Make sure to provide a valid key for an active subscription."
