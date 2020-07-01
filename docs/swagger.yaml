@@ -878,11 +878,12 @@ paths:
           example: 0f14ebcab0ec4b29ae0cb90d91b4a84a
         - in: header
           name: X-Request-Id
+          required: true
           description: >-
             Used for making requests idempotent. Adding X-Request-Id will allow
             repeated requests without it making additional changes.
             Unique for orderId, merchantSerialNumber and endpoint.
-            Max 30 characters.
+            Max 30 characters. Required if the amount is partial.
           schema:
             type: string
           example: kRk3uEeiogxLu1yGSZRlNgsIv3TuNS
