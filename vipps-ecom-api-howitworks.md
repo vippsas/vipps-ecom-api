@@ -20,7 +20,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 The user chooses “Pay with Vipps”, either in the checkout, or on the product page (express checkout) of a merchant’s website or app.
 
-![Pay with Vipps](images/vipps-ecom-step1.svg)
+![Pay with Vipps](images/vipps-ecom-step1-2.svg)
 
 ## 2. The Vipps landing page
 
@@ -37,7 +37,7 @@ The user receives a push notification on their phone. They log in to Vipps, and 
 
 For express checkout they also have to choose a shipping cost alternative.
 
-![Confirm payment](images/vipps-ecom-step3.svg)
+![Confirm payment](images/vipps-ecom-step3-2.svg)
 
 ## 4. Order Confirmation
 
