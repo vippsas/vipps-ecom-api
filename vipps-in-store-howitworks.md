@@ -27,7 +27,7 @@ When the customer is ready to pay, choose “Pay with Vipps”, and enter the cu
 
 The customer confirms the payment in Vipps on their phone.
 
-![Confirm payment](images/vipps-in-store-step3.svg)
+![Confirm payment](images/vipps-in-store-step3-2.svg)
 
 ## 4. Payment is registered
 
