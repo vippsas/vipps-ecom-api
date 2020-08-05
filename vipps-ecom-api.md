@@ -271,7 +271,7 @@ If Vipps is installed, Vipps will automatically be opened.
 actions, network connectivity/speed, etc. Because og this, it is not
 possible to base an integration on a specific sequence of events.
 
-## PC/Mac flow
+## Desktop flow
 
 ![Desktop landing page](images/vipps-ecom-screenshot-landing-page.png)
 
@@ -1422,20 +1422,14 @@ Merchants may implement deep-linking, to trigger the Vipps app (we refer to this
 
 This may be done in two ways:
 
-1. From a mobile or desktop browser
+1. From a mobile or desktop browser. See [Desktop flow](#desktop-flow)
 2. From an iOS or Android native app
 
-After the user has finished (or cancelled) the payment in the Vipps app, the user is returned back to the browser or native app that started the payment flow (via a the fallback URL provided by the merchant when the order is created). The merchant app or website should then query the ecom API for the updated state of the payment operation.
-
-**Please note:** When the user arrives back in the merchant app or website, we
-_strongly_ recommend that you perform a call to the eCom API to check the state
+After the user has finished (or cancelled) the payment in the Vipps app, the user is returned back to the browser or native app that started the payment flow (via a the fallback URL provided by the merchant when the order is created). When the user arrives back in the merchant app or website, we
+_strongly_ recommend that you perform a call to the [payment details endpoint](#get-payment-details) to check the state
 of the transaction. While some of the state of the eCom operation *can* be
 derived from things like whether or not user returned successfully from the
-native app, the most reliable approach to know the state of the payment flow
-is always to query the eCom API once you arrive back in the merchant app/website:
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET).
-
-The sections below explain in more detail how to integrate for browsers and apps.
+Vipps app, the most reliable approach to know the state of the payment is always to query the eCom API once the customer arrive back in the merchant app/website.
 
 ## App-switching
 1. The merchant need to pass the URL scheme of the app into the `fallBack` field in the [initiate payment request](#initiate-payment-flow-api-calls). See [App-switch on iOS](#app-switch-on-ios) and [App-switch on Android](#app-switch-on-android) for specifics.
