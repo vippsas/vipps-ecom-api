@@ -1437,21 +1437,21 @@ is always to query the eCom API once you arrive back in the merchant app/website
 
 The sections below explain in more detail how to integrate for browsers and apps.
 
-## App-switch between browser and the Vipps app
+## App-switching
+1. The merchant need to pass the URL scheme of the app into the `fallBack` field in the [initiate payment request](#initiate-payment-flow-api-calls). See [App-switch on iOS](#app-switch-on-ios) and [App-switch on Android](#app-switch-on-android) for specifics.
+2. The merchant app should open the Vipps app deeplink received from the [initiate payment request](#initiate-payment-flow-api-calls).
+3. Once the operation in the Vipps app is completed, Vipps will redirect the user to the deeplink specified in the `fallBack` field.
+4. The merchant app should query the [payment details endpoint](#get-payment-details) for updated status on the payment once user returns from the Vipps app.
 
-For mobile and desktop browsers, integration is handled by Vipps using the Vipps landing page.
-
-The merchant needs to provide a valid `fallBack` URL.
-When Vipps has completed the operation, the `fallBack` URL will be opened in the browser.
-To maintain the session, the merchant can pass along a session identifier in the `fallBack` URL.
+**Please note:** Vipps will append a status at the end of the fallback URL. For example, if your `fallBack` URL is `merchantApp://result?myAppData`, Vipps
+will append the status like: `merchantApp://result?myAppData&status=301`. **This status is deprecated, and should no longer be used.** Query the [payment details endpoint](#get-payment-details) for latest status instead.
 
 ### App-switch on iOS
+The Vipps app on iOS requires a URL scheme in order to support app-switch.
 
-1. The Vipps app on iOS requires a URL scheme in order to support app-switch.
-2. The merchant need to pass the URL Scheme of app into `fallBack` URL the in Vipps backend API.
-3. The merchant will open the URL received from Vipps backend API.
-4. Once the operation in the Vipps app is completed, Vipps will open the URL specified in `fallBack` URL.
-5. The merchant app should query the ecom API for updated status on the payment once user returns from the Vipps app.
+See the official Apple documentation:
+[Defining a Custom URL Scheme for Your App](https://developer.apple.com/documentation/uikit/core_app/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app)
+
 
 #### Switch from merchant app to the Vipps app
 
@@ -1482,14 +1482,6 @@ Once the operation in the Vipps app is completed, the Vipps app will open the fa
 For app-to-app integration, merchant app needs to be registered for a URL scheme
 and pass the URL scheme in `fallBack` URL in the Vipps backend API.
 The Vipps mobile application will use the URL to launch the merchant application.
-
-For example, if your `fallBack` URL is `merchantApp://result?myAppData`, Vipps
-will append the status like: `merchantApp://result?myAppData&status=301`.
-
-#### Registering a 3rd party app with URL scheme and handling custom URL calls
-
-See the official Apple documentation:
-[Defining a Custom URL Scheme for Your App](https://developer.apple.com/documentation/uikit/core_app/allowing_apps_and_websites_to_link_to_your_content/defining_a_custom_url_scheme_for_your_app)
 
 ### App-switch on Android
 
