@@ -1545,6 +1545,7 @@ Darkula color scheme from the JetBrains family of IDEs
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
+<!-- backwards compatibility -->
   </head>
 
   <body data-languages="[&quot;shell&quot;,&quot;http&quot;,&quot;javascript&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;php&quot;,&quot;java&quot;,&quot;go&quot;]">
@@ -1766,6 +1767,11 @@ Darkula color scheme from the JetBrains family of IDEs
                 
                   <li>
                     <a href="#tocs_shippingdetailsrequest" class="toc-h2 toc-link" data-title="">ShippingDetailsRequest</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#tocs_refundtransactionresponse" class="toc-h2 toc-link" data-title="">RefundTransactionResponse</a>
                     
                   </li>
                 
@@ -3087,7 +3093,7 @@ System.out.println(response.toString());
 </blockquote>
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
-  <span class="hljs-attr">&quot;transaction&quot;</span>: {
+  <span class="hljs-attr">&quot;transactionInfo&quot;</span>: {
     <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">20000</span>,
     <span class="hljs-attr">&quot;status&quot;</span>: <span class="hljs-string">&quot;Captured&quot;</span>,
     <span class="hljs-attr">&quot;timeStamp&quot;</span>: <span class="hljs-string">&quot;2018-12-12T11:18:38.246Z&quot;</span>,
@@ -3499,7 +3505,7 @@ System.out.println(response.toString());
 </blockquote>
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
-  <span class="hljs-attr">&quot;transaction&quot;</span>: {
+  <span class="hljs-attr">&quot;transactionInfo&quot;</span>: {
     <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">20000</span>,
     <span class="hljs-attr">&quot;status&quot;</span>: <span class="hljs-string">&quot;Captured&quot;</span>,
     <span class="hljs-attr">&quot;timeStamp&quot;</span>: <span class="hljs-string">&quot;2018-12-12T11:18:38.246Z&quot;</span>,
@@ -3965,7 +3971,7 @@ System.out.println(response.toString());
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>Refund payment response</td>
-<td><a href="#schematransactionresponse">TransactionResponse</a></td>
+<td><a href="#schemarefundtransactionresponse">RefundTransactionResponse</a></td>
 </tr>
 <tr>
 <td>400</td>
@@ -6857,11 +6863,11 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h2 id="tocs_transactionresponse">TransactionResponse</h2>
-<p><a id="schematransactionresponse"></a>
-<a id="schema_TransactionResponse"></a>
-<a id="tocStransactionresponse"></a>
-<a id="tocstransactionresponse"></a></p>
+<h2 id="tocs_refundtransactionresponse">RefundTransactionResponse</h2>
+<p><a id="schemarefundtransactionresponse"></a>
+<a id="schema_RefundTransactionResponse"></a>
+<a id="tocSrefundtransactionresponse"></a>
+<a id="tocsrefundtransactionresponse"></a></p>
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
   <span class="hljs-attr">&quot;transaction&quot;</span>: {
@@ -6916,6 +6922,65 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
+<h2 id="tocs_transactionresponse">TransactionResponse</h2>
+<p><a id="schematransactionresponse"></a>
+<a id="schema_TransactionResponse"></a>
+<a id="tocStransactionresponse"></a>
+<a id="tocstransactionresponse"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
+  <span class="hljs-attr">&quot;transactionInfo&quot;</span>: {
+    <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">20000</span>,
+    <span class="hljs-attr">&quot;status&quot;</span>: <span class="hljs-string">&quot;Captured&quot;</span>,
+    <span class="hljs-attr">&quot;timeStamp&quot;</span>: <span class="hljs-string">&quot;2018-12-12T11:18:38.246Z&quot;</span>,
+    <span class="hljs-attr">&quot;transactionId&quot;</span>: <span class="hljs-string">&quot;5001420062&quot;</span>,
+    <span class="hljs-attr">&quot;transactionText&quot;</span>: <span class="hljs-string">&quot;One pair of Vipps socks&quot;</span>
+  },
+  <span class="hljs-attr">&quot;transactionSummary&quot;</span>: {
+    <span class="hljs-attr">&quot;capturedAmount&quot;</span>: <span class="hljs-number">20000</span>,
+    <span class="hljs-attr">&quot;refundedAmount&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;remainingAmountToCapture&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;remainingAmountToRefund&quot;</span>: <span class="hljs-number">20000</span>,
+    <span class="hljs-attr">&quot;bankIdentificationNumber&quot;</span>: <span class="hljs-number">123456</span>
+  }
+}
+
+</code></pre>
+<h3 id="properties-17">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>orderId</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>Id which uniquely identifies a payment. Maximum length is 30 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
+</tr>
+<tr>
+<td>transactionInfo</td>
+<td><a href="#schematransactioninfo">TransactionInfo</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>transactionSummary</td>
+<td><a href="#schematransactionsummary">TransactionSummary</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
 <h2 id="tocs_merchantinfopayment">MerchantInfoPayment</h2>
 <p><a id="schemamerchantinfopayment"></a>
 <a id="schema_MerchantInfoPayment"></a>
@@ -6926,7 +6991,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-17">Properties</h3>
+<h3 id="properties-18">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -6961,7 +7026,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-18">Properties</h3>
+<h3 id="properties-19">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7067,7 +7132,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-19">Properties</h3>
+<h3 id="properties-20">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7116,7 +7181,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-20">Properties</h3>
+<h3 id="properties-21">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7191,7 +7256,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-21">Properties</h3>
+<h3 id="properties-22">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7303,7 +7368,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-22">Properties</h3>
+<h3 id="properties-23">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7342,7 +7407,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-23">Properties</h3>
+<h3 id="properties-24">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7386,7 +7451,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-24">Properties</h3>
+<h3 id="properties-25">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7478,7 +7543,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-25">Properties</h3>
+<h3 id="properties-26">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7514,7 +7579,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-26">Properties</h3>
+<h3 id="properties-27">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7587,7 +7652,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-27">Properties</h3>
+<h3 id="properties-28">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7666,7 +7731,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-28">Properties</h3>
+<h3 id="properties-29">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7724,7 +7789,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-29">Properties</h3>
+<h3 id="properties-30">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7807,7 +7872,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-30">Properties</h3>
+<h3 id="properties-31">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7856,7 +7921,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-31">Properties</h3>
+<h3 id="properties-32">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7950,7 +8015,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-32">Properties</h3>
+<h3 id="properties-33">Properties</h3>
 <p>oneOf</p>
 <table>
 <thead>
@@ -8006,7 +8071,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-33">Properties</h3>
+<h3 id="properties-34">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8085,6 +8150,7 @@ System.out.println(response.toString());
 </table>
 <!-- Renderer: Shins v2.6.0 -->
 <!-- Generator: Widdershins v4.0.1 -->
+<!-- backwards compatibility -->
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
