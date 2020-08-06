@@ -1829,7 +1829,7 @@ components:
           example: order123abc
           pattern: '^[a-zA-Z0-9-]{1,30}$'
           maxLength: 30
-        transactionInfo:
+        transaction:
           $ref: '#/components/schemas/TransactionInfo'
         transactionSummary:
           $ref: '#/components/schemas/TransactionSummary'
