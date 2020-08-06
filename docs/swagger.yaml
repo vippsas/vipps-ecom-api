@@ -933,7 +933,7 @@ paths:
           content:
             application/json;charset=UTF-8:
               schema:
-                $ref: '#/components/schemas/TransactionResponse'
+                $ref: '#/components/schemas/RefundTransactionResponse'
         '400':
           description: Bad request (Missing a required parameter or bad request format)
           content:
@@ -1816,7 +1816,7 @@ components:
           type: string
           maxLength: 100
           example: posten-servicepakke
-    TransactionResponse:
+    RefundTransactionResponse:
       type: object
       required:
         - orderId
@@ -1830,6 +1830,23 @@ components:
           pattern: '^[a-zA-Z0-9-]{1,30}$'
           maxLength: 30
         transaction:
+          $ref: '#/components/schemas/TransactionInfo'
+        transactionSummary:
+          $ref: '#/components/schemas/TransactionSummary'
+    TransactionResponse:
+      type: object
+      required:
+        - orderId
+      properties:
+        orderId:
+          type: string
+          description: >-
+            Id which uniquely identifies a payment. Maximum length is 30
+            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+          example: order123abc
+          pattern: '^[a-zA-Z0-9-]{1,30}$'
+          maxLength: 30
+        transactionInfo:
           $ref: '#/components/schemas/TransactionInfo'
         transactionSummary:
           $ref: '#/components/schemas/TransactionSummary'
