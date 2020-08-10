@@ -1327,9 +1327,8 @@ which of your Vipps Merchant you are acting on behalf of. The Merchant-Serial-Nu
 
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
 
-```
-The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.
-```
+> The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.
+
 
 ## Idempotency
 
