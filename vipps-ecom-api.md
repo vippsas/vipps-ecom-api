@@ -1169,7 +1169,7 @@ in a single user session. Combining both the userinfo and payment elements
 requires the merchant to be registered with both Vipps Login and
 Vipps eCom APIs.
 
-When you initiate a payment add the parameter `scopes` to ask for a user's
+When you initiate a payment add the parameter `scope` to ask for a user's
 consent to share these details, such as email, address and name.
 The scopes are based 
 
