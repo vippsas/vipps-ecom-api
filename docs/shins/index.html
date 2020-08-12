@@ -3844,8 +3844,8 @@ System.out.println(response.toString());
 <td>X-Request-Id</td>
 <td>header</td>
 <td>string</td>
-<td>false</td>
-<td>Used for making requests idempotent. Adding X-Request-Id will allow repeated requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Max 30 characters.</td>
+<td>true</td>
+<td>Used for making requests idempotent. Adding X-Request-Id will allow repeated requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Max 30 characters. Required if the amount is partial.</td>
 </tr>
 <tr>
 <td>Merchant-Serial-Number</td>
