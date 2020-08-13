@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.2.
+Document version 2.3.3.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -295,7 +295,8 @@ the `isApp:true` parameter.
 
 In this case, the Vipps backend returns an URL that
 works as a native app deeplink to the Vipps app (eg. with a `vipps://` scheme),
-which automatically opens the Vipps app with app-switch.
+which automatically opens the Vipps app with app-switch.  
+**Please note:** In our test environment (MT) the scheme is `vippsMT://`
 
 The landing page is not involved in this flow, since the merchant app is
 expected to use the `vipps://` URL to deeplink straight to the Vipps app.
