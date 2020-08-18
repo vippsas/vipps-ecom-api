@@ -1616,7 +1616,7 @@ components:
             See the [API
             guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callbacks)
             for more information.
-          example: RESERVE
+          example: RESERVED
         timeStamp:
           type: string
           description: >-
