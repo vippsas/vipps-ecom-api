@@ -21,6 +21,11 @@ For examples of requests and responses, see the Postman collection in [tools](to
 - [ ] Avoid Integration pitfalls
     - [ ] The Merchant _must not_ rely on `fallback` or `callback` alone
     - [ ] The Vipps branding must be according to the [Vipps design guidelines](https://github.com/vippsas/vipps-design-guidelines)
+- [ ] Integrate [HTTP headers](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#optional-vipps-http-headers) for better tracking (Mandatory for partners and plattforms)
+    - [ ] Vipps-System-Name
+    - [ ] Vipps-System-Version
+    - [ ] Vipps-System-Plugin-Name
+    - [ ] Vipps-System-Plugin-Version    
 
 ## Flow to go live for direct integrations
 
