@@ -85,7 +85,7 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
     - [Callback aborted or interrupted](#callback-aborted-or-interrupted)
     - [PSP connection issues](#psp-connection-issues)
   - [App integration](#app-integration)
-  - [App-switching](#app-switching)
+  - [App-switch between browser and the Vipps app](#app-switch-between-browser-and-the-vipps-app)
     - [App-switch on iOS](#app-switch-on-ios)
       - [Switch from merchant app to the Vipps app](#switch-from-merchant-app-to-the-vipps-app)
       - [Redirect back to the merchant app from Vipps app](#redirect-back-to-the-merchant-app-from-vipps-app)
@@ -1220,18 +1220,18 @@ Vipps Login access token:
 This API returns the following HTTP statuses in the responses.
 See the [Swagger specification](./) for more details.
 
-| HTTP status             | Description                                                       |
-| ----------------------- | ----------------------------------------------------------------- |
-| `200 OK`                | Request successful                                                |
-| `201 Created`           | Request successful, resource created                              |
-| `204 No Content`        | Request successful, but empty result                              |
-| `400 Bad Request`       | Invalid request, see the error for details                        |
-| `401 Unauthorized`      | Invalid credentials                                               |
-| `403 Forbidden`         | Authentication ok, but credentials lacks authorization            |
-| `404 Not Found`         | The resource was not found                                        |
-| `409 Conflict`          | Unsuccessful due to conflicting resource                          |
-| `429 Too Many Requests` | Look at [table below to view current rate limits](#rate-limiting) |
-| `500 Server Error`      | An internal Vipps problem.                                        |
+| HTTP status             | Description                                             |
+| ----------------------- | ------------------------------------------------------- |
+| `200 OK`                | Request successful                                      |
+| `201 Created`           | Request successful, resource created                    |
+| `204 No Content`        | Request successful, but empty result                    |
+| `400 Bad Request`       | Invalid request, see the error for details              |
+| `401 Unauthorized`      | Invalid credentials                                     |
+| `403 Forbidden`         | Authentication ok, but credentials lacks authorization  |
+| `404 Not Found`         | The resource was not found                              |
+| `409 Conflict`          | Unsuccessful due to conflicting resource                |
+| `429 Too Many Requests` | Look at table below to view current rate limits         |
+| `500 Server Error`      | An internal Vipps problem.                              |
 
 HTTP responses with errors from the application gateway contain one error JSON object.
 Error responses produced from the application gateway include `401`, `403`, `422` and `429`.
@@ -1241,7 +1241,6 @@ HTTP responses with errors from the Vipps backend will contain an _array_ of JSO
 See [Errors](#errors) for more details.
 
 ## Rate limiting
-
 We have added rate limit to our apis (http:429) to prevent fradulent and wrongful behaviour and increase stability and security of our APIs. These shouldn't affect normal behaviour at all, but feel free to contact us if you notice any weird behaviour.
 
 | API                                                                                                         | Limit          | Key           |
