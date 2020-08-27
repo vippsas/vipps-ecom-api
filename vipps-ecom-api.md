@@ -75,6 +75,7 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
   - [Get payment status](#get-payment-status)
   - [Userinfo](#userinfo)
   - [HTTP response codes](#http-response-codes)
+  - [Rate limiting](#rate-limiting)
   - [Authentication](#authentication)
     - [Access token](#access-token)
     - [Partner Keys](#partner-keys)
@@ -1230,7 +1231,7 @@ See the [Swagger specification](./) for more details.
 | `403 Forbidden`         | Authentication ok, but credentials lacks authorization  |
 | `404 Not Found`         | The resource was not found                              |
 | `409 Conflict`          | Unsuccessful due to conflicting resource                |
-| `429 Too Many Requests` | There is a limit of max 200 API calls per second per `client_id`. There is also a limit on the number of payment requests per Vipps user. |
+| `429 Too Many Requests` | Look at table below to view current rate limits         |
 | `500 Server Error`      | An internal Vipps problem.                              |
 
 HTTP responses with errors from the application gateway contain one error JSON object.
@@ -1239,6 +1240,18 @@ Error responses produced from the application gateway include `401`, `403`, `422
 HTTP responses with errors from the Vipps backend will contain an _array_ of JSON objects.
 
 See [Errors](#errors) for more details.
+
+## Rate limiting
+We have added rate limit to our apis (http:429) to prevent fradulent and wrongful behaviour and increase stability and security of our APIs. These shouldn't affect normal behaviour at all, but feel free to contact us if you notice any weird behaviour.
+
+| API               | Limit          | Key           |
+|-------------------|----------------|---------------|
+| InitiatePayment   | 2 per minute   | orderId + msn |
+| CancelPayment     | 5 per minute   | orderId + msn |
+| CapturePayment    | 5 per minute   | orderId + msn |
+| RefundPayment     | 5 per minute   | orderId + msn |
+| GetOrderStatus    | 120 per minute | orderId + ocp |
+| GetPaymentDetails | 120 per minute | orderId + ocp |
 
 ## Authentication
 
