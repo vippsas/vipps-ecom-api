@@ -33,7 +33,7 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
     - [Phone flow](#phone-flow)
       - [Vipps installed](#vipps-installed)
       - [Vipps not installed](#vipps-not-installed)
-  - [PC/Mac flow](#pcmac-flow)
+  - [Desktop flow](#desktop-flow)
     - [Desktop browser initiated payments](#desktop-browser-initiated-payments)
     - [Payments initiated in an app](#payments-initiated-in-an-app)
     - [Initiate payment flow: API calls](#initiate-payment-flow-api-calls)
@@ -75,6 +75,7 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
   - [Get payment status](#get-payment-status)
   - [Userinfo](#userinfo)
   - [HTTP response codes](#http-response-codes)
+  - [Rate limiting](#rate-limiting)
   - [Authentication](#authentication)
     - [Access token](#access-token)
     - [Partner Keys](#partner-keys)
@@ -88,7 +89,6 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
     - [App-switch on iOS](#app-switch-on-ios)
       - [Switch from merchant app to the Vipps app](#switch-from-merchant-app-to-the-vipps-app)
       - [Redirect back to the merchant app from Vipps app](#redirect-back-to-the-merchant-app-from-vipps-app)
-      - [Registering a 3rd party app with URL scheme and handling custom URL calls](#registering-a-3rd-party-app-with-url-scheme-and-handling-custom-url-calls)
     - [App-switch on Android](#app-switch-on-android)
       - [Switching from merchant app to the Vipps app](#switching-from-merchant-app-to-the-vipps-app)
       - [Switching back to the merchant app from Vipps app](#switching-back-to-the-merchant-app-from-vipps-app)
@@ -1230,7 +1230,7 @@ See the [Swagger specification](./) for more details.
 | `403 Forbidden`         | Authentication ok, but credentials lacks authorization  |
 | `404 Not Found`         | The resource was not found                              |
 | `409 Conflict`          | Unsuccessful due to conflicting resource                |
-| `429 Too Many Requests` | There is a limit of max 200 API calls per second per `client_id`. There is also a limit on the number of payment requests per Vipps user. |
+| `429 Too Many Requests` | Look at table below to view current rate limits         |
 | `500 Server Error`      | An internal Vipps problem.                              |
 
 HTTP responses with errors from the application gateway contain one error JSON object.
@@ -1239,6 +1239,18 @@ Error responses produced from the application gateway include `401`, `403`, `422
 HTTP responses with errors from the Vipps backend will contain an _array_ of JSON objects.
 
 See [Errors](#errors) for more details.
+
+## Rate limiting
+We have added rate limit to our apis (http:429) to prevent fradulent and wrongful behaviour and increase stability and security of our APIs. These shouldn't affect normal behaviour at all, but feel free to contact us if you notice any weird behaviour.
+
+| API                                                                                                         | Limit          | Key           |
+|-------------------------------------------------------------------------------------------------------------|----------------|---------------|
+| [InitiatePayment](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST) | 2 per minute   | orderId + msn |
+| [CancelPayment](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT) | 5 per minute   | orderId + msn |
+| [CapturePayment](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/capturePaymentUsingPOST)     | 5 per minute   | orderId + msn |
+| [RefundPayment](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST)       | 5 per minute   | orderId + msn |
+| [~~GetOrderStatus~~](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getOrderStatusUsingGET)  | 120 per minute | orderId + ocp |
+| [GetPaymentDetails](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)| 120 per minute | orderId + ocp |
 
 ## Authentication
 
