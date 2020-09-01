@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.3.
+Document version 2.3.4.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -1241,7 +1241,8 @@ HTTP responses with errors from the Vipps backend will contain an _array_ of JSO
 See [Errors](#errors) for more details.
 
 ## Rate limiting
-We have added rate limit to our apis (http:429) to prevent fradulent and wrongful behaviour and increase stability and security of our APIs. These shouldn't affect normal behaviour at all, but feel free to contact us if you notice any weird behaviour.
+
+We have added rate limiting to our APIs (HTTP 429 Too Many Requests) to prevent fradulent and wrongful behaviour, and to increase the stability and security of our APIs. The limits should not affect normal behaviour, but please contact us if you notice any unexpected behaviour.
 
 | API                                                                                                         | Limit          | Key           |
 |-------------------------------------------------------------------------------------------------------------|----------------|---------------|
