@@ -1157,22 +1157,14 @@ See [Timeouts](#timeouts) for details about timeouts.
 
 ## Userinfo
 
-**Important:** This is an early draft, this should be considered pilot
-functionality that we are currently rolling out in our test environemnt.
-Swagger will be fully updated
-shortly
+**Important:** This functionality is currently being rolled out in all environments.
 
-Vipps offers a functionality to ask for a generic consent to access Userinfo.
-This is based on the
-[Vipps Login](https://github.com/vippsas/vipps-login-api)
-solution, but merchants can seamlessly combine the two functionalites
-in a single user session. Combining both the userinfo and payment elements
-requires the merchant to be registered with both Vipps Login and
-Vipps eCom APIs.
+Vipps offers the possibility for merchants to ask for the users profile information as part of the payment flow. If the enduser has not already consented to sharing information from Vipps to the merchant the user will be asked for such consent before completing the payment flow. Once the payment flow is completed the merchant can get the profile information from our Userinfo endpoint. The Userinfo endpoint is shared with [Vipps login](https://github.com/vippsas/vipps-login-api) and the merchant needs to have activated Vipps login to use this feature. You find more information on how to activate Vipps login[here](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api-faq.md#how-can-i-activate-and-set-up-vipps-login).
+A users consent to share information with a merchant applies accross our services. Thus, if the merchant implements Vipps login in addition to profile information as part of the payment flow, the merchant can also use Vipps to log the user in without the need for additional consents.
 
 When you initiate a payment add the parameter `scope` to ask for a user's
 consent to share these details, such as email, address and name.
-The scopes are based 
+
 
 | Scopes      | Description                                    | User consent required  |
 | ------------| -----------------------------------------------|-------- |
@@ -1184,6 +1176,8 @@ The scopes are based
 | nin        | Norwegian national identity number (verified with BankID). NB: merchants need to apply for access to NIN. Go to [Who can get access to NIN and how?](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api-faq.md#who-can-get-access-to-nin-and-how) For more information |   yes      |
 | accountNumbers | User bank account numbers. NB: merchants need to apply for access to accountNumbers. Go to [Who can get access to account numbers and how?](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api-faq.md#who-can-get-access-to-accountnumbers-and-how) For more information |   yes      |
 
+If the e-mail address that is delivered has the flag "email_verified : false" this address should not be used to link the user to an existing account without further authentication. Such authentication could be to prompt the user to login to the original account or confirm the account linking by having a confirmation link sent to the email address.
+
 
 To request these scopes add the scopes to the initial call to
 [`POST:​/ecomm​/v2​/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
@@ -1193,8 +1187,7 @@ The user then consents and pays in the app.
 **Please note:** This operation has an all or nothing approach, a user must
 complete a valid payment and consent to all values in order to complete the
 session. If a user chooses to reject the terms the payment will not be
-processed. Unless the whole flow is completed, this will be handled as regular
-a failed payment by the ecom APIs
+processed. Unless the whole flow is completed, this will be handled as a regular failed payment by the ecom APIs
 
 Once the user completes the session a unique identifier `sub` can be retrieved in the
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET) endpoint.
@@ -1211,7 +1204,7 @@ the user's details from Vipps Login:
 
 **Please note:** accessing the Login `userinfo` endpoint requires the
 Vipps Login access token:
-[`POST:/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/oauth2Token).
+[`POST:/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/oauth2Token) this is described in detail in [login's documentation](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api.md#access-token)
 
 ![Userinfo sequence](images/userinfo-direct.png)
 
