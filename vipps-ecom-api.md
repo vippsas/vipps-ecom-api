@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.5.
+Document version 2.3.6.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -1162,13 +1162,12 @@ The documentation is being updated, but is not yet complete.
 
 Vipps offers the possibility for merchants to ask for the users profile information as part of the payment flow. If the enduser has not already consented to sharing information from Vipps to the merchant the user will be asked for such consent before completing the payment flow. Once the payment flow is completed the merchant can get the profile information from our Userinfo endpoint.
 
-The Userinfo endpoint is shared with [Vipps login](https://github.com/vippsas/vipps-login-api) and the merchant needs to have activated Vipps login to use this feature. You can find more information on how to activate Vipps login[here](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api-faq.md#how-can-i-activate-and-set-up-vipps-login).
+The [`GET:/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo) endpoint is shared by eCom and [Vipps login](https://github.com/vippsas/vipps-login-api) and the merchant needs to have activated Vipps login to use this feature. You can find more information on how to activate Vipps login[here](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api-faq.md#how-can-i-activate-and-set-up-vipps-login).
 
 A user's consent to share information with a merchant applies across our services. Thus, if the merchant implements Vipps Login in addition to profile information as part of the payment flow, the merchant can also use Vipps to log the user in without the need for additional consents.
 
 When you initiate a payment: Add the parameter `scope` to ask for a user's
 consent to share these details, such as email, address and name.
-
 
 | Scopes      | Description                                    | User consent required  |
 | ------------| -----------------------------------------------|-------- |
