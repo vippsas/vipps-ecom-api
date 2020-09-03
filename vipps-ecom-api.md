@@ -1161,10 +1161,6 @@ See [Timeouts](#timeouts) for details about timeouts.
 Vipps offers the possibility for merchants to ask for the users profile information as part of the payment flow. If the enduser has not already consented to sharing information from Vipps to the merchant the user will be asked for such consent before completing the payment flow. Once the payment flow is completed the merchant can get the profile information from our Userinfo endpoint. The Userinfo endpoint is shared with [Vipps login](https://github.com/vippsas/vipps-login-api) and the merchant needs to have activated Vipps login to use this feature. You find more information on how to activate Vipps login[here](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api-faq.md#how-can-i-activate-and-set-up-vipps-login).
 A users consent to share information with a merchant applies accross our services. Thus, if the merchant implements Vipps login in addition to profile information as part of the payment flow, the merchant can also use Vipps to log the user in without the need for additional consents.
 
-Combining both the userinfo and payment elements
-requires the merchant to be registered with both Vipps Login and
-Vipps eCom APIs.
-
 When you initiate a payment add the parameter `scope` to ask for a user's
 consent to share these details, such as email, address and name.
 
