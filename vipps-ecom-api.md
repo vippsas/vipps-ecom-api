@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.4.
+Document version 2.3.5.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -1158,11 +1158,15 @@ See [Timeouts](#timeouts) for details about timeouts.
 ## Userinfo
 
 **Important:** This functionality is currently being rolled out in all environments.
+The documentation is being updated, but is not yet complete.
 
-Vipps offers the possibility for merchants to ask for the users profile information as part of the payment flow. If the enduser has not already consented to sharing information from Vipps to the merchant the user will be asked for such consent before completing the payment flow. Once the payment flow is completed the merchant can get the profile information from our Userinfo endpoint. The Userinfo endpoint is shared with [Vipps login](https://github.com/vippsas/vipps-login-api) and the merchant needs to have activated Vipps login to use this feature. You find more information on how to activate Vipps login[here](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api-faq.md#how-can-i-activate-and-set-up-vipps-login).
-A users consent to share information with a merchant applies accross our services. Thus, if the merchant implements Vipps login in addition to profile information as part of the payment flow, the merchant can also use Vipps to log the user in without the need for additional consents.
+Vipps offers the possibility for merchants to ask for the users profile information as part of the payment flow. If the enduser has not already consented to sharing information from Vipps to the merchant the user will be asked for such consent before completing the payment flow. Once the payment flow is completed the merchant can get the profile information from our Userinfo endpoint.
 
-When you initiate a payment add the parameter `scope` to ask for a user's
+The Userinfo endpoint is shared with [Vipps login](https://github.com/vippsas/vipps-login-api) and the merchant needs to have activated Vipps login to use this feature. You can find more information on how to activate Vipps login[here](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api-faq.md#how-can-i-activate-and-set-up-vipps-login).
+
+A user's consent to share information with a merchant applies across our services. Thus, if the merchant implements Vipps Login in addition to profile information as part of the payment flow, the merchant can also use Vipps to log the user in without the need for additional consents.
+
+When you initiate a payment: Add the parameter `scope` to ask for a user's
 consent to share these details, such as email, address and name.
 
 
@@ -1172,24 +1176,24 @@ consent to share these details, such as email, address and name.
 | birthDate   | User birth date (BankID verified)                               |   yes   |
 | email       | User email (verified), the flag "email_verified : true" in the response can be used by merchant to confirm for each request that the email actually is verified                                   |   yes   |
 | name        | User first, middle and given name (verified with National Population Register)              |   yes   |
-| phoneNumber | Verified phone number (verfied - the number used with Vipps)                          |   yes   |
+| phoneNumber | Verified phone number (verified - the number used with Vipps)                          |   yes   |
 | nin        | Norwegian national identity number (verified with BankID). NB: merchants need to apply for access to NIN. Go to [Who can get access to NIN and how?](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api-faq.md#who-can-get-access-to-nin-and-how) For more information |   yes      |
 | accountNumbers | User bank account numbers. NB: merchants need to apply for access to accountNumbers. Go to [Who can get access to account numbers and how?](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api-faq.md#who-can-get-access-to-accountnumbers-and-how) For more information |   yes      |
 
 If the e-mail address that is delivered has the flag "email_verified : false" this address should not be used to link the user to an existing account without further authentication. Such authentication could be to prompt the user to login to the original account or confirm the account linking by having a confirmation link sent to the email address.
-
 
 To request these scopes add the scopes to the initial call to
 [`POST:​/ecomm​/v2​/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
 
 The user then consents and pays in the app.
 
-**Please note:** This operation has an all or nothing approach, a user must
+**Please note:** This operation has an "all or nothing" approach, so a user must
 complete a valid payment and consent to all values in order to complete the
 session. If a user chooses to reject the terms the payment will not be
-processed. Unless the whole flow is completed, this will be handled as a regular failed payment by the ecom APIs
+processed. Unless the whole flow is completed, this will be handled as a regular
+failed payment by the eCom API.
 
-Once the user completes the session a unique identifier `sub` can be retrieved in the
+Once the user completes the session a unique identifier `sub` can be retrieved from the
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET) endpoint.
 
 Example `sub` format:
@@ -1609,7 +1613,7 @@ See [HTTP response codes](#http-response-codes).
 ]
 ```
 
-```json 
+```json
 {
     "statusCode": 401,
     "message": "Access denied due to invalid subscription key. Make sure to provide a valid key for an active subscription."
