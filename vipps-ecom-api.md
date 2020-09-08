@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.6.
+Document version 2.3.7.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -442,18 +442,23 @@ A `orderId` must be unique for the MSN (Merchant Serial Number, the id of
 the sale unit). The `orderId` does not need to be globally unique, so several
 MSNs may use the same `orderId`, as long as it is unique for each sale unit.
 
-While the minimum length for `orderId` is 1, we recommend
-using at least 6 characters, and a combination of numbers and characters.
+If you ever have a problem that requires us to search in our logs, we need
+`orderId`s that are "unique enough" to actually find them. An `orderId` that
+is just a number may not be possible to find.
+
+While the minimum length for `orderId` _technically_ is just one character,
+we strongly recommend using at least 6 characters, and a combination of numbers
+and characters.
 
 The maximum length of an `orderId` is 30 alphanumeric characters:
 a-z, A-Z, 0-9 and '-'.
 
-Leading zeros should be avoided, as some applications (like Excel)
-tend to remove them, and this may cause misunderstandings.
-
 We _strongly_ recommend to use `orderId` format that makes it easy to
 search for them in logs. This means that `abc-123-def-456` is a better
 format than `123456`.
+
+Leading zeros should be avoided, as some applications (like Excel)
+tend to remove them, and this may cause misunderstandings.
 
 With multiple sale units, prefixing the `orderId` with the MSN
 for each sale unit is recommended: If the MSN is `654321`, the
