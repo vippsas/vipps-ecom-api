@@ -908,7 +908,7 @@ paths:
         content:
           application/json;charset=UTF-8:
             schema:
-              $ref: '#/components/schemas/AuthroizePaymentRequest'
+              $ref: '#/components/schemas/AuthorizePaymentRequest'
         description: paymentActionsRequest
         required: true
       responses:
@@ -2300,13 +2300,11 @@ components:
           $ref: '#/components/schemas/MerchantInfoPayment'
         transaction:
           $ref: '#/components/schemas/CancelTransaction'
-    AuthroizePaymentRequest:
+    AuthorizePaymentRequest:
       type: object
       properties:
         merchantInfo:
           $ref: '#/components/schemas/MerchantInfoPayment'
-        transaction:
-          $ref: '#/components/schemas/CancelTransaction'
     ExpressCheckOutPaymentRequest:
       type: object
       required:
