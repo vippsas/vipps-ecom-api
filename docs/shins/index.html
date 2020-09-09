@@ -1546,6 +1546,7 @@ Darkula color scheme from the JetBrains family of IDEs
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
+<!-- backwards compatibility -->
   </head>
 
   <body data-languages="[&quot;shell&quot;,&quot;http&quot;,&quot;javascript&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;php&quot;,&quot;java&quot;,&quot;go&quot;]">
@@ -1639,6 +1640,11 @@ Darkula color scheme from the JetBrains family of IDEs
                 
                   <li>
                     <a href="#cancel-payment" class="toc-h2 toc-link" data-title="">Cancel Payment</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#authorize-payment" class="toc-h2 toc-link" data-title="">Authorize Payment</a>
                     
                   </li>
                 
@@ -1827,6 +1833,11 @@ Darkula color scheme from the JetBrains family of IDEs
                 
                   <li>
                     <a href="#tocs_cancelpaymentactionrequest" class="toc-h2 toc-link" data-title="">CancelPaymentActionRequest</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#tocs_authorizepaymentrequest" class="toc-h2 toc-link" data-title="">AuthorizePaymentRequest</a>
                     
                   </li>
                 
@@ -3092,6 +3103,7 @@ System.out.println(response.toString());
 <p>200 Response</p>
 </blockquote>
 <pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;paymentInstrument&quot;</span>: <span class="hljs-string">&quot;Mastercard&quot;</span>,
   <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
   <span class="hljs-attr">&quot;transactionInfo&quot;</span>: {
     <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">20000</span>,
@@ -3504,6 +3516,7 @@ System.out.println(response.toString());
 <p>200 Response</p>
 </blockquote>
 <pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;paymentInstrument&quot;</span>: <span class="hljs-string">&quot;Mastercard&quot;</span>,
   <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
   <span class="hljs-attr">&quot;transactionInfo&quot;</span>: {
     <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">20000</span>,
@@ -3522,6 +3535,399 @@ System.out.println(response.toString());
 }
 </code></pre>
 <h3 id="cancel-payment-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Cancel payment response</td>
+<td><a href="#schematransactionresponse">TransactionResponse</a></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Bad request (Missing a required parameter or bad request format)</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>Unauthorized</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+<tr>
+<td>402</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.2">Payment Required</a></td>
+<td>Payment Failed</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
+<td>Request Forbidden</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>Resource Not Found</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+<tr>
+<td>405</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
+<td>Request method not supported</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+<tr>
+<td>415</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">Unsupported Media Type</a></td>
+<td>Unsupported media type</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>A server-side error</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+<tr>
+<td>503</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td>
+<td>Service Unavailable</td>
+<td><a href="#schemaerror">Error</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="authorize-payment">Authorize Payment</h2>
+<p><a id="opIdauthorizePaymentUsingPut"></a></p>
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight tab tab-shell"><code><span class="hljs-comment"># You can also use wget</span>
+curl -X PUT https://apitest.vipps.no/ecomm/v2/payments/{orderId}/authorize \
+  -H <span class="hljs-string">&#x27;Content-Type: application/json;charset=UTF-8&#x27;</span> \
+  -H <span class="hljs-string">&#x27;Accept: application/json;charset=UTF-8&#x27;</span> \
+  -H <span class="hljs-string">&#x27;Authorization: string&#x27;</span> \
+  -H <span class="hljs-string">&#x27;Content-Type: application/json&#x27;</span> \
+  -H <span class="hljs-string">&#x27;Ocp-Apim-Subscription-Key: 0f14ebcab0ec4b29ae0cb90d91b4a84a&#x27;</span> \
+  -H <span class="hljs-string">&#x27;Merchant-Serial-Number: 123456&#x27;</span> \
+  -H <span class="hljs-string">&#x27;Vipps-System-Name: woocommerce&#x27;</span> \
+  -H <span class="hljs-string">&#x27;Vipps-System-Version: 5.4&#x27;</span> \
+  -H <span class="hljs-string">&#x27;Vipps-System-Plugin-Name: vipps-woocommerce&#x27;</span> \
+  -H <span class="hljs-string">&#x27;Vipps-System-Plugin-Version: 1.2.1&#x27;</span>
+
+</code></pre>
+<pre class="highlight tab tab-http"><code><span class="hljs-keyword">PUT</span> <span class="hljs-string">https://apitest.vipps.no/ecomm/v2/payments/{orderId}/authorize</span> HTTP/1.1
+<span class="hljs-attribute">Host</span>: apitest.vipps.no
+<span class="hljs-attribute">Content-Type</span>: application/json;charset=UTF-8
+<span class="hljs-attribute">Accept</span>: application/json;charset=UTF-8
+<span class="hljs-attribute">Authorization</span>: string
+<span class="hljs-attribute">Content-Type</span>: application/json
+<span class="hljs-attribute">Ocp-Apim-Subscription-Key</span>: 0f14ebcab0ec4b29ae0cb90d91b4a84a
+<span class="hljs-attribute">Merchant-Serial-Number</span>: 123456
+<span class="hljs-attribute">Vipps-System-Name</span>: woocommerce
+<span class="hljs-attribute">Vipps-System-Version</span>: 5.4
+<span class="hljs-attribute">Vipps-System-Plugin-Name</span>: vipps-woocommerce
+<span class="hljs-attribute">Vipps-System-Plugin-Version</span>: 1.2.1
+
+</code></pre>
+<pre class="highlight tab tab-javascript"><code><span class="hljs-keyword">const</span> inputBody = <span class="hljs-string">&#x27;{
+  &quot;merchantInfo&quot;: {
+    &quot;merchantSerialNumber&quot;: 123456
+  }
+}&#x27;</span>;
+<span class="hljs-keyword">const</span> headers = {
+  <span class="hljs-string">&#x27;Content-Type&#x27;</span>:<span class="hljs-string">&#x27;application/json;charset=UTF-8&#x27;</span>,
+  <span class="hljs-string">&#x27;Accept&#x27;</span>:<span class="hljs-string">&#x27;application/json;charset=UTF-8&#x27;</span>,
+  <span class="hljs-string">&#x27;Authorization&#x27;</span>:<span class="hljs-string">&#x27;string&#x27;</span>,
+  <span class="hljs-string">&#x27;Content-Type&#x27;</span>:<span class="hljs-string">&#x27;application/json&#x27;</span>,
+  <span class="hljs-string">&#x27;Ocp-Apim-Subscription-Key&#x27;</span>:<span class="hljs-string">&#x27;0f14ebcab0ec4b29ae0cb90d91b4a84a&#x27;</span>,
+  <span class="hljs-string">&#x27;Merchant-Serial-Number&#x27;</span>:<span class="hljs-string">&#x27;123456&#x27;</span>,
+  <span class="hljs-string">&#x27;Vipps-System-Name&#x27;</span>:<span class="hljs-string">&#x27;woocommerce&#x27;</span>,
+  <span class="hljs-string">&#x27;Vipps-System-Version&#x27;</span>:<span class="hljs-string">&#x27;5.4&#x27;</span>,
+  <span class="hljs-string">&#x27;Vipps-System-Plugin-Name&#x27;</span>:<span class="hljs-string">&#x27;vipps-woocommerce&#x27;</span>,
+  <span class="hljs-string">&#x27;Vipps-System-Plugin-Version&#x27;</span>:<span class="hljs-string">&#x27;1.2.1&#x27;</span>
+};
+
+fetch(<span class="hljs-string">&#x27;https://apitest.vipps.no/ecomm/v2/payments/{orderId}/authorize&#x27;</span>,
+{
+  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;PUT&#x27;</span>,
+  <span class="hljs-attr">body</span>: inputBody,
+  <span class="hljs-attr">headers</span>: headers
+})
+.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>{
+    <span class="hljs-keyword">return</span> res.json();
+}).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">body</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(body);
+});
+
+</code></pre>
+<pre class="highlight tab tab-ruby"><code><span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;rest-client&#x27;</span>
+<span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;json&#x27;</span>
+
+headers = {
+  <span class="hljs-string">&#x27;Content-Type&#x27;</span> =&gt; <span class="hljs-string">&#x27;application/json;charset=UTF-8&#x27;</span>,
+  <span class="hljs-string">&#x27;Accept&#x27;</span> =&gt; <span class="hljs-string">&#x27;application/json;charset=UTF-8&#x27;</span>,
+  <span class="hljs-string">&#x27;Authorization&#x27;</span> =&gt; <span class="hljs-string">&#x27;string&#x27;</span>,
+  <span class="hljs-string">&#x27;Content-Type&#x27;</span> =&gt; <span class="hljs-string">&#x27;application/json&#x27;</span>,
+  <span class="hljs-string">&#x27;Ocp-Apim-Subscription-Key&#x27;</span> =&gt; <span class="hljs-string">&#x27;0f14ebcab0ec4b29ae0cb90d91b4a84a&#x27;</span>,
+  <span class="hljs-string">&#x27;Merchant-Serial-Number&#x27;</span> =&gt; <span class="hljs-string">&#x27;123456&#x27;</span>,
+  <span class="hljs-string">&#x27;Vipps-System-Name&#x27;</span> =&gt; <span class="hljs-string">&#x27;woocommerce&#x27;</span>,
+  <span class="hljs-string">&#x27;Vipps-System-Version&#x27;</span> =&gt; <span class="hljs-string">&#x27;5.4&#x27;</span>,
+  <span class="hljs-string">&#x27;Vipps-System-Plugin-Name&#x27;</span> =&gt; <span class="hljs-string">&#x27;vipps-woocommerce&#x27;</span>,
+  <span class="hljs-string">&#x27;Vipps-System-Plugin-Version&#x27;</span> =&gt; <span class="hljs-string">&#x27;1.2.1&#x27;</span>
+}
+
+result = RestClient.put <span class="hljs-string">&#x27;https://apitest.vipps.no/ecomm/v2/payments/{orderId}/authorize&#x27;</span>,
+  <span class="hljs-symbol">params:</span> {
+  }, <span class="hljs-symbol">headers:</span> headers
+
+p JSON.parse(result)
+
+</code></pre>
+<pre class="highlight tab tab-python"><code><span class="hljs-keyword">import</span> requests
+headers = {
+  <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json;charset=UTF-8&#x27;</span>,
+  <span class="hljs-string">&#x27;Accept&#x27;</span>: <span class="hljs-string">&#x27;application/json;charset=UTF-8&#x27;</span>,
+  <span class="hljs-string">&#x27;Authorization&#x27;</span>: <span class="hljs-string">&#x27;string&#x27;</span>,
+  <span class="hljs-string">&#x27;Content-Type&#x27;</span>: <span class="hljs-string">&#x27;application/json&#x27;</span>,
+  <span class="hljs-string">&#x27;Ocp-Apim-Subscription-Key&#x27;</span>: <span class="hljs-string">&#x27;0f14ebcab0ec4b29ae0cb90d91b4a84a&#x27;</span>,
+  <span class="hljs-string">&#x27;Merchant-Serial-Number&#x27;</span>: <span class="hljs-string">&#x27;123456&#x27;</span>,
+  <span class="hljs-string">&#x27;Vipps-System-Name&#x27;</span>: <span class="hljs-string">&#x27;woocommerce&#x27;</span>,
+  <span class="hljs-string">&#x27;Vipps-System-Version&#x27;</span>: <span class="hljs-string">&#x27;5.4&#x27;</span>,
+  <span class="hljs-string">&#x27;Vipps-System-Plugin-Name&#x27;</span>: <span class="hljs-string">&#x27;vipps-woocommerce&#x27;</span>,
+  <span class="hljs-string">&#x27;Vipps-System-Plugin-Version&#x27;</span>: <span class="hljs-string">&#x27;1.2.1&#x27;</span>
+}
+
+r = requests.put(<span class="hljs-string">&#x27;https://apitest.vipps.no/ecomm/v2/payments/{orderId}/authorize&#x27;</span>, headers = headers)
+
+print(r.json())
+
+</code></pre>
+<pre class="highlight tab tab-php"><code> <span class="hljs-string">&#x27;application/json;charset=UTF-8&#x27;</span>,
+    <span class="hljs-string">&#x27;Accept&#x27;</span> =&gt; <span class="hljs-string">&#x27;application/json;charset=UTF-8&#x27;</span>,
+    <span class="hljs-string">&#x27;Authorization&#x27;</span> =&gt; <span class="hljs-string">&#x27;string&#x27;</span>,
+    <span class="hljs-string">&#x27;Content-Type&#x27;</span> =&gt; <span class="hljs-string">&#x27;application/json&#x27;</span>,
+    <span class="hljs-string">&#x27;Ocp-Apim-Subscription-Key&#x27;</span> =&gt; <span class="hljs-string">&#x27;0f14ebcab0ec4b29ae0cb90d91b4a84a&#x27;</span>,
+    <span class="hljs-string">&#x27;Merchant-Serial-Number&#x27;</span> =&gt; <span class="hljs-string">&#x27;123456&#x27;</span>,
+    <span class="hljs-string">&#x27;Vipps-System-Name&#x27;</span> =&gt; <span class="hljs-string">&#x27;woocommerce&#x27;</span>,
+    <span class="hljs-string">&#x27;Vipps-System-Version&#x27;</span> =&gt; <span class="hljs-string">&#x27;5.4&#x27;</span>,
+    <span class="hljs-string">&#x27;Vipps-System-Plugin-Name&#x27;</span> =&gt; <span class="hljs-string">&#x27;vipps-woocommerce&#x27;</span>,
+    <span class="hljs-string">&#x27;Vipps-System-Plugin-Version&#x27;</span> =&gt; <span class="hljs-string">&#x27;1.2.1&#x27;</span>,
+);
+
+$client = <span class="hljs-keyword">new</span> \GuzzleHttp\Client();
+
+<span class="hljs-comment">// Define array of request body.</span>
+$request_body = <span class="hljs-keyword">array</span>();
+
+<span class="hljs-keyword">try</span> {
+    $response = $client-&gt;request(<span class="hljs-string">&#x27;PUT&#x27;</span>,<span class="hljs-string">&#x27;https://apitest.vipps.no/ecomm/v2/payments/{orderId}/authorize&#x27;</span>, <span class="hljs-keyword">array</span>(
+        <span class="hljs-string">&#x27;headers&#x27;</span> =&gt; $headers,
+        <span class="hljs-string">&#x27;json&#x27;</span> =&gt; $request_body,
+       )
+    );
+    print_r($response-&gt;getBody()-&gt;getContents());
+ }
+ <span class="hljs-keyword">catch</span> (\GuzzleHttp\<span class="hljs-built_in">Exception</span>\BadResponseException $e) {
+    <span class="hljs-comment">// handle exception or api errors.</span>
+    print_r($e-&gt;getMessage());
+ }
+
+ <span class="hljs-comment">// ...</span>
+
+</code></pre>
+<pre class="highlight tab tab-java"><code>URL obj = <span class="hljs-keyword">new</span> URL(<span class="hljs-string">&quot;https://apitest.vipps.no/ecomm/v2/payments/{orderId}/authorize&quot;</span>);
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod(<span class="hljs-string">&quot;PUT&quot;</span>);
+<span class="hljs-keyword">int</span> responseCode = con.getResponseCode();
+BufferedReader in = <span class="hljs-keyword">new</span> BufferedReader(
+    <span class="hljs-keyword">new</span> InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = <span class="hljs-keyword">new</span> StringBuffer();
+<span class="hljs-keyword">while</span> ((inputLine = in.readLine()) != <span class="hljs-keyword">null</span>) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+</code></pre>
+<pre class="highlight tab tab-go"><code><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+       <span class="hljs-string">&quot;bytes&quot;</span>
+       <span class="hljs-string">&quot;net/http&quot;</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+
+    headers := <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>][]<span class="hljs-keyword">string</span>{
+        <span class="hljs-string">&quot;Content-Type&quot;</span>: []<span class="hljs-keyword">string</span>{<span class="hljs-string">&quot;application/json;charset=UTF-8&quot;</span>},
+        <span class="hljs-string">&quot;Accept&quot;</span>: []<span class="hljs-keyword">string</span>{<span class="hljs-string">&quot;application/json;charset=UTF-8&quot;</span>},
+        <span class="hljs-string">&quot;Authorization&quot;</span>: []<span class="hljs-keyword">string</span>{<span class="hljs-string">&quot;string&quot;</span>},
+        <span class="hljs-string">&quot;Content-Type&quot;</span>: []<span class="hljs-keyword">string</span>{<span class="hljs-string">&quot;application/json&quot;</span>},
+        <span class="hljs-string">&quot;Ocp-Apim-Subscription-Key&quot;</span>: []<span class="hljs-keyword">string</span>{<span class="hljs-string">&quot;0f14ebcab0ec4b29ae0cb90d91b4a84a&quot;</span>},
+        <span class="hljs-string">&quot;Merchant-Serial-Number&quot;</span>: []<span class="hljs-keyword">string</span>{<span class="hljs-string">&quot;123456&quot;</span>},
+        <span class="hljs-string">&quot;Vipps-System-Name&quot;</span>: []<span class="hljs-keyword">string</span>{<span class="hljs-string">&quot;woocommerce&quot;</span>},
+        <span class="hljs-string">&quot;Vipps-System-Version&quot;</span>: []<span class="hljs-keyword">string</span>{<span class="hljs-string">&quot;5.4&quot;</span>},
+        <span class="hljs-string">&quot;Vipps-System-Plugin-Name&quot;</span>: []<span class="hljs-keyword">string</span>{<span class="hljs-string">&quot;vipps-woocommerce&quot;</span>},
+        <span class="hljs-string">&quot;Vipps-System-Plugin-Version&quot;</span>: []<span class="hljs-keyword">string</span>{<span class="hljs-string">&quot;1.2.1&quot;</span>},
+    }
+
+    data := bytes.NewBuffer([]<span class="hljs-keyword">byte</span>{jsonReq})
+    req, err := http.NewRequest(<span class="hljs-string">&quot;PUT&quot;</span>, <span class="hljs-string">&quot;https://apitest.vipps.no/ecomm/v2/payments/{orderId}/authorize&quot;</span>, data)
+    req.Header = headers
+
+    client := &amp;http.Client{}
+    resp, err := client.Do(req)
+    <span class="hljs-comment">// ...</span>
+}
+
+</code></pre>
+<p><code>PUT /ecomm/v2/payments/{orderId}/authorize</code></p>
+<p>The API call allows merchant to refresh the authorizations of the payment. A reservation's lifetime  is defined by the scheme. Typically 7 days for Visa, and 30 days for Mastercard. This is currently not live in production and will be added shortly.</p>
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;merchantInfo&quot;</span>: {
+    <span class="hljs-attr">&quot;merchantSerialNumber&quot;</span>: <span class="hljs-number">123456</span>
+  }
+}
+</code></pre>
+<h3 id="authorize-payment-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>orderId</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>The <code>orderId</code>is specified when initiating the payment.</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>header</td>
+<td>string</td>
+<td>true</td>
+<td>The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the <code>POST:/accesstoken/get</code> endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>header</td>
+<td>string</td>
+<td>true</td>
+<td>The content type must be <code>application/json</code></td>
+</tr>
+<tr>
+<td>Ocp-Apim-Subscription-Key</td>
+<td>header</td>
+<td>string</td>
+<td>true</td>
+<td>The subscription key for your API product is available on <a href="http://portal.vipps.no">portal.vipps.no</a>, under the 'Utvikler' tab. Keep it secret.</td>
+</tr>
+<tr>
+<td>Merchant-Serial-Number</td>
+<td>header</td>
+<td>string</td>
+<td>false</td>
+<td>The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.</td>
+</tr>
+<tr>
+<td>Vipps-System-Name</td>
+<td>header</td>
+<td>string</td>
+<td>false</td>
+<td>The name of the ecommerce solution. One word in lowercase letters is good.</td>
+</tr>
+<tr>
+<td>Vipps-System-Version</td>
+<td>header</td>
+<td>string</td>
+<td>false</td>
+<td>The version number of the ecommerce solution.</td>
+</tr>
+<tr>
+<td>Vipps-System-Plugin-Name</td>
+<td>header</td>
+<td>string</td>
+<td>false</td>
+<td>The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.</td>
+</tr>
+<tr>
+<td>Vipps-System-Plugin-Version</td>
+<td>header</td>
+<td>string</td>
+<td>false</td>
+<td>The version number of the ecommerce plugin (if applicable).</td>
+</tr>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemaauthorizepaymentrequest">AuthorizePaymentRequest</a></td>
+<td>true</td>
+<td>paymentActionsRequest</td>
+</tr>
+<tr>
+<td>» merchantInfo</td>
+<td>body</td>
+<td><a href="#schemamerchantinfopayment">MerchantInfoPayment</a></td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» merchantSerialNumber</td>
+<td>body</td>
+<td>string</td>
+<td>true</td>
+<td>Unique id for this merchant's sales channel: website, mobile app etc. Short name: MSN.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Example responses</p>
+</blockquote>
+<blockquote>
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;paymentInstrument&quot;</span>: <span class="hljs-string">&quot;Mastercard&quot;</span>,
+  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
+  <span class="hljs-attr">&quot;transactionInfo&quot;</span>: {
+    <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">20000</span>,
+    <span class="hljs-attr">&quot;status&quot;</span>: <span class="hljs-string">&quot;Captured&quot;</span>,
+    <span class="hljs-attr">&quot;timeStamp&quot;</span>: <span class="hljs-string">&quot;2018-12-12T11:18:38.246Z&quot;</span>,
+    <span class="hljs-attr">&quot;transactionId&quot;</span>: <span class="hljs-string">&quot;5001420062&quot;</span>,
+    <span class="hljs-attr">&quot;transactionText&quot;</span>: <span class="hljs-string">&quot;One pair of Vipps socks&quot;</span>
+  },
+  <span class="hljs-attr">&quot;transactionSummary&quot;</span>: {
+    <span class="hljs-attr">&quot;capturedAmount&quot;</span>: <span class="hljs-number">20000</span>,
+    <span class="hljs-attr">&quot;refundedAmount&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;remainingAmountToCapture&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;remainingAmountToRefund&quot;</span>: <span class="hljs-number">20000</span>,
+    <span class="hljs-attr">&quot;bankIdentificationNumber&quot;</span>: <span class="hljs-number">123456</span>
+  }
+}
+</code></pre>
+<h3 id="authorize-payment-responses">Responses</h3>
 <table>
 <thead>
 <tr>
@@ -6928,6 +7334,7 @@ System.out.println(response.toString());
 <a id="tocStransactionresponse"></a>
 <a id="tocstransactionresponse"></a></p>
 <pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;paymentInstrument&quot;</span>: <span class="hljs-string">&quot;Mastercard&quot;</span>,
   <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
   <span class="hljs-attr">&quot;transactionInfo&quot;</span>: {
     <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">20000</span>,
@@ -6958,6 +7365,13 @@ System.out.println(response.toString());
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>paymentInstrument</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Text which describes what instrument was used to complete the payment.  Not included until a user has chosen and approved in the app.</td>
+</tr>
 <tr>
 <td>orderId</td>
 <td>string</td>
@@ -7607,6 +8021,39 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
+<h2 id="tocs_authorizepaymentrequest">AuthorizePaymentRequest</h2>
+<p><a id="schemaauthorizepaymentrequest"></a>
+<a id="schema_AuthorizePaymentRequest"></a>
+<a id="tocSauthorizepaymentrequest"></a>
+<a id="tocsauthorizepaymentrequest"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;merchantInfo&quot;</span>: {
+    <span class="hljs-attr">&quot;merchantSerialNumber&quot;</span>: <span class="hljs-number">123456</span>
+  }
+}
+
+</code></pre>
+<h3 id="properties-28">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>merchantInfo</td>
+<td><a href="#schemamerchantinfopayment">MerchantInfoPayment</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
 <h2 id="tocs_expresscheckoutpaymentrequest">ExpressCheckOutPaymentRequest</h2>
 <p><a id="schemaexpresscheckoutpaymentrequest"></a>
 <a id="schema_ExpressCheckOutPaymentRequest"></a>
@@ -7652,7 +8099,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-28">Properties</h3>
+<h3 id="properties-29">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7731,7 +8178,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-29">Properties</h3>
+<h3 id="properties-30">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7789,7 +8236,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-30">Properties</h3>
+<h3 id="properties-31">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7872,7 +8319,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-31">Properties</h3>
+<h3 id="properties-32">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7921,7 +8368,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-32">Properties</h3>
+<h3 id="properties-33">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8015,7 +8462,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-33">Properties</h3>
+<h3 id="properties-34">Properties</h3>
 <p>oneOf</p>
 <table>
 <thead>
@@ -8071,7 +8518,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-34">Properties</h3>
+<h3 id="properties-35">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8150,6 +8597,7 @@ System.out.println(response.toString());
 </table>
 <!-- Renderer: Shins v2.6.0 -->
 <!-- Generator: Widdershins v4.0.1 -->
+<!-- backwards compatibility -->
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
