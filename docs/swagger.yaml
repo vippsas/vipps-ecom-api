@@ -832,6 +832,7 @@ paths:
       description: >-
         The API call allows merchant to refresh the authorizations of the payment. A reservation's lifetime 
         is defined by the scheme. Typically 7 days for Visa, and 30 days for Mastercard.
+        This is currently not live in production and will be added shortly.
       operationId: authorizePaymentUsingPut
       parameters:
         - name: orderId
