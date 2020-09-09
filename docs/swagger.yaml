@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.4.3
+  version: 1.4.4
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -2315,7 +2315,7 @@ components:
           description: "The error group. See: https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-groups"
           enum:
             - Authentication
-            - Payment
+            - Payments
             - InvalidRequest
             - VippsError
             - User

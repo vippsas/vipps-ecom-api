@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.7.
+Document version 2.3.8.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -85,7 +85,7 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
     - [Callback aborted or interrupted](#callback-aborted-or-interrupted)
     - [PSP connection issues](#psp-connection-issues)
   - [App integration](#app-integration)
-  - [App-switch between browser and the Vipps app](#app-switch-between-browser-and-the-vipps-app)
+  - [App-switching](#app-switching)
     - [App-switch on iOS](#app-switch-on-ios)
       - [Switch from merchant app to the Vipps app](#switch-from-merchant-app-to-the-vipps-app)
       - [Redirect back to the merchant app from Vipps app](#redirect-back-to-the-merchant-app-from-vipps-app)
@@ -1629,7 +1629,7 @@ See [HTTP response codes](#http-response-codes).
 | Error groups      | Description |
 | ----------------- | ----------- |
 | Authentication    | Authentication Failure because of wrong credentials provided  |
-| Payment   |  Failure while doing a payment authorization |
+| Payments   |  Failure while doing a payment authorization |
 | InvalidRequest  |  Request contains invalid parameters |
 | VippsError  |  Internal Vipps application error |
 | User  | Error related to the Vipps user (Example: Not a Vipps user)  |
@@ -1641,24 +1641,24 @@ Please note that Vipps is only allowed to provide some of these errors through
 the API, and that we have to send `VippsError` (99) in cases where we are not
 allowed to provide more details.
 
-| Error groups | Error Code | Error Message | Comment |
+| Error group | Error Code | Error Message | Comment |
 | ----- | ---- | ----------- |------|
-| Payment | 41 | User do not have a valid card ||
-| Payment | 42 | Refused by issuer bank ||
-| Payment | 43 | Refused by issuer bank because of invalid a amount ||
-| Payment | 44 | Refused by issuer because of expired card ||
-| Payment | 45 | Reservation failed for some unknown reason ||
-| Payment | 51 | Cannot cancel already captured order ||
-| Payment | 52 | Cancellation failed ||
-| Payment | 53 | Cannot cancel order which is not reserved yet ||
-| Payment | 61 | Captured amount exceeds the reserved amount ordered ||
-| Payment | 62 | The amount you tried to capture is not reserved ||
-| Payment | 63 | Capture failed for some unknown reason, please use Get Payment Details API to know the exact status ||
-| Payment | 71 | Cannot refund more than captured amount ||
-| Payment | 72 | Cannot refund for reserved order, please use Cancel API ||
-| Payment | 73 | Cannot refund on cancelled order ||
-| Payment | 93 | Captured amount should be same in Idempotent retry ||
-| Payment | 1501 | This person can not pay to companies |Used for Vipps users under the age of 15.|
+| Payments | 41 | User do not have a valid card ||
+| Payments | 42 | Refused by issuer bank ||
+| Payments | 43 | Refused by issuer bank because of invalid a amount ||
+| Payments | 44 | Refused by issuer because of expired card ||
+| Payments | 45 | Reservation failed for some unknown reason ||
+| Payments | 51 | Cannot cancel already captured order ||
+| Payments | 52 | Cancellation failed ||
+| Payments | 53 | Cannot cancel order which is not reserved yet ||
+| Payments | 61 | Captured amount exceeds the reserved amount ordered ||
+| Payments | 62 | The amount you tried to capture is not reserved ||
+| Payments | 63 | Capture failed for some unknown reason, please use Get Payment Details API to know the exact status ||
+| Payments | 71 | Cannot refund more than captured amount ||
+| Payments | 72 | Cannot refund for reserved order, please use Cancel API ||
+| Payments | 73 | Cannot refund on cancelled order ||
+| Payments | 93 | Captured amount should be same in Idempotent retry ||
+| Payments | 1501 | This person can not pay to companies |Used for Vipps users under the age of 15.|
 | InvalidRequest  | Field name will be the error code | Description about what exactly the field error is ||
 | VippsError | 91 | Transaction is not allowed ||
 | VippsError | 92 | Transaction already processed ||
