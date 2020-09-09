@@ -1837,7 +1837,7 @@ Darkula color scheme from the JetBrains family of IDEs
                   </li>
                 
                   <li>
-                    <a href="#tocs_authroizepaymentrequest" class="toc-h2 toc-link" data-title="">AuthroizePaymentRequest</a>
+                    <a href="#tocs_authorizepaymentrequest" class="toc-h2 toc-link" data-title="">AuthorizePaymentRequest</a>
                     
                   </li>
                 
@@ -3643,9 +3643,6 @@ curl -X PUT https://apitest.vipps.no/ecomm/v2/payments/{orderId}/authorize \
 <pre class="highlight tab tab-javascript"><code><span class="hljs-keyword">const</span> inputBody = <span class="hljs-string">&#x27;{
   &quot;merchantInfo&quot;: {
     &quot;merchantSerialNumber&quot;: 123456
-  },
-  &quot;transaction&quot;: {
-    &quot;transactionText&quot;: &quot;One pair of Vipps socks&quot;
   }
 }&#x27;</span>;
 <span class="hljs-keyword">const</span> headers = {
@@ -3804,9 +3801,6 @@ System.out.println(response.toString());
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">&quot;merchantInfo&quot;</span>: {
     <span class="hljs-attr">&quot;merchantSerialNumber&quot;</span>: <span class="hljs-number">123456</span>
-  },
-  <span class="hljs-attr">&quot;transaction&quot;</span>: {
-    <span class="hljs-attr">&quot;transactionText&quot;</span>: <span class="hljs-string">&quot;One pair of Vipps socks&quot;</span>
   }
 }
 </code></pre>
@@ -3888,7 +3882,7 @@ System.out.println(response.toString());
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemaauthroizepaymentrequest">AuthroizePaymentRequest</a></td>
+<td><a href="#schemaauthorizepaymentrequest">AuthorizePaymentRequest</a></td>
 <td>true</td>
 <td>paymentActionsRequest</td>
 </tr>
@@ -3905,20 +3899,6 @@ System.out.println(response.toString());
 <td>string</td>
 <td>true</td>
 <td>Unique id for this merchant's sales channel: website, mobile app etc. Short name: MSN.</td>
-</tr>
-<tr>
-<td>» transaction</td>
-<td>body</td>
-<td><a href="#schemacanceltransaction">CancelTransaction</a></td>
-<td>false</td>
-<td>none</td>
-</tr>
-<tr>
-<td>»» transactionText</td>
-<td>body</td>
-<td>string</td>
-<td>false</td>
-<td>Transaction text to be displayed in Vipps</td>
 </tr>
 </tbody>
 </table>
@@ -8041,17 +8021,14 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h2 id="tocs_authroizepaymentrequest">AuthroizePaymentRequest</h2>
-<p><a id="schemaauthroizepaymentrequest"></a>
-<a id="schema_AuthroizePaymentRequest"></a>
-<a id="tocSauthroizepaymentrequest"></a>
-<a id="tocsauthroizepaymentrequest"></a></p>
+<h2 id="tocs_authorizepaymentrequest">AuthorizePaymentRequest</h2>
+<p><a id="schemaauthorizepaymentrequest"></a>
+<a id="schema_AuthorizePaymentRequest"></a>
+<a id="tocSauthorizepaymentrequest"></a>
+<a id="tocsauthorizepaymentrequest"></a></p>
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">&quot;merchantInfo&quot;</span>: {
     <span class="hljs-attr">&quot;merchantSerialNumber&quot;</span>: <span class="hljs-number">123456</span>
-  },
-  <span class="hljs-attr">&quot;transaction&quot;</span>: {
-    <span class="hljs-attr">&quot;transactionText&quot;</span>: <span class="hljs-string">&quot;One pair of Vipps socks&quot;</span>
   }
 }
 
@@ -8071,13 +8048,6 @@ System.out.println(response.toString());
 <tr>
 <td>merchantInfo</td>
 <td><a href="#schemamerchantinfopayment">MerchantInfoPayment</a></td>
-<td>false</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>transaction</td>
-<td><a href="#schemacanceltransaction">CancelTransaction</a></td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
