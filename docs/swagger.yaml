@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.4.4
+  version: 1.5.0
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -123,8 +123,8 @@ paths:
         removal requests to the merchant. When receiving requests the merchant
         is obliged to remove the user details permanently, as per the GDPR
         guidelines. Vipps will add `/v2/consents/{userId}` to the end of this
-        URL. URLs passed to Vipps should be URL-encoded, and must validate with
-        the Apache Commons
+        URL.
+        URLs passed to Vipps must validate with the Apache Commons
         [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
       operationId: removeUserConsentUsingDELETE
       parameters:
@@ -154,8 +154,7 @@ paths:
         this URL.
         Vipps has a *10 second timeout* for these requests, and thus requires
         a quick reply from the merchant's server for successful payments.
-        URLs passed to Vipps should be URL-encoded, and must validate
-        with the Apache Commons
+        URLs passed to Vipps must validate with the Apache Commons
         [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
         We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
       operationId: fetchShippingCostUsingPOST
@@ -206,8 +205,7 @@ paths:
         The merchant may also pass the 'isApp: true' parameter that will make Vipps
         respond with a app-switch deeplink that will take the customer directly
         to the Vipps app.
-        URLs passed to Vipps should be URL-encoded, and must validate
-        with the Apache Commons
+        URLs passed to Vipps must validate with the Apache Commons
         [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
       operationId: initiatePaymentV3UsingPOST
       parameters:
@@ -351,8 +349,7 @@ paths:
                 removal requests to merchant. When receiving requests the merchant is
                 obliged to remove the user details permanently, as per the GDPR
                 guidelines. Vipps will add `/v2/consents/{userId}` to the end of this
-                URL. URLs passed to Vipps should be URL-encoded, and must validate with
-                the Apache Commons
+                URL. URLs passed to Vipps must validate with the Apache Commons
                 [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).  We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
               operationId: removeUserConsentUsingDELETE
               parameters:
@@ -383,8 +380,7 @@ paths:
                     a quick reply from the merchant's server for successful payments.
                     If the merchant does not respond in time, the user will get an
                     error in Vipps saying "No shipping methods found".
-                    URLs passed to Vipps should be URL-encoded, and must validate
-                    with the Apache Commons
+                    URLs passed to Vipps must validate with the Apache Commons
                     [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
                     We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
                   operationId: fetchShippingCostUsingPOST
@@ -830,7 +826,7 @@ paths:
         - Vipps eCom API
       summary: Authorize Payment
       description: >-
-        The API call allows merchant to refresh the authorizations of the payment. A reservation's lifetime 
+        The API call allows merchant to refresh the authorizations of the payment. A reservation's lifetime
         is defined by the scheme. Typically 7 days for Visa, and 30 days for Mastercard.
         This is currently not live in production and will be added shortly.
       operationId: authorizePaymentUsingPut
@@ -1990,7 +1986,7 @@ components:
         paymentInstrument:
           type: string
           description: >-
-            Text which describes what instrument was used to complete the payment. 
+            Text which describes what instrument was used to complete the payment.
             Not included until a user has chosen and approved in the app.
           example: Mastercard
           pattern: '^[a-zA-Z0-9-]{1,30}$'
@@ -2126,8 +2122,7 @@ components:
             Domain name and context path should be provided by merchant as the
             value for this parameter. Vipps will add `/v2/payments/{orderId}` to
             the end or this URL.
-            URLs passed to Vipps should be URL-encoded, and
-            must validate with the Apache Commons
+            URLs passed to Vipps must validate with the Apache Commons
             [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
           maxLength: 255
           example: 'https://example.com/vipps/callbacks-for-payment-updates'
@@ -2152,8 +2147,7 @@ components:
             This is normally the “success page”, although the “fallback” name
             is ambiguous (the same URL is also used if payment was not successful).
             In other words: This is the URL Vipps sends the Vipps user back to.
-            URLs passed to Vipps should be
-            URL-encoded, and must validate with the Apache Commons
+            URLs passed to Vipps must validate with the Apache Commons
             [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
           maxLength: 255
           example: 'https://example.com/vipps/fallback-order-result-page/order123abc'
