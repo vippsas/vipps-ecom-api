@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.5.0
+  version: 1.5.1
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -249,7 +249,7 @@ paths:
           required: false
           schema:
             type: string
-          example: 123456
+          example: '123456'
         - name: Vipps-System-Name
           in: header
           description: The name of the ecommerce solution. One word in lowercase letters is good.
@@ -261,7 +261,7 @@ paths:
           description: The version number of the ecommerce solution.
           schema:
             type: string
-          example: "5.4"
+          example: '5.4'
         - name: Vipps-System-Plugin-Name
           in: header
           description: The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.
@@ -579,7 +579,7 @@ paths:
           required: false
           schema:
             type: string
-          example: 123456
+          example: '123456'
         - name: Vipps-System-Name
           in: header
           description: The name of the ecommerce solution. One word in lowercase letters is good.
@@ -727,7 +727,7 @@ paths:
           required: false
           schema:
             type: string
-          example: 123456
+          example: '123456'
         - name: Vipps-System-Name
           in: header
           description: The name of the ecommerce solution. One word in lowercase letters is good.
@@ -876,7 +876,7 @@ paths:
           required: false
           schema:
             type: string
-          example: 123456
+          example: '123456'
         - name: Vipps-System-Name
           in: header
           description: The name of the ecommerce solution. One word in lowercase letters is good.
@@ -1045,7 +1045,7 @@ paths:
           required: false
           schema:
             type: string
-          example: 123456
+          example: '123456'
         - name: Vipps-System-Name
           in: header
           description: The name of the ecommerce solution. One word in lowercase letters is good.
@@ -1325,7 +1325,7 @@ paths:
           required: false
           schema:
             type: string
-          example: 123456
+          example: '123456'
         - name: Vipps-System-Name
           in: header
           description: The name of the ecommerce solution. One word in lowercase letters is good.
@@ -1534,7 +1534,7 @@ components:
         customerPhoneNumber:
           type: string
           description: Target customer phone number. 8 digits.
-          example: 91234567
+          example: '91234567'
           pattern: '^\d{8}$'
         token:
           type: string
@@ -1621,10 +1621,10 @@ components:
             Max length: 256 characters.
             Recommended length for readability on most screens: 25 characters.
           example: Posten Servicepakke
-          maxLength: 256
+          maxLength: '256'
         shippingMethodId:
           type: string
-          maxLength: 100
+          maxLength: '100'
     TransactionLogHistory:
       type: object
       required:
@@ -1660,7 +1660,7 @@ components:
           description: >-
             The idempotent request id provided by the merchant for the
             operation.
-          example: 12983921873981899000
+          example: '12983921873981899000'
         timeStamp:
           type: string
           description: Timestamp in ISO-8601 representing when the operation was performed.
@@ -1668,12 +1668,12 @@ components:
         transactionId:
           type: string
           description: Identifies the transaction
-          example: 5001446662
+          example: '5001446662'
         transactionText:
           type: string
           description: Transaction text to be displayed in Vipps
           example: One pair of Vipps socks
-          maxLength: 100
+          maxLength: '100'
     CancelTransaction:
       type: object
       properties:
@@ -1681,7 +1681,7 @@ components:
           type: string
           description: Transaction text to be displayed in Vipps
           example: One pair of Vipps socks
-          maxLength: 100
+          maxLength: '100'
     UserDetails:
       type: object
       required:
@@ -2015,7 +2015,7 @@ components:
             etc. Short name: MSN.
           minLength: 6
           maxLength: 6
-          example: 123456
+          example: '123456'
           pattern: '^\d{6}$'
     ShippingDetails:
       type: object
@@ -2168,7 +2168,7 @@ components:
             etc. Short name: MSN.
           minLength: 6
           maxLength: 6
-          example: 123456
+          example: '123456'
           pattern: '^\d{6}$'
         paymentType:
           type: string
@@ -2316,7 +2316,7 @@ components:
             etc. Short name: MSN.
           minLength: 6
           maxLength: 6
-          example: 123456
+          example: '123456'
           pattern: '^\d{6}$'
         orderId:
           type: string
@@ -2348,7 +2348,7 @@ components:
             etc. Short name: MSN.
           minLength: 6
           maxLength: 6
-          example: 123456
+          example: '123456'
           pattern: '^\d{6}$'
         orderId:
           type: string
@@ -2454,7 +2454,7 @@ components:
         bankIdentificationNumber:
           type: string
           description: Bank Identification Number, first 6 digit of card number
-          example: 123456
+          example: '123456'
     TransactionUpdateCallbackOneOf:
       oneOf:
         - $ref: '#/components/schemas/ExpressCheckOutPaymentRequest'
