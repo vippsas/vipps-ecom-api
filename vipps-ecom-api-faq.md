@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.8.3.
+Document version 1.8.4.
 
 ## Table of contents
 
@@ -164,6 +164,11 @@ different sale units, as this can not be specified in the API calls.
 No. The Vipps "deeplink" is an integrated part of the Vipps payment process,
 and the link should never be sent in an SMS or email. The deeplink is only valid
 for 5 minutes, so users that do not act quickly will not be able to pay.
+
+According to Norwegian regulations the customer needs to actively accept the
+terms and conditions for the purchase.
+For more information, please see the Consumer Authority's
+[Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
 
 Instead of sending a Vipps deeplink: Send a link to your website, and let
 the user start the Vipps payment there. It can be a very simple page with a link
