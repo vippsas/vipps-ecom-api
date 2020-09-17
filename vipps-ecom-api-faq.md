@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.8.2.
+Document version 1.8.3.
 
 ## Table of contents
 
@@ -194,8 +194,11 @@ If you need to skip the landing page in a Point of Sale (POS) solution, see:
 [What is the process to go live in production?](#what-is-the-process-to-go-live-in-production).
 
 If you need to skip the landing page for a different reason:
-[contact Vipps](https://github.com/vippsas/vipps-developers/blob/master/contact.md)
-with a detailed description of why it is not possible to display the landing page.
+Contact your Key Account Manager. If you do not have a KAM:
+Please log in on
+[portal.vipps.no](https://portal.vipps.no),
+find the right sale unit and click the email link under the "i" information bubble.
+Include a detailed description of why it is not possible to display the landing page.
 
 ## How can I refund a payment?
 
