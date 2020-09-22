@@ -1189,7 +1189,10 @@ If the e-mail address that is delivered has the flag "email_verified : false" th
 To request these scopes add the scopes to the initial call to
 [`POST:​/ecomm​/v2​/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
 
-The user then consents and pays in the app.
+The user is presented with a consents card that must be accepted before approving the payment in the Vipps app. The following screen shows an example of a consent card:
+
+![Consent card](images/share-user-info.png)
+
 
 **Please note:** This operation has an "all or nothing" approach, so a user must
 complete a valid payment and consent to all values in order to complete the
