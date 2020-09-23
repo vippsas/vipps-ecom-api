@@ -1162,9 +1162,6 @@ See [Timeouts](#timeouts) for details about timeouts.
 
 ## Userinfo
 
-**Important:** This functionality is currently being rolled out in all environments.
-The documentation is being updated, but is not yet complete.
-
 Vipps offers the possibility for merchants to ask for the users profile information as part of the payment flow. If the enduser has not already consented to sharing information from Vipps to the merchant the user will be asked for such consent before completing the payment flow. Once the payment flow is completed the merchant can get the profile information from our Userinfo endpoint.
 
 The [`GET:/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo) endpoint is shared by eCom and [Vipps login](https://github.com/vippsas/vipps-login-api) and the merchant needs to have activated Vipps login to use this feature. You can find more information on how to activate Vipps login[here](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api-faq.md#how-can-i-activate-and-set-up-vipps-login).
@@ -1189,7 +1186,10 @@ If the e-mail address that is delivered has the flag "email_verified : false" th
 To request these scopes add the scopes to the initial call to
 [`POST:​/ecomm​/v2​/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
 
-The user then consents and pays in the app.
+The user is presented with a consents card that must be accepted before approving the payment in the Vipps app. The following screens shows an examples of a consent cards for Android(left) and iOS(right):
+
+![Consent card](images/share-user-info.png)
+
 
 **Please note:** This operation has an "all or nothing" approach, so a user must
 complete a valid payment and consent to all values in order to complete the

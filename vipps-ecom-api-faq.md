@@ -174,7 +174,9 @@ For more information, please see the Consumer Authority's
 Instead of sending a Vipps deeplink: Send a link to your website, and let
 the user start the Vipps payment there. It can be a very simple page with a link
 or a button. You then have the opportunity to give the user additional
-information, and also a proper confirmation page after the payment has been completed.
+information, and also a proper confirmation page after the payment has been completed. In some cases, such as for donations and gifts, it may be acceptable to automatically trigger the Vipps payment when the user enters your website. This requires that the payment process is user initiated, and that there are no relevant terms and conditions or that the user has accepted any terms and conditions at an earlier stage.
+
+In general we advice caution and point out that it is the responsibility of the merchant to assure that users accept terms and conditions for products and services.
 
 You can also use
 [Vipps Logg Inn](https://github.com/vippsas/vipps-login-api)
