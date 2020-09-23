@@ -66,7 +66,8 @@ and other risk assessment procedures.
 
 ## Can I use my "Vipps-nummer" in my webshop?
 
-No. You need [Vipps på Nett](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).
+**Short answer**: No. You need [Vipps på Nett](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).  
+**Longer answer**: "Vipps-nummer" can't be used for "Vipps på Nett", "Vipps Logg Inn" or "Vipps Faste Betalinger". The reason for this is that the Norwegian Tax Administration considers "Vipps-nummer" to be cash transactions, while eCommerce is defined as remote sales ("fjernhandel"). The regulations associated with both are different enough to require this policy.
 
 ## Why do payments fail?
 

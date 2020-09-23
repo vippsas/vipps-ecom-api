@@ -1,13 +1,15 @@
 # Migration from eCom API v1 to eCom API v2
 
-Document version 1.1.0.
+Document version 1.1.1.
 
-Issues and PRs are welcome.
 This document explains the key differences between eCom API v1 and eCom API v2.
 
 ## Landing page
 
 Universal payment flows are essential for a good user experience. This is why the eCom v2 API has a single, mandatory landing page for all non-mobile payments.
+See
+[Vipps eCommerce API: How It Works](vipps-ecom-api-howitworks.md)
+for a detailed description of the v2 flow.
 
 The initiate payment response will contain a unique URL for each order. Either a standard `https://` URL or a deeplink URL, prefixed with `vipps://`.
 
