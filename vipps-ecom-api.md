@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.8.
+Document version 2.3.9.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -828,12 +828,39 @@ See also: [Skip landing page](#skip-landing-page).
 
 ## Capture
 
+Capture is done with
+[`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/capturePaymentUsingPOST).
+
+We strongly recommend to use the idempotency key `X-Request-Id`. If a capture
+request fails for any reason, it can be retried with the same idempotency key.
+
+**Please note:** It is important to check the response of the `/capture`
+call. The capture is only successful when the response is `HTTP 200 OK`.
+
+Use
+[`GET:/ecomm/v2/payments/{orderId}/details](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
+to get all the details of a payment.
+
+There are two types of capture: _reserve capture_ and _direct capture_.
+Reserve capture is the default. When you initiate a payment it will be reserved
+until you capture it.
+
+*  If a payment has been reserved, the merchant can make a `/cancel` call to
+immediately release the reservation and make available in the customer's
+account.
+* If a payment has been captured, the merchant has to make a `/refund` call, and
+it then takes a few days before the amount is available in the customer's account.
+
+See the FAQ for more:
+[What is the difference between "Reserve Capture" and "Direct Capture"?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#what-is-the-difference-between-reserve-capture-and-direct-capture.)
+
 ## Reserve capture
 
 _Reserve capture_ is the normal flow.
 
-When then end user approves an initiated payment it will be reserved until you capture it. When the order is reserved
-the amount is marked as reserved by the bank, but not transferred.
+When then end user approves an initiated payment it will be reserved until you
+capture it. When the order is reserved the amount is marked as reserved by the
+bank, but not transferred.
 
 ## Direct capture
 
@@ -892,10 +919,6 @@ These two truncated examples show the responses for a reservation of
     "remainingAmountToRefund": 0
 }
 ```
-
-**Please note:** It is important to check the response of the `/capture`
-call. The capture is only successful when the response is
-`HTTP 200 OK`.
 
 ## Cancel
 
