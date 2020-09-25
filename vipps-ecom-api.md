@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.10.
+Document version 2.3.11.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -845,13 +845,17 @@ There are two types of capture: _reserve capture_ and _direct capture_.
 Reserve capture is the default. When you initiate a payment it will be reserved
 until you capture it. With direct capture the reservation is instantly captured.
 
-*  If a payment has been reserved, the merchant can make a `/cancel` call to
-immediately release the reservation and make available in the customer's
-account.
-* If a payment has been captured, the merchant has to make a `/refund` call, and
-it then takes a few days before the amount is available in the customer's account.
+*  If a payment has been reserved, the merchant can make a
+  [`/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
+  call to
+  immediately release the reservation and make available in the customer's
+  account.
+* If a payment has been captured, the merchant has to make a
+  [`/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST)
+  call, and
+  it then takes a few days before the amount is available in the customer's account.
 
-See the FAQ for more:
+See the FAQ:
 [What is the difference between "Reserve Capture" and "Direct Capture"?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#what-is-the-difference-between-reserve-capture-and-direct-capture.)
 
 ## Reserve capture
