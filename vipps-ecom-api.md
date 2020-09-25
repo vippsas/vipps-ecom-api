@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.11.
+Document version 2.3.12.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -60,9 +60,9 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
   - [Reserve](#reserve)
   - [The Vipps landing page](#the-vipps-landing-page)
   - [Capture](#capture)
-  - [Reserve capture](#reserve-capture-1)
-  - [Direct capture](#direct-capture-1)
-  - [Partial capture](#partial-capture)
+    - [Reserve capture](#reserve-capture-1)
+    - [Direct capture](#direct-capture-1)
+    - [Partial capture](#partial-capture)
   - [Cancel](#cancel)
     - [Cancelling a pending order](#cancelling-a-pending-order)
   - [Refund](#refund)
@@ -173,16 +173,15 @@ the product or service is provided to the customer. For more information,
 please see the Consumer Authority's
 [Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
 
+See [Reserve capture](#reserve-capture-1) for more details.
+
 ### Direct capture
 
 **Direct capture** causes all payment reservations to be instantly be captured.
 This is intended for situations where the product or service is immediately
 provided to the customer, e.g. digital services.
 
-When using direct capture, payments can not be cancelled as easily as
-with reserve capture. A payment done with direct capture must be
-_refunded_, and it then takes a few days before the money is available
-in the customer's account.
+See [Direct capture](#direct-capture-1) for more details.
 
 ### When to use reserve capture and direct capture
 
@@ -858,7 +857,7 @@ until you capture it. With direct capture the reservation is instantly captured.
 See the FAQ:
 [What is the difference between "Reserve Capture" and "Direct Capture"?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#what-is-the-difference-between-reserve-capture-and-direct-capture.)
 
-## Reserve capture
+### Reserve capture
 
 _Reserve capture_ is the normal flow.
 
@@ -866,7 +865,7 @@ When then end user approves an initiated payment it will be reserved until you
 capture it. When the order is reserved the amount is marked as reserved by the
 bank, but not transferred.
 
-## Direct capture
+### Direct capture
 
 When _direct capture_ is activated, all payment reservations will instantly be captured.
 
@@ -886,7 +885,7 @@ The amount to capture cannot be higher than the reserved amount. According to
 Norwegian regulations, capture can not be done before the goods have been shipped.
 The transaction text is mandatory, and is displayed to end user in Vipps.
 
-## Partial capture
+### Partial capture
 
 Partial capture may be used if not the entire order is shipped or for other
 reasons. Partial capture may be called as many times as required as long as
