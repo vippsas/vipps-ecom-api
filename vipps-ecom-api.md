@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.9.
+Document version 2.3.10.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -838,12 +838,12 @@ request fails for any reason, it can be retried with the same idempotency key.
 call. The capture is only successful when the response is `HTTP 200 OK`.
 
 Use
-[`GET:/ecomm/v2/payments/{orderId}/details](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
 to get all the details of a payment.
 
 There are two types of capture: _reserve capture_ and _direct capture_.
 Reserve capture is the default. When you initiate a payment it will be reserved
-until you capture it.
+until you capture it. With direct capture the reservation is instantly captured.
 
 *  If a payment has been reserved, the merchant can make a `/cancel` call to
 immediately release the reservation and make available in the customer's
