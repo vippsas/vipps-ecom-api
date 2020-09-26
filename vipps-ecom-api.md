@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.12.
+Document version 2.3.13.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -1069,26 +1069,26 @@ Swagger: [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/
 
 ### Payment states
 
-| #   | From-state | To-state | Description                                   | Operation |
-| --- | ---------- | -------- | --------------------------------------------- | -------------- |
-| 0   | -          | Initiate | Payment initiation                            | `INITIATE`     |
-| 1   | Initiate   | -        | The merchant has initiated the payment        | `INITIATE`     |
-| -   |            | Reserve  | The user has accepted the payment and amount has been reserved | `RESERVE`      |
-| -   |            | Cancel   | The user cancels the order                    | `CANCEL`       |
-| 2   | Reserve    | Capture  | The merchant captures the payment, and ships  | `CAPTURE`      |
-| -   |            | Cancel   | The merchant cancels the order                | `VOID`         |
-| 3   | Capture    | --       | A final state: Payment fully processed        | `CAPTURE`      |
-| -   |            | Refund   | The merchant refunds the money to the user    | `REFUND`     |
-| 4   | Cancel     | --       | A final state: Payment cancelled              | -              |
-| 5   | Refund     | --       | A final state: Payment refunded               | -              |
+| #   | From-state | To-state | Description                                     | Operation      |
+| --- | ---------- | -------- | ----------------------------------------------- | -------------- |
+| 0   | -          | Initiate | Payment initiation                              | `INITIATE`     |
+| 1   | Initiate   | -        | The merchant has initiated the payment          | `INITIATE`     |
+| -   |            | Reserve  | The user has accepted the payment and amount has been reserved | `RESERVE` |
+| -   |            | Cancel   | The user has canceled the order                 | `CANCEL`       |
+| 2   | Reserve    | Capture  | The merchant captures the payment, and ships    | `CAPTURE`      |
+| -   |            | Cancel   | The merchant has canceled the order             | `VOID`         |
+| 3   | Capture    | --       | A final state: Payment fully processed          | `CAPTURE`      |
+| -   |            | Refund   | The merchant has refunded the money to the user | `REFUND`       |
+| 4   | Cancel     | --       | A final state: Payment cancelled                | -              |
+| 5   | Refund     | --       | A final state: Payment refunded                 | -              |
 
 ## Requests and responses
 
 Please note that the response from
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET))
-always contain _the entire history_ of payments for the order, not just the current status.
+always contains _the entire history_ of payments for the order, not just the current status.
 
-**Important:** The `operationSuccess` filed indicates whether an operation was successful or not.
+**Important:** The `operationSuccess` field indicates whether an operation was successful or not.
 
 | Response    | Description |
 | ---------- | --------------------------------------------------------- |
