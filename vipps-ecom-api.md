@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.13.
+Document version 2.3.14.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -1375,13 +1375,40 @@ Example of an error response body (formatted for readability):
 
 ### Partner Keys
 
-If you are a Vipps Partner that is managing transactions on behalf of other Vipps Merchants you can use your own credentials to authenticate, and then send the Merchant-Serial-Number to identify
-which of your Vipps Merchant you are acting on behalf of. The Merchant-Serial-Number must be sent in the header of all requests. as described in our swagger documentation
+If you are a Vipps Partner that is managing transactions on behalf of other
+Vipps Merchants you can use your own credentials to authenticate, and then
+send the `Merchant-Serial-Number` to identify which of your Vipps Merchant you
+are acting on behalf of. The `Merchant-Serial-Number` must be sent in the header
+of all requests. as described in our swagger documentation:
 
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
 
-> The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.
+Including the
+[Optional HTTP Headers](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#optional-vipps-http-headers)
+too will make it easier to investigate problems, if anything unexpected happens.
+Partners may use only the `Vipps-System-Name` and `Vipps-System-Name`if the
+plugins headers do not make sense.
 
+Here's an example of headers (please refer to the
+[OpenAPI/Swagger specification](https://github.com/vippsas/vipps-ecom-api)
+for all the details):
+
+```
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni <snip>
+Ocp-Apim-Subscription-Key: 0f14ebcab0ec4b29ae0cb90d91b4a84a
+Merchant-Serial-Number: 123456
+Vipps-System-Name: Acme Enterprises Ecommerce DeLuxe
+Vipps-System-Version: 3.1.2
+Vipps-System-Plugin-Name: Point Of Sale Excellence
+Vipps-System-Plugin-Version 4.5.6
+Content-Type: application/json
+```
+
+**Please note:** The Merchant Serial Number (MSN) is a unique id for the sale
+unit that this payment is made for. This is a required parameter if you are a
+Vipps eCom partner making payments on behalf of a merchant. The partner must
+use the merchant's MSN (not the partner's MSN). This parameter is optional,
+and recommended, for regular Vipps merchants making payments for themselves.
 
 ## Idempotency
 
