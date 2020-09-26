@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.14.
+Document version 2.3.15.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -1386,8 +1386,8 @@ of all requests. as described in our swagger documentation:
 Including the
 [Optional HTTP Headers](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#optional-vipps-http-headers)
 too will make it easier to investigate problems, if anything unexpected happens.
-Partners may use only the `Vipps-System-Name` and `Vipps-System-Name`if the
-plugins headers do not make sense.
+Partners may re-use the values of the `Vipps-System-Name` and `Vipps-System-Name`
+in the plugins headers if having different values do not make sense.
 
 Here's an example of headers (please refer to the
 [OpenAPI/Swagger specification](https://github.com/vippsas/vipps-ecom-api)
