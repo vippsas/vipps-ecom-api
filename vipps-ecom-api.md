@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.15.
+Document version 2.3.16.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -1543,9 +1543,8 @@ Example of a `deeplinkURL`:
 
 `vipps://?token=eyJraWQiOiJqd3RrZXkiLCJhbGciOiJSUzI1NiJ9.ey <snip>`
 
-**Please note:** If you have both the official Vipps app from App Store _and_ the test Vipps app from TestFlight installed,
-the app switch may open either one. There is no way to open one of them specifically, as
-the URL scheme is the same for both. We recommend to only have one of the apps installed on the device.
+**Please note:** For production it's `vipps://`, but for our test environment it's `vippsMT://`.  
+This is change from previously where the deeplink started with `vipps://` for both production and test.
 
 #### Redirect back to the merchant app from Vipps app
 
