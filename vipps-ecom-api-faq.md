@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.8.4.
+Document version 1.8.5.
 
 ## Table of contents
 
@@ -19,6 +19,7 @@ Document version 1.8.4.
 - [Can I use my "Vipps-nummer" in my webshop?](#can-i-use-my-vipps-nummer-in-my-webshop)
 - [Why do payments fail?](#why-do-payments-fail)
 - [Why does capture fail?](#why-does-capture-fail)
+- [Why do I get a CORS error?](#why-do-i-get-a-cors-error)
 - [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
 - [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
 - [How do I turn _direct capture_ on or off?](#How-do-I-turn-direct-capture-on-or-off)
@@ -100,6 +101,21 @@ The reserved amount must at least as high as the amount that is captured.
 Example: If the value of the shopping cart is 1000 NOK, and the reserved amount is 1100 NOK,
 the shipping cost must be maximum 100 NOK. If the shipping cost is 150 kr, a capture of
 1000 + 150 kr = 1150 NOK will fail.
+
+## Why do I get a CORS error?
+
+If you get a CORS (Cross-Origin Resource Sharing) error, it is from your side,
+not an error from Vipps.
+
+CORS is a protocol that enables scripts running on a browser client to interact
+with resources from a different origin. Sometimes servers are configured to
+prevent this, and that results in a CORS error.
+
+Vipps only received the API requests over HTTPS, and has no way of detecting
+how the request was made on the caller side - it all looks the same.
+
+You can read more about CORS here:
+[CORS Tutorial: A Guide to Cross-Origin Resource Sharing](https://auth0.com/blog/cors-tutorial-a-guide-to-cross-origin-resource-sharing/).
 
 ## Why does Vipps Hurtigkasse (express checkout) fail?
 
