@@ -111,7 +111,7 @@ CORS is a protocol that enables scripts running on a browser client to interact
 with resources from a different origin. Sometimes servers are configured to
 prevent this, and that results in a CORS error.
 
-Vipps only received the API requests over HTTPS, and has no way of detecting
+Vipps only receives the API requests over HTTPS, and has no way of detecting
 how the request was made on the caller side - it all looks the same.
 
 You can read more about CORS here:
