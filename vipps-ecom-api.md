@@ -1494,13 +1494,15 @@ to executing the service call again.
 
 ### Callback aborted or interrupted
 
-If the communication is broken during payment process for some reason, and
-Vipps is not able to execute callback, then callback will not be retried.
+If the communication is broken during payment process for some reason,
+either because of network problems, that the user abruptly closes the app or
+something else, and Vipps is not able to execute callback, the callback will
+not be retried.
 
 In other words, if the merchant doesn’t receive any confirmation on payment
-request call within callback timeframe, merchant should call
+request call within callback timeframe, merchant must call
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
-to get the response of payment request.
+to get the response of payment request. 
 
 ### PSP connection issues
 
