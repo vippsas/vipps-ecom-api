@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.16.
+Document version 2.3.17.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -1188,14 +1188,17 @@ See [Timeouts](#timeouts) for details about timeouts.
 
 ## Userinfo
 
-Vipps offers the possibility for merchants to ask for the users profile information as part of the payment flow. If the enduser has not already consented to sharing information from Vipps to the merchant the user will be asked for such consent before completing the payment flow. Once the payment flow is completed the merchant can get the profile information from our Userinfo endpoint.
+Vipps offers the possibility for merchants to ask for the user's profile
+information as part of the payment flow. This is done by adding a `scope`
+parameter to the initiate call:
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST).
 
-The [`GET:/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo) endpoint is shared by eCom and [Vipps login](https://github.com/vippsas/vipps-login-api) and the merchant needs to have activated Vipps login to use this feature. You can find more information on how to activate Vipps login[here](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api-faq.md#how-can-i-activate-and-set-up-vipps-login).
-
-A user's consent to share information with a merchant applies across our services. Thus, if the merchant implements Vipps Login in addition to profile information as part of the payment flow, the merchant can also use Vipps to log the user in without the need for additional consents.
-
-When you initiate a payment: Add the parameter `scope` to ask for a user's
-consent to share these details, such as email, address and name.
+If the user has not already consented to sharing information from Vipps to the
+merchant the user will be asked for such consent before completing the payment
+flow. Once the payment flow is completed the merchant can get the profile
+information from our
+[`GET:/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)
+endpoint.
 
 | Scopes      | Description                                    | User consent required  |
 | ------------| -----------------------------------------------|-------- |
@@ -1212,10 +1215,24 @@ If the e-mail address that is delivered has the flag "email_verified : false" th
 To request these scopes add the scopes to the initial call to
 [`POST:​/ecomm​/v2​/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
 
-The user is presented with a consents card that must be accepted before approving the payment in the Vipps app. The following screens shows an examples of a consent cards for Android(left) and iOS(right):
+The
+[`GET:/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)
+endpoint is shared between the Vipps eCom API and the
+[Vipps Login API](https://github.com/vippsas/vipps-login-api)
+and the merchant needs to have activated Vipps Login to use this feature. You can
+find more information on how to activate Vipps Login
+[here](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api-faq.md#how-can-i-activate-and-set-up-vipps-login).
+
+A user's consent to share information with a merchant applies across all Vipps
+services. Thus, if the merchant implements Vipps Login in addition to profile
+information as part of the payment flow, the merchant can also use Vipps to
+log the user in without the need for additional consent.
+
+The user is presented with a consents card that must be accepted before
+approving the payment in the Vipps app. The following screens shows an examples
+of a consent cards for Android(left) and iOS(right):
 
 ![Consent card](images/share-user-info.png)
-
 
 **Please note:** This operation has an "all or nothing" approach, so a user must
 complete a valid payment and consent to all values in order to complete the
@@ -1477,13 +1494,15 @@ to executing the service call again.
 
 ### Callback aborted or interrupted
 
-If the communication is broken during payment process for some reason, and
-Vipps is not able to execute callback, then callback will not be retried.
+If the communication is broken during payment process for some reason,
+either because of network problems, that the user abruptly closes the app or
+something else, and Vipps is not able to execute callback, the callback will
+not be retried.
 
 In other words, if the merchant doesn’t receive any confirmation on payment
-request call within callback timeframe, merchant should call
+request call within callback timeframe, merchant must call
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
-to get the response of payment request.
+to get the response of payment request. 
 
 ### PSP connection issues
 
