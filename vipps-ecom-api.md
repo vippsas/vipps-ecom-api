@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.17.
+Document version 2.3.18.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -74,6 +74,9 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
   - [Polling guidelines](#polling-guidelines)
   - [Get payment status](#get-payment-status)
   - [Userinfo](#userinfo)
+    - [Scopes](#scopes)
+    - [Get userinfo](#get-userinfo)
+    - [Consent](#consent)
   - [HTTP response codes](#http-response-codes)
   - [Rate limiting](#rate-limiting)
   - [Authentication](#authentication)
