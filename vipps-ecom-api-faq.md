@@ -180,7 +180,9 @@ different sale units, as this can not be specified in the API calls.
 
 ## Can I prevent people from paying with credit cards?
 
-Yes. Sale units can be configured to only accept payments from debit cards, so
+Yes, but only if you are not legally allowed to accept credit card payments.
+
+Sale units can be configured to only accept payments from debit cards, so
 customers can not pay with credit cards. This is not configurable by the
 merchant. Please contact your KAM or
 [Vipps Kundesenter](https://vipps.no/kontakt-oss/bedrift/vipps/)
