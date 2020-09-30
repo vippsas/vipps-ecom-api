@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.8.5.
+Document version 1.8.6.
 
 ## Table of contents
 
@@ -23,6 +23,7 @@ Document version 1.8.5.
 - [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
 - [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
 - [How do I turn _direct capture_ on or off?](#How-do-I-turn-direct-capture-on-or-off)
+- [Can I prevent people from paying with credit cards?](#can-i-prevent-people-from-paying-with-credit-cards)
 - [Can I send a Vipps payment link in an SMS or email?](#can-i-send-a-vipps-payment-link-in-an-sms-or-email)
 - [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
 - [How can I refund a payment?](#how-can-i-refund-a-payment)
@@ -105,7 +106,8 @@ the shipping cost must be maximum 100 NOK. If the shipping cost is 150 kr, a cap
 ## Why do I get a CORS error?
 
 If you get a CORS (Cross-Origin Resource Sharing) error, it is from your side,
-not an error from Vipps.
+not an error from Vipps. You are most likely attempting to call the Vipps API
+from a website, and your webserver's configuration prevents it.
 
 CORS is a protocol that enables scripts running on a browser client to interact
 with resources from a different origin. Sometimes servers are configured to
@@ -175,6 +177,14 @@ find the right sale unit and click the email link under the "i" information bubb
 
 To get both _direct capture_ and _reserve capture_ you must request two
 different sale units, as this can not be specified in the API calls.
+
+## Can I prevent people from paying with credit cards?
+
+Yes. Sale units can be configured to only accept payments from debit cards, so
+customers can not pay with credit cards. This is not configurable by the
+merchant. Please contact your KAM or
+[Vipps Kundesenter](https://vipps.no/kontakt-oss/bedrift/vipps/)
+if you need this.
 
 ## Can I send a Vipps payment link in an SMS or email?
 
