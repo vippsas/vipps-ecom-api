@@ -76,6 +76,8 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
   - [Userinfo](#userinfo)
     - [Scopes](#scopes)
     - [Get userinfo](#get-userinfo)
+    - [Vipps Login access token](#vipps-login-access-token)
+    - [Userinfo call](#userinfo-call)
     - [Consent](#consent)
   - [HTTP response codes](#http-response-codes)
   - [Rate limiting](#rate-limiting)
@@ -1235,7 +1237,7 @@ Once the user completes the session a unique identifier `sub` can be retrieved f
 
 Example `sub` format:
 
-```
+```json
 "sub": "c06c4afe-d9e1-4c5d-939a-177d752a0944",
 ```
 
@@ -1243,9 +1245,109 @@ This `sub` is a link between the merchant and the user and can used to retrieve
 the user's details from Vipps Login:
 [`GET:/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)
 
-**Please note:** accessing the Login `userinfo` endpoint requires the
-Vipps Login access token:
-[`POST:/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/oauth2Token) this is described in detail in [login's documentation](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api.md#access-token)
+### Vipps Login access token
+
+Accessing the Login `userinfo` endpoint required the Vipps Login access token: [`POST:/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/oauth2Token). The client constructs the request by adding the parameters described below to the HTTP body by using the `application/x-www-form-urlencoded` format.
+
+**Request**
+
+*Headers*
+
+| Header            | Description                           |
+| ----------------- | ------------------------------------- |
+| Content-Type      | "application/x-www-form-urlencoded"   |
+| Authorization     | "Basic {Client Credentials}"          |
+
+The Client Credentials is a base 64 encoded string consisting of the Client id
+and secret issued by Vipps joined by ":"
+
+*Form content*
+
+| Key               | Description                         |
+| ----------------- | ----------------------------------- |
+| grant_type        | Value MUST be `client_credentials`  |
+
+**Example response:**
+
+```json
+{
+  "access_token": "hel39XaKjGH5tkCvIENGPNbsSHz1DLKluOat4qP-A4.WyV61hCK1E2snVs1aOvjOWZOXOayZad0K-Qfo3lLzus",
+  "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6InB1YmxpYzo4MGYzYzM0YS05Nzc5LTRlMWUtYjY0NS0xMTdmM2I3NzFhZjgiLCJ0eXAiOiJKV1QifQ.eyJhdF9oYXNoIjoidHlGbkgyMFRPbVBaa2dKVThlNWlLdyIsImF1ZCI6WyJ2aXBwcy1pbnRlZ3JhdGlvbiJdLCJhdXRoX3RpbWUiOjE1NTczMTkyOTYsImV4cCI6MTU1NzMyMjkzOCwiaWF0IjoxNTU3MzE5MzM4LCJpc3MiOiJodHRwczovL2FwaXRlc3QudmlwcHMubm8vYWNjZXNzLW1hbmFnZW1lbnQtMS4wL2FjY2Vzcy8iLCJqdGkiOiI2MmE4NWU1Ni0zZDQ1LTRjN2UtYTA1NS00NjkzMjA5MzI1N2EiLCJub25jZSI6IiIsInJhdCI6MTU1NzMxOTI1NSwic3ViIjoiYzA2YzRhZmUtZDllMS00YzVkLTkzOWEtMTc3ZDc1MmEwOTQ0In0.OljG0W_TCfxkrRntj_5He3U0PH94SDZvlK-dvUJe8H5jj8QSiSnqiv65kyzxdr8Bq1MwG7a6Mtlnn4MoL8AyxKUVe6s81CNaYmwaHsWLw2Z2JmiPn5_X4lEy1nHVDX3R7lFKDQqFLSGnGNPU9bACj-Si18LBR-qv060wEj3b1ShrVeUIZCL1Yhxb6cIGl_8RivRto9dBrzggyOlVTtmoPrm9TLYF7UGWjlbmHTqpBWsCQIOeQqgs7RmSBt5k3O9nmP7guVxo5MWv_2Z0XuCqobLDDXJ29Rk_W6d79y-lPzq_TedNb_lCdVJF7u9qDYFbIPuQwXp26CeIJcR-nc-t0qEoNmLru_x-9Z8dCjjzkZbWqyNsNedQU1zt0WFbHjRkodVoHNcRZVT5W5hCe54lmZ6lUqyKwHW0_3Rpd2CI6lPdCOhC-Tze5cUDfb8jT_0OZqCI_wAuWvb6_4VeHqhvUav6Mh6d7AxNJQYG6BAJo9TzyrG7ho4mSpb2wWMr8gmRi8pTQbqa40whPqptpiz_j4AHcsrRckjYONU0USKlnNcBGc24M4sprcLZ6vxFqDYmDoZwUDRdZWRpUbqm_nCmCKb20Z6l5O7h32KvOApopJe2NIeAynli3Nl05QVGOdoT1mZDLYXbtyb0b_4qhRflySr6gaczcf2ovUKAToKNs_4",
+  "expires_in": 3599,
+  "scope": "openid",
+  "token_type": "bearer"
+}
+```
+
+### Userinfo call
+
+This endpoint returns the payload with the information that the user has consented to share, which is provided in the OAuth 2.0 access token.
+You can learn more at the [OIDC Standard](https://openid.net/specs/openid-connect-core-1_0.html#UserInfo).
+
+Call [`GET:/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo) with the `sub` that was retrieved earlier. See below on how to construct the call.
+
+**Request**
+
+*Headers*
+
+| Header            | Description                            |
+| ----------------- | -------------------------------------  |
+| Authorization     | "Bearer {Access Token}"                |
+
+The access token is received on a successful request to the token endpoint described above.
+
+
+**Example response:**
+
+```json
+{
+    "sub": "c06c4afe-d9e1-4c5d-939a-177d752a0944",
+    "birthdate": "1815-12-10",
+    "email": "user@example.com",
+    "email_verified": true,
+    "nin": "10121550047",
+    "name": "Ada Lovelace",
+    "given_name": "Ada",
+    "family_name": "Lovelace",
+    "sid": "7d78a726-af92-499e-b857-de263ef9a969",
+    "phone_number": "4712345678",
+    "address": {
+        "street_address": "Suburbia 23",
+        "postal_code": "2101",
+        "region": "OSLO",
+        "country": "NO",
+        "formatted": "Suburbia 23\\n2101 OSLO\\nNO",
+        "address_type": "home"
+    },
+    "other_addresses": [
+        {
+            "street_address": "Fancy Office Street 2",
+            "postal_code": "0218",
+            "region": "OSLO",
+            "country": "NO",
+            "formatted": "Fancy Office Street 2\\n0218 OSLO\\nNO",
+            "address_type": "work"
+        },
+        {
+            "street_address": "Summer House Lane 14",
+            "postal_code": "1452",
+            "region": "OSLO",
+            "country": "NO",
+            "formatted": "Summer House Lane 14\\n1452 OSLO\\nNO",
+            "address_type": "other"
+        }
+    ],
+    "accounts": [
+        {
+            "account_name": "My savings",
+            "account_number": "12064590675",
+            "bank_name": "My bank"
+        }
+    ]
+}
+```
+
+**Please note:** More documentation about the token and userinfo endpoint can be found [here](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api.md#access-token).
 
 ![Userinfo sequence](images/userinfo-direct.png)
 
