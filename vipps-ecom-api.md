@@ -1261,11 +1261,22 @@ Accessing the Login `userinfo` endpoint required the Vipps Login access token: [
 The Client Credentials is a base 64 encoded string consisting of the Client id
 and secret issued by Vipps joined by ":"
 
+Example of generating the client credentials in bash where:
+
+- client_id = 123456-test-4a3d-a47c-412136fd0871
+- client_secret = testdzlJbUZaM1lqODlnUUtrUHI=
+
+```bash
+echo "123456-test-4a3d-a47c-412136fd0871:testdzlJbUZaM1lqODlnUUtrUHI=" | base64
+```
+
+Which results in the base64 client secret: `MTIzNDU2LXRlc3QtNGEzZC1hNDdjLTQxMjEzNmZkMDg3MTp0ZXN0ZHpsSmJVWmFNMWxxT0RsblVVdHJVSEk9Cg==`
+
 *Form content*
 
 | Key               | Description                         |
 | ----------------- | ----------------------------------- |
-| grant_type        | Value MUST be the actual string  `client_credentials`  |
+| grant_type        | Value MUST be the actual string  `"client_credentials"`, not the value generated above.  |
 
 **Example response:**
 
