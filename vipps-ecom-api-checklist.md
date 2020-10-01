@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.3.0
+Document version 1.3.1
 
 For examples of requests and responses, see the Postman collection in [tools](tools/)
 
@@ -16,10 +16,13 @@ For examples of requests and responses, see the Postman collection in [tools](to
     - [ ] Details [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
 - [ ] The merchant correctly handles callbacks, both for successful and unsuccessful payments
     - [ ] Callback [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)
+      _It's important that the integrator verifies that the callback URLs handled, and that they return `HTTP 200 OK`._
     - [ ] For express checkout only: Shipping details [`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/fetchShippingCostUsingPOST)
     - [ ] For express checkout only: Remove consent [`DELETE:[consetRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/removeUserConsentUsingDELETE)
 - [ ] Avoid Integration pitfalls
-    - [ ] The Merchant _must not_ rely on `fallback` or `callback` alone
+    - [ ] The Merchant _must not_ rely on `fallback` or `callback` alone, and must poll
+          [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
+          as documented.
     - [ ] The Vipps branding must be according to the [Vipps design guidelines](https://github.com/vippsas/vipps-design-guidelines)
 - [ ] Integrate [HTTP headers](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#optional-vipps-http-headers) for better tracking (Mandatory for partners and plattforms)
     - [ ] Vipps-System-Name
