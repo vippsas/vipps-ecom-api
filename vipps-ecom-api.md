@@ -1276,7 +1276,7 @@ Which results in the base64 client secret: `MTIzNDU2LXRlc3QtNGEzZC1hNDdjLTQxMjEz
 
 | Key               | Description                         |
 | ----------------- | ----------------------------------- |
-| grant_type        | Value MUST be the actual string  `"client_credentials"`, not the value generated above.  |
+| grant_type        | Value **must** be the actual string  `"client_credentials"`, not the value generated above.  |
 
 **Example response:**
 
@@ -1369,9 +1369,9 @@ services. Thus, if the merchant implements Vipps Login in addition to profile
 information as part of the payment flow, the merchant can also use Vipps to
 log the user in without the need for additional consent.
 
-The user is presented with a consents card that must be accepted before
-approving the payment in the Vipps app. The following screens shows an examples
-of a consent cards for Android(left) and iOS(right):
+The user is presented with a consent card that must be accepted before
+approving the payment in the Vipps app. The following screens show examples
+of consent cards for Android(left) and iOS(right):
 
 ![Consent card](images/share-user-info.png)
 
