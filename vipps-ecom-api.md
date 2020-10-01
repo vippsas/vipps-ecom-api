@@ -1265,7 +1265,7 @@ and secret issued by Vipps joined by ":"
 
 | Key               | Description                         |
 | ----------------- | ----------------------------------- |
-| grant_type        | Value MUST be `client_credentials`  |
+| grant_type        | Value MUST be the actual string  `client_credentials`  |
 
 **Example response:**
 
