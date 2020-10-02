@@ -1225,7 +1225,7 @@ confirmation link sent to the email address.
 ### Get userinfo
 
 The
-[`GET:/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)
+[`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)
 endpoint is shared between the Vipps eCom API and the
 [Vipps Login API](https://github.com/vippsas/vipps-login-api)
 and the merchant needs to have
@@ -1243,7 +1243,7 @@ Example `sub` format:
 
 This `sub` is a link between the merchant and the user and can used to retrieve
 the user's details from Vipps Login:
-[`GET:/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)
+[`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)
 
 ### Vipps Login access token
 
