@@ -1225,7 +1225,7 @@ confirmation link sent to the email address.
 ### Get userinfo
 
 The
-[`GET:/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)
+[`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)
 endpoint is shared between the Vipps eCom API and the
 [Vipps Login API](https://github.com/vippsas/vipps-login-api)
 and the merchant needs to have
@@ -1243,7 +1243,7 @@ Example `sub` format:
 
 This `sub` is a link between the merchant and the user and can used to retrieve
 the user's details from Vipps Login:
-[`GET:/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)
+[`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)
 
 ### Vipps Login access token
 
@@ -1261,11 +1261,22 @@ Accessing the Login `userinfo` endpoint required the Vipps Login access token: [
 The Client Credentials is a base 64 encoded string consisting of the Client id
 and secret issued by Vipps joined by ":"
 
+Example of generating the client credentials in bash where:
+
+- client_id = 123456-test-4a3d-a47c-412136fd0871
+- client_secret = testdzlJbUZaM1lqODlnUUtrUHI=
+
+```bash
+echo "123456-test-4a3d-a47c-412136fd0871:testdzlJbUZaM1lqODlnUUtrUHI=" | base64
+```
+
+Which results in the base64 client secret: `MTIzNDU2LXRlc3QtNGEzZC1hNDdjLTQxMjEzNmZkMDg3MTp0ZXN0ZHpsSmJVWmFNMWxxT0RsblVVdHJVSEk9Cg==`
+
 *Form content*
 
 | Key               | Description                         |
 | ----------------- | ----------------------------------- |
-| grant_type        | Value MUST be `client_credentials`  |
+| grant_type        | Value **must** be the actual string  `"client_credentials"`, not the value generated above.  |
 
 **Example response:**
 
@@ -1284,7 +1295,7 @@ and secret issued by Vipps joined by ":"
 This endpoint returns the payload with the information that the user has consented to share, which is provided in the OAuth 2.0 access token.
 You can learn more at the [OIDC Standard](https://openid.net/specs/openid-connect-core-1_0.html#UserInfo).
 
-Call [`GET:/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo) with the `sub` that was retrieved earlier. See below on how to construct the call.
+Call [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo) with the `sub` that was retrieved earlier. See below on how to construct the call.
 
 **Request**
 
@@ -1295,7 +1306,6 @@ Call [`GET:/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%2
 | Authorization     | "Bearer {Access Token}"                |
 
 The access token is received on a successful request to the token endpoint described above.
-
 
 **Example response:**
 
@@ -1358,9 +1368,9 @@ services. Thus, if the merchant implements Vipps Login in addition to profile
 information as part of the payment flow, the merchant can also use Vipps to
 log the user in without the need for additional consent.
 
-The user is presented with a consents card that must be accepted before
-approving the payment in the Vipps app. The following screens shows an examples
-of a consent cards for Android(left) and iOS(right):
+The user is presented with a consent card that must be accepted before
+approving the payment in the Vipps app. The following screens show examples
+of consent cards for Android(left) and iOS(right):
 
 ![Consent card](images/share-user-info.png)
 

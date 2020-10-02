@@ -1,17 +1,112 @@
 {
 	"info": {
-		"_postman_id": "cd875290-3a64-4c8e-b56c-83d821428e3c",
+		"_postman_id": "ce1e789f-4ba2-464e-a562-e57b84785e1e",
 		"name": "eCommerce API v2 - Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "Vipps Login",
+			"item": [
+				{
+					"name": "Create Vipps Login Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "db5d3b19-0c7f-46f8-8b77-e70638eef641",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"login_token\", jsonData.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{client_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/access-management-1.0/access/oauth2/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"access-management-1.0",
+								"access",
+								"oauth2",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Userinfo",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{login_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/vipps-userinfo-api/userinfo/{{sub}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"vipps-userinfo-api",
+								"userinfo",
+								"{{sub}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
 		{
 			"name": "Get Access Token",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "b6c10987-4510-4579-b9e5-77f802582775",
+						"id": "9b1e30cd-6ddf-442c-91da-34fb73edc6ce",
 						"exec": [
 							"pm.environment.set(\"access_token\", pm.response.json().access_token);"
 						],
@@ -58,7 +153,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "307aae54-572a-49b9-91c5-fb963efbb6c9",
+						"id": "cc9e0e35-baee-457c-a668-a0056834f138",
 						"exec": [
 							"pm.environment.set('orderId',pm.environment.get('merchantSerialNumber') + (new Date()).getTime());"
 						],
@@ -134,7 +229,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "1181af8e-c838-48d5-9036-6b66d7330a35",
+						"id": "11337ca9-8674-455f-81ae-c18e7457a7cc",
 						"exec": [
 							"pm.environment.set('orderId',pm.environment.get('merchantSerialNumber') + (new Date()).getTime());"
 						],
@@ -205,12 +300,88 @@
 			"response": []
 		},
 		{
+			"name": "Initiate Payment - Profile flow",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "5c77bb71-b819-4e39-9cdb-33c89ac1758f",
+						"exec": [
+							"pm.environment.set('orderId',pm.environment.get('merchantSerialNumber') + (new Date()).getTime());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{Ocp-Apim-Subscription-Key}}"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Vipps-System-Name",
+						"type": "text",
+						"value": "{{vipps_system_name}}"
+					},
+					{
+						"key": "Vipps-System-Version",
+						"type": "text",
+						"value": "{{collection_version}}"
+					},
+					{
+						"key": "Vipps-System-Plugin-Name",
+						"type": "text",
+						"value": "",
+						"disabled": true
+					},
+					{
+						"key": "Vipps-System-Plugin-Version",
+						"type": "text",
+						"value": "",
+						"disabled": true
+					},
+					{
+						"key": "Merchant-Serial-Number",
+						"type": "text",
+						"value": "{{merchantSerialNumber}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"merchantInfo\": {\n    \"merchantSerialNumber\": \"{{merchantSerialNumber}}\",\n    \"callbackPrefix\":\"{{callbackPrefix}}\",\n    \"fallBack\": \"{{fallBack}}\",\n    \"authToken\": \"{{$guid}}\",\n    \"isApp\":false\n  },\n  \"customerInfo\": {\n    \"mobileNumber\": \"{{mobileNumber}}\"\n  },\n  \"transaction\": {\n    \"orderId\": \"{{orderId}}\",\n    \"amount\": {{amount}},\n    \"transactionText\": \"{{transactionTextInitiate}}\",\n    \"skipLandingPage\": false,\n    \"scope\": \"address name email birthDate phoneNumber\"\n}\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/ecomm/v2/payments/",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"ecomm",
+						"v2",
+						"payments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Get Order Status",
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "8a626d25-f73f-45fb-b65f-495a1dbde57b",
+						"id": "70d6b25e-0b8e-4cc4-bb02-194aba36f1fc",
 						"exec": [
 							""
 						],
@@ -253,6 +424,19 @@
 		},
 		{
 			"name": "Get Payment Details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "248326bc-f950-4ded-bcbe-238cdf9a166b",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"sub\", jsonData.sub);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [
@@ -379,7 +563,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "a4e7391d-283f-4438-8cf6-7724c318e3c8",
+						"id": "a8551781-a8f0-47f9-872f-139d00f7e793",
 						"exec": [
 							""
 						],
@@ -528,7 +712,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "50da7547-a380-473f-b271-93790d8c5d6d",
+				"id": "21cf7b9c-7130-47d5-b083-6f0b170f067a",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -538,7 +722,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "4bb99196-e494-418e-a8ca-fab51f617671",
+				"id": "06e458cb-b370-4573-94fa-0753f69e3f8c",
 				"type": "text/javascript",
 				"exec": [
 					""
