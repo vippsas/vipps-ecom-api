@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.8.6.
+Document version 1.8.7.
 
 ## Table of contents
 
@@ -158,12 +158,6 @@ According to Norwegian regulations you should _not_ capture a payment until the
 product or service is provided to the customer.
 For more information, please see the Consumer Authority's
 [Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
-
-You can't turn _direct capture_ on or off as a merchant. This must be
-requested of your Key Account Manager. If you do not have a KAM:
-Please log in on
-[portal.vipps.no](https://portal.vipps.no),
-find the right sale unit and click the email link under the "i" information bubble.
 
 See [Regular eCommerce payments](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#regular-ecommerce-payments) for more details.
 
