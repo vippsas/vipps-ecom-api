@@ -1295,7 +1295,7 @@ Which results in the base64 client secret: `MTIzNDU2LXRlc3QtNGEzZC1hNDdjLTQxMjEz
 This endpoint returns the payload with the information that the user has consented to share, which is provided in the OAuth 2.0 access token.
 You can learn more at the [OIDC Standard](https://openid.net/specs/openid-connect-core-1_0.html#UserInfo).
 
-Call [`GET:/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo) with the `sub` that was retrieved earlier. See below on how to construct the call.
+Call [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo) with the `sub` that was retrieved earlier. See below on how to construct the call.
 
 **Request**
 
@@ -1306,7 +1306,6 @@ Call [`GET:/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%2
 | Authorization     | "Bearer {Access Token}"                |
 
 The access token is received on a successful request to the token endpoint described above.
-
 
 **Example response:**
 
