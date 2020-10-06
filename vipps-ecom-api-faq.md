@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.8.7.
+Document version 1.8.8.
 
 ## Table of contents
 
@@ -40,6 +40,7 @@ Document version 1.8.7.
 - [Where can I find reports on transactions?](#where-can-i-find-reports-on-transactions)
 - [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
 - [I am getting `401 Unauthorized` error - and I have double checked all my keys!](#i-am-getting-401-unauthorized-error---and-i-have-double-checked-all-my-keys)
+- [Why do I get `Access denied due to invalid subscription key`?](#why-do-i-get-access-denied-due-to-invalid-subscription-key)
 - [Why do I get `500 Internal Server Error` (or similar)?](#why-do-i-get-500-internal-server-error-or-similar)
 - [In which sequence are callbacks and fallbacks done?](#in-which-sequence-are-callbacks-and-fallbacks-done)
 - [Why do I not get callbacks from Vipps?](#why-do-i-not-get-callbacks-from-vipps)
@@ -404,6 +405,19 @@ For most errors there is an explanation of what went wrong.
 
 You can also log in to the Vipps portal to double check your API keys,
 sale units and API products: https://portal.vipps.no.
+
+## Why do I get `Access denied due to invalid subscription key`?
+
+If you get a `HTTP 401 Unauthorized` response with the error message
+`Access denied due to invalid subscription key.
+Make sure to provide a valid key for an active subscription.`
+you need to check that you have the correct API keys.
+See
+[Getting the API keys](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#getting-the-api-keys).
+
+You also need to make sure you have access to the right API.
+See
+[API products](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#api-products).
 
 ## Why do I get `500 Internal Server Error` (or similar)?
 
