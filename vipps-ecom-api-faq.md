@@ -449,7 +449,7 @@ See
 
 And: Make sure you are using the right environment. The
 [test environment](https://github.com/vippsas/vipps-developers/blob/master/vipps-test-environment.md)
-is completely separate from the production environ,ment, and the API keys are different.
+is completely separate from the production environment, and both the MSN and the API keys are different.
 
 ## Why do I get `500 Internal Server Error` (or similar)?
 
