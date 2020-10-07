@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.5.1
+  version: 1.6.0
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -2108,6 +2108,8 @@ components:
             - email
             - phoneNumber
             - birthDate
+            - nin
+            - accountNumbers
     MerchantInfo:
       type: object
       required:
