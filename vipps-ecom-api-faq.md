@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.0.
+Document version 2.0.1.
 
 ### Table of contents
 
@@ -22,6 +22,7 @@ Document version 2.0.0.
   - [Why do payments fail?](#why-do-payments-fail)
   - [Why does capture fail?](#why-does-capture-fail)
   - [Why do I get a CORS error?](#why-do-i-get-a-cors-error)
+  - [How can I measure Vipps sales with Google Analytics, Facebook pixel, etc?](#how-can-i-measure-vipps-sales-with-google-analytics-facebook-pixel-etc)
   - [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
 - [Reservations and captures](#reservations-and-captures)
   - [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
@@ -135,6 +136,16 @@ how the request was made on the caller side - it all looks the same.
 You can read more about CORS here:
 [CORS Tutorial: A Guide to Cross-Origin Resource Sharing](https://auth0.com/blog/cors-tutorial-a-guide-to-cross-origin-resource-sharing/).
 
+### How can I measure Vipps sales with Google Analytics, Facebook pixel, etc?
+
+Vipps does not have any functionality for measuring sales with with Google
+Analytics, Facebook pixel, etc. Merchants may of course use any service on
+their own website, and use a fallback URL (the "result page") to track any
+activity. This must be done by the merchant itself.
+
+See:
+[Initiate payment flow: Phone and browser](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#initiate-payment-flow-phone-and-browser).
+
 ### Why does Vipps Hurtigkasse (express checkout) fail?
 
 When using Vipps Hurtigkasse (express checkout), Vipps makes a
@@ -177,7 +188,7 @@ product or service is provided to the customer.
 For more information, please see the Consumer Authority's
 [Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
 
-See [Regular eCommerce payments](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#regular-ecommerce-payments) for more details.
+See: [Regular eCommerce payments](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#regular-ecommerce-payments) for more details.
 
 ### How do I turn direct capture on or off?
 
@@ -222,7 +233,7 @@ You can also use
 [Vipps Logg Inn](https://github.com/vippsas/vipps-login-api)
 for easy registration and login.
 
-See the API Guide:
+See:
 [The Vipps deeplink URL](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#the-vipps-deeplink-url).
 
 ## Refunds
@@ -263,7 +274,7 @@ remaining amount. If no capture has been made, the entire reserved amount is
 cancelled. Banks "count the days" from when the reservation was made, so the
 merchant must make the capture, or all captures, before the reservation expires.
 
-See also [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
+See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
 
 ### Is it possible for a merchant to pay a Vipps user?
 
@@ -327,8 +338,8 @@ The sale units must be whitelisted by Vipps.
 Skipping the landing page is typically used at physical points of sale,
 where there is no display available.
 
-See the details in the
-[skip landing page section](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#skip-landing-page)
+See:
+[Skip landing page](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#skip-landing-page)
 in the API guide.
 
 If you need to skip the landing page in a Point of Sale (POS) solution, see:
@@ -354,7 +365,7 @@ If you want to charge a fee (like 3 %) of your payments, you can:
    invoice for your 3 % fee.
 
 Companies that receive payments through Vipps needs to be Vipps customers.
-See [What are the requirements for Vipps merchants?](#what-are-the-requirements-for-vipps-merchants)
+See: [What are the requirements for Vipps merchants?](#what-are-the-requirements-for-vipps-merchants)
 
 ### Can I create a service to match buyers and sellers?
 
@@ -375,7 +386,8 @@ or one of our
 ### I have initiated an order but I can't find it!
 
 Have you, or the ecommerce solution you are using, successfully implemented
-[``GET:/ecomm/v2/payments/{orderId}/details``](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details)? This is a requirement, see the [API checklist](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md).
+[``GET:/ecomm/v2/payments/{orderId}/details``](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details)? This is a requirement, see the
+[API checklist](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md).
 
 In case the Vipps
 [callback](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#1-callback)
@@ -384,7 +396,7 @@ The backup is to check `/details`.
 
 You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
 to manually do API calls, like the two above.
-See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
+See: [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
 
 ### How long is an initiated order valid, if the user does not confirm in the Vipps app?
 
@@ -392,7 +404,7 @@ Vipps orders have a max timeout of 10 minutes.
 It's important that the merchant waits at least as long, otherwise the Vipps user may
 confirm in the Vipps app, and right after get an error from the merchant that the order has been cancelled.
 
-See also: [Timeouts](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#timeouts).
+See: [Timeouts](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#timeouts).
 
 ### How long does it take until the money is in my account?
 
@@ -403,7 +415,7 @@ The settlement flow is as follows:
 3. Day 3 (the next _bank day_) at 16:00: Payments are made from Vipps.
 4. Day 5 (the third _bank day_): The settlement is booked with reference by the bank.
 
-See also [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
+See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
 
 ### How long does it take from a refund is made until the money is in the customer's account?
 
@@ -417,7 +429,7 @@ Vipps can not guarantee a particular sequence, as this depends on user
 actions, network connectivity/speed, etc. Because og this, it is not
 possible to base an integration on a specific sequence of events.
 
-More details:
+See:
 [Initiate payment flow: Phone and browser](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#initiate-payment-flow-phone-and-browser)
 
 ### Where can I find reports on transactions?
@@ -450,7 +462,7 @@ Please make sure the URLs you provide to Vipps are reachable from outside your
 own environment.
 
 It could be because your firewall is blocking our requests.
-Please see
+See:
 [Vipps request servers](https://github.com/vippsas/vipps-developers/blob/master/README.md#vipps-request-servers).
 
 If you need help solving a callback-related problem, please send us a
@@ -559,7 +571,7 @@ If all sale units have the same organization number, there are two alternatives:
 
 1: Use only one sale unit for all stores., and use the `orderId` to identify which orders belong
 to which sale units. You decide what the `orderId` contains, and it may be up to
-30 characters. See
+30 characters. See:
 [orderId recommendation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#orderid-recommendations).
 You will use the same API keys for all stores.
 
@@ -580,10 +592,10 @@ information from Vipps. We also provide callbacks, but merchants _must not_
 rely on this alone - being able to actively retrieving information with `GET` methods
 is a requirement.
 
-See the checklists for
-[Vipps eCom API](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md)
+See the:
+[Vipps eCom API checklist](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md)
 and
-[Vipps PSP API](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-checklist.md)
+[Vipps PSP API checklist](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-checklist.md)
 for examples.
 
 ## Frequently Asked Questions for POS integrations
@@ -616,7 +628,7 @@ in [Questions](#questions) below.
 
 ### How can we be whitelisted for `skipLandingPage`?
 
-See [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
+See: [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
 
 ### Which API keys should I use?
 
