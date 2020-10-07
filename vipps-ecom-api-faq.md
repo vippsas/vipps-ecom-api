@@ -447,6 +447,10 @@ You also need to make sure you have access to the right API.
 See
 [API products](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#api-products).
 
+And: Make sure you are using the right environment. The
+[test environment](https://github.com/vippsas/vipps-developers/blob/master/vipps-test-environment.md)
+is completely separate from the production environ,ment, and the API keys are different.
+
 ## Why do I get `500 Internal Server Error` (or similar)?
 
 Something _might_ be wrong on our side and we are working to fix it!
