@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.2.
+Document version 2.0.3.
 
 ### Table of contents
 
@@ -80,10 +80,18 @@ and other risk assessment procedures.
 
 ### Can I use my "Vipps-nummer" in my webshop?
 
-**Short answer**: No. You need [Vipps på Nett](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).  
-**Longer answer**: "Vipps-nummer" can't be used for "Vipps på Nett", "Vipps
-Logg Inn" or "Vipps Faste Betalinger". The reason for this is that the
-Norwegian Tax Administration considers "Vipps-nummer" to be cash transactions,
+No. 
+[Vipps-nummer](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/ta-betalt-med-vipps/)
+can't be used for
+[Vipps på Nett](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/), 
+[Vipps Logg Inn](https://vipps.no/produkter-og-tjenester/bedrift/logg-inn-med-vipps/logg-inn-med-vipps/)
+or
+[Vipps Faste Betalinger](https://vipps.no/produkter-og-tjenester/bedrift/faste-betalinger/faste-betalinger/). 
+You need
+[Vipps på Nett](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).  
+
+The reason for this is that the Norwegian Tax Administration considers
+"Vipps-nummer" to be cash transactions,
 while eCommerce is defined as remote sales ("fjernhandel"). The regulations
 associated with both are different enough to require this policy.
 
