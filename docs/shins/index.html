@@ -2227,7 +2227,8 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments \
     &quot;orderId&quot;: &quot;order123abc&quot;,
     &quot;timeStamp&quot;: &quot;2018-11-14T15:44:26.590Z&quot;,
     &quot;transactionText&quot;: &quot;One pair of Vipps socks&quot;,
-    &quot;skipLandingPage&quot;: false
+    &quot;skipLandingPage&quot;: false,
+    &quot;scope&quot;: &quot;name address email&quot;
   }
 }&#x27;</span>;
 <span class="hljs-keyword">const</span> headers = {
@@ -2411,7 +2412,8 @@ System.out.println(response.toString());
     <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
     <span class="hljs-attr">&quot;timeStamp&quot;</span>: <span class="hljs-string">&quot;2018-11-14T15:44:26.590Z&quot;</span>,
     <span class="hljs-attr">&quot;transactionText&quot;</span>: <span class="hljs-string">&quot;One pair of Vipps socks&quot;</span>,
-    <span class="hljs-attr">&quot;skipLandingPage&quot;</span>: <span class="hljs-literal">false</span>
+    <span class="hljs-attr">&quot;skipLandingPage&quot;</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;name address email&quot;</span>
   }
 }
 </code></pre>
@@ -2651,6 +2653,13 @@ System.out.println(response.toString());
 <td>false</td>
 <td>Skips the landing page for whitelisted sale units. Requires a valid customerInfo.mobileNumber.</td>
 </tr>
+<tr>
+<td>»» scope</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>The requested OIDC scopes for use with userinfo</td>
+</tr>
 </tbody>
 </table>
 <h4 id="enumerated-values">Enumerated Values</h4>
@@ -2677,6 +2686,26 @@ System.out.println(response.toString());
 <tr>
 <td>»»» isDefault</td>
 <td>N</td>
+</tr>
+<tr>
+<td>»» scope</td>
+<td>name</td>
+</tr>
+<tr>
+<td>»» scope</td>
+<td>address</td>
+</tr>
+<tr>
+<td>»» scope</td>
+<td>email</td>
+</tr>
+<tr>
+<td>»» scope</td>
+<td>phoneNumber</td>
+</tr>
+<tr>
+<td>»» scope</td>
+<td>birthDate</td>
 </tr>
 </tbody>
 </table>
@@ -7541,7 +7570,8 @@ System.out.println(response.toString());
     <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
     <span class="hljs-attr">&quot;timeStamp&quot;</span>: <span class="hljs-string">&quot;2018-11-14T15:44:26.590Z&quot;</span>,
     <span class="hljs-attr">&quot;transactionText&quot;</span>: <span class="hljs-string">&quot;One pair of Vipps socks&quot;</span>,
-    <span class="hljs-attr">&quot;skipLandingPage&quot;</span>: <span class="hljs-literal">false</span>
+    <span class="hljs-attr">&quot;skipLandingPage&quot;</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;name address email&quot;</span>
   }
 }
 
@@ -7591,7 +7621,8 @@ System.out.println(response.toString());
   <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
   <span class="hljs-attr">&quot;timeStamp&quot;</span>: <span class="hljs-string">&quot;2018-11-14T15:44:26.590Z&quot;</span>,
   <span class="hljs-attr">&quot;transactionText&quot;</span>: <span class="hljs-string">&quot;One pair of Vipps socks&quot;</span>,
-  <span class="hljs-attr">&quot;skipLandingPage&quot;</span>: <span class="hljs-literal">false</span>
+  <span class="hljs-attr">&quot;skipLandingPage&quot;</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;name address email&quot;</span>
 }
 
 </code></pre>
@@ -7641,6 +7672,44 @@ System.out.println(response.toString());
 <td>false</td>
 <td>none</td>
 <td>Skips the landing page for whitelisted sale units. Requires a valid customerInfo.mobileNumber.</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>The requested OIDC scopes for use with userinfo</td>
+</tr>
+</tbody>
+</table>
+<h4 id="enumerated-values-12">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>scope</td>
+<td>name</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>address</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>email</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>phoneNumber</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>birthDate</td>
 </tr>
 </tbody>
 </table>
@@ -7747,7 +7816,7 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h4 id="enumerated-values-12">Enumerated Values</h4>
+<h4 id="enumerated-values-13">Enumerated Values</h4>
 <table>
 <thead>
 <tr>
@@ -7928,7 +7997,7 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h4 id="enumerated-values-13">Enumerated Values</h4>
+<h4 id="enumerated-values-14">Enumerated Values</h4>
 <table>
 <thead>
 <tr>
@@ -8560,7 +8629,7 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h4 id="enumerated-values-14">Enumerated Values</h4>
+<h4 id="enumerated-values-15">Enumerated Values</h4>
 <table>
 <thead>
 <tr>
