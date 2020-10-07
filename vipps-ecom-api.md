@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.18.
+Document version 2.3.19.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -626,6 +626,7 @@ hostnames.
 
 Please make sure that the callback URLs are reachable:
 
+* URLs must be valid. See [URL Validation](#url-validation).
 * Vipps does _not_ support sending requests to all ports, so to be safe use
   common port numbers such as: 80, 443, 8080.
 * Vipps does _not_ support callback URLs that return `HTTP 301 Redirect`,
