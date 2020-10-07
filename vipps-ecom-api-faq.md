@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 1.8.8.
+Document version 1.9.0.
 
 ## Table of contents
 
@@ -280,9 +280,36 @@ or to pay from a merchant to a person.
 
 ## Is there an API for retrieving information about a Vipps user?
 
-No. Vipps users have not consented to Vipps providing any information to
-third parties, and Vipps does not allow it. There is no API to look up
-a user's address, retrieve a user's purchases, etc.
+Yes.
+
+Vipps now offers the possibility for merchants to as part of the payment flow in the
+[Vipps eCom API v2](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#userinfo)
+and
+[Vipps Recurring API](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api.md#userinfo).
+
+This is done by adding a `scope` parameter to the initiate calls:
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST) (eCom)
+and
+[`POST:/recurring/v2/agreements`](https://vippsas.github.io/vipps-recurring-api/#/Agreement%20Controller/draftAgreement) (Recurring):
+
+- address
+- birthDate
+- email
+- name
+- phoneNumber
+- nin (fødselsnummer)
+- accountNumbers
+
+The userinfo endpoint is shared with
+[Vipps Login](https://github.com/vippsas/vipps-login-api)
+and the merchant needs to have activated Vipps Login on their account to use
+this feature. Information on how to do this can be found
+[here](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api-faq.md#how-can-i-activate-and-set-up-vipps-login).
+Using the Vipps Login service itself is optional.
+
+**Please note:** Vipps users have not consented to Vipps providing any
+information to third parties, and Vipps does not allow it. There is no
+other API to look up a user's address, retrieve a user's purchases, etc.
 
 ## Is there an API for retrieving information about a merchant's payments?
 
