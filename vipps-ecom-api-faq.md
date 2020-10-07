@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.1.
+Document version 2.0.2.
 
 ### Table of contents
 
@@ -22,6 +22,7 @@ Document version 2.0.1.
   - [Why do payments fail?](#why-do-payments-fail)
   - [Why does capture fail?](#why-does-capture-fail)
   - [Why do I get a CORS error?](#why-do-i-get-a-cors-error)
+  - [How can I open the fallback URL in a specific (embedded) browser?](#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser)
   - [How can I measure Vipps sales with Google Analytics, Facebook pixel, etc?](#how-can-i-measure-vipps-sales-with-google-analytics-facebook-pixel-etc)
   - [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
 - [Reservations and captures](#reservations-and-captures)
@@ -135,6 +136,18 @@ how the request was made on the caller side - it all looks the same.
 
 You can read more about CORS here:
 [CORS Tutorial: A Guide to Cross-Origin Resource Sharing](https://auth0.com/blog/cors-tutorial-a-guide-to-cross-origin-resource-sharing/).
+
+### How can I open the fallback URL in a specific (embedded) browser?
+
+The phone's operating system always opens URLs in the default browser.
+This means that the `fallback` URL (the "result page") will be opened in
+the default browser. Vipps has no way to open the `fallback` URL in the
+embedded browser in Facebook, Instagram, etc. Similarly there is no way
+for Vipps to open the `fallback` URL in the same tab that the user came from
+before the app-switch.
+
+This means that the merchant must be able to detect or recognize the user
+when the `fallback` URL is opened.
 
 ### How can I measure Vipps sales with Google Analytics, Facebook pixel, etc?
 
