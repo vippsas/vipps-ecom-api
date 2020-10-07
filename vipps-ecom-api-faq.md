@@ -11,7 +11,11 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
+<<<<<<< HEAD
 Document version 1.9.0.
+=======
+Document version 1.8.9.
+>>>>>>> bd4b3290809e5d2d5b24302e01638b3b3dc2cf43
 
 ## Table of contents
 
@@ -244,8 +248,9 @@ Refunds can be made up to 365 days after capture.
 Example: A customer has placed an order of of two items for a total of 1000 NOK.
 The merchant has initiated a payment of 1000 NOK, but the customer has changed
 her mind and only bought one of the items, with a price of 750 NOK. The merchant
-has therefore made a _partial capture_ of 750 NOK, and need to refund the
-remaining 250 NOK.
+has therefore made a
+[partial capture](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#partial-capture)
+of 750 NOK, and need to refund the remaining 250 NOK.
 
 The short version: This is done automatically by the bank after a few days.
 
