@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.3.
+Document version 2.0.4.
 
 ### Table of contents
 
@@ -246,9 +246,15 @@ For more information, please see the Consumer Authority's
 Instead of sending a Vipps deeplink: Send a link to your website, and let
 the user start the Vipps payment there. It can be a very simple page with a link
 or a button. You then have the opportunity to give the user additional
-information, and also a proper confirmation page after the payment has been completed. In some cases, such as for donations and gifts, it may be acceptable to automatically trigger the Vipps payment when the user enters your website. This requires that the payment process is user initiated, and that there are no relevant terms and conditions or that the user has accepted any terms and conditions at an earlier stage.
+information, and also a proper confirmation page after the payment has been completed. 
 
-In general we advice caution and point out that it is the responsibility of the merchant to assure that users accept terms and conditions for products and services.
+In some cases, such as for donations and gifts, it may be acceptable to automatically
+trigger the Vipps payment when the user enters your website. This requires that the
+payment process is user initiated, and that there are no relevant terms and conditions
+or that the user has accepted any terms and conditions at an earlier stage.
+
+In general we advice caution and point out that it is the responsibility of the
+merchant to assure that users accept terms and conditions for products and services.
 
 You can also use
 [Vipps Logg Inn](https://github.com/vippsas/vipps-login-api)
@@ -343,7 +349,7 @@ other API to look up a user's address, retrieve a user's purchases, etc.
 ### Is there an API for retrieving information about a merchant's payments?
 
 Not for aggregated data.
-There is an API to retrieve all details for a known `orderId`:
+There is an API to retrieve all details for a specific `orderId`:
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET).
 
 And there is
@@ -380,9 +386,11 @@ Vipps does not support splitting payments to charge a fee.
 If you want to charge a fee (like 3 %) of your payments, you can:
 
 1. Receive the full payment, take your 3 %, and then pay the remaining
-   97 %. In order to receive payments in this way, you may need approval
+   97 % to your customer (merchant). In order to receive payments in this way,
+   you may need the regulatory approval as
+   [e-pengeforetak](https://www.finanstilsynet.no/konsesjon/e-pengeforetak/)
    from Finanstilsynet.
-2. Have your customer receive the full payment directly, then send an
+2. Have your customer (merchant) receive the full payment directly, then send an
    invoice for your 3 % fee.
 
 Companies that receive payments through Vipps needs to be Vipps customers.
@@ -407,13 +415,14 @@ or one of our
 ### I have initiated an order but I can't find it!
 
 Have you, or the ecommerce solution you are using, successfully implemented
-[``GET:/ecomm/v2/payments/{orderId}/details``](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details)? This is a requirement, see the
+[``GET:/ecomm/v2/payments/{orderId}/details``](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details)?
+This is a requirement, see the
 [API checklist](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md).
 
 In case the Vipps
 [callback](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#1-callback)
 fails, you will not automatically receive notification of order status.
-The backup is to check `/details`.
+The solution is to check `/details`.
 
 You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
 to manually do API calls, like the two above.
@@ -429,12 +438,14 @@ See: [Timeouts](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom
 
 ### How long does it take until the money is in my account?
 
-The settlement flow is as follows:
+The settlement flow depends on the banks and is as follows:
 
 1. Day 1: A customer makes a purchase and the transaction is completed. If the purchased product is shipped later, the "day 1" is the day the product is shipped and the customer's account is charged.
 2. Day 2: Settlement files are distributed, and are available in the Vipps portal: https://portal.vipps.no.
 3. Day 3 (the next _bank day_) at 16:00: Payments are made from Vipps.
 4. Day 5 (the third _bank day_): The settlement is booked with reference by the bank.
+
+A _bank day_ is a day when the bank is open for business. That excludes weekends, public holidays, etc.
 
 See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
 
@@ -447,7 +458,7 @@ See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settl
 ### In which sequence are callbacks and fallbacks done?
 
 Vipps can not guarantee a particular sequence, as this depends on user
-actions, network connectivity/speed, etc. Because og this, it is not
+actions, network connectivity/speed, etc. Because of this, it is not
 possible to base an integration on a specific sequence of events.
 
 See:
@@ -520,11 +531,12 @@ You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/po
 to manually do API calls, like the two above.
 See [API endpoints](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
 
-Please check the HTTP response from our API.
-For most errors there is an explanation of what went wrong.
+Please check the HTTP response body from our API (not just the HTTP status).
+For most errors the body contains an explanation of what went wrong.
 
-You can also log in to the Vipps portal to double check your API keys,
-sale units and API products: https://portal.vipps.no.
+You can also log in to
+[portal.vipps.no](https://portal.vipps.no)
+to double check your API keys, sale units and API products.
 
 ### Why do I get `500 Internal Server Error` (or similar)?
 
@@ -536,13 +548,13 @@ You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/po
 to manually do API calls, just to be sure.
 See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
 
-Please check the HTTP response from our API.
-For most errors there is an explanation of what went wrong.
+Please check the HTTP response body from our API (not just the HTTP status).
+For most errors the body contains an explanation of what went wrong.
 
 ### Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`
 
 This can happen if the test merchant is not being used for a long time. Please
-[contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md),
+[contact customer service](https://vipps.no/kontakt-oss/bedrift/vipps/),
 and we will reactivate the merchant. We no longer automatically deactivate
 test merchants.
 
@@ -691,7 +703,7 @@ You can use the
 but all merchants must sign their Vipps application with BankID.
 This is a legal requirement.
 
-Merchant can of course also
+Merchants can of course also
 [sign up themselves](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/vipps-i-kassa/).
 
 ### Where can I find information about settlements?
