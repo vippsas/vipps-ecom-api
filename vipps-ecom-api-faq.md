@@ -11,11 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-<<<<<<< HEAD
 Document version 1.9.0.
-=======
-Document version 1.8.9.
->>>>>>> bd4b3290809e5d2d5b24302e01638b3b3dc2cf43
 
 ## Table of contents
 
