@@ -1,6 +1,6 @@
 # Migration from eCom API v1 to eCom API v2
 
-Document version 1.1.1.
+Document version 1.1.2.
 
 This document explains the key differences between eCom API v1 and eCom API v2.
 
@@ -87,6 +87,10 @@ This is set in the initiate payment body.
 
 For apps, this URL will be the appswitch URL.
 
+If you do not have a fallback (or "result" page), you can use the main URL for your company:
+`https://example.com/fallback-dummy`, or similar. Please use a URL that returns `HTTP 200 OK`.
+
+The URL must be valid.
 See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation) for details.
 
 ## Migration
