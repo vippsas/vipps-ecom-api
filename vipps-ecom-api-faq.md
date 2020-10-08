@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.7.
+Document version 2.0.8.
 
 ### Table of contents
 
@@ -51,6 +51,7 @@ Document version 2.0.7.
   - [Why do I not get callbacks from Vipps?](#why-do-i-not-get-callbacks-from-vipps)
   - [Why do I get `Access denied due to invalid subscription key`?](#why-do-i-get-access-denied-due-to-invalid-subscription-key)
   - [I am getting `401 Unauthorized` error - and I have double checked all my keys!](#i-am-getting-401-unauthorized-error---and-i-have-double-checked-all-my-keys)
+  - [Why do I get `Requested Order not found`?](#why-do-i-get-requested-order-not-found)
   - [Why do I get `500 Internal Server Error` (or similar)?](#why-do-i-get-500-internal-server-error-or-similar)
   - [Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`](#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked)
 - [Other questions](#other-Questions)
@@ -543,6 +544,13 @@ For most errors the body contains an explanation of what went wrong.
 You can also log in to
 [portal.vipps.no](https://portal.vipps.no)
 to double check your API keys, sale units and API products.
+
+### Why do I get `Requested Order not found`?
+
+This is typically because the payment was initiated using the API keys for
+one sale unit (MSN), and you are attempting to get the details with
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
+using the API keys for a different sale unit (MSN).
 
 ### Why do I get `500 Internal Server Error` (or similar)?
 
