@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.6.
+Document version 2.0.7.
 
 ### Table of contents
 
@@ -438,9 +438,13 @@ In case the Vipps
 fails, you will not automatically receive notification of order status.
 The solution is to check `/details`.
 
-You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
-to manually do API calls, like the two above.
-See: [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
+You can use
+[Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
+to manually do API calls, Use the "inspect" functionality to see the complete requests and responses.
+
+See:
+[API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints)
+for an overview.
 
 ### How long is an initiated order valid, if the user does not confirm in the Vipps app?
 
@@ -526,12 +530,12 @@ merchant sales unit. Please follow these steps to make sure everything is correc
 2. Confirm that you are using the same subscription key for both the access token and payment requests
 3. Confirm that you are using the correct API keys for the environment (test or production)
 
+You can use
+[Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
+to manually do API calls, Use the "inspect" functionality to see the complete requests and responses.
+
 See: [API endpoints](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints)
 for an overview.
-
-You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
-to manually do API calls, like the two above. Use the "inspect" functionality to
-see the complete requests and responses.
 
 Please check the HTTP response body from our API (not just the HTTP status).
 For most errors the body contains an explanation of what went wrong.
@@ -546,9 +550,11 @@ Something _might_ be wrong on our side and we are working to fix it!
 
 It _might_ also be a problem with your request, and that our validation does not catch it.
 In other words: We should perhaps have returned `HTTP 400 Bad Request`.
-You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
+You can use
+[Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
 to manually do API calls, just to be sure.
-See [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
+
+See: [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
 
 Please check the HTTP response body from our API (not just the HTTP status).
 For most errors the body contains an explanation of what went wrong.
