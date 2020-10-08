@@ -28,6 +28,7 @@ Document version 2.0.4.
 - [Reservations and captures](#reservations-and-captures)
   - [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
   - [How do I turn _direct capture_ on or off?](#How-do-I-turn-direct-capture-on-or-off)
+  - [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
   - [Can I prevent people from paying with credit cards?](#can-i-prevent-people-from-paying-with-credit-cards)
   - [Can I send a Vipps payment link in an SMS or email?](#can-i-send-a-vipps-payment-link-in-an-sms-or-email)
 - [Refunds](#refunds)
@@ -41,7 +42,6 @@ Document version 2.0.4.
   - [Can I split payments to charge a fee?](#can-i-split-payments-to-charge-a-fee)
   - [Can I create a service to match buyers and sellers?](#can-i-create-a-service-to-match-buyers-and-sellers)
   - [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-cant-find-it)
-  - [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
   - [How long is an initiated order valid, if the user does not confirm in the Vipps app?](#how-long-is-an-initiated-order-valid-if-the-user-does-not-confirm-in-the-vipps-app)
   - [How long does it take until the money is in my account?](#how-long-does-it-take-until-the-money-is-in-my-account)
   - [How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
@@ -80,13 +80,13 @@ and other risk assessment procedures.
 
 ### Can I use my "Vipps-nummer" in my webshop?
 
-No. 
+No.
 [Vipps-nummer](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/ta-betalt-med-vipps/)
 can't be used for
-[Vipps på Nett](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/), 
+[Vipps på Nett](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/),
 [Vipps Logg Inn](https://vipps.no/produkter-og-tjenester/bedrift/logg-inn-med-vipps/logg-inn-med-vipps/)
 or
-[Vipps Faste Betalinger](https://vipps.no/produkter-og-tjenester/bedrift/faste-betalinger/faste-betalinger/). 
+[Vipps Faste Betalinger](https://vipps.no/produkter-og-tjenester/bedrift/faste-betalinger/faste-betalinger/).
 You need
 [Vipps på Nett](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).  
 
@@ -211,6 +211,20 @@ For more information, please see the Consumer Authority's
 
 See: [Regular eCommerce payments](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#regular-ecommerce-payments) for more details.
 
+### For how long is an initiated payment reserved?
+
+Most banks keep reservations for 7 days, however this varies depending on which bank the customer is using.
+Some banks only keep reservations for 4 days.
+Vipps does not automatically change the status of the order.
+
+If a capture attempt is made more than 7 days after the payment has been initiated
+and the reservation has been released by the bank, Vipps will make a new payment request to the bank.
+If the account has sufficient funds, the payment will be successful.
+If the user's account has insufficient funds at this time, the payment will fail.
+
+In many cases the bank will have a register of expired reservations and they will force it through if the account allows this.
+This will put the account in the negative.
+
 ### How do I turn direct capture on or off?
 
 You can't turn _direct capture_ on or off as a merchant. This must be
@@ -246,7 +260,7 @@ For more information, please see the Consumer Authority's
 Instead of sending a Vipps deeplink: Send a link to your website, and let
 the user start the Vipps payment there. It can be a very simple page with a link
 or a button. You then have the opportunity to give the user additional
-information, and also a proper confirmation page after the payment has been completed. 
+information, and also a proper confirmation page after the payment has been completed.
 
 In some cases, such as for donations and gifts, it may be acceptable to automatically
 trigger the Vipps payment when the user enters your website. This requires that the
@@ -471,20 +485,6 @@ your transactions, sale units and settlement reports.
 You can also subscribe to daily or monthly transaction reports by email.
 
 See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
-
-### For how long is an initiated payment reserved?
-
-Most banks keep reservations for 7 days, however this varies depending on which bank the customer is using.
-Some banks only keep reservations for 4 days.
-Vipps does not automatically change the status of the order.
-
-If a capture attempt is made more than 7 days after the payment has been initiated
-and the reservation has been released by the bank, Vipps will make a new payment request to the bank.
-If the account has sufficient funds, the payment will be successful.
-If the user's account has insufficient funds at this time, the payment will fail.
-
-In many cases the bank will have a register of expired reservations and they will force it through if the account allows this.
-This will put the account in the negative.
 
 ## Common errors
 
