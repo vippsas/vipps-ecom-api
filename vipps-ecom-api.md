@@ -1871,6 +1871,7 @@ allowed to provide more details.
 | InvalidRequest  | Field name will be the error code | Description about what exactly the field error is ||
 | VippsError | 91 | Transaction is not allowed ||
 | VippsError | 92 | Transaction already processed ||
+| VippsError | 94 | Order locked and is already processing ||
 | VippsError | 98 | Too many concurrent requests ||
 | VippsError | 99 | Description of the internal error ||
 | user | 81 | User not registered with Vipps ||
