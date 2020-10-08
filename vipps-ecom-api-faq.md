@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.8.
+Document version 2.0.9.
 
 ### Table of contents
 
@@ -496,10 +496,17 @@ See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settl
 ### Why do I not get callbacks from Vipps?
 
 Please make sure the URLs you provide to Vipps are reachable from outside your
-own environment.
+own environment. Have a look at the
+[callback documentation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callback-endpoints),
+manually "build" the callback URL in the same way as Vipps does, and confirm
+that you are getting a `HTTP 200 OK` response.
 
-It could be because your firewall is blocking our requests.
-See:
+If your `callbackPrefix` is `https://example.com/vipps/callback` and your
+`orderId` is `order123abc`, Vipps will make a callback call to
+`https://example.com/vipps/callback/v2/payments/order123abc`.
+
+If you do not receive a callback, it could be because your firewall is blocking
+our requests. See:
 [Vipps request servers](https://github.com/vippsas/vipps-developers/blob/master/README.md#vipps-request-servers).
 
 If you need help solving a callback-related problem, please send us a
