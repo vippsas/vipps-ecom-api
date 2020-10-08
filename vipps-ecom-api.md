@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.21.
+Document version 2.3.22.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -1416,20 +1416,20 @@ See [Errors](#errors) for more details.
 
 We have added rate limiting to our APIs (HTTP 429 Too Many Requests) to prevent fradulent and wrongful behaviour, and to increase the stability and security of our APIs. The limits should not affect normal behaviour, but please contact us if you notice any unexpected behaviour.
 
-| API                                                                                                         | Limit          | Key           |
-|-------------------------------------------------------------------------------------------------------------|----------------|---------------|
-| [InitiatePayment](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST) | 2 per minute   | orderId + msn |
-| [CancelPayment](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT) | 5 per minute   | orderId + msn |
-| [CapturePayment](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/capturePaymentUsingPOST)     | 5 per minute   | orderId + msn |
-| [RefundPayment](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST)       | 5 per minute   | orderId + msn |
-| [~~GetOrderStatus~~](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getOrderStatusUsingGET)  | 120 per minute | orderId + ocp |
-| [GetPaymentDetails](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)| 120 per minute | orderId + ocp |
+| API                                                                                                  | Limit          | Key           | Explanation |
+|------------------------------------------------------------------------------------------------------|----------------|---------------|-------------|
+| [Initiate](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST) | 2 per minute   | orderId + msn | Two calls per minute per unique orderId |
+| [Cancel](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT) | 5 per minute   | orderId + msn | Five calls per minute per unique orderId |
+| [Capture](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/capturePaymentUsingPOST)     | 5 per minute   | orderId + msn | Five calls per minute per unique orderId |
+| [Refund](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST)       | 5 per minute   | orderId + msn | Five calls per minute per unique orderId |
+| [~~Status~~](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getOrderStatusUsingGET)   | 120 per minute | orderId + ocp | 120 calls per minute per unique orderId |
+| [Details](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)   | 120 per minute | orderId + ocp | 120 calls per minute per unique orderId |
 
 **Please note:** The "Key" column is important. The above means that we allow
-two "InitiatePayment" calls per minute _per unique orderId_ for that MSN. This
+two "Initiat" calls per minute _per unique orderId_ for that MSN. This
 is to prevent too many initiate calls for the same payment. The overall limit
 for number of _different_ payments is _far_ higher than 2.
-The same goes for capture: You can make five capture calls per minute for
+The same goes for "Capture": You can make five capture calls per minute for
 one unique orderId, and the limit for capture calls for different orderIds
 is _far_ higher.
 
