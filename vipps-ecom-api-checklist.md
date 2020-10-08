@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.3.1
+Document version 1.3.2
 
 For examples of requests and responses, see the Postman collection in [tools](tools/)
 
@@ -56,6 +56,11 @@ For examples of requests and responses, see the Postman collection in [tools](to
 5. Vipps adds the partner to vipps.no, including the signup forms for merchants.
 6. The partner add its merchant to their solution, usually by configuring the POS with the merchant's API keys.
 7. The Merchant goes live 🎉
+
+**Please note:** For POS integrations that can not display the Vipps
+landing page, it is important that all sale units are configured with
+`skipLandingPage`. See the
+[Frequently Asked Questions for POS integrations](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#frequently-asked-questions-for-pos-integrations).
 
 # Questions?
 
