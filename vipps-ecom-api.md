@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.24.
+Document version 2.3.25.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -606,6 +606,10 @@ Example: `"eComm Express Payment"` callback:
   }
 }
 ```
+
+**Please note:** Regular payments use `RESERVED`, but express payments use
+`RESERVE`. We apologize for this annoying piece of technical debt, but will
+not correct it (in this version of the API) as it will not be backwards compatible.
 
 ### Authorization for callbacks
 
