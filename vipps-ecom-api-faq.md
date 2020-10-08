@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.4.
+Document version 2.0.6.
 
 ### Table of contents
 
@@ -522,14 +522,16 @@ is completely separate from the production environment, and both the MSN and the
 `HTTP 401 Unauthorized` occurs when there is a mismatch between the subscription keys and the
 merchant sales unit. Please follow these steps to make sure everything is correct:
 
-1. Correct spelling of `Ocp-Apim-Subscription-Key` parameter in the header of `Access Token` and Payment API
-2. Confirm that you are not using the same subscription key for `Access Token` and `Payment Initiation`
-3. Make sure you are using the same `merchantSerialNumber` in the body of your request as is stated in the developer portal
-4. Make sure you are making calls to `ecomm/v2/payments` and _not_ `ecomm/v1/payments` (unless this is specifically agreed upon)
+1. Check the Swagger specification for the correct spelling of all the header parameters
+2. Confirm that you are using the same subscription key for both the access token and payment requests
+3. Confirm that you are using the correct API keys for the environment (test or production)
+
+See: [API endpoints](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints)
+for an overview.
 
 You can use [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
-to manually do API calls, like the two above.
-See [API endpoints](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
+to manually do API calls, like the two above. Use the "inspect" functionality to
+see the complete requests and responses.
 
 Please check the HTTP response body from our API (not just the HTTP status).
 For most errors the body contains an explanation of what went wrong.
