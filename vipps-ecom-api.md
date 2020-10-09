@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.25.
+Document version 2.3.26.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -142,6 +142,7 @@ which help Vipps improve our services, and also help in investigating problems.
 
 | Header                        | Description                                  | Example value        |
 | ----------------------------- | -------------------------------------------- | -------------------- |
+| `Merchant-Serial-Number`      | The merchant serial number                   | `123456`             |
 | `Vipps-System-Name`           | The name of the ecommerce solution           | `woocommerce`        |
 | `Vipps-System-Version`        | The version number of the ecommerce solution | `5.4`                |
 | `Vipps-System-Plugin-Name`    | The name of the ecommerce plugin             | `vipps-woocommerce`  |
