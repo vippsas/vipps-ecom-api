@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.26.
+Document version 2.3.27.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -804,7 +804,7 @@ If the `skipLandingPage` property is set to `true` in the
 call, it will cause a push notification to be sent to the given phone number
 immediately, without loading the landing page.
 
-If the sale unit is not whitelisted, the request will fail and an error message will be returned
+If the sale unit is not whitelisted, the request will fail and an error message will be returned.
 
 If you want to check if a sale unit is allowed to use `skipLandingPage`:
 1. Initiate a normal payment with `"skipLandingPage": true`.
@@ -813,6 +813,11 @@ If you want to check if a sale unit is allowed to use `skipLandingPage`:
 
 If you need to be whitelisted, instructions can be found in the
 [FAQ](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-faq.md#is-it-possible-to-skip-the-landing-page).
+
+**Please note:** When using `skipLandingPage`, the user is not sent to a
+URL after complation of the payment. The "result page" is just the confirmation
+in Vipps. The `fallback` URL send in the API request can therefore be the
+merchant's main URL, like `https://example.com`, etc.
 
 ## Reserve
 
