@@ -1318,9 +1318,9 @@ You can learn more at the [OIDC Standard](https://openid.net/specs/openid-connec
 
 Call [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo) with the `sub` that was retrieved earlier. See below on how to construct the call.
 
-```
-Important note: The API call to GET:/vipps-userinfo-api/userinfo/{sub} must NOT include the subscription key used for ecom services as login is not under the same subscription, and will result in a 401 Error.
-```
+
+**Important note:** The API call to [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)  must _not_ include the subscription key used for ecom services as login is _not_ under the same subscription, and will result in a HTTP Unauthorized 401 Error.
+
 
 **Request**
 
