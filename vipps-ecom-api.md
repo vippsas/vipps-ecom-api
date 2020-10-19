@@ -79,6 +79,7 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
     - [Vipps Login access token](#vipps-login-access-token)
     - [Userinfo call](#userinfo-call)
     - [Consent](#consent)
+    - [Userinfo call by call guide](#userinfo-call-by-call-guide)
   - [HTTP response codes](#http-response-codes)
   - [Rate limiting](#rate-limiting)
   - [Authentication](#authentication)
@@ -1318,10 +1319,6 @@ You can learn more at the [OIDC Standard](https://openid.net/specs/openid-connec
 
 Call [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo) with the `sub` that was retrieved earlier. See below on how to construct the call.
 
-
-**Important note:** The API call to [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)  must _not_ include the subscription key used for ecom services as login is _not_ under the same subscription, and will result in a HTTP Unauthorized 401 Error.
-
-
 **Request**
 
 *Headers*
@@ -1404,6 +1401,25 @@ complete a valid payment and consent to _all_ values in order to complete the
 session. If a user chooses to reject the terms the payment will not be
 processed. Unless the whole flow is completed, this will be handled as a
 failed payment by the eCom API.
+
+### Userinfo call by call guide
+
+Scenario: You want to complete a payment and get the name and phoneNumber of Customer X.
+
+1. Retrieve the eCom access token by calling. 
+[`POST:/accesstoken/get`](https://vippsas.github.io/vipps-ecom-api/#/Authorization_Service/fetchAuthorizationTokenUsingPost).
+2. Add scope to the transaction object and include the scope's you wish to get access to (valid scopes) before calling.
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
+3. Consent to the information sharing and perform the payment in the Vipps App.
+4. Retrieve the `sub` by calling
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET) endpoint.
+5. Generate an Oauth 2 access Token with a call to  [`POST:/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/oauth2Token), using the clientId:client_secret as base 64 as described in [Vipps Login access token](#vipps-login-access-token). With the Grant Type set to `"client_credentials"`.
+6. Using the access token from 5. do a call to [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo) to retrieve the user information.
+
+
+
+**Important note:** The API call to [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)  must _not_ include the subscription key used for ecom services as login is _not_ under the same subscription, and will result in a HTTP Unauthorized 401 Error.
+
 
 ## HTTP response codes
 
