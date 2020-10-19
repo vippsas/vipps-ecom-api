@@ -1413,7 +1413,7 @@ Scenario: You want to complete a payment and get the name and phoneNumber of Cus
 3. Consent to the information sharing and perform the payment in the Vipps App.
 4. Retrieve the `sub` by calling
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET) endpoint.
-5. Generate a Oauth 2 access Token with a call to  [`POST:/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/oauth2Token), using the clientId:client_secret as base 64 as described in [Vipps Login access token](#vipps-login-access-token). With the Grant Type set to `"client_credentials"`.
+5. Generate an Oauth 2 access Token with a call to  [`POST:/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/oauth2Token), using the clientId:client_secret as base 64 as described in [Vipps Login access token](#vipps-login-access-token). With the Grant Type set to `"client_credentials"`.
 6. Using the access token from 5. do a call to [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo) to retrieve the user information.
 
 
