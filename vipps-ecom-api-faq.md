@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.9.
+Document version 2.0.10.
 
 ### Table of contents
 
@@ -27,6 +27,7 @@ Document version 2.0.9.
   - [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
 - [Reservations and captures](#reservations-and-captures)
   - [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
+  - [How can I check if I have "reserve capture" or "direct capture"?](#how-can-i.-check-if-i-have-reserve-capture-or-direct-capture)
   - [How do I turn _direct capture_ on or off?](#How-do-I-turn-direct-capture-on-or-off)
   - [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
   - [Can I prevent people from paying with credit cards?](#can-i-prevent-people-from-paying-with-credit-cards)
@@ -211,6 +212,12 @@ For more information, please see the Consumer Authority's
 [Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
 
 See: [Regular eCommerce payments](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#regular-ecommerce-payments) for more details.
+
+### How can I check if I have "reserve capture" or "direct capture"?
+
+All customers can log in on
+[portal.vipps.no](https://portal.vipps.no)
+and check the capture type for all their sale units.
 
 ### For how long is an initiated payment reserved?
 
