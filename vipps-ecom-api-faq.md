@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.10.
+Document version 2.0.11.
 
 ### Table of contents
 
@@ -334,6 +334,19 @@ Vipps only has APIs for paying from a person to a merchant.
 
 It is not possible to pay from one merchant to another merchant,
 or to pay from a merchant to a person.
+
+There are several reasons for this, including:
+
+* The Norwegian "Straksbetaling" (instant payments) system is not designed
+  for this, and not all banks support it.
+* There are other account-to-account payment methods but all have their
+  idiosyncrasies, and none are a perfect fit.
+* Payouts to cards is different than accounts, and will depend on the PSPs,
+  which brings another set of challenges.
+* Some merchant accounts requires "four eyes" before making payments from them,
+  and Vipps does not have this functionality in the API.
+* The SCA (Secure Customer Authentication) required by PSD2 further complicates
+  payouts, both with an API and on [portal.vipps.no](https://portal.vipps.no).
 
 ## Users and payments
 
