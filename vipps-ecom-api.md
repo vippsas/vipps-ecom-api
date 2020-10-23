@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.27.
+Document version 2.3.28.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -1228,13 +1228,15 @@ A users consent to share information with a merchant applies accross our service
 
 | Scopes      | Description                                    | User consent required  |
 | ------------| -----------------------------------------------|-------- |
-| `address`     | List containing the users addresses. Will always contain home, but can also include work and other.    |   yes   |
-| `birthDate`   | User birth date (BankID verified)                               |   yes   |
-| `email`       | User email (verified), the flag "email_verified : true" in the response can be used by merchant to confirm for each request that the email actually is verified                                   |   yes   |
-| `name`        | User first, middle and given name (verified with National Population Register)              |   yes   |
-| `phoneNumber` | Verified phone number (verified - the number used with Vipps)                          |   yes   |
-| `nin`        | Norwegian national identity number (verified with BankID). NB: Merchants need to apply for access to NIN. See: [Who can get access to NIN and how?](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api-faq.md#who-can-get-access-to-nin-and-how) For more information |   yes      |
-| `accountNumbers` | User bank account numbers. NB: merchants need to apply for access to accountNumbers. Go to [Who can get access to account numbers and how?](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api-faq.md#who-can-get-access-to-accountnumbers-and-how) For more information |   yes      |
+| `address`     | List containing the user's addresses. Will always contain the home address, but can also include work and other.    |   yes   |
+| `birthDate`   | Birth date (BankID verified)                               |   yes   |
+| `email`       | Email address (verified), the flag "email_verified : true" in the response indicates whether the email address is verified                                   |   yes   |
+| `name`        | First, middle and given name (verified with National Population Register)              |   yes   |
+| `phoneNumber` | Phone number (verified - the number used when creating the Vipps account)                          |   yes   |
+| `nin`        | Norwegian national identity number (verified with BankID). **NB:** Merchants need to apply for access to NIN. See: [Who can get access to NIN and how?](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api-faq.md#who-can-get-access-to-nin-and-how) |   yes      |
+| `accountNumbers` | User bank account numbers. **NB:** Merchants need to apply for access to accountNumbers. See: [Who can get access to account numbers and how?](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api-faq.md#who-can-get-access-to-accountnumbers-and-how) |   yes      |
+
+See the API specification for the formats and other details for each scope.
 
 **Please note:** If the e-mail address that is delivered has the flag `email_verified : false`
 this address should not be used to link the user to an existing account without
@@ -1406,7 +1408,7 @@ failed payment by the eCom API.
 
 Scenario: You want to complete a payment and get the name and phoneNumber of Customer X.
 
-1. Retrieve the eCom access token by calling. 
+1. Retrieve the eCom access token by calling.
 [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-ecom-api/#/Authorization_Service/fetchAuthorizationTokenUsingPost).
 2. Add scope to the transaction object and include the scope's you wish to get access to (valid scopes) before calling.
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
