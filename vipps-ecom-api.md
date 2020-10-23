@@ -460,7 +460,7 @@ While the minimum length for `orderId` _technically_ is just one character,
 we strongly recommend using at least 6 characters, and a combination of numbers
 and characters.
 
-The maximum length of an `orderId` is 30 alphanumeric characters:
+The maximum length of an `orderId` is 50 alphanumeric characters:
 a-z, A-Z, 0-9 and '-'.
 
 We _strongly_ recommend to use `orderId` format that makes it easy to

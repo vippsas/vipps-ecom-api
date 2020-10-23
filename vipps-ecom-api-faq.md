@@ -90,7 +90,7 @@ can't be used for
 or
 [Vipps Faste Betalinger](https://vipps.no/produkter-og-tjenester/bedrift/faste-betalinger/faste-betalinger/).
 You need
-[Vipps på Nett](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).  
+[Vipps på Nett](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).
 
 The reason for this is that the Norwegian Tax Administration considers
 "Vipps-nummer" to be cash transactions,
@@ -647,7 +647,7 @@ If all sale units have the same organization number, there are two alternatives:
 
 1: Use only one sale unit for all stores., and use the `orderId` to identify which orders belong
 to which sale units. You decide what the `orderId` contains, and it may be up to
-30 characters. See:
+50 characters. See:
 [orderId recommendation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#orderid-recommendations).
 You will use the same API keys for all stores.
 
