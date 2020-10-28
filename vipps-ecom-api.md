@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.29.
+Document version 2.3.30.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -75,11 +75,11 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
   - [Get payment status](#get-payment-status)
   - [Userinfo](#userinfo)
     - [Scopes](#scopes)
+    - [Userinfo call by call guide](#userinfo-call-by-call-guide)
     - [Get userinfo](#get-userinfo)
     - [Vipps Login access token](#vipps-login-access-token)
     - [Userinfo call](#userinfo-call)
     - [Consent](#consent)
-    - [Userinfo call by call guide](#userinfo-call-by-call-guide)
   - [HTTP response codes](#http-response-codes)
   - [Rate limiting](#rate-limiting)
   - [Authentication](#authentication)
@@ -1244,6 +1244,26 @@ further authentication. Such authentication could be to prompt the user to
 login to the original account or confirm the account linking by having a
 confirmation link sent to the email address.
 
+### Userinfo call by call guide
+
+Scenario: You want to complete a payment and get the name and phoneNumber of Customer X.
+
+1. Retrieve the eCom access token by calling.
+[`POST:/accesstoken/get`](https://vippsas.github.io/vipps-ecom-api/#/Authorization_Service/fetchAuthorizationTokenUsingPost).
+2. Add scope to the transaction object and include the scopes you wish to get access to (valid scopes) before calling.
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
+3. Consent to the information sharing and perform the payment in the Vipps App.
+4. Retrieve the `sub` by calling
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET) endpoint.
+5. Generate an Oauth 2 access Token with a call to  [`POST:/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/oauth2Token), using the clientId:client_secret as base 64 as described in [Vipps Login access token](#vipps-login-access-token). With the Grant Type set to `"client_credentials"`.
+6. Using the access token from 5. do a call to [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo) to retrieve the user information.
+
+**Important note:** The API call to
+[`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)
+must _not_ include the subscription key used for the eCom API as Login
+is _not_ under the same subscription, and will result in a
+`HTTP Unauthorized 401` error.
+
 ### Get userinfo
 
 The
@@ -1307,7 +1327,7 @@ Which results in the base64 client secret: `MTIzNDU2LXRlc3QtNGEzZC1hNDdjLTQxMjEz
 ```json
 {
   "access_token": "hel39XaKjGH5tkCvIENGPNbsSHz1DLKluOat4qP-A4.WyV61hCK1E2snVs1aOvjOWZOXOayZad0K-Qfo3lLzus",
-  "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6InB1YmxpYzo4MGYzYzM0YS05Nzc5LTRlMWUtYjY0NS0xMTdmM2I3NzFhZjgiLCJ0eXAiOiJKV1QifQ.eyJhdF9oYXNoIjoidHlGbkgyMFRPbVBaa2dKVThlNWlLdyIsImF1ZCI6WyJ2aXBwcy1pbnRlZ3JhdGlvbiJdLCJhdXRoX3RpbWUiOjE1NTczMTkyOTYsImV4cCI6MTU1NzMyMjkzOCwiaWF0IjoxNTU3MzE5MzM4LCJpc3MiOiJodHRwczovL2FwaXRlc3QudmlwcHMubm8vYWNjZXNzLW1hbmFnZW1lbnQtMS4wL2FjY2Vzcy8iLCJqdGkiOiI2MmE4NWU1Ni0zZDQ1LTRjN2UtYTA1NS00NjkzMjA5MzI1N2EiLCJub25jZSI6IiIsInJhdCI6MTU1NzMxOTI1NSwic3ViIjoiYzA2YzRhZmUtZDllMS00YzVkLTkzOWEtMTc3ZDc1MmEwOTQ0In0.OljG0W_TCfxkrRntj_5He3U0PH94SDZvlK-dvUJe8H5jj8QSiSnqiv65kyzxdr8Bq1MwG7a6Mtlnn4MoL8AyxKUVe6s81CNaYmwaHsWLw2Z2JmiPn5_X4lEy1nHVDX3R7lFKDQqFLSGnGNPU9bACj-Si18LBR-qv060wEj3b1ShrVeUIZCL1Yhxb6cIGl_8RivRto9dBrzggyOlVTtmoPrm9TLYF7UGWjlbmHTqpBWsCQIOeQqgs7RmSBt5k3O9nmP7guVxo5MWv_2Z0XuCqobLDDXJ29Rk_W6d79y-lPzq_TedNb_lCdVJF7u9qDYFbIPuQwXp26CeIJcR-nc-t0qEoNmLru_x-9Z8dCjjzkZbWqyNsNedQU1zt0WFbHjRkodVoHNcRZVT5W5hCe54lmZ6lUqyKwHW0_3Rpd2CI6lPdCOhC-Tze5cUDfb8jT_0OZqCI_wAuWvb6_4VeHqhvUav6Mh6d7AxNJQYG6BAJo9TzyrG7ho4mSpb2wWMr8gmRi8pTQbqa40whPqptpiz_j4AHcsrRckjYONU0USKlnNcBGc24M4sprcLZ6vxFqDYmDoZwUDRdZWRpUbqm_nCmCKb20Z6l5O7h32KvOApopJe2NIeAynli3Nl05QVGOdoT1mZDLYXbtyb0b_4qhRflySr6gaczcf2ovUKAToKNs_4",
+  "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6InB1YmxpYzo4MGYzYzM0YS05Nzc <snip>",
   "expires_in": 3599,
   "scope": "openid",
   "token_type": "bearer"
@@ -1403,25 +1423,6 @@ complete a valid payment and consent to _all_ values in order to complete the
 session. If a user chooses to reject the terms the payment will not be
 processed. Unless the whole flow is completed, this will be handled as a
 failed payment by the eCom API.
-
-### Userinfo call by call guide
-
-Scenario: You want to complete a payment and get the name and phoneNumber of Customer X.
-
-1. Retrieve the eCom access token by calling.
-[`POST:/accesstoken/get`](https://vippsas.github.io/vipps-ecom-api/#/Authorization_Service/fetchAuthorizationTokenUsingPost).
-2. Add scope to the transaction object and include the scopes you wish to get access to (valid scopes) before calling.
-[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
-3. Consent to the information sharing and perform the payment in the Vipps App.
-4. Retrieve the `sub` by calling
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET) endpoint.
-5. Generate an Oauth 2 access Token with a call to  [`POST:/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/oauth2Token), using the clientId:client_secret as base 64 as described in [Vipps Login access token](#vipps-login-access-token). With the Grant Type set to `"client_credentials"`.
-6. Using the access token from 5. do a call to [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo) to retrieve the user information.
-
-
-
-**Important note:** The API call to [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)  must _not_ include the subscription key used for ecom services as login is _not_ under the same subscription, and will result in a HTTP Unauthorized 401 Error.
-
 
 ## HTTP response codes
 
