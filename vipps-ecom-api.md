@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.28.
+Document version 2.3.29.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -1410,7 +1410,7 @@ Scenario: You want to complete a payment and get the name and phoneNumber of Cus
 
 1. Retrieve the eCom access token by calling.
 [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-ecom-api/#/Authorization_Service/fetchAuthorizationTokenUsingPost).
-2. Add scope to the transaction object and include the scope's you wish to get access to (valid scopes) before calling.
+2. Add scope to the transaction object and include the scopes you wish to get access to (valid scopes) before calling.
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
 3. Consent to the information sharing and perform the payment in the Vipps App.
 4. Retrieve the `sub` by calling
