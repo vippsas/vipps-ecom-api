@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.11.
+Document version 2.0.12.
 
 ### Table of contents
 
@@ -171,16 +171,14 @@ See:
 
 ### Why does Vipps Hurtigkasse (express checkout) fail?
 
-When using Vipps Hurtigkasse (express checkout), Vipps makes a
-[callback](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#1-callback)
-to the customer's server. If this server is slow,
-or has a slow internet connection, the delay may cause Vipps Hurtigkasse to fail due to a timeout.
-The solution to this is a faster server and internet connection.
+When using Vipps Hurtigkasse (express checkout), Vipps makes a callback to the
+customer's server to retrieve the merchant's shipping methods for the user's
+address. If the merchant's server is slow, or has a slow internet connection,
+the delay may cause Vipps Hurtigkasse to fail due to a timeout.
 
-Information for [Vipps for WooCommerce](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/woocommerce/):
-Some third party plugins do not work with Vipps Hurtigkasse. Please ask for help in the
-[support forum](https://wordpress.org/support/plugin/woo-vipps),
-and include information about the plugins you have installed.
+The solution to this is a faster server and internet connection, or to provide
+the shipping methods as part of the payment initiation. See:
+[Express checkout API endpoints required on the merchant side](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#express-checkout-api-endpoints-required-on-the-merchant-side).
 
 ## Reservations and captures
 
