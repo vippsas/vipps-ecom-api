@@ -1621,10 +1621,10 @@ components:
             Max length: 256 characters.
             Recommended length for readability on most screens: 25 characters.
           example: Posten Servicepakke
-          maxLength: '256'
+          maxLength: 256
         shippingMethodId:
           type: string
-          maxLength: '100'
+          maxLength: 100
     TransactionLogHistory:
       type: object
       required:
@@ -1673,7 +1673,7 @@ components:
           type: string
           description: Transaction text to be displayed in Vipps
           example: One pair of Vipps socks
-          maxLength: '100'
+          maxLength: 100
     CancelTransaction:
       type: object
       properties:
@@ -1681,7 +1681,7 @@ components:
           type: string
           description: Transaction text to be displayed in Vipps
           example: One pair of Vipps socks
-          maxLength: '100'
+          maxLength: 100
     UserDetails:
       type: object
       required:
@@ -2110,6 +2110,42 @@ components:
             - birthDate
             - nin
             - accountNumbers
+        additionalData:
+          $ref: '#/components/schemas/AdditionalTransactionData'
+    AdditionalTransactionData:
+      type: object
+      properties:
+        passengerName:
+          type: string
+          description: Passenger name, initials, and a title.
+          format: last name + first name or initials + title.
+          example: FLYER / MARY MS.
+          minLength: 1
+          maxLength: 49
+        airlineCode:
+          type: string
+          description: IATA 3-digit accounting code (PAX); numeric. It identifies the carrier. eg KLM = 074
+          format: IATA 3-digit accounting code (PAX)
+          example: '074'
+          minLength: 3
+          maxLength: 3
+        airlineDesignatorCode:
+          type: string
+          description: IATA 2-letter accounting code (PAX); alphabetical. It identifies the carrier. Eg KLM = KL
+          format: IATA 2-letter airline code
+          example: 'KL'
+          minLength: 2
+          maxLength: 2
+        ticketNumber:
+          type: string
+          description: The ticket's unique identifier.
+          minLength: 1
+          maxLength: 150
+        agencyInvoiceNumber:
+          type: string
+          description: Reference number for the invoice, issued by the agency.
+          minLength: 1
+          maxLength: 6
     MerchantInfo:
       type: object
       required:
