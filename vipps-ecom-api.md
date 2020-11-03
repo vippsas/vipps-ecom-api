@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.31.
+Document version 2.3.32.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -1493,85 +1493,20 @@ and these headers are required:
 
 ### Access token
 
+All Vipps API requests must include an `Authorization` header with
+a JSON Web Token (JWT), which we call the _access token_.
+The access token is obtained by calling
+[`POST:/accesstoken/get`](https://vippsas.github.io/vipps-ecom-api/#/Authorization_Service/fetchAuthorizationTokenUsingPost)
+and passing the `client_id`, `client_secret` and `Ocp-Apim-Subscription-Key`.
+
+See [Get an access token](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#get-an-access-token)
+in the
+[Getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
+for more information.
+
 The Access Token API provides the JWT bearer token:
 [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-ecom-api/#/Authorization_Service/fetchAuthorizationTokenUsingPost).
 
-Request:
-
-```http
-POST https://apitest.vipps.no/accesstoken/get
-client_id: fb492b5e-7907-4d83-ba20-c7fb60ca35de
-client_secret: Y8Kteew6GE2ZmeycEt6egg==
-Ocp-Apim-Subscription-Key: 0f14ebcab0ec4b29ae0cb90d91b4a84a
-```
-
-(We are aware that this is a `POST`, without a body, to an endpoint with
-`get` in the URL, and hope to fix it in a later version of the API.)
-
-All headers are unique per `merchantSerialNumber` and can be found on [portal.vipps.no](https://portal.vipps.no).
-
-| Header Name | Header Value | Description |
-| ----------- | ------------ | ----------- |
-| `client_id` | A GUID value | Client ID for the merchant |
-| `client_secret` | Base 64 encoded string | Client Secret for the merchant |
-| `Ocp-Apim-Subscription-Key` | Base 64 encoded string | Subscription key for the product |
-
-For the subscription `Vipps-eCommerce-Services-API` the `Ocp-Apim-Subscription-Key`
-for an access token request will be the same as for eCommerce requests. While
-for other subscriptions they will use different keys. See
-[getting started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
-for more details.
-
-Response:
-
-````http
-HTTP 200 OK
-````
-
-```json
-{
-  "token_type": "Bearer",
-  "expires_in": "86398",
-  "ext_expires_in": "0",
-  "expires_on": "1495271273",
-  "not_before": "1495184574",
-  "resource": "00000002-0000-0000-c000-000000000000",
-  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni <snip>"
-}
-```
-
-JWT properties:
-
-| Name                        | Description                                 |
-| --------------------------- | ------------------------------------------- |
-| `Bearer`                    | It’s a `Bearer` token. The word `Bearer` should be added before the token |
-| `expires_in`                | Token expiry duration in seconds. |
-| `ext_expires_in`            | Extra expiry time. Not used. |
-| `expires_on`                | Token expiry time in epoch time format. |
-| `not_before`                | Token creation time in epoch time format. |
-| `resource`                  | For the product for which token has been issued. |
-| `access_token`              | The actual access token that needs to be used in `Authorization` request header. |
-
-**Please note:** The access token is valid for 1 hour in MT (Merchant Test)
-and 24 hours in Production. To be sure that you are using correct time please
-use `expires_in` or `expires_on`.
-
-Example of an error response body (formatted for readability):
-
-```json
-{
-  "error": "unauthorized_client",
-  "error_description":
-    "AADSTS70001: Application with identifier 'e9b6c99d-2442-4a5d-84a2-\
-     c53a807fe0c4' was not found in the directory testapivipps.no\
-     Trace ID: 3bc2b2a0-d9bb-4c2e-8367- 5633866f1300\r\nCorrelation ID:\
-     bb2f4093-70af-446a-a26d-ed8becca1a1a\r\nTimestamp: 2017-05-19 09:21:28Z",
-  "error_codes": [ 70001 ],
-  "timestamp": "2017-05-19 09:21:28Z",
-  "trace_id": "3bc2b2a0-d9bb-4c2e-8367-5633866f1300",
-  "correlation_id": "bb2f4093-70af-446a-a26d-ed8becca1a1a"
-}
-```
 
 ### Partner Keys
 
