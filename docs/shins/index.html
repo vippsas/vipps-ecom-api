@@ -1547,6 +1547,7 @@ Darkula color scheme from the JetBrains family of IDEs
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
+<!-- backwards compatibility -->
   </head>
 
   <body data-languages="[&quot;shell&quot;,&quot;http&quot;,&quot;javascript&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;php&quot;,&quot;java&quot;,&quot;go&quot;]">
@@ -1803,6 +1804,11 @@ Darkula color scheme from the JetBrains family of IDEs
                 
                   <li>
                     <a href="#tocs_transactioninfoinitiate" class="toc-h2 toc-link" data-title="">TransactionInfoInitiate</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#tocs_additionaltransactiondata" class="toc-h2 toc-link" data-title="">AdditionalTransactionData</a>
                     
                   </li>
                 
@@ -2228,7 +2234,14 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments \
     &quot;timeStamp&quot;: &quot;2018-11-14T15:44:26.590Z&quot;,
     &quot;transactionText&quot;: &quot;One pair of Vipps socks&quot;,
     &quot;skipLandingPage&quot;: false,
-    &quot;scope&quot;: &quot;name address email&quot;
+    &quot;scope&quot;: &quot;name address email&quot;,
+    &quot;additionalData&quot;: {
+      &quot;passengerName&quot;: &quot;FLYER / MARY MS.&quot;,
+      &quot;airlineCode&quot;: &quot;074&quot;,
+      &quot;airlineDesignatorCode&quot;: &quot;KL&quot;,
+      &quot;ticketNumber&quot;: &quot;string&quot;,
+      &quot;agencyInvoiceNumber&quot;: &quot;string&quot;
+    }
   }
 }&#x27;</span>;
 <span class="hljs-keyword">const</span> headers = {
@@ -2413,7 +2426,14 @@ System.out.println(response.toString());
     <span class="hljs-attr">&quot;timeStamp&quot;</span>: <span class="hljs-string">&quot;2018-11-14T15:44:26.590Z&quot;</span>,
     <span class="hljs-attr">&quot;transactionText&quot;</span>: <span class="hljs-string">&quot;One pair of Vipps socks&quot;</span>,
     <span class="hljs-attr">&quot;skipLandingPage&quot;</span>: <span class="hljs-literal">false</span>,
-    <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;name address email&quot;</span>
+    <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;name address email&quot;</span>,
+    <span class="hljs-attr">&quot;additionalData&quot;</span>: {
+      <span class="hljs-attr">&quot;passengerName&quot;</span>: <span class="hljs-string">&quot;FLYER / MARY MS.&quot;</span>,
+      <span class="hljs-attr">&quot;airlineCode&quot;</span>: <span class="hljs-string">&quot;074&quot;</span>,
+      <span class="hljs-attr">&quot;airlineDesignatorCode&quot;</span>: <span class="hljs-string">&quot;KL&quot;</span>,
+      <span class="hljs-attr">&quot;ticketNumber&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;agencyInvoiceNumber&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    }
   }
 }
 </code></pre>
@@ -2659,6 +2679,48 @@ System.out.println(response.toString());
 <td>string</td>
 <td>false</td>
 <td>The requested OIDC scopes for use with userinfo</td>
+</tr>
+<tr>
+<td>»» additionalData</td>
+<td>body</td>
+<td><a href="#schemaadditionaltransactiondata">AdditionalTransactionData</a></td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»»» passengerName</td>
+<td>body</td>
+<td>string(last name + first name or initials + title.)</td>
+<td>false</td>
+<td>Passenger name, initials, and a title.</td>
+</tr>
+<tr>
+<td>»»» airlineCode</td>
+<td>body</td>
+<td>string(IATA 3-digit accounting code (PAX))</td>
+<td>false</td>
+<td>IATA 3-digit accounting code (PAX); numeric. It identifies the carrier. eg KLM = 074</td>
+</tr>
+<tr>
+<td>»»» airlineDesignatorCode</td>
+<td>body</td>
+<td>string(IATA 2-letter airline code)</td>
+<td>false</td>
+<td>IATA 2-letter accounting code (PAX); alphabetical. It identifies the carrier. Eg KLM = KL</td>
+</tr>
+<tr>
+<td>»»» ticketNumber</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>The ticket's unique identifier.</td>
+</tr>
+<tr>
+<td>»»» agencyInvoiceNumber</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>Reference number for the invoice, issued by the agency.</td>
 </tr>
 </tbody>
 </table>
@@ -7579,7 +7641,14 @@ System.out.println(response.toString());
     <span class="hljs-attr">&quot;timeStamp&quot;</span>: <span class="hljs-string">&quot;2018-11-14T15:44:26.590Z&quot;</span>,
     <span class="hljs-attr">&quot;transactionText&quot;</span>: <span class="hljs-string">&quot;One pair of Vipps socks&quot;</span>,
     <span class="hljs-attr">&quot;skipLandingPage&quot;</span>: <span class="hljs-literal">false</span>,
-    <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;name address email&quot;</span>
+    <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;name address email&quot;</span>,
+    <span class="hljs-attr">&quot;additionalData&quot;</span>: {
+      <span class="hljs-attr">&quot;passengerName&quot;</span>: <span class="hljs-string">&quot;FLYER / MARY MS.&quot;</span>,
+      <span class="hljs-attr">&quot;airlineCode&quot;</span>: <span class="hljs-string">&quot;074&quot;</span>,
+      <span class="hljs-attr">&quot;airlineDesignatorCode&quot;</span>: <span class="hljs-string">&quot;KL&quot;</span>,
+      <span class="hljs-attr">&quot;ticketNumber&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;agencyInvoiceNumber&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    }
   }
 }
 
@@ -7630,7 +7699,14 @@ System.out.println(response.toString());
   <span class="hljs-attr">&quot;timeStamp&quot;</span>: <span class="hljs-string">&quot;2018-11-14T15:44:26.590Z&quot;</span>,
   <span class="hljs-attr">&quot;transactionText&quot;</span>: <span class="hljs-string">&quot;One pair of Vipps socks&quot;</span>,
   <span class="hljs-attr">&quot;skipLandingPage&quot;</span>: <span class="hljs-literal">false</span>,
-  <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;name address email&quot;</span>
+  <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;name address email&quot;</span>,
+  <span class="hljs-attr">&quot;additionalData&quot;</span>: {
+    <span class="hljs-attr">&quot;passengerName&quot;</span>: <span class="hljs-string">&quot;FLYER / MARY MS.&quot;</span>,
+    <span class="hljs-attr">&quot;airlineCode&quot;</span>: <span class="hljs-string">&quot;074&quot;</span>,
+    <span class="hljs-attr">&quot;airlineDesignatorCode&quot;</span>: <span class="hljs-string">&quot;KL&quot;</span>,
+    <span class="hljs-attr">&quot;ticketNumber&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+    <span class="hljs-attr">&quot;agencyInvoiceNumber&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+  }
 }
 
 </code></pre>
@@ -7688,6 +7764,13 @@ System.out.println(response.toString());
 <td>none</td>
 <td>The requested OIDC scopes for use with userinfo</td>
 </tr>
+<tr>
+<td>additionalData</td>
+<td><a href="#schemaadditionaltransactiondata">AdditionalTransactionData</a></td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
 </tbody>
 </table>
 <h4 id="enumerated-values-12">Enumerated Values</h4>
@@ -7729,6 +7812,69 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
+<h2 id="tocs_additionaltransactiondata">AdditionalTransactionData</h2>
+<p><a id="schemaadditionaltransactiondata"></a>
+<a id="schema_AdditionalTransactionData"></a>
+<a id="tocSadditionaltransactiondata"></a>
+<a id="tocsadditionaltransactiondata"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;passengerName&quot;</span>: <span class="hljs-string">&quot;FLYER / MARY MS.&quot;</span>,
+  <span class="hljs-attr">&quot;airlineCode&quot;</span>: <span class="hljs-string">&quot;074&quot;</span>,
+  <span class="hljs-attr">&quot;airlineDesignatorCode&quot;</span>: <span class="hljs-string">&quot;KL&quot;</span>,
+  <span class="hljs-attr">&quot;ticketNumber&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;agencyInvoiceNumber&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+}
+
+</code></pre>
+<h3 id="properties-22">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>passengerName</td>
+<td>string(last name + first name or initials + title.)</td>
+<td>false</td>
+<td>none</td>
+<td>Passenger name, initials, and a title.</td>
+</tr>
+<tr>
+<td>airlineCode</td>
+<td>string(IATA 3-digit accounting code (PAX))</td>
+<td>false</td>
+<td>none</td>
+<td>IATA 3-digit accounting code (PAX); numeric. It identifies the carrier. eg KLM = 074</td>
+</tr>
+<tr>
+<td>airlineDesignatorCode</td>
+<td>string(IATA 2-letter airline code)</td>
+<td>false</td>
+<td>none</td>
+<td>IATA 2-letter accounting code (PAX); alphabetical. It identifies the carrier. Eg KLM = KL</td>
+</tr>
+<tr>
+<td>ticketNumber</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>The ticket's unique identifier.</td>
+</tr>
+<tr>
+<td>agencyInvoiceNumber</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Reference number for the invoice, issued by the agency.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="tocs_merchantinfo">MerchantInfo</h2>
 <p><a id="schemamerchantinfo"></a>
 <a id="schema_MerchantInfo"></a>
@@ -7755,7 +7901,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-22">Properties</h3>
+<h3 id="properties-23">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7867,7 +8013,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-23">Properties</h3>
+<h3 id="properties-24">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7906,7 +8052,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-24">Properties</h3>
+<h3 id="properties-25">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7950,7 +8096,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-25">Properties</h3>
+<h3 id="properties-26">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8042,7 +8188,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-26">Properties</h3>
+<h3 id="properties-27">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8078,7 +8224,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-27">Properties</h3>
+<h3 id="properties-28">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8118,7 +8264,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-28">Properties</h3>
+<h3 id="properties-29">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8184,7 +8330,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-29">Properties</h3>
+<h3 id="properties-30">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8263,7 +8409,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-30">Properties</h3>
+<h3 id="properties-31">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8321,7 +8467,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-31">Properties</h3>
+<h3 id="properties-32">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8404,7 +8550,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-32">Properties</h3>
+<h3 id="properties-33">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8453,7 +8599,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-33">Properties</h3>
+<h3 id="properties-34">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8547,7 +8693,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-34">Properties</h3>
+<h3 id="properties-35">Properties</h3>
 <p>oneOf</p>
 <table>
 <thead>
@@ -8603,7 +8749,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-35">Properties</h3>
+<h3 id="properties-36">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8682,6 +8828,7 @@ System.out.println(response.toString());
 </table>
 <!-- Renderer: Shins v2.6.0 -->
 <!-- Generator: Widdershins v4.0.1 -->
+<!-- backwards compatibility -->
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
