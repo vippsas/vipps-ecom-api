@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.12.
+Document version 2.0.13.
 
 ### Table of contents
 
@@ -41,6 +41,7 @@ Document version 2.0.12.
   - [Is there an API for retrieving information about a merchant's payments?](#is-there-an-api-for-retrieving-information-about-a-merchants-payments)
   - [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
   - [Can I split payments to charge a fee?](#can-i-split-payments-to-charge-a-fee)
+  - [Can I create a marketplace with multiple merchants?](#can-i-create-a-marketplace-with-multiple-merchants)
   - [Can I create a service to match buyers and sellers?](#can-i-create-a-service-to-match-buyers-and-sellers)
   - [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-cant-find-it)
   - [How long is an initiated order valid, if the user does not confirm in the Vipps app?](#how-long-is-an-initiated-order-valid-if-the-user-does-not-confirm-in-the-vipps-app)
@@ -428,6 +429,30 @@ If you want to charge a fee (like 3 %) of your payments, you can:
 
 Companies that receive payments through Vipps needs to be Vipps customers.
 See: [What are the requirements for Vipps merchants?](#what-are-the-requirements-for-vipps-merchants)
+
+### Can I create a marketplace with multiple merchants?
+
+We sometimes get questions whether Vipps can support a marketplace or a
+hopping center, with multiple merchants. The answer is: That depends.
+It may not be as straight-forward as expected, and some typical questions
+are covered elsewhere in this FAQ:
+
+* All payments with Vipps must be to a merchant that is a customer of Vipps. See
+  [What are the requirements for Vipps merchants?](#what-are-the-requirements-for-vipps-merchants)
+* Revenue share between the marketplace and the merchants: See:
+  [Can I split payments to charge a fee?](#can-i-split-payments-to-charge-a-fee)
+* Refunds can only be made from the merchant that received the payment. See:
+  [Is it possible for a merchant to pay a Vipps user?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#is-it-possible-for-a-merchant-to-pay-a-vipps-user)
+
+So, in short, there are two alternatives:
+1. The shopping center is the only Vipps merchant, and all payments from Vipps
+   users is to this merchant. Vipps is not involved in the cooperation between
+   the shopping center and it's merchants, and it is completely up to them
+   to operate according to Norwegian laws and regulation.
+2. Each merchant in the shopping center is a Vipps merchant, and each payment
+   from a Vipps user is made directly to the merchant. This means that a
+   common shopping cart for all merchants can not be paid in one operation,
+   since: All payments with Vipps must be to a merchant that is a customer of Vipps.
 
 ### Can I create a service to match buyers and sellers?
 
