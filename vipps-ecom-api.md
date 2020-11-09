@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.33.
+Document version 2.3.34.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -275,13 +275,19 @@ If Vipps is installed, Vipps will automatically be opened.
 5. Once payment process is completed, Vipps redirects to the
    `fallBack` URL that the merchant provided earlier.
 
-**Please note:** Vipps can not guarantee that the user will get to the
-`fallBack` URL, since it is possible to switch from Vipps or "kill" the app,
-or there may be network or battery problems, etc before the URL is opened.
-
-**Please note:** Vipps can not guarantee a particular sequence, as this depends on user
-actions, network connectivity/speed, etc. Because of this, it is not
-possible to base an integration on a specific sequence of events.
+**Please note:**
+1. Vipps can not guarantee that the user will get to the
+   `fallBack` URL, since the user may switch away from Vipps or "kill" the app,
+   or there may be network or battery problems, etc before the URL is opened.
+2. If the user has started the payment in an embedded browser, such as in
+   Facebook or Instagram, it is not possible for Vipps to open the
+   `fallBack` URL in the embedded browser. The phone OS will always open URLs
+   in the default browser.
+3. Because of the above, a successful payment _must not_ rely on session cookies
+   in the browser.
+4. Vipps can not guarantee a particular sequence, as this depends on user
+   actions, network connectivity/speed, etc. Because of this, it is not
+   possible to base an integration on a specific sequence of events.
 
 ## Desktop flow
 
