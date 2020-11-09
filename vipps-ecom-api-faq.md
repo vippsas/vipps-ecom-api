@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.13.
+Document version 2.0.14.
 
 ### Table of contents
 
@@ -433,7 +433,7 @@ See: [What are the requirements for Vipps merchants?](#what-are-the-requirements
 ### Can I create a marketplace with multiple merchants?
 
 We sometimes get questions whether Vipps can support a marketplace or a
-hopping center, with multiple merchants. The answer is: That depends.
+shopping center, with multiple merchants. The answer is: That depends.
 It may not be as straight-forward as expected, and some typical questions
 are covered elsewhere in this FAQ:
 
