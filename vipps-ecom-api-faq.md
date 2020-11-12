@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.14.
+Document version 2.0.15.
 
 ### Table of contents
 
@@ -31,7 +31,7 @@ Document version 2.0.14.
   - [How do I turn _direct capture_ on or off?](#How-do-I-turn-direct-capture-on-or-off)
   - [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
   - [Can I prevent people from paying with credit cards?](#can-i-prevent-people-from-paying-with-credit-cards)
-  - [Can I send a Vipps payment link in an SMS or email?](#can-i-send-a-vipps-payment-link-in-an-sms-or-email)
+  - [Can I send a Vipps payment link in an SMS, QR or email?](#can-i-send-a-vipps-payment-link-in-an-sms-qr-or-email)
 - [Refunds](#refunds)
   - [How can I refund a payment?](#how-can-i-refund-a-payment)
   - [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
@@ -253,7 +253,7 @@ merchant. Please contact your KAM or
 [Vipps Kundesenter](https://vipps.no/kontakt-oss/bedrift/vipps/)
 if you need this.
 
-### Can I send a Vipps payment link in an SMS or email?
+### Can I send a Vipps payment link in an SMS, QR or email?
 
 No. The Vipps "deeplink" is an integrated part of the Vipps payment process,
 and the link should never be sent in an SMS or email. The deeplink is only valid
