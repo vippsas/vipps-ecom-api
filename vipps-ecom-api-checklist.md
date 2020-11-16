@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.3.2
+Document version 1.3.3.
 
 For examples of requests and responses, see the Postman collection in [tools](tools/)
 
@@ -23,6 +23,7 @@ For examples of requests and responses, see the Postman collection in [tools](to
     - [ ] The Merchant _must not_ rely on `fallback` or `callback` alone, and must poll
           [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
           as documented.
+    - [ ] The merchant must handle that the `fallback`URL is opened in the default browser on the phone, and not in a custom browser, in a specific tab, or in an embedded browser. See the FAQ: [How can I open the fallback URL in a specific (embedded) browser?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser)      
     - [ ] The Vipps branding must be according to the [Vipps design guidelines](https://github.com/vippsas/vipps-design-guidelines)
 - [ ] Integrate [HTTP headers](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#optional-vipps-http-headers) for better tracking (Mandatory for partners and plattforms)
     - [ ] Vipps-System-Name
