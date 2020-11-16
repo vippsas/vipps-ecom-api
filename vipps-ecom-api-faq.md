@@ -297,6 +297,10 @@ Please contact your KAM.
 If you do not have a KAM, you will have to wait so see if this functionality is
 made available for all Vipps merchants.
 
+See the
+[design guidelines](https://github.com/vippsas/vipps-design-guidelines#vipps-custom-qr-code)
+for more details about the QR format and design.
+
 ## Refunds
 
 ### How can I refund a payment?
