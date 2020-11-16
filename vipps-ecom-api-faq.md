@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.15.
+Document version 2.0.16.
 
 ### Table of contents
 
@@ -158,7 +158,7 @@ for Vipps to open the `fallback` URL in the same tab that the user came from
 before the app-switch.
 
 This means that the merchant must be able to detect or recognize the user
-when the `fallback` URL is opened.
+when the `fallback` URL is opened, without relying on session, cookies, etc.
 
 ### How can I measure Vipps sales with Google Analytics, Facebook pixel, etc?
 
