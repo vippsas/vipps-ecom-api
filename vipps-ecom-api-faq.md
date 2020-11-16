@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.16.
+Document version 2.0.17.
 
 ### Table of contents
 
@@ -32,6 +32,7 @@ Document version 2.0.16.
   - [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
   - [Can I prevent people from paying with credit cards?](#can-i-prevent-people-from-paying-with-credit-cards)
   - [Can I send a Vipps payment link in an SMS, QR or email?](#can-i-send-a-vipps-payment-link-in-an-sms-qr-or-email)
+  - [Can I whitelist my URL for a Vipps QR?](#can-i-whitelist-my-url-for-a-vipps-qr)
 - [Refunds](#refunds)
   - [How can I refund a payment?](#how-can-i-refund-a-payment)
   - [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
@@ -283,6 +284,18 @@ for easy registration and login.
 
 See:
 [The Vipps deeplink URL](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#the-vipps-deeplink-url).
+
+### Can I whitelist my URL for a Vipps QR?
+
+It is technically possible for a merchant to whitelist a URL so a user can scan
+a Vipps-branded QR in Vipps and be sent directly to the merchant's URL.
+
+This functionality is in an experimental phase, and is only available for
+merchants with a Vipps KAM (Key Account Manager). To request whitelisting:
+Please contact your KAM.
+
+If you do not have a KAM, you will have to wait so see if this functionality is
+made available for all Vipps merchants.
 
 ## Refunds
 
