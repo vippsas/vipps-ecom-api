@@ -2241,7 +2241,8 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments \
       &quot;airlineDesignatorCode&quot;: &quot;KL&quot;,
       &quot;ticketNumber&quot;: &quot;string&quot;,
       &quot;agencyInvoiceNumber&quot;: &quot;string&quot;
-    }
+    },
+    &quot;useExplicitCheckoutFlow&quot;: true
   }
 }&#x27;</span>;
 <span class="hljs-keyword">const</span> headers = {
@@ -2433,7 +2434,8 @@ System.out.println(response.toString());
       <span class="hljs-attr">&quot;airlineDesignatorCode&quot;</span>: <span class="hljs-string">&quot;KL&quot;</span>,
       <span class="hljs-attr">&quot;ticketNumber&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
       <span class="hljs-attr">&quot;agencyInvoiceNumber&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
-    }
+    },
+    <span class="hljs-attr">&quot;useExplicitCheckoutFlow&quot;</span>: <span class="hljs-literal">true</span>
   }
 }
 </code></pre>
@@ -2721,6 +2723,13 @@ System.out.println(response.toString());
 <td>string</td>
 <td>false</td>
 <td>Reference number for the invoice, issued by the agency.</td>
+</tr>
+<tr>
+<td>»» useExplicitCheckoutFlow</td>
+<td>body</td>
+<td>boolean</td>
+<td>false</td>
+<td>Use the extended UX flow for express checkout which forces users to confirm their address and shipping choices</td>
 </tr>
 </tbody>
 </table>
@@ -7648,7 +7657,8 @@ System.out.println(response.toString());
       <span class="hljs-attr">&quot;airlineDesignatorCode&quot;</span>: <span class="hljs-string">&quot;KL&quot;</span>,
       <span class="hljs-attr">&quot;ticketNumber&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
       <span class="hljs-attr">&quot;agencyInvoiceNumber&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
-    }
+    },
+    <span class="hljs-attr">&quot;useExplicitCheckoutFlow&quot;</span>: <span class="hljs-literal">true</span>
   }
 }
 
@@ -7706,7 +7716,8 @@ System.out.println(response.toString());
     <span class="hljs-attr">&quot;airlineDesignatorCode&quot;</span>: <span class="hljs-string">&quot;KL&quot;</span>,
     <span class="hljs-attr">&quot;ticketNumber&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
     <span class="hljs-attr">&quot;agencyInvoiceNumber&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
-  }
+  },
+  <span class="hljs-attr">&quot;useExplicitCheckoutFlow&quot;</span>: <span class="hljs-literal">true</span>
 }
 
 </code></pre>
@@ -7770,6 +7781,13 @@ System.out.println(response.toString());
 <td>false</td>
 <td>none</td>
 <td>none</td>
+</tr>
+<tr>
+<td>useExplicitCheckoutFlow</td>
+<td>boolean</td>
+<td>false</td>
+<td>none</td>
+<td>Use the extended UX flow for express checkout which forces users to confirm their address and shipping choices</td>
 </tr>
 </tbody>
 </table>
