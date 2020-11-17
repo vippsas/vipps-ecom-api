@@ -2112,6 +2112,10 @@ components:
             - accountNumbers
         additionalData:
           $ref: '#/components/schemas/AdditionalTransactionData'
+        useExplicitCheckoutFlow:
+          type: boolean
+          description: Use the extended UX flow for express checkout which forces users to confirm their address and shipping choices
+          example: true
     AdditionalTransactionData:
       type: object
       properties:
