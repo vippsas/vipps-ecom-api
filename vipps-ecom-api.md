@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.34.
+Document version 2.3.35.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -139,7 +139,8 @@ See the
 
 We recommend using the following _optional_ HTTP headers for all requests to the
 Vipps eCom API. These headers provide useful metadata about the merchant's system,
-which help Vipps improve our services, and also help in investigating problems.   
+which help Vipps improve our services, and also help in investigating problems.
+Please use self-explanatory values that uniquely identify the system (and plugin).   
 
 | Header                        | Description                                  | Example value        |
 | ----------------------------- | -------------------------------------------- | -------------------- |
