@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.17.
+Document version 2.0.18.
 
 ### Table of contents
 
@@ -587,7 +587,8 @@ See:
 
 And: Make sure you are using the right environment. The
 [test environment](https://github.com/vippsas/vipps-developers/blob/master/vipps-test-environment.md)
-is completely separate from the production environment, and both the MSN and the API keys are different.
+is completely separate from the production environment, and both the MSN and
+the API keys are different.
 
 ### I am getting `401 Unauthorized` error - and I have double checked all my keys!
 
@@ -612,6 +613,8 @@ You can also log in to
 [portal.vipps.no](https://portal.vipps.no)
 to double check your API keys, sale units and API products.
 
+Please note that Vipps can not help with the debugging of your code.
+
 ### Why do I get `Requested Order not found`?
 
 This is typically because the payment was initiated using the API keys for
@@ -634,6 +637,9 @@ See: [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-
 Please check the HTTP response body from our API (not just the HTTP status).
 For most errors the body contains an explanation of what went wrong.
 
+See:
+[Statuspage](https://github.com/vippsas/vipps-developers#status-page).
+
 ### Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`
 
 This can happen if the test merchant is not being used for a long time. Please
@@ -652,16 +658,16 @@ We recommend testing with 2 NOK, even though 1 NOK is the smallest possible amou
 
 ### What do we have to do with PSD2's SCA requirements?
 
-SCA (Strong customer authentication) is a security requirement, related to PSD2,
-to reduce the risk of fraud and protect customers data.
+SCA (Strong customer authentication) is a security requirement related to PSD2,
+to reduce the risk of fraud and protect customer's data.
 
-Delegated SCA will be Vipps' primary way of solving the SCA requirements. For
-this solution Vipps is developing a SCA compliant solution that consists of a
+Delegated SCA is Vipps' primary way of solving the SCA requirements. For
+this solution Vipps has developing a SCA compliant solution that consists of a
 two-factor authentication featuring either PIN or biometrics in addition to
-device possession. In addition Vipps will implement a Dynamic Linking according
+device possession. In addition Vipps has implemented a Dynamic Linking according
 to the requirements.
 
-There is no need for any changes to your Vipps implementation.
+There is no need for any changes to your Vipps implementation for SCA.
 
 ### How do I set up multiple sale units?
 
