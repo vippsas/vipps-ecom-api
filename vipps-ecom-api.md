@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.35.
+Document version 2.3.36.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -27,6 +27,8 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
     - [Direct capture](#direct-capture)
     - [When to use reserve capture and direct capture](#when-to-use-reserve-capture-and-direct-capture)
   - [Express checkout payments](#express-checkout-payments)
+    - [Old and new express checkout flow](#old-and-new-express-checkout-flow)
+      - [How to specify the old or new express checkout flow](#how-to-specify-the-old-or-new-express-checkout-flow)
     - [Shipping and static shipping details](#shipping-and-static-shipping-details)
     - [Consent and GDPR](#consent-and-gdpr)
   - [Initiate payment flow: Phone and browser](#initiate-payment-flow-phone-and-browser)
@@ -213,6 +215,44 @@ choose a shipping option:
 To perform an express checkout, the merchant needs to send
 `"paymentType": "eComm Express Payment"` as part of initiate payment, and
 support the `shippingDetails` and `consent` endpoints.
+
+### Old and new express checkout flow
+
+This does require some background info - please bear with us.
+
+In the old flow for the express checkout it was easy for a user to overlook
+that the correct address and shipping method was used, as both were simply
+displayed on the payment confirmation page. The user did not have to actively
+choose and address and shipping method. This resulted in some users
+inadvertently confirming the wrong address and possibly also selecting the
+wrong shipping method. To fix this, we made it mandatory to select and address
+and shipping method. This was released as a minor update of the Vipps app.
+
+That worked well for all merchants that used Vipps Hurtigkasse _as intended_,
+but not for those using it as a quick hack to speed up payments, "just get some
+info about the user", Covid-19 tracking, or something else.
+
+The new and (for some) improved flow did not work well for all. One example:
+Restaurant  guests could not understand why a restaurant needed their address
+and shipping method for the two beers they ordered from their table.
+They had not noticed the need to select those before, but definitely did now.
+
+So: We changed it back to the way it was before, and now require merchants to
+explicitly specify the new express checkout flow.
+
+#### How to specify the old or new express checkout flow
+
+The old (and for some: "normal") express checkout flow is the default.
+You do not have to make any changes other than to specify
+`"paymentType": "eComm Express Payment"`.
+
+To get the new express checkout flow: Specify this in addition:
+
+`"useExplicitCheckoutFlow": true`
+
+See
+[`POST:/ecomm/v2/payments](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
+for more details.
 
 ### Shipping and static shipping details
 
