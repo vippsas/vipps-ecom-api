@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.36.
+Document version 2.3.37.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -510,6 +510,11 @@ and characters.
 
 The maximum length of an `orderId` is 50 alphanumeric characters:
 a-z, A-Z, 0-9 and '-'.
+
+A good starting point is to use UUID,
+[universally unique identifiers](https://en.wikipedia.org/wiki/Universally_unique_identifier),
+on the format `123e4567-e89b-12d3-a456-426614174000`.
+UUIDs are not always the most human-friendly, so see the other tips below too.
 
 We _strongly_ recommend to use `orderId` format that makes it easy to
 search for them in logs. This means that `abc-123-def-456` is a better
