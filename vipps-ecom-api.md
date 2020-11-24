@@ -223,7 +223,7 @@ This does require some background info - please bear with us.
 In the old flow for the express checkout it was easy for a user to overlook
 that the correct address and shipping method was used, as both were simply
 displayed on the payment confirmation page. The user did not have to actively
-choose and address and shipping method. This resulted in some users
+choose an address and shipping method. This resulted in some users
 inadvertently confirming the wrong address and possibly also selecting the
 wrong shipping method. To fix this, we made it mandatory to select and address
 and shipping method. This was released as a minor update of the Vipps app.
@@ -246,7 +246,8 @@ The old (and for some: "normal") express checkout flow is the default.
 You do not have to make any changes other than to specify
 `"paymentType": "eComm Express Payment"`.
 
-To get the new express checkout flow: Specify this in addition:
+To get the new express checkout flow: Specify this in addition, in the
+`transaction` object:
 
 `"useExplicitCheckoutFlow": true`
 
