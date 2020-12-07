@@ -672,7 +672,7 @@ not correct it (in this version of the API) as it will not be backwards compatib
 To add authentication to the callbacks made by Vipps to the merchant,
 the merchant may provide an `authToken`. This token will then be returned as
 an `Authorization` header in the callback and shipping details requests made by
-Vipps for that order. Please not that this is unrelated to the authentication
+Vipps for that order. Please note that this is unrelated to the authentication
 required by the Vipps API: See [Authentication](#authentication).
 
 Swagger:
