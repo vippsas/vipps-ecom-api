@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.18.
+Document version 2.0.19.
 
 ### Table of contents
 
@@ -57,6 +57,7 @@ Document version 2.0.18.
   - [Why do I get `Requested Order not found`?](#why-do-i-get-requested-order-not-found)
   - [Why do I get `500 Internal Server Error` (or similar)?](#why-do-i-get-500-internal-server-error-or-similar)
   - [Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`](#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked)
+  - [Why do I get `errorCode 35 "Requested Order not found"`?](#why-do-i-get-errorcode-35-requested-order-not-found)
 - [Other questions](#other-Questions)
   - [How do I perform "testing in production"?](#how-do-i-perform-testing-in-production)
   - [What do we have to do with PSD2's SCA requirements?](#what-do-we-have-to-do-with-psd2s-sca-requirements)
@@ -640,12 +641,20 @@ For most errors the body contains an explanation of what went wrong.
 See:
 [Statuspage](https://github.com/vippsas/vipps-developers#status-page).
 
-### Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`
+### Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`?
 
 This can happen if the test merchant is not being used for a long time. Please
 [contact customer service](https://vipps.no/kontakt-oss/bedrift/vipps/),
 and we will reactivate the merchant. We no longer automatically deactivate
 test merchants.
+
+### Why do I get `errorCode 35 "Requested Order not found"`?
+
+This is either because you are specifying an incorrect orderId, or because you
+are trying to access an orderId with the incorrect API credentials.
+orderIds are not globally unique, they are only unique per MSN.
+If you use one the API credentials for one MSN and an orderId for another MSN,
+you will get tnhis error.
 
 ## Other questions
 
