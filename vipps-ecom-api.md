@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.3.37.
+Document version 2.3.38.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -568,7 +568,8 @@ public class UrlValidate {
 Callbacks allow Vipps to send the payment order details to the merchant,
 and normally offer at better (and faster) user experience than relying on
 polling
-[GET:/ecomm/v2/payments/{orderId}/details](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET).
+[GET:/ecomm/v2/payments/{orderId}/details](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
+(See: [Polling guidelines](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#polling-guidelines)).
 
 The request body contains different information depending on  whether the payment type is set to
 `"eComm Regular Payment"` or `"eComm Express Payment"`:
@@ -584,12 +585,20 @@ following events:
 * Payment rejected
 * Payment timed out
 
+Vipps makes _one_ attempt at a callback, and can not guarantee that it succeeds,
+as it depends on network, firewalls and other factors that Vipps can not control.
+
 If the communication is broken during the process for some reason, and Vipps
 is not able to execute callback to the merchant's server, the callback will
-not be retried. In other words, if the merchant does not receive any
+not be retried.
+
+In other words, if the merchant does not receive any
 confirmation on the payment request, the merchant _must_ call
 [GET:/ecomm/v2/payments/{orderId}/details](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
 to get the status of the payment.
+
+See the FAQ:
+[Why do I not get callbacks from Vipps?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#why-do-i-not-get-callbacks-from-vipps)
 
 ### Callback endpoints
 

@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.19.
+Document version 2.0.20.
 
 ### Table of contents
 
@@ -556,14 +556,18 @@ See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settl
 
 ### Why do I not get callbacks from Vipps?
 
+See the
+[Callback](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callback-endpoints)
+section in the API guide.
+
 Please make sure the URLs you provide to Vipps are reachable from outside your
-own environment. Have a look at the
-[callback documentation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callback-endpoints),
-manually "build" the callback URL in the same way as Vipps does, and confirm
-that you are getting a `HTTP 200 OK` response.
+own environment. Have a look at the API guide, manually "build" the callback
+URL in the same way as Vipps does, and confirm that you are getting a
+`HTTP 200 OK` response.
 
 If your `callbackPrefix` is `https://example.com/vipps/callback` and your
-`orderId` is `order123abc`, Vipps will make a callback call to
+`orderId` is `order123abc`, Vipps will add `/v2/payments/order123abc` at the
+end of your `callbackPrefix`and make a callback to
 `https://example.com/vipps/callback/v2/payments/order123abc`.
 
 If you do not receive a callback, it could be because your firewall is blocking
@@ -648,13 +652,17 @@ This can happen if the test merchant is not being used for a long time. Please
 and we will reactivate the merchant. We no longer automatically deactivate
 test merchants.
 
+See: [Error codes](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes).
+
 ### Why do I get `errorCode 35 "Requested Order not found"`?
 
 This is either because you are specifying an incorrect orderId, or because you
 are trying to access an orderId with the incorrect API credentials.
 orderIds are not globally unique, they are only unique per MSN.
 If you use one the API credentials for one MSN and an orderId for another MSN,
-you will get tnhis error.
+you will get this error.
+
+See: [Error codes](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes).
 
 ## Other questions
 
