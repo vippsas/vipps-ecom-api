@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.4.0.
+Document version 2.4.1.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -146,7 +146,7 @@ The normal "happy day" flow for a payment is:
    [`POST:/ecomm/v2/payments](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST).
    The user can now confirm the payment in Vipps, setting the payment status to reserved.
    See [Initiate](#initiate).
-2. Get the callback with the payment status:
+2. Receive the callback with the payment status:
    [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/transactionUpdateCallbackForRegularPaymentUsingPOST).
    See [Callbacks](#callbacks).
 3. Get the payment details:
