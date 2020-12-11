@@ -157,7 +157,7 @@ The normal "happy day" flow for a payment is:
    and
    [Polling guidelines](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#polling-guidelines).
 4. Capture the payment:
-   [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/capturePaymentUsingPOST)
+   [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/capturePaymentUsingPOST).
    See [Regular eCommerce payments](#regular-ecommerce-payments).
 
 There is, of course, much more to this. The user may cancel, or not act on, the
