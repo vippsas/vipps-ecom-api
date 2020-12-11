@@ -149,8 +149,9 @@ The normal "happy day" flow for a payment is:
 2. Get the callback with the payment status:
    [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/transactionUpdateCallbackForRegularPaymentUsingPOST).
    See [Callbacks](#callbacks).
-3. Get the payment details (if no callback has been received):
-   [GET:/ecomm/v2/payments/{orderId}/details](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
+3. Get the payment details:
+   [GET:/ecomm/v2/payments/{orderId}/details](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET).
+   This is optional, but _must_ be done if no callback has been received.
    See
    [Get payment details](#get-payment-details)
    and
