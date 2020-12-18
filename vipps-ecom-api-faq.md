@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.21.
+Document version 2.0.22.
 
 ### Table of contents
 
@@ -419,7 +419,7 @@ where there is no display available.
 
 You can log in on
 [portal.vipps.no](https://portal.vipps.no)
-to checvk if you have `skipLandingPage enabled.`
+to check if you have `skipLandingPage enabled.`
 
 If you need to skip the landing page in a Point of Sale (POS) solution, see:
 [What is the process to go live in production?](#what-is-the-process-to-go-live-in-production).
