@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.20.
+Document version 2.0.21.
 
 ### Table of contents
 
@@ -417,9 +417,9 @@ The sale units must be whitelisted by Vipps.
 Skipping the landing page is typically used at physical points of sale,
 where there is no display available.
 
-See:
-[Skip landing page](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#skip-landing-page)
-in the API guide.
+You can log in on
+[portal.vipps.no](https://portal.vipps.no)
+to checvk if you have `skipLandingPage enabled.`
 
 If you need to skip the landing page in a Point of Sale (POS) solution, see:
 [What is the process to go live in production?](#what-is-the-process-to-go-live-in-production).
@@ -430,6 +430,10 @@ Please log in on
 [portal.vipps.no](https://portal.vipps.no),
 find the right sale unit and click the email link under the "i" information bubble.
 Include a detailed description of why it is not possible to display the landing page.
+
+See:
+[Skip landing page](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#skip-landing-page)
+in the API guide.
 
 ### Can I split payments to charge a fee?
 
