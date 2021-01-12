@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.22.
+Document version 2.0.23.
 
 ### Table of contents
 
@@ -219,6 +219,8 @@ See: [Regular eCommerce payments](https://github.com/vippsas/vipps-ecom-api/blob
 All customers can log in on
 [portal.vipps.no](https://portal.vipps.no)
 and check the capture type for all their sale units.
+
+You can also find information on how to chance capture type there.
 
 ### For how long is an initiated payment reserved?
 
