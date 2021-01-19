@@ -63,6 +63,7 @@ Document version 2.0.23.
   - [What do we have to do with PSD2's SCA requirements?](#what-do-we-have-to-do-with-psd2s-sca-requirements)
   - [How do I set up multiple sale units?](#how-do-i-set-up-multiple-sale-units)
   - [What about webhooks?](#what-about-webhooks)
+  - [Can I use Vipps with Klarna Checkout?](#can-i-use-vipps-with-klarna-checkout)
 - [Frequently Asked Questions for POS integrations](#frequently-asked-questions-for-pos-integrations)
   * [What is the process to go live in production?](#what-is-the-process-to-go-live-in-production)
   * [How can we be whitelisted for `skipLandingPage`?](#how-can-we-be-whitelisted-for-skiplandingpage)
@@ -742,6 +743,12 @@ See the:
 and
 [Vipps PSP API checklist](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-checklist.md)
 for examples.
+
+### Can I use Vipps with Klarna Checkout?
+
+Klarna Checkout supports Vipps as an External Payment Method if you have agreement with Klarna for this. 
+This requires a full integration with Vipps eCom APIs. Also follow Klarnas process to get the External Payment Method activated for your account, described in the [Klarna documentation](https://developers.klarna.com/documentation/klarna-checkout/in-depth/external-payment-methods/).
+Using this method will add Vipps as an payment alternative inside the Klarna Checkout (KCO). It is technically possible to also use Vipps payment options outside KCO (e.g. on product pages, in basket or similar) using [Vipps Express Checkout](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#express-checkout-payments).
 
 ## Frequently Asked Questions for POS integrations
 
