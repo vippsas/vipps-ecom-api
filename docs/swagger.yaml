@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.0
+  version: 1.6.1
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -562,6 +562,7 @@ paths:
             repeated requests without it making additional changes.
             Unique for orderId, merchantSerialNumber and endpoint.
             Required for making partial captures.
+            You can use any unique id for your X-Request-Id.
             Max 30 characters.
           schema:
             type: string

@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.4.3.
+Document version 2.4.4.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -951,6 +951,9 @@ Capture is done with
 We strongly recommend to use the idempotency key `X-Request-Id`. If a capture
 request fails for any reason, it can be retried with the same idempotency key.
 
+You can use any unique id for your `X-Request-Id`.
+See the API specification for details.
+
 **Please note:** It is important to check the response of the `/capture`
 call. The capture is only successful when the response is `HTTP 200 OK`.
 
@@ -1132,6 +1135,9 @@ Partial refunds are done by specifying an `amount` which is lower than the captu
 The refunded amount cannot be larger than the captured amount.
 
 In a capture request the merchant may also use the `X-Request-Id`header. This header is an idempotency header ensuring that if the merchant retries a request with the same `X-Request-Id` the retried request will not make additional changes.
+
+You can use any unique id for your `X-Request-Id`.
+See the API specification for details.
 
 Refunds can be made up to 365 days after capture.
 
@@ -1640,10 +1646,13 @@ and recommended, for regular Vipps merchants making payments for themselves.
 
 ## Idempotency
 
-In a capture request the merchant may also use the `X-Request-Id`header.
+In a capture request the merchant may also use the `X-Request-Id` header.
 This header is an idempotency header ensuring that if the merchant retries
 a request with the same `X-Request-Id` the retried request will not make
 additional changes.
+
+You can use any unique id for your `X-Request-Id`.
+See the API specification for details.
 
 Request:
 
