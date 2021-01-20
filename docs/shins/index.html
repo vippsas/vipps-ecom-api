@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Vipps eCommerce API v1.6.0</title>
+    <title>Vipps eCommerce API v1.6.1</title>
 
     <style>
     </style>
@@ -3123,7 +3123,7 @@ System.out.println(response.toString());
 <td>header</td>
 <td>string</td>
 <td>true</td>
-<td>Used for making requests idempotent. Adding X-Request-Id will allow repeated requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Required for making partial captures. Max 30 characters.</td>
+<td>Used for making requests idempotent. Adding X-Request-Id will allow repeated requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Required for making partial captures. You can use any unique id for your X-Request-Id. Max 30 characters.</td>
 </tr>
 <tr>
 <td>Merchant-Serial-Number</td>
