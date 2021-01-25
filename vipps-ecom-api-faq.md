@@ -55,6 +55,7 @@ Document version 2.0.23.
   - [Why do I get `Access denied due to invalid subscription key`?](#why-do-i-get-access-denied-due-to-invalid-subscription-key)
   - [I am getting `401 Unauthorized` error - and I have double checked all my keys!](#i-am-getting-401-unauthorized-error---and-i-have-double-checked-all-my-keys)
   - [Why do I get `Requested Order not found`?](#why-do-i-get-requested-order-not-found)
+  - [Why do I get `429 Too Many Requests`?](#why-do-i-get-429-too-many-requests)
   - [Why do I get `500 Internal Server Error` (or similar)?](#why-do-i-get-500-internal-server-error-or-similar)
   - [Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`](#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked)
   - [Why do I get `errorCode 35 "Requested Order not found"`?](#why-do-i-get-errorcode-35-requested-order-not-found)
@@ -634,6 +635,15 @@ one sale unit (MSN), and you are attempting to get the details with
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
 using the API keys for a different sale unit (MSN).
 
+### Why do I get `429 Too Many Requests`?
+
+We rate-limit some API endpoints to prevent incorrect usage.
+The rate-limiting has nothing to do with Vipps' total capacity, but is
+designed to stop obviously incorrect use.
+See
+[Rate limiting](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#rate-limiting)
+for details.
+
 ### Why do I get `500 Internal Server Error` (or similar)?
 
 Something _might_ be wrong on our side and we are working to fix it!
@@ -746,7 +756,7 @@ for examples.
 
 ### Can I use Vipps with Klarna Checkout?
 
-Klarna Checkout supports Vipps as an External Payment Method if you have agreement with Klarna for this. 
+Klarna Checkout supports Vipps as an External Payment Method if you have agreement with Klarna for this.
 This requires a full integration with Vipps eCom APIs. Also follow Klarnas process to get the External Payment Method activated for your account, described in the [Klarna documentation](https://developers.klarna.com/documentation/klarna-checkout/in-depth/external-payment-methods/).
 Using this method will add Vipps as an payment alternative inside the Klarna Checkout (KCO). It is technically possible to also use Vipps payment options outside KCO (e.g. on product pages, in basket or similar) using [Vipps Express Checkout](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#express-checkout-payments).
 
