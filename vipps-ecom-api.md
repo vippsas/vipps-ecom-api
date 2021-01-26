@@ -96,13 +96,13 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
   - [App integration](#app-integration)
   - [App-switching](#app-switching)
     - [App-switch on iOS](#app-switch-on-ios)
-      - [Switch from merchant app to Stop](#switch-from-merchant-app-to-the-vipps-app)
+      - [Switch from merchant app to Vipps](#switch-from-merchant-app-to-the-vipps-app)
       - [Redirect back to the merchant app from Vipps app](#redirect-back-to-the-merchant-app-from-vipps-app)
     - [App-switch on Android](#app-switch-on-android)
-      - [Switching from merchant app to Stop](#switching-from-merchant-app-to-the-vipps-app)
+      - [Switching from merchant app to Vipps](#switching-from-merchant-app-to-the-vipps-app)
       - [Switching back to the merchant app from Vipps app](#switching-back-to-the-merchant-app-from-vipps-app)
       - [Return back to merchant app by actively deeplinking into it from Vipps](#return-back-to-merchant-app-by-actively-deeplinking-into-it-from-vipps)
-      - [Redirect back to merchant app by simply closing Stop](#redirect-back-to-merchant-app-by-simply-closing-the-vipps-app)
+      - [Redirect back to merchant app by simply closing Vipps](#redirect-back-to-merchant-app-by-simply-closing-the-vipps-app)
   - [Errors](#errors)
     - [Error object in the response](#error-object-in-the-response)
   - [Error groups](#error-groups)
@@ -1861,7 +1861,7 @@ The merchant app can make their receiving activity a `singleInstance`
 to handle the response in same activity.
 
 The receiving MainActivity has to override the `onNewIntent` method to handle
-result send by Stop:
+result send by Vipps:
 
 ```java
 @Override
@@ -1870,7 +1870,7 @@ protected void onNewIntent(Intent intent) {
 }
 ```
 
-#### Redirect back to merchant app by simply closing Stop
+#### Redirect back to merchant app by simply closing Vipps
 
 With this approach, the merchant app does not have to register/handle deeplink urls.
 
@@ -1880,9 +1880,9 @@ In order to use this approach, when creating the payment in the merchant has to 
 
 (and *only* "INTENT"", no parameters etc.)
 
-This will cause Stop to simply close after a successful or canceled ecom payment, and fall back to the calling merchant app.
+This will cause Vipps to simply close after a successful or canceled ecom payment, and fall back to the calling merchant app.
 
-The merchant app activity that resumes again (after Stop closes) has to override onActivityResult method to pick up the thread again here. Example:
+The merchant app activity that resumes again (after Vipps closes) has to override onActivityResult method to pick up the thread again here. Example:
 
 ```java
 @Override
@@ -1978,7 +1978,7 @@ Vipps App.
 
 The force approve endpoint ([`POST:/ecomm/v2/integration-test/payments/{orderId}/approve`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/integrationTestApprovePayment))
 allows developers to approve a payment through the Vipps
-eCom API without the use of Stop. This is useful for automated testing.
+eCom API without the use of Vipps. This is useful for automated testing.
 The endpoint is only available in our test environment.
 
 Express checkout and "Skip Landing Page" is not supported by the force approve endpoint.
