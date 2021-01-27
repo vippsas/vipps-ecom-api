@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.23.
+Document version 2.0.24.
 
 ### Table of contents
 
@@ -649,6 +649,10 @@ for details.
 Something _might_ be wrong on our side and we are working to fix it!
 
 It _might_ also be a problem with your request, and that our validation does not catch it.
+
+Please make sure the JSON paylod in your API request validates.
+That is the most common source of this type of error.
+
 In other words: We should perhaps have returned `HTTP 400 Bad Request`.
 You can use
 [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
