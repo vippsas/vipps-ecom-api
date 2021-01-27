@@ -19,8 +19,8 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
 - [Vipps eCommerce API](#vipps-ecommerce-api)
   - [Table of contents](#table-of-contents)
   - [Flow diagram](#flow-diagram)
-  - [API endpoints](#api-endpoints)
   - [Call by call guide](#call-by-call-guide)
+  - [API endpoints](#api-endpoints)
   - [Optional Vipps HTTP headers](#optional-vipps-http-headers)
   - [Initiate](#initiate)
   - [Regular eCommerce payments](#regular-ecommerce-payments)
@@ -96,18 +96,19 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
   - [App integration](#app-integration)
   - [App-switching](#app-switching)
     - [App-switch on iOS](#app-switch-on-ios)
-      - [Switch from merchant app to Vipps](#switch-from-merchant-app-to-the-vipps-app)
+      - [Switch from merchant app to Vipps](#switch-from-merchant-app-to-vipps)
       - [Redirect back to the merchant app from Vipps app](#redirect-back-to-the-merchant-app-from-vipps-app)
     - [App-switch on Android](#app-switch-on-android)
-      - [Switching from merchant app to Vipps](#switching-from-merchant-app-to-the-vipps-app)
+      - [Switching from merchant app to Vipps](#switching-from-merchant-app-to-vipps)
       - [Switching back to the merchant app from Vipps app](#switching-back-to-the-merchant-app-from-vipps-app)
       - [Return back to merchant app by actively deeplinking into it from Vipps](#return-back-to-merchant-app-by-actively-deeplinking-into-it-from-vipps)
-      - [Redirect back to merchant app by simply closing Vipps](#redirect-back-to-merchant-app-by-simply-closing-the-vipps-app)
+      - [Redirect back to merchant app by simply closing Vipps](#redirect-back-to-merchant-app-by-simply-closing-vipps)
   - [Errors](#errors)
     - [Error object in the response](#error-object-in-the-response)
   - [Error groups](#error-groups)
   - [Error codes](#error-codes)
 - [Testing](#testing)
+- [Recomendations regarding handling redirects](#recomendations-regarding-handling-redirects)
 - [Questions?](#questions)
 
 ## Flow diagram
@@ -1982,6 +1983,26 @@ eCom API without the use of Vipps. This is useful for automated testing.
 The endpoint is only available in our test environment.
 
 Express checkout and "Skip Landing Page" is not supported by the force approve endpoint.
+
+# Recomendations regarding handling redirects
+
+Since Vipps is a mobile entity the amount of control Vipps have over the redirect back to the merchant after the purchase is completed is limited. A merchant must not assume that Vipps will redirect to the exact same session and for example rely entirely on cookies in order to handle the redirect event. For example the redirect could happen to another browser.
+
+Examples of some, but not all, factors outside of Vipps control.
+- Configurations set by the OS itself, for example the default browser.
+- User configurations of browsers.
+- Users closing app immediately upon purchase.
+
+Therefore Vipps recommends having a stateless approach in the site that is supposed to be the end session. An example would a polling based result handling from a value in the redirect url.
+
+Example for demonstration purposes that should be handled.
+
+- User starts is in web session in a Chrome Browser.
+- A Vipps purchase is started, a redirect URL is defined by the Merchant.
+- The user completes the purchase.
+- The Vipps app redirects the user.
+- The OS defaults to a Safari Browser for the redirect.
+- The merchant handles the redirect without the customer noticing any discrepancies from the browser switch.
 
 # Questions?
 
