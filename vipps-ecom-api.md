@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 2.4.4.
+Document version 2.4.5.
 
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
@@ -1879,7 +1879,7 @@ In order to use this approach, when creating the payment in the merchant has to 
 
 ```"fallBack": "INTENT" ```
 
-(and *only* "INTENT"", no parameters etc.)
+(and *only* "INTENT", no parameters etc.)
 
 This will cause Vipps to simply close after a successful or canceled ecom payment, and fall back to the calling merchant app.
 
@@ -1982,27 +1982,33 @@ allows developers to approve a payment through the Vipps
 eCom API without the use of Vipps. This is useful for automated testing.
 The endpoint is only available in our test environment.
 
-Express checkout and "Skip Landing Page" is not supported by the force approve endpoint.
+Express checkout and `skipLandingPage`is not supported by the force approve endpoint.
 
-# Recomendations regarding handling redirects
+# Recommendations regarding handling redirects
 
-Since Vipps is a mobile entity the amount of control Vipps have over the redirect back to the merchant after the purchase is completed is limited. A merchant must not assume that Vipps will redirect to the exact same session and for example rely entirely on cookies in order to handle the redirect event. For example the redirect could happen to another browser.
+Since Vipps is a native app and not a website used in a web browser, the level
+of control Vipps has over the redirect back to the merchant after a completed
+purchase is limited. The merchant _must not_ assume that Vipps will redirect to
+the exact same session or for example rely entirely on cookies in order to
+handle the redirect event. The redirect may send the user to a different web browser.
 
-Examples of some, but not all, factors outside of Vipps control.
+Examples of some, but not all, factors outside of Vipps control:
 - Configurations set by the OS itself, for example the default browser.
 - User configurations of browsers.
-- Users closing app immediately upon purchase.
+- Users closing Vipps immediately upon purchase.
 
-Therefore Vipps recommends having a stateless approach in the site that is supposed to be the end session. An example would a polling based result handling from a value in the redirect url.
+Because of this Vipps recommends a stateless approach on the webssite that
+is supposed to be the end session. An example would a polling-based result
+handling from a value in the redirect URL.
 
 Example for demonstration purposes that should be handled.
-
-- User starts is in web session in a Chrome Browser.
-- A Vipps purchase is started, a redirect URL is defined by the Merchant.
-- The user completes the purchase.
-- The Vipps app redirects the user.
-- The OS defaults to a Safari Browser for the redirect.
-- The merchant handles the redirect without the customer noticing any discrepancies from the browser switch.
+1. User starts is in web session in the Chrome web browser.
+2. A Vipps purchase is started, with a redirect URL specified by the Merchant.
+3. The user completes the purchase in Vipps.
+4. Vipps (the app) redirects the user by opening the URL specified in step 2.
+5. The OS opens the URL in the default browser: Safari (not Chrome).
+6. The merchant handles the redirect without the customer noticing any
+   discrepancies from the browser switch.
 
 # Questions?
 
