@@ -246,8 +246,10 @@ This will put the account in the negative.
 Vipps does not control the behaviour of the customer's card or account.
 
 The
-[`POST:/ecomm/v2/payments/{orderId}/capture](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/capturePaymentUsingPOST)
-will always return the correct status.
+[`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/capturePaymentUsingPOST)
+and
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
+API calls will always return the correct status.
 
 ### How do I turn direct capture on or off?
 
