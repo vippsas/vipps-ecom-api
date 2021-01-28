@@ -238,10 +238,12 @@ If the user's account has insufficient funds at this time, the payment will
 either succeed and put the customer's card/account in the negative (as
 an overdraft), or fail because the customer's card/account can not be put into
 the negative.
-Vipps does not control the behaviour of the customer's card or account.
 
-In many cases the bank will have a register of expired reservations and they will force it through if the account allows this.
+In many cases the bank will have a register of expired reservations and they
+will force it through if the account allows this.
 This will put the account in the negative.
+
+Vipps does not control the behaviour of the customer's card or account.
 
 ### How do I turn direct capture on or off?
 
