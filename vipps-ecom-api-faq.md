@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.24.
+Document version 2.0.25.
 
 ### Table of contents
 
@@ -233,7 +233,12 @@ Vipps does not automatically change the status of the order.
 If a capture attempt is made more than 7 days after the payment has been initiated
 and the reservation has been released by the bank, Vipps will make a new payment request to the bank.
 If the account has sufficient funds, the payment will be successful.
-If the user's account has insufficient funds at this time, the payment will fail.
+
+If the user's account has insufficient funds at this time, the payment will
+either succeed and put the customer's card/account in the negative (as
+an overdraft), or fail because the customer's card/account can not be put into
+the negative.
+Vipps does not control the behaviour of the customer's card or account.
 
 In many cases the bank will have a register of expired reservations and they will force it through if the account allows this.
 This will put the account in the negative.
