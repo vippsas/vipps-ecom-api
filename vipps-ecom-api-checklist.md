@@ -2,7 +2,7 @@
 
 API version: 2.0
 
-Document version 1.3.3.
+Document version 2.0.0.
 
 For examples of requests and responses, see the Postman collection in [tools](tools/)
 
@@ -36,15 +36,16 @@ For examples of requests and responses, see the Postman collection in [tools](to
 1. The merchant orders [Vipps på Nett](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).
 2. Vipps completes customer control (KYC, PEP, AML, etc).
 3. The merchant receives an email from Vipps saying that they can log in with bankID on [portal.vipps.no](https://portal.vipps.no) and retrieve API keys.
-4. The merchant completes all checklist items. Please double check to avoid delays.
-5. The merchant [contacts Vipps](https://github.com/vippsas/vipps-developers/blob/master/contact.md) with test IDs (`orderId`) in the [Vipps test environment](https://github.com/vippsas/vipps-developers#the-vipps-test-environment-mt), showing that all checklist items have been fulfilled.
+4. The merchant completes all checklist items. Please double check to avoid mistakes.
+5. The merchant verifies the integration in the test environment by checking that there are test IDs (`orderId`) in the [Vipps test environment](https://github.com/vippsas/vipps-developers#the-vipps-test-environment-mt), showing that all checklist items have been fulfilled.
     - A complete order ending in `REFUND` ([`/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST) request).
     - A complete order ending in `VOID` ([`/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT) request).
-6. The merchant receives an email from Vipps saying that the orders are OK.
-7. The Merchant [contacts Vipps](https://github.com/vippsas/vipps-developers/blob/master/contact.md) to verify the integration in the production environment:
+    - We recommend using the API Dashboard available under "Utvikler" on
+      [portal.vipps.no](https://portal.vipps.no).
+6. The Merchant verifies the integration in the production environment (similar to step 5):
     - A complete order ending in `REFUND` ([`/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST) request).
     - For *reserve capture*: A complete order ending in `VOID` ([`/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT) request after reserve).
-8. The Merchant goes live 🎉
+7. The Merchant goes live 🎉
 
 ## Flow to go live for direct integrations for partners
 
