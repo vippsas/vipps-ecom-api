@@ -14,31 +14,35 @@ Document version 2.0.1.
     - [ ] Refund [`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST)
     - [ ] Details [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
     - For examples of requests and responses, see the Postman collection in [tools](tools/).
+- [ ] Send the [HTTP headers](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#optional-vipps-http-headers)
+      in all API requests for better tracking (mandatory for partners and platforms):
+    - [ ] `Vipps-System-Name`
+    - [ ] `Vipps-System-Version`
+    - [ ] `Vipps-System-Plugin-Name`
+    - [ ] `Vipps-System-Plugin-Version`    
 - [ ] Correctly handle callbacks from Vipps, both for successful and unsuccessful payments.
-      See the documentation for how callback URLs are built, and make sure you handle the `POST` requests correctly.
+      See the API documentation for
+      [how callback URLs are built](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callback-endpoints),
+      make test calls to make sure you handle the `POST` requests correctly.
+      Vipps does not have capacity to manually do this for you.
     - [ ] Callback [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)
     - [ ] For Vipps Hurtigkasse (express checkout) only:
-          Shipping details
-          [`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/fetchShippingCostUsingPOST)
-    - [ ] For Vipps Hurtigkasse (express checkout):
-          Remove consent [`DELETE:[consetRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/removeUserConsentUsingDELETE)
+          - [ ] Shipping details
+                [`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/fetchShippingCostUsingPOST)
+          - [ ] Remove consent
+                [`DELETE:[consetRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/removeUserConsentUsingDELETE)
 - [ ] Avoid Integration pitfalls
     - [ ] The Merchant _must not_ rely on `fallback` or `callback` alone, and must poll
           [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
-          as documented. This is part of the first item in this checklist, but it's still a common error.
+          as documented (this is part of the first item in this checklist, but it's still a common error).
     - [ ] The merchant must handle that the `fallback` URL is opened in the default browser on the phone,
           and not in a specific browser, in a specific tab, in an embedded browser, requiring a session token, etc.
           See the API guide:
           [Recommendations regarding handling redirects](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#recommendations-regarding-handling-redirects).
           See the FAQ: [How can I open the fallback URL in a specific (embedded) browser?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser)      
     - [ ] The Vipps branding must be according to the
-          [Vipps design guidelines](https://github.com/vippsas/vipps-design-guidelines)
-- [ ] Integrate [HTTP headers](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#optional-vipps-http-headers)
-      for better tracking (Mandatory for partners and plattforms)
-    - [ ] `Vipps-System-Name`
-    - [ ] `Vipps-System-Version`
-    - [ ] `Vipps-System-Plugin-Name`
-    - [ ] `Vipps-System-Plugin-Version`    
+          [Vipps design guidelines](https://github.com/vippsas/vipps-design-guidelines).
+
 
 ## Flow to go live for direct integrations
 
@@ -76,7 +80,7 @@ Document version 2.0.1.
 ## Flow to go live for direct integrations for partners
 
 1. The partner becomes a partner by
-   [applying here](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/vipps-i-kassa/#kom-i-gang-med-vipps-i-kassa-category-3)
+   [applying here](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/vipps-i-kassa/#kom-i-gang-med-vipps-i-kassa-category-3).
 2. The partner completes the integration, with the API test keys.
 3. The partner
    [contacts Vipps](https://github.com/vippsas/vipps-developers/blob/master/contact.md)
