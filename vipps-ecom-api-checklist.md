@@ -15,7 +15,7 @@ Document version 2.0.1.
     - [ ] Details [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
     - For examples of requests and responses, see the Postman collection in [tools](tools/).
 - [ ] Send the [HTTP headers](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#optional-vipps-http-headers)
-      in all API requests for better tracking (mandatory for partners and platforms):
+      in all API requests for better tracking and troubleshooting (mandatory for partners and platforms):
     - [ ] `Vipps-System-Name`
     - [ ] `Vipps-System-Version`
     - [ ] `Vipps-System-Plugin-Name`
@@ -27,10 +27,10 @@ Document version 2.0.1.
       Vipps does not have capacity to manually do this for you.
     - [ ] Callback [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)
     - [ ] For Vipps Hurtigkasse (express checkout) only:
-          - [ ] Shipping details
-                [`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/fetchShippingCostUsingPOST)
-          - [ ] Remove consent
-                [`DELETE:[consetRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/removeUserConsentUsingDELETE)
+        - [ ] Shipping details
+              [`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/fetchShippingCostUsingPOST)
+        - [ ] Remove consent
+              [`DELETE:[consetRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/removeUserConsentUsingDELETE)
 - [ ] Avoid Integration pitfalls
     - [ ] The Merchant _must not_ rely on `fallback` or `callback` alone, and must poll
           [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
