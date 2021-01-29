@@ -2,9 +2,8 @@
 
 API version: 2.0
 
-Document version 2.0.0.
+Document version 2.0.1.
 
-For examples of requests and responses, see the Postman collection in [tools](tools/)
 
 ## Checklist
 
@@ -14,46 +13,84 @@ For examples of requests and responses, see the Postman collection in [tools](to
     - [ ] Cancel [`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
     - [ ] Refund [`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST)
     - [ ] Details [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
-- [ ] The merchant correctly handles callbacks, both for successful and unsuccessful payments
+    - For examples of requests and responses, see the Postman collection in [tools](tools/).
+- [ ] Correctly handle callbacks from Vipps, both for successful and unsuccessful payments.
+      See the documentation for how callback URLs are built, and make sure you handle the `POST` requests correctly.
     - [ ] Callback [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)
-      _It's important that the integrator verifies that the callback URLs are correctly handled._
-    - [ ] For express checkout only: Shipping details [`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/fetchShippingCostUsingPOST)
-    - [ ] For express checkout only: Remove consent [`DELETE:[consetRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/removeUserConsentUsingDELETE)
+    - [ ] For Vipps Hurtigkasse (express checkout) only:
+          Shipping details
+          [`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/fetchShippingCostUsingPOST)
+    - [ ] For Vipps Hurtigkasse (express checkout):
+          Remove consent [`DELETE:[consetRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/removeUserConsentUsingDELETE)
 - [ ] Avoid Integration pitfalls
     - [ ] The Merchant _must not_ rely on `fallback` or `callback` alone, and must poll
           [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
-          as documented.
-    - [ ] The merchant must handle that the `fallback`URL is opened in the default browser on the phone, and not in a custom browser, in a specific tab, or in an embedded browser. See the FAQ: [How can I open the fallback URL in a specific (embedded) browser?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser)      
-    - [ ] The Vipps branding must be according to the [Vipps design guidelines](https://github.com/vippsas/vipps-design-guidelines)
-- [ ] Integrate [HTTP headers](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#optional-vipps-http-headers) for better tracking (Mandatory for partners and plattforms)
-    - [ ] Vipps-System-Name
-    - [ ] Vipps-System-Version
-    - [ ] Vipps-System-Plugin-Name
-    - [ ] Vipps-System-Plugin-Version    
+          as documented. This is part of the first item in this checklist, but it's still a common error.
+    - [ ] The merchant must handle that the `fallback` URL is opened in the default browser on the phone,
+          and not in a specific browser, in a specific tab, in an embedded browser, requiring a session token, etc.
+          See the API guide:
+          [Recommendations regarding handling redirects](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#recommendations-regarding-handling-redirects).
+          See the FAQ: [How can I open the fallback URL in a specific (embedded) browser?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser)      
+    - [ ] The Vipps branding must be according to the
+          [Vipps design guidelines](https://github.com/vippsas/vipps-design-guidelines)
+- [ ] Integrate [HTTP headers](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#optional-vipps-http-headers)
+      for better tracking (Mandatory for partners and plattforms)
+    - [ ] `Vipps-System-Name`
+    - [ ] `Vipps-System-Version`
+    - [ ] `Vipps-System-Plugin-Name`
+    - [ ] `Vipps-System-Plugin-Version`    
 
 ## Flow to go live for direct integrations
 
-1. The merchant orders [Vipps på Nett](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).
+1. The merchant orders
+   [Vipps på Nett](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).
 2. Vipps completes customer control (KYC, PEP, AML, etc).
-3. The merchant receives an email from Vipps saying that they can log in with bankID on [portal.vipps.no](https://portal.vipps.no) and retrieve API keys.
-4. The merchant completes all checklist items. Please double check to avoid mistakes.
-5. The merchant verifies the integration in the test environment by checking that there are test IDs (`orderId`) in the [Vipps test environment](https://github.com/vippsas/vipps-developers#the-vipps-test-environment-mt), showing that all checklist items have been fulfilled.
-    - A complete order ending in `REFUND` ([`/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST) request).
-    - A complete order ending in `VOID` ([`/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT) request).
-    - We recommend using the API Dashboard available under "Utvikler" on
+3. The merchant receives an email from Vipps saying that they can log in with
+   bankID on
+   [portal.vipps.no](https://portal.vipps.no)
+   and retrieve API keys.
+4. The merchant completes all checklist items above. Please double check to avoid mistakes.
+5. The merchant verifies the integration in the test environment by checking that
+   there are test IDs (`orderId`) in the
+   [Vipps test environment](https://github.com/vippsas/vipps-developers#the-vipps-test-environment-mt),
+   with the following states:
+    - A complete order ending in `REFUND`
+      ([`/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST)
+      request).
+    - A complete order ending in `VOID`
+      ([`/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
+      request).
+    - We recommend checking this using both the API itself and the API Dashboard available under "Utvikler" on
       [portal.vipps.no](https://portal.vipps.no).
 6. The Merchant verifies the integration in the production environment (similar to step 5):
-    - A complete order ending in `REFUND` ([`/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST) request).
-    - For *reserve capture*: A complete order ending in `VOID` ([`/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT) request after reserve).
+    - A complete order ending in `REFUND`
+      ([`/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST)
+      request).
+    - For *reserve capture*: A complete order ending in `VOID`
+      ([`/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
+      request after reserve).
 7. The Merchant goes live 🎉
+   When you have access to the API credentials for the production environment,
+   there is no further approval required from Vipps.
 
 ## Flow to go live for direct integrations for partners
 
-1. The partner becomes a partner by [applying here](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/vipps-i-kassa/#kom-i-gang-med-vipps-i-kassa-category-3)
+1. The partner becomes a partner by
+   [applying here](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/vipps-i-kassa/#kom-i-gang-med-vipps-i-kassa-category-3)
 2. The partner completes the integration, with the API test keys.
-3. The partner [contacts Vipps](https://github.com/vippsas/vipps-developers/blob/master/contact.md) with test IDs (`orderId`) in the [Vipps test environment](https://github.com/vippsas/vipps-developers#the-vipps-test-environment-mt), showing that all checklist items have been completed.
-    - A complete order ending in `REFUND` ([`/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST) request).
-    - For *reserve capture*: A complete order ending in `VOID` ([`/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT) request after reserve).
+3. The partner
+   [contacts Vipps](https://github.com/vippsas/vipps-developers/blob/master/contact.md)
+   with test IDs (`orderId`) in the
+   [Vipps test environment](https://github.com/vippsas/vipps-developers#the-vipps-test-environment-mt),
+   showing that all checklist items have been completed:
+    - A complete order ending in `REFUND`
+      ([`/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST)
+      request).
+    - For *reserve capture* (not "direct capture"): A complete order ending in `VOID`
+      ([`/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
+      request after reserve).
+    - We recommend checking this using both the API itself and the API Dashboard available under "Utvikler" on
+      [portal.vipps.no](https://portal.vipps.no).
 4. The partner receives an email from Vipps saying that the implementation is OK.
 5. Vipps adds the partner to vipps.no, including the signup forms for merchants.
 6. The partner add its merchant to their solution, usually by configuring the POS with the merchant's API keys.
