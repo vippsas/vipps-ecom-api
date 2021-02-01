@@ -2,8 +2,6 @@
 
 API version: 2.0
 
-Document version 2.4.5.
-
 See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
 [Swagger specifications](https://vippsas.github.io/vipps-ecom-api/),
@@ -14,6 +12,8 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
+Document version 2.5.0.
+
 ## Table of contents
 
 - [Vipps eCommerce API](#vipps-ecommerce-api)
@@ -21,6 +21,7 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
   - [Flow diagram](#flow-diagram)
   - [Call by call guide](#call-by-call-guide)
   - [API endpoints](#api-endpoints)
+  - [Authentication](#authentication)
   - [Optional Vipps HTTP headers](#optional-vipps-http-headers)
   - [Initiate](#initiate)
   - [Regular eCommerce payments](#regular-ecommerce-payments)
@@ -85,9 +86,7 @@ See also: [How it works](vipps-ecom-api-howitworks.md).
     - [Consent](#consent)
   - [HTTP response codes](#http-response-codes)
   - [Rate limiting](#rate-limiting)
-  - [Authentication](#authentication)
-    - [Access token](#access-token)
-    - [Partner Keys](#partner-keys)
+  - [Partner Keys](#partner-keys)
   - [Idempotency](#idempotency)
   - [Exception handling](#exception-handling)
     - [Connection timeout](#connection-timeout)
@@ -168,6 +167,20 @@ Payments are supported in both web browsers and in native apps (via deep-linking
 See the
 [eCom API checklist](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md).
 
+## Authentication
+
+All Vipps API calls are authenticated and authorized with an access token
+(JWT bearer token) and an API subscription key:
+
+| Header Name | Header Value | Description |
+| ----------- | ------------ | ----------- |
+| `Authorization` | `Bearer <JWT access token>` | Type: Authorization token. This is available on [portal.vipps.no](https://portal.vipps.no). |
+| `Ocp-Apim-Subscription-Key` | Base 64 encoded string | The subscription key for this API. This is available on [portal.vipps.no](https://portal.vipps.no). |
+
+For more information about how to obtain an access token and all details around this, please see:
+[Quick overview of how to make an API call](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#quick-overview-of-how-to-make-an-api-call)
+in the
+[Getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md).
 
 ## Optional Vipps HTTP headers
 
@@ -1580,35 +1593,11 @@ You can make five capture calls per minute for
 one unique orderId, and the limit for capture calls for different orderIds
 is _far_ higher.
 
-## Authentication
+## Partner Keys
 
-All API calls are authenticated and authorized based on the application access
-token (JWT bearer token) and a subscription key (`Ocp-Apim-Subscription-Key`),
-and these headers are required:
-
-| Header Name | Header Value | Description |
-| ----------- | ------------ | ----------- |
-| `Authorization` | `Bearer <JWT access token>` | Type: Authorization token. This is available on [portal.vipps.no](https://portal.vipps.no). |
-| `Ocp-Apim-Subscription-Key` | Base 64 encoded string | The subscription key for the eCom API. This is available on [portal.vipps.no](https://portal.vipps.no). |
-
-### Access token
-
-All Vipps API requests must include an `Authorization` header with
-a JSON Web Token (JWT), which we call the _access token_.
-The access token is obtained by calling
-[`POST:/accesstoken/get`](https://vippsas.github.io/vipps-ecom-api/#/Authorization_Service/fetchAuthorizationTokenUsingPost)
-and passing the `client_id`, `client_secret` and `Ocp-Apim-Subscription-Key`.
-
-See [Get an access token](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#get-an-access-token)
-in the
-[Getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
-for more information.
-
-The Access Token API provides the JWT bearer token:
-[`POST:/accesstoken/get`](https://vippsas.github.io/vipps-ecom-api/#/Authorization_Service/fetchAuthorizationTokenUsingPost).
-
-
-### Partner Keys
+In addition to the normal
+[Authentication](#authentication)
+we offer _partner keys, which let a partner make API cals on behalf of a merchant.
 
 If you are a Vipps Partner that is managing transactions on behalf of other
 Vipps Merchants you can use your own credentials to authenticate, and then
