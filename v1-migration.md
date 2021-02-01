@@ -1,6 +1,6 @@
 # Migration from eCom API v1 to eCom API v2
 
-Document version 1.1.2.
+Document version 1.1.3.
 
 This document explains the key differences between eCom API v1 and eCom API v2.
 
@@ -30,7 +30,7 @@ See the [FAQ](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api
 
 ## Phone number is optional
 
-The initiate payment call no longer requires a phone number. Instead, the user will be asked to fill in the phone number on the landing page. If phone number is included in the initiate payment body, then the landing page wil be "pre-filled" with that number.
+The initiate payment call no longer requires a phone number. Instead, the user will be asked to fill in the phone number on the landing page. If phone number is included in the initiate payment body, then the landing page will be "pre-filled" with that number.
 
 ## `isApp: true/false`
 
