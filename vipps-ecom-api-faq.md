@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.26.
+Document version 2.0.27.
 
 ### Table of contents
 
@@ -622,8 +622,13 @@ the API keys are different.
 merchant sales unit. Please follow these steps to make sure everything is correct:
 
 1. Check the Swagger specification for the correct spelling of all the header parameters
-2. Confirm that you are using the same subscription key for both the access token and payment requests
-3. Confirm that you are using the correct API keys for the environment (test or production)
+2. Check that you are using the same subscription key for both the access token and payment requests
+3. Check that you are using the correct API keys for the environment.
+   The test and production environments are separate and require different API credentials.
+4. Check that you are sending the right header values. They are case sensitive:
+   `Authorization: Bearer <snip>` is not the same as `Authorization: bearer <snip>`.
+5. Check both the HTTP response header and the response body from our API.
+   For most errors the body contains an explanation of what went wrong.
 
 You can use
 [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
@@ -632,14 +637,12 @@ to manually do API calls, Use the "inspect" functionality to see the complete re
 See: [API endpoints](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints)
 for an overview.
 
-Please check the HTTP response body from our API (not just the HTTP status).
-For most errors the body contains an explanation of what went wrong.
-
 You can also log in to
 [portal.vipps.no](https://portal.vipps.no)
 to double check your API keys, sale units and API products.
 
-Please note that Vipps can not help with the debugging of your code.
+Please note that Vipps can not help with the debugging of your code,
+we can only help with the API requests and response.
 
 ### Why do I get `Requested Order not found`?
 
