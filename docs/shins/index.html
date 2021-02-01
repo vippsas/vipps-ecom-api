@@ -2213,7 +2213,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments \
     &quot;authToken&quot;: &quot;iOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImllX3FXQ1hoWHh0MXpJ&quot;,
     &quot;callbackPrefix&quot;: &quot;https://example.com/vipps/callbacks-for-payment-updates&quot;,
     &quot;consentRemovalPrefix&quot;: &quot;https://example.com/vipps&quot;,
-    &quot;fallBack&quot;: &quot;https://example.com/vipps/fallback-order-result-page/order123abc&quot;,
+    &quot;fallBack&quot;: &quot;https://example.com/vipps/fallback-order-result-page/acme-shop-123-order123abc&quot;,
     &quot;isApp&quot;: false,
     &quot;merchantSerialNumber&quot;: &quot;123456&quot;,
     &quot;paymentType&quot;: &quot;eComm Regular Payment&quot;,
@@ -2230,7 +2230,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments \
   },
   &quot;transaction&quot;: {
     &quot;amount&quot;: 20000,
-    &quot;orderId&quot;: &quot;order123abc&quot;,
+    &quot;orderId&quot;: &quot;acme-shop-123-order123abc&quot;,
     &quot;timeStamp&quot;: &quot;2018-11-14T15:44:26.590Z&quot;,
     &quot;transactionText&quot;: &quot;One pair of Vipps socks&quot;,
     &quot;skipLandingPage&quot;: false,
@@ -2406,7 +2406,7 @@ System.out.println(response.toString());
     <span class="hljs-attr">&quot;authToken&quot;</span>: <span class="hljs-string">&quot;iOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImllX3FXQ1hoWHh0MXpJ&quot;</span>,
     <span class="hljs-attr">&quot;callbackPrefix&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/callbacks-for-payment-updates&quot;</span>,
     <span class="hljs-attr">&quot;consentRemovalPrefix&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps&quot;</span>,
-    <span class="hljs-attr">&quot;fallBack&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/fallback-order-result-page/order123abc&quot;</span>,
+    <span class="hljs-attr">&quot;fallBack&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/fallback-order-result-page/acme-shop-123-order123abc&quot;</span>,
     <span class="hljs-attr">&quot;isApp&quot;</span>: <span class="hljs-literal">false</span>,
     <span class="hljs-attr">&quot;merchantSerialNumber&quot;</span>: <span class="hljs-string">&quot;123456&quot;</span>,
     <span class="hljs-attr">&quot;paymentType&quot;</span>: <span class="hljs-string">&quot;eComm Regular Payment&quot;</span>,
@@ -2423,7 +2423,7 @@ System.out.println(response.toString());
   },
   <span class="hljs-attr">&quot;transaction&quot;</span>: {
     <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">20000</span>,
-    <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
+    <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
     <span class="hljs-attr">&quot;timeStamp&quot;</span>: <span class="hljs-string">&quot;2018-11-14T15:44:26.590Z&quot;</span>,
     <span class="hljs-attr">&quot;transactionText&quot;</span>: <span class="hljs-string">&quot;One pair of Vipps socks&quot;</span>,
     <span class="hljs-attr">&quot;skipLandingPage&quot;</span>: <span class="hljs-literal">false</span>,
@@ -2795,7 +2795,7 @@ System.out.println(response.toString());
 <p>200 Response</p>
 </blockquote>
 <pre class="highlight tab tab-json"><code>{
-  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
+  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
   <span class="hljs-attr">&quot;url&quot;</span>: <span class="hljs-string">&quot;https://api.vipps.no/dwo-api-application/v1/deeplink/vippsgateway?v=2&amp;token=eyJraWQiOiJqd3RrZXkiLC &quot;</span>
 }
 </code></pre>
@@ -3212,7 +3212,7 @@ System.out.println(response.toString());
 </blockquote>
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">&quot;paymentInstrument&quot;</span>: <span class="hljs-string">&quot;Mastercard&quot;</span>,
-  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
+  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
   <span class="hljs-attr">&quot;transactionInfo&quot;</span>: {
     <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">20000</span>,
     <span class="hljs-attr">&quot;status&quot;</span>: <span class="hljs-string">&quot;Captured&quot;</span>,
@@ -3625,7 +3625,7 @@ System.out.println(response.toString());
 </blockquote>
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">&quot;paymentInstrument&quot;</span>: <span class="hljs-string">&quot;Mastercard&quot;</span>,
-  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
+  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
   <span class="hljs-attr">&quot;transactionInfo&quot;</span>: {
     <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">20000</span>,
     <span class="hljs-attr">&quot;status&quot;</span>: <span class="hljs-string">&quot;Captured&quot;</span>,
@@ -4018,7 +4018,7 @@ System.out.println(response.toString());
 </blockquote>
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">&quot;paymentInstrument&quot;</span>: <span class="hljs-string">&quot;Mastercard&quot;</span>,
-  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
+  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
   <span class="hljs-attr">&quot;transactionInfo&quot;</span>: {
     <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">20000</span>,
     <span class="hljs-attr">&quot;status&quot;</span>: <span class="hljs-string">&quot;Captured&quot;</span>,
@@ -4453,7 +4453,7 @@ System.out.println(response.toString());
 <p>200 Response</p>
 </blockquote>
 <pre class="highlight tab tab-json"><code>{
-  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
+  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
   <span class="hljs-attr">&quot;transaction&quot;</span>: {
     <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">20000</span>,
     <span class="hljs-attr">&quot;status&quot;</span>: <span class="hljs-string">&quot;Captured&quot;</span>,
@@ -5177,7 +5177,7 @@ System.out.println(response.toString());
 <p>200 Response</p>
 </blockquote>
 <pre class="highlight tab tab-json"><code>{
-  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
+  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
   <span class="hljs-attr">&quot;shippingDetails&quot;</span>: {
     <span class="hljs-attr">&quot;address&quot;</span>: {
       <span class="hljs-attr">&quot;addressLine1&quot;</span>: <span class="hljs-string">&quot;Robert Levins gate 5&quot;</span>,
@@ -5470,7 +5470,7 @@ System.out.println(response.toString());
 <p>200 Response</p>
 </blockquote>
 <pre class="highlight tab tab-json"><code>{
-  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
+  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
   <span class="hljs-attr">&quot;transactionInfo&quot;</span>: {
     <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">20000</span>,
     <span class="hljs-attr">&quot;status&quot;</span>: <span class="hljs-string">&quot;RESERVE&quot;</span>,
@@ -5949,7 +5949,7 @@ System.out.println(response.toString());
 </blockquote>
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">&quot;addressId&quot;</span>: <span class="hljs-number">0</span>,
-  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
+  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
   <span class="hljs-attr">&quot;shippingDetails&quot;</span>: [
     {
       <span class="hljs-attr">&quot;isDefault&quot;</span>: <span class="hljs-string">&quot;Y&quot;</span>,
@@ -6000,7 +6000,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/{orderId} \
 </span></code></pre>
 <pre class="highlight tab tab-javascript"><code><span class="hljs-keyword">const</span> inputBody = <span class="hljs-string">&#x27;{
   &quot;merchantSerialNumber&quot;: &quot;123456&quot;,
-  &quot;orderId&quot;: &quot;order123abc&quot;,
+  &quot;orderId&quot;: &quot;acme-shop-123-order123abc&quot;,
   &quot;shippingDetails&quot;: {
     &quot;address&quot;: {
       &quot;addressLine1&quot;: &quot;Robert Levins gate 5&quot;,
@@ -6151,7 +6151,7 @@ System.out.println(response.toString());
 </blockquote>
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">&quot;merchantSerialNumber&quot;</span>: <span class="hljs-string">&quot;123456&quot;</span>,
-  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
+  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
   <span class="hljs-attr">&quot;shippingDetails&quot;</span>: {
     <span class="hljs-attr">&quot;address&quot;</span>: {
       <span class="hljs-attr">&quot;addressLine1&quot;</span>: <span class="hljs-string">&quot;Robert Levins gate 5&quot;</span>,
@@ -7184,7 +7184,7 @@ System.out.println(response.toString());
 <a id="tocStransactiondetails"></a>
 <a id="tocstransactiondetails"></a></p>
 <pre class="highlight tab tab-json"><code>{
-  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
+  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
   <span class="hljs-attr">&quot;shippingDetails&quot;</span>: {
     <span class="hljs-attr">&quot;address&quot;</span>: {
       <span class="hljs-attr">&quot;addressLine1&quot;</span>: <span class="hljs-string">&quot;Robert Levins gate 5&quot;</span>,
@@ -7283,7 +7283,7 @@ System.out.println(response.toString());
 <a id="tocSpaymentinitiationresponse"></a>
 <a id="tocspaymentinitiationresponse"></a></p>
 <pre class="highlight tab tab-json"><code>{
-  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
+  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
   <span class="hljs-attr">&quot;url&quot;</span>: <span class="hljs-string">&quot;https://api.vipps.no/dwo-api-application/v1/deeplink/vippsgateway?v=2&amp;token=eyJraWQiOiJqd3RrZXkiLC &quot;</span>
 }
 
@@ -7383,7 +7383,7 @@ System.out.println(response.toString());
 <a id="tocSrefundtransactionresponse"></a>
 <a id="tocsrefundtransactionresponse"></a></p>
 <pre class="highlight tab tab-json"><code>{
-  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
+  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
   <span class="hljs-attr">&quot;transaction&quot;</span>: {
     <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">20000</span>,
     <span class="hljs-attr">&quot;status&quot;</span>: <span class="hljs-string">&quot;Captured&quot;</span>,
@@ -7443,7 +7443,7 @@ System.out.println(response.toString());
 <a id="tocstransactionresponse"></a></p>
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">&quot;paymentInstrument&quot;</span>: <span class="hljs-string">&quot;Mastercard&quot;</span>,
-  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
+  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
   <span class="hljs-attr">&quot;transactionInfo&quot;</span>: {
     <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">20000</span>,
     <span class="hljs-attr">&quot;status&quot;</span>: <span class="hljs-string">&quot;Captured&quot;</span>,
@@ -7629,7 +7629,7 @@ System.out.println(response.toString());
     <span class="hljs-attr">&quot;authToken&quot;</span>: <span class="hljs-string">&quot;iOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImllX3FXQ1hoWHh0MXpJ&quot;</span>,
     <span class="hljs-attr">&quot;callbackPrefix&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/callbacks-for-payment-updates&quot;</span>,
     <span class="hljs-attr">&quot;consentRemovalPrefix&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps&quot;</span>,
-    <span class="hljs-attr">&quot;fallBack&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/fallback-order-result-page/order123abc&quot;</span>,
+    <span class="hljs-attr">&quot;fallBack&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/fallback-order-result-page/acme-shop-123-order123abc&quot;</span>,
     <span class="hljs-attr">&quot;isApp&quot;</span>: <span class="hljs-literal">false</span>,
     <span class="hljs-attr">&quot;merchantSerialNumber&quot;</span>: <span class="hljs-string">&quot;123456&quot;</span>,
     <span class="hljs-attr">&quot;paymentType&quot;</span>: <span class="hljs-string">&quot;eComm Regular Payment&quot;</span>,
@@ -7646,7 +7646,7 @@ System.out.println(response.toString());
   },
   <span class="hljs-attr">&quot;transaction&quot;</span>: {
     <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">20000</span>,
-    <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
+    <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
     <span class="hljs-attr">&quot;timeStamp&quot;</span>: <span class="hljs-string">&quot;2018-11-14T15:44:26.590Z&quot;</span>,
     <span class="hljs-attr">&quot;transactionText&quot;</span>: <span class="hljs-string">&quot;One pair of Vipps socks&quot;</span>,
     <span class="hljs-attr">&quot;skipLandingPage&quot;</span>: <span class="hljs-literal">false</span>,
@@ -7705,7 +7705,7 @@ System.out.println(response.toString());
 <a id="tocstransactioninfoinitiate"></a></p>
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">20000</span>,
-  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
+  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
   <span class="hljs-attr">&quot;timeStamp&quot;</span>: <span class="hljs-string">&quot;2018-11-14T15:44:26.590Z&quot;</span>,
   <span class="hljs-attr">&quot;transactionText&quot;</span>: <span class="hljs-string">&quot;One pair of Vipps socks&quot;</span>,
   <span class="hljs-attr">&quot;skipLandingPage&quot;</span>: <span class="hljs-literal">false</span>,
@@ -7902,7 +7902,7 @@ System.out.println(response.toString());
   <span class="hljs-attr">&quot;authToken&quot;</span>: <span class="hljs-string">&quot;iOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImllX3FXQ1hoWHh0MXpJ&quot;</span>,
   <span class="hljs-attr">&quot;callbackPrefix&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/callbacks-for-payment-updates&quot;</span>,
   <span class="hljs-attr">&quot;consentRemovalPrefix&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps&quot;</span>,
-  <span class="hljs-attr">&quot;fallBack&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/fallback-order-result-page/order123abc&quot;</span>,
+  <span class="hljs-attr">&quot;fallBack&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/fallback-order-result-page/acme-shop-123-order123abc&quot;</span>,
   <span class="hljs-attr">&quot;isApp&quot;</span>: <span class="hljs-literal">false</span>,
   <span class="hljs-attr">&quot;merchantSerialNumber&quot;</span>: <span class="hljs-string">&quot;123456&quot;</span>,
   <span class="hljs-attr">&quot;paymentType&quot;</span>: <span class="hljs-string">&quot;eComm Regular Payment&quot;</span>,
@@ -8021,7 +8021,7 @@ System.out.println(response.toString());
 <a id="tocSpaymentstatus"></a>
 <a id="tocspaymentstatus"></a></p>
 <pre class="highlight tab tab-json"><code>{
-  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
+  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
   <span class="hljs-attr">&quot;transactionInfo&quot;</span>: {
     <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">20000</span>,
     <span class="hljs-attr">&quot;status&quot;</span>: <span class="hljs-string">&quot;RESERVE&quot;</span>,
@@ -8310,7 +8310,7 @@ System.out.println(response.toString());
 <a id="tocsexpresscheckoutpaymentrequest"></a></p>
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">&quot;merchantSerialNumber&quot;</span>: <span class="hljs-string">&quot;123456&quot;</span>,
-  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
+  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
   <span class="hljs-attr">&quot;shippingDetails&quot;</span>: {
     <span class="hljs-attr">&quot;address&quot;</span>: {
       <span class="hljs-attr">&quot;addressLine1&quot;</span>: <span class="hljs-string">&quot;Robert Levins gate 5&quot;</span>,
@@ -8411,7 +8411,7 @@ System.out.println(response.toString());
 <a id="tocsregularcheckoutpaymentrequest"></a></p>
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">&quot;merchantSerialNumber&quot;</span>: <span class="hljs-string">&quot;123456&quot;</span>,
-  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
+  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
   <span class="hljs-attr">&quot;transactionInfo&quot;</span>: {
     <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">20000</span>,
     <span class="hljs-attr">&quot;status&quot;</span>: <span class="hljs-string">&quot;RESERVED&quot;</span>,
@@ -8555,7 +8555,7 @@ System.out.println(response.toString());
 <a id="tocsfetchshippingcostresponse"></a></p>
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">&quot;addressId&quot;</span>: <span class="hljs-number">0</span>,
-  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
+  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
   <span class="hljs-attr">&quot;shippingDetails&quot;</span>: [
     {
       <span class="hljs-attr">&quot;isDefault&quot;</span>: <span class="hljs-string">&quot;Y&quot;</span>,
@@ -8673,7 +8673,7 @@ System.out.println(response.toString());
 <a id="tocstransactionupdatecallbackoneof"></a></p>
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">&quot;merchantSerialNumber&quot;</span>: <span class="hljs-string">&quot;123456&quot;</span>,
-  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;order123abc&quot;</span>,
+  <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
   <span class="hljs-attr">&quot;shippingDetails&quot;</span>: {
     <span class="hljs-attr">&quot;address&quot;</span>: {
       <span class="hljs-attr">&quot;addressLine1&quot;</span>: <span class="hljs-string">&quot;Robert Levins gate 5&quot;</span>,
