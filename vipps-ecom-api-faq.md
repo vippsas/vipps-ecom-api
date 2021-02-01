@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.27.
+Document version 2.0.28.
 
 ### Table of contents
 
@@ -621,13 +621,12 @@ the API keys are different.
 `HTTP 401 Unauthorized` occurs when there is a mismatch between the subscription keys and the
 merchant sales unit. Please follow these steps to make sure everything is correct:
 
-1. Check the Swagger specification for the correct spelling of all the header parameters
+1. Check the Swagger specification for the correct spelling of all the header parameters.
+   They are case sensitive: `Authorization: Bearer <snip>` is not the same as `Authorization: bearer <snip>`.
 2. Check that you are using the same subscription key for both the access token and payment requests
 3. Check that you are using the correct API keys for the environment.
    The test and production environments are separate and require different API credentials.
-4. Check that you are sending the right header values. They are case sensitive:
-   `Authorization: Bearer <snip>` is not the same as `Authorization: bearer <snip>`.
-5. Check both the HTTP response header and the response body from our API.
+4. Check both the HTTP response header and the response body from our API.
    For most errors the body contains an explanation of what went wrong.
 
 You can use
