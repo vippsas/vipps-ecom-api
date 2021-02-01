@@ -165,7 +165,7 @@ paths:
           required: true
           schema:
             type: string
-          example: order123abc
+          example: acme-shop-123-order123abc
         - name: Authorization
           in: header
           description: >-
@@ -302,7 +302,7 @@ paths:
                   required: true
                   schema:
                     type: string
-                  example: order123abc
+                  example: acme-shop-123-order123abc
               responses:
                 '200':
                   description: Vipps does not require a response for this request.
@@ -331,7 +331,7 @@ paths:
                   required: true
                   schema:
                     type: string
-                  example: order123abc
+                  example: acme-shop-123-order123abc
               responses:
                 '200':
                   description: Vipps does not require a response for this request.
@@ -482,7 +482,7 @@ paths:
           required: true
           schema:
             type: string
-          example: order123abc
+          example: acme-shop-123-order123abc
         - name: Authorization
           in: header
           description: >-
@@ -526,7 +526,7 @@ paths:
           required: true
           schema:
             type: string
-          example: order123abc
+          example: acme-shop-123-order123abc
         - in: header
           name: Authorization
           description: >-
@@ -994,7 +994,7 @@ paths:
           required: true
           schema:
             type: string
-          example: order123abc
+          example: acme-shop-123-order123abc
         - in: header
           name: Authorization
           description: >-
@@ -1285,7 +1285,7 @@ paths:
           required: true
           schema:
             type: string
-          example: order123abc
+          example: acme-shop-123-order123abc
         - in: header
           name: Authorization
           description: >-
@@ -1897,7 +1897,7 @@ components:
           description: >-
             Id which uniquely identifies a payment. Maximum length is 50
             alphanumeric characters: a-z, A-Z, 0-9 and '-'.
-          example: order123abc
+          example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
         shippingDetails:
@@ -1922,7 +1922,7 @@ components:
           description: >-
             Id which uniquely identifies a payment. Maximum length is 50
             alphanumeric characters: a-z, A-Z, 0-9 and '-'.
-          example: order123abc
+          example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
         url:
@@ -1972,7 +1972,7 @@ components:
           description: >-
             Id which uniquely identifies a payment. Maximum length is 50
             alphanumeric characters: a-z, A-Z, 0-9 and '-'.
-          example: order123abc
+          example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
         transaction:
@@ -1997,7 +1997,7 @@ components:
           description: >-
             Id which uniquely identifies a payment. Maximum length is 50
             alphanumeric characters: a-z, A-Z, 0-9 and '-'.
-          example: order123abc
+          example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
         transactionInfo:
@@ -2081,7 +2081,7 @@ components:
           description: >-
             Id which uniquely identifies a payment. Maximum length is 50
             alphanumeric characters: a-z, A-Z, 0-9 and '-'.
-          example: order123abc
+          example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
         timeStamp:
@@ -2203,7 +2203,7 @@ components:
             URLs passed to Vipps must validate with the Apache Commons
             [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
           maxLength: 255
-          example: 'https://example.com/vipps/fallback-order-result-page/order123abc'
+          example: 'https://example.com/vipps/fallback-order-result-page/acme-shop-123-order123abc'
         isApp:
           type: boolean
           example: false
@@ -2261,7 +2261,7 @@ components:
           description: >-
             Id which uniquely identifies a payment. Maximum length is 50
             alphanumeric characters: a-z, A-Z, 0-9 and '-'.
-          example: order123abc
+          example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
         transactionInfo:
@@ -2376,7 +2376,7 @@ components:
           description: >-
             Id which uniquely identifies a payment. Maximum length is 50
             alphanumeric characters: a-z, A-Z, 0-9 and '-'.
-          example: order123abc
+          example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
         shippingDetails:
@@ -2408,7 +2408,7 @@ components:
           description: >-
             Id which uniquely identifies a payment. Maximum length is 50
             alphanumeric characters: a-z, A-Z, 0-9 and '-'.
-          example: order123abc
+          example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
         transactionInfo:
@@ -2469,7 +2469,7 @@ components:
           description: >-
             Id which uniquely identifies a payment. Maximum length is 50
             alphanumeric characters: a-z, A-Z, 0-9 and '-'.
-          example: order123abc
+          example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
         shippingDetails:

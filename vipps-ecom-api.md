@@ -524,6 +524,7 @@ and `orderId`:
 
 * `merchantSerialNumber`: The merchant's Vipps id. Example: `123456`.
 * `orderId`: Must be unique for the `merchantSerialNumber`. Example: `order123abc`.
+  See: [orderId recommendations](#orderid-recommendations).
 
 To initiate an express checkout payment the payment initiation call must include
 the `"paymentType": "eComm Express Payment"` parameter. If this parameter is not
