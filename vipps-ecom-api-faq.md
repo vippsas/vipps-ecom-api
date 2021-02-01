@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.25.
+Document version 2.0.26.
 
 ### Table of contents
 
@@ -587,9 +587,9 @@ URL in the same way as Vipps does, and confirm that you are getting a
 `HTTP 200 OK` response.
 
 If your `callbackPrefix` is `https://example.com/vipps/callback` and your
-`orderId` is `order123abc`, Vipps will add `/v2/payments/order123abc` at the
-end of your `callbackPrefix`and make a callback to
-`https://example.com/vipps/callback/v2/payments/order123abc`.
+`orderId` is `acme-shop-123-order123abc`, Vipps will add `/v2/payments/acme-shop-123-order123abc` at the
+end of your `callbackPrefix` and make a callback to
+`https://example.com/vipps/callback/v2/payments/acme-shop-123-order123abc`.
 
 If you do not receive a callback, it could be because your firewall is blocking
 our requests. See:
