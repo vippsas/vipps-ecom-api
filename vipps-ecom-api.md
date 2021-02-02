@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.1.
+Document version 2.5.2.
 
 ## Table of contents
 
@@ -1409,7 +1409,7 @@ This `sub` is a link between the merchant and the user and can used to retrieve
 the user's details from Vipps Login:
 [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)
 
-**Please note:** There is a time limit of 72 hours to retrieve the consented profile data from the userinfo endpoint.
+**Please note:** There is a time limit of 168 hours to retrieve the consented profile data from the userinfo endpoint.
 
 ### Vipps Login access token
 
