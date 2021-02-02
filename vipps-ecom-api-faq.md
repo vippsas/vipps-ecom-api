@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.29.
+Document version 2.0.30.
 
 ### Table of contents
 
@@ -31,6 +31,7 @@ Document version 2.0.29.
   - [How do I turn _direct capture_ on or off?](#How-do-I-turn-direct-capture-on-or-off)
   - [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
   - [Can I prevent people from paying with credit cards?](#can-i-prevent-people-from-paying-with-credit-cards)
+  - [Can I initiate a Vipps payment with a QR code?](#can-i-initiate-a-vipps-payment-with-a-qr-code)
   - [Can I send a Vipps payment link in an SMS, QR or email?](#can-i-send-a-vipps-payment-link-in-an-sms-qr-or-email)
   - [Can I whitelist my URL for a Vipps QR?](#can-i-whitelist-my-url-for-a-vipps-qr)
 - [Refunds](#refunds)
@@ -272,6 +273,21 @@ customers can not pay with credit cards. This is not configurable by the
 merchant. Please contact your KAM or
 [Vipps Kundesenter](https://vipps.no/kontakt-oss/bedrift/vipps/)
 if you need this.
+
+### Can I initiate a Vipps payment with a QR code?
+
+Not with the eCom API. With the eCom API payments are initiated by
+calling
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST),
+with a unique `orderId` for each payment. This is not possible with a static
+QR code on a sticker, etc.
+
+The only ways to initiate Vipps payments from a QR code are:
+* [Vippnummer](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/),
+  the solution for flea markets, etc – which does not have any external API.
+  This can not be used for online sales, etc.
+* [Vipps i terminal](https://www.vipps.no/produkter-og-tjenester/privat/vipps-i-terminal/vipps-i-terminal/):
+  Merchant-presented, dynamic QR shown on the display of a payment terminal.
 
 ### Can I send a Vipps payment link in an SMS, QR or email?
 
