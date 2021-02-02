@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.28.
+Document version 2.0.29.
 
 ### Table of contents
 
@@ -59,6 +59,7 @@ Document version 2.0.28.
   - [Why do I get `500 Internal Server Error` (or similar)?](#why-do-i-get-500-internal-server-error-or-similar)
   - [Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`](#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked)
   - [Why do I get `errorCode 35 "Requested Order not found"`?](#why-do-i-get-errorcode-35-requested-order-not-found)
+  - [Why do I not get the `sub` from `/details`?](#why-do-i-not-get-the-sub-from-details)
 - [Other questions](#other-Questions)
   - [How do I perform "testing in production"?](#how-do-i-perform-testing-in-production)
   - [What do we have to do with PSD2's SCA requirements?](#what-do-we-have-to-do-with-psd2s-sca-requirements)
@@ -699,6 +700,15 @@ If you use one the API credentials for one MSN and an orderId for another MSN,
 you will get this error.
 
 See: [Error codes](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes).
+
+### Why do I not get the `sub` from `/details`?
+
+If you use the correct `scope` in the payment initiation, but don't get the
+`sub` in the response for `/details`: Check that you are following the
+[orderId recommendations](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#orderid-recommendations).
+Very short orderIds don't work well with our database index, and may cause
+an internal timeout, and we "have to" send the response without the `sub`.
+We can not enforce longer orderIds due to backwards compatability.
 
 ## Other questions
 
