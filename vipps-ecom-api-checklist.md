@@ -1,9 +1,8 @@
 # Vipps eCommerce API Checklist
 
-API version: 2.0
+API version: 2.0.
 
-Document version 2.0.2.
-
+Document version 2.1.0.
 
 ## Checklist
 
@@ -81,31 +80,8 @@ Document version 2.0.2.
 
 ## Flow to go live for direct integrations for partners
 
-1. The partner becomes a partner by
-   [applying here](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/vipps-i-kassa/#kom-i-gang-med-vipps-i-kassa-category-3).
-2. The partner completes the integration, with the API test keys.
-3. The partner
-   [contacts Vipps](https://github.com/vippsas/vipps-developers/blob/master/contact.md)
-   with test IDs (`orderId`) in the
-   [Vipps test environment](https://github.com/vippsas/vipps-developers#the-vipps-test-environment-mt),
-   showing that all checklist items have been completed:
-    - A complete order ending in `REFUND`
-      ([`/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST)
-      request).
-    - For *reserve capture* (not "direct capture"): A complete order ending in `VOID`
-      ([`/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
-      request after reserve).
-    - We recommend checking this using both the API itself and the API Dashboard available under "Utvikler" on
-      [portal.vipps.no](https://portal.vipps.no).
-4. The partner receives an email from Vipps saying that the implementation is OK.
-5. Vipps adds the partner to vipps.no, including the signup forms for merchants.
-6. The partner add its merchant to their solution, usually by configuring the POS with the merchant's API keys.
-7. The Merchant goes live 🎉
-
-**Please note:** For POS integrations that can not display the Vipps
-landing page, it is important that all sale units are configured with
-`skipLandingPage`. See the
-[Frequently Asked Questions for POS integrations](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#frequently-asked-questions-for-pos-integrations).
+See:
+[Flow to go live for direct integrations for partners](https://github.com/vippsas/vipps-developers/tree/master/partners).
 
 # Questions?
 
