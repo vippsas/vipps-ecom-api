@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 2.0.30.
+Document version 3.0.0.
 
 ### Table of contents
 
@@ -51,6 +51,10 @@ Document version 2.0.30.
   - [How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
   - [In which sequence are callbacks and fallbacks done?](#in-which-sequence-are-callbacks-and-fallbacks-done)
   - [Where can I find reports on transactions?](#where-can-i-find-reports-on-transactions)
+- [Problems for end users](#problems-for-end-users)
+  - [Why don't I receive the payment notification?](#why-dont-i-receive-the-payment-notification)
+  - [Why am I not sent back to where I came from when I have paid?](#why-am-i-not-sent-back-to-where-i-came-from-when-i-have-paid)
+  - [Why can't I scan the Vipps QR on the terminal with the camera app?](#why-cant-i-scan-the-vipps-qr-on-the-terminal-with-the-camera-app)
 - [Common errors](#common-errors)
   - [Why do I not get callbacks from Vipps?](#why-do-i-not-get-callbacks-from-vipps)
   - [Why do I get `Access denied due to invalid subscription key`?](#why-do-i-get-access-denied-due-to-invalid-subscription-key)
@@ -589,6 +593,40 @@ your transactions, sale units and settlement reports.
 You can also subscribe to daily or monthly transaction reports by email.
 
 See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
+
+## Problems for end users
+
+### Why don't I receive the payment notification?
+
+Push notifications must be active for Vipps to send payment notifications.
+
+Push notifications are "best effort", and Vipps can not guarantee that all
+push notifications arrive. It depends on networks, etc that Vipps can not
+control.
+
+If Vipps is already open and active when the push notification is received,
+the user must press the "Send" button and move to the payments screen to see
+the payment notification. Vipps is not able to poll or discover the
+payment notification automatically.
+
+### Why am I not sent back to where I came from when I have paid?
+
+If the payment started in a custom browser (like Chrome on iOS, or an embedded
+browser in Instagram, instead of the default Safari browser), the `fallback` URL
+(the result page) will still be opened in the default browser.
+
+See: [How can I open the fallback URL in a specific (embedded) browser?](#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser).
+
+### Why can't I scan the Vipps QR on the terminal with the camera app?
+
+Vipps QR codes on the payment terminal display must be scanned with Vipps.
+Scanning with a camera app will not work, as the QR code does not contain a
+URL that the phone understands. The QR code contents is a
+[EMV QR code](https://www.emvco.com/emv-technologies/qrcodes/),
+and this format is understood by Vipps, but not the camera app.
+
+Scanning with the camera app may lead to a Google search for a long sequence
+of digits and letters.
 
 ## Common errors
 
