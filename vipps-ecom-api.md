@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.2.
+Document version 2.5.3.
 
 ## Table of contents
 
@@ -251,7 +251,13 @@ See the
 
 The Express checkout (Vipps Hurtigkasse) is a solution for letting the user
 automatically share the Vipps profile address information with merchant and
-choose a shipping option:
+choose a shipping option.
+
+It is designed for shipping products, with a delivery address and a
+shipping method. If you only need the user's information, you should use
+[Userinfo](#userinfo).
+
+Vipps Hurtigkasse works this way:
 
 1. The user clicks the "Vipps Hurtigkasse" button.
 2. The user consents to sharing address information in Vipps.
@@ -283,7 +289,11 @@ and shipping method for the two beers they ordered from their table.
 They had not noticed the need to select those before, but definitely did now.
 
 So: We changed it back to the way it was before, and now require merchants to
-explicitly specify the new express checkout flow.
+explicitly specify the new express checkout flow:
+
+Specify `"useExplicitCheckoutFlow": true` in
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
+to get the new, explicit flow.
 
 #### How to specify the old or new express checkout flow
 
