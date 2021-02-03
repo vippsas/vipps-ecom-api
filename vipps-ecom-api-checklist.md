@@ -2,7 +2,7 @@
 
 API version: 2.0.
 
-Document version 2.1.0.
+Document version 2.1.1.
 
 ## Checklist
 
@@ -81,7 +81,7 @@ Document version 2.1.0.
 ## Flow to go live for direct integrations for partners
 
 See:
-[Flow to go live for direct integrations for partners](https://github.com/vippsas/vipps-developers/tree/master/partners).
+[Flow to go live for direct integrations for partners](https://github.com/vippsas/vipps-developers/tree/master/partners#flow-to-go-live-for-direct-integrations-for-partners).
 
 # Questions?
 
