@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.0.0.
+Document version 3.0.1.
 
 ### Table of contents
 
@@ -229,6 +229,13 @@ All customers can log in on
 and check the capture type for all their sale units.
 
 You can also find information on how to chance capture type there.
+
+If you are not able to log in on
+[portal.vipps.no](https://portal.vipps.no)
+you can make a small payment (2 kr),
+check the payment with
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
+and cancel (if it was `RESERVE` and reserve capture) or refund (if it was `SALE` and direct capture).
 
 ### For how long is an initiated payment reserved?
 
