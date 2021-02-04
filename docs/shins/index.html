@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Vipps eCommerce API v1.6.2</title>
+    <title>Vipps eCommerce API v1.6.3</title>
 
     <style>
     </style>
@@ -2645,7 +2645,7 @@ System.out.println(response.toString());
 <td>body</td>
 <td>integer(int32)</td>
 <td>true</td>
-<td>Amount in øre. 32 bit Integer (2147483647). Must be non-zero.</td>
+<td>Amount in øre. 32 bit Integer. Must be non-zero and larger than 1 NOK (100 øre).</td>
 </tr>
 <tr>
 <td>»» orderId</td>
@@ -7738,7 +7738,7 @@ System.out.println(response.toString());
 <td>integer(int32)</td>
 <td>true</td>
 <td>none</td>
-<td>Amount in øre. 32 bit Integer (2147483647). Must be non-zero.</td>
+<td>Amount in øre. 32 bit Integer. Must be non-zero and larger than 1 NOK (100 øre).</td>
 </tr>
 <tr>
 <td>orderId</td>
