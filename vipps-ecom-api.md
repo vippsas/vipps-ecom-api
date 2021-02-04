@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.4.
+Document version 2.5.5.
 
 ## Table of contents
 
@@ -213,7 +213,7 @@ Examples from a demo website:
 
 ## Regular eCommerce payments
 
-Payment amounts must be larger than zero.
+Payment amounts must be non-zero and larger than 1 NOK (100 øre).
 
 When you initiate a payment it will only be _reserved_ until you capture it.
 Vipps supports both _reserve capture_ and _direct capture_ payment flows.

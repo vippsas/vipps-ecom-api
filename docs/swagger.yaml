@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.2
+  version: 1.6.3
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -2073,8 +2073,9 @@ components:
         amount:
           type: integer
           format: int32
-          description: Amount in øre. 32 bit Integer (2147483647). Must be non-zero.
+          description: Amount in øre. 32 bit Integer. Must be non-zero and larger than 1 NOK (100 øre).
           pattern: '^\d{3,}$'
+          minimum: 100
           example: 20000
         orderId:
           type: string
