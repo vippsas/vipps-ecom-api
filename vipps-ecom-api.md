@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.3.
+Document version 2.5.4.
 
 ## Table of contents
 
@@ -107,7 +107,7 @@ Document version 2.5.3.
   - [Error groups](#error-groups)
   - [Error codes](#error-codes)
 - [Testing](#testing)
-- [Recomendations regarding handling redirects](#recomendations-regarding-handling-redirects)
+- [Recomendations regarding handling redirects](#recommendations-regarding-handling-redirects)
 - [Questions?](#questions)
 
 ## Flow diagram
