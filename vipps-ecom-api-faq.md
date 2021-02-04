@@ -228,7 +228,9 @@ All customers can log in on
 [portal.vipps.no](https://portal.vipps.no)
 and check the capture type for all their sale units.
 
-You can also find information on how to chance capture type there.
+You can also find information on how to change capture type there.
+We require BankID login for this, as "direct capture" requires additional
+compliance checks.
 
 If you are not able to log in on
 [portal.vipps.no](https://portal.vipps.no)
