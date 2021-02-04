@@ -27,7 +27,7 @@ Document version 3.0.1.
   - [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
 - [Reservations and captures](#reservations-and-captures)
   - [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
-  - [How can I check if I have "reserve capture" or "direct capture"?](#how-can-i.-check-if-i-have-reserve-capture-or-direct-capture)
+  - [How can I check if I have "reserve capture" or "direct capture"?](#how-can-i-check-if-i-have-reserve-capture-or-direct-capture)
   - [How do I turn _direct capture_ on or off?](#How-do-I-turn-direct-capture-on-or-off)
   - [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
   - [Can I prevent people from paying with credit cards?](#can-i-prevent-people-from-paying-with-credit-cards)
