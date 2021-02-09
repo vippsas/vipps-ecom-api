@@ -273,10 +273,14 @@ Vipps does not control the behaviour of the customer's card or account.
 VISA reservations are valid for 7 days.
 The banks will release the reservation after 4-7 days, but if the capture is
 done within the 7 days, VISA guarantees that the capture will succeed.
+Vipps' PSP is Adyen, and they have some documentation for
+[VISA reservations](https://docs.adyen.com/online-payments/adjust-authorisation#visa).
 
 MasterCard reservations are valid for 30 days.
 The banks may release the reservation before this, but if the capture is
 done within the 30 days, MasterCard guarantees that the capture will succeed.
+Vipps' PSP is Adyen, and they have some documentation for
+[Mastercardreservations](https://docs.adyen.com/online-payments/adjust-authorisation#mastercard).
 
 Vipps can and do not automatically change the status of a reservation.
 
