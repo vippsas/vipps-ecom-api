@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.0.2.
+Document version 3.0.3.
 
 ### Table of contents
 
@@ -267,27 +267,43 @@ different sale units, as this can not be specified in the API calls.
 
 ### For how long is an initiated payment reserved?
 
-Most banks keep reservations for 7 days, however this varies depending on which bank the customer is using.
-Some banks only keep reservations for 4 days.
-Vipps does not automatically change the status of the reservation.
+That depends.
+Vipps does not control the behaviour of the customer's card or account.
 
-If a capture attempt is made more than 7 days after the payment has been initiated
-and the reservation has been released by the bank, Vipps will make a new payment request to the bank.
+VISA reservations are valid for 7 days.
+The banks will release the reservation after 4-7 days, but if the capture is
+done within the 7 days, VISA guarantees that the capture will succeed.
+Vipps' PSP is Adyen, and they have some documentation for
+[VISA reservations](https://docs.adyen.com/online-payments/adjust-authorisation#visa).
+
+MasterCard reservations are valid for 30 days.
+The banks may release the reservation before this, but if the capture is
+done within the 30 days, MasterCard guarantees that the capture will succeed.
+Vipps' PSP is Adyen, and they have some documentation for
+[Mastercardreservations](https://docs.adyen.com/online-payments/adjust-authorisation#mastercard).
+
+Vipps cannot and does not automatically change the status of a reservation.
+
+If a capture attempt is made more than 7 days (VISA) or 30 days (MasterCard)
+after the payment has been initiated _and_ the reservation has been released
+by the bank in the meantime, Vipps will make a new payment request to the bank.
 If the account has sufficient funds, the payment will be successful.
 
 If the user's account has insufficient funds at this time, the payment will
 either succeed and put the customer's card/account in the negative (as
 an overdraft), or fail because the customer's card/account can not be put into
-the negative.
+the negative - for example youth accounts.
+
+It is also possible that the card expires, is blocked, etc somewhere between
+the time of reservation and the time of capture.
+Vipps can not know in advance what will happen.
 
 In many cases the bank will have a register of expired reservations and they
-will force it through if the account allows this.
+will force the capture through if the account allows this.
 This will put the account in the negative.
 
-Customer may, understandably, be dissatisfied if the capture puts their account
+Customers may, understandably, be dissatisfied if the capture puts their account
 in the negative, so please try to avoid this.
-
-Vipps does not control the behaviour of the customer's card or account.
 
 The
 [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/capturePaymentUsingPOST)
