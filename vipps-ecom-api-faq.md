@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.0.3.
+Document version 3.0.4.
 
 ### Table of contents
 
@@ -280,7 +280,7 @@ MasterCard reservations are valid for 30 days.
 The banks may release the reservation before this, but if the capture is
 done within the 30 days, MasterCard guarantees that the capture will succeed.
 Vipps' PSP is Adyen, and they have some documentation for
-[Mastercardreservations](https://docs.adyen.com/online-payments/adjust-authorisation#mastercard).
+[Mastercard reservations](https://docs.adyen.com/online-payments/adjust-authorisation#mastercard).
 
 Vipps cannot and does not automatically change the status of a reservation.
 
