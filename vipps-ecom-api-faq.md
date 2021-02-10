@@ -268,9 +268,11 @@ different sale units, as this can not be specified in the API calls.
 ### For how long is an initiated payment reserved?
 
 That depends.
+The details may change, but the information below is the best Vipps can offer.
+
 Vipps does not control the behaviour of the customer's card or account.
 
-VISA reservations are valid for 7 days.
+VISA reservations are valid for 7 days (but only 5 for Visa Electron).
 The banks will release the reservation after 4-7 days, but if the capture is
 done within the 7 days, VISA guarantees that the capture will succeed.
 Vipps' PSP is Adyen, and they have some documentation for
