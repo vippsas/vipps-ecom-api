@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.0.2.
+Document version 3.0.3.
 
 ### Table of contents
 
@@ -282,7 +282,7 @@ done within the 30 days, MasterCard guarantees that the capture will succeed.
 Vipps' PSP is Adyen, and they have some documentation for
 [Mastercardreservations](https://docs.adyen.com/online-payments/adjust-authorisation#mastercard).
 
-Vipps can and do not automatically change the status of a reservation.
+Vipps cannot and does not automatically change the status of a reservation.
 
 If a capture attempt is made more than 7 days (VISA) or 30 days (MasterCard)
 after the payment has been initiated _and_ the reservation has been released
@@ -292,7 +292,7 @@ If the account has sufficient funds, the payment will be successful.
 If the user's account has insufficient funds at this time, the payment will
 either succeed and put the customer's card/account in the negative (as
 an overdraft), or fail because the customer's card/account can not be put into
-the negative.
+the negative - for example youth accounts.
 
 It is also possible that the card expires, is blocked, etc somewhere between
 the time of reservation and the time of capture.
