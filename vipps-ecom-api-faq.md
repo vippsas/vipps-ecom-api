@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.0.4.
+Document version 3.0.5.
 
 ### Table of contents
 
@@ -340,6 +340,10 @@ The only ways to initiate Vipps payments from a QR code are:
   This can not be used for online sales, etc.
 * [Vipps i terminal](https://www.vipps.no/produkter-og-tjenester/privat/vipps-i-terminal/vipps-i-terminal/):
   Merchant-presented, dynamic QR shown on the display of a payment terminal.
+
+It is possible to whitelist an URL and let users scan a QR qith Vipps and be
+sent to the merchant's website. See:
+[Can I whitelist my URL for a Vipps QR?](#can-i-whitelist-my-url-for-a-vipps-qr).
 
 ### Can I send a Vipps payment link in an SMS, QR or email?
 
