@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.6.
+Document version 2.5.7.
 
 ## Table of contents
 
@@ -655,6 +655,37 @@ to get the status of the payment.
 
 See the FAQ:
 [Why do I not get callbacks from Vipps?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#why-do-i-not-get-callbacks-from-vipps)
+
+### How to test your own callbacks
+
+We recommend using
+[HTTPie](https://httpie.io)
+for this, but you can of course use other tools too.
+
+1. Make a JSON file with the callback request payload, based on the example for
+   [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST):
+   ```
+     {
+       "merchantSerialNumber": 123456,
+       "orderId": "acme-shop-123-order123abc",
+       "transactionInfo": {
+         "amount": 20000,
+         "status": "RESERVED",
+         "timeStamp": "2018-12-12T11:18:38.246Z",
+         "transactionId": "5001420062"
+       }
+     }
+     ```  
+    Save this JSON file as `callback.json`.
+2. Built your callback URL. In this example the `callbackPrefix` is `https://example.com/vipps/callback`,
+   and the `orderId` is `acme-shop-123-order123abc`.
+   This means that we will add `/v2/payments/acme-shop-123-order123abc` to the `callbackPrefix` and make the callback to
+   `https://example.com/vipps/callback/v2/payments/acme-shop-123-order123abc`.
+3. Test the callback by making a POST request to your callback URL with the JSON file as request body:
+   ```
+   http POST https://example.com/vipps/callback/v2/payments/acme-shop-123-order123abc < callback.json
+   ```
+4. If you do not return `HTTP 200 OK`, your callback handling does not work.
 
 ### Callback endpoints
 
