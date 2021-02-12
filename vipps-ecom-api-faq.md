@@ -889,7 +889,9 @@ of purchases. This also has some benefits:
 
 ### How do I set up multiple sale units?
 
-This is typically needed for organization numbers with multiple stores.
+This is typically needed for organization numbers with multiple stores,
+or offers different ways to pay with Vipps
+(See [How can I use Vipps for different types of payments?](#how-can-i-use-vipps-for-different-types-of-payments)).
 
 The bank account number for a sale unit must belong to the organization number
 of the company that has the customer relationship with Vipps.
@@ -909,15 +911,16 @@ are set up with their own merchant and sale units.
 
 If all sale units have the same organization number, there are two alternatives:
 
-1: Use only one sale unit for all stores., and use the `orderId` to identify which orders belong
-to which sale units. You decide what the `orderId` contains, and it may be up to
-50 characters. See:
-[orderId recommendation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#orderid-recommendations).
-You will use the same API keys for all stores.
+1: Recommended: Multiple sale units: One sale unit per store. Each sale unit will have its
+   own MSN (Merchant Serial Number), and the `orderId` may be whatever you want.
+   You will need separate API keys for each sale unit (store).
+   See [How can I use Vipps for different types of payments?](#how-can-i-use-vipps-for-different-types-of-payments).
 
-2: Multiple sale units: One sale unit per store. Each sale unit will have it's
-own MSN (Merchant Serial Number), and the `orderId` may be whatever you want.
-You will need separate API keys for each sale unit (store).
+2: Use only one sale unit for all stores, and use the `orderId` to identify
+   which orders belong to which sale units.
+   You decide what the `orderId` contains, and it may be up to 50 characters. See:
+   [orderId recommendation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#orderid-recommendations).
+   You will use the same API keys for all stores.
 
 ### What about webhooks?
 
