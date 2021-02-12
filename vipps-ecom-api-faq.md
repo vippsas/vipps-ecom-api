@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.0.5.
+Document version 3.0.6.
 
 ### Table of contents
 
@@ -341,7 +341,7 @@ The only ways to initiate Vipps payments from a QR code are:
 * [Vipps i terminal](https://www.vipps.no/produkter-og-tjenester/privat/vipps-i-terminal/vipps-i-terminal/):
   Merchant-presented, dynamic QR shown on the display of a payment terminal.
 
-It is possible to whitelist an URL and let users scan a QR qith Vipps and be
+It is possible to whitelist an URL and let users scan a QR with Vipps and be
 sent to the merchant's website. See:
 [Can I whitelist my URL for a Vipps QR?](#can-i-whitelist-my-url-for-a-vipps-qr).
 
@@ -387,6 +387,11 @@ Please contact your KAM.
 
 If you do not have a KAM, you will have to wait so see if this functionality is
 made available for all Vipps merchants.
+
+When using a merchant-specific, whitelisted URL in a Vipps QR code, we recommend
+displaying a "landing page" to the user, and _not_ redirecting the user
+directly to a Vipps payment. This will make the solution more robust, in case
+there is a problem, and the user can retry without scanning the QR code again.
 
 See the
 [design guidelines](https://github.com/vippsas/vipps-design-guidelines#vipps-custom-qr-code)
