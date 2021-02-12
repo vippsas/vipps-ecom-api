@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.0.6.
+Document version 3.1.0.
 
 ### Table of contents
 
@@ -68,6 +68,7 @@ Document version 3.0.6.
 - [Other questions](#other-Questions)
   - [How do I perform "testing in production"?](#how-do-i-perform-testing-in-production)
   - [What do we have to do with PSD2's SCA requirements?](#what-do-we-have-to-do-with-psd2s-sca-requirements)
+  - [How can I use Vipps for different types of payments?](#how-can-i-use-vipps-for-different-types-of-payments)
   - [How do I set up multiple sale units?](#how-do-i-set-up-multiple-sale-units)
   - [What about webhooks?](#what-about-webhooks)
   - [Can I use Vipps with Klarna Checkout?](#can-i-use-vipps-with-klarna-checkout)
@@ -852,6 +853,39 @@ device possession. In addition Vipps has implemented a Dynamic Linking according
 to the requirements.
 
 There is no need for any changes to your Vipps implementation for SCA.
+
+### How can I use Vipps for different types of payments?
+
+It's possible to use the Vipps eCom API for several different types of payments.
+
+Let's say you run a bookstore. You can then Vipps eCom API in different ways:
+
+1. A webshop that sells physical books:
+   Vipps eCom API with "reserve capture", since you can not capture the payment before the book is shipped.
+2. A webshop that sells digital, downloadable books that are immediately available:
+   Vipps eCom API with "direct capture".
+3. A physical store where customers buy physical books in person:
+   Vipps eCom API with "reserve capture", possibly integrated with the POS.
+4. A physical store where customers can buy physical books by scanning a
+   QR code in the window, and have the physical book delivered by mail:
+   Vipps eCom API with "reserve capture", since you can not capture the payment before the book is shipped.
+
+The regulatory requirements are different for different types of purchases.
+One major difference is if the cardholder is physically present and
+"can look the seller in the eye" while making the payment.
+
+Vipps need to do more thorough "Know Your Customer" (KYC) and compliance checks
+for some of the examples above. This must be done per sale unit.
+Vipps is also required to have the correct MCC
+([Merchant Category Code](https://en.wikipedia.org/wiki/Merchant_category_code))
+for each sale unit.
+
+Because of this, merchants must use separate sale units for separate types
+of purchases. This also has some benefits:
+
+- Each sale unit can have its own name presented to the user in Vipps
+- Each sale unit can have its own settlement account
+- Each sale unit gets separate transaction logs
 
 ### How do I set up multiple sale units?
 
