@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.7.
+Document version 2.5.8.
 
 ## Table of contents
 
@@ -49,7 +49,7 @@ Document version 2.5.7.
   - [Callbacks](#callbacks)
     - [Callback endpoints](#callback-endpoints)
     - [Callback examples](#callback-examples)
-    - [How to test your own callbacks](#how-to-test-your-won-callbacks)
+    - [How to test your own callbacks](#how-to-test-your-own-callbacks)
     - [Authorization for callbacks](#authorization-for-callbacks)
     - [Vipps callback servers](#vipps-callback-servers)
     - [Callback URLs must be reachable](#callback-urls-must-be-reachable)
