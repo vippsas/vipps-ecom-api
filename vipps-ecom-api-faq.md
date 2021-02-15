@@ -874,7 +874,7 @@ The regulatory requirements are different for different types of purchases.
 One major difference is if the cardholder is physically present and
 "can look the seller in the eye" while making the payment.
 
-Vipps need to do more thorough "Know Your Customer" (KYC) and compliance checks
+Vipps needs to do more thorough "Know Your Customer" (KYC) and compliance checks
 for some of the examples above. This must be done per sale unit.
 Vipps is also required to have the correct MCC
 ([Merchant Category Code](https://en.wikipedia.org/wiki/Merchant_category_code))
@@ -883,9 +883,9 @@ for each sale unit.
 Because of this, merchants must use separate sale units for separate types
 of purchases. This also has some benefits:
 
-- Each sale unit can have its own name presented to the user in Vipps
-- Each sale unit can have its own settlement account
-- Each sale unit gets separate transaction logs
+- Each sale unit has its own name presented to the user in Vipps
+- Each sale unit has separate transaction logs
+- Each sale unit can have its own settlement account. Sharing a single account across multiple sale units is available on request.
 
 ### How do I set up multiple sale units?
 
