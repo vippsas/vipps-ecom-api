@@ -858,7 +858,7 @@ There is no need for any changes to your Vipps implementation for SCA.
 
 It's possible to use the Vipps eCom API for several different types of payments.
 
-Let's say you run a bookstore. You can then Vipps eCom API in different ways:
+Let's say you run a bookstore. You can then use Vipps eCom API in several different ways, such as:
 
 1. A webshop that sells physical books:
    Vipps eCom API with "reserve capture", since you can not capture the payment before the book is shipped.
