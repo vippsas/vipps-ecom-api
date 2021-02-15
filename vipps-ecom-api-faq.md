@@ -865,7 +865,7 @@ Let's say you run a bookstore. You can then Vipps eCom API in different ways:
 2. A webshop that sells digital, downloadable books that are immediately available:
    Vipps eCom API with "direct capture".
 3. A physical store where customers buy physical books in person:
-   Vipps eCom API with "reserve capture", possibly integrated with the POS.
+   Vipps eCom API with "direct capture", possibly integrated with the POS.
 4. A physical store where customers can buy physical books by scanning a
    QR code in the window, and have the physical book delivered by mail:
    Vipps eCom API with "reserve capture", since you can not capture the payment before the book is shipped.
