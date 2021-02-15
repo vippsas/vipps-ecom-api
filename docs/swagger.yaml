@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.3
+  version: 1.6.4
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -563,7 +563,7 @@ paths:
             Unique for orderId, merchantSerialNumber and endpoint.
             Required for making partial captures.
             You can use any unique id for your X-Request-Id.
-            Max 30 characters.
+            Max 40 characters.
           schema:
             type: string
           example: kRk3uEeiogxLu1yGSZRlNgsIv3TuNS
@@ -1029,7 +1029,7 @@ paths:
             Used for making requests idempotent. Adding X-Request-Id will allow
             repeated requests without it making additional changes.
             Unique for orderId, merchantSerialNumber and endpoint.
-            Max 30 characters. Required if the amount is partial.
+            Max 40 characters. Required if the amount is partial.
           schema:
             type: string
           example: kRk3uEeiogxLu1yGSZRlNgsIv3TuNS
@@ -1185,7 +1185,7 @@ paths:
           description: >-
             Id used for making requests idempotent. Adding this ID will allow
             the merchant to retry requests without it making additional changes.
-            Unique for orderId, merchantSerialNumber and endpoint. Max 30
+            Unique for orderId, merchantSerialNumber and endpoint. Max 40
             characters.
           schema:
             type: string
