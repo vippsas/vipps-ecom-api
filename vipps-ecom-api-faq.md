@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.1.0.
+Document version 3.1.1.
 
 ### Table of contents
 
@@ -863,7 +863,8 @@ Let's say you run a bookstore. You can then use Vipps eCom API in several differ
 1. A webshop that sells physical books:
    Vipps eCom API with "reserve capture", since you can not capture the payment before the book is shipped.
 2. A webshop that sells digital, downloadable books that are immediately available:
-   Vipps eCom API with "direct capture".
+   Vipps eCom API with either "reserve capture" or "direct capture", depending on whether the digital product
+   needs to be generated or not.
 3. A physical store where customers buy physical books in person:
    Vipps eCom API with "direct capture", possibly integrated with the POS.
 4. A physical store where customers can buy physical books by scanning a
