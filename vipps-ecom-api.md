@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.8.
+Document version 2.5.9.
 
 ## Table of contents
 
@@ -554,7 +554,8 @@ to the first payment attempt.
 ## orderId recommendations
 
 A `orderId` must be unique for the MSN (Merchant Serial Number, the id of
-the sale unit). The `orderId` does not need to be globally unique, so several
+the sale unit).
+The `orderId` does not need to be globally unique, so several
 MSNs may use the same `orderId`, as long as it is unique for each sale unit.
 
 If you ever have a problem that requires us to search in our logs, we need
@@ -562,28 +563,34 @@ If you ever have a problem that requires us to search in our logs, we need
 is just a number may not be possible to find.
 
 While the minimum length for `orderId` _technically_ is just one character,
-we strongly recommend using at least 6 characters, and a combination of numbers
-and characters.
-
-The maximum length of an `orderId` is 50 alphanumeric characters:
-a-z, A-Z, 0-9 and '-'.
+we _strongly_ recommend to use `orderId` format that makes it easy to
+search for them in logs. This means that `acme-shop-123-order123abc` is a better
+format than `123456`.
 
 A good starting point is to use UUID,
 [universally unique identifiers](https://en.wikipedia.org/wiki/Universally_unique_identifier),
 on the format `123e4567-e89b-12d3-a456-426614174000`.
-UUIDs are not always the most human-friendly, so see the other tips below too.
+UUIDs are not always the most human-friendly, so see the other tips too.
 
-We _strongly_ recommend to use `orderId` format that makes it easy to
-search for them in logs. This means that `abc-123-def-456` is a better
-format than `123456`.
-
+The maximum length of an `orderId` is 50 alphanumeric characters:
+a-z, A-Z, 0-9 and '-'.
 Leading zeros should be avoided, as some applications (like Excel)
 tend to remove them, and this may cause misunderstandings.
 
 With multiple sale units, prefixing the `orderId` with the MSN
 for each sale unit is recommended: If the MSN is `654321`, the
-`orderId`s could start at `654321-0000-0000-0001` and increment by 1
-for each order, or some similar, unique and readable pattern.
+`orderId`s could be `654321-acme-shop-123-order123abc`.
+
+If you need to make multiple attempts at paying the same order, you can
+add a suffix to the orderId to make it unique: If your internal orderId is
+`acme-shop-123-order123abc` you can add `-1` to get a unique _Vipps_ orderId
+`acme-shop-123-order123abc-1` for the first attempt,
+`acme-shop-123-order123abc-2` for the second, etc. This is useful when a customer:
+1. Adds a product to the cart
+2. Goes to the payment page and selects Vipps
+3. Gets the payment request in Vipps _but cancels_ (or does nothing)
+4. Adds another product to the same cart (or order)
+5. Repeats steps 2 and 3.
 
 ## URL Validation
 
