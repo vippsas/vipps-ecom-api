@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.9.
+Document version 2.5.10.
 
 ## Table of contents
 
@@ -769,6 +769,9 @@ for this, but you can of course use other tools too.
    http POST https://example.com/vipps/callback/v2/payments/acme-shop-123-order123abc < callback.json
    ```
 4. If you do not return `HTTP 200 OK`, your callback handling does not work.
+
+We recommend checking callbacks on the API Dashboard available under "Utvikler" on
+[portal.vipps.no](https://portal.vipps.no).      
 
 ### Authorization for callbacks
 
