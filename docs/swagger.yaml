@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.4
+  version: 1.6.5
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -2530,7 +2530,7 @@ components:
             - VippsError
             - User
             - Merchant
-          example: "Payment"
+          example: "Payments"
         errorCode:
           type: string
           description: "The error code. See: https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes"
