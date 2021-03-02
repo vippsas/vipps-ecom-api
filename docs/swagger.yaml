@@ -166,6 +166,7 @@ paths:
           schema:
             type: string
           example: acme-shop-123-order123abc
+          pattern: '^[a-zA-Z0-9-]{1,50}$'
         - name: Authorization
           in: header
           description: >-
@@ -302,7 +303,6 @@ paths:
                   required: true
                   schema:
                     type: string
-                  example: acme-shop-123-order123abc
               responses:
                 '200':
                   description: Vipps does not require a response for this request.
@@ -331,7 +331,6 @@ paths:
                   required: true
                   schema:
                     type: string
-                  example: acme-shop-123-order123abc
               responses:
                 '200':
                   description: Vipps does not require a response for this request.
@@ -483,6 +482,7 @@ paths:
           schema:
             type: string
           example: acme-shop-123-order123abc
+          pattern: '^[a-zA-Z0-9-]{1,50}$'
         - name: Authorization
           in: header
           description: >-
@@ -526,7 +526,6 @@ paths:
           required: true
           schema:
             type: string
-          example: acme-shop-123-order123abc
         - in: header
           name: Authorization
           description: >-
@@ -994,7 +993,6 @@ paths:
           required: true
           schema:
             type: string
-          example: acme-shop-123-order123abc
         - in: header
           name: Authorization
           description: >-
@@ -1285,7 +1283,6 @@ paths:
           required: true
           schema:
             type: string
-          example: acme-shop-123-order123abc
         - in: header
           name: Authorization
           description: >-
