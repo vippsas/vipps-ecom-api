@@ -2011,10 +2011,11 @@ components:
           description: >-
             Unique id for this merchant's sales channel: website, mobile app
             etc. Short name: MSN.
-          minLength: 6
+            Early MSNs were five digits, new ones are six digits.
+          minLength: 5
           maxLength: 6
           example: '123456'
-          pattern: '^\d{6}$'
+          pattern: '^\d{5+}$'
     ShippingDetails:
       type: object
       required:
@@ -2217,10 +2218,11 @@ components:
           description: >-
             Unique id for this merchant's sales channel: website, mobile app
             etc. Short name: MSN.
-          minLength: 6
+            Early MSNs were five digits, new ones are six digits.
+          minLength: 5
           maxLength: 6
           example: '123456'
-          pattern: '^\d{6}$'
+          pattern: '^\d{5+}$'
         paymentType:
           type: string
           description: >-
@@ -2365,10 +2367,11 @@ components:
           description: >-
             Unique id for this merchant's sales channel: website, mobile app
             etc. Short name: MSN.
-          minLength: 6
+            Early MSNs were five digits, new ones are six digits.
+          minLength: 5
           maxLength: 6
           example: '123456'
-          pattern: '^\d{6}$'
+          pattern: '^\d{5+}$'
         orderId:
           type: string
           description: >-
@@ -2397,10 +2400,11 @@ components:
           description: >-
             Unique id for this merchant's sales channel: website, mobile app
             etc. Short name: MSN.
-          minLength: 6
+            Early MSNs were five digits, new ones are six digits.
+          minLength: 5
           maxLength: 6
           example: '123456'
-          pattern: '^\d{6}$'
+          pattern: '^\d{5+}$'
         orderId:
           type: string
           description: >-
