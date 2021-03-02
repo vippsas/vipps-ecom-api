@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.10.
+Document version 2.5.11.
 
 ## Table of contents
 
@@ -606,6 +606,7 @@ URLs that start with `https://localhost` will be rejected. If you want to use
 localhost as fallback, please use `http://127.0.0.1`.
 It is, naturally, not possible to use `https://localhost` or
 `http://127.0.0.1` for the callback, as the Vipps backend would then call itself.
+Ngrok may also be an option: https://ngrok.com
 
 Here is a simple Java class suitable for testing URLs,
 using the dummy URL `https://example.com/vipps/fallback-result-page/acme-shop-123-order123abc`:
