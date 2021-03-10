@@ -1908,6 +1908,12 @@ components:
           $ref: '#/components/schemas/TransactionSummary'
         userDetails:
           $ref: '#/components/schemas/UserDetails'
+        sub:
+          type: string
+          descrtiption: |
+            The user identifier if using profile flow. This should be used against the userInfo endpoint from the Vipps Login API, 
+            see https://www.vipps.no/developers-documentation/ecom/documentation/#userinfo-call-by-call-guide
+          
     PaymentInitiationResponse:
       type: object
       required:
