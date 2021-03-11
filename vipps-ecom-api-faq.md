@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.1.2.
+Document version 3.1.4.
 
 ### Table of contents
 
@@ -34,6 +34,7 @@ Document version 3.1.2.
   - [Can I initiate a Vipps payment with a QR code?](#can-i-initiate-a-vipps-payment-with-a-qr-code)
   - [Can I send a Vipps payment link in an SMS, QR or email?](#can-i-send-a-vipps-payment-link-in-an-sms-qr-or-email)
   - [Can I whitelist my URL for a Vipps QR?](#can-i-whitelist-my-url-for-a-vipps-qr)
+  - [Can I use a different currency than NOK?](#can-i-use-a-different-currency-than-nok)
 - [Refunds](#refunds)
   - [How can I refund a payment?](#how-can-i-refund-a-payment)
   - [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
@@ -397,6 +398,16 @@ there is a problem, and the user can retry without scanning the QR code again.
 See the
 [design guidelines](https://github.com/vippsas/vipps-design-guidelines#vipps-custom-qr-code)
 for more details about the QR format and design.
+
+### Can I use a different currency than NOK?
+
+Nope. All Vipps payments must be in NOK.
+
+You will have to make any currency conversion _before_ initiating the Vipps
+payment, as the amount specified in the payment initiation is always in NOK,
+and in øre (1 NOK = 100 øre).
+
+See: [Regular eCom Payments](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#regular-ecommerce-payments).
 
 ## Refunds
 
