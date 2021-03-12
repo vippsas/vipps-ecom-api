@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.13.
+Document version 2.5.14.
 
 ## Table of contents
 
@@ -1184,7 +1184,7 @@ transactionInfo.status: "Cancelled"
 ```
 
 A call to
-[`GET:/ecomm/v2/payments/{orderId}/details](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
 for the same order will return the following, regardless of whether the
 transaction has been reserved:
 
@@ -1458,7 +1458,7 @@ Example `sub` format:
 "sub": "c06c4afe-d9e1-4c5d-939a-177d752a0944",
 ```
 
-This `sub` is a link between the merchant and the user and can used to retrieve
+This `sub` is a link between the merchant and the user and can be used to retrieve
 the user's details from Vipps Login:
 [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)
 
