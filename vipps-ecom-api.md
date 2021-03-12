@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.14.
+Document version 2.5.15.
 
 ## Table of contents
 
@@ -1179,20 +1179,16 @@ If the
 [`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
 request is successful, the payment state will be:
 
-```
-transactionInfo.status: "Cancelled"
-```
+`Cancelled`
 
 A call to
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
 for the same order will return the following, regardless of whether the
 transaction has been reserved:
 
-```
-$.transactionLogHistory.0.operation: "CANCEL"
-```
+`CANCEL`
 
-**Note_**  If the user is in a 3DSecure session, the payment can not be cancelled as described above.
+**Note_**  If the user is in a 3 D Secure session, the payment can not be cancelled as described above.
 
 ## Refund
 
