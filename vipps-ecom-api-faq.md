@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.1.4.
+Document version 3.1.5.
 
 ### Table of contents
 
@@ -925,11 +925,15 @@ If all sale units have the same organization number, there are two alternatives:
 
 1: Recommended: Multiple sale units: One sale unit per store. Each sale unit will have its
    own MSN (Merchant Serial Number), and the `orderId` may be whatever you want.
+   Each sale unit gets its own
+   [settlement reports](https://github.com/vippsas/vipps-developers/tree/master/settlements).
    You will need separate API keys for each sale unit (store).
    See [How can I use Vipps for different types of payments?](#how-can-i-use-vipps-for-different-types-of-payments).
 
 2: Use only one sale unit for all stores, and use the `orderId` to identify
    which orders belong to which sale units.
+   All sale units are in the same
+   [settlement report](https://github.com/vippsas/vipps-developers/tree/master/settlements).
    You decide what the `orderId` contains, and it may be up to 50 characters. See:
    [orderId recommendation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#orderid-recommendations).
    You will use the same API keys for all stores.
@@ -955,9 +959,17 @@ for examples.
 
 ### Can I use Vipps with Klarna Checkout?
 
-Klarna Checkout supports Vipps as an External Payment Method if you have agreement with Klarna for this.
-This requires a full integration with Vipps eCom APIs. Also follow Klarnas process to get the External Payment Method activated for your account, described in the [Klarna documentation](https://developers.klarna.com/documentation/klarna-checkout/in-depth/external-payment-methods/).
-Using this method will add Vipps as an payment alternative inside the Klarna Checkout (KCO). It is technically possible to also use Vipps payment options outside KCO (e.g. on product pages, in basket or similar) using [Vipps Express Checkout](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#express-checkout-payments).
+Klarna Checkout (KCO) supports Vipps as an External Payment Method if you have
+agreement with Klarna for this. This requires a full integration with the Vipps eCom API.
+
+Also follow Klarna's process to get the External Payment Method activated for
+your account, described in the
+[Klarna documentation](https://developers.klarna.com/documentation/klarna-checkout/in-depth/external-payment-methods/).
+Using this method will add Vipps as an payment alternative inside KCO.
+
+It is technically possible to also use Vipps payment options outside KCO
+(e.g. on product pages, in basket or similar) using
+[Vipps Express Checkout](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#express-checkout-payments).
 
 ## Frequently Asked Questions for POS integrations
 
