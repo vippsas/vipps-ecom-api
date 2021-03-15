@@ -13,7 +13,7 @@ We also have a short [getting started guide to Postman](https://github.com/vipps
 
 ### Step 1: Get the Postman Collection
 
-Click the link underneath to get access to the eCommerce Postman collection.
+Click the link below to get access to the eCommerce Postman collection.
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/02daf42d90cd59dfd63a)
 
