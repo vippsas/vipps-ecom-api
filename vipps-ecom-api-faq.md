@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.1.7.
+Document version 3.1.8.
 
 ### Table of contents
 
@@ -830,7 +830,12 @@ See:
 
 ### Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`?
 
-This can happen if the test merchant is not being used for a long time. Please
+Please check that the merchant's organization number is still active in
+[Brønnøysundregistrene](https://www.brreg.no). Vipps automatically deactivates
+when companies are deleted from Brønnøysundregistrene.
+
+This can also happen if the test merchant is not being used for a _long_ time.
+Please
 [contact customer service](https://vipps.no/kontakt-oss/bedrift/vipps/),
 and we will reactivate the merchant. We no longer automatically deactivate
 test merchants.
