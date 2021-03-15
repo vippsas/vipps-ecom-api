@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.1.5.
+Document version 3.1.6.
 
 ### Table of contents
 
@@ -330,13 +330,25 @@ if you need this.
 
 ### Can I initiate a Vipps payment with a QR code?
 
-Not with the eCom API.
+It is not possible to use aa static QR code with the eCom API.
+
 With the eCom API payments are initiated by calling
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST),
-with a unique `orderId` for each payment. This is not possible with a static
-QR code on a sticker, etc.
+with a unique `orderId` for each payment.
+
+This is not possible with a static QR code on a sticker, etc, but
+_is_ possible if a dynamic (unique per payment) QR can be displayed on a screen
+for the Vipps user to scan.
 
 The only ways to initiate Vipps payments from a QR code are:
+* Use a dynamic QR code for Vipps eCom. The QR code must identical to the
+  Vipps deeplink URL provided in normal eCom payments, which will open
+  Vipps. See:
+  [Initiate payment flow: API calls](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#initiate-payment-flow-api-calls).
+  When the Vipps user scans this URL (with either the camera app or with Vipps),
+  Vipps will be opened, and the payment request will be displayed.
+  The user then has a few minutes to complete the payment - see
+  [Timeouts](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#timeouts).
 * [Vippnummer](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/),
   the solution for flea markets, etc – which does not have any external API.
   This can not be used for online sales, etc.
