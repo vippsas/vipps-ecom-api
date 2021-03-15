@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.1.6.
+Document version 3.1.7.
 
 ### Table of contents
 
@@ -350,10 +350,13 @@ The only ways to initiate Vipps payments from a QR code are:
   The user then has a few minutes to complete the payment - see
   [Timeouts](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#timeouts).
 * A whitelisted QR that contains a URL for the merchant's website. See:
-  [Can I whitelist my URL for a Vipps QR?](#can-i-whitelist-my-url-for-a-vipps-qr).
+  [Can I whitelist my URL for a Vipps QR?](#can-i-whitelist-my-url-for-a-vipps-qr)
 * [Vippnummer](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/),
   the solution for flea markets, etc – which does not have any external API.
-  This can not be used for online sales, etc.
+  This solution uses a static QR code for the sale unit, available on
+  [portal.vipps.no](https://portal.vipps.no).
+  Vippsnummer can not be used for online sales, etc, as it does not meet the
+  legal reguirments.
 * [Vipps i terminal](https://www.vipps.no/produkter-og-tjenester/privat/vipps-i-terminal/vipps-i-terminal/):
   Merchant-presented, dynamic QR shown on the display of a payment terminal.
 
