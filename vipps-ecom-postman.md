@@ -7,7 +7,7 @@ See the [Postman documentation](https://www.getpostman.com/docs/) for more infor
 By following the steps below, you can make calls to all the
 endpoints, and see the full `request` and `response` for each call.
 
-We also have a short [getting started guide to Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
+We also have a short [getting started guide to Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md).
 
 ## Setting up Postman
 
