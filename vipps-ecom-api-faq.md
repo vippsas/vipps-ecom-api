@@ -360,10 +360,6 @@ The only ways to initiate Vipps payments from a QR code are:
 * [Vipps i terminal](https://www.vipps.no/produkter-og-tjenester/privat/vipps-i-terminal/vipps-i-terminal/):
   Merchant-presented, dynamic QR shown on the display of a payment terminal.
 
-It is possible to whitelist an URL and let users scan a QR with Vipps and be
-sent to the merchant's website. See:
-[Can I whitelist my URL for a Vipps QR?](#can-i-whitelist-my-url-for-a-vipps-qr).
-
 ### Can I send a Vipps payment link in an SMS, QR or email?
 
 No. The Vipps "deeplink" is an integrated part of the Vipps payment process,
