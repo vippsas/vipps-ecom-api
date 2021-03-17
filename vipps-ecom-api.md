@@ -2019,7 +2019,6 @@ allowed to provide more details.
 | Merchant | 21 | Reference Order ID is not valid ||
 | Merchant | 22 | Reference Order ID is not in valid state ||
 
-
 # Testing
 
 To facilitate automated testing in the Vipps test environment the Vipps eCom API
@@ -2032,6 +2031,14 @@ eCom API without the use of Vipps. This is useful for automated testing.
 The endpoint is only available in our test environment.
 
 Express checkout and `skipLandingPage`is not supported by the force approve endpoint.
+
+**Important:** All test users must manually approve at least one payment in
+Vipps (using the app) before   
+[`POST:/ecomm/v2/integration-test/payments/{orderId}/approve`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/integrationTestApprovePayment)
+can be used for that user. This is because the user needs to be registered as
+"bankID verified" in the backend, and this is happens automatically in
+the test environment when using Vipps (the app), but not with the `/approve`
+endpoint.
 
 # Recommendations regarding handling redirects
 

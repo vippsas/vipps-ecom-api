@@ -1143,6 +1143,8 @@ paths:
         Express checkout is not supported for this endpoint.
         The endpoint is only available in our Test environment.
         Attempted use of the endpoint in production is not allowed, and will fail.
+        Important: All test users must manually approve at least one payment in
+        Vipps (using the app) before this endpoint can be used for that user.
       operationId: integrationTestApprovePayment
       parameters:
         - name: orderId
@@ -1911,9 +1913,9 @@ components:
         sub:
           type: string
           descrtiption: |
-            The user identifier if using profile flow. This should be used against the userInfo endpoint from the Vipps Login API, 
+            The user identifier if using profile flow. This should be used against the userInfo endpoint from the Vipps Login API,
             see https://www.vipps.no/developers-documentation/ecom/documentation/#userinfo-call-by-call-guide
-          
+
     PaymentInitiationResponse:
       type: object
       required:
