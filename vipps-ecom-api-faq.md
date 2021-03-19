@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.1.8.
+Document version 3.1.9.
 
 ### Table of contents
 
@@ -702,7 +702,11 @@ If the payment started in a custom browser (like Chrome on iOS, or an embedded
 browser in Instagram, instead of the default Safari browser), the `fallback` URL
 (the result page) will still be opened in the default browser.
 
-See: [How can I open the fallback URL in a specific (embedded) browser?](#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser).
+See:
+[How can I open the fallback URL in a specific (embedded) browser?](#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser).
+
+See:
+[Recommendations regarding handling redirects](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#recommendations-regarding-handling-redirects).
 
 ### Why can't I scan the Vipps QR on the terminal with the camera app?
 

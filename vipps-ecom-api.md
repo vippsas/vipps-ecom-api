@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.17.
+Document version 2.5.18.
 
 ## Table of contents
 
@@ -359,18 +359,21 @@ If Vipps is installed, Vipps will automatically be opened.
 
 1. Vipps is invoked (with app-switch).
 2. The user accepts or rejects the payment request in Vipps.
-3. The Vipps backend makes a call to the merchant's `callbackUrl` with information about the payment.
+3. The Vipps backend makes a call to the merchant's `callbackUrl` with
+   information about the payment.
 4. Once payment process is completed, Vipps redirects to the
    `fallBack` URL that merchant provided earlier (see above).
 
 #### Vipps not installed
 
 1. The landing page (in the browser) prompts the user for the phone number.
-2. Vipps sends a push notification, with a notification on the landing page
-   to continue the payment on the phone.
+2. The Vipps backend sends a push notification to the user's phone,
+   and also displays a notification on the landing page for the user to
+   continue the payment in Vipps on the phone.
 3. The user accepts or rejects the payment in Vipps.
-4. The Vipps backend makes a call to the merchant's `callbackUrl` with information about the payment.
-5. Once payment process is completed, Vipps redirects to the
+4. The Vipps backend makes a call to the merchant's `callbackUrl` with
+   information about the payment.
+5. Once the payment process is completed, Vipps redirects to the
    `fallBack` URL that the merchant provided earlier.
 
 **Please note:**
@@ -380,12 +383,14 @@ If Vipps is installed, Vipps will automatically be opened.
 2. If the user has started the payment in an embedded browser, such as in
    Facebook or Instagram, it is not possible for Vipps to open the
    `fallBack` URL in the embedded browser. The phone OS will always open URLs
-   in the default browser.
+   in the default browser. See:
+   [Recommendations regarding handling redirects](#recommendations-regarding-handling-redirects).
 3. Because of the above, a successful payment _must not_ rely on session cookies
    in the browser.
-4. Vipps can not guarantee a particular sequence, as this depends on user
-   actions, network connectivity/speed, etc. Because of this, it is not
-   possible to base an integration on a specific sequence of events.
+4. Vipps can not guarantee a particular sequence of callback and fallback,
+   as this depends on user actions, network connectivity/speed, etc.
+   Because of this, it is not possible to base an integration on a specific
+   sequence of events.
 
 ## Desktop flow
 
@@ -395,11 +400,13 @@ If Vipps is installed, Vipps will automatically be opened.
 
 1. The landing page will be opened in the desktop browser.
 2. The landing page will prompt for the user’s phone number.
-2. Vipps sends a push notification, with a notification on the landing page
-   to continue the payment on the phone.
+   If the phone number is known, it should be pre-filled by the merchant.
+2. Vipps sends a push notification the the user's phone, with a
+   notification on the landing page to continue the payment in Vipps on the phone.
 4. The user accepts or rejects the payment in Vipps.
-5. The Vipps backend makes a call to the merchant's `callbackUrl` with information about the payment.
-6. Once payment process is completed, the landing page will redirect to the
+5. The Vipps backend makes a call to the merchant's `callbackUrl` with
+   information about the payment.
+6. Once the payment process is completed, the landing page will redirect to the
    `fallBack` URL that merchant provided earlier (see above).
 
 ### Payments initiated in an app
@@ -408,14 +415,15 @@ Merchants can signal that the request is coming from their native app by passing
 the `isApp:true` parameter.
 
 In this case, the Vipps backend returns an URL that
-works as a native app deeplink to Vipps (eg. with a `vipps://` scheme),
-which automatically opens Vipps with app-switch.  
+works as a native app deeplink to Vipps (eg. with a `vipps://` scheme
+instead of `https://`), which automatically opens Vipps with app-switch.  
 **Please note:** In our test environment (MT) the scheme is `vippsMT://`
 
 The landing page is not involved in this flow, since the merchant app is
 expected to use the `vipps://` URL to deeplink straight to Vipps.
 
-1. Merchant initiates the payment with `isApp:true` parameter: [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST).
+1. Merchant initiates the payment with `isApp:true` parameter:
+   [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST).
 2. Vipps returns a `deeplink` URL as response to initiate payment.
 3. The merchant uses the `vipps://` URL to invoke Vipps.
 4. Vipps is automatically opened.
@@ -1670,7 +1678,7 @@ of all requests. as described in our swagger documentation:
 Including the
 [Optional HTTP Headers](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#optional-vipps-http-headers)
 too will make it easier to investigate problems, if anything unexpected happens.
-Partners may re-use the values of the `Vipps-System-Name` and `Vipps-System-Name`
+Partners may re-use the values of the `Vipps-System-Name` and `Vipps-System-Plugin-Name`
 in the plugins headers if having different values do not make sense.
 
 Here's an example of headers (please refer to the
