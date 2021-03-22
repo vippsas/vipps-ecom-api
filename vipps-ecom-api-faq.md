@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.2.1.
+Document version 3.3.0.
 
 ### Table of contents
 
@@ -59,14 +59,11 @@ Document version 3.2.1.
   - [Why can't I scan the Vipps QR on the terminal with the camera app?](#why-cant-i-scan-the-vipps-qr-on-the-terminal-with-the-camera-app)
 - [Common errors](#common-errors)
   - [Why do I not get callbacks from Vipps?](#why-do-i-not-get-callbacks-from-vipps)
-  - [Why do I get `Access denied due to invalid subscription key`?](#why-do-i-get-access-denied-due-to-invalid-subscription-key)
-  - [Why do I get `Access denied due to missing subscription key`?](#why-do-i-get-access-denied-due-to-missing-subscription-key)
-  - [I am getting `HTTP 401 Unauthorized` and I have double checked all my keys!](#i-am-getting-401-unauthorized-and-i-have-double-checked-all-my-keys)
-  - [Why do I get `Requested Order not found`?](#why-do-i-get-requested-order-not-found)
-  - [Why do I get `429 Too Many Requests`?](#why-do-i-get-429-too-many-requests)
-  - [Why do I get `500 Internal Server Error` (or similar)?](#why-do-i-get-500-internal-server-error-or-similar)
-  - [Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`](#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked)
+  - [Why do I get `HTTP 401 Unauthorized`?](#why-do-i-get-http-401-unauthorized)
+  - [Why do I get `HTTP 429 Too Many Requests`?](#why-do-i-get-http-429-too-many-requests)
+  - [Why do I get `HTTP 500 Internal Server Error` (or similar)?](#why-do-i-get-http-500-internal-server-error-or-similar)
   - [Why do I get `errorCode 35 "Requested Order not found"`?](#why-do-i-get-errorcode-35-requested-order-not-found)
+  - [Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`](#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked)
   - [Why do I not get the `sub` from `/details`?](#why-do-i-not-get-the-sub-from-details)
 - [Other questions](#other-Questions)
   - [How do I perform "testing in production"?](#how-do-i-perform-testing-in-production)
@@ -782,39 +779,28 @@ complete HTTP request, and any other related details, so we can investigate.
 See:
 [Callbacks](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callbacks).
 
-### Why do I get `Access denied due to invalid subscription key`?
-
-If you get a `HTTP 401 Unauthorized` response with the error message
-`Access denied due to invalid subscription key.
-Make sure to provide a valid key for an active subscription.`
-you need to check that you have the correct API keys.
-See:
-[Getting the API keys](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#getting-the-api-keys).
-
-You also need to make sure you have access to the right API.
-See:
-[API products](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#api-products).
-
-And: Make sure you are using the right environment. The
-[test environment](https://github.com/vippsas/vipps-developers/blob/master/vipps-test-environment.md)
-is completely separate from the production environment, and both the MSN and
-the API keys are different.
-
-See:
-[I am getting `HTTP 401 Unauthorized` and I have double checked all my keys!](#i-am-getting-401-unauthorized-and-i-have-double-checked-all-my-keys)
-
-See:
-[Quick overview of how to make an API call](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#quick-overview-of-how-to-make-an-api-call).
-
-### Why do I get `Access denied due to missing subscription key`?
-
-See:
-[Why do I get `Access denied due to invalid subscription key`?](#why-do-i-get-access-denied-due-to-invalid-subscription-key)
-
-### I am getting `HTTP 401 Unauthorized` and I have double checked all my keys!
+### Why do I get `HTTP 401 Unauthorized`?
 
 `HTTP 401 Unauthorized` occurs when there is a mismatch between the subscription keys and the
-merchant sales unit. Please follow these steps to make sure everything is correct:
+merchant sale unit.
+
+If you get a `HTTP 401 Unauthorized` response, the reason for the error is in the
+response body:
+
+```
+Access denied due to invalid subscription key.
+Make sure to provide a valid key for an active subscription.
+```
+
+or
+
+```
+Access denied due to missing subscription key.
+Make sure to include subscription key when making requests to an API.
+```
+
+You need to check that you are providing the correct API keys.
+Please follow these steps to make sure everything is correct:
 
 1. Check the Swagger specification for the correct spelling of all the header parameters.
    They are case sensitive: `Authorization: Bearer <snip>` is not the same as `Authorization: bearer <snip>`.
@@ -828,24 +814,31 @@ You can use
 [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
 to manually do API calls, Use the "inspect" functionality to see the complete requests and responses.
 
-See: [API endpoints](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints)
-for an overview.
+See:
+[Getting the API keys](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#getting-the-api-keys).
 
-You can also log in to
+You also need to make sure you have access to the right API.
+See:
+[API products](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#api-products).
+
+Make sure you are using the right environment. The
+[test environment](https://github.com/vippsas/vipps-developers/blob/master/vipps-test-environment.md)
+is completely separate from the production environment, and both the MSN and
+the API keys are different.
+
+You can log in to
 [portal.vipps.no](https://portal.vipps.no)
 to double check your API keys, sale units and API products.
 
-Please note that Vipps can not help with the debugging of your code,
-we can only help with the API requests and response.
+See:
+[Quick overview of how to make an API call](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#quick-overview-of-how-to-make-an-api-call).
 
-### Why do I get `Requested Order not found`?
+**Important:** Vipps can not help with the debugging of your code,
+we can only help with the API requests and response. Please do not send us your
+source code asking us to fix it for you.
 
-This is typically because the payment was initiated using the API keys for
-one sale unit (MSN), and you are attempting to get the details with
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
-using the API keys for a different sale unit (MSN).
 
-### Why do I get `429 Too Many Requests`?
+### Why do I get `HTTP 429 Too Many Requests`?
 
 We rate-limit some API endpoints to prevent incorrect usage.
 The rate-limiting has nothing to do with Vipps' total capacity, but is
@@ -854,7 +847,7 @@ See
 [Rate limiting](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#rate-limiting)
 for details.
 
-### Why do I get `500 Internal Server Error` (or similar)?
+### Why do I get `HTTP 500 Internal Server Error` (or similar)?
 
 Something _might_ be wrong on our side and we are working to fix it!
 
@@ -876,6 +869,21 @@ For most errors the body contains an explanation of what went wrong.
 See:
 [Statuspage](https://github.com/vippsas/vipps-developers#status-page).
 
+### Why do I get `errorCode 35 "Requested Order not found"`?
+
+This is typically because the payment was initiated using the API keys for
+one sale unit (MSN), and you are attempting to get the details with
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
+using the API keys for a different sale unit (MSN).
+
+This is either because you are specifying an incorrect orderId, or because you
+are trying to access an orderId with the incorrect API credentials.
+orderIds are not globally unique, they are only unique per MSN.
+If you use one the API credentials for one MSN and an orderId for another MSN,
+you will get this error.
+
+See: [Error codes](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes).
+
 ### Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`?
 
 Please check that the merchant's organization number is still active in
@@ -887,16 +895,6 @@ Please
 [contact customer service](https://vipps.no/kontakt-oss/bedrift/vipps/),
 and we will reactivate the merchant. We no longer automatically deactivate
 test merchants.
-
-See: [Error codes](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes).
-
-### Why do I get `errorCode 35 "Requested Order not found"`?
-
-This is either because you are specifying an incorrect orderId, or because you
-are trying to access an orderId with the incorrect API credentials.
-orderIds are not globally unique, they are only unique per MSN.
-If you use one the API credentials for one MSN and an orderId for another MSN,
-you will get this error.
 
 See: [Error codes](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes).
 
