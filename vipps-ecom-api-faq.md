@@ -798,9 +798,6 @@ See:
 
 ### Why do I get `HTTP 401 Unauthorized`?
 
-`HTTP 401 Unauthorized` occurs when there is a mismatch between the subscription keys and the
-merchant sale unit.
-
 If you get a `HTTP 401 Unauthorized` response, the reason for the error is in the
 response body, such as:
 
