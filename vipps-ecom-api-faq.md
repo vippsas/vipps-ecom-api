@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.3.1.
+Document version 3.3.2.
 
 ### Table of contents
 
@@ -121,17 +121,17 @@ associated with both are different enough to require this policy.
 
 The most common reasons are:
 
-1. The debit/credit card has expired
+1. The debit/credit card has expired.
 2. The debit/credit is no longer valid (typically when a user has received a new
-   card, but the previous card's expiry date has not yet been reached)
+   card, but the previous card's expiry date has not yet been reached).
 3. Insufficient funds on the debit/credit card (not enough money in the debit
-   card's bank account, or not enough credit left on the credit card)
-4. The debit/credit card has been rejected by the issuer
+   card's bank account, or not enough credit left on the credit card).
+4. The debit/credit card has been rejected by the issuer.
 5. Payment limit reached, the user needs to authenticate with bankID in Vipps.
 6. The payment has timed out (this happens if the user does not confirm in Vipps
-   within 5 minutes - typically if the user has deactivated push notifications)
-7. Attempt to capture an amount that exceeds the reserved amount
-8. Attempt to capture an amount that has not been reserved
+   within 5 minutes - typically if the user has deactivated push notifications).
+7. Attempt to capture an amount that exceeds the reserved amount.
+8. Attempt to capture an amount that has not been reserved.
 
 We are continuously improving the error messages in the Vipps app. Please note
 that we are not allowed to give detailed information about all errors to the
@@ -145,9 +145,9 @@ See the API guide for
 If the reserved amount is too low for shipping costs to be included, the capture will fail.
 The reserved amount must at least as high as the amount that is captured.
 
-Example: If the value of the shopping cart is 1000 NOK, and the reserved amount is 1100 NOK,
-the shipping cost must be maximum 100 NOK. If the shipping cost is 150 kr, a capture of
-1000 + 150 kr = 1150 NOK will fail.
+Example: If the value of the shopping cart is 1000 NOK, and the reserved amount is 1200 NOK,
+the shipping cost must be maximum 200 NOK to be within the reserved amount of 1200 NOK.
+If the shipping cost is 300 kr, a capture of 1000 + 3000 kr = 1300 NOK will fail.
 
 The API responds with details about the error.
 
@@ -163,6 +163,7 @@ prevent this, and that results in a CORS error.
 
 Vipps only receives the API requests over HTTPS, and has no way of detecting
 how the request was made on the caller side - it all looks the same.
+We can not fix the CORS error for you.
 
 You can read more about CORS here:
 [CORS Tutorial: A Guide to Cross-Origin Resource Sharing](https://auth0.com/blog/cors-tutorial-a-guide-to-cross-origin-resource-sharing/).
@@ -213,12 +214,11 @@ for the shipping method for the drinks, etc.
 ### What is the difference between "Reserve Capture" and "Direct Capture"?
 
 When you initiate a payment it will be reserved until you capture it.
-Vipps supports both _reserve-capture_ and _direct capture_.
+Vipps supports both _reserve-capture_ and _direct capture_:
 
-_Reserve capture_ is the default. When you initiate a payment it will be
+* _Reserve capture_ is the default. When you initiate a payment it will be
 reserved until you capture it.
-
-When _direct capture_ is activated, all payment reservations will instantly be
+* When _direct capture_ is activated, all payment reservations will instantly be
 captured. This is intended for situations where the product or service is
 immediately provided to the customer, and there is no chance that the
 service is not available or sold out, e.g. digital services.
@@ -232,7 +232,7 @@ available in the customer's account.
 See:
 [How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
 
-According to Norwegian regulations you should _not_ capture a payment until the
+According to Norwegian regulations you can _not_ capture a payment until the
 product or service is provided to the customer.
 For more information, please see the Consumer Authority's
 [Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
@@ -273,17 +273,17 @@ The details may change, but the information below is the best Vipps can offer.
 
 Vipps does not control the behaviour of the customer's card or account.
 
-VISA reservations are valid for 7 days (but only 5 for Visa Electron).
-The banks will release the reservation after 4-7 days, but if the capture is
-done within the 7 days, VISA guarantees that the capture will succeed.
-Vipps' PSP is Adyen, and they have some documentation for
-[VISA reservations](https://docs.adyen.com/online-payments/adjust-authorisation#visa).
+* VISA reservations are valid for 7 days (but only 5 for Visa Electron).
+  The banks will release the reservation after 4-7 days, but if the capture is
+  done within the 7 days, VISA guarantees that the capture will succeed.
+  Vipps' PSP is Adyen, and they have some documentation for
+  [VISA reservations](https://docs.adyen.com/online-payments/adjust-authorisation#visa).
 
-MasterCard reservations are valid for 30 days.
-The banks may release the reservation before this, but if the capture is
-done within the 30 days, MasterCard guarantees that the capture will succeed.
-Vipps' PSP is Adyen, and they have some documentation for
-[Mastercard reservations](https://docs.adyen.com/online-payments/adjust-authorisation#mastercard).
+* MasterCard reservations are valid for 30 days.
+  The banks may release the reservation before this, but if the capture is
+  done within the 30 days, MasterCard guarantees that the capture will succeed.
+  Vipps' PSP is Adyen, and they have some documentation for
+ [Mastercard reservations](https://docs.adyen.com/online-payments/adjust-authorisation#mastercard).
 
 Vipps cannot and does not automatically change the status of a reservation.
 
@@ -329,9 +329,9 @@ if you need this.
 
 ### Can I initiate a Vipps payment with a QR code?
 
-It is not possible to use aa static QR code with the eCom API.
+It is not possible to use a static QR code to initiate payments with the eCom API.
 
-With the eCom API payments are initiated by calling
+With the eCom API all payments are initiated by calling
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST),
 with a unique `orderId` for each payment.
 
@@ -364,6 +364,7 @@ The only ways to initiate Vipps payments from a QR code are:
 No. The Vipps "deeplink" is an integrated part of the Vipps payment process,
 and the link should never be sent in an SMS or email. The deeplink is only valid
 for 5 minutes, so users that do not act quickly will not be able to pay.
+There is no way to "retry" a deeplink after the timeout.
 
 According to Norwegian regulations the customer needs to actively accept the
 terms and conditions for the purchase.
@@ -392,7 +393,7 @@ See:
 
 ### Can I whitelist my URL for a Vipps QR?
 
-It is technically possible for a merchant to whitelist a URL so a user can scan
+Yes. It is technically possible for a merchant to whitelist a URL so a user can scan
 a Vipps-branded QR in Vipps and be sent directly to the merchant's URL.
 
 This functionality is in an experimental phase, and is only available for
@@ -413,7 +414,7 @@ for more details about the QR format and design.
 
 ### Can I use a different currency than NOK?
 
-Nope. All Vipps payments must be in NOK.
+Nope. All Vipps payments must be in NOK. Vipps does not do currency conversion.
 
 You will have to make any currency conversion _before_ initiating the Vipps
 payment, as the amount specified in the payment initiation is always in NOK,
@@ -431,6 +432,9 @@ For details on how to offer refunds, please refer to the documentation for your 
 
 All integrations with the Vipps eCom API _must_  support refunds. See the
 [Vipps eCommerce API Checklist](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md).
+
+It is also possible to do refunds on
+[portal.vipps.no](https://portal.vipps.no).
 
 Refunds can be made up to 365 days after capture.
 
@@ -468,7 +472,7 @@ See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settl
 
 ### Is it possible for a merchant to pay a Vipps user?
 
-No, Vipps has no functionality for paying to a Vipps user,
+No. Vipps has no functionality for paying to a Vipps user,
 except for refunding (part of) a payment.
 
 Vipps only has APIs for paying from a person to a merchant.
@@ -480,7 +484,7 @@ There are several reasons for this, including:
 
 * The Norwegian "Straksbetaling" (instant payments) system is not designed
   for this, and not all banks support it.
-* There are other account-to-account payment methods but all have their
+* There are other account-to-account payment methods, but all have their
   idiosyncrasies, and none are a perfect fit.
 * Payouts to cards is different than accounts, and will depend on the PSPs,
   which brings another set of challenges.
@@ -488,6 +492,11 @@ There are several reasons for this, including:
   and Vipps does not have this functionality in the API.
 * The SCA (Secure Customer Authentication) required by PSD2 further complicates
   payouts, both with an API and on [portal.vipps.no](https://portal.vipps.no).
+
+Vipps does have functionality for getting the user's bank accounts enrolled in
+Vipps, with the user's consent. Payments may then be made to the bank account.
+See:
+[Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
 
 ## Users and payments
 
@@ -508,12 +517,13 @@ and
 - email
 - name
 - phoneNumber
-- nin (fødselsnummer)
+- nin (national identity number, "fødselsnummer")
 - accountNumbers
 
 **Please note:** Vipps users have not consented to Vipps providing any
-information to third parties, and Vipps does not allow it. There is no
-other API to look up a user's address, retrieve a user's purchases, etc.
+information to third parties, and Vipps does not allow it.
+The Vipps user must always give consent to sharing data with a merchant.
+There is no other API to look up a user's address, retrieve a user's purchases, etc.
 
 ### Is there an API for retrieving information about a merchant's payments?
 
@@ -554,7 +564,7 @@ in the API guide.
 
 ### Can I split payments to charge a fee?
 
-Vipps does not support splitting payments to charge a fee.
+No. Vipps does not support splitting payments to charge a fee.
 
 If you want to charge a fee (like 3 %) of your payments, you can:
 
@@ -623,7 +633,8 @@ This is a requirement, see the
 In case the Vipps
 [callback](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#1-callback)
 fails, you will not automatically receive notification of order status.
-The solution is to check `/details`.
+The solution is to check with
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details).
 
 You can use
 [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
@@ -645,8 +656,11 @@ See: [Timeouts](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom
 
 The settlement flow depends on the banks and is as follows:
 
-1. Day 1: A customer makes a purchase and the transaction is completed. If the purchased product is shipped later, the "day 1" is the day the product is shipped and the customer's account is charged.
-2. Day 2: Settlement files are distributed, and are available on [portal.vipps.no](https://portal.vipps.no).
+1. Day 1: A customer makes a purchase and the transaction is completed. If the
+   purchased product is shipped later, the "day 1" is the day the product is
+   shipped and the customer's account is charged.
+2. Day 2: Settlement files are distributed, and are available on
+   [portal.vipps.no](https://portal.vipps.no).
 3. Day 3 (the next _bank day_) at 16:00: Payments are made from Vipps.
 4. Day 5 (the third _bank day_): The settlement is booked with reference by the bank.
 
@@ -666,7 +680,7 @@ See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settl
 ### Why has one of my customers been charged twice for the same payment?
 
 This does not happen, except in _extremely_ rare cases where multiple services,
-both at Vipps and banks fail simultaneously. In practice: This does not happen.
+both at Vipps, banks, PSPs, etc fail simultaneously. In practice: This does not happen.
 
 The most common reason for misunderstanding is that customers do not understand
 the difference between a _reservation_ and a _payment_ and/or that some banks
@@ -779,13 +793,16 @@ complete HTTP request, and any other related details, so we can investigate.
 See:
 [Callbacks](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callbacks).
 
+See:
+[How to test your own callbacks](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#how-to-test-your-own-callbacks).
+
 ### Why do I get `HTTP 401 Unauthorized`?
 
 `HTTP 401 Unauthorized` occurs when there is a mismatch between the subscription keys and the
 merchant sale unit.
 
 If you get a `HTTP 401 Unauthorized` response, the reason for the error is in the
-response body:
+response body, such as:
 
 ```
 Access denied due to invalid subscription key.
@@ -854,8 +871,8 @@ It _might_ also be a problem with your request, and that our validation does not
 
 Please make sure the JSON payload in your API request validates.
 That is the most common source of this type of error.
-
 In other words: We should perhaps have returned `HTTP 400 Bad Request`.
+
 You can use
 [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
 to manually do API calls, just to be sure.
@@ -885,7 +902,7 @@ See: [Error codes](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-e
 
 Please check that the merchant's organization number is still active in
 [Brønnøysundregistrene](https://www.brreg.no). Vipps automatically deactivates
-when companies are deleted from Brønnøysundregistrene.
+merchants (companies) when they are deleted from Brønnøysundregistrene.
 
 This can also happen if the test merchant is not being used for a _long_ time.
 Please
@@ -915,6 +932,8 @@ We recommend testing with 2 NOK, even though 1 NOK is the smallest possible amou
 
 ### What do we have to do with PSD2's SCA requirements?
 
+Nothing. Vipps will handle it for you.
+
 SCA (Strong customer authentication) is a security requirement related to PSD2,
 to reduce the risk of fraud and protect customer's data.
 
@@ -924,7 +943,7 @@ two-factor authentication featuring either PIN or biometrics in addition to
 device possession. In addition Vipps has implemented a Dynamic Linking according
 to the requirements.
 
-There is no need for any changes to your Vipps implementation for SCA.
+There is no need for any changes to your (old) Vipps implementation for SCA and PSD2.
 
 ### How can I use Vipps for different types of payments?
 
@@ -964,7 +983,7 @@ of purchases. This also has some benefits:
 
 This is typically needed for organization numbers with multiple stores,
 or offers different ways to pay with Vipps
-(See [How can I use Vipps for different types of payments?](#how-can-i-use-vipps-for-different-types-of-payments)).
+(see [How can I use Vipps for different types of payments?](#how-can-i-use-vipps-for-different-types-of-payments)).
 
 The bank account number for a sale unit must belong to the organization number
 of the company that has the customer relationship with Vipps.
@@ -1020,7 +1039,7 @@ for examples.
 
 ### Can I use Vipps with Klarna Checkout?
 
-Klarna Checkout (KCO) supports Vipps as an External Payment Method if you have
+Yes. Klarna Checkout (KCO) supports Vipps as an External Payment Method if you have
 agreement with Klarna for this. This requires a full integration with the Vipps eCom API.
 
 Also follow Klarna's process to get the External Payment Method activated for
