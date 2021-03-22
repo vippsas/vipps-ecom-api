@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.1.9.
+Document version 3.2.0.
 
 ### Table of contents
 
@@ -50,6 +50,7 @@ Document version 3.1.9.
   - [How long is an initiated order valid, if the user does not confirm in the Vipps app?](#how-long-is-an-initiated-order-valid-if-the-user-does-not-confirm-in-the-vipps-app)
   - [How long does it take until the money is in my account?](#how-long-does-it-take-until-the-money-is-in-my-account)
   - [How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
+  - [Why has one of my customers been charged twice for the same payment?](#why-has-one-of-my-customers-been-charged-twice-for-the-same-payment)
   - [In which sequence are callbacks and fallbacks done?](#in-which-sequence-are-callbacks-and-fallbacks-done)
   - [Where can I find reports on transactions?](#where-can-i-find-reports-on-transactions)
 - [Problems for end users](#problems-for-end-users)
@@ -647,7 +648,7 @@ See: [Timeouts](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom
 The settlement flow depends on the banks and is as follows:
 
 1. Day 1: A customer makes a purchase and the transaction is completed. If the purchased product is shipped later, the "day 1" is the day the product is shipped and the customer's account is charged.
-2. Day 2: Settlement files are distributed, and are available in the Vipps portal: https://portal.vipps.no.
+2. Day 2: Settlement files are distributed, and are available on [portal.vipps.no](https://portal.vipps.no).
 3. Day 3 (the next _bank day_) at 16:00: Payments are made from Vipps.
 4. Day 5 (the third _bank day_): The settlement is booked with reference by the bank.
 
@@ -664,6 +665,37 @@ Vipps does not have more information than what is available through our API:
 
 See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
 
+### Why has one of my customers been charged twice for the same payment?
+
+This does not happen, except in _extremely_ rare cases where multiple services,
+both at Vipps and banks fail simultaneously. In practice: This does not happen.
+
+The most common reason for misunderstanding is that customers do not understand
+the difference between a _reservation_ and a _payment_ and/or that some banks
+do not present this to their customers in a way that the customer understands.
+Users may see both a reservation and a charge, and think that they have paid
+twice.
+
+Most banks manage to do this properly, but apparently not all.
+
+Please check the Vipps payment:
+1. Find the Vipps `orderId` for the payment.
+2. Log in on [portal.vipps.no](https://portal.vipps.no).
+3. Click "Transaksjoner" and then "Søk på ID"
+4. Search for the `orderId` from step 1.
+5. Click the order.
+6. See the "History" details.
+
+The user can also check the payment in Vipps:
+1. Start Vipps and log in.
+2. Press "Payments" on the main screen.
+3. Scroll down and press "History"
+4. Check the payment and the "Transactions".
+5. Verify that the orderId and transaction id matches the ones in step 6 above.
+
+See:
+[For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
+
 ### In which sequence are callbacks and fallbacks done?
 
 Vipps can not guarantee a particular sequence, as this depends on user
@@ -675,7 +707,7 @@ See:
 
 ### Where can I find reports on transactions?
 
-The [Vipps portal](https://portal.vipps.no/login/) provides information about
+[portal.vipps.no](https://portal.vipps.no) provides information about
 your transactions, sale units and settlement reports.
 You can also subscribe to daily or monthly transaction reports by email.
 
