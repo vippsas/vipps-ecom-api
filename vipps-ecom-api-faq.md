@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.2.0.
+Document version 3.2.1.
 
 ### Table of contents
 
@@ -60,7 +60,8 @@ Document version 3.2.0.
 - [Common errors](#common-errors)
   - [Why do I not get callbacks from Vipps?](#why-do-i-not-get-callbacks-from-vipps)
   - [Why do I get `Access denied due to invalid subscription key`?](#why-do-i-get-access-denied-due-to-invalid-subscription-key)
-  - [I am getting `401 Unauthorized` error - and I have double checked all my keys!](#i-am-getting-401-unauthorized-error---and-i-have-double-checked-all-my-keys)
+  - [Why do I get `Access denied due to missing subscription key`?](#why-do-i-get-access-denied-due-to-missing-subscription-key)
+  - [I am getting `HTTP 401 Unauthorized` and I have double checked all my keys!](#i-am-getting-401-unauthorized-and-i-have-double-checked-all-my-keys)
   - [Why do I get `Requested Order not found`?](#why-do-i-get-requested-order-not-found)
   - [Why do I get `429 Too Many Requests`?](#why-do-i-get-429-too-many-requests)
   - [Why do I get `500 Internal Server Error` (or similar)?](#why-do-i-get-500-internal-server-error-or-similar)
@@ -799,7 +800,18 @@ And: Make sure you are using the right environment. The
 is completely separate from the production environment, and both the MSN and
 the API keys are different.
 
-### I am getting `401 Unauthorized` error - and I have double checked all my keys!
+See:
+[I am getting `HTTP 401 Unauthorized` and I have double checked all my keys!](#i-am-getting-401-unauthorized-and-i-have-double-checked-all-my-keys)
+
+See:
+[Quick overview of how to make an API call](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#quick-overview-of-how-to-make-an-api-call).
+
+### Why do I get `Access denied due to missing subscription key`?
+
+See:
+[Why do I get `Access denied due to invalid subscription key`?](#why-do-i-get-access-denied-due-to-invalid-subscription-key)
+
+### I am getting `HTTP 401 Unauthorized` and I have double checked all my keys!
 
 `HTTP 401 Unauthorized` occurs when there is a mismatch between the subscription keys and the
 merchant sales unit. Please follow these steps to make sure everything is correct:
