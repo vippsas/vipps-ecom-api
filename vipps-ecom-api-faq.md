@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.3.0.
+Document version 3.3.1.
 
 ### Table of contents
 
@@ -61,7 +61,7 @@ Document version 3.3.0.
   - [Why do I not get callbacks from Vipps?](#why-do-i-not-get-callbacks-from-vipps)
   - [Why do I get `HTTP 401 Unauthorized`?](#why-do-i-get-http-401-unauthorized)
   - [Why do I get `HTTP 429 Too Many Requests`?](#why-do-i-get-http-429-too-many-requests)
-  - [Why do I get `HTTP 500 Internal Server Error` (or similar)?](#why-do-i-get-http-500-internal-server-error-or-similar)
+  - [Why do I get `HTTP 500 Internal Server Error`?](#why-do-i-get-http-500-internal-server-error)
   - [Why do I get `errorCode 35 "Requested Order not found"`?](#why-do-i-get-errorcode-35-requested-order-not-found)
   - [Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`](#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked)
   - [Why do I not get the `sub` from `/details`?](#why-do-i-not-get-the-sub-from-details)
@@ -847,10 +847,9 @@ See
 [Rate limiting](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#rate-limiting)
 for details.
 
-### Why do I get `HTTP 500 Internal Server Error` (or similar)?
+### Why do I get `HTTP 500 Internal Server Error`?
 
 Something _might_ be wrong on our side and we are working to fix it!
-
 It _might_ also be a problem with your request, and that our validation does not catch it.
 
 Please make sure the JSON payload in your API request validates.
@@ -860,8 +859,6 @@ In other words: We should perhaps have returned `HTTP 400 Bad Request`.
 You can use
 [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
 to manually do API calls, just to be sure.
-
-See: [API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints) for an overview.
 
 Please check the HTTP response body from our API (not just the HTTP status).
 For most errors the body contains an explanation of what went wrong.
