@@ -940,19 +940,19 @@ If you get errors like below from Microsoft Azure, you are not using the right A
 
 ```
 {
-    "error":"unauthorized_client",
-    "error_description":
-      "AADSTS700016: Application with identifier \'my_client_id\'
-       was not found in the directory \'tenant_directory\'.
-       This can happen if the application has not been installed
-       by the administrator of the tenant or consented to by any
-       user in the tenant. You may have sent your authentication
-       request to the wrong tenant.",
-    "error_codes":[700016],
-    "timestamp":"2021-03-23 06:46:31Z",
-    "trace_id":"<snip>",
-    "correlation_id":"<snip>",
-    "error_uri":"https://login.windows.net/error?code=700016"
+  "error":"unauthorized_client",
+  "error_description":
+    "AADSTS700016: Application with identifier \'my_client_id\'
+     was not found in the directory \'tenant_directory\'.
+     This can happen if the application has not been installed
+     by the administrator of the tenant or consented to by any
+     user in the tenant. You may have sent your authentication
+     request to the wrong tenant.",
+  "error_codes":[700016],
+  "timestamp":"2021-03-23 06:46:31Z",
+  "trace_id":"<snip>",
+  "correlation_id":"<snip>",
+  "error_uri":"https://login.windows.net/error?code=700016"
 }
 ```
 
