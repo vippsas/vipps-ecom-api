@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.7
+  version: 1.6.8
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -122,10 +122,10 @@ paths:
         This API endpoint on the merchant side allows Vipps to send consent
         removal requests to the merchant. When receiving requests the merchant
         is obliged to remove the user details permanently, as per the GDPR
-        guidelines. Vipps will add `/v2/consents/{userId}` to the end of this
-        URL.
-        URLs passed to Vipps must validate with the Apache Commons
-        [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
+        guidelines. Vipps will add `/v2/consents/{userId}` to the end of this URL.
+        URLs passed to Vipps must validate, see
+        [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
+        We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
       operationId: removeUserConsentUsingDELETE
       parameters:
         - name: userId
@@ -154,8 +154,8 @@ paths:
         this URL.
         Vipps has a *10 second timeout* for these requests, and thus requires
         a quick reply from the merchant's server for successful payments.
-        URLs passed to Vipps must validate with the Apache Commons
-        [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
+        URLs passed to Vipps must validate, see
+        [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
         We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
       operationId: fetchShippingCostUsingPOST
       parameters:
@@ -206,8 +206,8 @@ paths:
         The merchant may also pass the 'isApp: true' parameter that will make Vipps
         respond with a app-switch deeplink that will take the customer directly
         to the Vipps app.
-        URLs passed to Vipps must validate with the Apache Commons
-        [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
+        URLs passed to Vipps must validate, see
+        [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
       operationId: initiatePaymentV3UsingPOST
       parameters:
         - in: header
@@ -292,9 +292,10 @@ paths:
                 For regular ecomm payments the order and transaction details will be shared.
                 For Vipps Hurtigkasse (express checkout) payments it will provide user details and
                 shipping details addition to the order and transaction details.
-                Vipps will add `/v2/payments/{orderId}` to the end of this URL. URLs passed to
-                Vipps should be URL-encoded, and must validate with the Apache Commons
-                [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
+                Vipps will add `/v2/payments/{orderId}` to the end of this URL.
+                URLs passed to Vipps must validate, see
+                [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
+                We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
               operationId: InitiatePaymentTransactionUpdateCallbackForRegularPaymentUsingPOSTExpress
               parameters:
                 - name: orderId
@@ -320,9 +321,10 @@ paths:
                 For regular ecomm payments the order and transaction details will be shared.
                 For Vipps Hurtigkasse (express checkout) payments it will provide user details and
                 shipping details addition to the order and transaction details.
-                Vipps will add `/v2/payments/{orderId}` to the end of this URL. URLs passed to
-                Vipps should be URL-encoded, and must validate with the Apache Commons
-                [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
+                Vipps will add `/v2/payments/{orderId}` to the end of this URL.
+                URLs passed to Vipps must validate, see
+                [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
+                We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
               operationId: InitiatePaymentTransactionUpdateCallbackForRegularPaymentUsingPOSTExpress
               parameters:
                 - name: orderId
@@ -347,9 +349,10 @@ paths:
                 This API endpoint on the merchant side allows Vipps to send consent
                 removal requests to merchant. When receiving requests the merchant is
                 obliged to remove the user details permanently, as per the GDPR
-                guidelines. Vipps will add `/v2/consents/{userId}` to the end of this
-                URL. URLs passed to Vipps must validate with the Apache Commons
-                [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).  We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
+                guidelines. Vipps will add `/v2/consents/{userId}` to the end of this URL.
+                URLs passed to Vipps must validate, see
+                [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
+                We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
               operationId: removeUserConsentUsingDELETE
               parameters:
                 - name: userId
@@ -379,8 +382,8 @@ paths:
                     a quick reply from the merchant's server for successful payments.
                     If the merchant does not respond in time, the user will get an
                     error in Vipps saying "No shipping methods found".
-                    URLs passed to Vipps must validate with the Apache Commons
-                    [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
+                    URLs passed to Vipps must validate, see
+                    [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
                     We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
                   operationId: fetchShippingCostUsingPOST
                   parameters:
@@ -469,10 +472,10 @@ paths:
         For regular ecomm payments the order and transaction details will be shared.
         For Vipps Hurtigkasse (express checkout) payments it will provide user details and
         shipping details addition to the order and transaction details.
-        Vipps
-        will add `/v2/payments/{orderId}` to the end of this URL. URLs passed to
-        Vipps should be URL-encoded, and must validate with the Apache Commons
-        [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
+        Vipps will add `/v2/payments/{orderId}` to the end of this URL.
+        URLs passed to Vipps must validate, see
+        [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
+        We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
       operationId: transactionUpdateCallbackForRegularPaymentUsingPOST
       parameters:
         - name: orderId
@@ -2182,8 +2185,9 @@ components:
             Domain name and context path should be provided by merchant as the
             value for this parameter. Vipps will add `/v2/payments/{orderId}` to
             the end or this URL.
-            URLs passed to Vipps must validate with the Apache Commons
-            [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
+            URLs passed to Vipps must validate, see
+            [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
+            We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
           maxLength: 255
           example: 'https://example.com/vipps/callbacks-for-payment-updates'
         consentRemovalPrefix:
@@ -2193,10 +2197,10 @@ components:
             used by Vipps to inform the merchant that the user has revoked
             his/her consent: This Vipps user does do not want the merchant to
             store or use his/her personal information anymore. Required by GDPR.
-            Vipps will add `/v2/consents/{userId}` to the end or this URL. URLs
-            passed to Vipps should be URL-encoded, and must validate with the
-            Apache Commons
-            [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html). We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
+            Vipps will add `/v2/consents/{userId}` to the end or this URL.
+            URLs passed to Vipps must validate, see
+            [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
+            We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
           maxLength: 255
           example: 'https://example.com/vipps'
         fallBack:
@@ -2207,8 +2211,8 @@ components:
             This is normally the “success page”, although the “fallback” name
             is ambiguous (the same URL is also used if payment was not successful).
             In other words: This is the URL Vipps sends the Vipps user back to.
-            URLs passed to Vipps must validate with the Apache Commons
-            [UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
+            URLs passed to Vipps must validate, see
+            [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
           maxLength: 255
           example: 'https://example.com/vipps/fallback-order-result-page/acme-shop-123-order123abc'
         isApp:
