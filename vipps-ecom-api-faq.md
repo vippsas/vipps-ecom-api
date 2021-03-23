@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.3.2.
+Document version 3.4.0.
 
 ### Table of contents
 
@@ -65,6 +65,7 @@ Document version 3.3.2.
   - [Why do I get `errorCode 35 "Requested Order not found"`?](#why-do-i-get-errorcode-35-requested-order-not-found)
   - [Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`](#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked)
   - [Why do I not get the `sub` from `/details`?](#why-do-i-not-get-the-sub-from-details)
+  - [Why do I get `unauthorized_client`?](#why-do-i-get-unauthorized-client)
 - [Other questions](#other-Questions)
   - [How do I perform "testing in production"?](#how-do-i-perform-testing-in-production)
   - [What do we have to do with PSD2's SCA requirements?](#what-do-we-have-to-do-with-psd2s-sca-requirements)
@@ -917,6 +918,46 @@ If you use the correct `scope` in the payment initiation, but don't get the
 Very short orderIds don't work well with our database index, and may cause
 an internal timeout, and we "have to" send the response without the `sub`.
 We can not enforce longer orderIds due to backwards compatibility.
+
+### Why do I get `unauthorized_client`?
+
+If you get errors like below from Microsoft Azure, you are not using the right API keys:
+
+```
+{
+  "error": "unauthorized_client",
+  "error_description":
+    "AADSTS70001: Application with identifier 'e9b6c99d-2442-4a5d-84a2-\
+     c53a807fe0c4' was not found in the directory testapivipps.no\
+     Trace ID: 3bc2b2a0-d9bb-4c2e-8367- 5633866f1300\r\nCorrelation ID:\
+     bb2f4093-70af-446a-a26d-ed8becca1a1a\r\nTimestamp: 2017-05-19 09:21:28Z",
+  "error_codes": [ 70001 ],
+  "timestamp": "2017-05-19 09:21:28Z",
+  "trace_id": "3bc2b2a0-d9bb-4c2e-8367-5633866f1300",
+  "correlation_id": "bb2f4093-70af-446a-a26d-ed8becca1a1a"
+}
+```
+
+```
+{
+  "error":"unauthorized_client",
+  "error_description":
+    "AADSTS700016: Application with identifier \'my_client_id\'
+     was not found in the directory \'tenant_directory\'.
+     This can happen if the application has not been installed
+     by the administrator of the tenant or consented to by any
+     user in the tenant. You may have sent your authentication
+     request to the wrong tenant.",
+  "error_codes":[700016],
+  "timestamp":"2021-03-23 06:46:31Z",
+  "trace_id":"<snip>",
+  "correlation_id":"<snip>",
+  "error_uri":"https://login.windows.net/error?code=700016"
+}
+```
+
+To fix this, please check that you are using the right API keys, similar to:
+[Why do I get `HTTP 401 Unauthorized`?](#why-do-i-get-http-401-unauthorized).
 
 ## Other questions
 
