@@ -17,7 +17,7 @@ Document version 3.4.1.
 
 - [Requirements](#requirements)
   - [What are the requirements for Vipps merchants?](#what-are-the-requirements-for-vipps-merchants)
-  - [Can I use my "Vipps-nummer" in my webshop?](#can-i-use-my-vipps-nummer-in-my-webshop)
+  - [Can I use my "Vippsnummer" in my webshop?](#can-i-use-my-vippsnummer-in-my-webshop)
 - [Common problems](#common-problems)
   - [Why do payments fail?](#why-do-payments-fail)
   - [Why does capture fail?](#why-does-capture-fail)
@@ -99,10 +99,10 @@ in the
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-### Can I use my "Vipps-nummer" in my webshop?
+### Can I use my "Vippsnummer" in my webshop?
 
 No.
-[Vipps-nummer](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/ta-betalt-med-vipps/)
+[Vippsnummer](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/ta-betalt-med-vipps/)
 can't be used for
 [Vipps på Nett](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/),
 [Vipps Logg Inn](https://vipps.no/produkter-og-tjenester/bedrift/logg-inn-med-vipps/logg-inn-med-vipps/)
