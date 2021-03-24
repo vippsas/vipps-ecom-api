@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.4.1.
+Document version 3.4.2.
 
 ### Table of contents
 
@@ -847,6 +847,13 @@ to double check your API keys, sale units and API products.
 
 See:
 [Quick overview of how to make an API call](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#quick-overview-of-how-to-make-an-api-call).
+
+If you are absolutely 100 % sure that you have done everything correctly,
+and it _still_ doesn't work, you can regenerate the API keys on
+[portal.vipps.no](https://portal.vipps.no).
+This should never be necessary, and we can not think of any situations where
+this fixes any known problem, so it's our very last suggestion.
+The old API keys will of course stop working when they have been regenerated.
 
 **Important:** Vipps can not help with the debugging of your code,
 we can only help with the API requests and response. Please do not send us your
