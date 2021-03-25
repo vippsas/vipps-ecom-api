@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.4.2.
+Document version 3.4.3.
 
 ### Table of contents
 
@@ -824,6 +824,9 @@ Please follow these steps to make sure everything is correct:
    The test and production environments are separate and require different API credentials.
 4. Check both the HTTP response header and the response body from our API.
    For most errors the body contains an explanation of what went wrong.
+5. If you are a partner and you are using partner keys: Double check everything
+   described here:
+   [Partner keys](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#partner-keys).
 
 You can use
 [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
