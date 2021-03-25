@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.18.
+Document version 2.5.19.
 
 ## Table of contents
 
@@ -562,7 +562,7 @@ to the first payment attempt.
 ## orderId recommendations
 
 A `orderId` must be unique for the MSN (Merchant Serial Number, the id of
-the sale unit).
+the sale unit). The `orderId` is case sensitive.
 The `orderId` does not need to be globally unique, so several
 MSNs may use the same `orderId`, as long as it is unique for each sale unit.
 
