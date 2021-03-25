@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.4.3.
+Document version 3.4.4.
 
 ### Table of contents
 
@@ -820,8 +820,11 @@ Please follow these steps to make sure everything is correct:
 1. Check the Swagger specification for the correct spelling of all the header parameters.
    They are case sensitive: `Authorization: Bearer <snip>` is not the same as `Authorization: bearer <snip>`.
 2. Check that you are using the same subscription key for both the access token and payment requests
-3. Check that you are using the correct API keys for the environment.
-   The test and production environments are separate and require different API credentials.
+3. Make sure you are using the right environment and check that you are using
+   the correct API keys for the environment. The
+   [test environment](https://github.com/vippsas/vipps-developers/blob/master/vipps-test-environment.md)
+   is completely separate from the production environment, and both the MSN and
+   the API keys are different.
 4. Check both the HTTP response header and the response body from our API.
    For most errors the body contains an explanation of what went wrong.
 5. If you are a partner and you are using partner keys: Double check everything
@@ -838,11 +841,6 @@ See:
 You also need to make sure you have access to the right API.
 See:
 [API products](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#api-products).
-
-Make sure you are using the right environment. The
-[test environment](https://github.com/vippsas/vipps-developers/blob/master/vipps-test-environment.md)
-is completely separate from the production environment, and both the MSN and
-the API keys are different.
 
 You can log in to
 [portal.vipps.no](https://portal.vipps.no)
