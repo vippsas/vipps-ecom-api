@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.4.4.
+Document version 3.4.5.
 
 ### Table of contents
 
@@ -258,14 +258,22 @@ and cancel (if it was `RESERVE` and reserve capture) or refund (if it was `SALE`
 
 ### How do I turn direct capture on or off?
 
-You can't turn _direct capture_ on or off as a merchant. This must be
-requested of your Key Account Manager. If you do not have a KAM:
-Please log in on
+You can't turn _direct capture_ on or off as a merchant.
+This must be requested of your Key Account Manager.
+If you do not have a KAM: Please log in on
 [portal.vipps.no](https://portal.vipps.no),
 find the right sale unit and click the email link under the "i" information bubble.
 
 To get both _direct capture_ and _reserve capture_ you must request two
 different sale units, as this can not be specified in the API calls.
+
+You can create new sale units in the
+[test environment](https://github.com/vippsas/vipps-developers/blob/master/vipps-test-environment.md)
+yourself on
+[portal.vipps.no](https://portal.vipps.no):
+On the page with the API keys for the test environment there is a button
+for creating additional sale units, and you can then select
+"direct capture" or "reserve capture", and also `skipLandingPage`.
 
 ### For how long is an initiated payment reserved?
 
