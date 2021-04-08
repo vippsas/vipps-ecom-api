@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.4.5.
+Document version 3.4.6.
 
 ### Table of contents
 
@@ -384,6 +384,9 @@ Instead of sending a Vipps deeplink: Send a link to your website, and let
 the user start the Vipps payment there. It can be a very simple page with a link
 or a button. You then have the opportunity to give the user additional
 information, and also a proper confirmation page after the payment has been completed.
+
+You can also send the customer a link to a pre-filled shopping cart, so the customer
+can add more items, and pay with Vipps Hurtigkasse.
 
 In some cases, such as for donations and gifts, it may be acceptable to automatically
 trigger the Vipps payment when the user enters your website. This requires that the
