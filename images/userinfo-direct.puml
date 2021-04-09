@@ -18,12 +18,6 @@ UserVippsApp -> Merchant : Response
 Merchant -> Vipps : Retrieve details
 Vipps --> Merchant : Return details, sub included
 Merchant -> Vipps : Get on userinfo/{sub}
-Vipps --> Merchant : Return usersinfo
-note right
-The Userinfo endpoint is
-managed by Vipps Login, and requires
-a Vipps Login Authorization token
-to access.
-end note
+Vipps --> Merchant : Return userinfo
 Merchant -> Merchant : Handle session result
 @enduml
