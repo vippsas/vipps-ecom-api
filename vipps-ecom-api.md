@@ -2012,9 +2012,9 @@ allowed to provide more details.
 | Payment | 71 | Cannot refund more than captured amount ||
 | Payment | 72 | Cannot refund for reserved order, please use Cancel API ||
 | Payment | 73 | Cannot refund on cancelled order ||
-| Payment | 93 | Captured amount should be same in Idempotent retry ||
-| Payment | 95 | Captured amount should be same in Idempotent retry ||
-| Payment | 96 | Captured amount should be same in Idempotent retry ||
+| Payment | 93 | Captured amount should be the same in Idempotent retry ||
+| Payment | 95 | Payments can only be refunded up to 365 days after reservation ||
+| Payment | 96 | Payments can only be captured up to 180 days after reservation ||
 | Payment | 1501 | This person can not pay to companies |Used for Vipps users under the age of 15.|
 | InvalidRequest  | Field name will be the error code | Description about what exactly the field error is ||
 | VippsError | 91 | Transaction is not allowed ||
