@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.19.
+Document version 2.5.20.
 
 ## Table of contents
 
@@ -1051,6 +1051,10 @@ until you capture it. With direct capture the reservation is instantly captured.
   call, and
   it then takes a few days before the amount is available in the customer's account.
 
+Capture can be made up to 180 days after reservation.
+Attempting to capture an older payment will result in a
+`HTTP 400 Bad Request`.
+
 See the FAQ:
 [What is the difference between "Reserve Capture" and "Direct Capture"?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#what-is-the-difference-between-reserve-capture-and-direct-capture.)
 
@@ -1211,7 +1215,9 @@ In a capture request the merchant may also use the `X-Request-Id`header. This he
 You can use any unique id for your `X-Request-Id`.
 See the API specification for details.
 
-Refunds can be made up to 365 days after capture.
+Refunds can be made up to 365 days after reservation.
+Attempting to refund an older payment will result in a
+`HTTP 400 Bad Request`.
 
 Swagger: [`POST:/ecomm/v2/payments/acme-shop-123-order123abc/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/refundPaymentUsingPOST)
 
