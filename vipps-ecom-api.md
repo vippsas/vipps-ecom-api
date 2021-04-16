@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.19.
+Document version 2.5.21.
 
 ## Table of contents
 
@@ -1050,6 +1050,10 @@ until you capture it. With direct capture the reservation is instantly captured.
   call, and
   it then takes a few days before the amount is available in the customer's account.
 
+Capture can be made up to 180 days after reservation.
+Attempting to capture an older payment will result in a
+`HTTP 400 Bad Request`.
+
 See the FAQ:
 [What is the difference between "Reserve Capture" and "Direct Capture"?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#what-is-the-difference-between-reserve-capture-and-direct-capture.)
 
@@ -1210,7 +1214,9 @@ In a capture request the merchant may also use the `X-Request-Id`header. This he
 You can use any unique id for your `X-Request-Id`.
 See the API specification for details.
 
-Refunds can be made up to 365 days after capture.
+Refunds can be made up to 365 days after reservation.
+Attempting to refund an older payment will result in a
+`HTTP 400 Bad Request`.
 
 Swagger: [`POST:/ecomm/v2/payments/acme-shop-123-order123abc/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/refundPaymentUsingPOST)
 
@@ -1937,22 +1943,24 @@ allowed to provide more details.
 
 | Error group | Error Code | Error Message | Comment |
 | ----- | ---- | ----------- |------|
-| Payments | 41 | User do not have a valid card ||
-| Payments | 42 | Refused by issuer bank ||
-| Payments | 43 | Refused by issuer bank because of invalid a amount ||
-| Payments | 44 | Refused by issuer because of expired card ||
-| Payments | 45 | Reservation failed for some unknown reason ||
-| Payments | 51 | Cannot cancel already captured order ||
-| Payments | 52 | Cancellation failed ||
-| Payments | 53 | Cannot cancel order which is not reserved yet ||
-| Payments | 61 | Captured amount exceeds the reserved amount ordered ||
-| Payments | 62 | The amount you tried to capture is not reserved ||
-| Payments | 63 | Capture failed for some unknown reason, please use Get Payment Details API to know the exact status ||
-| Payments | 71 | Cannot refund more than captured amount ||
-| Payments | 72 | Cannot refund for reserved order, please use Cancel API ||
-| Payments | 73 | Cannot refund on cancelled order ||
-| Payments | 93 | Captured amount should be same in Idempotent retry ||
-| Payments | 1501 | This person can not pay to companies |Used for Vipps users under the age of 15.|
+| Payment | 41 | User do not have a valid card ||
+| Payment | 42 | Refused by issuer bank ||
+| Payment | 43 | Refused by issuer bank because of invalid a amount ||
+| Payment | 44 | Refused by issuer because of expired card ||
+| Payment | 45 | Reservation failed for some unknown reason ||
+| Payment | 51 | Cannot cancel already captured order ||
+| Payment | 52 | Cancellation failed ||
+| Payment | 53 | Cannot cancel order which is not reserved yet ||
+| Payment | 61 | Captured amount exceeds the reserved amount ordered ||
+| Payment | 62 | The amount you tried to capture is not reserved ||
+| Payment | 63 | Capture failed for some unknown reason, please use Get Payment Details API to know the exact status ||
+| Payment | 71 | Cannot refund more than captured amount ||
+| Payment | 72 | Cannot refund for reserved order, please use Cancel API ||
+| Payment | 73 | Cannot refund on cancelled order ||
+| Payment | 93 | Captured amount should be the same in Idempotent retry ||
+| Payment | 95 | Payments can only be refunded up to 365 days after reservation ||
+| Payment | 96 | Payments can only be captured up to 180 days after reservation ||
+| Payment | 1501 | This person can not pay to companies |Used for Vipps users under the age of 15.|
 | InvalidRequest  | Field name will be the error code | Description about what exactly the field error is ||
 | VippsError | 91 | Transaction is not allowed ||
 | VippsError | 92 | Transaction already processed ||
