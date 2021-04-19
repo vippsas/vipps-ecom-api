@@ -1548,6 +1548,10 @@ Darkula color scheme from the JetBrains family of IDEs
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
   </head>
 
   <body data-languages="[&quot;shell&quot;,&quot;http&quot;,&quot;javascript&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;php&quot;,&quot;java&quot;,&quot;go&quot;]">
@@ -1698,6 +1702,20 @@ Darkula color scheme from the JetBrains family of IDEs
           </li>
         
           <li>
+            <a href="#vipps-ecommerce-api-vipps-userinfo-api" class="toc-h1 toc-link" data-title="Vipps Userinfo API">Vipps Userinfo API</a>
+            
+              <ul class="toc-list-h2">
+                
+                  <li>
+                    <a href="#get-userinfo" class="toc-h2 toc-link" data-title="">Get Userinfo</a>
+                    
+                  </li>
+                
+              </ul>
+            
+          </li>
+        
+          <li>
             <a href="#schemas" class="toc-h1 toc-link" data-title="Schemas">Schemas</a>
             
               <ul class="toc-list-h2">
@@ -1739,6 +1757,21 @@ Darkula color scheme from the JetBrains family of IDEs
                 
                   <li>
                     <a href="#tocs_userdetails" class="toc-h2 toc-link" data-title="">UserDetails</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#tocs_userinfo" class="toc-h2 toc-link" data-title="">Userinfo</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#tocs_userinfoaccountinfo" class="toc-h2 toc-link" data-title="">UserinfoAccountInfo</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#tocs_userinfoaddress" class="toc-h2 toc-link" data-title="">UserinfoAddress</a>
                     
                   </li>
                 
@@ -1879,6 +1912,11 @@ Darkula color scheme from the JetBrains family of IDEs
                 
                   <li>
                     <a href="#tocs_error" class="toc-h2 toc-link" data-title="">Error</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#tocs_userinfoerror" class="toc-h2 toc-link" data-title="">UserinfoError</a>
                     
                   </li>
                 
@@ -6243,6 +6281,258 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
+<h1 id="vipps-ecommerce-api-vipps-userinfo-api">Vipps Userinfo API</h1>
+<h2 id="get-userinfo">Get Userinfo</h2>
+<p><a id="opIdgetUserinfo"></a></p>
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight tab tab-shell"><code><span class="hljs-comment"># You can also use wget</span>
+curl -X GET https://apitest.vipps.no/vipps-userinfo-api/userinfo/{sub} \
+  -H <span class="hljs-string">&#x27;Accept: application/json;charset=UTF-8&#x27;</span> \
+  -H <span class="hljs-string">&#x27;Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...&#x27;</span>
+
+</code></pre>
+<pre class="highlight tab tab-http"><code><span class="hljs-keyword">GET</span> <span class="hljs-string">https://apitest.vipps.no/vipps-userinfo-api/userinfo/{sub}</span> HTTP/1.1
+<span class="hljs-attribute">Host</span>: apitest.vipps.no
+<span class="hljs-attribute">Accept</span>: application/json;charset=UTF-8
+<span class="hljs-attribute">Authorization</span>: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...
+
+</code></pre>
+<pre class="highlight tab tab-javascript"><code>
+<span class="hljs-keyword">const</span> headers = {
+  <span class="hljs-string">&#x27;Accept&#x27;</span>:<span class="hljs-string">&#x27;application/json;charset=UTF-8&#x27;</span>,
+  <span class="hljs-string">&#x27;Authorization&#x27;</span>:<span class="hljs-string">&#x27;eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...&#x27;</span>
+};
+
+fetch(<span class="hljs-string">&#x27;https://apitest.vipps.no/vipps-userinfo-api/userinfo/{sub}&#x27;</span>,
+{
+  <span class="hljs-attr">method</span>: <span class="hljs-string">&#x27;GET&#x27;</span>,
+
+  <span class="hljs-attr">headers</span>: headers
+})
+.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">res</span>) </span>{
+    <span class="hljs-keyword">return</span> res.json();
+}).then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">body</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(body);
+});
+
+</code></pre>
+<pre class="highlight tab tab-ruby"><code><span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;rest-client&#x27;</span>
+<span class="hljs-keyword">require</span> <span class="hljs-string">&#x27;json&#x27;</span>
+
+headers = {
+  <span class="hljs-string">&#x27;Accept&#x27;</span> =&gt; <span class="hljs-string">&#x27;application/json;charset=UTF-8&#x27;</span>,
+  <span class="hljs-string">&#x27;Authorization&#x27;</span> =&gt; <span class="hljs-string">&#x27;eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...&#x27;</span>
+}
+
+result = RestClient.get <span class="hljs-string">&#x27;https://apitest.vipps.no/vipps-userinfo-api/userinfo/{sub}&#x27;</span>,
+  <span class="hljs-symbol">params:</span> {
+  }, <span class="hljs-symbol">headers:</span> headers
+
+p JSON.parse(result)
+
+</code></pre>
+<pre class="highlight tab tab-python"><code><span class="hljs-keyword">import</span> requests
+headers = {
+  <span class="hljs-string">&#x27;Accept&#x27;</span>: <span class="hljs-string">&#x27;application/json;charset=UTF-8&#x27;</span>,
+  <span class="hljs-string">&#x27;Authorization&#x27;</span>: <span class="hljs-string">&#x27;eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...&#x27;</span>
+}
+
+r = requests.get(<span class="hljs-string">&#x27;https://apitest.vipps.no/vipps-userinfo-api/userinfo/{sub}&#x27;</span>, headers = headers)
+
+print(r.json())
+
+</code></pre>
+<pre class="highlight tab tab-php"><code> <span class="hljs-string">&#x27;application/json;charset=UTF-8&#x27;</span>,
+    <span class="hljs-string">&#x27;Authorization&#x27;</span> =&gt; <span class="hljs-string">&#x27;eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...&#x27;</span>,
+);
+
+$client = <span class="hljs-keyword">new</span> \GuzzleHttp\Client();
+
+<span class="hljs-comment">// Define array of request body.</span>
+$request_body = <span class="hljs-keyword">array</span>();
+
+<span class="hljs-keyword">try</span> {
+    $response = $client-&gt;request(<span class="hljs-string">&#x27;GET&#x27;</span>,<span class="hljs-string">&#x27;https://apitest.vipps.no/vipps-userinfo-api/userinfo/{sub}&#x27;</span>, <span class="hljs-keyword">array</span>(
+        <span class="hljs-string">&#x27;headers&#x27;</span> =&gt; $headers,
+        <span class="hljs-string">&#x27;json&#x27;</span> =&gt; $request_body,
+       )
+    );
+    print_r($response-&gt;getBody()-&gt;getContents());
+ }
+ <span class="hljs-keyword">catch</span> (\GuzzleHttp\<span class="hljs-built_in">Exception</span>\BadResponseException $e) {
+    <span class="hljs-comment">// handle exception or api errors.</span>
+    print_r($e-&gt;getMessage());
+ }
+
+ <span class="hljs-comment">// ...</span>
+
+</code></pre>
+<pre class="highlight tab tab-java"><code>URL obj = <span class="hljs-keyword">new</span> URL(<span class="hljs-string">&quot;https://apitest.vipps.no/vipps-userinfo-api/userinfo/{sub}&quot;</span>);
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod(<span class="hljs-string">&quot;GET&quot;</span>);
+<span class="hljs-keyword">int</span> responseCode = con.getResponseCode();
+BufferedReader in = <span class="hljs-keyword">new</span> BufferedReader(
+    <span class="hljs-keyword">new</span> InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = <span class="hljs-keyword">new</span> StringBuffer();
+<span class="hljs-keyword">while</span> ((inputLine = in.readLine()) != <span class="hljs-keyword">null</span>) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+</code></pre>
+<pre class="highlight tab tab-go"><code><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+       <span class="hljs-string">&quot;bytes&quot;</span>
+       <span class="hljs-string">&quot;net/http&quot;</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+
+    headers := <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>][]<span class="hljs-keyword">string</span>{
+        <span class="hljs-string">&quot;Accept&quot;</span>: []<span class="hljs-keyword">string</span>{<span class="hljs-string">&quot;application/json;charset=UTF-8&quot;</span>},
+        <span class="hljs-string">&quot;Authorization&quot;</span>: []<span class="hljs-keyword">string</span>{<span class="hljs-string">&quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...&quot;</span>},
+    }
+
+    data := bytes.NewBuffer([]<span class="hljs-keyword">byte</span>{jsonReq})
+    req, err := http.NewRequest(<span class="hljs-string">&quot;GET&quot;</span>, <span class="hljs-string">&quot;https://apitest.vipps.no/vipps-userinfo-api/userinfo/{sub}&quot;</span>, data)
+    req.Header = headers
+
+    client := &amp;http.Client{}
+    resp, err := client.Do(req)
+    <span class="hljs-comment">// ...</span>
+}
+
+</code></pre>
+<p><code>GET /vipps-userinfo-api/userinfo/{sub}</code></p>
+<p>This endpoint returns the payload with the information that the user has consented to share. Find more info on the <code>/userinfo</code> endpoint at the OIDC Standard <a href="https://openid.net/specs/openid-connect-core-1_0.html#UserInfo">https://openid.net/specs/openid-connect-core-1_0.html#UserInfo</a></p>
+<h3 id="get-userinfo-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sub</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>The <code>sub</code> is specified when fetching payment details</td>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>header</td>
+<td>string</td>
+<td>true</td>
+<td>The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the <code>POST:/accesstoken/get</code> endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Example responses</p>
+</blockquote>
+<blockquote>
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;accounts&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;account_name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;account_number&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;bank_name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    }
+  ],
+  <span class="hljs-attr">&quot;address&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;address_type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;country&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;default&quot;</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">&quot;formatted&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;postal_code&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;region&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;street_address&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    }
+  ],
+  <span class="hljs-attr">&quot;other_addresses&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;addressLine1&quot;</span>: <span class="hljs-string">&quot;Robert Levins gate 5&quot;</span>,
+      <span class="hljs-attr">&quot;addressLine2&quot;</span>: <span class="hljs-string">&quot;Att: Rune Garborg&quot;</span>,
+      <span class="hljs-attr">&quot;city&quot;</span>: <span class="hljs-string">&quot;Oslo&quot;</span>,
+      <span class="hljs-attr">&quot;country&quot;</span>: <span class="hljs-string">&quot;Norway&quot;</span>,
+      <span class="hljs-attr">&quot;postCode&quot;</span>: <span class="hljs-string">&quot;0154&quot;</span>
+    }
+  ],
+  <span class="hljs-attr">&quot;birthdate&quot;</span>: <span class="hljs-string">&quot;2000-12-31&quot;</span>,
+  <span class="hljs-attr">&quot;email&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;email_verified&quot;</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">&quot;family_name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;given_name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;nin&quot;</span>: <span class="hljs-string">&quot;09057517287&quot;</span>,
+  <span class="hljs-attr">&quot;phone_number&quot;</span>: <span class="hljs-string">&quot;47912345678&quot;</span>,
+  <span class="hljs-attr">&quot;sid&quot;</span>: <span class="hljs-string">&quot;7d78a726-af92-499e-b857-de263ef9a969&quot;</span>,
+  <span class="hljs-attr">&quot;sub&quot;</span>: <span class="hljs-string">&quot;c06c4afe-d9e1-4c5d-939a-177d752a0944&quot;</span>
+}
+</code></pre>
+<h3 id="get-userinfo-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Get Userinfo</td>
+<td><a href="#schemauserinfo">Userinfo</a></td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Bad Request</td>
+<td><a href="#schemauserinfoerror">UserinfoError</a></td>
+</tr>
+<tr>
+<td>401</td>
+<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
+<td>Unauthorized</td>
+<td><a href="#schemauserinfoerror">UserinfoError</a></td>
+</tr>
+<tr>
+<td>403</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
+<td>Forbidden</td>
+<td><a href="#schemauserinfoerror">UserinfoError</a></td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>Not Found</td>
+<td><a href="#schemauserinfoerror">UserinfoError</a></td>
+</tr>
+<tr>
+<td>500</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
+<td>Internal Server Error</td>
+<td><a href="#schemauserinfoerror">UserinfoError</a></td>
+</tr>
+</tbody>
+</table>
 <h1 id="schemas">Schemas</h1>
 <h2 id="tocs_paymentactionsrequest">PaymentActionsRequest</h2>
 <p><a id="schemapaymentactionsrequest"></a>
@@ -6799,6 +7089,283 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
+<h2 id="tocs_userinfo">Userinfo</h2>
+<p><a id="schemauserinfo"></a>
+<a id="schema_Userinfo"></a>
+<a id="tocSuserinfo"></a>
+<a id="tocsuserinfo"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;accounts&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;account_name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;account_number&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;bank_name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    }
+  ],
+  <span class="hljs-attr">&quot;address&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;address_type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;country&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;default&quot;</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">&quot;formatted&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;postal_code&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;region&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;street_address&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    }
+  ],
+  <span class="hljs-attr">&quot;other_addresses&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;addressLine1&quot;</span>: <span class="hljs-string">&quot;Robert Levins gate 5&quot;</span>,
+      <span class="hljs-attr">&quot;addressLine2&quot;</span>: <span class="hljs-string">&quot;Att: Rune Garborg&quot;</span>,
+      <span class="hljs-attr">&quot;city&quot;</span>: <span class="hljs-string">&quot;Oslo&quot;</span>,
+      <span class="hljs-attr">&quot;country&quot;</span>: <span class="hljs-string">&quot;Norway&quot;</span>,
+      <span class="hljs-attr">&quot;postCode&quot;</span>: <span class="hljs-string">&quot;0154&quot;</span>
+    }
+  ],
+  <span class="hljs-attr">&quot;birthdate&quot;</span>: <span class="hljs-string">&quot;2000-12-31&quot;</span>,
+  <span class="hljs-attr">&quot;email&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;email_verified&quot;</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">&quot;family_name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;given_name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;nin&quot;</span>: <span class="hljs-string">&quot;09057517287&quot;</span>,
+  <span class="hljs-attr">&quot;phone_number&quot;</span>: <span class="hljs-string">&quot;47912345678&quot;</span>,
+  <span class="hljs-attr">&quot;sid&quot;</span>: <span class="hljs-string">&quot;7d78a726-af92-499e-b857-de263ef9a969&quot;</span>,
+  <span class="hljs-attr">&quot;sub&quot;</span>: <span class="hljs-string">&quot;c06c4afe-d9e1-4c5d-939a-177d752a0944&quot;</span>
+}
+
+</code></pre>
+<h3 id="properties-9">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>accounts</td>
+<td>[<a href="#schemauserinfoaccountinfo">UserinfoAccountInfo</a>]</td>
+<td>false</td>
+<td>none</td>
+<td>Contains an array with the end user's accounts registered in the Vipps app</td>
+</tr>
+<tr>
+<td>address</td>
+<td>array</td>
+<td>false</td>
+<td>none</td>
+<td>Contains the end user's preferred addresses.</td>
+</tr>
+<tr>
+<td>other_addresses</td>
+<td>[<a href="#schemaaddress">Address</a>]</td>
+<td>false</td>
+<td>none</td>
+<td>Contains an array with the end user's none default addresses, if any. This list can contain an address with the address_type home, work, and/or other, if the user has registered them in the Vipps app</td>
+</tr>
+<tr>
+<td>birthdate</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>End-User's birthday formatted as YYYY-MM-DD</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>End user's email address.</td>
+</tr>
+<tr>
+<td>email_verified</td>
+<td>boolean</td>
+<td>false</td>
+<td>none</td>
+<td>Boolean value if the End user's email address is verified.</td>
+</tr>
+<tr>
+<td>family_name</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Surname(s) or last name(s) of the end user.</td>
+</tr>
+<tr>
+<td>given_name</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Given name(s) or first name(s) of the end user. Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>End user's full name in displayable form including all name parts, possibly including titles and suffixes, ordered according to the End-User's locale and preferences.</td>
+</tr>
+<tr>
+<td>nin</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>National identity number</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>End-User's telephone number on MSISDN format, up to 15 digits.</td>
+</tr>
+<tr>
+<td>sid</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Session identifier - This represents a Session of a User Agent or device. Currently not in use</td>
+</tr>
+<tr>
+<td>sub</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Subject - Identifier for the end user</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_userinfoaccountinfo">UserinfoAccountInfo</h2>
+<p><a id="schemauserinfoaccountinfo"></a>
+<a id="schema_UserinfoAccountInfo"></a>
+<a id="tocSuserinfoaccountinfo"></a>
+<a id="tocsuserinfoaccountinfo"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;account_name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;account_number&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;bank_name&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+}
+
+</code></pre>
+<h3 id="properties-10">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>account_name</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>User''s defined name for account</td>
+</tr>
+<tr>
+<td>account_number</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>User''s account number</td>
+</tr>
+<tr>
+<td>bank_name</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Bank connected to the account number</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_userinfoaddress">UserinfoAddress</h2>
+<p><a id="schemauserinfoaddress"></a>
+<a id="schema_UserinfoAddress"></a>
+<a id="tocSuserinfoaddress"></a>
+<a id="tocsuserinfoaddress"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;address_type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;country&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;default&quot;</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">&quot;formatted&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;postal_code&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;region&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;street_address&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+}
+
+</code></pre>
+<h3 id="properties-11">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>address_type</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Address type is either home, work or other</td>
+</tr>
+<tr>
+<td>country</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Two letter country code</td>
+</tr>
+<tr>
+<td>default</td>
+<td>boolean</td>
+<td>false</td>
+<td>none</td>
+<td>If this is default address</td>
+</tr>
+<tr>
+<td>formatted</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>End user address as a formatted string</td>
+</tr>
+<tr>
+<td>postal_code</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Postal code</td>
+</tr>
+<tr>
+<td>region</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>End user region</td>
+</tr>
+<tr>
+<td>street_address</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>End user street address</td>
+</tr>
+</tbody>
+</table>
 <h2 id="tocs_callbacktransactioninforegular">CallbackTransactionInfoRegular</h2>
 <p><a id="schemacallbacktransactioninforegular"></a>
 <a id="schema_CallbackTransactionInfoRegular"></a>
@@ -6812,7 +7379,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-9">Properties</h3>
+<h3 id="properties-12">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -6906,7 +7473,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-10">Properties</h3>
+<h3 id="properties-13">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7000,7 +7567,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-11">Properties</h3>
+<h3 id="properties-14">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7107,7 +7674,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-12">Properties</h3>
+<h3 id="properties-15">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7230,7 +7797,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-13">Properties</h3>
+<h3 id="properties-16">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7282,7 +7849,7 @@ System.out.println(response.toString());
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>none</td>
+<td>The user identifier if using profile flow. This should be used against the userInfo endpoint.</td>
 </tr>
 </tbody>
 </table>
@@ -7297,7 +7864,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-14">Properties</h3>
+<h3 id="properties-17">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7344,7 +7911,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-15">Properties</h3>
+<h3 id="properties-18">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7410,7 +7977,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-16">Properties</h3>
+<h3 id="properties-19">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7470,7 +8037,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-17">Properties</h3>
+<h3 id="properties-20">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7522,7 +8089,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-18">Properties</h3>
+<h3 id="properties-21">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7557,7 +8124,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-19">Properties</h3>
+<h3 id="properties-22">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7672,7 +8239,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-20">Properties</h3>
+<h3 id="properties-23">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7730,7 +8297,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-21">Properties</h3>
+<h3 id="properties-24">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7853,7 +8420,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-22">Properties</h3>
+<h3 id="properties-25">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -7928,7 +8495,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-23">Properties</h3>
+<h3 id="properties-26">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8040,7 +8607,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-24">Properties</h3>
+<h3 id="properties-27">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8079,7 +8646,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-25">Properties</h3>
+<h3 id="properties-28">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8123,7 +8690,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-26">Properties</h3>
+<h3 id="properties-29">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8215,7 +8782,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-27">Properties</h3>
+<h3 id="properties-30">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8251,7 +8818,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-28">Properties</h3>
+<h3 id="properties-31">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8291,7 +8858,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-29">Properties</h3>
+<h3 id="properties-32">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8357,7 +8924,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-30">Properties</h3>
+<h3 id="properties-33">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8436,7 +9003,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-31">Properties</h3>
+<h3 id="properties-34">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8494,7 +9061,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-32">Properties</h3>
+<h3 id="properties-35">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8577,7 +9144,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-33">Properties</h3>
+<h3 id="properties-36">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8626,7 +9193,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-34">Properties</h3>
+<h3 id="properties-37">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8720,7 +9287,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-35">Properties</h3>
+<h3 id="properties-38">Properties</h3>
 <p>oneOf</p>
 <table>
 <thead>
@@ -8776,7 +9343,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-36">Properties</h3>
+<h3 id="properties-39">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -8853,8 +9420,93 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
+<h2 id="tocs_userinfoerror">UserinfoError</h2>
+<p><a id="schemauserinfoerror"></a>
+<a id="schema_UserinfoError"></a>
+<a id="tocSuserinfoerror"></a>
+<a id="tocsuserinfoerror"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;title&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;status&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;detail&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;instance&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;extraInfo&quot;</span>: {
+    <span class="hljs-attr">&quot;property1&quot;</span>: {},
+    <span class="hljs-attr">&quot;property2&quot;</span>: {}
+  }
+}
+
+</code></pre>
+<h3 id="properties-40">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>detail</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>instance</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>extraInfo</td>
+<td>object</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» <strong>additionalProperties</strong></td>
+<td>object</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
 <!-- Renderer: Shins v2.6.0 -->
 <!-- Generator: Widdershins v4.0.1 -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
+<!-- backwards compatibility -->
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
