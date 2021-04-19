@@ -1397,8 +1397,9 @@ To enable the posibility to fetch profile information for a user the merchant ca
 parameter to the initiate call:
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST).
 
-If the enduser has not already consented to sharing information from Vipps to the merchant the user will be asked for 
-such consent before completing the payment flow. Once the payment flow is completed the merchant can get the profile 
+If the enduser has not already consented to sharing information from Vipps to the 
+merchant, the user will be asked for any remaining consents before completing the payment flow.
+Once the payment flow is completed the merchant can get the profile 
 information from our Userinfo endpoint.
 
 A users consent to share information with a merchant applies across our services. Thus, if the merchant implements Vipps login 
