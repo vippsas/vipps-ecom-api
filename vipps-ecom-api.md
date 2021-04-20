@@ -1389,20 +1389,20 @@ See [Timeouts](#timeouts) for details about timeouts.
 
 ## Userinfo
 
-Vipps offers the possibility for merchants to ask for the user's profile information as part of the payment flow. 
-This is done through Vipps Userinfo which 
+Vipps offers the possibility for merchants to ask for the user's profile information as part of the payment flow.
+This is done through Vipps Userinfo which
 You can learn more at the [OIDC Standard](https://openid.net/specs/openid-connect-core-1_0.html#UserInfo).
 
 To enable the posibility to fetch profile information for a user the merchant can add a `scope`
 parameter to the initiate call:
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST).
 
-If the enduser has not already consented to sharing information from Vipps to the 
+If the enduser has not already consented to sharing information from Vipps to the
 merchant, the user will be asked for any remaining consents before completing the payment flow.
-Once the payment flow is completed the merchant can get the profile 
+Once the payment flow is completed the merchant can get the profile
 information from our Userinfo endpoint.
 
-A users consent to share information with a merchant applies across our services. Thus, if the merchant implements Vipps login 
+A users consent to share information with a merchant applies across our services. Thus, if the merchant implements Vipps login
 in addition to profile information as part of the payment flow, the merchant can also use Vipps to log the user in without the need for additional consents.
 
 ### Scopes
@@ -1475,7 +1475,7 @@ transaction and the fetching of the profile data.
 
 This endpoint returns the payload with the information that the user has consented to share.
 
-Call [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getUserinfo) 
+Call [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getUserinfo)
 with the `sub` that was retrieved earlier. See below on how to construct the call.
 
 **Request**
@@ -1488,7 +1488,7 @@ with the `sub` that was retrieved earlier. See below on how to construct the cal
 
 The access token is received on a successful request to the token endpoint described in [Authentication](#authentication).
 
-**Important note:** Subscription key used for the eCom API must _not_ be included. This is because userinfo is part of 
+**Important note:** Subscription key used for the eCom API must _not_ be included. This is because userinfo is part of
 Vipps Login and is therefore _not_ under the same subscription, and will result in a `HTTP Unauthorized 401` error.
 
 **Example response:**
@@ -1616,15 +1616,15 @@ is _far_ higher.
 ## Partner keys
 
 In addition to the normal [Authentication](#authentication) we offer _partner keys_,
-which let a partner make API cals on behalf of a merchant.
+which let a partner make API calls on behalf of a merchant.
 
-If you are a Vipps Partner that is managing agreements on behalf of other
-Vipps Merchants you can use your own credentials to authenticate, and then send
-the `Merchant-Serial-Number` header to identify which of your Vipps Merchant you
+If you are a Vipps partner managing agreements on behalf of Vipps merchants you
+can use your own API credentials to authenticate, and then send
+the `Merchant-Serial-Number` header to identify which of your merchants you
 are acting on behalf of. The `Merchant-Serial-Number` must be sent in the header
-of all requests.
+of all API requests.
 
-Including the [Optional HTTP Headers](#optional-vipps-http-headers) too will make
+By including the [Optional HTTP Headers](#optional-vipps-http-headers) you will make
 it easier to investigate problems, if anything unexpected happens. Partners may
 re-use the values of the `Vipps-System-Name` and `Vipps-System-Plugin-Name` in
 the plugins headers if having different values do not make sense.
@@ -1646,9 +1646,9 @@ Content-Type: application/json
 
 **Please note:** The Merchant Serial Number (MSN) is a unique id for the sale
 unit that this agreement is made for. This is a required parameter if you are a
-Vipps Recurring partner making agreements on behalf of a merchant. The partner
-must use the merchant's MSN (not the partner's MSN. This parameter is optional,
-and recommended, for regular Vipps merchants making agreements for themselves.
+Vipps partner making API requests on behalf of a merchant. The partner
+must use the _merchant's_ MSN, not the partner's MSN. This parameter is optional,
+and recommended, for regular Vipps merchants making API calls for themselves.
 
 ## Idempotency
 
