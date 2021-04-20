@@ -1444,7 +1444,7 @@ a customer.
 
 **Important note:** The API call to
 [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getUserinfo)
-must _not_ include the subscription key used for the eCom API. This is because userinfo is part of Vipps Login and is therefore
+must _not_ include the OCP-APIM-Subscription-Key used for the eCom API. This is because userinfo is part of Vipps Login and is therefore
 _not_ under the same subscription, and will result in a `HTTP Unauthorized 401` error.
 
 ### Get userinfo
@@ -1488,7 +1488,7 @@ with the `sub` that was retrieved earlier. See below on how to construct the cal
 
 The access token is received on a successful request to the token endpoint described in [Authentication](#authentication).
 
-**Important note:** Subscription key used for the eCom API must _not_ be included. This is because userinfo is part of
+**Important note:** OCP-APIM-Subscription-Key used for the eCom API must _not_ be included. This is because userinfo is part of
 Vipps Login and is therefore _not_ under the same subscription, and will result in a `HTTP Unauthorized 401` error.
 
 **Example response:**
