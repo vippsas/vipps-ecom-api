@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.21.
+Document version 2.5.22.
 
 ## Table of contents
 
@@ -1645,10 +1645,10 @@ Content-Type: application/json
 ```
 
 **Please note:** The Merchant Serial Number (MSN) is a unique id for the sale
-unit that this agreement is made for. This is a required parameter if you are a
-Vipps partner making API requests on behalf of a merchant. The partner
-must use the _merchant's_ MSN, not the partner's MSN. This parameter is optional,
-and recommended, for regular Vipps merchants making API calls for themselves.
+unit. This is a required parameter if you are a Vipps partner making API requests
+on behalf of a merchant. The partner must use the _merchant's_ MSN, not the
+partner's MSN. This parameter is optional, and recommended, for regular Vipps
+merchants making API calls for themselves.
 
 ## Idempotency
 
