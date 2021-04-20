@@ -369,44 +369,44 @@ paths:
                   description: 'OK'
         shippingDetails:
           '{$request.body#/merchantInfo/shippingDetailsPrefix}/v2/payments/{$request.body#/transaction/orderId}/shippingDetails':
-                post:
-                  summary: Fetch Shipping Cost & Method (for Vipps Hurtigkasse (express checkout))
-                  description: >-
-                    This API endpoint on the merchant side allows Vipps to get the shipping
-                    cost and method based on the provided address and product details. The
-                    primary use of this service is Vipps Hurtigkasse (express checkout)
-                    where Vipps needs to present shipping cost and method to the Vipps user.
-                    Vipps will add `/v2/payments/{orderId}/shippingDetails` to the end of
-                    this URL.
-                    Vipps has a *10 second timeout* for these requests, and thus requires
-                    a quick reply from the merchant's server for successful payments.
-                    If the merchant does not respond in time, the user will get an
-                    error in Vipps saying "No shipping methods found".
-                    URLs passed to Vipps must validate, see
-                    [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
-                    We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
-                  operationId: fetchShippingCostUsingPOST
-                  parameters:
-                    - name: orderId
-                      in: path
-                      description: orderId
-                      required: true
+            post:
+              summary: Fetch Shipping Cost & Method (for Vipps Hurtigkasse (express checkout))
+              description: >-
+                This API endpoint on the merchant side allows Vipps to get the shipping
+                cost and method based on the provided address and product details. The
+                primary use of this service is Vipps Hurtigkasse (express checkout)
+                where Vipps needs to present shipping cost and method to the Vipps user.
+                Vipps will add `/v2/payments/{orderId}/shippingDetails` to the end of
+                this URL.
+                Vipps has a *10 second timeout* for these requests, and thus requires
+                a quick reply from the merchant's server for successful payments.
+                If the merchant does not respond in time, the user will get an
+                error in Vipps saying "No shipping methods found".
+                URLs passed to Vipps must validate, see
+                [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
+                We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
+              operationId: fetchShippingCostUsingPOST
+              parameters:
+                - name: orderId
+                  in: path
+                  description: orderId
+                  required: true
+                  schema:
+                    type: string
+              responses:
+                '200':
+                  description: Fetch Shipping Cost & Method.
+                  content:
+                    application/json;charset=UTF-8:
                       schema:
-                        type: string
-                  responses:
-                    '200':
-                      description: Fetch Shipping Cost & Method.
-                      content:
-                        application/json;charset=UTF-8:
-                          schema:
-                            $ref: '#/components/schemas/FetchShippingCostResponse'
-                  requestBody:
-                    content:
-                      application/json;charset=UTF-8:
-                        schema:
-                          $ref: '#/components/schemas/ShippingCostAndMethod'
-                    description: ShippingCostAndMethod
-                    required: true
+                        $ref: '#/components/schemas/FetchShippingCostResponse'
+              requestBody:
+                content:
+                  application/json;charset=UTF-8:
+                    schema:
+                      $ref: '#/components/schemas/ShippingCostAndMethod'
+                description: ShippingCostAndMethod
+                required: true
       responses:
         '200':
           description: Response for Initiate Payment
@@ -1507,6 +1507,69 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/Error'
+  '/vipps-userinfo-api/userinfo/{sub}':
+    get:
+      tags:
+        - Vipps Userinfo API
+      summary: Get Userinfo
+      description: This endpoint returns the payload with the information that the user has consented to share. Find more info on the `/userinfo` endpoint at the OIDC Standard https://openid.net/specs/openid-connect-core-1_0.html#UserInfo
+      operationId: getUserinfo
+      parameters:
+        - name: sub
+          in: path
+          description: The `sub` is specified when fetching payment details
+          required: true
+          schema:
+            type: string
+        - in: header
+          name: Authorization
+          description: >-
+            The access token is a base64-encoded string that is required for all API calls.
+            It is a JWT (JSON Web Token).
+            The access token is fetched from the `POST:/accesstoken/get` endpoint.
+            It is valid for 1 hour in the test environment and 24 hours in the production environment.
+          required: true
+          schema:
+            type: string
+          example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+      responses:
+        "200":
+          description: Get Userinfo
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/Userinfo'
+        '400':
+          description: Bad Request
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/UserinfoError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/UserinfoError'
+        '403':
+          description: Forbidden
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/UserinfoError'
+        '404':
+          description: Not Found
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/UserinfoError'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/UserinfoError'
+
 components:
   requestBodies:
     PaymentActionsRequest:
@@ -1737,6 +1800,96 @@ components:
           maxLength: 50
           description: Identifies a user in Vipps. Merchant is required to store this field for future references.
           pattern: '^[\d\w\/=+]+$'
+    Userinfo:
+      type: object
+      properties:
+        accounts:
+          description: 'Contains an array with the end user''s accounts registered in the Vipps app'
+          type: array
+          items:
+            $ref: '#/components/schemas/UserinfoAccountInfo'
+        address:
+          description: 'Contains the end user''s preferred addresses.'
+          items:
+            $ref: '#/components/schemas/UserinfoAddress'
+        other_addresses:
+          description: 'Contains an array with the end user''s none default addresses, if any. This list can contain an address with the address_type home, work, and/or other, if the user has registered them in the Vipps app'
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+        birthdate:
+          description: 'End-User''s birthday formatted as YYYY-MM-DD'
+          type: string
+          example: '2000-12-31'
+        email:
+          description: 'End user''s email address.'
+          type: string
+        email_verified:
+          description: 'Boolean value if the End user''s email address is verified.'
+          type: boolean
+        family_name:
+          description: 'Surname(s) or last name(s) of the end user.'
+          type: string
+        given_name:
+          description: 'Given name(s) or first name(s) of the end user. Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters.'
+          type: string
+        name:
+          description: 'End user''s full name in displayable form including all name parts, possibly including titles and suffixes, ordered according to the End-User''s locale and preferences.'
+          type: string
+        nin:
+          description: 'National identity number'
+          type: string
+          example: '09057517287'
+          pattern: '^\d{11}$'
+        phone_number:
+          description: 'End-User''s telephone number on MSISDN format, up to 15 digits.'
+          type: string
+          example: '47912345678'
+          pattern: '^\d{15}$'
+        sid:
+          description: 'Session identifier - This represents a Session of a User Agent or device. Currently not in use'
+          type: string
+          example: '7d78a726-af92-499e-b857-de263ef9a969'
+        sub:
+          description: 'Subject - Identifier for the end user'
+          type: string
+          example: 'c06c4afe-d9e1-4c5d-939a-177d752a0944'
+    UserinfoAccountInfo:
+      type: object
+      properties:
+        account_name:
+          description: "User''s defined name for account"
+          type: string
+        account_number:
+          description: "User''s account number"
+          type: string
+        bank_name:
+          description: "Bank connected to the account number"
+          type: string
+    UserinfoAddress:
+      type: object
+      properties:
+        address_type:
+          description: 'Address type is either home, work or other'
+          type: string
+        country:
+          description: 'Two letter country code'
+          type: string
+        default:
+          description: 'If this is default address'
+          type: boolean
+        formatted:
+          description: 'End user address as a formatted string'
+          type: string
+        postal_code:
+          description: 'Postal code'
+          type: string
+        region:
+          description: 'End user region'
+          type: string
+        street_address:
+          description: 'End user street address'
+          type: string
     CallbackTransactionInfoRegular:
       type: object
       required:
@@ -1915,10 +2068,8 @@ components:
           $ref: '#/components/schemas/UserDetails'
         sub:
           type: string
-          descrtiption: |
-            The user identifier if using profile flow. This should be used against the userInfo endpoint from the Vipps Login API,
-            see https://www.vipps.no/developers-documentation/ecom/documentation/#userinfo-call-by-call-guide
-
+          description: >-
+            The user identifier if using profile flow. This should be used against the userInfo endpoint.
     PaymentInitiationResponse:
       type: object
       required:
@@ -2556,3 +2707,20 @@ components:
           type: string
           description: "A unique id for this error, useful for searching in logs"
           example: f70b8bf7-c843-4bea-95d9-94725b19895f
+    UserinfoError:
+      type: object
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: string
+        detail:
+          type: string
+        instance:
+          type: string
+        extraInfo:
+          type: object
+          additionalProperties:
+            type: object

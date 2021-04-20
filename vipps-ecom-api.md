@@ -82,7 +82,6 @@ Document version 2.5.21.
     - [Scopes](#scopes)
     - [Userinfo call by call guide](#userinfo-call-by-call-guide)
     - [Get userinfo](#get-userinfo)
-    - [Vipps Login access token](#vipps-login-access-token)
     - [Userinfo call](#userinfo-call)
     - [Consent](#consent)
   - [HTTP response codes](#http-response-codes)
@@ -912,7 +911,7 @@ Request:
     "country": "Norway",
     "city": "OSLO",
     "postCode": "0191",
-    "addressType": "H",
+    "addressType": "H"
 }
 ```
 
@@ -1390,16 +1389,21 @@ See [Timeouts](#timeouts) for details about timeouts.
 
 ## Userinfo
 
-Vipps offers the possibility for merchants to ask for the user's profile
-information as part of the payment flow. This is done by adding a `scope`
+Vipps offers the possibility for merchants to ask for the user's profile information as part of the payment flow. 
+This is done through Vipps Userinfo which 
+You can learn more at the [OIDC Standard](https://openid.net/specs/openid-connect-core-1_0.html#UserInfo).
+
+To enable the posibility to fetch profile information for a user the merchant can add a `scope`
 parameter to the initiate call:
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST).
 
-If the enduser has not already consented to sharing information from Vipps to the merchant the user will be asked for such consent before completing the payment flow. Once the payment flow is completed the merchant can get the profile information from our Userinfo endpoint. The Userinfo endpoint is shared with [Vipps login](https://github.com/vippsas/vipps-login-api) and the merchant needs to have activated Vipps login to use this feature.
+If the enduser has not already consented to sharing information from Vipps to the 
+merchant, the user will be asked for any remaining consents before completing the payment flow.
+Once the payment flow is completed the merchant can get the profile 
+information from our Userinfo endpoint.
 
-To activate for Vipps Login - go to the developer section under https://portal.vipps.no and click "Setup login" for the desired account. When this is enabled, you get access to both Vipps login as a product, or fetching the users profileinfo can be used as standalone. If you are only using userinfo to fetch users profile info as part of a payment flow, you do not need to input redirect URIs when setting up login.
-
-A users consent to share information with a merchant applies accross our services. Thus, if the merchant implements Vipps login in addition to profile information as part of the payment flow, the merchant can also use Vipps to log the user in without the need for additional consents.
+A users consent to share information with a merchant applies across our services. Thus, if the merchant implements Vipps login 
+in addition to profile information as part of the payment flow, the merchant can also use Vipps to log the user in without the need for additional consents.
 
 ### Scopes
 
@@ -1434,30 +1438,16 @@ a customer.
 3. The user consents to the information sharing and perform the payment in Vipps.
 4. Retrieve the `sub` by calling
    [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
-5. Generate an OAuth 2 access token with
-   [`POST:/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/oauth2Token),
-   using the `clientId:client_secret` as base64 as described in
-   [Vipps Login access token](#vipps-login-access-token),
-   with the `grant_type` set to `"client_credentials"`.
-6. Using the access token from step 5, call
-   [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)
+5. Using the sub from step 4, call
+   [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getUserinfo)
    to retrieve the user's information.
 
 **Important note:** The API call to
-[`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)
-must _not_ include the subscription key used for the eCom API as Login
-is _not_ under the same subscription, and will result in a
-`HTTP Unauthorized 401` error.
+[`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getUserinfo)
+must _not_ include the subscription key used for the eCom API. This is because userinfo is part of Vipps Login and is therefore
+_not_ under the same subscription, and will result in a `HTTP Unauthorized 401` error.
 
 ### Get userinfo
-
-The
-[`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)
-endpoint is shared between the Vipps eCom API and the
-[Vipps Login API](https://github.com/vippsas/vipps-login-api)
-and the merchant needs to have
-[activated Vipps Login](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api-faq.md#how-can-i-activate-and-set-up-vipps-login)
-to use this feature.
 
 Once the user completes the session a unique identifier `sub` can be retrieved from the
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET) endpoint.
@@ -1469,8 +1459,8 @@ Example `sub` format:
 ```
 
 This `sub` is a link between the merchant and the user and can be used to retrieve
-the user's details from Vipps Login:
-[`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo)
+the user's details from Vipps userinfo:
+[`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getUserinfo)
 
 **Please note:** It is recommended to get the user's information directly after
 completing the transaction. There is however a _time limit of 168 hours_
@@ -1481,57 +1471,12 @@ user profile at the time when they actually fetch the information. This means
 that the information might have changed from the time the user completed the
 transaction and the fetching of the profile data.
 
-### Vipps Login access token
-
-Accessing the Login `userinfo` endpoint required the Vipps Login access token: [`POST:/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/oauth2Token). The client constructs the request by adding the parameters described below to the HTTP body by using the `application/x-www-form-urlencoded` format.
-
-**Request**
-
-*Headers*
-
-| Header            | Description                           |
-| ----------------- | ------------------------------------- |
-| Content-Type      | "application/x-www-form-urlencoded"   |
-| Authorization     | "Basic {Client Credentials}"          |
-
-The Client Credentials is a base 64 encoded string consisting of the Client id
-and secret issued by Vipps joined by ":"
-
-Example of generating the client credentials in bash where:
-
-- client_id = 123456-test-4a3d-a47c-412136fd0871
-- client_secret = testdzlJbUZaM1lqODlnUUtrUHI=
-
-```bash
-echo "123456-test-4a3d-a47c-412136fd0871:testdzlJbUZaM1lqODlnUUtrUHI=" | base64
-```
-
-Which results in the base64 client secret: `MTIzNDU2LXRlc3QtNGEzZC1hNDdjLTQxMjEzNmZkMDg3MTp0ZXN0ZHpsSmJVWmFNMWxxT0RsblVVdHJVSEk9Cg==`
-
-*Form content*
-
-| Key               | Description                         |
-| ----------------- | ----------------------------------- |
-| grant_type        | Value **must** be the actual string  `"client_credentials"`, not the value generated above.  |
-
-**Example response:**
-
-```json
-{
-  "access_token": "hel39XaKjGH5tkCvIENGPNbsSHz1DLKluOat4qP-A4.WyV61hCK1E2snVs1aOvjOWZOXOayZad0K-Qfo3lLzus",
-  "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6InB1YmxpYzo4MGYzYzM0YS05Nzc <snip>",
-  "expires_in": 3599,
-  "scope": "openid",
-  "token_type": "bearer"
-}
-```
-
 ### Userinfo call
 
-This endpoint returns the payload with the information that the user has consented to share, which is provided in the OAuth 2.0 access token.
-You can learn more at the [OIDC Standard](https://openid.net/specs/openid-connect-core-1_0.html#UserInfo).
+This endpoint returns the payload with the information that the user has consented to share.
 
-Call [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Log%20In%20API/userinfo) with the `sub` that was retrieved earlier. See below on how to construct the call.
+Call [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getUserinfo) 
+with the `sub` that was retrieved earlier. See below on how to construct the call.
 
 **Request**
 
@@ -1541,7 +1486,10 @@ Call [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-
 | ----------------- | -------------------------------------  |
 | Authorization     | "Bearer {Access Token}"                |
 
-The access token is received on a successful request to the token endpoint described above.
+The access token is received on a successful request to the token endpoint described in [Authentication](#authentication).
+
+**Important note:** Subscription key used for the eCom API must _not_ be included. This is because userinfo is part of 
+Vipps Login and is therefore _not_ under the same subscription, and will result in a `HTTP Unauthorized 401` error.
 
 **Example response:**
 
@@ -1592,8 +1540,6 @@ The access token is received on a successful request to the token endpoint descr
     ]
 }
 ```
-
-**Please note:** More documentation about the token and userinfo endpoint can be found [here](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api.md#access-token).
 
 ![Userinfo sequence](images/userinfo-direct.png)
 
@@ -1994,22 +1940,24 @@ allowed to provide more details.
 
 | Error group | Error Code | Error Message | Comment |
 | ----- | ---- | ----------- |------|
-| Payments | 41 | User do not have a valid card ||
-| Payments | 42 | Refused by issuer bank ||
-| Payments | 43 | Refused by issuer bank because of invalid a amount ||
-| Payments | 44 | Refused by issuer because of expired card ||
-| Payments | 45 | Reservation failed for some unknown reason ||
-| Payments | 51 | Cannot cancel already captured order ||
-| Payments | 52 | Cancellation failed ||
-| Payments | 53 | Cannot cancel order which is not reserved yet ||
-| Payments | 61 | Captured amount exceeds the reserved amount ordered ||
-| Payments | 62 | The amount you tried to capture is not reserved ||
-| Payments | 63 | Capture failed for some unknown reason, please use Get Payment Details API to know the exact status ||
-| Payments | 71 | Cannot refund more than captured amount ||
-| Payments | 72 | Cannot refund for reserved order, please use Cancel API ||
-| Payments | 73 | Cannot refund on cancelled order ||
-| Payments | 93 | Captured amount should be same in Idempotent retry ||
-| Payments | 1501 | This person can not pay to companies |Used for Vipps users under the age of 15.|
+| Payment | 41 | User do not have a valid card ||
+| Payment | 42 | Refused by issuer bank ||
+| Payment | 43 | Refused by issuer bank because of invalid a amount ||
+| Payment | 44 | Refused by issuer because of expired card ||
+| Payment | 45 | Reservation failed for some unknown reason ||
+| Payment | 51 | Cannot cancel already captured order ||
+| Payment | 52 | Cancellation failed ||
+| Payment | 53 | Cannot cancel order which is not reserved yet ||
+| Payment | 61 | Captured amount exceeds the reserved amount ordered ||
+| Payment | 62 | The amount you tried to capture is not reserved ||
+| Payment | 63 | Capture failed for some unknown reason, please use Get Payment Details API to know the exact status ||
+| Payment | 71 | Cannot refund more than captured amount ||
+| Payment | 72 | Cannot refund for reserved order, please use Cancel API ||
+| Payment | 73 | Cannot refund on cancelled order ||
+| Payment | 93 | Captured amount should be the same in Idempotent retry ||
+| Payment | 95 | Payments can only be refunded up to 365 days after reservation ||
+| Payment | 96 | Payments can only be captured up to 180 days after reservation ||
+| Payment | 1501 | This person can not pay to companies |Used for Vipps users under the age of 15.|
 | InvalidRequest  | Field name will be the error code | Description about what exactly the field error is ||
 | VippsError | 91 | Transaction is not allowed ||
 | VippsError | 92 | Transaction already processed ||
