@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.20.
+Document version 2.5.21.
 
 ## Table of contents
 
@@ -87,7 +87,7 @@ Document version 2.5.20.
     - [Consent](#consent)
   - [HTTP response codes](#http-response-codes)
   - [Rate limiting](#rate-limiting)
-  - [Partner Keys](#partner-keys)
+  - [Partner keys](#partner-keys)
   - [Idempotency](#idempotency)
   - [Exception handling](#exception-handling)
     - [Connection timeout](#connection-timeout)
@@ -1667,31 +1667,27 @@ You can make five capture calls per minute for
 one unique orderId, and the limit for capture calls for different orderIds
 is _far_ higher.
 
-## Partner Keys
+## Partner keys
 
-In addition to the normal
-[Authentication](#authentication)
-we offer _partner keys, which let a partner make API cals on behalf of a merchant.
+In addition to the normal [Authentication](#authentication) we offer _partner keys_,
+which let a partner make API cals on behalf of a merchant.
 
-If you are a Vipps Partner that is managing transactions on behalf of other
-Vipps Merchants you can use your own credentials to authenticate, and then
-send the `Merchant-Serial-Number` to identify which of your Vipps Merchant you
+If you are a Vipps Partner that is managing agreements on behalf of other
+Vipps Merchants you can use your own credentials to authenticate, and then send
+the `Merchant-Serial-Number` header to identify which of your Vipps Merchant you
 are acting on behalf of. The `Merchant-Serial-Number` must be sent in the header
-of all requests. as described in our swagger documentation:
+of all requests.
 
-[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
-
-Including the
-[Optional HTTP Headers](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#optional-vipps-http-headers)
-too will make it easier to investigate problems, if anything unexpected happens.
-Partners may re-use the values of the `Vipps-System-Name` and `Vipps-System-Plugin-Name`
-in the plugins headers if having different values do not make sense.
+Including the [Optional HTTP Headers](#optional-vipps-http-headers) too will make
+it easier to investigate problems, if anything unexpected happens. Partners may
+re-use the values of the `Vipps-System-Name` and `Vipps-System-Plugin-Name` in
+the plugins headers if having different values do not make sense.
 
 Here's an example of headers (please refer to the
-[OpenAPI/Swagger specification](https://github.com/vippsas/vipps-ecom-api)
+[OpenAPI/Swagger specification](https://vippsas.github.io/vipps-recurring-api/)
 for all the details):
 
-```
+```http
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni <snip>
 Ocp-Apim-Subscription-Key: 0f14ebcab0ec4b29ae0cb90d91b4a84a
 Merchant-Serial-Number: 123456
@@ -1703,10 +1699,10 @@ Content-Type: application/json
 ```
 
 **Please note:** The Merchant Serial Number (MSN) is a unique id for the sale
-unit that this payment is made for. This is a required parameter if you are a
-Vipps eCom partner making payments on behalf of a merchant. The partner must
-use the merchant's MSN (not the partner's MSN). This parameter is optional,
-and recommended, for regular Vipps merchants making payments for themselves.
+unit that this agreement is made for. This is a required parameter if you are a
+Vipps Recurring partner making agreements on behalf of a merchant. The partner
+must use the merchant's MSN (not the partner's MSN. This parameter is optional,
+and recommended, for regular Vipps merchants making agreements for themselves.
 
 ## Idempotency
 
