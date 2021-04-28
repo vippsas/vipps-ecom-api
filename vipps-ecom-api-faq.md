@@ -485,6 +485,7 @@ See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settl
 ### How long does it take from a refund is made until the money is in the customer's account?
 
 Normally 2-3 _bank days_, depending on the bank.
+It can take much longer, up to 10 days, and depends on the bank.
 
 Vipps does not have more information than what is available through our API:
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details).
