@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.4.7.
+Document version 3.4.8.
 
 ### Table of contents
 
@@ -38,6 +38,7 @@ Document version 3.4.7.
 - [Refunds](#refunds)
   - [How can I refund a payment?](#how-can-i-refund-a-payment)
   - [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
+  - [How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
   - [Is it possible for a merchant to pay a Vipps user?](#is-it-possible-for-a-merchant-to-pay-a-vipps-user)
 - [Users and payments](#users-and-payments)
   - [Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
@@ -49,7 +50,6 @@ Document version 3.4.7.
   - [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-cant-find-it)
   - [How long is an initiated order valid, if the user does not confirm in the Vipps app?](#how-long-is-an-initiated-order-valid-if-the-user-does-not-confirm-in-the-vipps-app)
   - [How long does it take until the money is in my account?](#how-long-does-it-take-until-the-money-is-in-my-account)
-  - [How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
   - [Why has one of my customers been charged twice for the same payment?](#why-has-one-of-my-customers-been-charged-twice-for-the-same-payment)
   - [In which sequence are callbacks and fallbacks done?](#in-which-sequence-are-callbacks-and-fallbacks-done)
   - [Where can I find reports on transactions?](#where-can-i-find-reports-on-transactions)
@@ -482,6 +482,15 @@ merchant must make the capture, or all captures, before the reservation expires.
 
 See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
 
+### How long does it take from a refund is made until the money is in the customer's account?
+
+Normally 2-3 _bank days_, depending on the bank.
+
+Vipps does not have more information than what is available through our API:
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details).
+
+See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
+
 ### Is it possible for a merchant to pay a Vipps user?
 
 No. Vipps has no functionality for paying to a Vipps user,
@@ -677,15 +686,6 @@ The settlement flow depends on the banks and is as follows:
 4. Day 5 (the third _bank day_): The settlement is booked with reference by the bank.
 
 A _bank day_ is a day when the bank is open for business. That excludes weekends, public holidays, etc.
-
-See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
-
-### How long does it take from a refund is made until the money is in the customer's account?
-
-Normally 2-3 _bank days_, depending on the bank.
-
-Vipps does not have more information than what is available through our API:
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details).
 
 See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
 
