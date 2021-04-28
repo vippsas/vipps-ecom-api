@@ -921,9 +921,9 @@ Please check that the merchant's organization number is still active in
 [Brønnøysundregistrene](https://www.brreg.no). Vipps automatically deactivates
 merchants (companies) when they are deleted from Brønnøysundregistrene.
 
-Merchant can log in on
+Merchants can log in on
 [portal.vipps.no](https://portal.vipps.no)
-and deactivate sale units. This is sometimes done "by accident", without being
+and deactivate their sale units. This is sometimes done "by accident", without being
 aware of the consequences.
 The merchant can then reactivate the sale unit.
 
