@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.4.6.
+Document version 3.4.7.
 
 ### Table of contents
 
@@ -921,6 +921,12 @@ Please check that the merchant's organization number is still active in
 [Brønnøysundregistrene](https://www.brreg.no). Vipps automatically deactivates
 merchants (companies) when they are deleted from Brønnøysundregistrene.
 
+Merchant can log in on
+[portal.vipps.no](https://portal.vipps.no)
+and deactivate sale units. This is sometimes done "by accident", without being
+aware of the consequences.
+The merchant can then reactivate the sale unit.
+
 This can also happen if the test merchant is not being used for a _long_ time.
 Please
 [contact customer service](https://vipps.no/kontakt-oss/bedrift/vipps/),
@@ -1063,7 +1069,7 @@ If all sale units have the same organization number, there are two alternatives:
 1: Recommended: Multiple sale units: One sale unit per store. Each sale unit will have its
    own MSN (Merchant Serial Number), and the `orderId` may be whatever you want.
    Each sale unit gets its own
-   [settlement reports](https://github.com/vippsas/vipps-developers/tree/master/settlements).
+   [settlement reals](https://github.com/vippsas/vipps-developers/tree/master/settlements).
    You will need separate API keys for each sale unit (store).
    See [How can I use Vipps for different types of payments?](#how-can-i-use-vipps-for-different-types-of-payments).
 
