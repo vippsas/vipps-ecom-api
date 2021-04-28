@@ -933,6 +933,9 @@ Please
 and we will reactivate the merchant. We no longer automatically deactivate
 test merchants.
 
+Merchants can also create new sale units in the test environment on
+[portal.vipps.no](https://portal.vipps.no).
+
 See: [Error codes](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes).
 
 ### Why do I not get the `sub` from `/details`?
