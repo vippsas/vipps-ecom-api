@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.4.9.
+Document version 3.4.10.
 
 ### Table of contents
 
@@ -884,6 +884,9 @@ This is because the compliance checks required for Vipps eCom API are not
 done for merchants that only need the Vipps Login API.
 If you need access to the Vipps eCom API, you can apply for it on
 [portal.vipps.no](https://portal.vipps.no).
+
+Using a sale unit that only has been approved for the Vipps Login API to
+receive payments is a breach of the Vipps terms and conditions.
 
 ### Why do I get `HTTP 429 Too Many Requests`?
 
