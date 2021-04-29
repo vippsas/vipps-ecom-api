@@ -60,7 +60,7 @@ Document version 3.4.9.
 - [Common errors](#common-errors)
   - [Why do I not get callbacks from Vipps?](#why-do-i-not-get-callbacks-from-vipps)
   - [Why do I get `HTTP 401 Unauthorized`?](#why-do-i-get-http-401-unauthorized)
-  - [`Why do I get `HTTP 403 Forbidden`?``](#why-do-i-get-http-403-forbidden)
+  - [Why do I get `HTTP 403 Forbidden`?](#why-do-i-get-http-403-forbidden)
   - [Why do I get `HTTP 429 Too Many Requests`?](#why-do-i-get-http-429-too-many-requests)
   - [Why do I get `HTTP 500 Internal Server Error`?](#why-do-i-get-http-500-internal-server-error)
   - [Why do I get `errorCode 35 "Requested Order not found"`?](#why-do-i-get-errorcode-35-requested-order-not-found)
