@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.4.10.
+Document version 3.4.11.
 
 ### Table of contents
 
@@ -800,6 +800,9 @@ end of your `callbackPrefix` and make a callback to
 If you do not receive a callback, it could be because your firewall is blocking
 our requests. See:
 [Vipps request servers](https://github.com/vippsas/vipps-developers/blob/master/README.md#vipps-request-servers).
+
+Please check your own logs for any signs of problems. If your
+`orderId` is `acme-shop-123-order123abc`: Search your logs for `acme-shop-123-order123abc`.
 
 If you need help solving a callback-related problem, please send us a
 complete HTTP request, and any other related details, so we can investigate.
