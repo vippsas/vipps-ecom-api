@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.4.11.
+Document version 3.4.12.
 
 ### Table of contents
 
@@ -803,6 +803,10 @@ our requests. See:
 
 Please check your own logs for any signs of problems. If your
 `orderId` is `acme-shop-123-order123abc`: Search your logs for `acme-shop-123-order123abc`.
+
+Check the API Dashboard on
+[portal.vipps.no](https://portal.vipps.no)
+for problems with the callbacks. The API Dashboard is under "Utvikler".
 
 If you need help solving a callback-related problem, please send us a
 complete HTTP request, and any other related details, so we can investigate.
