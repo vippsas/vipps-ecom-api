@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.22.
+Document version 2.5.23.
 
 ## Table of contents
 
@@ -253,9 +253,14 @@ The Express checkout (Vipps Hurtigkasse) is a solution for letting the user
 automatically share the Vipps profile address information with merchant and
 choose a shipping option.
 
-It is designed for shipping products, with a delivery address and a
+Express checkout is designed for shipping products, with a delivery address and a
 shipping method. If you only need the user's information, you should use
 [Userinfo](#userinfo).
+You should avoid asking the customer in a pub for the shipping
+method for the drinks, etc.
+With Userinfo you can ask for the user's details, such as: phone number, name, email address,
+postal address, birth date, national identity number and bank accounts.
+The user must of course consent to sharing the information.
 
 Vipps Hurtigkasse works this way:
 
