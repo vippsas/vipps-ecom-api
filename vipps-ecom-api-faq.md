@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.4.8.
+Document version 3.4.9.
 
 ### Table of contents
 
@@ -60,6 +60,7 @@ Document version 3.4.8.
 - [Common errors](#common-errors)
   - [Why do I not get callbacks from Vipps?](#why-do-i-not-get-callbacks-from-vipps)
   - [Why do I get `HTTP 401 Unauthorized`?](#why-do-i-get-http-401-unauthorized)
+  - [`Why do I get `HTTP 403 Forbidden`?``](#why-do-i-get-http-403-forbidden)
   - [Why do I get `HTTP 429 Too Many Requests`?](#why-do-i-get-http-429-too-many-requests)
   - [Why do I get `HTTP 500 Internal Server Error`?](#why-do-i-get-http-500-internal-server-error)
   - [Why do I get `errorCode 35 "Requested Order not found"`?](#why-do-i-get-errorcode-35-requested-order-not-found)
@@ -872,6 +873,17 @@ The old API keys will of course stop working when they have been regenerated.
 we can only help with the API requests and response. Please do not send us your
 source code asking us to fix it for you.
 
+### Why do I get `HTTP 403 Forbidden`?
+
+Merchants that only have access to the
+[Vipps Login API](https://github.com/vippsas/vipps-login-api)
+and attempt to use the Vipps eCom API will get this error, with
+`Merchant Not Allowed for Ecommerce Payment` in the body.
+
+This is because the compliance checks required for Vipps eCom API are not
+done for merchants that only need the Vipps Login API.
+If you need access to the Vipps eCom API, you can apply for it on
+[portal.vipps.no](https://portal.vipps.no).
 
 ### Why do I get `HTTP 429 Too Many Requests`?
 
