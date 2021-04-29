@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.4.13.
+Document version 3.4.14.
 
 ### Table of contents
 
@@ -943,9 +943,10 @@ Merchants can log in on
 [portal.vipps.no](https://portal.vipps.no)
 and deactivate their sale units. This is sometimes done "by accident", without being
 aware of the consequences.
-The merchant can then reactivate the sale unit.
+If a sale unit has been incorrectly deactivated, the merchant can reactivate it again.
+We require BankID for deactivation and reactivation, and can not help with this based on email requests.
 
-This can also happen if the test merchant is not being used for a _long_ time.
+This can also happen if the test merchant is not being used for a _very long_ time.
 Please
 [contact customer service](https://vipps.no/kontakt-oss/bedrift/vipps/),
 and we will reactivate the merchant. We no longer automatically deactivate
