@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.4.12.
+Document version 3.4.13.
 
 ### Table of contents
 
@@ -783,10 +783,6 @@ of digits and letters.
 
 ### Why do I not get callbacks from Vipps?
 
-See the
-[Callback](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callback-endpoints)
-section in the API guide.
-
 Please make sure the URLs you provide to Vipps are reachable from outside your
 own environment. Have a look at the API guide, manually "build" the callback
 URL in the same way as Vipps does, and confirm that you are getting a
@@ -811,10 +807,9 @@ for problems with the callbacks. The API Dashboard is under "Utvikler".
 If you need help solving a callback-related problem, please send us a
 complete HTTP request, and any other related details, so we can investigate.
 
-See:
-[Callbacks](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callbacks).
-
-See:
+See the
+[Callback](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callback-endpoints)
+section in the API guide, including
 [How to test your own callbacks](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#how-to-test-your-own-callbacks).
 
 ### Why do I get `HTTP 401 Unauthorized`?
