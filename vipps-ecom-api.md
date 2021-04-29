@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.23.
+Document version 2.5.24.
 
 ## Table of contents
 
@@ -1981,6 +1981,7 @@ allowed to provide more details.
 | Merchant | 38 | Sale unit is not allowed to skip the landing page ||
 | Merchant | 21 | Reference Order ID is not valid ||
 | Merchant | 22 | Reference Order ID is not in valid state ||
+| Merchant | 97 | The merchant is not approved by Vipps to receive payments ||
 
 # Testing
 
