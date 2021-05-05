@@ -2262,7 +2262,7 @@ components:
           description: Skips the landing page for whitelisted sale units. Requires a valid customerInfo.mobileNumber.
         scope:
           type: string
-          description: The requested OIDC scopes for use with userinfo
+          description: The requested OIDC scope for use with userinfo
           example: 'name address email'
           enum:
             - name
