@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.24.
+Document version 2.5.25.
 
 ## Table of contents
 
@@ -79,7 +79,7 @@ Document version 2.5.24.
   - [Polling guidelines](#polling-guidelines)
   - [Get payment status](#get-payment-status)
   - [Userinfo](#userinfo)
-    - [Scopes](#scopes)
+    - [scope](#scope)
     - [Userinfo call by call guide](#userinfo-call-by-call-guide)
     - [Get userinfo](#get-userinfo)
     - [Userinfo call](#userinfo-call)
@@ -1410,9 +1410,9 @@ information from our Userinfo endpoint.
 A users consent to share information with a merchant applies across our services. Thus, if the merchant implements Vipps login
 in addition to profile information as part of the payment flow, the merchant can also use Vipps to log the user in without the need for additional consents.
 
-### Scopes
+### scope
 
-| Scopes      | Description                                    | User consent required  |
+| scope      | Description                                    | User consent required  |
 | ------------| -----------------------------------------------|-------- |
 | `address`     | List containing the user's addresses. Will always contain the home address, but can also include work and other.    |   yes   |
 | `birthDate`   | Birth date (BankID verified)                               |   yes   |
@@ -1437,8 +1437,8 @@ a customer.
 
 1. Retrieve the access token:
    [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-recurring-api/#/Access%20Controller/getAccessToken).
-2. Add scope to the transaction object and include the scopes you wish to get
-   access to (valid scopes) before calling
+2. Add scope to the transaction object and include the scope you wish to get
+   access to (valid scope) before calling
    [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
 3. The user consents to the information sharing and perform the payment in Vipps.
 4. Retrieve the `sub` by calling

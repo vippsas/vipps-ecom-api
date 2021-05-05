@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.9
+  version: 1.6.10
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -2262,7 +2262,7 @@ components:
           description: Skips the landing page for whitelisted sale units. Requires a valid customerInfo.mobileNumber.
         scope:
           type: string
-          description: The requested OIDC scopes for use with userinfo
+          description: The requested OIDC scope for use with userinfo
           example: 'name address email'
           enum:
             - name
