@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.4.14.
+Document version 3.5.0.
 
 ### Table of contents
 
@@ -25,6 +25,7 @@ Document version 3.4.14.
   - [How can I open the fallback URL in a specific (embedded) browser?](#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser)
   - [How can I measure Vipps sales with Google Analytics, Facebook pixel, etc?](#how-can-i-measure-vipps-sales-with-google-analytics-facebook-pixel-etc)
   - [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
+  - [Why are the customer names not shown on the transaction overview?](#why-are-the-customer-names-not-shown-on-the-transaction-overview)
 - [Reservations and captures](#reservations-and-captures)
   - [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
   - [How can I check if I have "reserve capture" or "direct capture"?](#how-can-i-check-if-i-have-reserve-capture-or-direct-capture)
@@ -210,6 +211,28 @@ the shipping methods as part of the payment initiation. See:
 [Userinfo](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#userinfo)
 instead of Vipps Hurtigkasse, so you avoid asking the customer in a pub
 for the shipping method for the drinks, etc.
+
+### Why are the customer names not shown on the transaction overview?
+
+The transaction overview on
+[portal.vipps.no](https://portal.vipps.no)
+shows the customer names for
+[Vippsnummer](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/ta-betalt-med-vipps/)
+payments. For other payments, such as
+[Vipps på nett](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/)
+and
+[Vipps Faste betalinger](https://vipps.no/produkter-og-tjenester/bedrift/faste-betalinger/faste-betalinger/)
+the `orderId` is shown instead of the customer name.
+
+The `orderId` is specified by the merchant. See the
+[orderId recommenbdations](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#orderid-recommendations).
+
+Use
+[Userinfo](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#userinfo)
+to get customer's consent to share name, email address, etc.
+
+**Please note:** Vippsnummer is not legal for payments where the customer is
+not physically present. It does also not comply with "Kassaloven".
 
 ## Reservations and captures
 
