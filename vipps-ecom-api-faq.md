@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.6.0.
+Document version 3.6.1.
 
 ### Table of contents
 
@@ -717,14 +717,17 @@ See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settl
 
 ### Why has one of my customers been charged twice for the same payment?
 
+Once in a while a customer claims they have "paid double", "paid twice" or similar.
+
 This does not happen, except in _extremely_ rare cases where multiple services,
 both at Vipps, banks, PSPs, etc fail simultaneously. In practice: This does not happen.
 
 The most common reason for misunderstanding is that customers do not understand
 the difference between a _reservation_ and a _payment_ and/or that some banks
 do not present this to their customers in a way that the customer understands.
-Users may see both a reservation and a charge, and think that they have paid
-twice.
+Some banks will display the reservation of a payment even _after_ the payment has
+been captured. This may lead some customers into thinking that both the
+reservation and the capture are payments, and that they have paid twice.
 
 Most banks manage to do this properly, but apparently not all.
 
@@ -735,6 +738,10 @@ Please check the Vipps payment:
 4. Search for the `orderId` from step 1.
 5. Click the order.
 6. See the "History" details.
+
+This is of course also supported in the API, and it is a requirement to use
+this functionality when integrating with Vipps:
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
 
 The user can also check the payment in Vipps:
 1. Start Vipps and log in.
