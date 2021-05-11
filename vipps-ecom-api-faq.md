@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.5.0.
+Document version 3.6.0.
 
 ### Table of contents
 
@@ -73,6 +73,7 @@ Document version 3.5.0.
   - [What do we have to do with PSD2's SCA requirements?](#what-do-we-have-to-do-with-psd2s-sca-requirements)
   - [How can I use Vipps for different types of payments?](#how-can-i-use-vipps-for-different-types-of-payments)
   - [How do I set up multiple sale units?](#how-do-i-set-up-multiple-sale-units)
+  - [How can I change my organization number?](#how-can-i-change-my-organization-number)
   - [What about webhooks?](#what-about-webhooks)
   - [Can I use Vipps with Klarna Checkout?](#can-i-use-vipps-with-klarna-checkout)
 - [Frequently Asked Questions for POS integrations](#frequently-asked-questions-for-pos-integrations)
@@ -1125,6 +1126,24 @@ If all sale units have the same organization number, there are two alternatives:
    You decide what the `orderId` contains, and it may be up to 50 characters. See:
    [orderId recommendation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#orderid-recommendations).
    You will use the same API keys for all stores.
+
+### How can I change my organization number?
+
+Companies (merchants) sometimes merge with other companies, are acquired, etc.
+We sometimes get requests from companies that have "changed organization numbers",
+but this is not possible in Norway. A company can not change its organization
+number. The organization number is a unique identifier for a legal entity, and
+a new legal entity needs a new organization number. The fact that the company
+has the same name, is owned by the same people, etc. is irrelevant.
+
+Vipps is legally required by Finanstilsynet to perform several checks of all
+companies that have a customer relationship with Vipps. This is based on each
+company's organization number, and the legally binding agreement between the
+company and Vipps. This agreement is signed with BankID.
+
+If a company has "changed organization numbers", it is a new legal entity,
+and the new company needs a new agreement with Vipps. Establishing a new
+customer relationship for the new company is straight-forward on vipps.no.
 
 ### What about webhooks?
 
