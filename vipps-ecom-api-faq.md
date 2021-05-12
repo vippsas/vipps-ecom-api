@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.6.1.
+Document version 3.6.2.
 
 ### Table of contents
 
@@ -938,6 +938,12 @@ It _might_ also be a problem with your request, and that our validation does not
 Please make sure the JSON payload in your API request validates.
 That is the most common source of this type of error.
 In other words: We should perhaps have returned `HTTP 400 Bad Request`.
+
+Please check the capitalization of the parameters.
+We will return `HTTP 500 Error` if the incorrect `fallback` is used instead of
+the correct `fallBack`. We _should_ have returned `HTTP 400 Bad Request`,
+and we hope to add stricter request validation, but other tasks (such as PSD2)
+have higher priority.
 
 You can use
 [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
