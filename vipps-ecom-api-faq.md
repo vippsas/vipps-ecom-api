@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.6.2.
+Document version 3.7.0.
 
 ### Table of contents
 
@@ -68,6 +68,7 @@ Document version 3.6.2.
   - [Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`](#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked)
   - [Why do I not get the `sub` from `/details`?](#why-do-i-not-get-the-sub-from-details)
   - [Why do I get `unauthorized_client`?](#why-do-i-get-unauthorized_client)
+  - [Why do I get `Payment failed`?](#why-do-i-get-payment-failed)
 - [Other questions](#other-Questions)
   - [How do I perform "testing in production"?](#how-do-i-perform-testing-in-production)
   - [What do we have to do with PSD2's SCA requirements?](#what-do-we-have-to-do-with-psd2s-sca-requirements)
@@ -1042,6 +1043,18 @@ If you get errors like below from Microsoft Azure, you are not using the right A
 
 To fix this, please check that you are using the right API keys, similar to:
 [Why do I get `HTTP 401 Unauthorized`?](#why-do-i-get-http-401-unauthorized).
+
+### Why do I get `Payment failed`?
+
+This error is shown in Vipps if you use Vipps Hurtigkasse (express checkout) and respond
+incorrectly to the request for
+[`[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Merchant%20Endpoints/fetchShippingCostUsingPOST).
+
+Please verify that your response is correct.
+
+Also consider using
+[static shipping methods](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#shipping-and-static-shipping-details),
+as it gives a faster payment process and a better user experience.
 
 ## Other questions
 
