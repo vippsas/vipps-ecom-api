@@ -1810,24 +1810,43 @@ API when the payment is created ("url": "vipps://?token=eyJraWQiOiJqd3RrZXki..")
 
 Example of how to open Vipps:
 
-```java
-try {
-  PackageManager pm = context.getPackageManager();
-  PackageInfo info = pm.getPackageInfo( , PackageManager.GET_ACTIVITIES);
-  if(versionCompare(info.versionName,   ) >= 0) {
-    String uri = deeplinkURL; // Use deeplink url provided in ecom API response
-    Intent intent = new Intent(Intent.ACTION_VIEW);
-    intent.setData(Uri.parse(uri));
-    startActivityForResult(intent,requestCode);
-  } else {
-    // Notify user to download the latest version of Vipps application.
-  }
-} catch (PackageManager.NameNotFoundException e) {
-  // No Vipps app! Open play store page.
-  String url = " https://play.google.com/store/apps/details?id=no.dnb.vipps";
-  Intent storeIntent = new Intent(Intent.ACTION_VIEW);
-  storeIntent.setData(Uri.parse(url));
-  startActivity(storeIntent);
+```kotlin
+package com.example.app
+
+import android.app.Activity
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
+
+class MyActivity : Activity() {
+    companion object {
+        const val vippsRequestCode: Int = TODO("insert custom request code")
+        const val vippsMinVersion: String = TODO("insert min version")
+    }
+
+    // use deeplinkUrl from ecom response payload
+    fun openVippsApp(deeplinkUrl: String) {
+        try {
+            val pm = applicationContext.packageManager
+            val packageInfo = pm.getPackageInfo("no.dnb.vipps", PackageManager.GET_ACTIVITIES)
+
+            if (versionCompare(packageInfo.versionName, vippsMinVersion)) {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(deeplinkUrl))
+                startActivityForResult(intent, vippsRequestCode)
+            } else {
+                // Notify user to download the latest version of the Vipps app
+            }
+        } catch (e: PackageManager.NameNotFoundException) {
+            // No Vipps app! Open play store page.
+            val playStoreUrl = "https://play.google.com/store/apps/details?id=no.dnb.vipps"
+            val intent = Intent(Intent.ACTION_VIEW).setData(Uri.parse(playStoreUrl))
+            startActivity(intent)
+        }
+    }
+
+    fun versionCompare(installedVersion: String, minVersion: String): Boolean {
+        return TODO("make whatever checks you need to do")
+    }
 }
 ```
 
@@ -1872,9 +1891,8 @@ to handle the response in same activity.
 The receiving MainActivity has to override the `onNewIntent` method to handle
 result send by Vipps:
 
-```java
-@Override
-protected void onNewIntent(Intent intent) {
+```kotlin
+override fun onNewIntent(intent: Intent) {
       // Call the eCom api, check the status of the eCom payment
 }
 ```
@@ -1893,9 +1911,8 @@ This will cause Vipps to simply close after a successful or canceled ecom paymen
 
 The merchant app activity that resumes again (after Vipps closes) has to override onActivityResult method to pick up the thread again here. Example:
 
-```java
-@Override
-protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+```kotlin
+override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
     // Call the eCom api, check the status of the eCom payment
 }
 ```
