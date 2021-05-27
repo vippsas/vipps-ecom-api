@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.7.1.
+Document version 3.7.3.
 
 ### Table of contents
 
@@ -259,13 +259,21 @@ available in the customer's account.
 See:
 [How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
 
-According to Norwegian regulations you can _not_ capture a payment until the
+According to Norwegian regulations you should _not_ capture a payment until the
 product or service is provided to the customer. See
 [Kjøpsloven §49](https://lovdata.no/lov/1988-05-13-27/§49)
 (in Norwegian, naturally):
 
-"Følger ikke betalingstiden av avtalen, skal kjøperen betale når selgeren krever det,
-men ikke før tingen blir overlevert kjøperen eller stilt til hans rådighet i samsvar med avtalen og loven."
+>Følger ikke betalingstiden av avtalen, skal kjøperen betale når selgeren krever det,
+>men ikke før tingen blir overlevert kjøperen eller stilt til hans rådighet i samsvar med avtalen og loven.
+
+And https://lovdata.no/lov/2002-06-21-34/§38
+[orbrukerkjøpsloven §38](https://lovdata.no/lov/1988-05-13-27/§49)
+(in Norwegian, naturally):
+
+>Følger ikke betalingstiden av avtalen, skal forbrukeren betale når selgeren krever det.
+>Hvis ikke noe annet er avtalt, har forbrukeren ikke plikt til å betale kjøpesummen uten at tingen blir overlevert eller stilt til hans eller hennes rådighet i samsvar med avtalen og loven.
+>Forbrukeren er ikke bundet av en forhåndsavtale om plikt til å betale på et bestemt tidspunkt uavhengig av om selgeren oppfyller til rett tid.
 
 For more information, please see the Consumer Authority's
 [Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
