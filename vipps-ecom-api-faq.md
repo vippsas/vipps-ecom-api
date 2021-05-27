@@ -269,7 +269,7 @@ product or service is provided to the customer. See
 
 And https://lovdata.no/lov/2002-06-21-34/§38
 [orbrukerkjøpsloven §38](https://lovdata.no/lov/1988-05-13-27/§49)
-(in Norwegian, naturally):
+(also in Norwegian):
 
 >Følger ikke betalingstiden av avtalen, skal forbrukeren betale når selgeren krever det.
 >Hvis ikke noe annet er avtalt, har forbrukeren ikke plikt til å betale kjøpesummen uten at tingen blir overlevert eller stilt til hans eller hennes rådighet i samsvar med avtalen og loven.
