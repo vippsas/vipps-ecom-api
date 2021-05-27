@@ -498,8 +498,8 @@ See
 [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved).
 
 The long version: It's not possible to cancel the remaining reservation after a
-partial capture through Vipps, because our payment processor does not have this
-functionality. The partial capture (the 750 of the 1000 NOK in the example above)
+partial capture through Vipps.
+The partial capture (the 750 of the 1000 NOK in the example above)
 is normally confirmed in the bank after 3-10 days, but it sometimes takes even
 longer. When this is done, the bank will make the remaining (250 NOK) available
 in the customer's account again. This process depends entirely on the customer's
