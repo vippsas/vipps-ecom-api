@@ -262,7 +262,7 @@ See:
 According to Norwegian regulations you should _not_ capture a payment until the
 product or service is provided to the customer. See
 [Forbrukerkjøpsloven §38](https://lovdata.no/lov/1988-05-13-27/§49)
-(also in Norwegian):
+(in Norwegian):
 
 >Følger ikke betalingstiden av avtalen, skal forbrukeren betale når selgeren krever det.
 >Hvis ikke noe annet er avtalt, har forbrukeren ikke plikt til å betale kjøpesummen uten at tingen blir overlevert eller stilt til hans eller hennes rådighet i samsvar med avtalen og loven.
