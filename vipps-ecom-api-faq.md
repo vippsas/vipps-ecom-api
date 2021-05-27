@@ -714,7 +714,7 @@ for an overview.
 
 ### How long is an initiated order valid, if the user does not confirm in the Vipps app?
 
-Vipps orders have a max timeout of 10 minutes.
+Vipps orders have a max timeout of 10 minutes: 5 minutes to log in and 5 minutes to confirm the payment.
 It's important that the merchant waits at least as long, otherwise the Vipps user may
 confirm in the Vipps app, and right after get an error from the merchant that the order has been cancelled.
 
