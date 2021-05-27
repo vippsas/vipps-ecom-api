@@ -240,7 +240,7 @@ not physically present. It does also not comply with "Kassaloven".
 
 ### What is the difference between "Reserve Capture" and "Direct Capture"?
 
-When you initiate a payment it will be reserved until you capture it.
+When you initiate a payment it will be _reserved_ until you _capture_ it. Reserved means the funds are still in the customer's account, but not available to spend on other things, capture means the funds are moved from customer's account to merchant's account.
 Vipps supports both _reserve-capture_ and _direct capture_:
 
 * _Reserve capture_ is the default. When you initiate a payment it will be
