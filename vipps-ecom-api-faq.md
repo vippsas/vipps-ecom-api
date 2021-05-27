@@ -1,17 +1,11 @@
 # Vipps eCommerce API: Frequently Asked Questions
 
-See the
-[Vipps eCommerce API](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md)
-for all the details.
-
 See also:
-[Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md).
+* [Vipps eCommerce API guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md)
+* [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
+* [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-See also:
-[Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
-guide.
-
-Document version 3.8.0.
+Document version 3.8.1.
 
 ### Table of contents
 
@@ -272,6 +266,8 @@ product or service is provided to the customer. See
 For more information, please see the Consumer Authority's
 [Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
 
+Vipps can not offer legal advice for this.
+
 See: [Regular eCommerce payments](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#regular-ecommerce-payments) for more details.
 
 ### How can I check if I have "reserve capture" or "direct capture"?
@@ -518,8 +514,8 @@ See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settl
 
 ### How long does it take from a refund is made until the money is in the customer's account?
 
-Normally 2-3 _bank days_, depending on the bank.
-It can take much longer, up to 10 days, and depends on the bank.
+Normally 2-3 _bank days_, depending on the bank(s).
+It can take much longer, up to 10 days, and depends on the bank(s).
 
 Vipps does not have more information than what is available through our API:
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details).
@@ -558,7 +554,7 @@ See:
 
 ### Is there an API for retrieving information about a Vipps user?
 
-Yes. Vipps now offers the possibility for merchants to as part of the payment flow in the
+Yes. Vipps offers the possibility for merchants to as part of the payment flow in the
 [Vipps eCom API: Userinfo](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#userinfo)
 and
 [Vipps Recurring API: Userinfo](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api.md#userinfo).
@@ -597,12 +593,12 @@ Only in special cases, where displaying it is not possible.
 
 This feature has to be specially enabled by Vipps for eligible sale units:
 The sale units must be whitelisted by Vipps.
-Skipping the landing page is typically used at physical points of sale,
+Skipping the landing page is typically used at physical points of sale
 where there is no display available.
 
 You can log in on
 [portal.vipps.no](https://portal.vipps.no)
-to check if you have `skipLandingPage enabled.`
+to check if your sale unit has `skipLandingPage` enabled.
 
 If you need to skip the landing page in a Point of Sale (POS) solution, see:
 [What is the process to go live in production?](#what-is-the-process-to-go-live-in-production).
