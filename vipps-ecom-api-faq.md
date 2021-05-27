@@ -11,7 +11,7 @@ See also:
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 guide.
 
-Document version 3.7.3.
+Document version 3.8.0.
 
 ### Table of contents
 
@@ -48,6 +48,7 @@ Document version 3.7.3.
   - [Can I split payments to charge a fee?](#can-i-split-payments-to-charge-a-fee)
   - [Can I create a marketplace with multiple merchants?](#can-i-create-a-marketplace-with-multiple-merchants)
   - [Can I create a service to match buyers and sellers?](#can-i-create-a-service-to-match-buyers-and-sellers)
+  - [Can I use Vipps for crowdfunding?](#can-i-use-vipps-for-crowdfunding)
   - [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-cant-find-it)
   - [How long is an initiated order valid, if the user does not confirm in the Vipps app?](#how-long-is-an-initiated-order-valid-if-the-user-does-not-confirm-in-the-vipps-app)
   - [How long does it take until the money is in my account?](#how-long-does-it-take-until-the-money-is-in-my-account)
@@ -677,6 +678,18 @@ or one of our
 [plugins](https://github.com/vippsas/vipps-developers#plugins).
 
 Vipps can not offer legal advice for this.
+
+### Can I use Vipps for crowdfunding?
+
+That depends, but probably: No.
+
+Vipps can not keep money for merchants.
+All Vipps payments must be made to a company that is a customer of Vipps.
+
+See:
+* [What are the requirements for Vipps merchants?](#what-are-the-requirements-for-vipps-merchants)
+* [Can I create a marketplace with multiple merchants?](#can-i-create-a-marketplace-with-multiple-merchants)
+* [Can I create a service to match buyers and sellers?](#can-i-create-a-service-to-match-buyers-and-sellers)
 
 ### I have initiated an order but I can't find it!
 
