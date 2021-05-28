@@ -1552,6 +1552,7 @@ Darkula color scheme from the JetBrains family of IDEs
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
+<!-- backwards compatibility -->
   </head>
 
   <body data-languages="[&quot;shell&quot;,&quot;http&quot;,&quot;javascript&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;php&quot;,&quot;java&quot;,&quot;go&quot;]">
@@ -1911,12 +1912,17 @@ Darkula color scheme from the JetBrains family of IDEs
                   </li>
                 
                   <li>
-                    <a href="#tocs_error" class="toc-h2 toc-link" data-title="">Error</a>
+                    <a href="#tocs_userinfoerror" class="toc-h2 toc-link" data-title="">UserinfoError</a>
                     
                   </li>
                 
                   <li>
-                    <a href="#tocs_userinfoerror" class="toc-h2 toc-link" data-title="">UserinfoError</a>
+                    <a href="#tocs_genericerrorobject" class="toc-h2 toc-link" data-title="">GenericErrorObject</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#tocs_genericerrorarray" class="toc-h2 toc-link" data-title="">GenericErrorArray</a>
                     
                   </li>
                 
@@ -2159,52 +2165,46 @@ System.out.println(response.toString());
 <td><a href="#schemaauthorizationtokenresponse">AuthorizationTokenResponse</a></td>
 </tr>
 <tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>Bad request (Missing a required parameter or bad request format)</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>default</td>
+<td>Default</td>
+<td>Possible error responses. See <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">Responses</a>.</td>
+<td>Inline</td>
+</tr>
+</tbody>
+</table>
+<h3 id="fetch-authorization-token-responseschema">Response Schema</h3>
+<h4 id="enumerated-values">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>errorGroup</td>
+<td>Authentication</td>
 </tr>
 <tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
-<td>Unauthorized</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>Payments</td>
 </tr>
 <tr>
-<td>402</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.2">Payment Required</a></td>
-<td>Payment Failed</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>InvalidRequest</td>
 </tr>
 <tr>
-<td>403</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
-<td>Request Forbidden</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>VippsError</td>
 </tr>
 <tr>
-<td>404</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
-<td>Resource Not Found</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>User</td>
 </tr>
 <tr>
-<td>405</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
-<td>Request method not supported</td>
-<td><a href="#schemaerror">Error</a></td>
-</tr>
-<tr>
-<td>415</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">Unsupported Media Type</a></td>
-<td>Unsupported media type</td>
-<td><a href="#schemaerror">Error</a></td>
-</tr>
-<tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
-<td>A server-side error</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>Merchant</td>
 </tr>
 </tbody>
 </table>
@@ -2771,7 +2771,7 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h4 id="enumerated-values">Enumerated Values</h4>
+<h4 id="enumerated-values-2">Enumerated Values</h4>
 <table>
 <thead>
 <tr>
@@ -2855,52 +2855,46 @@ System.out.println(response.toString());
 <td><a href="#schemapaymentinitiationresponse">PaymentInitiationResponse</a></td>
 </tr>
 <tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>Bad request (Missing a required parameter or bad request format)</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>default</td>
+<td>Default</td>
+<td>Possible error responses. See <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">Responses</a>.</td>
+<td>Inline</td>
+</tr>
+</tbody>
+</table>
+<h3 id="initiate-payment-responseschema">Response Schema</h3>
+<h4 id="enumerated-values-3">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>errorGroup</td>
+<td>Authentication</td>
 </tr>
 <tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
-<td>Unauthorized</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>Payments</td>
 </tr>
 <tr>
-<td>402</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.2">Payment Required</a></td>
-<td>Payment Failed</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>InvalidRequest</td>
 </tr>
 <tr>
-<td>403</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
-<td>Request Forbidden</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>VippsError</td>
 </tr>
 <tr>
-<td>404</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
-<td>Resource Not Found</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>User</td>
 </tr>
 <tr>
-<td>405</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
-<td>Request method not supported</td>
-<td><a href="#schemaerror">Error</a></td>
-</tr>
-<tr>
-<td>415</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">Unsupported Media Type</a></td>
-<td>Unsupported media type</td>
-<td><a href="#schemaerror">Error</a></td>
-</tr>
-<tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
-<td>A server-side error</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>Merchant</td>
 </tr>
 </tbody>
 </table>
@@ -3285,58 +3279,46 @@ System.out.println(response.toString());
 <td><a href="#schematransactionresponse">TransactionResponse</a></td>
 </tr>
 <tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>Bad request (Missing a required parameter or bad request format)</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>default</td>
+<td>Default</td>
+<td>Possible error responses. See <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">Responses</a>.</td>
+<td>Inline</td>
+</tr>
+</tbody>
+</table>
+<h3 id="capture-payment--responseschema">Response Schema</h3>
+<h4 id="enumerated-values-4">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>errorGroup</td>
+<td>Authentication</td>
 </tr>
 <tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
-<td>Unauthorized</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>Payments</td>
 </tr>
 <tr>
-<td>402</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.2">Payment Required</a></td>
-<td>Payment Failed</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>InvalidRequest</td>
 </tr>
 <tr>
-<td>403</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
-<td>Request Forbidden</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>VippsError</td>
 </tr>
 <tr>
-<td>404</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
-<td>Resource Not Found</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>User</td>
 </tr>
 <tr>
-<td>405</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
-<td>Request method not supported</td>
-<td><a href="#schemaerror">Error</a></td>
-</tr>
-<tr>
-<td>415</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">Unsupported Media Type</a></td>
-<td>Unsupported media type</td>
-<td><a href="#schemaerror">Error</a></td>
-</tr>
-<tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
-<td>A server-side error</td>
-<td><a href="#schemaerror">Error</a></td>
-</tr>
-<tr>
-<td>503</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td>
-<td>Service Unavailable</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>Merchant</td>
 </tr>
 </tbody>
 </table>
@@ -3698,58 +3680,46 @@ System.out.println(response.toString());
 <td><a href="#schematransactionresponse">TransactionResponse</a></td>
 </tr>
 <tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>Bad request (Missing a required parameter or bad request format)</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>default</td>
+<td>Default</td>
+<td>Possible error responses. See <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">Responses</a>.</td>
+<td>Inline</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cancel-payment-responseschema">Response Schema</h3>
+<h4 id="enumerated-values-5">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>errorGroup</td>
+<td>Authentication</td>
 </tr>
 <tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
-<td>Unauthorized</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>Payments</td>
 </tr>
 <tr>
-<td>402</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.2">Payment Required</a></td>
-<td>Payment Failed</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>InvalidRequest</td>
 </tr>
 <tr>
-<td>403</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
-<td>Request Forbidden</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>VippsError</td>
 </tr>
 <tr>
-<td>404</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
-<td>Resource Not Found</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>User</td>
 </tr>
 <tr>
-<td>405</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
-<td>Request method not supported</td>
-<td><a href="#schemaerror">Error</a></td>
-</tr>
-<tr>
-<td>415</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">Unsupported Media Type</a></td>
-<td>Unsupported media type</td>
-<td><a href="#schemaerror">Error</a></td>
-</tr>
-<tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
-<td>A server-side error</td>
-<td><a href="#schemaerror">Error</a></td>
-</tr>
-<tr>
-<td>503</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td>
-<td>Service Unavailable</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>Merchant</td>
 </tr>
 </tbody>
 </table>
@@ -4091,58 +4061,46 @@ System.out.println(response.toString());
 <td><a href="#schematransactionresponse">TransactionResponse</a></td>
 </tr>
 <tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>Bad request (Missing a required parameter or bad request format)</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>default</td>
+<td>Default</td>
+<td>Possible error responses. See <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">Responses</a>.</td>
+<td>Inline</td>
+</tr>
+</tbody>
+</table>
+<h3 id="authorize-payment-responseschema">Response Schema</h3>
+<h4 id="enumerated-values-6">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>errorGroup</td>
+<td>Authentication</td>
 </tr>
 <tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
-<td>Unauthorized</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>Payments</td>
 </tr>
 <tr>
-<td>402</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.2">Payment Required</a></td>
-<td>Payment Failed</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>InvalidRequest</td>
 </tr>
 <tr>
-<td>403</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
-<td>Request Forbidden</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>VippsError</td>
 </tr>
 <tr>
-<td>404</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
-<td>Resource Not Found</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>User</td>
 </tr>
 <tr>
-<td>405</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
-<td>Request method not supported</td>
-<td><a href="#schemaerror">Error</a></td>
-</tr>
-<tr>
-<td>415</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">Unsupported Media Type</a></td>
-<td>Unsupported media type</td>
-<td><a href="#schemaerror">Error</a></td>
-</tr>
-<tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
-<td>A server-side error</td>
-<td><a href="#schemaerror">Error</a></td>
-</tr>
-<tr>
-<td>503</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td>
-<td>Service Unavailable</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>Merchant</td>
 </tr>
 </tbody>
 </table>
@@ -4526,58 +4484,46 @@ System.out.println(response.toString());
 <td><a href="#schemarefundtransactionresponse">RefundTransactionResponse</a></td>
 </tr>
 <tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>Bad request (Missing a required parameter or bad request format)</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>default</td>
+<td>Default</td>
+<td>Possible error responses. See <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">Responses</a>.</td>
+<td>Inline</td>
+</tr>
+</tbody>
+</table>
+<h3 id="refund-payment--responseschema">Response Schema</h3>
+<h4 id="enumerated-values-7">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>errorGroup</td>
+<td>Authentication</td>
 </tr>
 <tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
-<td>Unauthorized</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>Payments</td>
 </tr>
 <tr>
-<td>402</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.2">Payment Required</a></td>
-<td>Payment Failed</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>InvalidRequest</td>
 </tr>
 <tr>
-<td>403</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
-<td>Request Forbidden</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>VippsError</td>
 </tr>
 <tr>
-<td>404</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
-<td>Resource Not Found</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>User</td>
 </tr>
 <tr>
-<td>405</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
-<td>Request method not supported</td>
-<td><a href="#schemaerror">Error</a></td>
-</tr>
-<tr>
-<td>415</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">Unsupported Media Type</a></td>
-<td>Unsupported media type</td>
-<td><a href="#schemaerror">Error</a></td>
-</tr>
-<tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
-<td>A server-side error</td>
-<td><a href="#schemaerror">Error</a></td>
-</tr>
-<tr>
-<td>503</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td>
-<td>Service Unavailable</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>Merchant</td>
 </tr>
 </tbody>
 </table>
@@ -4878,14 +4824,16 @@ System.out.println(response.toString());
 <p>Example responses</p>
 </blockquote>
 <blockquote>
-<p>400 Response</p>
+<p>default Response</p>
 </blockquote>
-<pre class="highlight tab tab-json"><code>{
-  <span class="hljs-attr">&quot;errorGroup&quot;</span>: <span class="hljs-string">&quot;Payments&quot;</span>,
-  <span class="hljs-attr">&quot;errorCode&quot;</span>: <span class="hljs-string">&quot;44&quot;</span>,
-  <span class="hljs-attr">&quot;errorMessage&quot;</span>: <span class="hljs-string">&quot;Refused by issuer because of expired card&quot;</span>,
-  <span class="hljs-attr">&quot;contextId&quot;</span>: <span class="hljs-string">&quot;f70b8bf7-c843-4bea-95d9-94725b19895f&quot;</span>
-}
+<pre class="highlight tab tab-json"><code>[
+  {
+    <span class="hljs-attr">&quot;errorGroup&quot;</span>: <span class="hljs-string">&quot;Payments&quot;</span>,
+    <span class="hljs-attr">&quot;errorCode&quot;</span>: <span class="hljs-string">&quot;44&quot;</span>,
+    <span class="hljs-attr">&quot;errorMessage&quot;</span>: <span class="hljs-string">&quot;Refused by issuer because of expired card&quot;</span>,
+    <span class="hljs-attr">&quot;contextId&quot;</span>: <span class="hljs-string">&quot;f70b8bf7-c843-4bea-95d9-94725b19895f&quot;</span>
+  }
+]
 </code></pre>
 <h3 id="force-approve-payment-responses">Responses</h3>
 <table>
@@ -4905,52 +4853,46 @@ System.out.println(response.toString());
 <td>None</td>
 </tr>
 <tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>Bad request (Missing a required parameter or bad request format)</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>default</td>
+<td>Default</td>
+<td>Possible error responses. See <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">Responses</a>.</td>
+<td>Inline</td>
+</tr>
+</tbody>
+</table>
+<h3 id="force-approve-payment-responseschema">Response Schema</h3>
+<h4 id="enumerated-values-8">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>errorGroup</td>
+<td>Authentication</td>
 </tr>
 <tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
-<td>Unauthorized</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>Payments</td>
 </tr>
 <tr>
-<td>402</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.2">Payment Required</a></td>
-<td>Payment Failed</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>InvalidRequest</td>
 </tr>
 <tr>
-<td>403</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
-<td>Request Forbidden</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>VippsError</td>
 </tr>
 <tr>
-<td>404</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
-<td>Resource Not Found</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>User</td>
 </tr>
 <tr>
-<td>405</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
-<td>Request method not supported</td>
-<td><a href="#schemaerror">Error</a></td>
-</tr>
-<tr>
-<td>415</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">Unsupported Media Type</a></td>
-<td>Unsupported media type</td>
-<td><a href="#schemaerror">Error</a></td>
-</tr>
-<tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
-<td>A server-side error</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>Merchant</td>
 </tr>
 </tbody>
 </table>
@@ -5277,58 +5219,46 @@ System.out.println(response.toString());
 <td><a href="#schematransactiondetails">TransactionDetails</a></td>
 </tr>
 <tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>Bad request (Missing a required parameter or bad request format)</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>default</td>
+<td>Default</td>
+<td>Possible error responses. See <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">Responses</a>.</td>
+<td>Inline</td>
+</tr>
+</tbody>
+</table>
+<h3 id="get-payment-details-responseschema">Response Schema</h3>
+<h4 id="enumerated-values-9">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>errorGroup</td>
+<td>Authentication</td>
 </tr>
 <tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
-<td>Unauthorized</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>Payments</td>
 </tr>
 <tr>
-<td>402</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.2">Payment Required</a></td>
-<td>Payment Failed</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>InvalidRequest</td>
 </tr>
 <tr>
-<td>403</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
-<td>Request Forbidden</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>VippsError</td>
 </tr>
 <tr>
-<td>404</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
-<td>Resource Not Found</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>User</td>
 </tr>
 <tr>
-<td>405</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
-<td>Request method not supported</td>
-<td><a href="#schemaerror">Error</a></td>
-</tr>
-<tr>
-<td>415</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">Unsupported Media Type</a></td>
-<td>Unsupported media type</td>
-<td><a href="#schemaerror">Error</a></td>
-</tr>
-<tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
-<td>A server-side error</td>
-<td><a href="#schemaerror">Error</a></td>
-</tr>
-<tr>
-<td>503</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.4">Service Unavailable</a></td>
-<td>Service Unavailable</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>Merchant</td>
 </tr>
 </tbody>
 </table>
@@ -5536,52 +5466,46 @@ System.out.println(response.toString());
 <td><a href="#schemapaymentstatus">PaymentStatus</a></td>
 </tr>
 <tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>Bad request (Missing a required parameter or bad request format)</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>default</td>
+<td>Default</td>
+<td>Possible error responses. See <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">Responses</a>.</td>
+<td>Inline</td>
+</tr>
+</tbody>
+</table>
+<h3 id="deprecated--get-order-status-responseschema">Response Schema</h3>
+<h4 id="enumerated-values-10">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>errorGroup</td>
+<td>Authentication</td>
 </tr>
 <tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
-<td>Unauthorized</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>Payments</td>
 </tr>
 <tr>
-<td>402</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.2">Payment Required</a></td>
-<td>Payment Failed</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>InvalidRequest</td>
 </tr>
 <tr>
-<td>403</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.3">Forbidden</a></td>
-<td>Request Forbidden</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>VippsError</td>
 </tr>
 <tr>
-<td>404</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
-<td>Resource Not Found</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>User</td>
 </tr>
 <tr>
-<td>405</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
-<td>Request method not supported</td>
-<td><a href="#schemaerror">Error</a></td>
-</tr>
-<tr>
-<td>415</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.13">Unsupported Media Type</a></td>
-<td>Unsupported media type</td>
-<td><a href="#schemaerror">Error</a></td>
-</tr>
-<tr>
-<td>500</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
-<td>A server-side error</td>
-<td><a href="#schemaerror">Error</a></td>
+<td>errorGroup</td>
+<td>Merchant</td>
 </tr>
 </tbody>
 </table>
@@ -5961,7 +5885,7 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h4 id="enumerated-values-2">Enumerated Values</h4>
+<h4 id="enumerated-values-11">Enumerated Values</h4>
 <table>
 <thead>
 <tr>
@@ -6068,12 +5992,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/{orderId} \
     &quot;ssn&quot;: &quot;12345678901&quot;,
     &quot;userId&quot;: &quot;uiJskNQ6qNN1iwN891uuob==&quot;
   },
-  &quot;errorInfo&quot;: {
-    &quot;errorGroup&quot;: &quot;Payments&quot;,
-    &quot;errorCode&quot;: &quot;44&quot;,
-    &quot;errorMessage&quot;: &quot;Refused by issuer because of expired card&quot;,
-    &quot;contextId&quot;: &quot;f70b8bf7-c843-4bea-95d9-94725b19895f&quot;
-  }
+  &quot;errorInfo&quot;: null
 }&#x27;</span>;
 <span class="hljs-keyword">const</span> headers = {
   <span class="hljs-string">&#x27;Content-Type&#x27;</span>:<span class="hljs-string">&#x27;application/json;charset=UTF-8&#x27;</span>,
@@ -6219,12 +6138,7 @@ System.out.println(response.toString());
     <span class="hljs-attr">&quot;ssn&quot;</span>: <span class="hljs-string">&quot;12345678901&quot;</span>,
     <span class="hljs-attr">&quot;userId&quot;</span>: <span class="hljs-string">&quot;uiJskNQ6qNN1iwN891uuob==&quot;</span>
   },
-  <span class="hljs-attr">&quot;errorInfo&quot;</span>: {
-    <span class="hljs-attr">&quot;errorGroup&quot;</span>: <span class="hljs-string">&quot;Payments&quot;</span>,
-    <span class="hljs-attr">&quot;errorCode&quot;</span>: <span class="hljs-string">&quot;44&quot;</span>,
-    <span class="hljs-attr">&quot;errorMessage&quot;</span>: <span class="hljs-string">&quot;Refused by issuer because of expired card&quot;</span>,
-    <span class="hljs-attr">&quot;contextId&quot;</span>: <span class="hljs-string">&quot;f70b8bf7-c843-4bea-95d9-94725b19895f&quot;</span>
-  }
+  <span class="hljs-attr">&quot;errorInfo&quot;</span>: <span class="hljs-literal">null</span>
 }
 </code></pre>
 <h3 id="callback---transaction-update-parameters">Parameters</h3>
@@ -6502,12 +6416,6 @@ System.out.println(response.toString());
 <td><a href="#schemauserinfo">Userinfo</a></td>
 </tr>
 <tr>
-<td>400</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
-<td>Bad Request</td>
-<td><a href="#schemauserinfoerror">UserinfoError</a></td>
-</tr>
-<tr>
 <td>401</td>
 <td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
 <td>Unauthorized</td>
@@ -6529,6 +6437,12 @@ System.out.println(response.toString());
 <td>500</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
 <td>Internal Server Error</td>
+<td><a href="#schemauserinfoerror">UserinfoError</a></td>
+</tr>
+<tr>
+<td>default</td>
+<td>Default</td>
+<td>Bad Request</td>
 <td><a href="#schemauserinfoerror">UserinfoError</a></td>
 </tr>
 </tbody>
@@ -6680,7 +6594,7 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h4 id="enumerated-values-3">Enumerated Values</h4>
+<h4 id="enumerated-values-12">Enumerated Values</h4>
 <table>
 <thead>
 <tr>
@@ -6758,7 +6672,7 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h4 id="enumerated-values-4">Enumerated Values</h4>
+<h4 id="enumerated-values-13">Enumerated Values</h4>
 <table>
 <thead>
 <tr>
@@ -6913,7 +6827,7 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h4 id="enumerated-values-5">Enumerated Values</h4>
+<h4 id="enumerated-values-14">Enumerated Values</h4>
 <table>
 <thead>
 <tr>
@@ -7070,7 +6984,7 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h4 id="enumerated-values-6">Enumerated Values</h4>
+<h4 id="enumerated-values-15">Enumerated Values</h4>
 <table>
 <thead>
 <tr>
@@ -7421,7 +7335,7 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h4 id="enumerated-values-7">Enumerated Values</h4>
+<h4 id="enumerated-values-16">Enumerated Values</h4>
 <table>
 <thead>
 <tr>
@@ -7515,7 +7429,7 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h4 id="enumerated-values-8">Enumerated Values</h4>
+<h4 id="enumerated-values-17">Enumerated Values</h4>
 <table>
 <thead>
 <tr>
@@ -7609,7 +7523,7 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h4 id="enumerated-values-9">Enumerated Values</h4>
+<h4 id="enumerated-values-18">Enumerated Values</h4>
 <table>
 <thead>
 <tr>
@@ -7723,7 +7637,7 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h4 id="enumerated-values-10">Enumerated Values</h4>
+<h4 id="enumerated-values-19">Enumerated Values</h4>
 <table>
 <thead>
 <tr>
@@ -8173,7 +8087,7 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h4 id="enumerated-values-11">Enumerated Values</h4>
+<h4 id="enumerated-values-20">Enumerated Values</h4>
 <table>
 <thead>
 <tr>
@@ -8367,7 +8281,7 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h4 id="enumerated-values-12">Enumerated Values</h4>
+<h4 id="enumerated-values-21">Enumerated Values</h4>
 <table>
 <thead>
 <tr>
@@ -8572,7 +8486,7 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h4 id="enumerated-values-13">Enumerated Values</h4>
+<h4 id="enumerated-values-22">Enumerated Values</h4>
 <table>
 <thead>
 <tr>
@@ -8753,7 +8667,7 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h4 id="enumerated-values-14">Enumerated Values</h4>
+<h4 id="enumerated-values-23">Enumerated Values</h4>
 <table>
 <thead>
 <tr>
@@ -8915,12 +8829,7 @@ System.out.println(response.toString());
     <span class="hljs-attr">&quot;ssn&quot;</span>: <span class="hljs-string">&quot;12345678901&quot;</span>,
     <span class="hljs-attr">&quot;userId&quot;</span>: <span class="hljs-string">&quot;uiJskNQ6qNN1iwN891uuob==&quot;</span>
   },
-  <span class="hljs-attr">&quot;errorInfo&quot;</span>: {
-    <span class="hljs-attr">&quot;errorGroup&quot;</span>: <span class="hljs-string">&quot;Payments&quot;</span>,
-    <span class="hljs-attr">&quot;errorCode&quot;</span>: <span class="hljs-string">&quot;44&quot;</span>,
-    <span class="hljs-attr">&quot;errorMessage&quot;</span>: <span class="hljs-string">&quot;Refused by issuer because of expired card&quot;</span>,
-    <span class="hljs-attr">&quot;contextId&quot;</span>: <span class="hljs-string">&quot;f70b8bf7-c843-4bea-95d9-94725b19895f&quot;</span>
-  }
+  <span class="hljs-attr">&quot;errorInfo&quot;</span>: <span class="hljs-literal">null</span>
 }
 
 </code></pre>
@@ -8973,10 +8882,10 @@ System.out.println(response.toString());
 </tr>
 <tr>
 <td>errorInfo</td>
-<td><a href="#schemaerror">Error</a></td>
+<td><a href="#schema#/components/responses/genericdefault">#/components/responses/GenericDefault</a></td>
 <td>false</td>
 <td>none</td>
-<td>none</td>
+<td>Possible error responses. See <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">Responses</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -8994,12 +8903,7 @@ System.out.println(response.toString());
     <span class="hljs-attr">&quot;timeStamp&quot;</span>: <span class="hljs-string">&quot;2018-12-12T11:18:38.246Z&quot;</span>,
     <span class="hljs-attr">&quot;transactionId&quot;</span>: <span class="hljs-string">&quot;5001420062&quot;</span>
   },
-  <span class="hljs-attr">&quot;errorInfo&quot;</span>: {
-    <span class="hljs-attr">&quot;errorGroup&quot;</span>: <span class="hljs-string">&quot;Payments&quot;</span>,
-    <span class="hljs-attr">&quot;errorCode&quot;</span>: <span class="hljs-string">&quot;44&quot;</span>,
-    <span class="hljs-attr">&quot;errorMessage&quot;</span>: <span class="hljs-string">&quot;Refused by issuer because of expired card&quot;</span>,
-    <span class="hljs-attr">&quot;contextId&quot;</span>: <span class="hljs-string">&quot;f70b8bf7-c843-4bea-95d9-94725b19895f&quot;</span>
-  }
+  <span class="hljs-attr">&quot;errorInfo&quot;</span>: <span class="hljs-literal">null</span>
 }
 
 </code></pre>
@@ -9038,10 +8942,10 @@ System.out.println(response.toString());
 </tr>
 <tr>
 <td>errorInfo</td>
-<td><a href="#schemaerror">Error</a></td>
+<td><a href="#schema#/components/responses/genericdefault">#/components/responses/GenericDefault</a></td>
 <td>false</td>
 <td>none</td>
-<td>none</td>
+<td>Possible error responses. See <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">Responses</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -9278,12 +9182,7 @@ System.out.println(response.toString());
     <span class="hljs-attr">&quot;ssn&quot;</span>: <span class="hljs-string">&quot;12345678901&quot;</span>,
     <span class="hljs-attr">&quot;userId&quot;</span>: <span class="hljs-string">&quot;uiJskNQ6qNN1iwN891uuob==&quot;</span>
   },
-  <span class="hljs-attr">&quot;errorInfo&quot;</span>: {
-    <span class="hljs-attr">&quot;errorGroup&quot;</span>: <span class="hljs-string">&quot;Payments&quot;</span>,
-    <span class="hljs-attr">&quot;errorCode&quot;</span>: <span class="hljs-string">&quot;44&quot;</span>,
-    <span class="hljs-attr">&quot;errorMessage&quot;</span>: <span class="hljs-string">&quot;Refused by issuer because of expired card&quot;</span>,
-    <span class="hljs-attr">&quot;contextId&quot;</span>: <span class="hljs-string">&quot;f70b8bf7-c843-4bea-95d9-94725b19895f&quot;</span>
-  }
+  <span class="hljs-attr">&quot;errorInfo&quot;</span>: <span class="hljs-literal">null</span>
 }
 
 </code></pre>
@@ -9330,96 +9229,6 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h2 id="tocs_error">Error</h2>
-<p><a id="schemaerror"></a>
-<a id="schema_Error"></a>
-<a id="tocSerror"></a>
-<a id="tocserror"></a></p>
-<pre class="highlight tab tab-json"><code>{
-  <span class="hljs-attr">&quot;errorGroup&quot;</span>: <span class="hljs-string">&quot;Payments&quot;</span>,
-  <span class="hljs-attr">&quot;errorCode&quot;</span>: <span class="hljs-string">&quot;44&quot;</span>,
-  <span class="hljs-attr">&quot;errorMessage&quot;</span>: <span class="hljs-string">&quot;Refused by issuer because of expired card&quot;</span>,
-  <span class="hljs-attr">&quot;contextId&quot;</span>: <span class="hljs-string">&quot;f70b8bf7-c843-4bea-95d9-94725b19895f&quot;</span>
-}
-
-</code></pre>
-<h3 id="properties-39">Properties</h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>errorGroup</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>The error group. See: <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-groups">https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-groups</a></td>
-</tr>
-<tr>
-<td>errorCode</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>The error code. See: <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes">https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes</a></td>
-</tr>
-<tr>
-<td>errorMessage</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>A description of what went wrong. See <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#errors">https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#errors</a></td>
-</tr>
-<tr>
-<td>contextId</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>A unique id for this error, useful for searching in logs</td>
-</tr>
-</tbody>
-</table>
-<h4 id="enumerated-values-15">Enumerated Values</h4>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>errorGroup</td>
-<td>Authentication</td>
-</tr>
-<tr>
-<td>errorGroup</td>
-<td>Payments</td>
-</tr>
-<tr>
-<td>errorGroup</td>
-<td>InvalidRequest</td>
-</tr>
-<tr>
-<td>errorGroup</td>
-<td>VippsError</td>
-</tr>
-<tr>
-<td>errorGroup</td>
-<td>User</td>
-</tr>
-<tr>
-<td>errorGroup</td>
-<td>Merchant</td>
-</tr>
-</tbody>
-</table>
 <h2 id="tocs_userinfoerror">UserinfoError</h2>
 <p><a id="schemauserinfoerror"></a>
 <a id="schema_UserinfoError"></a>
@@ -9438,7 +9247,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
-<h3 id="properties-40">Properties</h3>
+<h3 id="properties-39">Properties</h3>
 <table>
 <thead>
 <tr>
@@ -9501,8 +9310,166 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
+<h2 id="tocs_genericerrorobject">GenericErrorObject</h2>
+<p><a id="schemagenericerrorobject"></a>
+<a id="schema_GenericErrorObject"></a>
+<a id="tocSgenericerrorobject"></a>
+<a id="tocsgenericerrorobject"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;responseInfo&quot;</span>: {
+    <span class="hljs-attr">&quot;responseCode&quot;</span>: <span class="hljs-number">401</span>,
+    <span class="hljs-attr">&quot;responseMessage&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+  },
+  <span class="hljs-attr">&quot;result&quot;</span>: {
+    <span class="hljs-attr">&quot;message&quot;</span>: <span class="hljs-string">&quot;Refused by issuer because of expired card&quot;</span>
+  }
+}
+
+</code></pre>
+<h3 id="properties-40">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>responseInfo</td>
+<td>object</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» responseCode</td>
+<td>integer</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» responseMessage</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>result</td>
+<td>object</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» message</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>A description of what went wrong. See <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#errors">https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#errors</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="tocs_genericerrorarray">GenericErrorArray</h2>
+<p><a id="schemagenericerrorarray"></a>
+<a id="schema_GenericErrorArray"></a>
+<a id="tocSgenericerrorarray"></a>
+<a id="tocsgenericerrorarray"></a></p>
+<pre class="highlight tab tab-json"><code>[
+  {
+    <span class="hljs-attr">&quot;errorGroup&quot;</span>: <span class="hljs-string">&quot;Payments&quot;</span>,
+    <span class="hljs-attr">&quot;errorCode&quot;</span>: <span class="hljs-string">&quot;44&quot;</span>,
+    <span class="hljs-attr">&quot;errorMessage&quot;</span>: <span class="hljs-string">&quot;Refused by issuer because of expired card&quot;</span>,
+    <span class="hljs-attr">&quot;contextId&quot;</span>: <span class="hljs-string">&quot;f70b8bf7-c843-4bea-95d9-94725b19895f&quot;</span>
+  }
+]
+
+</code></pre>
+<h3 id="properties-41">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>errorGroup</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>The error group. See: <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-groups">https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-groups</a></td>
+</tr>
+<tr>
+<td>errorCode</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>The error code. See: <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes">https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes</a></td>
+</tr>
+<tr>
+<td>errorMessage</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>A description of what went wrong. See <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#errors">https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#errors</a></td>
+</tr>
+<tr>
+<td>contextId</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>A unique id for this error, useful for searching in logs</td>
+</tr>
+</tbody>
+</table>
+<h4 id="enumerated-values-24">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>errorGroup</td>
+<td>Authentication</td>
+</tr>
+<tr>
+<td>errorGroup</td>
+<td>Payments</td>
+</tr>
+<tr>
+<td>errorGroup</td>
+<td>InvalidRequest</td>
+</tr>
+<tr>
+<td>errorGroup</td>
+<td>VippsError</td>
+</tr>
+<tr>
+<td>errorGroup</td>
+<td>User</td>
+</tr>
+<tr>
+<td>errorGroup</td>
+<td>Merchant</td>
+</tr>
+</tbody>
+</table>
 <!-- Renderer: Shins v2.6.0 -->
 <!-- Generator: Widdershins v4.0.1 -->
+<!-- backwards compatibility -->
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
