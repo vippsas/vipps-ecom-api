@@ -1555,6 +1555,7 @@ Darkula color scheme from the JetBrains family of IDEs
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
+<!-- backwards compatibility -->
   </head>
 
   <body data-languages="[&quot;shell&quot;,&quot;http&quot;,&quot;javascript&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;php&quot;,&quot;java&quot;,&quot;go&quot;]">
@@ -1929,12 +1930,17 @@ Darkula color scheme from the JetBrains family of IDEs
                   </li>
                 
                   <li>
-                    <a href="#tocs_genericerrorobject" class="toc-h2 toc-link" data-title="">GenericErrorObject</a>
+                    <a href="#tocs_errorobject" class="toc-h2 toc-link" data-title="">ErrorObject</a>
                     
                   </li>
                 
                   <li>
-                    <a href="#tocs_genericerrorarray" class="toc-h2 toc-link" data-title="">GenericErrorArray</a>
+                    <a href="#tocs_error" class="toc-h2 toc-link" data-title="">Error</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#tocs_errorarray" class="toc-h2 toc-link" data-title="">ErrorArray</a>
                     
                   </li>
                 
@@ -6004,7 +6010,12 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/{orderId} \
     &quot;ssn&quot;: &quot;12345678901&quot;,
     &quot;userId&quot;: &quot;uiJskNQ6qNN1iwN891uuob==&quot;
   },
-  &quot;errorInfo&quot;: null
+  &quot;errorInfo&quot;: {
+    &quot;errorGroup&quot;: &quot;Payments&quot;,
+    &quot;errorCode&quot;: &quot;44&quot;,
+    &quot;errorMessage&quot;: &quot;Refused by issuer because of expired card&quot;,
+    &quot;contextId&quot;: &quot;f70b8bf7-c843-4bea-95d9-94725b19895f&quot;
+  }
 }&#x27;</span>;
 <span class="hljs-keyword">const</span> headers = {
   <span class="hljs-string">&#x27;Content-Type&#x27;</span>:<span class="hljs-string">&#x27;application/json;charset=UTF-8&#x27;</span>,
@@ -6150,7 +6161,12 @@ System.out.println(response.toString());
     <span class="hljs-attr">&quot;ssn&quot;</span>: <span class="hljs-string">&quot;12345678901&quot;</span>,
     <span class="hljs-attr">&quot;userId&quot;</span>: <span class="hljs-string">&quot;uiJskNQ6qNN1iwN891uuob==&quot;</span>
   },
-  <span class="hljs-attr">&quot;errorInfo&quot;</span>: <span class="hljs-literal">null</span>
+  <span class="hljs-attr">&quot;errorInfo&quot;</span>: {
+    <span class="hljs-attr">&quot;errorGroup&quot;</span>: <span class="hljs-string">&quot;Payments&quot;</span>,
+    <span class="hljs-attr">&quot;errorCode&quot;</span>: <span class="hljs-string">&quot;44&quot;</span>,
+    <span class="hljs-attr">&quot;errorMessage&quot;</span>: <span class="hljs-string">&quot;Refused by issuer because of expired card&quot;</span>,
+    <span class="hljs-attr">&quot;contextId&quot;</span>: <span class="hljs-string">&quot;f70b8bf7-c843-4bea-95d9-94725b19895f&quot;</span>
+  }
 }
 </code></pre>
 <h3 id="callback---transaction-update-parameters">Parameters</h3>
@@ -6428,6 +6444,12 @@ System.out.println(response.toString());
 <td><a href="#schemauserinfo">Userinfo</a></td>
 </tr>
 <tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Bad Request</td>
+<td><a href="#schemauserinfoerror">UserinfoError</a></td>
+</tr>
+<tr>
 <td>401</td>
 <td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
 <td>Unauthorized</td>
@@ -6449,12 +6471,6 @@ System.out.println(response.toString());
 <td>500</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.6.1">Internal Server Error</a></td>
 <td>Internal Server Error</td>
-<td><a href="#schemauserinfoerror">UserinfoError</a></td>
-</tr>
-<tr>
-<td>default</td>
-<td>Default</td>
-<td>Bad Request</td>
 <td><a href="#schemauserinfoerror">UserinfoError</a></td>
 </tr>
 </tbody>
@@ -8994,7 +9010,12 @@ System.out.println(response.toString());
     <span class="hljs-attr">&quot;ssn&quot;</span>: <span class="hljs-string">&quot;12345678901&quot;</span>,
     <span class="hljs-attr">&quot;userId&quot;</span>: <span class="hljs-string">&quot;uiJskNQ6qNN1iwN891uuob==&quot;</span>
   },
-  <span class="hljs-attr">&quot;errorInfo&quot;</span>: <span class="hljs-literal">null</span>
+  <span class="hljs-attr">&quot;errorInfo&quot;</span>: {
+    <span class="hljs-attr">&quot;errorGroup&quot;</span>: <span class="hljs-string">&quot;Payments&quot;</span>,
+    <span class="hljs-attr">&quot;errorCode&quot;</span>: <span class="hljs-string">&quot;44&quot;</span>,
+    <span class="hljs-attr">&quot;errorMessage&quot;</span>: <span class="hljs-string">&quot;Refused by issuer because of expired card&quot;</span>,
+    <span class="hljs-attr">&quot;contextId&quot;</span>: <span class="hljs-string">&quot;f70b8bf7-c843-4bea-95d9-94725b19895f&quot;</span>
+  }
 }
 
 </code></pre>
@@ -9047,10 +9068,10 @@ System.out.println(response.toString());
 </tr>
 <tr>
 <td>errorInfo</td>
-<td><a href="#schema#/components/responses/genericdefault">#/components/responses/GenericDefault</a></td>
+<td><a href="#schemaerror">Error</a></td>
 <td>false</td>
 <td>none</td>
-<td>Possible error responses. See <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">Responses</a>.</td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -9068,7 +9089,12 @@ System.out.println(response.toString());
     <span class="hljs-attr">&quot;timeStamp&quot;</span>: <span class="hljs-string">&quot;2018-12-12T11:18:38.246Z&quot;</span>,
     <span class="hljs-attr">&quot;transactionId&quot;</span>: <span class="hljs-string">&quot;5001420062&quot;</span>
   },
-  <span class="hljs-attr">&quot;errorInfo&quot;</span>: <span class="hljs-literal">null</span>
+  <span class="hljs-attr">&quot;errorInfo&quot;</span>: {
+    <span class="hljs-attr">&quot;errorGroup&quot;</span>: <span class="hljs-string">&quot;Payments&quot;</span>,
+    <span class="hljs-attr">&quot;errorCode&quot;</span>: <span class="hljs-string">&quot;44&quot;</span>,
+    <span class="hljs-attr">&quot;errorMessage&quot;</span>: <span class="hljs-string">&quot;Refused by issuer because of expired card&quot;</span>,
+    <span class="hljs-attr">&quot;contextId&quot;</span>: <span class="hljs-string">&quot;f70b8bf7-c843-4bea-95d9-94725b19895f&quot;</span>
+  }
 }
 
 </code></pre>
@@ -9107,10 +9133,10 @@ System.out.println(response.toString());
 </tr>
 <tr>
 <td>errorInfo</td>
-<td><a href="#schema#/components/responses/genericdefault">#/components/responses/GenericDefault</a></td>
+<td><a href="#schemaerror">Error</a></td>
 <td>false</td>
 <td>none</td>
-<td>Possible error responses. See <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">Responses</a>.</td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
@@ -9347,7 +9373,12 @@ System.out.println(response.toString());
     <span class="hljs-attr">&quot;ssn&quot;</span>: <span class="hljs-string">&quot;12345678901&quot;</span>,
     <span class="hljs-attr">&quot;userId&quot;</span>: <span class="hljs-string">&quot;uiJskNQ6qNN1iwN891uuob==&quot;</span>
   },
-  <span class="hljs-attr">&quot;errorInfo&quot;</span>: <span class="hljs-literal">null</span>
+  <span class="hljs-attr">&quot;errorInfo&quot;</span>: {
+    <span class="hljs-attr">&quot;errorGroup&quot;</span>: <span class="hljs-string">&quot;Payments&quot;</span>,
+    <span class="hljs-attr">&quot;errorCode&quot;</span>: <span class="hljs-string">&quot;44&quot;</span>,
+    <span class="hljs-attr">&quot;errorMessage&quot;</span>: <span class="hljs-string">&quot;Refused by issuer because of expired card&quot;</span>,
+    <span class="hljs-attr">&quot;contextId&quot;</span>: <span class="hljs-string">&quot;f70b8bf7-c843-4bea-95d9-94725b19895f&quot;</span>
+  }
 }
 
 </code></pre>
@@ -9475,11 +9506,11 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h2 id="tocs_genericerrorobject">GenericErrorObject</h2>
-<p><a id="schemagenericerrorobject"></a>
-<a id="schema_GenericErrorObject"></a>
-<a id="tocSgenericerrorobject"></a>
-<a id="tocsgenericerrorobject"></a></p>
+<h2 id="tocs_errorobject">ErrorObject</h2>
+<p><a id="schemaerrorobject"></a>
+<a id="schema_ErrorObject"></a>
+<a id="tocSerrorobject"></a>
+<a id="tocserrorobject"></a></p>
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">&quot;responseInfo&quot;</span>: {
     <span class="hljs-attr">&quot;responseCode&quot;</span>: <span class="hljs-number">401</span>,
@@ -9540,19 +9571,17 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h2 id="tocs_genericerrorarray">GenericErrorArray</h2>
-<p><a id="schemagenericerrorarray"></a>
-<a id="schema_GenericErrorArray"></a>
-<a id="tocSgenericerrorarray"></a>
-<a id="tocsgenericerrorarray"></a></p>
-<pre class="highlight tab tab-json"><code>[
-  {
-    <span class="hljs-attr">&quot;errorGroup&quot;</span>: <span class="hljs-string">&quot;Payments&quot;</span>,
-    <span class="hljs-attr">&quot;errorCode&quot;</span>: <span class="hljs-string">&quot;44&quot;</span>,
-    <span class="hljs-attr">&quot;errorMessage&quot;</span>: <span class="hljs-string">&quot;Refused by issuer because of expired card&quot;</span>,
-    <span class="hljs-attr">&quot;contextId&quot;</span>: <span class="hljs-string">&quot;f70b8bf7-c843-4bea-95d9-94725b19895f&quot;</span>
-  }
-]
+<h2 id="tocs_error">Error</h2>
+<p><a id="schemaerror"></a>
+<a id="schema_Error"></a>
+<a id="tocSerror"></a>
+<a id="tocserror"></a></p>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">&quot;errorGroup&quot;</span>: <span class="hljs-string">&quot;Payments&quot;</span>,
+  <span class="hljs-attr">&quot;errorCode&quot;</span>: <span class="hljs-string">&quot;44&quot;</span>,
+  <span class="hljs-attr">&quot;errorMessage&quot;</span>: <span class="hljs-string">&quot;Refused by issuer because of expired card&quot;</span>,
+  <span class="hljs-attr">&quot;contextId&quot;</span>: <span class="hljs-string">&quot;f70b8bf7-c843-4bea-95d9-94725b19895f&quot;</span>
+}
 
 </code></pre>
 <h3 id="properties-43">Properties</h3>
@@ -9632,8 +9661,45 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
+<h2 id="tocs_errorarray">ErrorArray</h2>
+<p><a id="schemaerrorarray"></a>
+<a id="schema_ErrorArray"></a>
+<a id="tocSerrorarray"></a>
+<a id="tocserrorarray"></a></p>
+<pre class="highlight tab tab-json"><code>[
+  {
+    <span class="hljs-attr">&quot;errorGroup&quot;</span>: <span class="hljs-string">&quot;Payments&quot;</span>,
+    <span class="hljs-attr">&quot;errorCode&quot;</span>: <span class="hljs-string">&quot;44&quot;</span>,
+    <span class="hljs-attr">&quot;errorMessage&quot;</span>: <span class="hljs-string">&quot;Refused by issuer because of expired card&quot;</span>,
+    <span class="hljs-attr">&quot;contextId&quot;</span>: <span class="hljs-string">&quot;f70b8bf7-c843-4bea-95d9-94725b19895f&quot;</span>
+  }
+]
+
+</code></pre>
+<h3 id="properties-44">Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>anonymous</em></td>
+<td>[<a href="#schemaerror">Error</a>]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
 <!-- Renderer: Shins v2.6.0 -->
 <!-- Generator: Widdershins v4.0.1 -->
+<!-- backwards compatibility -->
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
 <!-- backwards compatibility -->
