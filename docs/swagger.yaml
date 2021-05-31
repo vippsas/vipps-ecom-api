@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.10
+  version: 1.6.11
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -66,7 +66,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthorizationTokenResponse'
         default:
-          $ref: '#/components/responses/GenericDefault'
+          $ref: '#/components/responses/Default'
   '[consentRemovalPrefix]/v2/consents/{userId}':
     delete:
       tags:
@@ -369,7 +369,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaymentInitiationResponse'
         default:
-          $ref: '#/components/responses/GenericDefault'
+          $ref: '#/components/responses/Default'
   '[callbackPrefix]/v2/payments/{orderId}':
     post:
       tags:
@@ -525,7 +525,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/TransactionResponse'
         default:
-          $ref: '#/components/responses/GenericDefault'
+          $ref: '#/components/responses/Default'
   '/ecomm/v2/payments/{orderId}/cancel':
     put:
       tags:
@@ -626,7 +626,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/TransactionResponse'
         default:
-          $ref: '#/components/responses/GenericDefault'
+          $ref: '#/components/responses/Default'
   '/ecomm/v2/payments/{orderId}/authorize':
     put:
       tags:
@@ -723,7 +723,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/TransactionResponse'
         default:
-          $ref: '#/components/responses/GenericDefault'
+          $ref: '#/components/responses/Default'
   '/ecomm/v2/payments/{orderId}/refund':
     post:
       tags:
@@ -834,7 +834,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RefundTransactionResponse'
         default:
-          $ref: '#/components/responses/GenericDefault'
+          $ref: '#/components/responses/Default'
   '/ecomm/v2/integration-test/payments/{orderId}/approve':
     post:
       tags:
@@ -923,7 +923,7 @@ paths:
         '200':
           description: Force approve payment response
         default:
-          $ref: '#/components/responses/GenericDefault'
+          $ref: '#/components/responses/Default'
   '/ecomm/v2/payments/{orderId}/details':
     get:
       tags:
@@ -1015,7 +1015,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/TransactionDetails'
         default:
-          $ref: '#/components/responses/GenericDefault'
+          $ref: '#/components/responses/Default'
   '/ecomm/v2/payments/{orderId}/status':
     get:
       deprecated: true
@@ -1062,7 +1062,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaymentStatus'
         default:
-          $ref: '#/components/responses/GenericDefault'
+          $ref: '#/components/responses/Default'
   '/vipps-userinfo-api/userinfo/{sub}':
     get:
       tags:
@@ -1095,7 +1095,7 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/Userinfo'
-        default:
+        '400':
           description: Bad Request
           content:
             application/json;charset=UTF-8:
@@ -2106,7 +2106,7 @@ components:
         userDetails:
           $ref: '#/components/schemas/UserDetails'
         errorInfo:
-          $ref: '#/components/responses/GenericDefault'
+          $ref: '#/components/schemas/Error'
     RegularCheckOutPaymentRequest:
       type: object
       required:
@@ -2135,7 +2135,7 @@ components:
         transactionInfo:
           $ref: '#/components/schemas/CallbackTransactionInfoRegular'
         errorInfo:
-          $ref: '#/components/responses/GenericDefault'
+          $ref: '#/components/schemas/Error'
     AuthorizationTokenResponse:
       type: object
       required:
@@ -2251,7 +2251,7 @@ components:
           type: object
           additionalProperties:
             type: object
-    GenericErrorObject:
+    ErrorObject:
       type: object
       required:
         - responseInfo
@@ -2277,44 +2277,46 @@ components:
               type: string
               description: "A description of what went wrong. See https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#errors"
               example: "Refused by issuer because of expired card"
-    GenericErrorArray:
+    Error:
+      type: object
+      required:
+        - errorGroup
+        - errorCode
+        - errorMessage
+      properties:
+        errorGroup:
+          type: string
+          description: "The error group. See: https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-groups"
+          enum:
+            - Authentication
+            - Payments
+            - InvalidRequest
+            - VippsError
+            - User
+            - Merchant
+          example: "Payments"
+        errorCode:
+          type: string
+          description: "The error code. See: https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes"
+          example: "44"
+        errorMessage:
+          type: string
+          description: "A description of what went wrong. See https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#errors"
+          example: "Refused by issuer because of expired card"
+        contextId:
+          type: string
+          description: "A unique id for this error, useful for searching in logs"
+          example: f70b8bf7-c843-4bea-95d9-94725b19895f
+    ErrorArray:
       type: array
       items:
-        type: object
-        required:
-          - errorGroup
-          - errorCode
-          - errorMessage
-        properties:
-          errorGroup:
-            type: string
-            description: "The error group. See: https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-groups"
-            enum:
-              - Authentication
-              - Payments
-              - InvalidRequest
-              - VippsError
-              - User
-              - Merchant
-            example: "Payments"
-          errorCode:
-            type: string
-            description: "The error code. See: https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes"
-            example: "44"
-          errorMessage:
-            type: string
-            description: "A description of what went wrong. See https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#errors"
-            example: "Refused by issuer because of expired card"
-          contextId:
-            type: string
-            description: "A unique id for this error, useful for searching in logs"
-            example: f70b8bf7-c843-4bea-95d9-94725b19895f
+        $ref: '#/components/schemas/Error'
   responses:
-    GenericDefault:
+    Default:
       description: Possible error responses. See [Responses](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
       content:
         application/json;charset=UTF-8:
           schema:
             oneOf:
-              - $ref: '#/components/schemas/GenericErrorArray'
-              - $ref: '#/components/schemas/GenericErrorObject'
+              - $ref: '#/components/schemas/ErrorArray'
+              - $ref: '#/components/schemas/ErrorObject'
