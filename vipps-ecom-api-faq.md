@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.8.2.
+Document version 3.8.3.
 
 ### Table of contents
 
@@ -444,6 +444,8 @@ Please contact your KAM.
 
 If you do not have a KAM, you will have to wait so see if this functionality is
 made available for all Vipps merchants.
+As long as this is in an experimental phase (with a manual, and a bit tedious, process),
+we do not have the capacity to provide this for customers that do not already have a KAM.
 
 When using a merchant-specific, whitelisted URL in a Vipps QR code, we recommend
 displaying a "landing page" to the user, and _not_ redirecting the user
