@@ -75,11 +75,9 @@ Document version 2.1.3.
       ([`/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
       request after reserve).
     - **Please note:** Vipps does not do any kind of activation or make any changes based on this checklist.
-      The API keys for the production environment is madea vailable on
+      The API keys for the production environment is made available on
       [portal.vipps.no](https://portal.vipps.no)
-      as soon as the customer control (see step 2) is complested, independently of this checklist.
-      When you have access to the API credentials for the production environment,
-      there is no further approval required from Vipps.
+      as soon as the customer control (see step 2) is completed, independently of this checklist.
 7. The Merchant goes live 🎉
 
 ## Flow to go live for direct integrations for partners
