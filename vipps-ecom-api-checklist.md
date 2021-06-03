@@ -2,7 +2,7 @@
 
 API version: 2.0.
 
-Document version 2.1.2.
+Document version 2.1.3.
 
 ## Checklist
 
@@ -74,9 +74,13 @@ Document version 2.1.2.
     - For *reserve capture*: A complete order ending in `VOID`
       ([`/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
       request after reserve).
+    - **Please note:** Vipps does not do any kind of activation or make any changes based on this checklist.
+      The API keys for the production environment is madea vailable on
+      [portal.vipps.no](https://portal.vipps.no)
+      as soon as the customer control (see step 2) is complested, independently of this checklist.
+      When you have access to the API credentials for the production environment,
+      there is no further approval required from Vipps.
 7. The Merchant goes live 🎉
-   When you have access to the API credentials for the production environment,
-   there is no further approval required from Vipps.
 
 ## Flow to go live for direct integrations for partners
 
