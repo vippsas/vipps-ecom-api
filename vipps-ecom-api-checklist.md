@@ -2,7 +2,7 @@
 
 API version: 2.0.
 
-Document version 2.1.3.
+Document version 2.1.4.
 
 ## Checklist
 
@@ -75,7 +75,7 @@ Document version 2.1.3.
       ([`/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
       request after reserve).
     - **Please note:** Vipps does not do any kind of activation or make any changes based on this checklist.
-      The API keys for the production environment is made available on
+      The API keys for the production environment are made available on
       [portal.vipps.no](https://portal.vipps.no)
       as soon as the customer control (see step 2) is completed, independently of this checklist.
 7. The Merchant goes live 🎉
