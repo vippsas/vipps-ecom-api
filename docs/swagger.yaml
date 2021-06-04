@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.11
+  version: 1.6.12
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -1456,7 +1456,7 @@ components:
         amount:
           type: number
           format: double
-          description: Ordered amount in øre
+          description: 'Ordered amount in øre (1 NOK = 100 øre)'
           example: 20000
         status:
           type: string
@@ -1493,7 +1493,7 @@ components:
         amount:
           type: number
           format: double
-          description: Ordered amount in øre
+          description: 'Ordered amount in øre (1 NOK = 100 øre)'
           example: 20000
         status:
           type: string
@@ -1530,7 +1530,7 @@ components:
         amount:
           type: number
           format: double
-          description: Ordered amount in øre
+          description: 'Ordered amount in øre (1 NOK = 100 øre)'
           example: 20000
         status:
           type: string
@@ -1572,7 +1572,7 @@ components:
         amount:
           type: number
           format: double
-          description: Ordered amount in øre
+          description: 'Ordered amount in øre (1 NOK = 100 øre)'
           example: 20000
         status:
           type: string
@@ -1611,7 +1611,7 @@ components:
         amount:
           type: number
           format: double
-          description: Ordered amount in øre
+          description: 'Ordered amount in øre (1 NOK = 100 øre)'
           example: 20000
         status:
           type: string
@@ -1702,7 +1702,7 @@ components:
         shippingCost:
           type: number
           format: double
-          description: Shipping cost, in øre.
+          description: 'Shipping cost, in øre (1 NOK = 100 øre).'
           example: 9900
         shippingMethod:
           type: string
@@ -1853,7 +1853,7 @@ components:
         amount:
           type: integer
           format: int32
-          description: Amount in øre. 32 bit Integer. Must be non-zero and larger than 1 NOK (100 øre).
+          description: Amount in øre. 32 bit Integer. Must be non-zero and larger than 1 NOK (1 NOK = 100 øre).
           pattern: '^\d{3,}$'
           minimum: 100
           example: 20000
@@ -2058,7 +2058,7 @@ components:
           type: integer
           format: int32
           description: >-
-            Amount in øre, if amount is 0 or not provided then full capture will
+            Amount in øre (1 NOK = 100 øre), if amount is 0 or not provided then full capture will
             be performed. 32 Bit Integer (2147483647)
           pattern: '^\d{3,}$'
           example: 20000
