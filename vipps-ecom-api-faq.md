@@ -22,6 +22,7 @@ Document version 3.9.0.
   - [Why are the customer names not shown on the transaction overview?](#why-are-the-customer-names-not-shown-on-the-transaction-overview)
 - [Reservations and captures](#reservations-and-captures)
   - [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
+  - [When should I use "Direct Capture"?](#wwhen-should-i-use-direct-capture)
   - [How can I check if I have "reserve capture" or "direct capture"?](#how-can-i-check-if-i-have-reserve-capture-or-direct-capture)
   - [How do I turn _direct capture_ on or off?](#How-do-I-turn-direct-capture-on-or-off)
   - [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
@@ -233,13 +234,15 @@ not physically present. It does also not comply with "Kassaloven".
 
 ## Reservations and captures
 
-## When Shoudl I charge the customer?
+## When should I charge the customer?
 
 You should charge the customer when the product or service is delivered.
+That is usually when the product is shippedf
+
 See more details below:
 
 * [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
-*
+* [When should I use "Direct Capture"?](#wwhen-should-i-use-direct-capture)
 
 ### What is the difference between "Reserve Capture" and "Direct Capture"?
 
