@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.0.
+Document version 3.9.1.
 
 ### Table of contents
 
@@ -21,6 +21,7 @@ Document version 3.9.0.
   - [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
   - [Why are the customer names not shown on the transaction overview?](#why-are-the-customer-names-not-shown-on-the-transaction-overview)
 - [Reservations and captures](#reservations-and-captures)
+  - [When should I charge the customer?](#when-should-i-charge-the-customer)
   - [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
   - [When should I use "Direct Capture"?](#wwhen-should-i-use-direct-capture)
   - [How can I check if I have "reserve capture" or "direct capture"?](#how-can-i-check-if-i-have-reserve-capture-or-direct-capture)
@@ -237,7 +238,21 @@ not physically present. It does also not comply with "Kassaloven".
 ## When should I charge the customer?
 
 You should charge the customer when the product or service is delivered.
-That is usually when the product is shippedf
+That is usually when the product is shipped.
+
+According to Norwegian regulations you should _not_ capture a payment until the
+product or service is provided to the customer. See
+[Forbrukerkjøpsloven §38](https://lovdata.no/lov/1988-05-13-27/§49)
+(in Norwegian):
+
+>Følger ikke betalingstiden av avtalen, skal forbrukeren betale når selgeren krever det.
+>Hvis ikke noe annet er avtalt, har forbrukeren ikke plikt til å betale kjøpesummen uten at tingen blir overlevert eller stilt til hans eller hennes rådighet i samsvar med avtalen og loven.
+>Forbrukeren er ikke bundet av en forhåndsavtale om plikt til å betale på et bestemt tidspunkt uavhengig av om selgeren oppfyller til rett tid.
+
+For more information, please see the Consumer Authority's
+[Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
+
+Vipps can not offer legal advice for this.
 
 See more details below:
 
@@ -275,20 +290,6 @@ You can probably use "reserve capture", and just do the capture right after the 
 If you can _always_ immediately deliver the product/service that the user
 pays for (e.g. digital products that will never be sold out), you can use
 "direct capture".
-
-According to Norwegian regulations you should _not_ capture a payment until the
-product or service is provided to the customer. See
-[Forbrukerkjøpsloven §38](https://lovdata.no/lov/1988-05-13-27/§49)
-(in Norwegian):
-
->Følger ikke betalingstiden av avtalen, skal forbrukeren betale når selgeren krever det.
->Hvis ikke noe annet er avtalt, har forbrukeren ikke plikt til å betale kjøpesummen uten at tingen blir overlevert eller stilt til hans eller hennes rådighet i samsvar med avtalen og loven.
->Forbrukeren er ikke bundet av en forhåndsavtale om plikt til å betale på et bestemt tidspunkt uavhengig av om selgeren oppfyller til rett tid.
-
-For more information, please see the Consumer Authority's
-[Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
-
-Vipps can not offer legal advice for this.
 
 See:
 [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
