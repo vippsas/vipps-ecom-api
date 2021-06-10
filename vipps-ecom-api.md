@@ -611,7 +611,7 @@ add a suffix to the orderId to make it unique: If your internal orderId is
 All URLs in Vipps eCommerce API are validated with the
 [Apache Commons UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
 
-If `isApp` is true, the `fallBack` is not validated with Apache Commons UrlValidator,
+If `isApp` is true, the `fallBack` URL is not validated with Apache Commons UrlValidator,
 as the app-switch URL may be something like `vipps://`, which is not a valid URL.
 
 The endpoints required by Vipps must be publicly available.
