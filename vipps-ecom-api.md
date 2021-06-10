@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.28.
+Document version 2.5.29.
 
 ## Table of contents
 
@@ -615,6 +615,10 @@ If `isApp` is true, the `fallBack` URL is not validated with Apache Commons UrlV
 as the app-switch URL may be something like `vipps://`, which is not a valid URL.
 
 The endpoints required by Vipps must be publicly available.
+
+Please note:
+* The `callbackPrefix` URL _must_ use HTTPS.
+* The `fallBack` URL must use either HTTPS or a custom URL scheme (`myapp://`).
 
 URLs that start with `http://localhost` will be rejected. If you want to use
 localhost as fallback, please use `http://127.0.0.1`.
