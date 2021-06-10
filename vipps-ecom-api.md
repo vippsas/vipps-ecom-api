@@ -615,10 +615,10 @@ as the app-switch URL may be something like `vipps://`, which is not a valid URL
 
 The endpoints required by Vipps must be publicly available.
 
-URLs that start with `https://localhost` will be rejected. If you want to use
-localhost as fallback, please use `https://127.0.0.1`.
-It is, naturally, not possible to use `https://localhost` or
-`https://127.0.0.1` for the callback, as the Vipps backend would then call itself.
+URLs that start with `http://localhost` will be rejected. If you want to use
+localhost as fallback, please use `http://127.0.0.1`.
+It is, naturally, not possible to use `http://localhost` or
+`http://127.0.0.1` for the callback, as the Vipps backend would then call itself.
 Ngrok may also be an option: https://ngrok.com
 
 Here is a simple Java class suitable for testing URLs,
