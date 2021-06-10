@@ -676,7 +676,7 @@ confirmation on the payment request, the merchant _must_ call
 [GET:/ecomm/v2/payments/{orderId}/details](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
 to get the status of the payment.
 
-**Please note:** Cllback URLs _must_ use HTTPS.
+**Please note:** Callback URLs _must_ use HTTPS.
 
 See the FAQ:
 [Why do I not get callbacks from Vipps?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#why-do-i-not-get-callbacks-from-vipps)
