@@ -1993,7 +1993,7 @@ components:
             In other words: This is the URL Vipps sends the Vipps user back to.
             URLs passed to Vipps must validate, see
             [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
-            The URL must use HTTPS.
+            The URL must use HTTPS, or a custom URL scheme like "myapp://"".
           maxLength: 255
           example: 'https://example.com/vipps/fallback-order-result-page/acme-shop-123-order123abc'
         isApp:
