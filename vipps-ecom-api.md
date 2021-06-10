@@ -1889,7 +1889,7 @@ result send by Vipps:
 
 ```kotlin
 override fun onNewIntent(intent: Intent) {
-      // Call the eCom api, check the status of the eCom payment
+      // Call the eCom API, check the status of the eCom payment
 }
 ```
 
@@ -1909,7 +1909,7 @@ The merchant app activity that resumes again (after Vipps closes) has to overrid
 
 ```kotlin
 override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
-    // Call the eCom api, check the status of the eCom payment
+    // Call the eCom API, check the status of the eCom payment
 }
 ```
 
