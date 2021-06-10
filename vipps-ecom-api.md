@@ -410,7 +410,7 @@ If Vipps is installed, Vipps will automatically be opened.
 3. Vipps sends a push notification the user's phone, with a
    notification on the landing page to continue the payment in Vipps on the phone.
 4. The user accepts or rejects the payment in Vipps.
-5. The Vipps backend makes a call to the merchant's `callbackUrl` with
+5. The Vipps backend makes a call to the merchant's `callbackPrefix` with
    information about the payment.
 6. Once the payment process is completed, the landing page will redirect to the
    `fallBack` URL that merchant provided earlier (see above).
@@ -434,7 +434,7 @@ expected to use the `vipps://` URL to deeplink straight to Vipps.
 3. The merchant uses the `vipps://` URL to invoke Vipps.
 4. Vipps is automatically opened.
 5. The user accepts or rejects the payment request in Vipps.
-6. The Vipps backend makes a call to the merchant's `callbackUrl` with information about the payment.
+6. The Vipps backend makes a call to the merchant's `callbackPrefix` with information about the payment.
 7. When the payment process is completed, Vipps redirects to the merchant using the `fallBack` URL.
 
 ### Initiate payment flow: API calls
