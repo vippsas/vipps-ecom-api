@@ -362,7 +362,7 @@ If Vipps is installed, Vipps will automatically be opened.
 
 1. Vipps is invoked (with app-switch).
 2. The user accepts or rejects the payment request in Vipps.
-3. The Vipps backend makes a call to the merchant's `callbackUrl` with
+3. The Vipps backend makes a call to the merchant's `callbackPrefix` with
    information about the payment.
 4. Once payment process is completed, Vipps redirects to the
    `fallBack` URL that merchant provided earlier (see above).
@@ -374,7 +374,7 @@ If Vipps is installed, Vipps will automatically be opened.
    and also displays a notification on the landing page for the user to
    continue the payment in Vipps on the phone.
 3. The user accepts or rejects the payment in Vipps.
-4. The Vipps backend makes a call to the merchant's `callbackUrl` with
+4. The Vipps backend makes a call to the merchant's `callbackPrefix` with
    information about the payment.
 5. Once the payment process is completed, Vipps redirects to the
    `fallBack` URL that the merchant provided earlier.
@@ -395,7 +395,8 @@ If Vipps is installed, Vipps will automatically be opened.
    as this depends on user actions, network connectivity/speed, etc.
    Because of this, it is not possible to base an integration on a specific
    sequence of events.
-5. Callback URL _must_ use HTTPS.
+5. The `callbackPrefix` URL _must_ use HTTPS.
+   The `fallBack` URL must use either HTTPS or a custom URL scheme (`myapp://`).
 
 ## Desktop flow
 
