@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.12
+  version: 1.6.13
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -80,6 +80,7 @@ paths:
         URLs passed to Vipps must validate, see
         [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
         We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
+        The URL must use HTTPS.
       operationId: removeUserConsentUsingDELETE
       parameters:
         - name: userId
@@ -111,6 +112,7 @@ paths:
         URLs passed to Vipps must validate, see
         [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
         We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
+        The URL must use HTTPS.
       operationId: fetchShippingCostUsingPOST
       parameters:
         - name: orderId
@@ -162,6 +164,7 @@ paths:
         to the Vipps app.
         URLs passed to Vipps must validate, see
         [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
+        The URLs must use HTTPS.
       operationId: initiatePaymentV3UsingPOST
       parameters:
         - in: header
@@ -250,6 +253,7 @@ paths:
                 URLs passed to Vipps must validate, see
                 [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
                 We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
+                The URL must use HTTPS.
               operationId: InitiatePaymentTransactionUpdateCallbackForRegularPaymentUsingPOSTExpress
               parameters:
                 - name: orderId
@@ -279,6 +283,7 @@ paths:
                 URLs passed to Vipps must validate, see
                 [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
                 We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
+                The URL must use HTTPS.
               operationId: InitiatePaymentTransactionUpdateCallbackForRegularPaymentUsingPOSTExpress
               parameters:
                 - name: orderId
@@ -307,6 +312,7 @@ paths:
                 URLs passed to Vipps must validate, see
                 [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
                 We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
+                The URL must use HTTPS.
               operationId: removeUserConsentUsingDELETE
               parameters:
                 - name: userId
@@ -339,6 +345,7 @@ paths:
                 URLs passed to Vipps must validate, see
                 [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
                 We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
+                The URL must use HTTPS.
               operationId: fetchShippingCostUsingPOST
               parameters:
                 - name: orderId
@@ -384,6 +391,7 @@ paths:
         URLs passed to Vipps must validate, see
         [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
         We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
+        The URL must use HTTPS.
       operationId: transactionUpdateCallbackForRegularPaymentUsingPOST
       parameters:
         - name: orderId
@@ -1470,8 +1478,7 @@ components:
             - RESERVE_FAILED
           description: >-
             Status which gives the current state of the payment within Vipps.
-            See the [API
-            guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callbacks)
+            See the [API guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callbacks)
             for more information.
           example: RESERVED
         timeStamp:
@@ -1959,6 +1966,7 @@ components:
             URLs passed to Vipps must validate, see
             [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
             We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
+            The URL must use HTTPS.
           maxLength: 255
           example: 'https://example.com/vipps/callbacks-for-payment-updates'
         consentRemovalPrefix:
@@ -1972,6 +1980,7 @@ components:
             URLs passed to Vipps must validate, see
             [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
             We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
+            The URL must use HTTPS.
           maxLength: 255
           example: 'https://example.com/vipps'
         fallBack:
@@ -1984,6 +1993,7 @@ components:
             In other words: This is the URL Vipps sends the Vipps user back to.
             URLs passed to Vipps must validate, see
             [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
+            The URL must use HTTPS.
           maxLength: 255
           example: 'https://example.com/vipps/fallback-order-result-page/acme-shop-123-order123abc'
         isApp:

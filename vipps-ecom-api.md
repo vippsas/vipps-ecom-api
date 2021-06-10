@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.27.
+Document version 2.5.28.
 
 ## Table of contents
 
@@ -395,6 +395,7 @@ If Vipps is installed, Vipps will automatically be opened.
    as this depends on user actions, network connectivity/speed, etc.
    Because of this, it is not possible to base an integration on a specific
    sequence of events.
+5. Callback and fallback URLs _must_ use HTTPS.
 
 ## Desktop flow
 
@@ -405,7 +406,7 @@ If Vipps is installed, Vipps will automatically be opened.
 1. The landing page will be opened in the desktop browser.
 2. The landing page will prompt for the user’s phone number.
    If the phone number is known, it should be pre-filled by the merchant.
-3. Vipps sends a push notification the the user's phone, with a
+3. Vipps sends a push notification the user's phone, with a
    notification on the landing page to continue the payment in Vipps on the phone.
 4. The user accepts or rejects the payment in Vipps.
 5. The Vipps backend makes a call to the merchant's `callbackUrl` with
@@ -615,9 +616,9 @@ as the app-switch URL may be something like `vipps://`, which is not a valid URL
 The endpoints required by Vipps must be publicly available.
 
 URLs that start with `https://localhost` will be rejected. If you want to use
-localhost as fallback, please use `http://127.0.0.1`.
+localhost as fallback, please use `https://127.0.0.1`.
 It is, naturally, not possible to use `https://localhost` or
-`http://127.0.0.1` for the callback, as the Vipps backend would then call itself.
+`https://127.0.0.1` for the callback, as the Vipps backend would then call itself.
 Ngrok may also be an option: https://ngrok.com
 
 Here is a simple Java class suitable for testing URLs,
@@ -662,6 +663,7 @@ following events:
 - Payment rejected
 - Payment timed out
 
+
 Vipps makes _one_ attempt at a callback, and can not guarantee that it succeeds,
 as it depends on network, firewalls and other factors that Vipps can not control.
 
@@ -673,6 +675,8 @@ In other words, if the merchant does not receive any
 confirmation on the payment request, the merchant _must_ call
 [GET:/ecomm/v2/payments/{orderId}/details](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
 to get the status of the payment.
+
+**Please note:** Cllback URLs _must_ use HTTPS.
 
 See the FAQ:
 [Why do I not get callbacks from Vipps?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#why-do-i-not-get-callbacks-from-vipps)
@@ -1872,7 +1876,7 @@ To receive a call back from Vippslication to an activity, a filter has to be set
 </activity>
 ```
 
-**Please note:** The scheme should be same specified in `fallBack` URL sent to the ecom api when the payment is created.
+**Please note:** The scheme should be same specified in `fallBack` URL sent to the eCom API when the payment is created.
 
 The Vipps application will send the result to the merchant app by
 starting a new activity with the `fallBack` URL as a URL parameter in the intent.

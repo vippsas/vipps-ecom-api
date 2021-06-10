@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.1.
+Document version 3.9.2.
 
 ### Table of contents
 
@@ -883,6 +883,8 @@ for problems with the callbacks. The API Dashboard is under "Utvikler".
 
 If you need help solving a callback-related problem, please send us a
 complete HTTP request, and any other related details, so we can investigate.
+
+**Please note:** Cllback URLs _must_ use HTTPS.
 
 See the
 [Callback](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callback-endpoints)
