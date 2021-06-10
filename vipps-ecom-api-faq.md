@@ -884,7 +884,7 @@ for problems with the callbacks. The API Dashboard is under "Utvikler".
 If you need help solving a callback-related problem, please send us a
 complete HTTP request, and any other related details, so we can investigate.
 
-**Please note:** Cllback URLs _must_ use HTTPS.
+**Please note:** Callback URLs _must_ use HTTPS.
 
 See the
 [Callback](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callback-endpoints)
