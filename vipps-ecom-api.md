@@ -395,7 +395,7 @@ If Vipps is installed, Vipps will automatically be opened.
    as this depends on user actions, network connectivity/speed, etc.
    Because of this, it is not possible to base an integration on a specific
    sequence of events.
-5. Callback and fallback URLs _must_ use HTTPS.
+5. Callback URL _must_ use HTTPS.
 
 ## Desktop flow
 
