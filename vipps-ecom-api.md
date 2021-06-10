@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.27.
+Document version 2.5.28.
 
 ## Table of contents
 
@@ -362,7 +362,7 @@ If Vipps is installed, Vipps will automatically be opened.
 
 1. Vipps is invoked (with app-switch).
 2. The user accepts or rejects the payment request in Vipps.
-3. The Vipps backend makes a call to the merchant's `callbackUrl` with
+3. The Vipps backend makes a call to the merchant's `callbackPrefix` with
    information about the payment.
 4. Once payment process is completed, Vipps redirects to the
    `fallBack` URL that merchant provided earlier (see above).
@@ -374,7 +374,7 @@ If Vipps is installed, Vipps will automatically be opened.
    and also displays a notification on the landing page for the user to
    continue the payment in Vipps on the phone.
 3. The user accepts or rejects the payment in Vipps.
-4. The Vipps backend makes a call to the merchant's `callbackUrl` with
+4. The Vipps backend makes a call to the merchant's `callbackPrefix` with
    information about the payment.
 5. Once the payment process is completed, Vipps redirects to the
    `fallBack` URL that the merchant provided earlier.
@@ -395,6 +395,8 @@ If Vipps is installed, Vipps will automatically be opened.
    as this depends on user actions, network connectivity/speed, etc.
    Because of this, it is not possible to base an integration on a specific
    sequence of events.
+5. The `callbackPrefix` URL _must_ use HTTPS.
+   The `fallBack` URL must use either HTTPS or a custom URL scheme (`myapp://`).
 
 ## Desktop flow
 
@@ -405,10 +407,10 @@ If Vipps is installed, Vipps will automatically be opened.
 1. The landing page will be opened in the desktop browser.
 2. The landing page will prompt for the user’s phone number.
    If the phone number is known, it should be pre-filled by the merchant.
-3. Vipps sends a push notification the the user's phone, with a
+3. Vipps sends a push notification the user's phone, with a
    notification on the landing page to continue the payment in Vipps on the phone.
 4. The user accepts or rejects the payment in Vipps.
-5. The Vipps backend makes a call to the merchant's `callbackUrl` with
+5. The Vipps backend makes a call to the merchant's `callbackPrefix` with
    information about the payment.
 6. Once the payment process is completed, the landing page will redirect to the
    `fallBack` URL that merchant provided earlier (see above).
@@ -432,7 +434,7 @@ expected to use the `vipps://` URL to deeplink straight to Vipps.
 3. The merchant uses the `vipps://` URL to invoke Vipps.
 4. Vipps is automatically opened.
 5. The user accepts or rejects the payment request in Vipps.
-6. The Vipps backend makes a call to the merchant's `callbackUrl` with information about the payment.
+6. The Vipps backend makes a call to the merchant's `callbackPrefix` with information about the payment.
 7. When the payment process is completed, Vipps redirects to the merchant using the `fallBack` URL.
 
 ### Initiate payment flow: API calls
@@ -609,14 +611,14 @@ add a suffix to the orderId to make it unique: If your internal orderId is
 All URLs in Vipps eCommerce API are validated with the
 [Apache Commons UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
 
-If `isApp` is true, the `fallBack` is not validated with Apache Commons UrlValidator,
+If `isApp` is true, the `fallBack` URL is not validated with Apache Commons UrlValidator,
 as the app-switch URL may be something like `vipps://`, which is not a valid URL.
 
 The endpoints required by Vipps must be publicly available.
 
-URLs that start with `https://localhost` will be rejected. If you want to use
+URLs that start with `http://localhost` will be rejected. If you want to use
 localhost as fallback, please use `http://127.0.0.1`.
-It is, naturally, not possible to use `https://localhost` or
+It is, naturally, not possible to use `http://localhost` or
 `http://127.0.0.1` for the callback, as the Vipps backend would then call itself.
 Ngrok may also be an option: https://ngrok.com
 
@@ -662,6 +664,7 @@ following events:
 - Payment rejected
 - Payment timed out
 
+
 Vipps makes _one_ attempt at a callback, and can not guarantee that it succeeds,
 as it depends on network, firewalls and other factors that Vipps can not control.
 
@@ -673,6 +676,8 @@ In other words, if the merchant does not receive any
 confirmation on the payment request, the merchant _must_ call
 [GET:/ecomm/v2/payments/{orderId}/details](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
 to get the status of the payment.
+
+**Please note:** Callback URLs _must_ use HTTPS.
 
 See the FAQ:
 [Why do I not get callbacks from Vipps?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#why-do-i-not-get-callbacks-from-vipps)
@@ -1872,7 +1877,7 @@ To receive a call back from Vippslication to an activity, a filter has to be set
 </activity>
 ```
 
-**Please note:** The scheme should be same specified in `fallBack` URL sent to the ecom api when the payment is created.
+**Please note:** The scheme should be same specified in `fallBack` URL sent to the eCom API when the payment is created.
 
 The Vipps application will send the result to the merchant app by
 starting a new activity with the `fallBack` URL as a URL parameter in the intent.
@@ -1885,7 +1890,7 @@ result send by Vipps:
 
 ```kotlin
 override fun onNewIntent(intent: Intent) {
-      // Call the eCom api, check the status of the eCom payment
+      // Call the eCom API, check the status of the eCom payment
 }
 ```
 
@@ -1905,7 +1910,7 @@ The merchant app activity that resumes again (after Vipps closes) has to overrid
 
 ```kotlin
 override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
-    // Call the eCom api, check the status of the eCom payment
+    // Call the eCom API, check the status of the eCom payment
 }
 ```
 
