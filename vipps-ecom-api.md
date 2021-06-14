@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.29.
+Document version 2.5.30.
 
 ## Table of contents
 
@@ -35,6 +35,7 @@ Document version 2.5.29.
   - [Phone flow](#phone-flow)
     - [Vipps installed](#vipps-installed)
     - [Vipps not installed](#vipps-not-installed)
+    - [Please note](#please-note)
 - [Desktop flow](#desktop-flow)
   - [Desktop browser initiated payments](#desktop-browser-initiated-payments)
   - [Payments initiated in an app](#payments-initiated-in-an-app)
@@ -379,7 +380,7 @@ If Vipps is installed, Vipps will automatically be opened.
 5. Once the payment process is completed, Vipps redirects to the
    `fallBack` URL that the merchant provided earlier.
 
-**Please note:**
+#### Please note
 
 1. Vipps can not guarantee that the user will get to the
    `fallBack` URL, since the user may switch away from Vipps or "kill" the app,
