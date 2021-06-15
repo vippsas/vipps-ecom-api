@@ -2,7 +2,7 @@
 
 API version: 2.0.
 
-Document version 2.1.4.
+Document version 2.1.5.
 
 ## Checklist
 
@@ -65,8 +65,7 @@ Document version 2.1.4.
     - A complete order ending in `VOID`
       ([`/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
       request).
-    - We recommend checking this using both the API itself and the API Dashboard available under "Utvikler" on
-      [portal.vipps.no](https://portal.vipps.no).
+    - In the test environment this must be verified using the API itself.
 6. The Merchant verifies the integration in the production environment (similar to step 5):
     - A complete order ending in `REFUND`
       ([`/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST)
@@ -74,6 +73,8 @@ Document version 2.1.4.
     - For *reserve capture*: A complete order ending in `VOID`
       ([`/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
       request after reserve).
+    - We recommend checking this using both the API itself and the API Dashboard available under "Utvikler" on
+      [portal.vipps.no](https://portal.vipps.no).  
     - **Please note:** Vipps does not do any kind of activation or make any changes based on this checklist.
       The API keys for the production environment are made available on
       [portal.vipps.no](https://portal.vipps.no)
