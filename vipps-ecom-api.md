@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.31.
+Document version 2.5.32.
 
 ## Table of contents
 
@@ -2003,11 +2003,10 @@ allowed to provide more details.
 To facilitate automated testing in
 [The Vipps Test Environment (MT)](https://github.com/vippsas/vipps-developers/blob/master/vipps-test-environment.md)
 the Vipps eCom API provides a "force approve" endpoint to avoid manual
-payment confirmation in the Vipps app.
+payment confirmation in the Vipps app:
+[`POST:/ecomm/v2/integration-test/payments/{orderId}/approve`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/integrationTestApprovePayment)
 
-The force approve endpoint
-([`POST:/ecomm/v2/integration-test/payments/{orderId}/approve`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/integrationTestApprovePayment))
-allows developers to approve a payment through the Vipps
+The force approve endpoint allows developers to approve a payment through the Vipps
 eCom API without the use of Vipps. This is useful for automated testing.
 The endpoint is only available in our test environment.
 
