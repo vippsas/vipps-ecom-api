@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.30.
+Document version 2.5.31.
 
 ## Table of contents
 
@@ -1804,7 +1804,6 @@ Example of a `deeplinkURL`:
 `vipps://?token=eyJraWQiOiJqd3RrZXkiLCJhbGciOiJSUzI1NiJ9.ey <snip>`
 
 **Please note:** For production it's `vipps://`, but for our test environment it's `vippsMT://`.  
-This is change from previously where the deeplink started with `vipps://` for both production and test.
 
 #### Redirect back to the merchant app from Vipps app
 
@@ -2001,16 +2000,16 @@ allowed to provide more details.
 
 # Testing
 
-To facilitate automated testing in the Vipps test environment the Vipps eCom API
-provides a Force Approve endpoint to avoid manual intervention required by the
-Vipps App.
+To facilitate automated testing in
+[The Vipps Test Environment (MT)](https://github.com/vippsas/vipps-developers/blob/master/vipps-test-environment.md)
+the Vipps eCom API provides a "force approve" endpoint to avoid manual
+payment confirmation in the Vipps app.
 
-The force approve endpoint ([`POST:/ecomm/v2/integration-test/payments/{orderId}/approve`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/integrationTestApprovePayment))
+The force approve endpoint
+([`POST:/ecomm/v2/integration-test/payments/{orderId}/approve`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/integrationTestApprovePayment))
 allows developers to approve a payment through the Vipps
 eCom API without the use of Vipps. This is useful for automated testing.
 The endpoint is only available in our test environment.
-
-Express checkout and `skipLandingPage`is not supported by the force approve endpoint.
 
 **Important:** All test users must manually approve at least one payment in
 Vipps (using the app) before  
@@ -2020,9 +2019,12 @@ can be used for that user. This is because the user needs to be registered as
 the test environment when using Vipps (the app), but not with the `/approve`
 endpoint.
 
+**Please note:** Vipps Hurtigkasse (express checkout) and `skipLandingPage`is
+not supported by the force approve endpoint.
+
 # Recommendations regarding handling redirects
 
-Since Vipps is a native app and not a website used in a web browser, the level
+Since Vipps is a native app, and not a website used in a web browser, the level
 of control Vipps has over the redirect back to the merchant after a completed
 purchase is limited. The merchant _must not_ assume that Vipps will redirect to
 the exact same session or for example rely entirely on cookies in order to
