@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.2.
+Document version 3.9.3.
 
 ### Table of contents
 
@@ -222,6 +222,8 @@ payments. For other payments, such as
 and
 [Vipps Faste betalinger](https://vipps.no/produkter-og-tjenester/bedrift/faste-betalinger/faste-betalinger/)
 the `orderId` is shown instead of the customer name.
+
+You can click the little "i" in the header on the transaction overview and see the same info as above.
 
 The `orderId` is specified by the merchant. See the
 [orderId recommendations](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#orderid-recommendations).
