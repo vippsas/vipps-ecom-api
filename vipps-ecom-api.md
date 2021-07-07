@@ -1641,7 +1641,7 @@ of all API requests.
 By including the [Optional HTTP Headers](#optional-vipps-http-headers) you will make
 it easier to investigate problems, if anything unexpected happens. Partners may
 re-use the values of the `Vipps-System-Name` and `Vipps-System-Plugin-Name` in
-the plugins headers if having different values do not make sense.
+the plugins headers if having different values do not make sense. Note that the HTTP Headers are mandatory for partners and platforms.
 
 Here's an example of headers (please refer to the
 [OpenAPI/Swagger specification](https://vippsas.github.io/vipps-recurring-api/)
