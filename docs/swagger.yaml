@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.13
+  version: 1.6.14
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -1982,7 +1982,7 @@ components:
             We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
             The URL must use HTTPS.
           maxLength: 255
-          example: 'https://example.com/vipps'
+          example: 'https://example.com/vipps/consent-removal'
         fallBack:
           type: string
           description: >-
