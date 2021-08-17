@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.33.
+Document version 2.5.34.
 
 ## Table of contents
 
@@ -572,14 +572,14 @@ the sale unit). The `orderId` is case sensitive.
 The `orderId` does not need to be globally unique, so several
 MSNs may use the same `orderId`, as long as it is unique for each sale unit.
 
-If you ever have a problem that requires us to search in our logs, we need
-`orderId`s that are "unique enough" to actually find them. An `orderId` that
-is just a number may not be possible to find, and then we are not able to help.
-
 While the minimum length for `orderId` _technically_ is just one character,
 we _strongly_ recommend to use `orderId` format that makes it easy to
 search for them in logs. This means that `acme-shop-123-order123abc` is a better
 format than `123456`.
+
+If you ever have a problem that requires us to search in our logs, we need
+`orderId`s that are "unique enough" to actually find them. An `orderId` that
+is just a number may not be possible to find, and then we are not able to help.
 
 A good starting point is to use UUID,
 [universally unique identifiers](https://en.wikipedia.org/wiki/Universally_unique_identifier),
@@ -587,11 +587,11 @@ on the format `123e4567-e89b-12d3-a456-426614174000`.
 UUIDs are not always the most human-friendly, so see the other tips too.
 
 The maximum length of an `orderId` is 50 alphanumeric characters:
-a-z, A-Z, 0-9 and '-'.
+`a-z`, `A-Z`, `0-9` and `-` (hyphen).
 Leading zeros should be avoided, as some applications (like Excel)
 tend to remove them, and this may cause misunderstandings.
 
-With multiple sale units, prefixing the `orderId` with the MSN
+If you have multiple sale units, prefixing the `orderId` with the MSN
 for each sale unit is recommended: If the MSN is `654321`, the
 `orderId`s could be `654321-acme-shop-123-order123abc`.
 
