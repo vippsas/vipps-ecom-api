@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.32.
+Document version 2.5.33.
 
 ## Table of contents
 
@@ -574,7 +574,7 @@ MSNs may use the same `orderId`, as long as it is unique for each sale unit.
 
 If you ever have a problem that requires us to search in our logs, we need
 `orderId`s that are "unique enough" to actually find them. An `orderId` that
-is just a number may not be possible to find.
+is just a number may not be possible to find, and then we are not able to help.
 
 While the minimum length for `orderId` _technically_ is just one character,
 we _strongly_ recommend to use `orderId` format that makes it easy to
