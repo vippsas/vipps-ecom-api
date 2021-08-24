@@ -41,6 +41,7 @@ Document version 3.9.4.
   - [Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
   - [Is there an API for retrieving information about a merchant's payments?](#is-there-an-api-for-retrieving-information-about-a-merchants-payments)
   - [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
+  - [How can I check if I have skipLandingPage activated?](#how-can-i-check-if-i-have-skiplandingpage-activated)
   - [Can I split payments to charge a fee?](#can-i-split-payments-to-charge-a-fee)
   - [Can I create a marketplace with multiple merchants?](#can-i-create-a-marketplace-with-multiple-merchants)
   - [Can I create a service to match buyers and sellers?](#can-i-create-a-service-to-match-buyers-and-sellers)
@@ -627,10 +628,6 @@ The sale units must be whitelisted by Vipps.
 Skipping the landing page is typically used at physical points of sale
 where there is no display available.
 
-You can log in on
-[portal.vipps.no](https://portal.vipps.no)
-to check if your sale unit has `skipLandingPage` enabled.
-
 If you need to skip the landing page in a Point of Sale (POS) solution, see:
 [What is the process to go live in production?](#what-is-the-process-to-go-live-in-production).
 
@@ -644,6 +641,17 @@ Include a detailed description of why it is not possible to display the landing 
 See:
 [Skip landing page](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#skip-landing-page)
 in the API guide.
+
+### How can I check if I have skipLandingPage activated?
+
+You can log in on
+[portal.vipps.no](https://portal.vipps.no)
+to check if your sale unit has `skipLandingPage` enabled.
+
+If you are a partner and want to check a merchant, you can simply
+try to initiate a payment with `skipLandingPage`.
+If you do not get an error, it's active.
+If you get an error, it's not active.
 
 ### Can I split payments to charge a fee?
 
