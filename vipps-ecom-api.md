@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.34.
+Document version 2.5.35.
 
 ## Table of contents
 
@@ -124,7 +124,7 @@ states.
 The normal "happy day" flow for a payment is:
 
 1. Initiate the payment:
-   [`POST:/ecomm/v2/payments](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST).
+   [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST).
    The user can now confirm the payment in Vipps, setting the payment status to reserved.
    See [Initiate](#initiate).
 2. Receive the callback with the payment status:
