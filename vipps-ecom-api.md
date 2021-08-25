@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.35.
+Document version 2.5.36.
 
 ## Table of contents
 
@@ -535,6 +535,10 @@ Example: Response body for `"isApp":true`, with a deeplink for app-switch:
 ```
 
 The `url` is truncated, but the format is correct.
+
+**Please note:** The user should be send _directly_ to the deeplink.
+Rewriting the deepling URL in any way may break the payment process.
+If not today, it may break if Vipps hanges internal logic at some point.
 
 The deeplink URL is only valid for five minutes.
 Attempts at using it after that will result in a timeout and an error.
