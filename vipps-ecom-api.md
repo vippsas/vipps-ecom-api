@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.36.
+Document version 2.5.37.
 
 ## Table of contents
 
@@ -209,9 +209,9 @@ the headers should be:
 
 | Header                        | Example value       |
 | ----------------------------- | ------------------- |
-| `Vipps-System-Name`           | `Acme`              |
+| `Vipps-System-Name`           | `acme`              |
 | `Vipps-System-Version`        | `1.0` or 2.1`       |
-| `Vipps-System-Plugin-Name`    | `POS` or `Webshop`  |
+| `Vipps-System-Plugin-Name`    | `pos` or `webshop`  |
 | `Vipps-System-Plugin-Version` | `3.1`or 4.3`        |
 
 
