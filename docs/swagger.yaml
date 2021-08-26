@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.14
+  version: 1.6.15
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -1464,7 +1464,7 @@ components:
         amount:
           type: number
           format: double
-          description: 'Ordered amount in øre (1 NOK = 100 øre)'
+          description: 'Ordered amount. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
           example: 20000
         status:
           type: string
@@ -1500,7 +1500,7 @@ components:
         amount:
           type: number
           format: double
-          description: 'Ordered amount in øre (1 NOK = 100 øre)'
+          description: 'Ordered amount. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
           example: 20000
         status:
           type: string
@@ -1537,7 +1537,7 @@ components:
         amount:
           type: number
           format: double
-          description: 'Ordered amount in øre (1 NOK = 100 øre)'
+          description: 'Ordered amount. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
           example: 20000
         status:
           type: string
@@ -1579,7 +1579,7 @@ components:
         amount:
           type: number
           format: double
-          description: 'Ordered amount in øre (1 NOK = 100 øre)'
+          description: 'Ordered amount in øre. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
           example: 20000
         status:
           type: string
@@ -1618,7 +1618,7 @@ components:
         amount:
           type: number
           format: double
-          description: 'Ordered amount in øre (1 NOK = 100 øre)'
+          description: 'Ordered amount. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
           example: 20000
         status:
           type: string
@@ -1693,7 +1693,7 @@ components:
             open Vipps app, if `isApp` was set as true. The landing page will
             also redirect a user to the app if the user is using a mobile browser.
             This link will timeout after 5 minutes.
-            This example is a shortened deeplink URL.
+            This .c is a shortened deeplink URL.
             The URL received fromn Vipps should not be changed, and the format may change without notice.
           example: 'https://api.vipps.no/dwo-api-application/v1/deeplink/vippsgateway?v=2&token=eyJraWQiOiJqd3RrZXkiLC <snip>'
     ShippingDetailsRequest:
@@ -1709,7 +1709,7 @@ components:
         shippingCost:
           type: number
           format: double
-          description: 'Shipping cost, in øre (1 NOK = 100 øre).'
+          description: 'Shipping cost, in øre. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
           example: 9900
         shippingMethod:
           type: string
@@ -1860,7 +1860,11 @@ components:
         amount:
           type: integer
           format: int32
-          description: Amount in øre. 32 bit Integer. Must be non-zero and larger than 1 NOK (1 NOK = 100 øre).
+          description: >-
+            Amounts are specified in minor units.
+            For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.
+            32 bit Integer.
+            Must be non-zero and larger than 1 NOK.
           pattern: '^\d{3,}$'
           minimum: 100
           example: 20000
@@ -2068,8 +2072,8 @@ components:
           type: integer
           format: int32
           description: >-
-            Amount in øre (1 NOK = 100 øre), if amount is 0 or not provided then full capture will
-            be performed. 32 Bit Integer (2147483647)
+            Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.
+            If amount is 0 or not provided then full capture will be performed. 32 Bit Integer (2147483647)
           pattern: '^\d{3,}$'
           example: 20000
         transactionText:
