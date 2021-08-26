@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.39.
+Document version 2.5.40.
 
 ## Table of contents
 
@@ -202,15 +202,15 @@ and we recommend all customers with direct integration with the API to also do s
 ### Examples
 
 If the vendor's name is "Acme AS", and the vendor offers two different systems
-(one for point of sale (POS) integrations and one for web shops),
+one for point of sale (POS) integrations and one for web shops,
 the headers should be:
 
-| Header                        | Example value       |
-| ----------------------------- | ------------------- |
-| `Vipps-System-Name`           | `acme`              |
-| `Vipps-System-Version`        | `1.0` or `2.1`      |
-| `Vipps-System-Plugin-Name`    | `pos` or `webshop`  |
-| `Vipps-System-Plugin-Version` | `3.1`or `4.3`       |
+| Header                        | Example value for POS | Example value for webshop |
+| ----------------------------- | --------------------- | ------------------- |
+| `Vipps-System-Name`           | `acme`                | `acme`              |
+| `Vipps-System-Version`        | `1.7`                 | `2.6`               |
+| `Vipps-System-Plugin-Name`    | `acme-pos`            | `acme-webshop`      |
+| `Vipps-System-Plugin-Version` | `3.2`                 | `4.3`               |
 
 **Important:** Please use self-explanatory, human readable and reasonably short
 values that uniquely identify the system (and plugin).
@@ -229,6 +229,10 @@ Examples from a demo website:
 ## Regular eCommerce payments
 
 Payment amounts must be in NOK, be non-zero _and_ larger than 1 NOK (1 NOK = 100 øre).
+
+Amounts are specified in minor units.
+For Norwegian kroner (NOK) that means 1 kr = 100 øre.
+Example: 499 kr = 49900 øre.
 
 When you initiate a payment it will only be _reserved_ until you capture it.
 Vipps supports both _reserve capture_ and _direct capture_ payment flows.
