@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.40.
+Document version 2.5.41.
 
 ## Table of contents
 
@@ -21,6 +21,7 @@ Document version 2.5.40.
 - [API endpoints](#api-endpoints)
 - [Authentication](#authentication)
 - [Optional Vipps HTTP headers](#optional-vipps-http-headers)
+  - [Example headers](#example-headers)
 - [Initiate](#initiate)
 - [Regular eCommerce payments](#regular-ecommerce-payments)
   - [Reserve capture](#reserve-capture)
@@ -199,7 +200,7 @@ These headers are required for plugins and partners and sent by the recent versi
 [the official Vipps plugins](https://github.com/vippsas/vipps-developers#plugins)
 and we recommend all customers with direct integration with the API to also do so.
 
-### Examples
+### Example headers
 
 If the vendor's name is "Acme AS", and the vendor offers two different systems
 one for point of sale (POS) integrations and one for web shops,
