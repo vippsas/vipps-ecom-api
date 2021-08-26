@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.37.
+Document version 2.5.39.
 
 ## Table of contents
 
@@ -187,9 +187,6 @@ We recommend using the following _optional_ HTTP headers for all requests to the
 Vipps eCom API. These headers provide useful metadata about the merchant's system,
 which help Vipps improve our services, and also help in investigating problems.
 
-**Important:** Please use self-explanatory, human readable and reasonably short
-values that uniquely identify the system (and plugin).
-
 | Header                        | Description                                  | Example value       |
 | ----------------------------- | -------------------------------------------- | ------------------- |
 | `Merchant-Serial-Number`      | The merchant serial number                   | `123456`            |
@@ -204,16 +201,19 @@ and we recommend all customers with direct integration with the API to also do s
 
 ### Examples
 
-If the vendor's name is "Acme AS", and the vendore offers two different systems,
+If the vendor's name is "Acme AS", and the vendor offers two different systems
+(one for point of sale (POS) integrations and one for web shops),
 the headers should be:
 
 | Header                        | Example value       |
 | ----------------------------- | ------------------- |
 | `Vipps-System-Name`           | `acme`              |
-| `Vipps-System-Version`        | `1.0` or 2.1`       |
+| `Vipps-System-Version`        | `1.0` or `2.1`      |
 | `Vipps-System-Plugin-Name`    | `pos` or `webshop`  |
-| `Vipps-System-Plugin-Version` | `3.1`or 4.3`        |
+| `Vipps-System-Plugin-Version` | `3.1`or `4.3`       |
 
+**Important:** Please use self-explanatory, human readable and reasonably short
+values that uniquely identify the system (and plugin).
 
 ## Initiate
 
