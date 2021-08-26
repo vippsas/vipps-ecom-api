@@ -186,7 +186,9 @@ in the
 We recommend using the following _optional_ HTTP headers for all requests to the
 Vipps eCom API. These headers provide useful metadata about the merchant's system,
 which help Vipps improve our services, and also help in investigating problems.
-Please use self-explanatory values that uniquely identify the system (and plugin).
+
+**Important:** Please use self-explanatory, human readable and reasonably short
+values that uniquely identify the system (and plugin).
 
 | Header                        | Description                                  | Example value       |
 | ----------------------------- | -------------------------------------------- | ------------------- |
@@ -199,6 +201,19 @@ Please use self-explanatory values that uniquely identify the system (and plugin
 These headers are required for plugins and partners and sent by the recent versions of
 [the official Vipps plugins](https://github.com/vippsas/vipps-developers#plugins)
 and we recommend all customers with direct integration with the API to also do so.
+
+### Examples
+
+If the vendor's name is "Acme AS", and the vendore offers two different systems,
+the headers should be:
+
+| Header                        | Example value       |
+| ----------------------------- | ------------------- |
+| `Vipps-System-Name`           | `Acme`              |
+| `Vipps-System-Version`        | `1.0` or 2.1`       |
+| `Vipps-System-Plugin-Name`    | `POS` or `Webshop`  |
+| `Vipps-System-Plugin-Version` | `3.1`or 4.3`        |
+
 
 ## Initiate
 
