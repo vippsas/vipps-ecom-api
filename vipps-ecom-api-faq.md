@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.4.
+Document version 3.9.5.
 
 ### Table of contents
 
@@ -75,6 +75,7 @@ Document version 3.9.4.
   - [How can I change my organization number?](#how-can-i-change-my-organization-number)
   - [What about webhooks?](#what-about-webhooks)
   - [Can I use Vipps with Klarna Checkout?](#can-i-use-vipps-with-klarna-checkout)
+  - [What functionality is included in the eCom API, but not the PSP API?](#what-functionality-is-included-in-the-ecom-api-but-not-the-psp-api)
 - [Frequently Asked Questions for POS integrations](#frequently-asked-questions-for-pos-integrations)
   * [What is the process to go live in production?](#what-is-the-process-to-go-live-in-production)
   * [How can we be whitelisted for `skipLandingPage`?](#how-can-we-be-whitelisted-for-skiplandingpage)
@@ -1260,6 +1261,10 @@ Using this method will add Vipps as an payment alternative inside KCO.
 It is technically possible to also use Vipps payment options outside KCO
 (e.g. on product pages, in basket or similar) using
 [Vipps Express Checkout](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#express-checkout-payments).
+
+### What functionality is included in the eCom API, but not the PSP API?
+
+The Vipps PSP API provides tokens that a PSP can use to charge a Vipps user's card
 
 ## Frequently Asked Questions for POS integrations
 
