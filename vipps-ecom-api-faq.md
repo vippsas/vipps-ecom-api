@@ -1264,7 +1264,23 @@ It is technically possible to also use Vipps payment options outside KCO
 
 ### What functionality is included in the eCom API, but not the PSP API?
 
-The Vipps PSP API provides tokens that a PSP can use to charge a Vipps user's card
+The [Vipps PSP API](https://github.com/vippsas/vipps-psp-api) provides tokens
+that a PSP can use to charge a Vipps user's card. To put it simply, it is a
+"card token lookup service". The payment is completed by the PSP, who sends an
+update to Vipps about the success or failure.
+
+The Vipps eCom API has some functionality that is not available in the PSP API:
+
+1. Retry functionality: If the user attempts to pay with a card that is declined,
+   the user can retry with a different card, while still in the same payment process.
+   This results in a higher success rater for payments.
+   The PSP API does not have this functionality, as it is the PSP, not Vipps,
+   that make the charge.
+2. [Express checkout (Vipps Hurtigkasse)](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#express-checkout-payments)
+   is only available in the Vipps eCom API.
+3. [Userinfo](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#userinfo):
+   The Vipps eCom API offers the possibility for merchants to ask for the user's
+   profile information as part of the payment flow: name, address, email, phone number, birthdate, etc.
 
 ## Frequently Asked Questions for POS integrations
 
