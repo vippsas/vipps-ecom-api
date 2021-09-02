@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.41.
+Document version 2.5.42.
 
 ## Table of contents
 
@@ -1038,14 +1038,21 @@ The respective amount will be reserved for future capturing.
 
 When a user is directed to the `url` from initiate payment, they will either be taken to Vipps or to the Vipps landing page:
 
-- In a mobile browser, the user will be redirected to Vipps.
-- In a desktop browser, the landing page prompts the user for the phone number (the number may also be pre-filled).
+- In a mobile browser, the Vipps app will automatically be opened with app-switch.
+- In a desktop browser, the landing page will prompt the user for the phone number (the number may also be pre-filled, ssubee below).
   The user enters or confirms the phone number. Then on their phone, the user gets a push notification and Vipps then prompts for confirmation.
 
 The Vipps landing page is mandatory, and provides a consistent and recognizable user experience,
 that helps guide the user through the payment flow.
+Our data shows that the landing page gives a higher success rate and lower drop-off,
+because the users get a familiar user experience and know the payment flow.
 In this way Vipps takes responsibility for helping the user from the browser to the app,
 and to complete the payment in a familiar way.
+
+**Please note:** Never show the Vipps landing page inside an iframe.
+That will make it impossible for the user to reliably be redirected back to the
+merchant's website, and result in a lower success rate.
+In general: Any "optimization" of the payment flow may break the Vipps payment flow - if not today, then later.
 
 The user's phone number can be set in the payment initiation call:
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST).
@@ -1479,6 +1486,13 @@ a customer.
 5. Using the sub from step 4, call
    [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getUserinfo)
    to retrieve the user's information.
+
+**Please note:** The `sub` is added asynchronously, so if the `/details` request
+is made within (milli)seconds of the payment approval in the app, it may not be
+available. If that happens, simply make another `/details` request.
+See
+[Polling guidelines](#polling-guidelines)
+for more recommendations.
 
 **Important note:** The API call to
 [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getUserinfo)
