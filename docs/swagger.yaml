@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.15
+  version: 1.6.16
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -1671,7 +1671,11 @@ components:
         sub:
           type: string
           description: >-
-            The user identifier if using profile flow. This should be used against the userInfo endpoint.
+            The user identifier if using profile flow.
+            This should be used against the userInfo endpoint: GET:/vipps-userinfo-api/userinfo/{sub}
+            The `sub` is added asynchronously, so if the `/details` request
+            is made within (milli)seconds of the payment approval in the app, it may not be
+            available. If that happens, simply make another `/details` request.
     PaymentInitiationResponse:
       type: object
       required:
