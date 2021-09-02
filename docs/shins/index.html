@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Vipps eCommerce API v1.6.15</title>
+    <title>Vipps eCommerce API v1.6.16</title>
 
     <style>
     </style>
@@ -7877,7 +7877,7 @@ System.out.println(response.toString());
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>The user identifier if using profile flow. This should be used against the userInfo endpoint.</td>
+<td>The user identifier if using profile flow. This should be used against the userInfo endpoint: GET:/vipps-userinfo-api/userinfo/{sub} The <code>sub</code> is added asynchronously, so if the <code>/details</code> request is made within (milli)seconds of the payment approval in the app, it may not be available. If that happens, simply make another <code>/details</code> request.</td>
 </tr>
 </tbody>
 </table>
