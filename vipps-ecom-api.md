@@ -997,12 +997,10 @@ part of callback, and also made accessible through [`GET:/ecomm/v2/payments/{ord
 
 _This functionality is only available for special cases._
 
-Skipping the landing page is reserved for special cases, where displaying it is not possible.
+Skipping the landing page is only reserved for physical points of sale and vending machines, when there is no display available.
 
 This feature has to be specially enabled by Vipps for eligible sale units:
 The sale units must be whitelisted by Vipps.
-Skipping the landing page is typically used at physical points of sale,
-where there is no display available.
 
 If the `skipLandingPage` property is set to `true` in the
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
