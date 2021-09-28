@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.42.
+Document version 2.5.43.
 
 ## Table of contents
 
@@ -1493,9 +1493,10 @@ See
 for more recommendations.
 
 **Important note:** The API call to
-[`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getUserinfo)
-must _not_ include the `OCP-APIM-Subscription-Key` used for the eCom API. This is because userinfo is part of Vipps Login and is therefore
-_not_ under the same subscription, and will result in a `HTTP Unauthorized 401` error.
+[`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-recurring-api/#/Userinfo%20Endpoint/getUserinfo)
+must _not_ include the subscription key (the `Ocp-Apim-Subscription-Key` header) used for the eCom API.
+This is because userinfo is part of Vipps Login and is therefore _not_ under the same subscription,
+and will result in a `HTTP Unauthorized 401` error.
 
 ### Get userinfo
 
