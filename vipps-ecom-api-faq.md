@@ -1263,10 +1263,10 @@ the user is sent to Vipps to pay the total amount.
 "external_payment_methods": [
     {
         "name": "Vipps",
-        "redirect_url": "https://…",
-        "image_url": "https://…",    // Vipps logo
-        "fee": 1450                  // Not applicable
-        "description": "Lorem.."     // Optional Vipps info
+        "redirect_url": "https://…", // URL to the merchant's Vipps integration
+        "image_url": "https://…",    // Vipps logo, must be on the merchant's website
+        "fee": 0                     // Not applicable because of PSD2
+        "description": "Lorem.."     // Optional payment information to Vipps
     }
 ]
 ```
