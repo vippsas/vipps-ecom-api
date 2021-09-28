@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.6.
+Document version 3.9.7.
 
 ### Table of contents
 
@@ -1260,6 +1260,24 @@ Using this method will add Vipps as an payment alternative inside KCO.
 
 See the in-depth
 [External payment methods & external checkouts](https://docs.klarna.com/klarna-checkout/in-depth-knowledge/external-payment-methods/).
+
+Using Vipps as an external payment method in Vipps requires a direct integration
+with the Vipps eCom API, as Klarna merely redirects the user to Vipps for payment.
+
+All information about price, shipping, etc is done in Klarna Checkout, before
+the user is sent to Vipps to pay the total amount.
+
+```
+"external_payment_methods": [
+    {
+        "name": "Vipps",
+        "redirect_url": "https://…",
+        "image_url": "https://…",    // Vipps logo
+        "fee": 1450                  // Not applicable
+        "description": "Lorem.."     // Optional Vipps info
+    }
+]
+```
 
 It is technically possible to also use Vipps payment options outside KCO
 (e.g. on product pages, in basket or similar) using
