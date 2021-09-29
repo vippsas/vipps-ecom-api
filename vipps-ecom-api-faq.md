@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.8.
+Document version 3.9.9.
 
 ### Table of contents
 
@@ -1263,10 +1263,10 @@ the user is sent to Vipps to pay the total amount.
 "external_payment_methods": [
     {
         "name": "Vipps",
-        "redirect_url": "https://…", // URL to the merchant's Vipps integration
-        "image_url": "https://…",    // Vipps logo, must be on the merchant's website
-        "fee": 0                     // Not applicable because of PSD2
-        "description": "Lorem.."     // Optional payment information to Vipps
+        "redirect_url": "https://…",    // URL to the merchant's Vipps integration
+        "image_url": "https://…",       // Vipps logo, must be on the merchant's website. See https://brand.vipps.no/
+        "fee": 0                        // Not applicable because of PSD2
+        "description": "Order ABC-123"  // Optional payment information to Vipps
     }
 ]
 ```
