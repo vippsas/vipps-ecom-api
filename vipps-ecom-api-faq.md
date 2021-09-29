@@ -1263,10 +1263,10 @@ the user is sent to Vipps to pay the total amount.
 "external_payment_methods": [
     {
         "name": "Vipps",
-        "redirect_url": "https://…",    // URL to the merchant's Vipps integration
+        "redirect_url": "https://api.vipps.no/dwo-api-application/v1/deeplink/vippsgateway?v=2&token=eyJraWQiOiJqd3R <snip>",    // URL to initiate Vipps payment
         "image_url": "https://…",       // Vipps logo, must be on the merchant's website. See https://brand.vipps.no/
-        "fee": 0                        // Not applicable because of PSD2
-        "description": "Order ABC-123"  // Optional payment information to Vipps
+        "fee": 0                        // Should not be applicable because of PSD2 surcharge ban
+        "description": "Pay with Vipps"  // Optional text describing Vipps as payment method
     }
 ]
 ```
