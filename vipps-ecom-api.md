@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.43.
+Document version 2.5.44.
 
 ## Table of contents
 
@@ -2049,6 +2049,7 @@ The endpoint is only available in our test environment.
 
 **Important:** All test users must manually approve at least one payment in
 Vipps (using the app) before "force approve" can be used for that user.
+If this has not been done, you will get an error.
 This is because the user needs to be registered as
 "bankID verified" in the backend, and this is happens automatically in
 the test environment when using Vipps (the app), but not with "force approve".
