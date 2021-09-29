@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.44.
+Document version 2.5.45.
 
 ## Table of contents
 
@@ -2015,6 +2015,7 @@ allowed to provide more details.
 | Payment        | 95                                | Payments can only be refunded up to 365 days after reservation                                      |                                           |
 | Payment        | 96                                | Payments can only be captured up to 180 days after reservation                                      |                                           |
 | Payment        | 1501                              | This person can not pay to companies                                                                | Used for Vipps users under the age of 15. |
+| Payment        | 1082                              | This person is not BankID verified. Only applies for test users.                                                             | |
 | InvalidRequest | Field name will be the error code | Description about what exactly the field error is                                                   |                                           |
 | VippsError     | 91                                | Transaction is not allowed                                                                          |                                           |
 | VippsError     | 92                                | Transaction already processed                                                                       |                                           |
