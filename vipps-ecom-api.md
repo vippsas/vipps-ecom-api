@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.45.
+Document version 2.5.46.
 
 ## Table of contents
 
@@ -74,7 +74,7 @@ Document version 2.5.45.
 - [Recurring eCommerce payments](#recurring-ecommerce-payments)
 - [Get payment details](#get-payment-details)
   - [Payment states](#payment-states)
-- [Requests and responses](#requests-and-responses)
+  - [Requests and responses](#requests-and-responses)
   - [Example response](#example-response)
 - [Polling guidelines](#polling-guidelines)
 - [Get payment status](#get-payment-status)
@@ -1326,7 +1326,7 @@ Swagger: [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/
 | 4   | Cancel     | --       | A final state: Payment cancelled                               | -          |
 | 5   | Refund     | --       | A final state: Payment refunded                                | -          |
 
-## Requests and responses
+### Requests and responses
 
 Please note that the response from
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET))
