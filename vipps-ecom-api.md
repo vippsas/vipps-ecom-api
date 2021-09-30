@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.46.
+Document version 2.5.47.
 
 ## Table of contents
 
@@ -76,7 +76,7 @@ Document version 2.5.46.
   - [Payment states](#payment-states)
   - [Requests and responses](#requests-and-responses)
   - [Example response](#example-response)
-- [Polling guidelines](#polling-guidelines)
+  - [Polling guidelines](#polling-guidelines)
 - [Get payment status](#get-payment-status)
 - [Userinfo](#userinfo)
   - [scope](#scope)
@@ -1400,7 +1400,7 @@ always contains _the entire history_ of payments for the order, not just the cur
 **Please note:** The `transactionSummary` will not be part of the response if
 the user not reacted to the Vipps landing page or app-switch. `bankIdentificationNumber` will be part of `transactionSummary` only in the response of `GET:/ecomm/v2/payments/{orderId}/details` endpoint.
 
-## Polling guidelines
+### Polling guidelines
 
 General guidelines for When to start polling with
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET):
