@@ -12,7 +12,7 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.47.
+Document version 2.5.48.
 
 ## Table of contents
 
@@ -693,7 +693,6 @@ following events:
 - Payment rejected
 - Payment timed out
 
-
 Vipps makes _one_ attempt at a callback, and can not guarantee that it succeeds,
 as it depends on network, firewalls and other factors that Vipps can not control.
 
@@ -705,6 +704,10 @@ In other words, if the merchant does not receive any
 confirmation on the payment request, the merchant _must_ call
 [GET:/ecomm/v2/payments/{orderId}/details](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
 to get the status of the payment.
+
+**Please note:** Do not rely only on callbacks alone, but also poll the `/details` endpoint
+as described in
+[Polling guidelines](#polling-guidelines).
 
 **Please note:** Callback URLs _must_ use HTTPS.
 
