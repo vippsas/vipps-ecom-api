@@ -19,8 +19,7 @@ Document version 2.1.5.
     - [ ] `Vipps-System-Version`
     - [ ] `Vipps-System-Plugin-Name`
     - [ ] `Vipps-System-Plugin-Version`
-- [ ] Follow the [orderId recommendations](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#orderid-recommendations).
-- [ ] Follow the [design guidelines](https://github.com/vippsas/vipps-design-guidelines#vipps-design-guidelines). 
+- [ ] Follow the [orderId recommendations](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#orderid-recommendations). 
 - [ ] Correctly handle callbacks from Vipps, both for successful and unsuccessful payments.
       See the API documentation for
       [how callback URLs are built](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callback-endpoints),
