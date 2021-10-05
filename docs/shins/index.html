@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Vipps eCommerce API v1.6.16</title>
+    <title>Vipps eCommerce API v1.6.17</title>
 
     <style>
     </style>
@@ -2287,7 +2287,6 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments \
   &quot;transaction&quot;: {
     &quot;amount&quot;: 20000,
     &quot;orderId&quot;: &quot;acme-shop-123-order123abc&quot;,
-    &quot;timeStamp&quot;: &quot;2018-11-14T15:44:26.590Z&quot;,
     &quot;transactionText&quot;: &quot;One pair of Vipps socks&quot;,
     &quot;skipLandingPage&quot;: false,
     &quot;scope&quot;: &quot;name address email&quot;,
@@ -2480,7 +2479,6 @@ System.out.println(response.toString());
   <span class="hljs-attr">&quot;transaction&quot;</span>: {
     <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">20000</span>,
     <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
-    <span class="hljs-attr">&quot;timeStamp&quot;</span>: <span class="hljs-string">&quot;2018-11-14T15:44:26.590Z&quot;</span>,
     <span class="hljs-attr">&quot;transactionText&quot;</span>: <span class="hljs-string">&quot;One pair of Vipps socks&quot;</span>,
     <span class="hljs-attr">&quot;skipLandingPage&quot;</span>: <span class="hljs-literal">false</span>,
     <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;name address email&quot;</span>,
@@ -2709,13 +2707,6 @@ System.out.println(response.toString());
 <td>string</td>
 <td>true</td>
 <td>Id which uniquely identifies a payment. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
-</tr>
-<tr>
-<td>»» timeStamp</td>
-<td>body</td>
-<td>string(date-time)</td>
-<td>false</td>
-<td>ISO formatted date time string.</td>
 </tr>
 <tr>
 <td>»» transactionText</td>
@@ -8318,7 +8309,6 @@ System.out.println(response.toString());
   <span class="hljs-attr">&quot;transaction&quot;</span>: {
     <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">20000</span>,
     <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
-    <span class="hljs-attr">&quot;timeStamp&quot;</span>: <span class="hljs-string">&quot;2018-11-14T15:44:26.590Z&quot;</span>,
     <span class="hljs-attr">&quot;transactionText&quot;</span>: <span class="hljs-string">&quot;One pair of Vipps socks&quot;</span>,
     <span class="hljs-attr">&quot;skipLandingPage&quot;</span>: <span class="hljs-literal">false</span>,
     <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;name address email&quot;</span>,
@@ -8377,7 +8367,6 @@ System.out.println(response.toString());
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">&quot;amount&quot;</span>: <span class="hljs-number">20000</span>,
   <span class="hljs-attr">&quot;orderId&quot;</span>: <span class="hljs-string">&quot;acme-shop-123-order123abc&quot;</span>,
-  <span class="hljs-attr">&quot;timeStamp&quot;</span>: <span class="hljs-string">&quot;2018-11-14T15:44:26.590Z&quot;</span>,
   <span class="hljs-attr">&quot;transactionText&quot;</span>: <span class="hljs-string">&quot;One pair of Vipps socks&quot;</span>,
   <span class="hljs-attr">&quot;skipLandingPage&quot;</span>: <span class="hljs-literal">false</span>,
   <span class="hljs-attr">&quot;scope&quot;</span>: <span class="hljs-string">&quot;name address email&quot;</span>,
@@ -8417,13 +8406,6 @@ System.out.println(response.toString());
 <td>true</td>
 <td>none</td>
 <td>Id which uniquely identifies a payment. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
-</tr>
-<tr>
-<td>timeStamp</td>
-<td>string(date-time)</td>
-<td>false</td>
-<td>none</td>
-<td>ISO formatted date time string.</td>
 </tr>
 <tr>
 <td>transactionText</td>
