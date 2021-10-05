@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.16
+  version: 1.6.17
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -1880,11 +1880,6 @@ components:
           example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
-        timeStamp:
-          type: string
-          format: date-time
-          description: ISO formatted date time string.
-          example: '2018-11-14T15:44:26.590Z'
         transactionText:
           type: string
           description: Transaction text to be displayed in Vipps
