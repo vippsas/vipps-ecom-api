@@ -8,7 +8,7 @@ native apps and other solutions.
 
 See: [How it works](vipps-ecom-api-howitworks.md).
 
-These Swagger/OpenAPI) representtions may be useful to get a quick overview:
+These Swagger/OpenAPI representations may be useful to get a quick overview:
 * [Swagger](https://vippsas.github.io/vipps-ecom-api/)
 * [ReDoc](https://vippsas.github.io/vipps-ecom-api/redoc.html)
 * [Shins](https://vippsas.github.io/vipps-ecom-api/shins/index.html)
@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.49.
+Document version 2.5.50.
 
 ## Table of contents
 
