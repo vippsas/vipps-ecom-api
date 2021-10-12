@@ -1,22 +1,24 @@
 # Vipps eCommerce API
 
+The Vipps eCom API is used by
+[Vipps på nett](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/),
+[Vipps Checkout](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/vipps-checkout/),
+[Vipps i kassa (POS)](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/vipps-i-kassa/),
+native apps and other solutions.
 
-The Vipps eCom API is
-
+See: [How it works](vipps-ecom-api-howitworks.md).
 
 These Swagger/OpenAPI) representtions may be useful to get a quick overview:
 * [Swagger](https://vippsas.github.io/vipps-ecom-api/)
 * [ReDoc](https://vippsas.github.io/vipps-ecom-api/redoc.html)
 * [Shins](https://vippsas.github.io/vipps-ecom-api/shins/index.html)
 
-See also: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
+See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
 [Postman collections](tools/),
 [example code](https://github.com/vippsas/vipps-developers/tree/master/code-examples/ecom_python_example),
-[integration checklist](vipps-ecom-api-checklist.md)
-and the [FAQ](vipps-ecom-api-faq.md).
-
-See also: [How it works](vipps-ecom-api-howitworks.md).
+[integration checklist](vipps-ecom-api-checklist.md),
+[FAQ](vipps-ecom-api-faq.md).
 
 API version: 2.0.0.
 
