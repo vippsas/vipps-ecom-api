@@ -1,10 +1,16 @@
 # Vipps eCommerce API
 
-API version: 2.0
 
-See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
+The Vipps eCom API is
+
+
+These Swagger/OpenAPI) representtions may be useful to get a quick overview:
+* [Swagger](https://vippsas.github.io/vipps-ecom-api/)
+* [ReDoc](https://vippsas.github.io/vipps-ecom-api/redoc.html)
+* [Shins](https://vippsas.github.io/vipps-ecom-api/shins/index.html)
+
+See also: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
 with
-[Swagger specifications](https://vippsas.github.io/vipps-ecom-api/),
 [Postman collections](tools/),
 [example code](https://github.com/vippsas/vipps-developers/tree/master/code-examples/ecom_python_example),
 [integration checklist](vipps-ecom-api-checklist.md)
@@ -12,7 +18,9 @@ and the [FAQ](vipps-ecom-api-faq.md).
 
 See also: [How it works](vipps-ecom-api-howitworks.md).
 
-Document version 2.5.48.
+API version: 2.0.0.
+
+Document version 2.5.49.
 
 ## Table of contents
 
@@ -1619,7 +1627,8 @@ failed payment by the eCom API.
 ## HTTP response codes
 
 This API returns the following HTTP statuses in the responses.
-See the [Swagger specification](./) for more details.
+See the [Swagger specification](https://github.com/vippsas/vipps-ecom-api) for more details
+(Swagger UI, ReDoc and Shins available).
 
 | HTTP status             | Description                                            |
 | ----------------------- | ------------------------------------------------------ |
