@@ -2086,14 +2086,14 @@ Examples of some, but not all, factors outside of Vipps control:
 - User configurations of browsers.
 - Users closing Vipps immediately upon purchase.
 
-Because of this Vipps recommends a stateless approach on the webssite that
+Because of this Vipps recommends a stateless approach on the website that
 is supposed to be the end session. An example would a polling-based result
-handling from a value in the redirect URL.
+handling from a value in the redirect URL (`fallback`).
 
 Example for demonstration purposes that should be handled.
 
 1. User starts is in web session in the Chrome web browser.
-2. A Vipps purchase is started, with a redirect URL specified by the Merchant.
+2. A Vipps purchase is started, with a redirect URL (`fallback`) specified by the Merchant.
 3. The user completes the purchase in Vipps.
 4. Vipps (the app) redirects the user by opening the URL specified in step 2.
 5. The OS opens the URL in the default browser: Safari (not Chrome).
