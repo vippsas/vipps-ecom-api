@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.9.
+Document version 3.9.10.
 
 ### Table of contents
 
@@ -115,7 +115,7 @@ You need
 [Vipps på Nett](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).
 
 The reason for this is that the Norwegian Tax Administration considers
-"Vipps-nummer" to be cash transactions,
+"Vippsnummer" to be cash transactions,
 while eCommerce is defined as remote sales ("fjernhandel"). The regulations
 associated with both are different enough to require this policy.
 
