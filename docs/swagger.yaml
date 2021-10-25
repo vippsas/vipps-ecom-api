@@ -1096,6 +1096,20 @@ paths:
           schema:
             type: string
           example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+        - in: header
+          name: Merchant-Serial-Number
+          description: >-
+            The Merchant Serial Number (MSN) is a unique id for the sale unit
+            that this payment is made for.
+            This is a required parameter if you are a Vipps eCom partner
+            making payments on behalf of a merchant.
+            The partner must use the merchant's MSN (not the partner's MSN).
+            This parameter is optional, and recommended, for regular Vipps
+            merchants making payments for themselves.
+          required: false
+          schema:
+            type: string
+          example: '123456'
       responses:
         "200":
           description: Get Userinfo
