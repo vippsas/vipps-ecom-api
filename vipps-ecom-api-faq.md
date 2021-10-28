@@ -30,7 +30,7 @@ Document version 3.9.11.
     + [Can I prevent people from paying with credit cards?](#can-i-prevent-people-from-paying-with-credit-cards-)
     + [Can I initiate a Vipps payment with a QR code?](#can-i-initiate-a-vipps-payment-with-a-qr-code-)
     + [Can I send a Vipps payment link in an SMS, QR or email?](#can-i-send-a-vipps-payment-link-in-an-sms--qr-or-email-)
-    + [Can I sell products on social media?](#can-i-sell-products-on-social-media-)
+    + [Can I sell products on social media?](#can-i-sell-products-on-social-media)
     + [Can I whitelist my URL for a Vipps QR?](#can-i-whitelist-my-url-for-a-vipps-qr-)
     + [Can I use a different currency than NOK?](#can-i-use-a-different-currency-than-nok-)
   * [Refunds](#refunds)
