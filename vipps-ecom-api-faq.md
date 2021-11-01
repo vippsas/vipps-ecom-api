@@ -43,7 +43,7 @@ Document version 3.9.12.
     + [Is there an API for retrieving information about a merchant's payments?](#is-there-an-api-for-retrieving-information-about-a-merchant-s-payments)
     + [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
     + [How can I check if I have skipLandingPage activated?](#how-can-i-check-if-i-have-skiplandingpage-activated)
-    + [Can I show the landing page in an iframe?](#can-i-show-the-lading-page-in-an-iframe)
+    + [Can I show the landing page in an iframe?](#can-i-show-the-landing-page-in-an-iframe)
     + [Can I split payments to charge a fee?](#can-i-split-payments-to-charge-a-fee)
     + [Can I create a marketplace with multiple merchants?](#can-i-create-a-marketplace-with-multiple-merchants)
     + [Can I create a service to match buyers and sellers?](#can-i-create-a-service-to-match-buyers-and-sellers)
