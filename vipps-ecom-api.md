@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.50.
+Document version 2.5.51.
 
 ## Table of contents
 
@@ -1032,7 +1032,7 @@ If you need to be whitelisted, instructions can be found in the
 [FAQ](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-faq.md#is-it-possible-to-skip-the-landing-page).
 
 **Please note:** When using `skipLandingPage`, the user is not sent to a
-URL after complation of the payment. The "result page" is just the confirmation
+URL after completion of the payment. The "result page" is just the confirmation
 in Vipps. The `fallback` URL send in the API request can therefore be the
 merchant's main URL, like `https://example.com`, etc.
 

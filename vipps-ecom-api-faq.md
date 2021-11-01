@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.11.
+Document version 3.9.12.
 
 ### Table of contents
 
@@ -25,6 +25,7 @@ Document version 3.9.11.
     + [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between--reserve-capture--and--direct-capture)
     + [When should I use "Direct Capture"?](#when-should-i-use--direct-capture)
     + [How can I check if I have "reserve capture" or "direct capture"?](#how-can-i-check-if-i-have--reserve-capture--or--direct-capture)
+    + [Can I show the landing page in an iframe?](#can-i-show-the-lading-page-in-an-iframe)
     + [How do I turn direct capture on or off?](#how-do-i-turn-direct-capture-on-or-off)
     + [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
     + [Can I prevent people from paying with credit cards?](#can-i-prevent-people-from-paying-with-credit-cards)
@@ -636,6 +637,11 @@ The sale units must be whitelisted by Vipps.
 Skipping the landing page is typically used at physical points of sale
 where there is no display available.
 
+The Vipps landing page is more than just a web page, it is an entire
+application and it plays an important role in the Vipps paymewnt process.
+See the landing page information in the API Guide:
+[The Vipps landing page](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#the-vipps-landing-page).
+
 If you need to skip the landing page in a Point of Sale (POS) solution, see:
 [What is the process to go live in production?](#what-is-the-process-to-go-live-in-production).
 
@@ -660,6 +666,21 @@ If you are a partner and want to check a merchant, you can simply
 try to initiate a payment with `skipLandingPage`.
 If you do not get an error, it's active.
 If you get an error, it's not active.
+
+See:
+[Skip landing page](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#skip-landing-page)
+in the API guide.
+
+### Can I show the landing page in an iframe?
+
+No. Never show the Vipps landing page inside an iframe. That will make it
+impossible for the user to reliably be redirected back to the merchant's website,
+and result in a lower success rate. In general: Any "optimization" of the payment
+flow may break the Vipps payment flow - if not today, then later.
+
+See:
+[Skip landing page](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#skip-landing-page)
+in the API guide.
 
 ### Can I split payments to charge a fee?
 
