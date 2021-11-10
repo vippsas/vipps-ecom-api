@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.51.
+Document version 2.5.52.
 
 ## Table of contents
 
@@ -142,7 +142,7 @@ The normal "happy day" flow for a payment is:
    [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/transactionUpdateCallbackForRegularPaymentUsingPOST).
    See [Callbacks](#callbacks).
 3. Get the payment details:
-   [GET:/ecomm/v2/payments/{orderId}/details](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET).
+   [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET).
    This is optional, but _must_ be done if no callback has been received.
    See
    [Get payment details](#get-payment-details)
