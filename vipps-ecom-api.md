@@ -198,6 +198,11 @@ We recommend using the following _optional_ HTTP headers for all requests to the
 Vipps eCom API. These headers provide useful metadata about the merchant's system,
 which help Vipps improve our services, and also help in investigating problems.
 
+These headers are **required for plugins and partners** and sent by the recent versions of
+[the official Vipps plugins](https://github.com/vippsas/vipps-developers#plugins)
+and we recommend all customers with direct integration with the API to also do so.
+
+
 | Header                        | Description                                  | Example value       |
 | ----------------------------- | -------------------------------------------- | ------------------- |
 | `Merchant-Serial-Number`      | The merchant serial number                   | `123456`            |
@@ -206,9 +211,6 @@ which help Vipps improve our services, and also help in investigating problems.
 | `Vipps-System-Plugin-Name`    | The name of the ecommerce plugin             | `vipps-woocommerce` |
 | `Vipps-System-Plugin-Version` | The version number of the ecommerce plugin   | `1.4.1`             |
 
-These headers are required for plugins and partners and sent by the recent versions of
-[the official Vipps plugins](https://github.com/vippsas/vipps-developers#plugins)
-and we recommend all customers with direct integration with the API to also do so.
 
 ### Example headers
 
