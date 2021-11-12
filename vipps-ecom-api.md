@@ -216,12 +216,12 @@ If the vendor's name is "Acme AS", and the vendor offers two different systems
 one for point of sale (POS) integrations and one for web shops,
 the headers should be:
 
-| Header                        | Example value for POS | Example value for webshop |
-| ----------------------------- | --------------------- | ------------------- |
-| `Vipps-System-Name`           | `acme`                | `acme`              |
-| `Vipps-System-Version`        | `1.7`                 | `2.6`               |
-| `Vipps-System-Plugin-Name`    | `acme-pos`            | `acme-webshop`      |
-| `Vipps-System-Plugin-Version` | `3.2`                 | `4.3`               |
+| Header                        | Example value for POS | Example value for webshop | Example value for Vending machines |
+| ----------------------------- | --------------------- | ------------------- | ------------------- |
+| `Vipps-System-Name`           | `acme`                | `acme`              | `acme`              |
+| `Vipps-System-Version`        | `1.7`                 | `2.6`               | `2.6`               |
+| `Vipps-System-Plugin-Name`    | `acme-pos`            | `acme-webshop`      | `acme-vending`      |
+| `Vipps-System-Plugin-Version` | `3.2`                 | `4.3`               | `4.3`               |
 
 **Important:** Please use self-explanatory, human readable and reasonably short
 values that uniquely identify the system (and plugin).
@@ -1704,7 +1704,7 @@ Ocp-Apim-Subscription-Key: 0f14ebcab0ec4b29ae0cb90d91b4a84a
 Merchant-Serial-Number: 123456
 Vipps-System-Name: Acme Enterprises Ecommerce DeLuxe
 Vipps-System-Version: 3.1.2
-Vipps-System-Plugin-Name: Point Of Sale Excellence
+Vipps-System-Plugin-Name: acme-webshop
 Vipps-System-Plugin-Version: 4.5.6
 Content-Type: application/json
 ```
