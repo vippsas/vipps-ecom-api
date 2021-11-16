@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.14.
+Document version 3.9.15.
 
 ### Table of contents
 
@@ -156,6 +156,8 @@ the shipping cost must be maximum 200 NOK to be within the reserved amount of 12
 If the shipping cost is 300 kr, a capture of 1000 + 3000 kr = 1300 NOK will fail.
 
 The API responds with details about the error.
+
+See also: [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved).
 
 ### Why do I get a CORS error?
 
