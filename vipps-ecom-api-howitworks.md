@@ -22,7 +22,7 @@ The user chooses “Pay with Vipps”, either in the checkout, or on the product
 
 ![Pay with Vipps](images/vipps-ecom-step1-2.svg)
 
-## 2. The Vipps landing page
+## 2. The Vipps landing page (If customer started on desktop)
 
 If the payment was started on a desktop device the user will be sent to the Vipps landing page.
 The user confirms their number, and is prompted to log in to Vipps.
