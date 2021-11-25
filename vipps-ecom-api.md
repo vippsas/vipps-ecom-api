@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.52.
+Document version 2.5.53.
 
 ## Table of contents
 
@@ -1467,12 +1467,12 @@ in addition to profile information as part of the payment flow, the merchant can
 
 | scope            | Description                                                                                                                                                                                                                                                                | User consent required |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
-| `address`        | List containing the user's addresses. Will always contain the home address, but can also include work and other.                                                                                                                                                           | yes                   |
-| `birthDate`      | Birth date (BankID verified)                                                                                                                                                                                                                                               | yes                   |
-| `email`          | Email address (verified), the flag "email_verified : true" in the response indicates whether the email address is verified                                                                                                                                                 | yes                   |
-| `name`           | First, middle and given name (verified with National Population Register)                                                                                                                                                                                                  | yes                   |
-| `phoneNumber`    | Phone number (verified - the number used when creating the Vipps account)                                                                                                                                                                                                  | yes                   |
-| `nin`            | Norwegian national identity number (verified with BankID). **NB:** Merchants need to apply for access to NIN. See: [Who can get access to NIN and how?](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api-faq.md#who-can-get-access-to-nin-and-how)   | yes                   |
+| `address`        | A list containing the user's addresses. The list always contains the home address from the National Population Register, and can also include work address and other addresses added by the user in Vipps.                                                                                                                                                           | yes                   |
+| `birthDate`      | Birth date, BankID verified.                                                                                                                                                                                                                                               | yes                   |
+| `email`          | Email address. The flag `email_verified : true` (or `false`) in the response indicates whether the email address is verified.                                                                                                                                                 | yes                   |
+| `name`           | First, middle and given name. Verified with National Population Register.                                                                                                                                                                                                  | yes                   |
+| `phoneNumber`    | Phone number, verified. This is the number used when creating the Vipps account.                                                                                                                                                                                                  | yes                   |
+| `nin`            | Norwegian national identity number, verified with BankID. **NB:** Merchants need to apply for access to NIN. See: [Who can get access to NIN and how?](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api-faq.md#who-can-get-access-to-nin-and-how)   | yes                   |
 | `accountNumbers` | User bank account numbers. **NB:** Merchants need to apply for access to accountNumbers. See: [Who can get access to account numbers and how?](https://github.com/vippsas/vipps-login-api/blob/master/vipps-login-api-faq.md#who-can-get-access-to-accountnumbers-and-how) | yes                   |
 
 See the API specification for the formats and other details for each scope.
