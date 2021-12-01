@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.15.
+Document version 3.9.16.
 
 ### Table of contents
 
@@ -949,20 +949,37 @@ Access denied due to missing subscription key.
 Make sure to include subscription key when making requests to an API.
 ```
 
+or
+
+```
+{
+  "errorCode":"Unauthorized",
+  "errorMessage":"Subscription not found",
+  "contextId":"ff0b3ca8-eae5-4e95-9859-6600b2428315"
+}
+```
+
 You need to check that you are providing the correct API keys.
 Please follow these steps to make sure everything is correct:
 
-1. Check the Swagger specification for the correct spelling of all the header parameters.
+1. Check that you are using the correct API credentials:
+   * `client_id`
+   * `client_secret`
+   * `Ocp-Apim-Subscription-Key`
+   See
+   [Getting started: Quick overview of how to make an API call](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#quick-overview-of-how-to-make-an-api-call)
+   for more details.
+2. Check that you are using the same subscription key for both the access token and payment requests.
+3. Check the Swagger specification for the correct spelling of all the header parameters.
    They are case sensitive: `Authorization: Bearer <snip>` is not the same as `Authorization: bearer <snip>`.
-2. Check that you are using the same subscription key for both the access token and payment requests
-3. Make sure you are using the right environment and check that you are using
+4. Make sure you are using the right environment and check that you are using
    the correct API keys for the environment. The
    [test environment](https://github.com/vippsas/vipps-developers/blob/master/vipps-test-environment.md)
    is completely separate from the production environment, and both the MSN and
    the API keys are different.
-4. Check both the HTTP response header and the response body from our API.
+5. Check both the HTTP response header and the response body from our API.
    For most errors the body contains an explanation of what went wrong.
-5. If you are a partner and you are using partner keys: Double check everything
+6. If you are a partner and you are using partner keys: Double check everything
    described here:
    [Partner keys](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#partner-keys).
 
@@ -984,8 +1001,8 @@ to double check your API keys, sale units and API products.
 See:
 [Quick overview of how to make an API call](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#quick-overview-of-how-to-make-an-api-call).
 
-If you are absolutely 100 % sure that you have done everything correctly,
-and it _still_ doesn't work, you can regenerate the API keys on
+If you are absolutely, completely 100 % sure that you have done everything
+correctly, and it _still_ doesn't work, you can regenerate the API keys on
 [portal.vipps.no](https://portal.vipps.no).
 This should never be necessary, and we can not think of any situations where
 this fixes any known problem, so it's our very last suggestion.
