@@ -969,7 +969,7 @@ Please follow these steps to make sure everything is correct:
    See
    [Getting started: Quick overview of how to make an API call](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#quick-overview-of-how-to-make-an-api-call)
    for more details.
-2. Check that you are using the same subscription key for both the access token and payment requests.
+2. Check that you are using the same subscription key for both the access token and the payment requests.
 3. Check the Swagger specification for the correct spelling of all the header parameters.
    They are case sensitive: `Authorization: Bearer <snip>` is not the same as `Authorization: bearer <snip>`.
 4. Make sure you are using the right environment and check that you are using
