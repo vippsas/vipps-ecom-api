@@ -2,7 +2,7 @@
 
 API version: 2.0.
 
-Document version 2.1.5.
+Document version 2.1.6.
 
 ## Checklist
 
@@ -13,13 +13,13 @@ Document version 2.1.5.
     - [ ] Refund [`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST)
     - [ ] Details [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
     - For examples of requests and responses, see the Postman collection in [tools](tools/).
-- [ ] Send the [HTTP headers](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#optional-vipps-http-headers)
+- [ ] Send the optional, but recommended [HTTP headers](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#optional-vipps-http-headers)
       in all API requests for better tracking and troubleshooting (mandatory for partners and platforms):
     - [ ] `Vipps-System-Name`
     - [ ] `Vipps-System-Version`
     - [ ] `Vipps-System-Plugin-Name`
     - [ ] `Vipps-System-Plugin-Version`
-- [ ] Follow the [orderId recommendations](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#orderid-recommendations). 
+- [ ] Follow the [orderId recommendations](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#orderid-recommendations).
 - [ ] Correctly handle callbacks from Vipps, both for successful and unsuccessful payments.
       See the API documentation for
       [how callback URLs are built](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callback-endpoints),
