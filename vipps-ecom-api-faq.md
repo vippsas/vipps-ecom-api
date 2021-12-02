@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.16.
+Document version 3.9.17.
 
 ### Table of contents
 
@@ -66,8 +66,8 @@ Document version 3.9.16.
   + [Why do I get `HTTP 500 Internal Server Error`?](#why-do-i-get-http-500-internal-server-error)
   + [Why do I get `errorCode 35 "Requested Order not found"`?](#why-do-i-get-errorcode-35-requested-order-not-found)
   + [Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`?](#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked)
-  + [Why do I not get the `sub` from `/details`?](#why-do-i-not-get-the-sub-from--details)
-  + [Why do I get `unauthorized_client`?](#why-do-i-get-unauthorized-client)
+  + [Why do I not get the `sub` from `/details`?](#why-do-i-not-get-the-sub-from-details)
+  + [Why do I get `unauthorized_client`?](#why-do-i-get-unauthorized_client)
   + [Why do I get `Payment failed`?](#why-do-i-get-payment-failed)
 * [Other questions](#other-questions)
   + [How do I perform "testing in production"?](#how-do-i-perform-testing-in-production)
