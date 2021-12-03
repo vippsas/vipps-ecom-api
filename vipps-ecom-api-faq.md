@@ -39,7 +39,7 @@ Document version 3.9.19.
   + [How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customer-s-account)
   + [Is it possible for a merchant to pay a Vipps user?](#is-it-possible-for-a-merchant-to-pay-a-vipps-user)
 * [Users and payments](#users-and-payments)
-  + [When do users get a "soft decline" and need to complete a 3-D Secure verification?]
+  + [When do users get a "soft decline" and need to complete a 3-D Secure verification?](#when-do-users-get-a-soft-decline-and-need-to-complete-a-3-d-secure-verification)
   + [Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
   + [Is there an API for retrieving information about a merchant's payments?](#is-there-an-api-for-retrieving-information-about-a-merchant-s-payments)
   + [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
