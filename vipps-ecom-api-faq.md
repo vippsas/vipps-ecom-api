@@ -612,7 +612,7 @@ BankID verification. The biometric login in Vipps is enough.
 Vipps uses tokenized cards, which eliminates the need for "soft decline".
 As long as the token is valid, the user never has to verify the card again.
 
-Due to rules and regulations Vipps _is_ required to do a 3-D Secure
+In order to prevent misuse and fraud Vipps require users to do a 3-D Secure
 verification if the user has paid more than 15 000 NOK during the last five days.
 
 In short: Users paying with Vipps has a much faster and simpler user experience
@@ -620,7 +620,7 @@ than when using a card directly.
 
 Vipps also has an extremely low fraud rate, as it is impossible to pay
 with a card that has been invalidated in any way by the issuer, and all users
-has to log into Vippp with their BankID verified identity.
+has to log into Vipps with their BankID verified identity.
 
 ### Is there an API for retrieving information about a Vipps user?
 
