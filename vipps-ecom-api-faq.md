@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.17.
+Document version 3.9.18.
 
 ### Table of contents
 
@@ -127,21 +127,28 @@ associated with both are different enough to require this policy.
 
 The most common reasons are:
 
-1. The debit/credit card has expired.
+1. The debit/credit card has expired. Vipps verifies cards for _every_ payment.
 2. The debit/credit is no longer valid (typically when a user has received a new
    card, but the previous card's expiry date has not yet been reached).
 3. Insufficient funds on the debit/credit card (not enough money in the debit
    card's bank account, or not enough credit left on the credit card).
 4. The debit/credit card has been rejected by the issuer.
-5. Payment limit reached, the user needs to authenticate with bankID in Vipps.
+5. Payment limit reached, the user needs to authenticate with BankID in Vipps
+   (some user do not use "BankID på mobil" and need their BankID "kodebrikkke").
 6. The payment has timed out (this happens if the user does not confirm in Vipps
-   within 5 minutes - typically if the user has deactivated push notifications).
+   within 5 minutes - typically if the user has deactivated push notifications
+   and does not open Vipps manually).
 7. Attempt to capture an amount that exceeds the reserved amount.
+   Som merchants experience this because of rounding errors - please check the amounts.
 8. Attempt to capture an amount that has not been reserved.
+   If the user does not confirm the payment in Vipps, it's impossible for the
+   merchant to capture it.
 
 We are continuously improving the error messages in the Vipps app. Please note
 that we are not allowed to give detailed information about all errors to the
 merchant, as some information should only be provided to the Vipps user.
+Vipps also generally wants to be on the user's side and not "leak" more details
+than we have to.
 
 See the API guide for
 [all errors](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes).
@@ -152,7 +159,7 @@ If the reserved amount is too low for shipping costs to be included, the capture
 The reserved amount must at least as high as the amount that is captured.
 
 Example: If the value of the shopping cart is 1000 NOK, and the reserved amount is 1200 NOK,
-the shipping cost must be maximum 200 NOK to be within the reserved amount of 1200 NOK.
+the shipping cost can be maximum 200 NOK to be within the reserved amount of 1200 NOK.
 If the shipping cost is 300 kr, a capture of 1000 + 3000 kr = 1300 NOK will fail.
 
 The API responds with details about the error.
@@ -962,14 +969,16 @@ or
 You need to check that you are providing the correct API keys.
 Please follow these steps to make sure everything is correct:
 
-1. Check that you are using the correct API credentials:
+1. Check that you are using the correct API credentials for the MSN (Merfchant Serial Number)
+   you are using:
    * `client_id`
    * `client_secret`
-   * `Ocp-Apim-Subscription-Key`
+   * `Ocp-Apim-Subscription-Key` (the subscription key)
    See
    [Getting started: Quick overview of how to make an API call](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#quick-overview-of-how-to-make-an-api-call)
    for more details.
 2. Check that you are using the same subscription key for both the access token and the payment requests.
+   If you have a valid access token, but for a different MSN, you will get an error.
 3. Check the Swagger specification for the correct spelling of all the header parameters.
    They are case sensitive: `Authorization: Bearer <snip>` is not the same as `Authorization: bearer <snip>`.
 4. Make sure you are using the right environment and check that you are using
