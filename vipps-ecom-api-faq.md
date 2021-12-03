@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.18.
+Document version 3.9.19.
 
 ### Table of contents
 
@@ -39,6 +39,7 @@ Document version 3.9.18.
   + [How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customer-s-account)
   + [Is it possible for a merchant to pay a Vipps user?](#is-it-possible-for-a-merchant-to-pay-a-vipps-user)
 * [Users and payments](#users-and-payments)
+  + [When do users get a "soft decline" and need to complete a 3-D Secure verification?](#when-do-users-get-a-soft-decline-and-need-to-complete-a-3-d-secure-verification)
   + [Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
   + [Is there an API for retrieving information about a merchant's payments?](#is-there-an-api-for-retrieving-information-about-a-merchant-s-payments)
   + [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
@@ -601,6 +602,25 @@ See:
 [Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
 
 ## Users and payments
+
+### When do users get a "soft decline" and need to complete a 3-D Secure verification?
+
+Vipps uses delegated SCA (Secure Customer Authentication) from the banks, and
+significantly simplifies the user experience, as there is usually no need for
+BankID verification. The biometric login in Vipps is enough.
+
+Vipps uses tokenized cards, which eliminates the need for "soft decline".
+As long as the token is valid, the user never has to verify the card again.
+
+In order to prevent misuse and fraud Vipps require users to do a 3-D Secure
+verification if the user has paid more than 15 000 NOK during the last five days.
+
+In short: Users paying with Vipps has a much faster and simpler user experience
+than when using a card directly.
+
+Vipps also has an extremely low fraud rate, as it is impossible to pay
+with a card that has been invalidated in any way by the issuer, and all users
+has to log into Vipps with their BankID verified identity.
 
 ### Is there an API for retrieving information about a Vipps user?
 
