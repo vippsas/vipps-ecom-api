@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.53.
+Document version 2.5.54.
 
 ## Table of contents
 
@@ -711,6 +711,9 @@ as it depends on network, firewalls and other factors that Vipps can not control
 If the communication is broken during the process for some reason, and Vipps
 is not able to execute callback to the merchant's server, the callback will
 not be retried.
+
+Our callbacks require a response within 3 seconds.
+If not, they will time out.
 
 In other words, if the merchant does not receive any
 confirmation on the payment request, the merchant _must_ call
