@@ -2,7 +2,7 @@
 
 API version: 2.0.
 
-Document version 2.1.6.
+Document version 2.1.7.
 
 ## Checklist
 
@@ -42,7 +42,11 @@ Document version 2.1.6.
           See the FAQ: [How can I open the fallback URL in a specific (embedded) browser?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser)
     - [ ] The Vipps branding must be according to the
           [Vipps design guidelines](https://github.com/vippsas/vipps-design-guidelines).
-
+    - [ ] Make sure your customer service, etc has all the tools and information they need
+          available in _your_ system, through the APIs listed in the first item in this checklist,
+          and that they do not need to visit
+          [portal.vipps.no](https://portal.vipps.no)
+          for normal work.
 
 ## Flow to go live for direct integrations
 
@@ -50,7 +54,7 @@ Document version 2.1.6.
    [Vipps på Nett](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).
 2. Vipps completes customer control (KYC, PEP, AML, etc).
 3. The merchant receives an email from Vipps saying that they can log in with
-   bankID on
+   BankID on
    [portal.vipps.no](https://portal.vipps.no)
    and retrieve API keys.
 4. The merchant completes all checklist items above. Please double check to avoid mistakes.
