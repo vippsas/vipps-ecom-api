@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.55.
+Document version 2.5.56.
 
 ## Table of contents
 
@@ -221,6 +221,7 @@ the headers should be:
 
 | Header                        | Example value for POS | Example value for webshop | Example value for Vending machines |
 | ----------------------------- | --------------------- | ------------------- | ------------------- |
+| `Merchant-Serial-Number`      | `123456`              | `123456`            | `123456`            |
 | `Vipps-System-Name`           | `acme`                | `acme`              | `acme`              |
 | `Vipps-System-Version`        | `1.7`                 | `2.6`               | `2.6`               |
 | `Vipps-System-Plugin-Name`    | `acme-pos`            | `acme-webshop`      | `acme-vending`      |
