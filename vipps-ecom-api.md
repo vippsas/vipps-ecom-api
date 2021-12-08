@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.54.
+Document version 2.5.55.
 
 ## Table of contents
 
@@ -30,7 +30,7 @@ Document version 2.5.54.
 - [Call by call guide](#call-by-call-guide)
 - [API endpoints](#api-endpoints)
 - [Authentication](#authentication)
-- [Optional Vipps HTTP headers](#optional-vipps-http-headers)
+- [Vipps HTTP headers](#optional-vipps-http-headers)
   - [Example headers](#example-headers)
 - [Initiate](#initiate)
 - [Regular eCommerce payments](#regular-ecommerce-payments)
@@ -192,9 +192,9 @@ For more information about how to obtain an access token and all details around 
 in the
 [Getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md).
 
-## Optional Vipps HTTP headers
+## Vipps HTTP headers
 
-We recommend using the following _optional_ HTTP headers for all requests to the
+We recommend using the following (optional) HTTP headers for all requests to the
 Vipps eCom API. These headers provide useful metadata about the merchant's system,
 which help Vipps improve our services, and also help in investigating problems.
 
@@ -202,15 +202,16 @@ These headers are **required for plugins and partners** and sent by the recent v
 [the official Vipps plugins](https://github.com/vippsas/vipps-developers#plugins)
 and we recommend all customers with direct integration with the API to also do so.
 
+Partners must always send the `Merchant-Serial-Number` header, and we recommend that
+everyone sends it too. It can speed up any trouble-shooting quite a bit.
 
 | Header                        | Description                                  | Example value       |
 | ----------------------------- | -------------------------------------------- | ------------------- |
-| `Merchant-Serial-Number`      | The merchant serial number                   | `123456`            |
+| `Merchant-Serial-Number`      | The MSN for the sale unit                    | `123456`            |
 | `Vipps-System-Name`           | The name of the ecommerce solution           | `woocommerce`       |
 | `Vipps-System-Version`        | The version number of the ecommerce solution | `5.4`               |
 | `Vipps-System-Plugin-Name`    | The name of the ecommerce plugin             | `vipps-woocommerce` |
 | `Vipps-System-Plugin-Version` | The version number of the ecommerce plugin   | `1.4.1`             |
-
 
 ### Example headers
 
@@ -1694,10 +1695,11 @@ the `Merchant-Serial-Number` header to identify which of your merchants you
 are acting on behalf of. The `Merchant-Serial-Number` must be sent in the header
 of all API requests.
 
-By including the [Optional HTTP Headers](#optional-vipps-http-headers) you will make
+By including the [Vipps HTTP Headers](#vipps-http-headers) you will make
 it easier to investigate problems, if anything unexpected happens. Partners may
 re-use the values of the `Vipps-System-Name` and `Vipps-System-Plugin-Name` in
-the plugins headers if having different values do not make sense. Note that the HTTP Headers are mandatory for partners and platforms.
+the plugins headers if having different values do not make sense.
+Note that the HTTP Headers are mandatory for partners and platforms.
 
 Here's an example of headers (please refer to the
 [OpenAPI/Swagger specification](https://vippsas.github.io/vipps-recurring-api/)
