@@ -30,7 +30,7 @@ Document version 2.5.55.
 - [Call by call guide](#call-by-call-guide)
 - [API endpoints](#api-endpoints)
 - [Authentication](#authentication)
-- [Vipps HTTP headers](#optional-vipps-http-headers)
+- [Vipps HTTP headers](#vipps-http-headers)
   - [Example headers](#example-headers)
 - [Initiate](#initiate)
 - [Regular eCommerce payments](#regular-ecommerce-payments)
