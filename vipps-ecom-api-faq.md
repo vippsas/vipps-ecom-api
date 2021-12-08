@@ -49,7 +49,7 @@ Document version 3.9.20.
   + [Can I create a marketplace with multiple merchants?](#can-i-create-a-marketplace-with-multiple-merchants)
   + [Can I create a service to match buyers and sellers?](#can-i-create-a-service-to-match-buyers-and-sellers)
   + [Can I use Vipps for crowdfunding?](#can-i-use-vipps-for-crowdfunding)
-  + [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-can-t-find-it)
+  + [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-cant-find-it)
   + [How long is an initiated order valid, if the user does not confirm in the Vipps app?](#how-long-is-an-initiated-order-valid-if-the-user-does-not-confirm-in-the-vipps-app)
   + [How long does it take until the money is in my account?](#how-long-does-it-take-until-the-money-is-in-my-account)
   + [Why has one of my customers been charged twice for the same payment?](#why-has-one-of-my-customers-been-charged-twice-for-the-same-payment)
