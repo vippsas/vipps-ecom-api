@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.19.
+Document version 3.9.20.
 
 ### Table of contents
 
@@ -1415,17 +1415,17 @@ See: [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-land
 
 ### Which API keys should I use?
 
-You need to use the merchant's API keys when using the Vipps eCom API.
-The API calls are normal eCom API calls - see the
-[API guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md).
+You should probably use _partner keys_ ,and not separate API keys for each of
+your merchants. But it depends.
 
-You can _not_ use your "supermerchant" API keys (if you have those).
+See: [Vipps Partners: Partner keys](https://github.com/vippsas/vipps-partner#partner-keys).
 
 ### Do we need to support callbacks?
 
 If it is not possible for your POS to support callbacks (no fixed hostname/IP, etc),
 you must actively check the payment status with
 [``GET:/ecomm/v2/payments/{orderId}/details``](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details).
+
 This is also required if you do support callbacks.
 
 ### How can I check if a person has Vipps?
@@ -1451,13 +1451,7 @@ See
 
 ### How can we mass sign up merchants?
 
-You can use the
-[Signup API](https://github.com/vippsas/vipps-signup-api),
-but all merchants must sign their Vipps application with BankID.
-This is a legal requirement.
-
-Merchants can of course also
-[sign up themselves](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/vipps-i-kassa/).
+See: [Vipps Partners: How to sign up new merchants](https://github.com/vippsas/vipps-partner#how-to-sign-up-new-merchants).
 
 ### Where can I find information about settlements?
 
