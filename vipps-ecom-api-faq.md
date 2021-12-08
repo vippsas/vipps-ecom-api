@@ -444,9 +444,12 @@ The only ways to initiate Vipps payments from a QR code are:
 ### Can I send a Vipps payment link in an SMS, QR or email?
 
 No. The Vipps "deeplink" is an integrated part of the Vipps payment process,
-and the link should never be sent in an SMS or email. The deeplink is only valid
-for 5 minutes, so users that do not act quickly will not be able to pay.
-There is no way to "retry" a deeplink after the timeout.
+and the link should never be sent in an SMS or email.
+
+The deeplink is only valid for 5 minutes, so users that do not act quickly will
+not be able to pay. There is no way to "retry" a deeplink after the timeout.
+See:
+[For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
 
 According to Norwegian regulations the customer needs to actively accept the
 terms and conditions for the purchase.
@@ -811,6 +814,7 @@ for an overview.
 ### How long is an initiated order valid, if the user does not confirm in the Vipps app?
 
 Vipps orders have a max timeout of 10 minutes: 5 minutes to log in and 5 minutes to confirm the payment.
+
 It's important that the merchant waits at least as long, otherwise the Vipps user may
 confirm in the Vipps app, and right after get an error from the merchant that the order has been cancelled.
 
