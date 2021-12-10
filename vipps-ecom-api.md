@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.57.
+Document version 2.5.58.
 
 ## Table of contents
 
@@ -1247,23 +1247,22 @@ in Vipps, you can send a
 request while the transaction is in the `INITIATE` stage.
 
 This may be useful in face-to-face situations where a customer's phone runs out
-of battery. This should not be considered a consistent or guaranteed operation,
-as the `/cancel` request is independent by any actions taken by the user in the app.
+of battery, or if the customer suddenly changes his/her mind and want to buy
+more and the amount for the payment increases.
+This should not be considered a consistent or guaranteed operation,
+as the `/cancel` request depends on actions taken by the user in the app.
 
 If the
 [`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
-request is successful, the payment state will be:
-
-`Cancelled`
+request is successful, the payment state will be: `Cancelled`.
 
 A call to
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
 for the same order will return the following, regardless of whether the
-transaction has been reserved:
+transaction has been reserved before the cancellation: `CANCEL`.
 
-`CANCEL`
-
-**Note\_** If the user is in a 3 D Secure session, the payment can not be cancelled as described above.
+**Please note:** If the user is already in a 3-D Secure session, the payment
+can not be cancelled as described above.
 
 ## Refund
 
