@@ -182,9 +182,17 @@ Example: If the value of the shopping cart is 1000 NOK, and the reserved amount 
 the shipping cost can be maximum 200 NOK to be within the reserved amount of 1200 NOK.
 If the shipping cost is 300 kr, a capture of 1000 + 3000 kr = 1300 NOK will fail.
 
+It is not possible to capture more than the reserved amount, as that would
+make this possible:
+1. The merchant initiates a payment of 1000 NOK
+2. The user confirms the 1000 NOK payment in Vipps
+3. The merchant captures 50 000 NOK from the user
+
 The API responds with details about the error.
 
-See also: [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved).
+See:
+* [Cancelling a pending order](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#cancelling-a-pending-order)
+* [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved).
 
 ### Why do I get a CORS error?
 
