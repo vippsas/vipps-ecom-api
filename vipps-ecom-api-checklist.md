@@ -15,6 +15,7 @@ Document version 2.1.8.
     - For examples of requests and responses, see the Postman collection in [tools](tools/).
 - [ ] Send the [Vipps HTTP headers](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#vipps-http-headers)
       in all API requests for better tracking and troubleshooting (mandatory for partners and platforms):
+    - [ ] `Merchant-Serial-Number`    
     - [ ] `Vipps-System-Name`
     - [ ] `Vipps-System-Version`
     - [ ] `Vipps-System-Plugin-Name`
