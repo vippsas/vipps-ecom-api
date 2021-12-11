@@ -1407,7 +1407,7 @@ the user is sent to Vipps to pay the total amount.
 | Field          | Description                                              |
 | -------------- | -------------------------------------------------------- |
 | `name`         | The name of the payment method. Use "Vipps".             |
-| `redirect_url` | The Vipps payment "deeplink" URL, which reqwuires a Vipps integration to be in place. |
+| `redirect_url` | The Vipps payment "deeplink" URL, which requires a Vipps integration to be in place. |
 | `image_url`    | The logo to be shown for this payment method. See [Vipps design guidelines](https://github.com/vippsas/vipps-design-guidelines).  |
 | `fee`          | Should not be applicable because of PSD2 surcharge ban.  |
 | `description`  | Optional text describing Vipps as payment method.        |
