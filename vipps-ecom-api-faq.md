@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.22.
+Document version 3.9.23.
 
 ### Table of contents
 
@@ -837,16 +837,17 @@ See:
 
 ### I have initiated an order but I can't find it!
 
-Have you, or the eCommerce solution you are using, successfully implemented
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details)?
-This is a requirement, see the
-[API checklist](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md).
 If you have multiple sale units: Make sure you use the correct API keys, and that
 you are not attempting to use one sale unit's API keys to retrieve an order made
 by a different sale unit.
 
+Have you, or the eCommerce solution you are using, successfully implemented
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details)?
+This is a requirement, see the
+[API checklist](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md).
+
 In case the Vipps
-[callback](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#1-callback)
+[callback](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callbacks)
 fails, you will not automatically receive notification of order status.
 The solution is to check with
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details).
@@ -856,15 +857,15 @@ You can use
 to manually do API calls, Use the "inspect" functionality to see the complete requests and responses.
 
 See:
-[API endpoint](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints)
-for an overview.
+[API endpoints](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints).
 
 ### How long is an initiated order valid, if the user does not confirm in the Vipps app?
 
 Vipps orders have a max timeout of 10 minutes: 5 minutes to log in and 5 minutes to confirm the payment.
 
-It's important that the merchant waits at least as long, otherwise the Vipps user may
-confirm in the Vipps app, and right after get an error from the merchant that the order has been cancelled.
+It's important that the merchant waits (at least) this long, otherwise the Vipps
+user may confirm in the Vipps app, and right after get an error from the merchant
+that the order has been cancelled.
 
 See: [Timeouts](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#timeouts).
 
@@ -934,8 +935,8 @@ See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settl
 Push notifications must be active for Vipps to send payment notifications.
 
 Push notifications are "best effort", and Vipps can not guarantee that all
-push notifications arrive. It depends on services, networks, etc that Vipps can not
-control.
+push notifications arrive. It depends on services, networks, etc that Vipps
+can not control.
 
 If Vipps is already open and active when the push notification is received,
 the user must press the "Send" button and move to the payments screen to see
@@ -1030,27 +1031,34 @@ You need to check that you are providing the correct API keys.
 Please follow these steps to make sure everything is correct:
 
 1. Check that you are using the correct API credentials for the MSN (Merchant Serial Number)
-   you are using:
+   you are using
+   (See
+   [Getting started: Quick overview of how to make an API call](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#quick-overview-of-how-to-make-an-api-call) for more details):
    * `client_id`
    * `client_secret`
    * `Ocp-Apim-Subscription-Key` (the subscription key)
-   See
-   [Getting started: Quick overview of how to make an API call](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#quick-overview-of-how-to-make-an-api-call)
-   for more details.
 2. Check that you are using the same subscription key for both the access token and the payment requests.
    If you have a valid access token, but for a different MSN, you will get an error.
+   See:
+   [Why do I get `errorCode 35 "Requested Order not found"`?](#why-do-i-get-errorcode-35-requested-order-not-found)
 3. Check the swagger specification for the correct spelling of all the header parameters.
    They are case sensitive: `Authorization: Bearer <snip>` is not the same as `Authorization: bearer <snip>`.
 4. Make sure you are using the right environment and check that you are using
-   the correct API keys for the environment. The
+   the correct API keys for the right sale unit in that environment. The
    [test environment](https://github.com/vippsas/vipps-developers/blob/master/vipps-test-environment.md)
    is completely separate from the production environment, and both the MSN and
    the API keys are different.
 5. Check both the HTTP response header and the response body from our API for errors.
    For most errors the body contains an explanation of what went wrong.
+   See:
+   [Errors](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#errors).
 6. If you are a partner and you are using partner keys: Double check everything
    described here:
    [Partner keys](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#partner-keys).
+
+You can log in to
+[portal.vipps.no](https://portal.vipps.no)
+to double check your API keys, sale units and API products.
 
 You can use
 [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
@@ -1062,10 +1070,6 @@ See:
 You also need to make sure you have access to the right API.
 See:
 [API products](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#api-products).
-
-You can log in to
-[portal.vipps.no](https://portal.vipps.no)
-to double check your API keys, sale units and API products.
 
 See:
 [Quick overview of how to make an API call](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#quick-overview-of-how-to-make-an-api-call).
@@ -1096,6 +1100,10 @@ If you need access to the Vipps eCom API, you can apply for it on
 Using a sale unit that only has been approved for the Vipps Login API to
 receive payments is a breach of the Vipps terms and conditions.
 
+You can log in to
+[portal.vipps.no](https://portal.vipps.no)
+to double check your API keys, sale units and API products.
+
 ### Why do I get `HTTP 429 Too Many Requests`?
 
 We rate-limit some API endpoints to prevent incorrect usage.
@@ -1109,26 +1117,26 @@ for details.
 
 Something _might_ be wrong on our side and we are working to fix it!
 But: It's usually a problem with the request, and that our validation does not catch it.
+In other words: We should perhaps have returned `HTTP 400 Bad Request`.
 
 Please make sure the JSON payload in your API request validates.
 That is the most common source of this type of error.
-In other words: We should perhaps have returned `HTTP 400 Bad Request`.
 
 Please check the capitalization of the parameters.
 We will return `HTTP 500 Error` if the incorrect `fallback` is used instead of
 the correct `fallBack`. We _should_ have returned `HTTP 400 Bad Request`,
-and we hope to add stricter request validation, but other tasks (such as PSD2)
-have higher priority.
+and we hope to add stricter request validation, but other tasks have higher priority.
 
 You can use
 [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
 to manually do API calls, just to be sure.
 
-Please check the HTTP response body from our API (not just the HTTP status).
+Check both the HTTP response header and the response body from our API for errors.
 For most errors the body contains an explanation of what went wrong.
 
 See:
-[Statuspage](https://github.com/vippsas/vipps-developers#status-page).
+* [Errors](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#errors).
+* [Statuspage](https://github.com/vippsas/vipps-developers#status-page).
 
 ### Why do I get `errorCode 35 "Requested Order not found"`?
 
@@ -1154,16 +1162,18 @@ merchants (companies) when they are deleted from Brønnøysundregistrene.
 Merchants can log in on
 [portal.vipps.no](https://portal.vipps.no)
 and deactivate their sale units. This is sometimes done "by accident", without being
-aware of the consequences.
-If a sale unit has been incorrectly deactivated, the merchant can reactivate it again.
-We require BankID for deactivation and reactivation, and can not help with this based on email requests.
+aware of the consequences. If a sale unit has been incorrectly deactivated,
+the merchant can reactivate it again.
 
-This can also happen if the test merchant is not being used for a _very long_ time.
+**Please note:** We require BankID for deactivation and reactivation,
+and can not help with this based on email requests.
+
+Deactivation can also happen if the test merchant is not being used for a _very long_ time.
 Please
 [contact customer service](https://vipps.no/kontakt-oss/bedrift/vipps/),
-and we will reactivate the merchant. We no longer automatically deactivate
-test merchants.
+and we will reactivate the merchant.
 
+We no longer automatically deactivate test merchants.
 Merchants can also create new sale units in the test environment on
 [portal.vipps.no](https://portal.vipps.no).
 
@@ -1235,26 +1245,27 @@ as it gives a faster payment process and a better user experience.
 ### How do I perform "testing in production"?
 
 To do this you need a live Vipps account.
+You can order Vipps on
+[portal.vipps.no](https://portal.vipps.no).
 
 We recommend testing with 2 NOK, even though 1 NOK is the smallest possible amount.
 1 NOK is not reliable, as it gets low priority in some systems.
 
 ### What do we have to do with PSD2's SCA requirements?
 
-Nothing. Vipps will handle it for you.
+Nothing. Vipps will handle everything for you - both bankID and 3-D Secure.
 
 SCA (Strong customer authentication) is a security requirement related to PSD2,
 to reduce the risk of fraud and protect customer's data.
+
+Vipps uses delegated SCA, which makes it easier to users to pay with Vipps
+than with stand-alone card payments. The result is a higher completion rate.
 
 Delegated SCA is Vipps' primary way of solving the SCA requirements. For
 this solution Vipps has developing a SCA compliant solution that consists of a
 two-factor authentication featuring either PIN or biometrics in addition to
 device possession. In addition Vipps has implemented a Dynamic Linking according
 to the requirements.
-
-Vipps handles both BankID and 3-D Secure for you.
-
-There is no need for any changes to your (old) Vipps implementation for SCA and PSD2.
 
 ### How can I use Vipps for different types of payments?
 
@@ -1293,13 +1304,14 @@ of purchases. This also has some benefits:
 ### How do I set up multiple sale units?
 
 This is typically needed for organization numbers with multiple stores,
-or offers different ways to pay with Vipps
-(see [How can I use Vipps for different types of payments?](#how-can-i-use-vipps-for-different-types-of-payments)).
+or offers different ways to pay with Vipps.
+See
+[How can I use Vipps for different types of payments?](#how-can-i-use-vipps-for-different-types-of-payments)
 
 The bank account number for a sale unit must belong to the organization number
 of the company that has the customer relationship with Vipps.
 
-A legal entity, called "merchant" from now on, may have one or more sale units.
+A legal entity, the "merchant", may have one or more sale units.
 It is possible for one merchant to have multiple sale units with a separate
 bank account number for each one, as long as the bank accounts belong to the
 organization number that the sale unit belongs to.
@@ -1348,7 +1360,8 @@ company and Vipps. This agreement is signed with BankID.
 
 If a company has "changed organization numbers", it is a new legal entity,
 and the new company needs a new agreement with Vipps. Establishing a new
-customer relationship for the new company is straight-forward on vipps.no.
+customer relationship for the new company is straight-forward on
+[portal.vipps.no](https://portal.vipps.no).
 
 ### What about webhooks?
 
@@ -1373,22 +1386,31 @@ Yes. Klarna Checkout (KCO) supports Vipps as an External Payment Method if you h
 agreement with Klarna for this.
 
 **Please note:** Using Vipps as an external payment method in Vipps requires a direct integration
-with the Vipps eCom API, as Klarna merely redirects the user to Vipps for payment.
+with the Vipps eCom API, as Klarna merely redirects the user to Vipps for payment, as
+the example below shows.
 
-All information about price, shipping, etc is done in Klarna Checkout, before
+All information about price, shipping, etc must be done in Klarna Checkout, before
 the user is sent to Vipps to pay the total amount.
 
 ```
-"external_payment_methods": [
-    {
-        "name": "Vipps",
-        "redirect_url": "https://api.vipps.no/dwo-api-application/v1/deeplink/vippsgateway?v=2&token=eyJraWQiOiJqd3R <snip>",    // URL to initiate Vipps payment
-        "image_url": "https://…",       // Vipps logo, must be on the merchant's website. See https://brand.vipps.no/
-        "fee": 0                        // Should not be applicable because of PSD2 surcharge ban
-        "description": "Pay with Vipps"  // Optional text describing Vipps as payment method
-    }
+"external_payment_methods":[
+   {
+      "name":"Vipps",
+      "redirect_url":"https://api.vipps.no/dwo-api-application/v1/deeplink/vippsgateway?v=2&token=eyJraWQiOiJqd3R <snip>",
+      "image_url":"https://example.com/images/vipps-logo.png",
+      "fee":0,
+      "description":"Pay with Vipps"
+   }
 ]
 ```
+
+| Field          | Description                                              |
+| -------------- | -------------------------------------------------------- |
+| `name`         | The name of the payment method. Use "Vipps".             |
+| `redirect_url` | The Vipps payment "deeplink" URL, which reqwuires a Vipps integration to be in place. |
+| `image_url`    | The logo to be shown for this payment method. See [Vipps design guidelines](https://github.com/vippsas/vipps-design-guidelines).  |
+| `fee`          | Should not be applicable because of PSD2 surcharge ban.  |
+| `description`  | Optional text describing Vipps as payment method.        |
 
 Follow Klarna's process to get the External Payment Method activated for
 your account, described in the
@@ -1401,6 +1423,9 @@ See the in-depth
 It is technically possible to also use Vipps payment options outside KCO
 (e.g. on product pages, in basket or similar) using
 [Vipps Express Checkout](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#express-checkout-payments).
+
+**Please note:** Vipps has limited knowledge of Klarna Checkout, and can not
+help with all the details.
 
 ### What functionality is included in the eCom API, but not the PSP API?
 
@@ -1423,6 +1448,8 @@ The Vipps eCom API has some functionality that is not available in the PSP API:
    profile information as part of the payment flow: name, address, email, phone number, birthdate, etc.
 
 ## Frequently Asked Questions for POS integrations
+
+POS: Point Of Sale. Think "cash register".
 
 We will improve this section as we learn more. Please suggest improvements
 in [Questions](#questions) below.
@@ -1494,7 +1521,8 @@ is entered in the POS, the merchant can of course save it -
 complying with GDPR, etc.
 
 See
-[Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user).
+* [Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user).
+* [The Vipps QR API](https://github.com/vippsas/vipps-qr-api)
 
 ### How can we mass sign up merchants?
 
@@ -1502,7 +1530,7 @@ See: [Vipps Partners: How to sign up new merchants](https://github.com/vippsas/v
 
 ### Where can I find information about settlements?
 
-Here: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
+See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
 
 # Questions?
 
