@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.24.
+Document version 3.9.25.
 
 ### Table of contents
 
@@ -1384,6 +1384,16 @@ See the:
 
 Yes. Klarna Checkout (KCO) supports Vipps as an External Payment Method if you have
 agreement with Klarna for this.
+
+It's technically possible to use
+[Vipps Hurtigkasse](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#express-checkout-payments)
+on product pages for fast and easy checkout, and to
+let user choose between Vipps and Klarna _before_ they get to Klarna Checkout.
+With
+[Vipps Logg inn](https://vipps.no/produkter-og-tjenester/bedrift/logg-inn-med-vipps/logg-inn-med-vipps/)
+(the [Vipps Login API](https://github.com/vippsas/vipps-login-api))
+it's also possible to let user register and log in, and eliminate the need
+for usernames and password.
 
 **Please note:** Using Vipps as an external payment method in Vipps requires a direct integration
 with the Vipps eCom API, as Klarna merely redirects the user to Vipps for payment, as
