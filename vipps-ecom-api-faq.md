@@ -1387,13 +1387,12 @@ agreement with Klarna for this.
 
 It's technically possible to use
 [Vipps Hurtigkasse](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#express-checkout-payments)
-on product pages for fast and easy checkout, and to
-let user choose between Vipps and Klarna _before_ they get to Klarna Checkout.
+on product pages for fast and easy checkout, and to let users choose between
+Vipps and Klarna _before_ they get to Klarna Checkout.
 With
 [Vipps Logg inn](https://vipps.no/produkter-og-tjenester/bedrift/logg-inn-med-vipps/logg-inn-med-vipps/)
 (the [Vipps Login API](https://github.com/vippsas/vipps-login-api))
-it's also possible to let user register and log in, and eliminate the need
-for usernames and password.
+it's also possible to let users register and log in without usernames and passwords.
 
 **Please note:** Using Vipps as an external payment method in Vipps requires a direct integration
 with the Vipps eCom API, as Klarna merely redirects the user to Vipps for payment, as
