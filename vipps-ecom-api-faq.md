@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.21.
+Document version 3.9.22.
 
 ### Table of contents
 
@@ -841,6 +841,9 @@ Have you, or the eCommerce solution you are using, successfully implemented
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details)?
 This is a requirement, see the
 [API checklist](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md).
+If you have multiple sale units: Make sure you use the correct API keys, and that
+you are not attempting to use one sale unit's API keys to retrieve an order made
+by a different sale unit.
 
 In case the Vipps
 [callback](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#1-callback)
