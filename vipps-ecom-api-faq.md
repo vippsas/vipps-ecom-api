@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.27.
+Document version 3.9.28.
 
 ### Table of contents
 
@@ -674,7 +674,7 @@ than when using a card directly.
 
 Vipps also has an extremely low fraud rate, as it is impossible to pay
 with a card that has been invalidated in any way by the issuer, and all users
-has to log into Vipps with their BankID verified identity.
+has to log into Vipps with their BankID verified identity to use their card.
 
 ### Is there an API for retrieving information about a Vipps user?
 
