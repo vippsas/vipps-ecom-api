@@ -654,6 +654,7 @@ See:
 ### When do users get a "soft decline" and need to complete a 3-D Secure verification?
 
 Vipps handles everything related to "soft declines" and 3-D Secure.
+Vipps also handles BankID verification, when that is required.
 There is nothing a merchant needs to to.
 
 Vipps uses delegated SCA (Secure Customer Authentication) from the banks, and
