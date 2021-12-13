@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.26.
+Document version 3.9.27.
 
 ### Table of contents
 
@@ -657,8 +657,10 @@ Vipps handles everything related to "soft declines" and 3-D Secure.
 There is nothing a merchant needs to to.
 
 Vipps uses delegated SCA (Secure Customer Authentication) from the banks, and
-significantly simplifies the user experience, as there is usually no need for
-BankID verification. The biometric login in Vipps is enough.
+significantly simplifies the user experience, as there is normally no need for
+BankID verification.
+
+The biometric login in Vipps is enough.
 
 Vipps uses tokenized cards, which eliminates the need for "soft decline".
 As long as the token is valid, the user never has to verify the card again.
