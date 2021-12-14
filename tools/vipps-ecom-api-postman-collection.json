@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ce1e789f-4ba2-464e-a562-e57b84785e1e",
+		"_postman_id": "b473b13b-0615-4677-becc-7360ba88b94f",
 		"name": "eCommerce API v2 - Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -14,7 +14,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "db5d3b19-0c7f-46f8-8b77-e70638eef641",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setEnvironmentVariable(\"login_token\", jsonData.access_token);"
@@ -97,8 +96,134 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
+		},
+		{
+			"name": "QR",
+			"item": [
+				{
+					"name": "Generate QR Code Short URL",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{Ocp-Apim-Subscription-Key}}",
+								"type": "text"
+							},
+							{
+								"key": "Merchant-Serial-Number",
+								"value": "{{merchantSerialNumber}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "text/targetUrl",
+								"type": "text"
+							},
+							{
+								"key": "Vipps-System-Name",
+								"value": "{{vipps_system_name}}",
+								"type": "text"
+							},
+							{
+								"key": "Vipps-System-Version",
+								"value": "{{collection_version}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"url\": \"{{vippsLandingPageURL}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/qr/v1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"qr",
+								"v1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate QR Code PNG",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}",
+								"type": "text"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{Ocp-Apim-Subscription-Key}}",
+								"type": "text"
+							},
+							{
+								"key": "Merchant-Serial-Number",
+								"value": "{{merchantSerialNumber}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "image/png",
+								"type": "text"
+							},
+							{
+								"key": "Vipps-System-Name",
+								"value": "{{vipps_system_name}}",
+								"type": "text"
+							},
+							{
+								"key": "Vipps-System-Version",
+								"value": "{{collection_version}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"url\": \"{{vippsLandingPageURL}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/qr/v1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"qr",
+								"v1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Get Access Token",
@@ -106,7 +231,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "9b1e30cd-6ddf-442c-91da-34fb73edc6ce",
 						"exec": [
 							"pm.environment.set(\"access_token\", pm.response.json().access_token);"
 						],
@@ -153,9 +277,20 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "cc9e0e35-baee-457c-a668-a0056834f138",
 						"exec": [
 							"pm.environment.set('orderId',pm.environment.get('merchantSerialNumber') + (new Date()).getTime());"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if(pm.response.code === 200) { ",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set('vippsLandingPageURL', jsonData.url);",
+							"}"
 						],
 						"type": "text/javascript"
 					}
@@ -229,9 +364,20 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "11337ca9-8674-455f-81ae-c18e7457a7cc",
 						"exec": [
 							"pm.environment.set('orderId',pm.environment.get('merchantSerialNumber') + (new Date()).getTime());"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if(pm.response.code === 200) { ",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set('vippsLandingPageURL', jsonData.url);",
+							"}"
 						],
 						"type": "text/javascript"
 					}
@@ -305,9 +451,20 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "5c77bb71-b819-4e39-9cdb-33c89ac1758f",
 						"exec": [
 							"pm.environment.set('orderId',pm.environment.get('merchantSerialNumber') + (new Date()).getTime());"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"if(pm.response.code === 200) { ",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set('vippsLandingPageURL', jsonData.url);",
+							"}"
 						],
 						"type": "text/javascript"
 					}
@@ -381,7 +538,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "70d6b25e-0b8e-4cc4-bb02-194aba36f1fc",
 						"exec": [
 							""
 						],
@@ -428,7 +584,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "248326bc-f950-4ded-bcbe-238cdf9a166b",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
 							"postman.setEnvironmentVariable(\"sub\", jsonData.sub);"
@@ -563,7 +718,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "a8551781-a8f0-47f9-872f-139d00f7e793",
 						"exec": [
 							""
 						],
@@ -712,7 +866,6 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "21cf7b9c-7130-47d5-b083-6f0b170f067a",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -722,7 +875,6 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "06e458cb-b370-4573-94fa-0753f69e3f8c",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -732,17 +884,12 @@
 	],
 	"variable": [
 		{
-			"id": "11b0ba0e-e653-4da1-af83-837f854b7ba2",
 			"key": "collection_version",
-			"value": "2020-06-15",
-			"type": "string"
+			"value": "2021-12-14"
 		},
 		{
-			"id": "bccd9037-a154-4cbd-8a5d-faf260bee4d1",
 			"key": "vipps_system_name",
-			"value": "postman",
-			"type": "string"
+			"value": "postman"
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
