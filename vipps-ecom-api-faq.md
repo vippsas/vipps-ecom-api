@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.28.
+Document version 3.9.30.
 
 ### Table of contents
 
@@ -1158,6 +1158,8 @@ See: [Error codes](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-e
 
 ### Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`?
 
+Or: `Merchant not available or active`.
+
 Please check that the merchant's organization number is still active in
 [Brønnøysundregistrene](https://www.brreg.no). Vipps automatically deactivates
 merchants (companies) when they are deleted from Brønnøysundregistrene.
@@ -1456,6 +1458,9 @@ The Vipps eCom API has some functionality that is not available in the PSP API:
 3. [Userinfo](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#userinfo):
    The Vipps eCom API offers the possibility for merchants to ask for the user's
    profile information as part of the payment flow: name, address, email, phone number, birthdate, etc.
+4. When using the Vipps eCom API, Vipps handles soft-declines, 3-D Secure, BankID, etc.
+   There is nothing a merchant needs to do.
+   This give a consistent user experience and a very high completion rate.
 
 ## Frequently Asked Questions for POS integrations
 
