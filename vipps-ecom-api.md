@@ -2027,7 +2027,7 @@ to retrieve all the information about the payment.
 | Payment        | 42                                | Refused by issuer bank                                                                              |                                           |
 | Payment        | 43                                | Refused by issuer bank because of invalid a amount                                                  |                                           |
 | Payment        | 44                                | Refused by issuer because of expired card                                                           |                                           |
-| Payment        | 45                                | Reservation failed for some unknown reason                                                          |                                           |
+| Payment        | 45                                | Reservation failed. Either because the user cancelled, did not act, or for some unknown reason.                                                          |                                           |
 | Payment        | 51                                | Cannot cancel already captured order                                                                |                                           |
 | Payment        | 52                                | Cancellation failed                                                                                 |                                           |
 | Payment        | 53                                | Cannot cancel order which is not reserved yet                                                       |                                           |
