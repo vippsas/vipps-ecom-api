@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.29.
+Document version 3.9.30.
 
 ### Table of contents
 
@@ -1157,6 +1157,8 @@ you will get this error.
 See: [Error codes](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes).
 
 ### Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`?
+
+Or: `Merchant not available or active`.
 
 Please check that the merchant's organization number is still active in
 [Brønnøysundregistrene](https://www.brreg.no). Vipps automatically deactivates
