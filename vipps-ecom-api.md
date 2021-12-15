@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.58.
+Document version 2.5.59.
 
 ## Table of contents
 
@@ -2012,9 +2012,14 @@ See [HTTP response codes](#http-response-codes).
 
 ## Error codes
 
-Please note that Vipps is only allowed to provide some of these errors through
+**Please note:** Vipps is only allowed to provide all of these errors through
 the API, and that we have to send `VippsError` (99) in cases where we are not
-allowed to provide more details.
+allowed to provide more details. The same goes for errors from our PSP: We
+may not be allowed to pass on the details to merchants.
+
+In case of errors: Use
+[Get payment details](#get-payment-details)
+to retrieve all the information about the payment.
 
 | Error group    | Error Code                        | Error Message                                                                                       | Comment                                   |
 | -------------- | --------------------------------- | --------------------------------------------------------------------------------------------------- | ----------------------------------------- |
