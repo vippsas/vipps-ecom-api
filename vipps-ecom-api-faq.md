@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.30.
+Document version 3.9.31.
 
 ### Table of contents
 
@@ -129,8 +129,8 @@ associated with both are different enough to require this policy.
 The most common reasons are:
 
 1. The debit/credit card has expired.
-   Vipps verifies cards for _every_ payment.
-   Note that Vennebetaling (P2P) uses bank accounts directly, not the card.
+   Vipps verifies cards for _every_ payment (resulting in an extremely low fraud rate).
+   **Please note:** Vennebetaling (P2P) uses bank accounts directly, not the card.
    It's possible for a user to pay another person (using the bank account),
    but not be able to pay a merchant (since the card is expired).
 2. The debit/credit is no longer valid.
@@ -160,14 +160,16 @@ The most common reasons are:
    merchant to capture it.
    The payment must have status "reserved" for capture to be possible.
 
-We are continuously improving the error messages in the Vipps app. Please note
-that we are not allowed to give detailed information about all errors to the
+We are continuously improving the error messages in the Vipps app. Some of the
+above errors may only have a general error message when attempting to pay.
+
+**:Please note:** Vipps is not allowed to give detailed information about all errors to the
 merchant, as some information should only be provided to the Vipps user.
 Vipps also generally wants to be on the user's side and not "leak" more details
 than we have to. The general rule is that if the problem must be corrected by
-the user in Vipps, all necessary information will be provided for the user in Vipps.
+the user in Vipps, all necessary information will be provided to the user in Vipps.
 
-**Tip:** Everyone can test their Vipps credit/debit cards in our demo store:
+**Tip:** Everyone can test their Vipps credit and debit cards in our demo store:
 [https://demo.vipps.no](demo.vipps.no).
 
 See the API guide for
@@ -187,6 +189,10 @@ make this possible:
 1. The merchant initiates a payment of 1000 NOK
 2. The user confirms the 1000 NOK payment in Vipps
 3. The merchant captures 50 000 NOK from the user
+
+Similarly: It is not possible to capture an amount that is not reserved, as
+that would make it possible to charge a user's card without requiring the user
+to confirm the payment in Vipps first.
 
 The API responds with details about the error.
 
