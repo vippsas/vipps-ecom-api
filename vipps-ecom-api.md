@@ -714,12 +714,12 @@ If the communication is broken during the process for some reason, and Vipps
 is not able to execute callback to the merchant's server, the callback will
 not be retried.
 
-Our callbacks require a response within 3 seconds.
+**Important:** Our callbacks require a response within 3 seconds.
 If not, they will time out.
 
 In other words, if the merchant does not receive any
 confirmation on the payment request, the merchant _must_ call
-[GET:/ecomm/v2/payments/{orderId}/details](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
 to get the status of the payment.
 
 **Please note:** Do not rely only on callbacks alone, but also poll the `/details` endpoint
