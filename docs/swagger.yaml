@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.17
+  version: 1.6.18
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -1261,7 +1261,8 @@ components:
         shippingMethod:
           type: string
           description: >-
-            Shipping method.
+            The description of the shipping method.
+            Typically the name of the shipping company and the name of their service.
             Max length: 256 characters.
             Recommended length for readability on most screens: 25 characters.
           example: Posten Servicepakke
@@ -1732,7 +1733,8 @@ components:
         shippingMethod:
           type: string
           description: >-
-            Shipping method.
+            The description of the shipping method.
+            Typically the name of the shipping company and the name of their service.
             Max length: 256 characters.
             Recommended length for readability on most screens: 25 characters.
           example: Posten Servicepakke
@@ -1846,7 +1848,8 @@ components:
         shippingMethod:
           type: string
           description: >-
-            Shipping method.
+            The description of the shipping method.
+            Typically the name of the shipping company and the name of their service.
             Max length: 256 characters.
             Recommended length for readability on most screens: 25 characters.
           example: Posten Servicepakke
