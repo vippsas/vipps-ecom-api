@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.60.
+Document version 2.5.61.
 
 ## Table of contents
 
@@ -725,6 +725,10 @@ to get the status of the payment.
 **Please note:** Do not rely only on callbacks alone, but also poll the `/details` endpoint
 as described in
 [Polling guidelines](#polling-guidelines).
+Some users may "quit" the payment process after they have confirmed the payment
+in Vipps, and never visit the `fallback` URL to see the confirmation.
+If the merchant relies 100 % on users visiting the `fallback` URL, there will
+be problems: The user has completed the payment, but the merchant ignores it.
 
 **Please note:** Callback URLs _must_ use HTTPS.
 
