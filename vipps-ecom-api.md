@@ -418,7 +418,9 @@ If Vipps is installed, Vipps will automatically be opened.
 
 1. Vipps can not guarantee that the user will get to the
    `fallBack` URL, since the user may switch away from Vipps or "kill" the app,
-   or there may be network or battery problems, etc before the URL is opened.
+   or there may be network or battery problems, etc. before the URL is opened.
+   If the merchant relies 100 % on users visiting the `fallback` URL, there will
+   be problems: The user has completed the payment, but the merchant ignores it.
 2. If the user has started the payment in an embedded browser, such as in
    Facebook or Instagram, it is not possible for Vipps to open the
    `fallBack` URL in the embedded browser. The phone OS will always open URLs
@@ -725,10 +727,6 @@ to get the status of the payment.
 **Please note:** Do not rely only on callbacks alone, but also poll the `/details` endpoint
 as described in
 [Polling guidelines](#polling-guidelines).
-Some users may "quit" the payment process after they have confirmed the payment
-in Vipps, and never visit the `fallback` URL to see the confirmation.
-If the merchant relies 100 % on users visiting the `fallback` URL, there will
-be problems: The user has completed the payment, but the merchant ignores it.
 
 **Please note:** Callback URLs _must_ use HTTPS.
 
