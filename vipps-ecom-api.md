@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.59.
+Document version 2.5.60.
 
 ## Table of contents
 
@@ -1087,9 +1087,13 @@ Capture is done with
 
 We strongly recommend to use the idempotency key `X-Request-Id`. If a capture
 request fails for any reason, it can be retried with the same idempotency key.
-
 You can use any unique id for your `X-Request-Id`.
 See the API specification for details.
+
+There is only a need to specify the `amount` when doing a
+[partial capture](#partial-capture).
+To perform a normal capture of the entire amount `amount` can be
+omitted from the API request (not sent at all), set to `null` or set to `0`.
 
 **Please note:** It is important to check the response of the `/capture`
 call. The capture is only successful when the response is `HTTP 200 OK`.
@@ -1161,9 +1165,6 @@ See the FAQ for
 
 It is not possible to refund the remaining amount (since it has not been captured),
 and it is not possible to cancel the reservation, since some of it has been captured.
-
-There is only a need to specify the `amount` when doing a partial capture.
-To perform capture of the entire amount `amount` can be set to `null` or `0`
 
 These two truncated examples show the responses for a reservation of
 200.00 NOK, and a partial capture of 100.00 NOK:
