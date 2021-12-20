@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.61.
+Document version 2.5.62.
 
 ## Table of contents
 
@@ -2026,7 +2026,7 @@ to retrieve all the information about the payment.
 
 | Error group    | Error Code                        | Error Message                                                                                       | Comment                                   |
 | -------------- | --------------------------------- | --------------------------------------------------------------------------------------------------- | ----------------------------------------- |
-| Payment        | 41                                | User do not have a valid card                                                                       |                                           |
+| Payment        | 41                                | User does not have a valid card                                                                       |                                           |
 | Payment        | 42                                | Refused by issuer bank                                                                              |                                           |
 | Payment        | 43                                | Refused by issuer bank because of invalid a amount                                                  |                                           |
 | Payment        | 44                                | Refused by issuer because of expired card                                                           |                                           |
