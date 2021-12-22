@@ -5,7 +5,7 @@ See also:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.31.
+Document version 3.9.32.
 
 ### Table of contents
 
@@ -336,8 +336,11 @@ available in the customer's account.
 See:
 [How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
 
-It's completely fine to use "reserve capture" almost like "direct capture":
-Just do the capture right after the reservation.
+**Important:** It's completely fine to use "reserve capture" almost like
+"direct capture": Just do the capture right after the reservation.
+The user experience is exactly the same, and you have the opportunity to
+a `/cancel` with instant effect instead of a `/refund` that takes days.
+
 See: [When should I use "Direct Capture"?](#wwhen-should-i-use-direct-capture)
 
 ### When should I use "Direct Capture"?

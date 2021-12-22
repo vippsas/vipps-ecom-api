@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.62.
+Document version 2.5.63.
 
 ## Table of contents
 
@@ -277,6 +277,11 @@ See [Direct capture](#direct-capture-1) for more details.
 Merchants can not choose between _reserve capture_ and _direct capture_
 themselves, the type of capture is configured by Vipps after the additional
 compliance checks, required by the authorities, have been completed.
+
+**Important:** It's completely fine to use "reserve capture" almost like
+"direct capture": Just do the capture right after the reservation.
+The user experience is exactly the same, and you have the opportunity to
+a `/cancel` with instant effect instead of a `/refund` that takes days.
 
 See the
 [FAQ](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#what-is-the-difference-between-reserve-capture-and-direct-capture).
