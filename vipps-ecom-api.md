@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.63.
+Document version 2.5.64.
 
 ## Table of contents
 
@@ -2029,46 +2029,46 @@ In case of errors: Use
 [Get payment details](#get-payment-details)
 to retrieve all the information about the payment.
 
-| Error group    | Error Code                        | Error Message                                                                                       | Comment                                   |
-| -------------- | --------------------------------- | --------------------------------------------------------------------------------------------------- | ----------------------------------------- |
-| Payment        | 41                                | User does not have a valid card                                                                       |                                           |
-| Payment        | 42                                | Refused by issuer bank                                                                              |                                           |
-| Payment        | 43                                | Refused by issuer bank because of invalid a amount                                                  |                                           |
-| Payment        | 44                                | Refused by issuer because of expired card                                                           |                                           |
-| Payment        | 45                                | Reservation failed. Either because the user cancelled, did not act, or for some unknown reason.                                                          |                                           |
-| Payment        | 51                                | Cannot cancel already captured order                                                                |                                           |
-| Payment        | 52                                | Cancellation failed                                                                                 |                                           |
-| Payment        | 53                                | Cannot cancel order which is not reserved yet                                                       |                                           |
-| Payment        | 61                                | Captured amount exceeds the reserved amount ordered                                                 |                                           |
-| Payment        | 62                                | The amount you tried to capture is not reserved                                                     |                                           |
-| Payment        | 63                                | Capture failed for some unknown reason, please use Get Payment Details API to know the exact status |                                           |
-| Payment        | 71                                | Cannot refund more than captured amount                                                             |                                           |
-| Payment        | 72                                | Cannot refund for reserved order, please use Cancel API                                             |                                           |
-| Payment        | 73                                | Cannot refund on cancelled order                                                                    |                                           |
-| Payment        | 93                                | Captured amount should be the same in Idempotent retry                                              |                                           |
-| Payment        | 95                                | Payments can only be refunded up to 365 days after reservation                                      |                                           |
-| Payment        | 96                                | Payments can only be captured up to 180 days after reservation                                      |                                           |
-| Payment        | 1501                              | This person can not pay to companies                                                                | Used for Vipps users under the age of 15. |
-| Payment        | 1082                              | This person is not BankID verified. Only applies for test users.                                                             | |
-| InvalidRequest | Field name will be the error code | Description about what exactly the field error is                                                   |                                           |
-| VippsError     | 91                                | Transaction is not allowed                                                                          |                                           |
-| VippsError     | 92                                | Transaction already processed                                                                       |                                           |
-| VippsError     | 94                                | Order locked and is already processing                                                              |                                           |
-| VippsError     | 98                                | Too many concurrent requests                                                                        |                                           |
-| VippsError     | 99                                | Description of the internal error                                                                   |                                           |
-| user           | 81                                | User not registered with Vipps                                                                      |                                           |
-| user           | 82                                | User App version not supported                                                                      |                                           |
-| Merchant       | 31                                | Merchant is blocked because of <reason>                                                             |                                           |
-| Merchant       | 32                                | Receiving limit of merchant is exceeded                                                             |                                           |
-| Merchant       | 33                                | Number of payment requests has been exceeded                                                        |                                           |
-| Merchant       | 34                                | Unique constraint violation of the order id                                                         |                                           |
-| Merchant       | 35                                | Registered order not found                                                                          |                                           |
-| Merchant       | 36                                | Merchant agreement not signed                                                                       |                                           |
-| Merchant       | 37                                | Merchant not available, deactivated or blocked                                                      |                                           |
-| Merchant       | 38                                | Sale unit is not allowed to skip the landing page                                                   |                                           |
-| Merchant       | 21                                | Reference Order ID is not valid                                                                     |                                           |
-| Merchant       | 22                                | Reference Order ID is not in valid state                                                            |                                           |
-| Merchant       | 97                                | The merchant is not approved by Vipps to receive payments                                           |                                           |
+| Error group | Error Code | Error Message (and some explaining text for some errors)                                                                                       |
+| ----------- | ---------- | --------------------------------------------------------------------------------------------------- |
+| Payment     | 41         | The user does not have a valid card                                                                 |
+| Payment     | 42         | Refused by issuer bank                                                                              |
+| Payment     | 43         | Refused by issuer bank because of invalid a amount                                                  |
+| Payment     | 44         | Refused by issuer because of expired card                                                           |
+| Payment     | 45         | Reservation failed. Either because the user cancelled, did not act, or for some unknown reason.     |
+| Payment     | 51         | Cannot cancel an already captured order                                                             |
+| Payment     | 52         | Cancellation failed                                                                                 |
+| Payment     | 53         | Cannot cancel an order that is not reserved                                                         |
+| Payment     | 61         | Captured amount exceeds the reserved amount                                                         |
+| Payment     | 62         | The amount you tried to capture is not reserved                                                     |
+| Payment     | 63         | Capture failed for some unknown reason, please use /details endpoint to know the exact status       |
+| Payment     | 71         | Cannot refund more than captured amount                                                             |
+| Payment     | 72         | Cannot refund a reserved order (only captured orders), please use the /cancel endpoint                                   |
+| Payment     | 73         | Cannot refund a cancelled order                                                                     |
+| Payment     | 93         | Captured amount must be the same in an Idempotent retry                                             |
+| Payment     | 95         | Payments can only be refunded up to 365 days after reservation                                      |
+| Payment     | 96         | Payments can only be captured up to 180 days after reservation                                      |
+| Payment     | 1501       | This person can not pay to companies. Used for Vipps users under the age of 15.                     |
+| Payment     | 1082       | This person is not BankID verified. Only applies for test users.                                    |
+| InvalidRequest | -       | The field name will be the error code. Description about what exactly the field error is.           |
+| VippsError  | 91         | Transaction is not allowed                                                                          |
+| VippsError  | 92         | Transaction already processed                                                                       |
+| VippsError  | 94         | Order locked and is already processing. This can occur if a bank has problems, and Vipps needs to wait and/or clean up. |
+| VippsError  | 98         | Too many concurrent requests. Used only to prevent incorrect API use.                               |
+| VippsError  | 99         | Description of the internal error                                                                   |
+| user        | 81         | User not registered with Vipps                                                                      |
+| user        | 82         | User app version not supported                                                                      |
+| Merchant    | 31         | Merchant is blocked because of <reason>                                                             |
+| Merchant    | 32         | Receiving limit of merchant is exceeded                                                             |
+| Merchant    | 33         | Number of payment requests has been exceeded                                                        |
+| Merchant    | 34         | Unique constraint violation of the orderId                                                          |
+| Merchant    | 35         | Registered order not found                                                                          |
+| Merchant    | 36         | Merchant agreement not signed                                                                       |
+| Merchant    | 37         | Merchant not available, deactivated or blocked. See the FAQ.                                        |
+| Merchant    | 38         | Sale unit is not allowed to skip the landing page                                                   |
+| Merchant    | 21         | Reference orderId is not valid                                                                      |
+| Merchant    | 22         | Reference orderId is not in valid state                                                             |
+| Merchant    | 97         | The merchant is not approved by Vipps to receive payments                                           |
 
 # Testing
 
