@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.33.
+Document version 3.9.34.
 
 ### Table of contents
 
@@ -71,6 +71,7 @@ Document version 3.9.33.
   + [Why do I get `unauthorized_client`?](#why-do-i-get-unauthorized_client)
   + [Why do I get `Payment failed`?](#why-do-i-get-payment-failed)
 * [Other questions](#other-questions)
+  + [Can you send us logs so we can look for errors?](#can-you-send-us-logs-so-we-can-look-for-errors)
   + [How do I perform "testing in production"?](#how-do-i-perform-testing-in-production)
   + [What do we have to do with PSD2's SCA requirements?](#what-do-we-have-to-do-with-psd2-s-sca-requirements)
   + [How can I use Vipps for different types of payments?](#how-can-i-use-vipps-for-different-types-of-payments)
@@ -1252,6 +1253,26 @@ Also consider using
 as it gives a faster payment process and a better user experience.
 
 ## Other questions
+
+### Can you send us logs so we can look for errors?
+
+No. Vipps can not extract logging info for one merchant or one MSN. There are
+terabytes of data, and it's not trivial to provide data for just one merchant
+or MSN.
+
+We provide as much information as we can for all API requests that fail, both
+by using a sensible HTTP status for the response and by including as much
+relevant information as possible in the response body.
+
+It's important to use this information. If you discard it, it's gone.
+
+The API Dashboard on
+[portal.vipps.no](https://portal.vipps.no)
+provides a high-level overview of errors in the use of the Vipps APIs,
+but it does in no way replace a proper handling of errors and error messages.
+
+Having said that, it _is_ possible to investigate specific API calls if you
+send us enough information. See the "Contact us" information at the bottom of this page.
 
 ### How do I perform "testing in production"?
 
