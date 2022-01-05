@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.34.
+Document version 3.9.35.
 
 ### Table of contents
 
@@ -1294,7 +1294,7 @@ Vipps uses delegated SCA, which makes it easier to users to pay with Vipps
 than with stand-alone card payments. The result is a higher completion rate.
 
 Delegated SCA is Vipps' primary way of solving the SCA requirements. For
-this solution Vipps has developing a SCA compliant solution that consists of a
+this solution Vipps has developed a SCA compliant solution that consists of a
 two-factor authentication featuring either PIN or biometrics in addition to
 device possession. In addition Vipps has implemented a Dynamic Linking according
 to the requirements.
