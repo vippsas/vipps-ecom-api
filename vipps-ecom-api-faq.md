@@ -502,7 +502,7 @@ For more information, please see the Consumer Authority's
 [Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
 
 There are different regulatory requirements for payments that are initiated
-by a user and by a mnerchant.
+by a user and by a merchant.
 
 The Vipps deeplink is only valid for 5 minutes, so users that do not act quickly will
 not be able to pay. There is no way to "retry" a deeplink after the timeout.
