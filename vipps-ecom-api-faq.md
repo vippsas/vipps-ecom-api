@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.35.
+Document version 3.9.36.
 
 ### Table of contents
 
@@ -488,7 +488,10 @@ See: [The Vipps QR API](https://github.com/vippsas/vipps-qr-api).
 
 ### Can I send a Vipps payment link in an SMS, QR or email?
 
-No. The Vipps "deeplink" is an integrated part of the Vipps payment process,
+No.
+
+The Vipps "deeplink" opens the payment page in Vipps where the user
+accepts a payment. This is an integrated part of the Vipps payment process,
 and the link should never be sent in an SMS or email.
 
 The deeplink is only valid for 5 minutes, so users that do not act quickly will
@@ -499,6 +502,7 @@ See:
 According to Norwegian regulations the customer needs to actively accept the
 terms and conditions for the purchase.
 This is not possible if you just send a deeplink.
+
 For more information, please see the Consumer Authority's
 [Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
 
