@@ -494,17 +494,20 @@ The Vipps "deeplink" opens the payment page in Vipps where the user
 accepts a payment. This is an integrated part of the Vipps payment process,
 and the link should never be sent in an SMS or email.
 
-The deeplink is only valid for 5 minutes, so users that do not act quickly will
-not be able to pay. There is no way to "retry" a deeplink after the timeout.
-See:
-[For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
-
 According to Norwegian regulations the customer needs to actively accept the
 terms and conditions for the purchase.
 This is not possible if you just send a deeplink.
 
 For more information, please see the Consumer Authority's
 [Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
+
+There are different regulatory requirements for payments that are initiated
+by a user and by a mnerchant.
+
+The Vipps deeplink is only valid for 5 minutes, so users that do not act quickly will
+not be able to pay. There is no way to "retry" a deeplink after the timeout.
+See:
+[For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
 
 Instead of sending a Vipps deeplink: Send a link to your website, and let
 the user start the Vipps payment there. It can be a very simple page with a link
