@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.36.
+Document version 3.9.37.
 
 ### Table of contents
 
@@ -67,6 +67,7 @@ Document version 3.9.36.
   + [Why do I get `HTTP 500 Internal Server Error`?](#why-do-i-get-http-500-internal-server-error)
   + [Why do I get `errorCode 35 "Requested Order not found"`?](#why-do-i-get-errorcode-35-requested-order-not-found)
   + [Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`?](#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked)
+  + [Why do I get "Merchant Not Allowed for Ecommerce Payment"?](#why-do-i-get-merchant-not-allowed-for ecommerce-payment)
   + [Why do I not get the `sub` from `/details`?](#why-do-i-not-get-the-sub-from-details)
   + [Why do I get `unauthorized_client`?](#why-do-i-get-unauthorized_client)
   + [Why do I get `Payment failed`?](#why-do-i-get-payment-failed)
@@ -1197,6 +1198,20 @@ Merchants can also create new sale units in the test environment on
 [portal.vipps.no](https://portal.vipps.no).
 
 See: [Error codes](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes).
+
+### Why do I get "Merchant Not Allowed for Ecommerce Payment"?
+
+This error occurs if you attempt to use the Vipps eCom API with a sale unit (MSN)
+that is only approved for the Vipps Login API.
+
+Vipps does not do the same checks for sale units that do not make payments,
+so to use the eCom API you need to order "Vipps på nett" on
+[portal.vipps.no](https://portal.vipps.no)
+to go through the regulatory and leagally required checks and get
+access to the Vipps eCom API.
+
+All sale units that have been approved for the Vipps eCom API can also use
+the Vipps Login API, but not the other way around.
 
 ### Why do I not get the `sub` from `/details`?
 
