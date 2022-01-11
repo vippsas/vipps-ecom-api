@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.64.
+Document version 2.5.65.
 
 ## Table of contents
 
@@ -202,8 +202,10 @@ These headers are **required for plugins and partners** and sent by the recent v
 [the official Vipps plugins](https://github.com/vippsas/vipps-developers#plugins)
 and we recommend all customers with direct integration with the API to also do so.
 
-Partners must always send the `Merchant-Serial-Number` header, and we recommend that
-everyone sends it too. It can speed up any trouble-shooting quite a bit.
+Partners must always send the `Merchant-Serial-Number` header, and we recommend
+that _everyone_ sends it, also when using the merchant's own API keys.
+The `Merchant-Serial-Number` header can be used with all API keys, and can
+speed up any trouble-shooting of API problems quite a bit.
 
 | Header                        | Description                                  | Example value       |
 | ----------------------------- | -------------------------------------------- | ------------------- |
