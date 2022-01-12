@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.65.
+Document version 2.5.66.
 
 ## Table of contents
 
@@ -1541,6 +1541,9 @@ Example `sub` format:
 This `sub` is a link between the merchant and the user and can be used to retrieve
 the user's details from Vipps userinfo:
 [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getUserinfo)
+
+The `sub` is based on the user's national identity number ("fødselsnummer"
+in Norway), and does not change (except in very special cases).
 
 **Please note:** It is recommended to get the user's information directly after
 completing the transaction. There is however a _time limit of 168 hours_
