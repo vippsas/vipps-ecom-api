@@ -1490,8 +1490,6 @@ help with all the details.
 
 **Important:** When using Vipps as an external payment method in Klarna Checkout
 the settlements from Vipps will be separate from the settlements from Klarna.
-This is due to the rules set by the card networks: Vipps is not allowed to
-pay to Klarna to let Klarna can aggregate the settlements (or the other way around).
 
 ### What functionality is included in the eCom API, but not the PSP API?
 
