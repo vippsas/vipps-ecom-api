@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.38.
+Document version 3.9.39.
 
 ### Table of contents
 
@@ -1487,6 +1487,11 @@ See:
 
 **Please note:** Vipps has limited knowledge of Klarna Checkout, and can not
 help with all the details.
+
+**Important:** When using Vipps as an external payment method in Klarna Checkout
+the settlements from Vipps will be separate from the settlements from Klarna.
+This is due to the rules set by the card networks: Vipps is not allowed to
+pay to Klarna to let Klarna can aggregate the settlements (or the other way around).
 
 ### What functionality is included in the eCom API, but not the PSP API?
 
