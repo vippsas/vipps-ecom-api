@@ -205,7 +205,7 @@ to confirm the payment in Vipps first.
 
 See:
 * [Cancelling a pending order](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#cancelling-a-pending-order)
-* [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved).
+* [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
 
 ### Why do I get a CORS error?
 
