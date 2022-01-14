@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.39.
+Document version 3.9.40.
 
 ### Table of contents
 
@@ -176,6 +176,16 @@ See:
 
 ### Why does capture fail?
 
+The most common reasons are:
+
+1. Attempt at capturing a higher amount than the one that has been reserved:
+   The user has approved a payment in Vipps, but you attempt to charge more.
+2. Attempt at capturing a payment that is not reserved:
+   The user has not approved the payment in Vipps.
+
+All failed capture attempts get an error response from our API.
+The response contains the details of why the capture failed.
+
 If the reserved amount is too low for shipping costs to be included, the capture will fail.
 The reserved amount must at least as high as the amount that is captured.
 
@@ -184,7 +194,7 @@ the shipping cost can be maximum 200 NOK to be within the reserved amount of 120
 If the shipping cost is 300 kr, a capture of 1000 + 3000 kr = 1300 NOK will fail.
 
 It is not possible to capture more than the reserved amount, as that would
-make this possible:
+make this sequence possible:
 1. The merchant initiates a payment of 1000 NOK
 2. The user confirms the 1000 NOK payment in Vipps
 3. The merchant captures 50 000 NOK from the user
@@ -192,8 +202,6 @@ make this possible:
 Similarly: It is not possible to capture an amount that is not reserved, as
 that would make it possible to charge a user's card without requiring the user
 to confirm the payment in Vipps first.
-
-The API responds with details about the error.
 
 See:
 * [Cancelling a pending order](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#cancelling-a-pending-order)
