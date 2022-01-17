@@ -341,9 +341,9 @@ Vipps supports both _reserve-capture_ and _direct capture_:
 The user experience is exactly the same.
 
 Some things to consider:
-* If a payment has been _reserved_, the merchant can make a `/cancel` call to
+* If a payment has been _reserved_ (as with "reserve capture"), the merchant can make a `/cancel` call to
   immediately release the reservation and make available in the customer's account.
-* If a payment has been _captured_, the merchant has to
+* If a payment has been _captured_ (as with "direct capture"), the merchant has to
   make a `/refund` call, and it then takes days before the amount is
   available in the customer's account.
 * With "reserver capture" it is possible to reserve a higher amount and only
