@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.41.
+Document version 3.9.42.
 
 ### Table of contents
 
@@ -26,7 +26,7 @@ Document version 3.9.41.
   + [When should I use "Direct Capture"?](#when-should-i-use-direct-capture)
   + [How can I check if I have "reserve capture" or "direct capture"?](#how-can-i-check-if-i-have-reserve-capture-or-direct-capture)
   + [How do I turn direct capture on or off?](#how-do-i-turn-direct-capture-on-or-off)
-  + [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
+  + [For how long is a payment reserved?](#for-how-long-is-a-payment-reserved)
   + [Can I prevent people from paying with credit cards?](#can-i-prevent-people-from-paying-with-credit-cards)
   + [Can I initiate a Vipps payment with a QR code?](#can-i-initiate-a-vipps-payment-with-a-qr-code)
   + [Can I send a Vipps payment link in an SMS, QR or email?](#can-i-send-a-vipps-payment-link-in-an-sms-qr-or-email)
@@ -205,7 +205,7 @@ to confirm the payment in Vipps first.
 
 See:
 * [Cancelling a pending order](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#cancelling-a-pending-order)
-* [For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
+* [For how long is a payment reserved?](#for-how-long-is-a-payment-reserved)
 
 ### Why do I get a CORS error?
 
@@ -399,7 +399,7 @@ On the page with the API keys for the test environment there is a button
 for creating additional sale units, and you can then select
 "direct capture" or "reserve capture", and also `skipLandingPage`.
 
-### For how long is an initiated payment reserved?
+### For how long is a payment reserved?
 
 That depends. Vipps does not control the behaviour of the customer's card or account.
 
@@ -516,7 +516,7 @@ by a user and by a merchant.
 The Vipps deeplink is only valid for 5 minutes, so users that do not act quickly will
 not be able to pay. There is no way to "retry" a deeplink after the timeout.
 See:
-[For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
+[For how long is a payment reserved?](#for-how-long-is-a-payment-reserved)
 
 Instead of sending a Vipps deeplink: Send a link to your website, and let
 the user start the Vipps payment there. It can be a very simple page with a link
@@ -613,7 +613,7 @@ of 750 NOK, and need to refund the remaining 250 NOK.
 
 The short version: This is done automatically by the bank after a few days.
 See:
-[For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved).
+[For how long is a payment reserved?](#for-how-long-is-a-payment-reserved).
 
 The long version: It's not possible to cancel the remaining reservation after a
 partial capture through Vipps.
@@ -935,7 +935,7 @@ The user can also check the payment in Vipps:
 5. Verify that the orderId and transaction id matches the ones in step 6 above.
 
 See:
-[For how long is an initiated payment reserved?](#for-how-long-is-an-initiated-payment-reserved)
+[For how long is a payment reserved?](#for-how-long-is-a-payment-reserved)
 
 ### In which sequence are callbacks and fallbacks done?
 
