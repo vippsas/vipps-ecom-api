@@ -338,8 +338,7 @@ Vipps supports both _reserve-capture_ and _direct capture_:
 
 **Important:** It's completely fine to use "reserve capture" almost like
 "direct capture": Just do the capture immediately after the reservation.
-The user experience is exactly the same, and you have the opportunity to
-a `/cancel` with instant effect instead of a `/refund` that takes days.
+The user experience is exactly the same.
 
 Some things to consider:
 * If a payment has been _reserved_, the merchant can make a `/cancel` call to
@@ -347,8 +346,6 @@ Some things to consider:
 * If a payment has been _captured_, the merchant has to
   make a `/refund` call, and it then takes days before the amount is
   available in the customer's account.
-  See:
-  [How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
 * With "reserver capture" it is possible to reserve a higher amount and only
   capture a part of it. It is also possible to capture the full amount
   with multiple captures ("partial capture").
@@ -356,6 +353,7 @@ Some things to consider:
 See:
 * [When should I charge the customer?](#when-should-i-charge-the-customer)
 * [When should I use "Direct Capture"?](#wwhen-should-i-use-direct-capture)
+* [How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
 
 ### When should I use "Direct Capture"?
 
