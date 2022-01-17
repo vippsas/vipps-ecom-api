@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.19
+  version: 1.6.20
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -1483,8 +1483,9 @@ components:
         amount:
           type: number
           format: double
-          description: 'Ordered amount. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
-          example: 20000
+          description:
+            'Ordered amount. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
+          example: 49900
         status:
           type: string
           enum:
@@ -1520,7 +1521,7 @@ components:
           type: number
           format: double
           description: 'Ordered amount. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
-          example: 20000
+          example: 49900
         status:
           type: string
           enum:
@@ -1557,7 +1558,7 @@ components:
           type: number
           format: double
           description: 'Ordered amount. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
-          example: 20000
+          example: 49900
         status:
           type: string
           enum:
@@ -1598,8 +1599,9 @@ components:
         amount:
           type: number
           format: double
-          description: 'Ordered amount in øre. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
-          example: 20000
+          description:
+            'Ordered amount in øre. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
+          example: 49900
         status:
           type: string
           enum:
@@ -1637,8 +1639,11 @@ components:
         amount:
           type: number
           format: double
-          description: 'Ordered amount. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
-          example: 20000
+          description: >-
+            Amounts are specified in minor units.
+            For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.
+          example: 49900
+          minimum: 100
         status:
           type: string
           enum:
@@ -1888,11 +1893,10 @@ components:
           description: >-
             Amounts are specified in minor units.
             For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.
-            32 bit Integer.
             Must be non-zero and larger than 1 NOK.
           pattern: '^\d{3,}$'
           minimum: 100
-          example: 20000
+          example: 49900
         orderId:
           type: string
           description: >-
@@ -2092,10 +2096,12 @@ components:
           type: integer
           format: int32
           description: >-
-            Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.
-            If amount is 0 or not provided then full capture will be performed. 32 Bit Integer (2147483647)
+            Amounts are specified in minor units.
+            For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.
+            If amount is 0 or not provided then full capture will be performed.
           pattern: '^\d{3,}$'
-          example: 20000
+          example: 49900
+          minimum: 100
         transactionText:
           type: string
           description: Transaction text to be displayed in Vipps
@@ -2307,7 +2313,7 @@ components:
           type: integer
           format: int32
           description: Total amount captured
-          example: 20000
+          example: 49900
         refundedAmount:
           type: integer
           format: int32
@@ -2322,7 +2328,7 @@ components:
           type: integer
           format: int32
           description: Total remaining amount to refund
-          example: 20000
+          example: 49900
         bankIdentificationNumber:
           type: integer
           format: int32
