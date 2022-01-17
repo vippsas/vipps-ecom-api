@@ -346,8 +346,9 @@ Some things to consider:
 * If a payment has been _captured_ (as with "direct capture"), the merchant has to
   make a `/refund` call, and it then takes days before the amount is
   available in the customer's account.
-* With "reserver capture" it is possible to reserve a higher amount and only
-  capture a part of it. It is also possible to capture the full amount
+* With "reserve capture" it is possible to reserve a higher amount and only
+  capture a part of it (useful for electric car charging stations, etc).
+  It is also possible to capture the full amount
   with multiple captures ("partial capture").
 
 See:
