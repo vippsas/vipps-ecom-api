@@ -333,7 +333,7 @@ Vipps supports both _reserve-capture_ and _direct capture_:
 * When _direct capture_ is activated, all payment reservations will instantly be
   captured. This is intended for situations where the product or service is
   immediately provided to the customer, and there is no chance that the service
-  is not available or sold out, e.g. vending machine and digital services.
+  is not available or sold out, e.g. digital services.
   Direct capture requires additional compliance checks of the merchant.
 
 **Important:** It's completely fine to use "reserve capture" almost like
