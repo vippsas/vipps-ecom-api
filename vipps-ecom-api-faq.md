@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.40.
+Document version 3.9.41.
 
 ### Table of contents
 
@@ -328,25 +328,30 @@ Capture means the funds are moved from customer's account to merchant's account.
 Vipps supports both _reserve-capture_ and _direct capture_:
 
 * _Reserve capture_ is the default. When you initiate a payment it will be
-  reserved until you capture it.
+  reserved until you capture it. The capture can be done a few seconds later,
+  or several days later.
 * When _direct capture_ is activated, all payment reservations will instantly be
   captured. This is intended for situations where the product or service is
-  immediately provided to the customer, and there is no chance that the
-  service is not available or sold out, e.g. digital services.
-
-If a payment has been _reserved_, the merchant can make a `/cancel` call to
-immediately release the reservation and make available in the customer's account.
-
-If a payment has been _captured_, the merchant has to
-make a `/refund` call, and it then takes a few days before the amount is
-available in the customer's account.
-See:
-[How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
+  immediately provided to the customer, and there is no chance that the service
+  is not available or sold out, e.g. vending machine and digital services.
+  Direct capture requires additional compliance checks of the merchant.
 
 **Important:** It's completely fine to use "reserve capture" almost like
-"direct capture": Just do the capture right after the reservation.
+"direct capture": Just do the capture immediately after the reservation.
 The user experience is exactly the same, and you have the opportunity to
 a `/cancel` with instant effect instead of a `/refund` that takes days.
+
+Some things to consider:
+* If a payment has been _reserved_, the merchant can make a `/cancel` call to
+  immediately release the reservation and make available in the customer's account.
+* If a payment has been _captured_, the merchant has to
+  make a `/refund` call, and it then takes days before the amount is
+  available in the customer's account.
+  See:
+  [How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
+* With "reserver capture" it is possible to reserve a higher amount and only
+  capture a part of it. It is also possible to capture the full amount
+  with multiple captures ("partial capture").
 
 See:
 * [When should I charge the customer?](#when-should-i-charge-the-customer)
@@ -355,10 +360,6 @@ See:
 ### When should I use "Direct Capture"?
 
 You can probably use "reserve capture", and just do the capture right after the reserve.
-
-If you can _always_ immediately deliver the product/service that the user
-pays for (e.g. digital products that will never be sold out), you can use
-"direct capture".
 
 See:
 * [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
