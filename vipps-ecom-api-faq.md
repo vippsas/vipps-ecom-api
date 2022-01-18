@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.9.42.
+Document version 3.9.44.
 
 ### Table of contents
 
@@ -549,7 +549,7 @@ requirements set by Norwegian law and regulation.
 
 See:
 * [Can I initiate a Vipps payment with a QR code?](#can-i-initiate-a-vipps-payment-with-a-qr-code)
-+ [Can I send a Vipps payment link in an SMS, QR or email?](#can-i-send-a-vipps-payment-link-in-an-sms-qr-or-email)
+* [Can I send a Vipps payment link in an SMS, QR or email?](#can-i-send-a-vipps-payment-link-in-an-sms-qr-or-email)
 
 ### Can I whitelist my URL for a Vipps QR?
 
@@ -1468,11 +1468,11 @@ the user is sent to Vipps to pay the total amount.
 ```
 "external_payment_methods":[
    {
-      "name":"Vipps",
-      "redirect_url":"https://api.vipps.no/dwo-api-application/v1/deeplink/vippsgateway?v=2&token=eyJraWQiOiJqd3R <snip>",
-      "image_url":"https://example.com/images/vipps-logo.png",
-      "fee":0,
-      "description":"Pay with Vipps"
+      "name": "Vipps",
+      "redirect_url": "https://example.com/vipps/ecom-api/initiate/acme-shop-123-order123abc",
+      "image_url": "https://example.com/images/vipps-logo.png",
+      "fee": 0,
+      "description": "Pay with Vipps"
    }
 ]
 ```
