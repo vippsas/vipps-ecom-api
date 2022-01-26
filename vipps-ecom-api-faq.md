@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.10.0.
+Document version 3.11.0.
 
 ### Table of contents
 
@@ -64,6 +64,7 @@ Document version 3.10.0.
   + [Why do I get `HTTP 401 Unauthorized`?](#why-do-i-get-http-401-unauthorized)
   + [Why do I get `HTTP 403 Forbidden`?](#why-do-i-get-http-403-forbidden)
   + [Why do I get `HTTP 429 Too Many Requests`?](#why-do-i-get-http-429-too-many-requests)
+  + [Why do I get `HTTP 404 Not Found`?](#why-do-i-get-http-404-not-found)
   + [Why do I get `HTTP 500 Internal Server Error`?](#why-do-i-get-http-500-internal-server-error)
   + [Why do I get `errorCode 35 "Requested Order not found"`?](#why-do-i-get-errorcode-35-requested-order-not-found)
   + [Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`?](#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked)
@@ -1140,6 +1141,16 @@ See:
 [Rate limiting](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#rate-limiting)
 for details.
 
+### Why do I get `HTTP 404 Not Found`?
+
+It depends. You must check the body of the response.
+
+It could be that you are attempting to call a non-existant API endpoint, and
+it could be that you are using the API keys for one MSN for an `orderId`
+gthat belongs to a different MSN.
+
+See: [Why do I get `errorCode 35 "Requested Order not found"`?](#why-do-i-get-errorcode-35-requested-order-not-found).
+
 ### Why do I get `HTTP 500 Internal Server Error`?
 
 Something _might_ be wrong on our side and we are working to fix it!
@@ -1173,12 +1184,14 @@ one sale unit (MSN), and you are attempting to get the details with
 using the API keys for a different sale unit (MSN).
 
 This is either because you are specifying an incorrect orderId, or because you
-are trying to access an orderId with the incorrect API credentials.
-orderIds are not globally unique, they are only unique per MSN.
+are trying to access an `orderId` with the incorrect API credentials.
+`orderId`s are not globally unique, they are only unique per MSN.
 If you use one the API credentials for one MSN and an orderId for another MSN,
 you will get this error.
 
-See: [Error codes](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes).
+See:
+* [Why do I get `HTTP 404 Not Found`?](#why-do-i-get-http-404-not-found)
+* [Error codes](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes).
 
 ### Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`?
 
