@@ -1846,7 +1846,7 @@ Vipps app, the most reliable approach to know the state of the payment is always
 4. The merchant app should query the [payment details endpoint](#get-payment-details) for updated status on the payment once user returns from Vipps.
 
 **Please note:** Vipps will append a status at the end of the fallback URL. For example, if your `fallBack` URL is `merchantApp://result?myAppData`, Vipps
-will append the status like: `merchantApp://result?myAppData&status=301`. **This status is deprecated, and should no longer be used.** Query the [payment details endpoint](#get-payment-details) for latest status instead.
+will append the status like: `merchantApp://result?myAppData&status=301` or `merchantApp://result?myAppData&status=100`. **This status is deprecated, and should no longer be used.** Query the [payment details endpoint](#get-payment-details) for latest status instead.
 
 ### App-switch on iOS
 
