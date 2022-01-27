@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.11.1.
+Document version 3.11.2.
 
 ### Table of contents
 
@@ -1405,7 +1405,7 @@ If all sale units have the same organization number, there are two alternatives:
 1: Recommended: Multiple sale units: One sale unit per store. Each sale unit will have its
    own MSN (Merchant Serial Number), and the `orderId` may be whatever you want.
    Each sale unit gets its own
-   [settlement reals](https://github.com/vippsas/vipps-developers/tree/master/settlements).
+   [settlement files](https://github.com/vippsas/vipps-developers/tree/master/settlements).
    You will need separate API keys for each sale unit (store).
    See: [How can I use Vipps for different types of payments?](#how-can-i-use-vipps-for-different-types-of-payments).
 
