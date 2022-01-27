@@ -1402,14 +1402,14 @@ are set up with their own merchant and sale units.
 
 If all sale units have the same organization number, there are two alternatives:
 
-1: Recommended: Multiple sale units: One sale unit per store. Each sale unit will have its
+1: Recommended: Multiple sale units (multiple MSNs): One sale unit per store. Each sale unit will have its
    own MSN (Merchant Serial Number), and the `orderId` may be whatever you want.
    Each sale unit gets its own
    [settlement files](https://github.com/vippsas/vipps-developers/tree/master/settlements).
    You will need separate API keys for each sale unit (store).
    See: [How can I use Vipps for different types of payments?](#how-can-i-use-vipps-for-different-types-of-payments).
 
-2: Use only one sale unit for all stores, and use the `orderId` to identify
+2: Use only one sale unit (one MSN) for all stores, and use the `orderId` to identify
    which orders belong to which sale units.
    All sale units are in the same
    [settlement report](https://github.com/vippsas/vipps-developers/tree/master/settlements).
