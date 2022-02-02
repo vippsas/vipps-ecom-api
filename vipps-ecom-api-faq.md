@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.11.2.
+Document version 3.11.3.
 
 ### Table of contents
 
@@ -1407,6 +1407,9 @@ If all sale units have the same organization number, there are two alternatives:
    Each sale unit gets its own
    [settlement files](https://github.com/vippsas/vipps-developers/tree/master/settlements).
    You will need separate API keys for each sale unit (store).
+   If you have a Vipps platform partner, the partner will use the
+   [partner keys](https://github.com/vippsas/vipps-partner#partner-keys)
+   for all the sale units.
    See: [How can I use Vipps for different types of payments?](#how-can-i-use-vipps-for-different-types-of-payments).
 
 2: Use only one sale unit (one MSN) for all stores, and use the `orderId` to identify
@@ -1416,6 +1419,9 @@ If all sale units have the same organization number, there are two alternatives:
    You decide what the `orderId` contains, and it may be up to 50 characters. See:
    [orderId recommendation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#orderid-recommendations).
    You will use the same API keys for all stores.
+   If you have a Vipps platform partner, the partner will use the
+   [partner keys](https://github.com/vippsas/vipps-partner#partner-keys)
+   for all the sale units.
 
 ### How can I change my organization number?
 
