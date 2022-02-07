@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.11.3.
+Document version 3.11.4.
 
 ### Table of contents
 
@@ -1156,6 +1156,10 @@ See: [Why do I get `errorCode 35 "Requested Order not found"`?](#why-do-i-get-er
 Something _might_ be wrong on our side and we are working to fix it!
 But: It's usually a problem with the request, and that our validation does not catch it.
 In other words: We should perhaps have returned `HTTP 400 Bad Request`.
+
+If this occurs in the test environment, it may be a glitch in the SQL server.
+We are running a "weaker" instance than in production, and on very rare occations
+this can cause SQL errors that result in a `HTTP 500 Error`.
 
 Please make sure the JSON payload in your API request validates.
 That is the most common source of this type of error.
