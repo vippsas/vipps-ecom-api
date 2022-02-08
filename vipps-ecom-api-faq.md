@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.11.4.
+Document version 3.11.5.
 
 ### Table of contents
 
@@ -86,6 +86,7 @@ Document version 3.11.4.
 * [Frequently Asked Questions for POS integrations](#frequently-asked-questions-for-pos-integrations)
   + [What is the process to go live in production?](#what-is-the-process-to-go-live-in-production)
   + [How can we be whitelisted for `skipLandingPage`?](#how-can-we-be-whitelisted-for-skiplandingpage)
+  + [Distance selling from a POS solution](#distance-selling-from-a-pos-solution)
   + [Which API keys should I use?](#which-api-keys-should-i-use)
   + [Do we need to support callbacks?](#do-we-need-to-support-callbacks)
   + [How can I check if a person has Vipps?](#how-can-i-check-if-a-person-has-vipps)
@@ -1590,6 +1591,12 @@ in [Questions](#questions) below.
 
 See: [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
 
+### Distance selling from a POS solution
+
+Due to compliance requirements in a payment situation where customer is not present we recommend implementing the [Order Management API](https://github.com/vippsas/vipps-order-management-api#vipps-order-management-api-v1). This allows the merchants to send rich receipt information to existing Vipps transactions. This information is visible for the customer in the app in their order history.
+
+As an alternative an online sale log must be available for Vipps.
+
 ### Which API keys should I use?
 
 You should probably use _partner keys_ ,and not separate API keys for each of
@@ -1641,8 +1648,8 @@ See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settl
 # Questions?
 
 We're always happy to help with code or other questions you might have!
-Please create an [issue](https://github.com/vippsas/vipps-recurring-api/issues),
-a [pull request](https://github.com/vippsas/vipps-recurring-api/pulls),
+Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),
+a [pull request](https://github.com/vippsas/vipps-ecom-api/pulls),
 or [contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md).
 
 Sign up for our [Technical newsletter for developers](https://github.com/vippsas/vipps-developers/tree/master/newsletters).
