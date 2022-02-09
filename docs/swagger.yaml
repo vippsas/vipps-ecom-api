@@ -1952,7 +1952,7 @@ components:
           maxLength: 3
         airlineDesignatorCode:
           type: string
-          description: IATA 2-letter accounting code (PAX); alphabetical. It identifies the carrier. Eg KLM = KL
+          description: "IATA 2-letter accounting code (PAX); alphabetical. It identifies the carrier. Eg KLM = KL. IATA: https://www.iata.org/en/youandiata/airports/"
           format: IATA 2-letter airline code
           example: 'KL'
           minLength: 2
@@ -1962,11 +1962,13 @@ components:
           description: The ticket's unique identifier.
           minLength: 1
           maxLength: 150
+          example: "074-5799804843"
         agencyInvoiceNumber:
           type: string
-          description: Reference number for the invoice, issued by the agency.
+          description: "Reference number for the invoice, issued by the agency. IATA: https://www.iata.org/en/youandiata/travel-agents/"
           minLength: 1
           maxLength: 6
+          example: "123456"
     MerchantInfo:
       type: object
       required:
