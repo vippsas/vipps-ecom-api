@@ -2294,8 +2294,8 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments \
       &quot;passengerName&quot;: &quot;FLYER / MARY MS.&quot;,
       &quot;airlineCode&quot;: &quot;074&quot;,
       &quot;airlineDesignatorCode&quot;: &quot;KL&quot;,
-      &quot;ticketNumber&quot;: &quot;string&quot;,
-      &quot;agencyInvoiceNumber&quot;: &quot;string&quot;
+      &quot;ticketNumber&quot;: &quot;074-5799804843&quot;,
+      &quot;agencyInvoiceNumber&quot;: &quot;123456&quot;
     },
     &quot;useExplicitCheckoutFlow&quot;: true
   }
@@ -2486,8 +2486,8 @@ System.out.println(response.toString());
       <span class="hljs-attr">&quot;passengerName&quot;</span>: <span class="hljs-string">&quot;FLYER / MARY MS.&quot;</span>,
       <span class="hljs-attr">&quot;airlineCode&quot;</span>: <span class="hljs-string">&quot;074&quot;</span>,
       <span class="hljs-attr">&quot;airlineDesignatorCode&quot;</span>: <span class="hljs-string">&quot;KL&quot;</span>,
-      <span class="hljs-attr">&quot;ticketNumber&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-      <span class="hljs-attr">&quot;agencyInvoiceNumber&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+      <span class="hljs-attr">&quot;ticketNumber&quot;</span>: <span class="hljs-string">&quot;074-5799804843&quot;</span>,
+      <span class="hljs-attr">&quot;agencyInvoiceNumber&quot;</span>: <span class="hljs-string">&quot;123456&quot;</span>
     },
     <span class="hljs-attr">&quot;useExplicitCheckoutFlow&quot;</span>: <span class="hljs-literal">true</span>
   }
@@ -2755,7 +2755,7 @@ System.out.println(response.toString());
 <td>body</td>
 <td>string(IATA 2-letter airline code)</td>
 <td>false</td>
-<td>IATA 2-letter accounting code (PAX); alphabetical. It identifies the carrier. Eg KLM = KL</td>
+<td>IATA 2-letter accounting code (PAX); alphabetical. It identifies the carrier. Eg KLM = KL. IATA: <a href="https://www.iata.org/en/youandiata/airports/">https://www.iata.org/en/youandiata/airports/</a></td>
 </tr>
 <tr>
 <td>»»» ticketNumber</td>
@@ -2769,7 +2769,7 @@ System.out.println(response.toString());
 <td>body</td>
 <td>string</td>
 <td>false</td>
-<td>Reference number for the invoice, issued by the agency.</td>
+<td>Reference number for the invoice, issued by the agency. IATA: <a href="https://www.iata.org/en/youandiata/travel-agents/">https://www.iata.org/en/youandiata/travel-agents/</a></td>
 </tr>
 <tr>
 <td>»» useExplicitCheckoutFlow</td>
@@ -8330,8 +8330,8 @@ System.out.println(response.toString());
       <span class="hljs-attr">&quot;passengerName&quot;</span>: <span class="hljs-string">&quot;FLYER / MARY MS.&quot;</span>,
       <span class="hljs-attr">&quot;airlineCode&quot;</span>: <span class="hljs-string">&quot;074&quot;</span>,
       <span class="hljs-attr">&quot;airlineDesignatorCode&quot;</span>: <span class="hljs-string">&quot;KL&quot;</span>,
-      <span class="hljs-attr">&quot;ticketNumber&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-      <span class="hljs-attr">&quot;agencyInvoiceNumber&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+      <span class="hljs-attr">&quot;ticketNumber&quot;</span>: <span class="hljs-string">&quot;074-5799804843&quot;</span>,
+      <span class="hljs-attr">&quot;agencyInvoiceNumber&quot;</span>: <span class="hljs-string">&quot;123456&quot;</span>
     },
     <span class="hljs-attr">&quot;useExplicitCheckoutFlow&quot;</span>: <span class="hljs-literal">true</span>
   }
@@ -8388,8 +8388,8 @@ System.out.println(response.toString());
     <span class="hljs-attr">&quot;passengerName&quot;</span>: <span class="hljs-string">&quot;FLYER / MARY MS.&quot;</span>,
     <span class="hljs-attr">&quot;airlineCode&quot;</span>: <span class="hljs-string">&quot;074&quot;</span>,
     <span class="hljs-attr">&quot;airlineDesignatorCode&quot;</span>: <span class="hljs-string">&quot;KL&quot;</span>,
-    <span class="hljs-attr">&quot;ticketNumber&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-    <span class="hljs-attr">&quot;agencyInvoiceNumber&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    <span class="hljs-attr">&quot;ticketNumber&quot;</span>: <span class="hljs-string">&quot;074-5799804843&quot;</span>,
+    <span class="hljs-attr">&quot;agencyInvoiceNumber&quot;</span>: <span class="hljs-string">&quot;123456&quot;</span>
   },
   <span class="hljs-attr">&quot;useExplicitCheckoutFlow&quot;</span>: <span class="hljs-literal">true</span>
 }
@@ -8506,8 +8506,8 @@ System.out.println(response.toString());
   <span class="hljs-attr">&quot;passengerName&quot;</span>: <span class="hljs-string">&quot;FLYER / MARY MS.&quot;</span>,
   <span class="hljs-attr">&quot;airlineCode&quot;</span>: <span class="hljs-string">&quot;074&quot;</span>,
   <span class="hljs-attr">&quot;airlineDesignatorCode&quot;</span>: <span class="hljs-string">&quot;KL&quot;</span>,
-  <span class="hljs-attr">&quot;ticketNumber&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-  <span class="hljs-attr">&quot;agencyInvoiceNumber&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+  <span class="hljs-attr">&quot;ticketNumber&quot;</span>: <span class="hljs-string">&quot;074-5799804843&quot;</span>,
+  <span class="hljs-attr">&quot;agencyInvoiceNumber&quot;</span>: <span class="hljs-string">&quot;123456&quot;</span>
 }
 
 </code></pre>
@@ -8542,7 +8542,7 @@ System.out.println(response.toString());
 <td>string(IATA 2-letter airline code)</td>
 <td>false</td>
 <td>none</td>
-<td>IATA 2-letter accounting code (PAX); alphabetical. It identifies the carrier. Eg KLM = KL</td>
+<td>IATA 2-letter accounting code (PAX); alphabetical. It identifies the carrier. Eg KLM = KL. IATA: <a href="https://www.iata.org/en/youandiata/airports/">https://www.iata.org/en/youandiata/airports/</a></td>
 </tr>
 <tr>
 <td>ticketNumber</td>
@@ -8556,7 +8556,7 @@ System.out.println(response.toString());
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Reference number for the invoice, issued by the agency.</td>
+<td>Reference number for the invoice, issued by the agency. IATA: <a href="https://www.iata.org/en/youandiata/travel-agents/">https://www.iata.org/en/youandiata/travel-agents/</a></td>
 </tr>
 </tbody>
 </table>
