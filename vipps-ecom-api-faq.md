@@ -603,7 +603,7 @@ All integrations with the Vipps eCom API _must_  support refunds. See the
 It is also possible to do refunds on
 [portal.vipps.no](https://portal.vipps.no).
 
-Refunds can be made up to 365 days after capture.
+Refunds can be made up to 365 days after payment reservation.
 
 ### How can I refund only a part of a payment?
 
