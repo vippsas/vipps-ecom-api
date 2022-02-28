@@ -3370,7 +3370,8 @@ curl -X PUT https://apitest.vipps.no/ecomm/v2/payments/{orderId}/cancel \
   },
   &quot;transaction&quot;: {
     &quot;transactionText&quot;: &quot;One pair of Vipps socks&quot;
-  }
+  },
+  &quot;shouldReleaseRemainingFunds&quot;: false
 }&#x27;</span>;
 <span class="hljs-keyword">const</span> headers = {
   <span class="hljs-string">&#x27;Content-Type&#x27;</span>:<span class="hljs-string">&#x27;application/json;charset=UTF-8&#x27;</span>,
@@ -3531,7 +3532,8 @@ System.out.println(response.toString());
   },
   <span class="hljs-attr">&quot;transaction&quot;</span>: {
     <span class="hljs-attr">&quot;transactionText&quot;</span>: <span class="hljs-string">&quot;One pair of Vipps socks&quot;</span>
-  }
+  },
+  <span class="hljs-attr">&quot;shouldReleaseRemainingFunds&quot;</span>: <span class="hljs-literal">false</span>
 }
 </code></pre>
 <h3 id="cancel-payment-parameters">Parameters</h3>
@@ -3620,7 +3622,7 @@ System.out.println(response.toString());
 <td>» merchantInfo</td>
 <td>body</td>
 <td><a href="#schemamerchantinfopayment">MerchantInfoPayment</a></td>
-<td>false</td>
+<td>true</td>
 <td>none</td>
 </tr>
 <tr>
@@ -3634,7 +3636,7 @@ System.out.println(response.toString());
 <td>» transaction</td>
 <td>body</td>
 <td><a href="#schemacanceltransaction">CancelTransaction</a></td>
-<td>false</td>
+<td>true</td>
 <td>none</td>
 </tr>
 <tr>
@@ -3643,6 +3645,13 @@ System.out.println(response.toString());
 <td>string</td>
 <td>false</td>
 <td>Transaction text to be displayed in Vipps</td>
+</tr>
+<tr>
+<td>» shouldReleaseRemainingFunds</td>
+<td>body</td>
+<td>boolean</td>
+<td>false</td>
+<td>An opt-in field to instuct the release of remaining funds after a partial capture.</td>
 </tr>
 </tbody>
 </table>
@@ -8905,7 +8914,8 @@ System.out.println(response.toString());
   },
   <span class="hljs-attr">&quot;transaction&quot;</span>: {
     <span class="hljs-attr">&quot;transactionText&quot;</span>: <span class="hljs-string">&quot;One pair of Vipps socks&quot;</span>
-  }
+  },
+  <span class="hljs-attr">&quot;shouldReleaseRemainingFunds&quot;</span>: <span class="hljs-literal">false</span>
 }
 
 </code></pre>
@@ -8924,16 +8934,23 @@ System.out.println(response.toString());
 <tr>
 <td>merchantInfo</td>
 <td><a href="#schemamerchantinfopayment">MerchantInfoPayment</a></td>
-<td>false</td>
+<td>true</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>transaction</td>
 <td><a href="#schemacanceltransaction">CancelTransaction</a></td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>shouldReleaseRemainingFunds</td>
+<td>boolean</td>
 <td>false</td>
 <td>none</td>
-<td>none</td>
+<td>An opt-in field to instuct the release of remaining funds after a partial capture.</td>
 </tr>
 </tbody>
 </table>
