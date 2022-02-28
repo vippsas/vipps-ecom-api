@@ -2173,6 +2173,13 @@ components:
           $ref: '#/components/schemas/MerchantInfoPayment'
         transaction:
           $ref: '#/components/schemas/CancelTransaction'
+        shouldReleaseRemainingFunds:
+          type: boolean
+          description: An opt-in field to instuct the release of remaining funds after a partial capture.
+          default: false
+      required:
+        - merchantInfo
+        - transaction
     AuthorizePaymentRequest:
       type: object
       properties:

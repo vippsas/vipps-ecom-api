@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.67.
+Document version 2.5.68.
 
 ## Table of contents
 
@@ -80,6 +80,7 @@ Document version 2.5.67.
   - [Partial capture](#partial-capture)
 - [Cancel](#cancel)
   - [Cancelling a pending order](#cancelling-a-pending-order)
+  - [Cancelling a partially captured order](#cancelling-a-partially-captured-order)
 - [Refund](#refund)
 - [Recurring eCommerce payments](#recurring-ecommerce-payments)
 - [Get payment details](#get-payment-details)
@@ -1273,6 +1274,55 @@ transaction has been reserved before the cancellation: `CANCEL`.
 
 **Please note:** If the user is already in a 3-D Secure session, the payment
 can not be cancelled as described above.
+
+### Cancelling a partially captured order
+
+If you wish to cancel an order which you have partially captured send a 
+[`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
+request with the following property added to the body `shouldReleaseRemainingFunds: true`.
+The payment must be `RESERVED` for this to take effect.
+
+If this value is not set it will default to `false`. When `shouldReleaseRemainingFunds` is set to `false`
+any request to cancel after a partial or full capture has been performed will be rejected.
+
+This is a useful and recommended feature as it releases any reserved balance back to the customer imidiately.
+
+Example Request:
+
+```json
+{
+  "merchantInfo": {
+    "merchantSerialNumber": "123456"
+  },
+  "transaction": {
+    "transactionText": "No socks for you!"
+  },
+  "shouldReleaseRemainingFunds": true
+}
+```
+
+Response:
+
+```json
+{
+  "orderId": "acme-shop-123-order123abc",
+  "transactionInfo": {
+    "amount": 20000,
+    "transactionText": "No socks for you!",
+    "status": "Cancelled",
+    "transactionId": "5001420063",
+    "timeStamp": "2018-11-14T15:31:10.004Z"
+  },
+  "transactionSummary": {
+    "capturedAmount": 10000,
+    "remainingAmountToCapture": 0,
+    "refundedAmount": 0,
+    "remainingAmountToRefund": 10000
+  }
+}
+```
+
+**Please note:** Once this operation has been performed there will be zero funds remaining to capture. Do not call this endpoint until you are sure you have captured all you need.
 
 ## Refund
 
