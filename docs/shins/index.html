@@ -2740,35 +2740,35 @@ System.out.println(response.toString());
 <td>»»» passengerName</td>
 <td>body</td>
 <td>string(last name + first name or initials + title.)</td>
-<td>false</td>
+<td>true</td>
 <td>Passenger name, initials, and a title.</td>
 </tr>
 <tr>
 <td>»»» airlineCode</td>
 <td>body</td>
 <td>string(IATA 3-digit accounting code (PAX))</td>
-<td>false</td>
+<td>true</td>
 <td>IATA 3-digit accounting code (PAX); numeric. It identifies the carrier. eg KLM = 074</td>
 </tr>
 <tr>
 <td>»»» airlineDesignatorCode</td>
 <td>body</td>
 <td>string(IATA 2-letter airline code)</td>
-<td>false</td>
+<td>true</td>
 <td>IATA 2-letter accounting code (PAX); alphabetical. It identifies the carrier. Eg KLM = KL. IATA: <a href="https://www.iata.org/en/youandiata/airports/">https://www.iata.org/en/youandiata/airports/</a></td>
 </tr>
 <tr>
 <td>»»» ticketNumber</td>
 <td>body</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>The ticket's unique identifier.</td>
 </tr>
 <tr>
 <td>»»» agencyInvoiceNumber</td>
 <td>body</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>Reference number for the invoice, issued by the agency. IATA: <a href="https://www.iata.org/en/youandiata/travel-agents/">https://www.iata.org/en/youandiata/travel-agents/</a></td>
 </tr>
 <tr>
@@ -3370,8 +3370,7 @@ curl -X PUT https://apitest.vipps.no/ecomm/v2/payments/{orderId}/cancel \
   },
   &quot;transaction&quot;: {
     &quot;transactionText&quot;: &quot;One pair of Vipps socks&quot;
-  },
-  &quot;shouldReleaseRemainingFunds&quot;: false
+  }
 }&#x27;</span>;
 <span class="hljs-keyword">const</span> headers = {
   <span class="hljs-string">&#x27;Content-Type&#x27;</span>:<span class="hljs-string">&#x27;application/json;charset=UTF-8&#x27;</span>,
@@ -3532,8 +3531,7 @@ System.out.println(response.toString());
   },
   <span class="hljs-attr">&quot;transaction&quot;</span>: {
     <span class="hljs-attr">&quot;transactionText&quot;</span>: <span class="hljs-string">&quot;One pair of Vipps socks&quot;</span>
-  },
-  <span class="hljs-attr">&quot;shouldReleaseRemainingFunds&quot;</span>: <span class="hljs-literal">false</span>
+  }
 }
 </code></pre>
 <h3 id="cancel-payment-parameters">Parameters</h3>
@@ -3622,7 +3620,7 @@ System.out.println(response.toString());
 <td>» merchantInfo</td>
 <td>body</td>
 <td><a href="#schemamerchantinfopayment">MerchantInfoPayment</a></td>
-<td>true</td>
+<td>false</td>
 <td>none</td>
 </tr>
 <tr>
@@ -3636,7 +3634,7 @@ System.out.println(response.toString());
 <td>» transaction</td>
 <td>body</td>
 <td><a href="#schemacanceltransaction">CancelTransaction</a></td>
-<td>true</td>
+<td>false</td>
 <td>none</td>
 </tr>
 <tr>
@@ -3645,13 +3643,6 @@ System.out.println(response.toString());
 <td>string</td>
 <td>false</td>
 <td>Transaction text to be displayed in Vipps</td>
-</tr>
-<tr>
-<td>» shouldReleaseRemainingFunds</td>
-<td>body</td>
-<td>boolean</td>
-<td>false</td>
-<td>An opt-in field to instuct the release of remaining funds after a partial capture.</td>
 </tr>
 </tbody>
 </table>
@@ -8535,35 +8526,35 @@ System.out.println(response.toString());
 <tr>
 <td>passengerName</td>
 <td>string(last name + first name or initials + title.)</td>
-<td>false</td>
+<td>true</td>
 <td>none</td>
 <td>Passenger name, initials, and a title.</td>
 </tr>
 <tr>
 <td>airlineCode</td>
 <td>string(IATA 3-digit accounting code (PAX))</td>
-<td>false</td>
+<td>true</td>
 <td>none</td>
 <td>IATA 3-digit accounting code (PAX); numeric. It identifies the carrier. eg KLM = 074</td>
 </tr>
 <tr>
 <td>airlineDesignatorCode</td>
 <td>string(IATA 2-letter airline code)</td>
-<td>false</td>
+<td>true</td>
 <td>none</td>
 <td>IATA 2-letter accounting code (PAX); alphabetical. It identifies the carrier. Eg KLM = KL. IATA: <a href="https://www.iata.org/en/youandiata/airports/">https://www.iata.org/en/youandiata/airports/</a></td>
 </tr>
 <tr>
 <td>ticketNumber</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>none</td>
 <td>The ticket's unique identifier.</td>
 </tr>
 <tr>
 <td>agencyInvoiceNumber</td>
 <td>string</td>
-<td>false</td>
+<td>true</td>
 <td>none</td>
 <td>Reference number for the invoice, issued by the agency. IATA: <a href="https://www.iata.org/en/youandiata/travel-agents/">https://www.iata.org/en/youandiata/travel-agents/</a></td>
 </tr>
@@ -8914,8 +8905,7 @@ System.out.println(response.toString());
   },
   <span class="hljs-attr">&quot;transaction&quot;</span>: {
     <span class="hljs-attr">&quot;transactionText&quot;</span>: <span class="hljs-string">&quot;One pair of Vipps socks&quot;</span>
-  },
-  <span class="hljs-attr">&quot;shouldReleaseRemainingFunds&quot;</span>: <span class="hljs-literal">false</span>
+  }
 }
 
 </code></pre>
@@ -8934,23 +8924,16 @@ System.out.println(response.toString());
 <tr>
 <td>merchantInfo</td>
 <td><a href="#schemamerchantinfopayment">MerchantInfoPayment</a></td>
-<td>true</td>
+<td>false</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>transaction</td>
 <td><a href="#schemacanceltransaction">CancelTransaction</a></td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>shouldReleaseRemainingFunds</td>
-<td>boolean</td>
 <td>false</td>
 <td>none</td>
-<td>An opt-in field to instuct the release of remaining funds after a partial capture.</td>
+<td>none</td>
 </tr>
 </tbody>
 </table>
