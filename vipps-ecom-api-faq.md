@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.11.5.
+Document version 3.11.6.
 
 ### Table of contents
 
@@ -1564,24 +1564,28 @@ in [Questions](#questions) below.
 
 ### How do I use the one time payment QR
 
-This feature is for presenting a QR code for opening a payment request from a customer faced screen to prevent a cashier or customer to manually input the mobile number to pay. 
+This feature is for presenting a QR code for opening a payment request from a
+customer-facing screen, so there is no need to manually input the mobile number.
 
-Basic flow
+Basic flow:
 
-1. Initiate a Vipps eCom payment (note that skipLandingPage must be set to false)
+1. Initiate a Vipps eCom payment (`skipLandingPage` must be set to false)
 2. Receive the payment URL as response
-3. Post the payment URL to the QR API
+3. Post the payment URL to the
+   [Vipps QR API](https://github.com/vippsas/vipps-qr-api)
 4. Receive a URL to a QR code in PNG (Portable Network Graphics) format
-5. Present the QR code on the customer faced screen
-6. User scans the QR code with Vipps or camera app
-7. User pay (or cancel the payment) 
-8. Fallback url is trigger and will be presented on the customer faced screen
+5. Present the QR code on the customer-facing screen
+6. The user scans the QR code with Vipps or camera app
+7. The user pays (or cancels the payment) in Vipps
+8. The fallback URL is triggered and will be presented on the customer-facing screen
 
-Note 
-If the customer faced screen is not able to show the fallback page, we recommend presenting the result of the payment in some other way on the screen, and should also include error message if something went wrong. 
+**Please note:**
+If the customer-facing screen is not able to show the fallback page, we recommend
+presenting the result of the payment in some other way on the screen, and
+also that an error messages are also displayed on the screen.
 
-Related
-- [QR API](https://github.com/vippsas/vipps-qr-api/) 
+See also:
+- [QR API](https://github.com/vippsas/vipps-qr-api/)
 - [Error codes](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes)
 - [Do we need to support callbacks?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#do-we-need-to-support-callbacks)
 
