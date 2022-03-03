@@ -1567,14 +1567,15 @@ in [Questions](#questions) below.
 This feature is for presenting a QR code for opening a payment request from a customer faced screen to prevent a cashier or customer to manually input the mobile number to pay. 
 
 Basic flow
-	1. Initiate a Vipps eCom payment (note that skipLandingPage must be set to false)
-	2. Receive the payment URL as response
-	3. Post the payment URL to the QR API
-	4. Receive a URL to a QR code in PNG (Portable Network Graphics) format
-	5. Present the QR code on the customer faced screen
-	6. User scans the QR code with Vipps or camera app
-	7. User pay (or cancel the payment) 
-	8. Fallback url is trigger and will be presented on the customer faced screen
+
+1. Initiate a Vipps eCom payment (note that skipLandingPage must be set to false)
+2. Receive the payment URL as response
+3. Post the payment URL to the QR API
+4. Receive a URL to a QR code in PNG (Portable Network Graphics) format
+5. Present the QR code on the customer faced screen
+6. User scans the QR code with Vipps or camera app
+7. User pay (or cancel the payment) 
+8. Fallback url is trigger and will be presented on the customer faced screen
 
 Note 
 If the customer faced screen is not able to show the fallback page, we recommend presenting the result of the payment in some other way on the screen, and should also include error message if something went wrong. 
