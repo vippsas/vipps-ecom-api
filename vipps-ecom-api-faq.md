@@ -1577,12 +1577,12 @@ Basic flow:
 5. Present the QR code on the customer-facing screen
 6. The user scans the QR code with Vipps or camera app
 7. The user pays (or cancels the payment) in Vipps
-8. The fallback URL is triggered and will be presented on the customer-facing screen
+8. The fallback URL is triggered and will be presented on customers mobile phone
 
 **Please note:**
-If the customer-facing screen is not able to show the fallback page, we recommend
+The customer-facing screen will not show the fallback page. We recommend
 presenting the result of the payment in some other way on the screen, and
-also that an error messages are also displayed on the screen.
+also that an error messages if something went wrong.
 
 See also:
 - [QR API](https://github.com/vippsas/vipps-qr-api/)
