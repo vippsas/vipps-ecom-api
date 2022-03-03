@@ -84,9 +84,10 @@ Document version 3.11.5.
   + [What functionality is included in the eCom API, but not the PSP API?](#what-functionality-is-included-in-the-ecom-api-but-not-the-psp-api)
   + [How can I change partner for my integration with Vipps?](#how-can-i-change-partner-for-my-integration-with-vipps)
 * [Frequently Asked Questions for POS integrations](#frequently-asked-questions-for-pos-integrations)
-  + [What is the process to go live in production?](#what-is-the-process-to-go-live-in-production)
+  + [How do I use the one time payment QR?](#how-do-i-use-the-one-time-payment-qr)
   + [How can we be whitelisted for `skipLandingPage`?](#how-can-we-be-whitelisted-for-skiplandingpage)
   + [Distance selling from a POS solution](#distance-selling-from-a-pos-solution)
+  + [What is the process to go live in production?](#what-is-the-process-to-go-live-in-production)
   + [Which API keys should I use?](#which-api-keys-should-i-use)
   + [Do we need to support callbacks?](#do-we-need-to-support-callbacks)
   + [How can I check if a person has Vipps?](#how-can-i-check-if-a-person-has-vipps)
@@ -1561,6 +1562,38 @@ POS: Point Of Sale. Think "cash register".
 We will improve this section as we learn more. Please suggest improvements
 in [Questions](#questions) below.
 
+### How do I use the one time payment QR
+
+This feature is for presenting a QR code for opening a payment request from a customer faced screen to prevent a cashier or customer to manually input the mobile number to pay. 
+
+Basic flow
+	1. Initiate a Vipps eCom payment (note that skipLandingPage must be set to false)
+	2. Receive the payment URL as response
+	3. Post the payment URL to the QR API
+	4. Receive a URL to a QR code in PNG (Portable Network Graphics) format
+	5. Present the QR code on the customer faced screen
+	6. User scans the QR code with Vipps or camera app
+	7. User pay (or cancel the payment) 
+	8. Fallback url is trigger and will be presented on the customer faced screen
+
+Note 
+If the customer faced screen is not able to show the fallback page, we recommend presenting the result of the payment in some other way on the screen, and should also include error message if something went wrong. 
+
+Related
+- [QR API](https://github.com/vippsas/vipps-qr-api/) 
+- [Error codes](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes)
+- [Do we need to support callbacks?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#do-we-need-to-support-callbacks)
+
+### How can we be whitelisted for `skipLandingPage`?
+
+See: [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
+
+### Distance selling from a POS solution
+
+Due to compliance requirements in a payment situation where customer is not present we recommend implementing the [Order Management API](https://github.com/vippsas/vipps-order-management-api#vipps-order-management-api-v1). This allows the merchants to send rich receipt information to existing Vipps transactions. This information is visible for the customer in the app in their order history.
+
+As an alternative an online sale log must be available for Vipps.
+
 ### What is the process to go live in production?
 
 1. The partner establishes a customer relationship with Vipps.
@@ -1586,16 +1619,6 @@ in [Questions](#questions) below.
    See: [Which API keys should I use?](#which-api-keys-should-i-use)
 6. The partner configures the merchant's POS for Vipps.
 7. The merchant can now accept Vipps payments in the POS.
-
-### How can we be whitelisted for `skipLandingPage`?
-
-See: [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
-
-### Distance selling from a POS solution
-
-Due to compliance requirements in a payment situation where customer is not present we recommend implementing the [Order Management API](https://github.com/vippsas/vipps-order-management-api#vipps-order-management-api-v1). This allows the merchants to send rich receipt information to existing Vipps transactions. This information is visible for the customer in the app in their order history.
-
-As an alternative an online sale log must be available for Vipps.
 
 ### Which API keys should I use?
 
