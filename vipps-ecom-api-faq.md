@@ -84,7 +84,7 @@ Document version 3.11.6.
   + [What functionality is included in the eCom API, but not the PSP API?](#what-functionality-is-included-in-the-ecom-api-but-not-the-psp-api)
   + [How can I change partner for my integration with Vipps?](#how-can-i-change-partner-for-my-integration-with-vipps)
 * [Frequently Asked Questions for POS integrations](#frequently-asked-questions-for-pos-integrations)
-  + [How do I use the one time payment QR?](#how-do-i-use-the-one-time-payment-qr)
+  + [How do I use the one-time payment QR?](#how-do-i-use-the-one-time-payment-qr)
   + [How can we be whitelisted for `skipLandingPage`?](#how-can-we-be-whitelisted-for-skiplandingpage)
   + [Distance selling from a POS solution](#distance-selling-from-a-pos-solution)
   + [What is the process to go live in production?](#what-is-the-process-to-go-live-in-production)
@@ -1562,7 +1562,7 @@ POS: Point Of Sale. Think "cash register".
 We will improve this section as we learn more. Please suggest improvements
 in [Questions](#questions) below.
 
-### How do I use the one time payment QR
+### How do I use the one-time payment QR?
 
 This feature is for presenting a QR code for opening a payment request from a
 customer-facing screen, so there is no need to manually input the mobile number.
