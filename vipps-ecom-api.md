@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.68.
+Document version 2.5.69.
 
 ## Table of contents
 
@@ -1277,15 +1277,15 @@ can not be cancelled as described above.
 
 ### Cancelling a partially captured order
 
-If you wish to cancel an order which you have partially captured send a 
+If you wish to cancel an order which you have partially captured: Send a
 [`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
-request with the following property added to the body `shouldReleaseRemainingFunds: true`.
+request with `shouldReleaseRemainingFunds: true` in the body.
 The payment must be `RESERVED` for this to take effect.
 
 If this value is not set it will default to `false`. When `shouldReleaseRemainingFunds` is set to `false`
 any request to cancel after a partial or full capture has been performed will be rejected.
 
-This is a useful and recommended feature as it releases any reserved balance back to the customer imidiately.
+This is a useful and recommended feature as it releases any reserved balance back to the customer immediately.
 
 Example Request:
 
