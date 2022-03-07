@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Vipps eCommerce API v1.6.20</title>
+    <title>Vipps eCommerce API v1.6.21</title>
 
     <style>
     </style>
@@ -2113,7 +2113,7 @@ System.out.println(response.toString());
 
 </code></pre>
 <p><code>POST /accesstoken/get</code></p>
-<p>The access token endpoint is used to get the JWT (JSON Web Token) that must be passed in every API request in the Authorization header. The access token is a base64-encoded string value that must be aquired first before making any Vipps api calls. The access token is valid for 1 hour in the test environment and 24 hours in the production environment.</p>
+<p>The access token endpoint is used to get the JWT (JSON Web Token) that must be passed in every API request in the <code>Authorization</code> header. The access token is a base64-encoded string value that must be aquired first before making any Vipps API calls. The access token is valid for 1 hour in the test environment and 24 hours in the production environment.</p>
 <h3 id="fetch-authorization-token-parameters">Parameters</h3>
 <table>
 <thead>
@@ -2449,7 +2449,7 @@ System.out.println(response.toString());
 
 </code></pre>
 <p><code>POST /ecomm/v2/payments</code></p>
-<p>This API call allows the merchants to initiate payments. The <code>merchantSerialNumber</code> (MSN) specifies which sales unit the payments is for. Payments are uniquely identified with the merchantSerialNumber and orderId together. The merchant-provided orderId must be unique per sales channel. Once the transaction is successfully initiated in Vipps, you will receive a response with a <code>fallBack</code> URL which will direct the customer to the Vipps landing page. The landing page detects if the request comes from a mobile or laptop/desktop device, and if on a mobile device automatically switches to the Vipps app if it is intalled. The merchant may also pass the 'isApp: true' parameter that will make Vipps respond with a app-switch deeplink that will take the customer directly to the Vipps app. URLs passed to Vipps must validate, see <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">URL validation</a>. The URLs must use HTTPS.</p>
+<p>This API call allows the merchants to initiate payments. The <code>merchantSerialNumber</code> (MSN) specifies which sales unit the payments is for. Payments are uniquely identified with the <code>merchantSerialNumber</code> and <code>orderId</code> together. The merchant-provided <code>orderId</code> must be unique per sales unit. Once the transaction is successfully initiated in Vipps, you will receive a response with a URL that will direct the customer to the Vipps landing page. The landing page detects if the request comes from a mobile or laptop/desktop device, and if on a mobile device automatically switches to the Vipps app if it is intalled. The merchant may also pass the 'isApp: true' parameter that will make Vipps respond with a app-switch deeplink that will take the customer directly to the Vipps app. This is normally not necessary, as Vipps handles this automatically. URLs passed to Vipps must validate, see <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">URL validation</a>. The URLs must use HTTPS.</p>
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -3105,7 +3105,7 @@ System.out.println(response.toString());
 
 </code></pre>
 <p><code>POST /ecomm/v2/payments/{orderId}/capture</code></p>
-<p>This API call allows merchant to capture the reserved amount. Amount to capture cannot be higher than reserved. The API also allows capturing partial amount of the reserved amount. Partial capture can be called as many times as required so long there is reserved amount to capture. Transaction text is not optional and is used as a proof of delivery (tracking code, consignment number etc.). In a case of direct capture, both fund reservation and capture are executed in a single operation. It is important to check the response, and the capture is only successful when the response is <code>HTTP 200 OK</code>.</p>
+<p>This API call allows merchant to capture the reserved amount. Amount to capture cannot be higher than reserved. The API also allows capturing a partial amount of the reserved amount. Partial capture can be called as many times as required so long there is a remaining reserved amount to capture. The transaction text is not optional and is used as a proof of delivery (tracking code, consignment number etc.). In a case of direct capture, both the reservation and the capture are executed in a single operation. It is important to check the response, and the capture is only successful when the response is <code>HTTP 200 OK</code>.</p>
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -3164,7 +3164,7 @@ System.out.println(response.toString());
 <td>header</td>
 <td>string</td>
 <td>true</td>
-<td>Used for making requests idempotent. Adding X-Request-Id will allow repeated requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Required for making partial captures. You can use any unique id for your X-Request-Id. Max 40 characters.</td>
+<td>Used for making requests idempotent. Adding the <code>X-Request-Id</code> header will allow repeated requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Required for making partial captures. You can use any unique id for your X-Request-Id. Max 40 characters.</td>
 </tr>
 <tr>
 <td>Merchant-Serial-Number</td>
@@ -3919,7 +3919,7 @@ System.out.println(response.toString());
 
 </code></pre>
 <p><code>PUT /ecomm/v2/payments/{orderId}/authorize</code></p>
-<p>The API call allows merchant to refresh the authorizations of the payment. A reservation's lifetime is defined by the scheme. Typically 7 days for Visa, and 30 days for Mastercard. This is currently not live in production and will be added shortly.</p>
+<p>The API call allows merchant to refresh the authorizations of the payment. A reservation's lifetime is defined by the scheme. Typically 7 days for Visa, and 30 days for Mastercard. This is currently <em>not yet</em>  available in the production environment.</p>
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -4370,7 +4370,7 @@ System.out.println(response.toString());
 <td>header</td>
 <td>string</td>
 <td>true</td>
-<td>Used for making requests idempotent. Adding X-Request-Id will allow repeated requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Max 40 characters. Required if the amount is partial.</td>
+<td>Used for making requests idempotent. Adding the <code>X-Request-Id</code> header will allow repeated requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Max 40 characters. Required if the amount is partial.</td>
 </tr>
 <tr>
 <td>Merchant-Serial-Number</td>
@@ -5834,7 +5834,7 @@ System.out.println(response.toString());
 <td>header</td>
 <td>string</td>
 <td>false</td>
-<td>Token provided by the merchant in initiate payment request as <code>authToken</code>. Used so that the merchant may authenticate the request.</td>
+<td>Token provided by the merchant in the initiate payment request as <code>authToken</code>. Used so that the merchant may authenticate the request fromn Vipps.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -6184,7 +6184,7 @@ System.out.println(response.toString());
 <td>header</td>
 <td>string</td>
 <td>false</td>
-<td>Token provided by the merchant in initiate payment request as <code>authToken</code>. Used so that the merchant may authenticate the request.</td>
+<td>Token provided by the merchant in initiate payment request as <code>authToken</code>. Used so that the merchant may authenticate the request from Vipps.</td>
 </tr>
 <tr>
 <td>body</td>
