@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.11.6.
+Document version 3.12.0.
 
 ### Table of contents
 
@@ -615,12 +615,18 @@ has therefore made a
 [partial capture](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#partial-capture)
 of 750 NOK, and need to refund the remaining 250 NOK.
 
-The short version: This is done automatically by the bank after a few days.
+* The short version: This is done automatically by the bank after a few days.
 See:
 [For how long is a payment reserved?](#for-how-long-is-a-payment-reserved).
 
-The long version: It's not possible to cancel the remaining reservation after a
-partial capture through Vipps.
+* The long version: It _is_ possible to cancel the remaining reservation after a
+partial capture through Vipps: Send a
+[`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
+request with `shouldReleaseRemainingFunds: true` in the body.
+The payment must be `RESERVED` for this to take effect.
+See:
+[Cancelling a partially captured order](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#cancelling-a-partially-captured-order).
+
 The partial capture (the 750 of the 1000 NOK in the example above)
 is normally confirmed in the bank after 3-10 days, but it sometimes takes even
 longer. When this is done, the bank will make the remaining (250 NOK) available
