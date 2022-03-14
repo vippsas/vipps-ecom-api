@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.21
+  version: 1.6.22
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -546,10 +546,9 @@ paths:
         - Vipps eCom API
       summary: Cancel Payment
       description: >-
-        The API call allows merchant to cancel the reserved or initiated transaction. The API
-        will not allow partial cancellation which has the consequence that
-        partially captured transactions cannot be cancelled. Please note that in
-        a case of communication errors during initiate payment service call
+        This API call allows merchants to cancel a reserved or initiated transaction.
+        In order to enable cancellation of remaining funds after partial capture, the `shouldReleaseRemainingFunds` flag must be set.
+        Please note that in a case of communication errors during an initiate payment service call
         between Vipps and PSP/Acquirer/Issuer; even in a case that customer has
         confirmed a payment, the payment will be cancelled by Vipps. Note this
         means you can not cancel a captured payment.
@@ -2175,6 +2174,13 @@ components:
           $ref: '#/components/schemas/MerchantInfoPayment'
         transaction:
           $ref: '#/components/schemas/CancelTransaction'
+        shouldReleaseRemainingFunds:
+          type: boolean
+          description: An opt-in field to instuct the release of remaining funds after a partial capture.
+          default: false
+      required:
+        - merchantInfo
+        - transaction
     AuthorizePaymentRequest:
       type: object
       properties:
