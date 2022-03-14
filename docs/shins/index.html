@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Vipps eCommerce API v1.6.21</title>
+    <title>Vipps eCommerce API v1.6.22</title>
 
     <style>
     </style>
@@ -3370,7 +3370,8 @@ curl -X PUT https://apitest.vipps.no/ecomm/v2/payments/{orderId}/cancel \
   },
   &quot;transaction&quot;: {
     &quot;transactionText&quot;: &quot;One pair of Vipps socks&quot;
-  }
+  },
+  &quot;shouldReleaseRemainingFunds&quot;: false
 }&#x27;</span>;
 <span class="hljs-keyword">const</span> headers = {
   <span class="hljs-string">&#x27;Content-Type&#x27;</span>:<span class="hljs-string">&#x27;application/json;charset=UTF-8&#x27;</span>,
@@ -3521,7 +3522,7 @@ System.out.println(response.toString());
 
 </code></pre>
 <p><code>PUT /ecomm/v2/payments/{orderId}/cancel</code></p>
-<p>The API call allows merchant to cancel the reserved or initiated transaction. The API will not allow partial cancellation which has the consequence that partially captured transactions cannot be cancelled. Please note that in a case of communication errors during initiate payment service call between Vipps and PSP/Acquirer/Issuer; even in a case that customer has confirmed a payment, the payment will be cancelled by Vipps. Note this means you can not cancel a captured payment.</p>
+<p>This API call allows merchants to cancel a reserved or initiated transaction. In order to enable cancellation of remaining funds after partial capture, the <code>shouldReleaseRemainingFunds</code> flag must be set. Please note that in a case of communication errors during an initiate payment service call between Vipps and PSP/Acquirer/Issuer; even in a case that customer has confirmed a payment, the payment will be cancelled by Vipps. Note this means you can not cancel a captured payment.</p>
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -3531,7 +3532,8 @@ System.out.println(response.toString());
   },
   <span class="hljs-attr">&quot;transaction&quot;</span>: {
     <span class="hljs-attr">&quot;transactionText&quot;</span>: <span class="hljs-string">&quot;One pair of Vipps socks&quot;</span>
-  }
+  },
+  <span class="hljs-attr">&quot;shouldReleaseRemainingFunds&quot;</span>: <span class="hljs-literal">false</span>
 }
 </code></pre>
 <h3 id="cancel-payment-parameters">Parameters</h3>
@@ -3620,7 +3622,7 @@ System.out.println(response.toString());
 <td>» merchantInfo</td>
 <td>body</td>
 <td><a href="#schemamerchantinfopayment">MerchantInfoPayment</a></td>
-<td>false</td>
+<td>true</td>
 <td>none</td>
 </tr>
 <tr>
@@ -3634,7 +3636,7 @@ System.out.println(response.toString());
 <td>» transaction</td>
 <td>body</td>
 <td><a href="#schemacanceltransaction">CancelTransaction</a></td>
-<td>false</td>
+<td>true</td>
 <td>none</td>
 </tr>
 <tr>
@@ -3643,6 +3645,13 @@ System.out.println(response.toString());
 <td>string</td>
 <td>false</td>
 <td>Transaction text to be displayed in Vipps</td>
+</tr>
+<tr>
+<td>» shouldReleaseRemainingFunds</td>
+<td>body</td>
+<td>boolean</td>
+<td>false</td>
+<td>An opt-in field to instuct the release of remaining funds after a partial capture.</td>
 </tr>
 </tbody>
 </table>
@@ -8881,7 +8890,8 @@ System.out.println(response.toString());
   },
   <span class="hljs-attr">&quot;transaction&quot;</span>: {
     <span class="hljs-attr">&quot;transactionText&quot;</span>: <span class="hljs-string">&quot;One pair of Vipps socks&quot;</span>
-  }
+  },
+  <span class="hljs-attr">&quot;shouldReleaseRemainingFunds&quot;</span>: <span class="hljs-literal">false</span>
 }
 
 </code></pre>
@@ -8900,16 +8910,23 @@ System.out.println(response.toString());
 <tr>
 <td>merchantInfo</td>
 <td><a href="#schemamerchantinfopayment">MerchantInfoPayment</a></td>
-<td>false</td>
+<td>true</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>transaction</td>
 <td><a href="#schemacanceltransaction">CancelTransaction</a></td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>shouldReleaseRemainingFunds</td>
+<td>boolean</td>
 <td>false</td>
 <td>none</td>
-<td>none</td>
+<td>An opt-in field to instuct the release of remaining funds after a partial capture.</td>
 </tr>
 </tbody>
 </table>
