@@ -72,7 +72,7 @@ Document version 3.12.1.
   + [Why do I not get the `sub` from `/details`?](#why-do-i-not-get-the-sub-from-details)
   + [Why do I get `unauthorized_client`?](#why-do-i-get-unauthorized_client)
   + [Why do I get `Payment failed`?](#why-do-i-get-payment-failed)
-  * [Why do I get an error about having Vipps installed and being 15 years old?](#why-do-i-get-an-error-about-having-vipps-and-being-15_years-old)
+  * [Why do I get an error about having Vipps installed and being 15 years old?](#why-do-i-get-an-error-about-having-vipps-installed-and-being-15-years-old)
 * [Other questions](#other-questions)
   + [Can you send us logs so we can look for errors?](#can-you-send-us-logs-so-we-can-look-for-errors)
   + [How do I perform "testing in production"?](#how-do-i-perform-testing-in-production)
