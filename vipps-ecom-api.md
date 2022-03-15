@@ -1131,7 +1131,8 @@ Attempting to capture an older payment will result in a
 `HTTP 400 Bad Request`.
 
 See the FAQ:
-[What is the difference between "Reserve Capture" and "Direct Capture"?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#what-is-the-difference-between-reserve-capture-and-direct-capture.)
+* [What is the difference between "Reserve Capture" and "Direct Capture"?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#what-is-the-difference-between-reserve-capture-and-direct-capture)
+* [For how long is a payment reserved?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#for-how-long-is-a-payment-reserved)
 
 ### Reserve capture
 

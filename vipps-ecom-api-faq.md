@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.12.1.
+Document version 3.12.2.
 
 ### Table of contents
 
@@ -445,6 +445,10 @@ This will put the account in the negative.
 
 Customers may, understandably, be dissatisfied if the capture puts their account
 in the negative, so please avoid this.
+
+Capture can be made up to 180 days after reservation.
+Attempting to capture an older payment will result in a
+`HTTP 400 Bad Request`.
 
 The
 [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/capturePaymentUsingPOST)
