@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.12.0.
+Document version 3.12.1.
 
 ### Table of contents
 
@@ -72,6 +72,7 @@ Document version 3.12.0.
   + [Why do I not get the `sub` from `/details`?](#why-do-i-not-get-the-sub-from-details)
   + [Why do I get `unauthorized_client`?](#why-do-i-get-unauthorized_client)
   + [Why do I get `Payment failed`?](#why-do-i-get-payment-failed)
+  * [Why do I get an error about having Vipps installed and being 15 years old?](#why-do-i-get-an-error-about-having-vipps-and-being-15_years-old)
 * [Other questions](#other-questions)
   + [Can you send us logs so we can look for errors?](#can-you-send-us-logs-so-we-can-look-for-errors)
   + [How do I perform "testing in production"?](#how-do-i-perform-testing-in-production)
@@ -1308,6 +1309,12 @@ Also consider using
 [static shipping methods](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#shipping-and-static-shipping-details),
 as it gives a faster payment process and a better user experience.
 
+### Why do I get an error about having Vipps installed and being 15 years old?
+
+You are probably attempting to use a real Vipps user in the test environment.
+See:
+[The Vipps Test Environment (MT)](https://github.com/vippsas/vipps-developers/blob/master/vipps-test-environment.md).
+
 ## Other questions
 
 ### Can you send us logs so we can look for errors?
@@ -1592,7 +1599,7 @@ also that an error messages if something went wrong.
 
 If it is not possible for the POS solution to handle a fallback URL you may use one of the following options:
 1. Set fallbackURL to be the merchants website
-2. Set fallbackURL to be this Vipps hosted static page: [www.vipps.no/thankyoupage/](https://www.vipps.no/thankyoupage/) 
+2. Set fallbackURL to be this Vipps hosted static page: [www.vipps.no/thankyoupage/](https://www.vipps.no/thankyoupage/)
 
 See also:
 - [QR API](https://github.com/vippsas/vipps-qr-api/)
