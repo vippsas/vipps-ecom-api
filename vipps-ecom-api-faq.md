@@ -1590,6 +1590,10 @@ The customer-facing screen will not show the fallback page. We recommend
 presenting the result of the payment in some other way on the screen, and
 also that an error messages if something went wrong.
 
+If it is not possible for the POS solution to handle a fallback URL you may use one of the following options:
+1. Set fallbackURL to be the merchants website
+2. Set fallbackURL to be this Vipps hosted static page: [www.vipps.no/thankyoupage/](https://www.vipps.no/thankyoupage/) 
+
 See also:
 - [QR API](https://github.com/vippsas/vipps-qr-api/)
 - [Error codes](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes)
