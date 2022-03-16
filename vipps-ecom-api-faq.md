@@ -491,8 +491,6 @@ The only ways to initiate Vipps payments from a QR code are:
   Vipps will be opened, and the payment request will be displayed.
   The user then has a few minutes to complete the payment. See:
   [Timeouts](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#timeouts).
-* A whitelisted QR that contains a URL for the merchant's website. See:
-  [Can I whitelist my URL for a Vipps QR?](#can-i-whitelist-my-url-for-a-vipps-qr)
 * [Vippnummer](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/),
   the solution for flea markets, etc – which does not have any external API.
   This solution uses a static QR code for the sale unit, available on
@@ -562,28 +560,14 @@ See:
 
 ### Can I whitelist my URL for a Vipps QR?
 
-Yes. It is technically possible for a merchant to whitelist a URL so a user can scan
-a Vipps-branded QR in Vipps and be sent directly to the merchant's URL.
+There is no need for whitelisting QR codes anymore. It was previously a temporary solution a merchant to whitelist a URL to support users scanning
+a Vipps-branded QR to be sent directly to the merchant's URL.
 
-This functionality is in an experimental phase, and is only available for
-merchants with a Vipps KAM (Key Account Manager). To request whitelisting:
-Please contact your KAM.
+The previous whitelisting functionality has been replaced by [the Vipps QR API](https://github.com/vippsas/vipps-qr-api).
 
-If you do not have a KAM, you will have to wait so see if this functionality is
-made available for all Vipps merchants.
-As long as this is in an experimental phase (with a manual, and a bit tedious, process),
-we do not have the capacity to provide this for customers that do not already have a KAM.
+The API supports static [merchant redirect URLs](https://github.com/vippsas/vipps-qr-api#merchant-redirect-qr) with possibility to update the target URL for stickers, billboards, TV-commercials, magazine ads, etc. 
 
-When using a merchant-specific, whitelisted URL in a Vipps QR code, we recommend
-displaying a "landing page" to the user, and _not_ redirecting the user
-directly to a Vipps payment. This will make the solution more robust, in case
-there is a problem, and the user can retry without scanning the QR code again.
-
-See the
-[design guidelines](https://github.com/vippsas/vipps-design-guidelines#vipps-custom-qr-code)
-for more details about the QR format and design.
-
-See: [The Vipps QR API](https://github.com/vippsas/vipps-qr-api).
+The API also support a [one-time payment QR code](https://github.com/vippsas/vipps-qr-api#one-time-payment-qr) for customer facing screens in POS situations.    
 
 ### Can I use a different currency than NOK?
 
