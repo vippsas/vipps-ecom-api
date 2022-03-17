@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.69.
+Document version 2.5.70.
 
 ## Table of contents
 
@@ -77,6 +77,7 @@ Document version 2.5.69.
 - [Capture](#capture)
   - [Reserve capture](#reserve-capture-1)
   - [Direct capture](#direct-capture-1)
+  - [Capture payment](#capture-payment)  
   - [Partial capture](#partial-capture)
 - [Cancel](#cancel)
   - [Cancelling a pending order](#cancelling-a-pending-order)
@@ -356,6 +357,15 @@ To get the new express checkout flow: Specify this in addition, in the
 See
 [`POST:/ecomm/v2/payments](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
 for more details.
+
+
+![New explicit checkout flow](images/express-explicit-flow.png)
+*The new explicit checkout flow ("useExplicitCheckoutFlow": true)*
+
+![The old checkout flow](images/express-explicit-false.png)
+*The old checkout flow ("useExplicitCheckoutFlow": false)*
+
+
 
 ### Shipping and static shipping details
 
@@ -1154,7 +1164,12 @@ requirements apply:
 - The merchant must have a Key Account Manager (KAM) in Vipps
 - The merchant must have a partner that is responsible for the Vipps integration
 
-To request _direct capture_, please contact your KAM.
+To request _direct capture_, please contact your KAM or Partner Manager.
+
+Please note that we still recommend using "reserve capture" in all situations. Just do the capture right after the reserve. 
+
+
+### Capture payment
 
 Capture payment allows the merchant to capture the reserved amount.
 The API allows for both a _full amount capture_ and a _partial amount capture_.
@@ -1497,18 +1512,6 @@ See [Timeouts](#timeouts) for details about timeouts.
 
 **IMPORTANT: This endpoint is deprecated. Use [Get payment details](#get-payment-details).**
 
-| Status     | Description                                                                     |
-| ---------- | ------------------------------------------------------------------------------- |
-| `INITIATE` | Payment initiated, by merchant                                                  |
-| `REGISTER` | Vipps registers payment for Reserve.                                            |
-| `RESERVE`  | Payment reserved, by user accepting the payment in Vipps.                       |
-| `SALE`     | Payment captured with direct capture, by merchant                               |
-| `CAPTURE`  | Payment captured with reserve capture, by merchant                              |
-| `REFUND`   | Payment refunded, by merchant.                                                  |
-| `CANCEL`   | Payment canceled, by user in Vipps                                              |
-| `VOID`     | Payment canceled, by merchant                                                   |
-| `FAILED`   | Payment failed failed because of no coverage, outdated card details or similar. |
-| `REJECTED` | No user action in Vipps, i.e timeout.                                           |
 
 ## Userinfo
 
@@ -1527,6 +1530,9 @@ information from our Userinfo endpoint.
 
 A users consent to share information with a merchant applies across our services. Thus, if the merchant implements Vipps login
 in addition to profile information as part of the payment flow, the merchant can also use Vipps to log the user in without the need for additional consents.
+
+![User info flow](images/userinfo-flow.png)
+*The userInfo flow*
 
 ### scope
 
