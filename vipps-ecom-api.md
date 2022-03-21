@@ -527,7 +527,6 @@ An express payment example with more parameters provided:
     "callbackPrefix": "https://example.com/vipps/callbacks-for-payment-update",
     "consentRemovalPrefix": "https://example.com/vipps/consents/",
     "fallBack": "https://example.com/vipps/fallback-result-page/acme-shop-123-order123abc",
-    "isApp": false,
     "merchantSerialNumber": 123456,
     "shippingDetailsPrefix": "https://example.com/vipps/shipping/",
     "paymentType": "eComm Express Payment",
@@ -1166,7 +1165,7 @@ requirements apply:
 
 To request _direct capture_, please contact your KAM or Partner Manager.
 
-Please note that we still recommend using "reserve capture" in all situations. Just do the capture right after the reserve. 
+Please note that we still recommend using "reserve capture" in all situations. Just do the capture right after the reserve.
 
 
 ### Capture payment
