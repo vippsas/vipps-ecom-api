@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.12.2.
+Document version 3.12.3.
 
 ### Table of contents
 
@@ -565,7 +565,7 @@ a Vipps-branded QR to be sent directly to the merchant's URL.
 
 The previous whitelisting functionality has been replaced by [the Vipps QR API](https://github.com/vippsas/vipps-qr-api).
 
-The API supports static [merchant redirect URLs](https://github.com/vippsas/vipps-qr-api#merchant-redirect-qr) with possibility to update the target URL for stickers, billboards, TV-commercials, magazine ads, etc. 
+The API supports static [merchant redirect URLs](https://github.com/vippsas/vipps-qr-api#merchant-redirect-qr) with possibility to update the target URL for stickers, billboards, TV-commercials, magazine ads, etc.
 
 The API also support a [one-time payment QR code](https://github.com/vippsas/vipps-qr-api#one-time-payment-qr) for customer facing screens in POS situations.    
 
@@ -1179,16 +1179,12 @@ See:
 
 ### Why do I get `errorCode 35 "Requested Order not found"`?
 
-This is typically because the payment was initiated using the API keys for
+This is either because you are specifying an incorrect `orderId`, or because
+the payment with this `orderId` was initiated using the API keys for
 one sale unit (MSN), and you are attempting to get the details with
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
-using the API keys for a different sale unit (MSN).
+the API keys for a different sale unit (MSN).
 
-This is either because you are specifying an incorrect orderId, or because you
-are trying to access an `orderId` with the incorrect API credentials.
-`orderId`s are not globally unique, they are only unique per MSN.
-If you use one the API credentials for one MSN and an orderId for another MSN,
-you will get this error.
+The `orderId`s is not globally unique, they are only unique per MSN.
 
 See:
 * [Why do I get `HTTP 404 Not Found`?](#why-do-i-get-http-404-not-found)
