@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.12.3.
+Document version 3.12.4.
 
 ### Table of contents
 
@@ -133,19 +133,23 @@ associated with both are different enough to require this policy.
 The most common reasons are:
 
 1. The debit/credit card has expired.
+   Vipps notifies users in good time before a card expires, but users must
+   update the card(s) themselves.
    Vipps verifies cards for _every_ payment (resulting in an extremely low fraud rate).
    **Please note:** Vennebetaling (P2P) uses bank accounts directly, not the card.
-   It's possible for a user to pay another person (using the bank account),
+   It's therefore possible for a user to pay another person (using the bank account),
    but not be able to pay a merchant (since the card is expired).
 2. The debit/credit is no longer valid.
    This can happen when a user has received a new card, but the previous card's
    expiry date has not yet been reached.
+   See 1. above.
 3. Insufficient funds on the debit/credit card.
    There is not enough money in the debit card's bank account,
    or not enough credit left on the credit card.
 4. The debit/credit card has been rejected by the issuer.
    There are many possible reasons for this, and Vipps may not be allowed to
    give the details to the merchant.
+   See 1. above.
 5. Payment limit reached.
    There are some amount limits to prevent misuse and fraud.
    The user sometimes (not often) needs to authenticate with BankID in Vipps.
@@ -153,7 +157,7 @@ The most common reasons are:
    BankID "kodebrikkke", which they may not have available.
 6. The payment has timed out.
    This happens if the user does not confirm in Vipps within 10 minutes
-   (5 minutes to log in, 5 minutes to confirm),
+   (5 minutes to log into Vipps, then 5 minutes to confirm the payment),
    typically if the user has deactivated push notifications and does not open
    Vipps manually.
 7. Attempt to capture an amount that exceeds the reserved amount.
