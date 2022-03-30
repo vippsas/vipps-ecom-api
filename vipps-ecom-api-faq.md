@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.12.4.
+Document version 3.12.5.
 
 ### Table of contents
 
@@ -163,10 +163,12 @@ The most common reasons are:
 7. Attempt to capture an amount that exceeds the reserved amount.
    It's not possible to capture a higher amount than the user has confirmed in Vipps.
    Some merchants experience this because of rounding errors on their side.
+   See: [Why does capture fail?](#why-does-capture-fail)
 8. Attempt to capture an amount that has not been reserved.
    If the user does not confirm the payment in Vipps, it's impossible for the
    merchant to capture it.
    The payment must have status "reserved" for capture to be possible.
+   See: [Why does capture fail?](#why-does-capture-fail)
 
 We are continuously improving the error messages in the Vipps app. Some of the
 above errors may only have a general error message when attempting to pay.
