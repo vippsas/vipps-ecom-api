@@ -1828,7 +1828,7 @@ components:
           minLength: 5
           maxLength: 6
           example: '123456'
-          pattern: '^\d{5,6}$'
+          pattern: '^\d{5,}$'
     ShippingDetails:
       type: object
       required:
@@ -2046,7 +2046,7 @@ components:
           minLength: 5
           maxLength: 6
           example: '123456'
-          pattern: '^\d{5,6}$'
+          pattern: '^\d{5,}$'
         paymentType:
           type: string
           description: >-
@@ -2204,7 +2204,7 @@ components:
           minLength: 5
           maxLength: 6
           example: '123456'
-          pattern: '^\d{5,6}$'
+          pattern: '^\d{5,}$'
         orderId:
           type: string
           description: >-
@@ -2237,7 +2237,7 @@ components:
           minLength: 5
           maxLength: 6
           example: '123456'
-          pattern: '^\d{5,6}$'
+          pattern: '^\d{5,}$'
         orderId:
           type: string
           description: >-
