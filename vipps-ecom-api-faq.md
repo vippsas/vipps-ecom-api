@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.12.5.
+Document version 3.12.6.
 
 ### Table of contents
 
@@ -169,6 +169,11 @@ The most common reasons are:
    merchant to capture it.
    The payment must have status "reserved" for capture to be possible.
    See: [Why does capture fail?](#why-does-capture-fail)
+
+We strongly recommend to check the full history of every Vipps payment with
+the API: You can see if a payment has been actively rejected, if the user has
+not done anything, etc.
+See: [Get payment details](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#get-payment-details)
 
 We are continuously improving the error messages in the Vipps app. Some of the
 above errors may only have a general error message when attempting to pay.
