@@ -167,7 +167,7 @@ The most common reasons are:
 We are continuously improving the error messages in the Vipps app. Some of the
 above errors may only have a general error message when attempting to pay.
 
-**:Please note:** Vipps is not allowed to give detailed information about all errors to the
+**Please note:** Vipps is not allowed to give detailed information about all errors to the
 merchant, as some information should only be provided to the Vipps user.
 Vipps also generally wants to be on the user's side and not "leak" more details
 than we have to. The general rule is that if the problem must be corrected by
