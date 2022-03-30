@@ -153,7 +153,7 @@ The most common reasons are:
 5. Payment limit reached.
    There are some amount limits to prevent misuse and fraud.
    The user sometimes (not often) needs to authenticate with BankID in Vipps.
-   Some user _still_ do not use the BankID app or "BankID på mobil" and need their
+   Some users _still_ do not use the BankID app or "BankID på mobil" and need their
    BankID "kodebrikkke", which they may not have available.
 6. The payment has timed out.
    This happens if the user does not confirm in Vipps within 10 minutes
