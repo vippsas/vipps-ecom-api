@@ -1771,7 +1771,7 @@ the plugins headers if having different values do not make sense.
 Note that the HTTP Headers are mandatory for partners and platforms.
 
 Here's an example of headers (please refer to the
-[OpenAPI/Swagger specification](https://vippsas.github.io/vipps-recurring-api/)
+[OpenAPI/Swagger specification](https://vippsas.github.io/vipps-ecom-api/)
 for all the details):
 
 ```http
