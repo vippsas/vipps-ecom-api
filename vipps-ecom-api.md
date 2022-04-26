@@ -1881,6 +1881,18 @@ The merchant should then call
 to check if the transaction request is processed before making a new call,
 using same idempotency key (see [Idempotency](#idempotency)).
 
+### Clean Up Strategies
+
+Vipps recommends merchants implement a robust clean up strategy for all orders where the goods or services are not issued to the user. 
+
+An example case would be:
+
+Bank X is having issues and transactions for their customers are slow (15+ seconds) for a significant period of time. As a result of this the user decides to close the Vipps app while the transaction is being processed, they do not then see the final result in the Vipps app. This transaction will eventually result in a successful reservation. The user then returns to the Merchants app, but as the entry was not via an expected app-switch from the Vipps app, state is not correctly resumed. The user attempts a second payment, which this time goes through in a timely manner, and upon app-switch back the user is issued their goods/services.
+
+The user has now two reservations and only received goods/services once. It is the merchants responsibility here to ensure the first order, for which no goods/services were issued, should be cancelled to remove the reservation from the customers account. 
+
+Vipps recommends polling [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET) until either a `REJECT`, `USER_CANCEL`, `RESERVE` or `SALE` status is received, and then performing the appropriate action based on the status of product issuing. The user should also be notified that the merchant has issued any product to ensure they do not naturally retry the purchase. This includes using sms/email strategy if it is unclear that the user in on the merchants website/app to see confirmation.
+
 ## App integration
 
 Merchants may implement deep-linking, to trigger Vipps (we refer to this as "app-switch" here).
