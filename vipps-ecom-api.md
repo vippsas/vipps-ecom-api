@@ -104,6 +104,7 @@ Document version 2.5.70.
   - [Connection timeout](#connection-timeout)
   - [Callback aborted or interrupted](#callback-aborted-or-interrupted)
   - [PSP connection issues](#psp-connection-issues)
+  - [Clean Up Strategies](#clean-up-strategies)
 - [App integration](#app-integration)
 - [App-switching](#app-switching)
   - [App-switch on iOS](#app-switch-on-ios)
