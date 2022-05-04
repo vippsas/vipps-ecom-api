@@ -1901,7 +1901,7 @@ At peak traffic, like Black Friday, it is especially important to have a
 robust integration.
 
 We strongly recommend using "reserve capture", and not "direct capture",
-so it is possible to cancel a payment
+so it is possible to cancel a payment without making a refund.
 
 * Make sure you poll
   [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET),
@@ -1915,6 +1915,9 @@ so it is possible to cancel a payment
   * If you sell food at a restaurant: If the payment takes so long that the
     user gives up and tries to order again: It may be smart to cancel the
     previous order, even though the user did approve the payment.
+
+It is also important that the merchant's and/or partner's systems are able to
+to handle the peak traffic.
 
 See also:
 * [Exception handling](#exception-handling)
