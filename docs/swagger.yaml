@@ -2148,11 +2148,12 @@ components:
           example: '0154'
         addressType:
           type: string
-          description: 'The type of address: Home, business.'
+          description: 'The type of address: Home, Work, Other.'
           pattern: '^\[A-Z]$'
           enum:
             - 'H'
-            - 'B'
+            - 'W'
+            - 'O'
           default: 'H'
           example: H
     CustomerInfo:
