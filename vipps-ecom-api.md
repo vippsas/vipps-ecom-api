@@ -26,7 +26,6 @@ Document version 2.5.71.
 
 ## Table of contents
 
-- [Vipps eCommerce API](#vipps-ecommerce-api)
   - [Flow diagram](#flow-diagram)
   - [Call by call guide](#call-by-call-guide)
   - [API endpoints](#api-endpoints)
