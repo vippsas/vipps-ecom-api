@@ -1,6 +1,6 @@
 # Migration from eCom API v1 to eCom API v2
 
-Document version 1.1.3.
+Document version 1.1.4.
 
 This document explains the key differences between eCom API v1 and eCom API v2.
 
@@ -100,7 +100,7 @@ for eCom v2.
 
 ## Subscription keys
 
-When you have received confirmation that your new salesunit is created, then you can retrieve the API keys on https://portal.vipps.no. See [Getting started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md).
+When you have received confirmation that your new sales unit is created, then you can retrieve the API keys on https://portal.vipps.no. See [Getting started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md).
 
 ## New endpoint
 
