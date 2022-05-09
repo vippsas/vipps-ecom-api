@@ -105,6 +105,7 @@ Document version 2.5.71.
   - [Callback aborted or interrupted](#callback-aborted-or-interrupted)
   - [PSP connection issues](#psp-connection-issues)
   - [Clean Up Strategies](#clean-up-strategies)
+  - [Recommendations for handling very high traffic](#recommendations-for-handling-very-high-traffic)
 - [App integration](#app-integration)
 - [App-switching](#app-switching)
   - [App-switch on iOS](#app-switch-on-ios)
@@ -1884,15 +1885,43 @@ using same idempotency key (see [Idempotency](#idempotency)).
 
 ### Clean Up Strategies
 
-Vipps recommends merchants implement a robust clean up strategy for all orders where the goods or services are not issued to the user. 
+Vipps recommends merchants implement a robust clean up strategy for all orders where the goods or services are not issued to the user.
 
 An example case would be:
 
 Bank X is having issues and transactions for their customers are slow (15+ seconds) for a significant period of time. As a result of this the user decides to close the Vipps app while the transaction is being processed, they do not then see the final result in the Vipps app. This transaction will eventually result in a successful reservation. The user then returns to the Merchants app, but as the entry was not via an expected app-switch from the Vipps app, state is not correctly resumed. The user attempts a second payment, which this time goes through in a timely manner, and upon app-switch back the user is issued their goods/services.
 
-The user has now two reservations and only received goods/services once. It is the merchants responsibility here to ensure the first order, for which no goods/services were issued, should be cancelled to remove the reservation from the customers account. 
+The user has now two reservations and only received goods/services once. It is the merchants responsibility here to ensure the first order, for which no goods/services were issued, should be cancelled to remove the reservation from the customers account.
 
 Vipps recommends polling [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET) until either a `REJECT`, `USER_CANCEL`, `RESERVE` or `SALE` status is received, and then performing the appropriate action based on the status of product issuing. The user should also be notified that the merchant has issued any product to ensure they do not naturally retry the purchase. This includes using sms/email strategy if it is unclear that the user in on the merchants website/app to see confirmation.
+
+### Recommendations for handling very high traffic
+
+At peak traffic, like Black Friday, it is especially important to have a
+robust integration.
+
+We strongly recommend using "reserve capture", and not "direct capture",
+so it is possible to cancel a payment without making a refund.
+
+* Make sure you poll
+  [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET),
+  and do not rely on the callback from Vipps, and also don't rely on the user
+  reaching the callback URL.
+* Consider if you should cancel or complete the payment if the payment takes
+  much longer than normal, so much that the user may give up.
+  * If you sell a ticket: It may be good to always issue the ticket if the user
+    has approved the payment, even if the processing of the payment takes much
+    longer than normal and the user "gives up".
+  * If you sell food at a restaurant: If the payment takes so long that the
+    user gives up and tries to order again: It may be smart to cancel the
+    previous order, even though the user did approve the payment.
+
+It is also important that the merchant's and/or partner's systems are able to
+to handle the peak traffic.
+
+See also:
+* [Exception handling](#exception-handling)
+* [Clean Up Strategies](#clean-up-strategies)
 
 ## App integration
 
