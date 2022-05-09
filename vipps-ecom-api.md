@@ -491,6 +491,8 @@ expected to use the `vipps://` URL to deeplink straight to Vipps.
 * Vipps requires a minimum version of the phone's operating system. At the time
   of writing this is iOS 12 (from 2018) or Android 6 (from 2015). If the user
   has an older version of the operating system, Vipps can not be used.
+  The merchant must keep track of this by checking the Apple App Store and
+  Google Play.
 
 Because of the above our general recommnendation is to _not use `isApp`, but leave
 this to Vipps, and let the automatic work for you.
