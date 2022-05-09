@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.71.
+Document version 2.5.72.
 
 ## Table of contents
 
@@ -484,6 +484,18 @@ instead of `https://`), which automatically opens Vipps with app-switch.
 
 The landing page is not involved in this flow, since the merchant app is
 expected to use the `vipps://` URL to deeplink straight to Vipps.
+
+**Important:** Using `isApp` comes with some extra responsibility:
+* The merchant's native app must be sure that the user's phone can open the
+  `vipps://` deeplink.
+* Vipps requires a minimum version of the phone's operating system. At the time
+  of writing this is iOS 12 (from 2018) or Android 6 (from 2015). If the user
+  has an older version of the operating system, Vipps can not be used.
+
+Because of the above our general recommnendation is to _not use `isApp`, but leave
+this to Vipps, and let the automatic work for you.
+
+If you do want to use `isApp` the flow is as follows:
 
 1. Merchant initiates the payment with `isApp:true` parameter:
    [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST).
