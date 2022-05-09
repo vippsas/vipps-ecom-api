@@ -494,7 +494,7 @@ expected to use the `vipps://` URL to deeplink straight to Vipps.
   The merchant must keep track of this by checking the Apple App Store and
   Google Play.
 
-Because of the above our general recommnendation is to _not use `isApp`, but leave
+Because of the above our general recommendation is to _not use `isApp`, but leave
 this to Vipps, and let the automatic work for you.
 
 If you do want to use `isApp` the flow is as follows:
