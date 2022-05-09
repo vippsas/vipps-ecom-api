@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.72.
+Document version 2.5.73.
 
 ## Table of contents
 
@@ -487,7 +487,10 @@ expected to use the `vipps://` URL to deeplink straight to Vipps.
 
 **Important:** Using `isApp` comes with some extra responsibility:
 * The merchant's native app must be sure that the user's phone can open the
-  `vipps://` deeplink.
+  `vipps://` deeplink, as the
+  [Vipps landing page](#the-vipps-landing-page)
+  will not be shown to the user, and it will therefore not be possible to
+  enter a phone number and pay with Vipps on another device.
 * Vipps requires a minimum version of the phone's operating system. At the time
   of writing this is iOS 12 (from 2018) or Android 6 (from 2015). If the user
   has an older version of the operating system, Vipps can not be used.
