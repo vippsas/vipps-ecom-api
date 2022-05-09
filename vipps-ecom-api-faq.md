@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.12.6.
+Document version 3.12.7.
 
 ### Table of contents
 
@@ -333,7 +333,7 @@ Vipps can not offer legal advice for this.
 See more details below:
 
 * [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
-* [When should I use "Direct Capture"?](#wwhen-should-i-use-direct-capture)
+* [When should I use "Direct Capture"?](#when-should-i-use-direct-capture)
 
 ### What is the difference between "Reserve Capture" and "Direct Capture"?
 
@@ -369,7 +369,7 @@ Some things to consider:
 
 See:
 * [When should I charge the customer?](#when-should-i-charge-the-customer)
-* [When should I use "Direct Capture"?](#wwhen-should-i-use-direct-capture)
+* [When should I use "Direct Capture"?](#when-should-i-use-direct-capture)
 * [How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
 
 ### When should I use "Direct Capture"?
@@ -507,7 +507,7 @@ The only ways to initiate Vipps payments from a QR code are:
   This solution uses a static QR code for the sale unit, available on
   [portal.vipps.no](https://portal.vipps.no).
   Vippsnummer can not be used for online sales, etc, as it does not meet the
-  legal reguirments.
+  legal requirements.
 * [Vipps i terminal](https://www.vipps.no/produkter-og-tjenester/privat/vipps-i-terminal/vipps-i-terminal/):
   Merchant-presented, dynamic QR shown on the display of a payment terminal.
 
@@ -1155,7 +1155,7 @@ It depends. You must check the body of the response.
 
 It could be that you are attempting to call a non-existant API endpoint, and
 it could be that you are using the API keys for one MSN for an `orderId`
-gthat belongs to a different MSN.
+that belongs to a different MSN.
 
 See: [Why do I get `errorCode 35 "Requested Order not found"`?](#why-do-i-get-errorcode-35-requested-order-not-found).
 
@@ -1166,7 +1166,7 @@ But: It's usually a problem with the request, and that our validation does not c
 In other words: We should perhaps have returned `HTTP 400 Bad Request`.
 
 If this occurs in the test environment, it may be a glitch in the SQL server.
-We are running a "weaker" instance than in production, and on very rare occations
+We are running a "weaker" instance than in production, and on very rare occasions
 this can cause SQL errors that result in a `HTTP 500 Error`.
 
 Please make sure the JSON payload in your API request validates.
@@ -1237,7 +1237,7 @@ that is only approved for the Vipps Login API.
 Vipps does not do the same checks for sale units that do not make payments,
 so to use the eCom API you need to order "Vipps på nett" on
 [portal.vipps.no](https://portal.vipps.no)
-to go through the regulatory and leagally required checks and get
+to go through the regulatory and legally required checks and get
 access to the Vipps eCom API.
 
 All sale units that have been approved for the Vipps eCom API can also use

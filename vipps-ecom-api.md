@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.70.
+Document version 2.5.71.
 
 ## Table of contents
 
@@ -77,7 +77,7 @@ Document version 2.5.70.
 - [Capture](#capture)
   - [Reserve capture](#reserve-capture-1)
   - [Direct capture](#direct-capture-1)
-  - [Capture payment](#capture-payment)  
+  - [Capture payment](#capture-payment)
   - [Partial capture](#partial-capture)
 - [Cancel](#cancel)
   - [Cancelling a pending order](#cancelling-a-pending-order)
@@ -117,10 +117,10 @@ Document version 2.5.70.
     - [Redirect back to merchant app by simply closing Vipps](#redirect-back-to-merchant-app-by-simply-closing-vipps)
 - [Errors](#errors)
   - [Error object in the response](#error-object-in-the-response)
-- [Error groups](#error-groups)
-- [Error codes](#error-codes)
+  - [Error groups](#error-groups)
+  - [Error codes](#error-codes)
 - [Testing](#testing)
-- [Recomendations regarding handling redirects](#recommendations-regarding-handling-redirects)
+- [Recommendations regarding handling redirects](#recommendations-regarding-handling-redirects)
 - [Questions?](#questions)
 
 ## Flow diagram
@@ -1025,7 +1025,7 @@ See: [Callback statuses](#callback-statuses).
 
 ### Remove User Consent
 
-[`DELETE:[consetRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/removeUserConsentUsingDELETE)
+[`DELETE:[consentRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/removeUserConsentUsingDELETE)
 
 This allows Vipps to send an end user's consent removal request to merchant.
 This endpoint is required for express checkout. When receiving this request,
@@ -1077,7 +1077,7 @@ The respective amount will be reserved for future capturing.
 When a user is directed to the `url` from initiate payment, they will either be taken to Vipps or to the Vipps landing page:
 
 - In a mobile browser, the Vipps app will automatically be opened with app-switch.
-- In a desktop browser, the landing page will prompt the user for the phone number (the number may also be pre-filled, ssubee below).
+- In a desktop browser, the landing page will prompt the user for the phone number (the number may also be pre-filled, see below).
   The user enters or confirms the phone number. Then on their phone, the user gets a push notification and Vipps then prompts for confirmation.
 
 The Vipps landing page is mandatory, and provides a consistent and recognizable user experience,
@@ -1396,7 +1396,7 @@ Response:
 
 ## Recurring eCommerce payments
 
-Recurring eCommerce is its own seperate product and can be found descriped in details in
+Recurring eCommerce is its own separate product and can be found described in details in
 our [Recurring Repo.](https://github.com/vippsas/vipps-recurring-api)
 
 ## Get payment details
@@ -1519,7 +1519,7 @@ Vipps offers the possibility for merchants to ask for the user's profile informa
 This is done through Vipps Userinfo which
 You can learn more at the [OIDC Standard](https://openid.net/specs/openid-connect-core-1_0.html#UserInfo).
 
-To enable the posibility to fetch profile information for a user the merchant can add a `scope`
+To enable the possibility to fetch profile information for a user the merchant can add a `scope`
 parameter to the initiate call:
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST).
 
@@ -1730,7 +1730,7 @@ See [Errors](#errors) for more details.
 
 ## Rate limiting
 
-We have added rate limiting to our APIs (HTTP 429 Too Many Requests) to prevent fradulent and wrongful behaviour, and to increase the stability and security of our APIs. The limits should not affect normal behaviour, but please contact us if you notice any unexpected behaviour.
+We have added rate limiting to our APIs (HTTP 429 Too Many Requests) to prevent fraudulent and wrongful behaviour, and to increase the stability and security of our APIs. The limits should not affect normal behaviour, but please contact us if you notice any unexpected behaviour.
 
 The "Key" column specifies what we consider to be the unique identifier, and
 what we "use to count". The limits are of course not _total_ limits.
@@ -2008,7 +2008,7 @@ With this approach, the merchant app has to have its own URL scheme registered s
 
 In the example below, `MainActivity` is the receiving activity and Vipps opens it once the payment is done.
 
-To receive a call back from Vippslication to an activity, a filter has to be set for that activity. In the merchant app, set a filter in the Manifest file:
+To receive a call back from Vipps to an activity, a filter has to be set for that activity. In the merchant app, set a filter in the Manifest file:
 
 ```xml
 <activity android:name=".MainActivity" android:label="@string/app_name" android:launchMode="singleInstance">
@@ -2081,7 +2081,7 @@ See [HTTP response codes](#http-response-codes).
 }
 ```
 
-## Error groups
+### Error groups
 
 | Error groups   | Description                                                  |
 | -------------- | ------------------------------------------------------------ |
@@ -2092,7 +2092,7 @@ See [HTTP response codes](#http-response-codes).
 | User           | Error related to the Vipps user (Example: Not a Vipps user)  |
 | Merchant       | Errors regarding the merchant                                |
 
-## Error codes
+### Error codes
 
 **Please note:** Vipps is only allowed to provide all of these errors through
 the API, and that we have to send `VippsError` (99) in cases where we are not
@@ -2144,7 +2144,7 @@ to retrieve all the information about the payment.
 | Merchant    | 22         | Reference orderId is not in valid state                                                             |
 | Merchant    | 97         | The merchant is not approved by Vipps to receive payments                                           |
 
-# Testing
+## Testing
 
 To facilitate automated testing in
 [The Vipps Test Environment (MT)](https://github.com/vippsas/vipps-developers/blob/master/vipps-test-environment.md)
@@ -2166,7 +2166,7 @@ the test environment when using Vipps (the app), but not with "force approve".
 **Please note:** Vipps Hurtigkasse (express checkout) and `skipLandingPage`is
 not supported by the force approve endpoint.
 
-# Recommendations regarding handling redirects
+## Recommendations regarding handling redirects
 
 Since Vipps is a native app, and not a website used in a web browser, the level
 of control Vipps has over the redirect back to the merchant after a completed
@@ -2194,7 +2194,7 @@ Example for demonstration purposes that should be handled.
 6. The merchant handles the redirect without the customer noticing any
    discrepancies from the browser switch.
 
-# Questions?
+## Questions?
 
 We're always happy to help with code or other questions you might have!
 Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),

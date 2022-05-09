@@ -23,7 +23,7 @@ When the customer is ready to pay, choose “Pay with Vipps”, and enter the cu
 
 ![Enter phone number](images/vipps-in-store-step2.svg)
 
-## 3. The customer confirms paymment in Vipps
+## 3. The customer confirms payment in Vipps
 
 The customer confirms the payment in Vipps on their phone.
 
