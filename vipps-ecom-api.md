@@ -49,6 +49,7 @@ Document version 2.5.74.
   * [Payments initiated in an app](#payments-initiated-in-an-app)
   * [Initiate payment flow: API calls](#initiate-payment-flow-api-calls)
   * [The Vipps deeplink URL](#the-vipps-deeplink-url)
+    * [isApp](#isapp)
   * [Payment identification](#payment-identification)
   * [Payment retries](#payment-retries)
   * [orderId recommendations](#orderid-recommendations)
