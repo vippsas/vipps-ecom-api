@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.73.
+Document version 2.5.74.
 
 ## Table of contents
 
@@ -474,42 +474,12 @@ If Vipps is installed, Vipps will automatically be opened.
 
 ### Payments initiated in an app
 
-Merchants can signal that the request is coming from their native app by passing
-the `isApp:true` parameter.
+If payments are always initiated in the merchant's native app, there
+is no need to pass any additional parameters: Vipps will handle everything
+automatically.
 
-In this case, the Vipps backend returns an URL that
-works as a native app deeplink to Vipps (eg. with a `vipps://` scheme
-instead of `https://`), which automatically opens Vipps with app-switch.  
-**Please note:** In our test environment (MT) the scheme is `vippsMT://`
-
-The landing page is not involved in this flow, since the merchant app is
-expected to use the `vipps://` URL to deeplink straight to Vipps.
-
-**Important:** Using `isApp` comes with some extra responsibility:
-* The merchant's native app must be sure that the user's phone can open the
-  `vipps://` deeplink, as the
-  [Vipps landing page](#the-vipps-landing-page)
-  will not be shown to the user, and it will therefore not be possible to
-  enter a phone number and pay with Vipps on another device.
-* Vipps requires a minimum version of the phone's operating system. At the time
-  of writing this is iOS 12 (from 2018) or Android 6 (from 2015). If the user
-  has an older version of the operating system, Vipps can not be used.
-  The merchant must keep track of this by checking the Apple App Store and
-  Google Play.
-
-Because of the above our general recommendation is to _not use `isApp`, but leave
-this to Vipps, and let the automatic work for you.
-
-If you do want to use `isApp` the flow is as follows:
-
-1. Merchant initiates the payment with `isApp:true` parameter:
-   [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST).
-2. Vipps returns a `deeplink` URL as response to initiate payment.
-3. The merchant uses the `vipps://` URL to invoke Vipps.
-4. Vipps is automatically opened.
-5. The user accepts or rejects the payment request in Vipps.
-6. The Vipps backend makes a call to the merchant's `callbackPrefix` with information about the payment.
-7. When the payment process is completed, Vipps redirects to the merchant using the `fallBack` URL.
+See:
+* [The Vipps deeplink URL](#the-vipps-deeplink-url)
 
 ### Initiate payment flow: API calls
 
@@ -582,31 +552,72 @@ about which types of information is sensitive (in Norwegian).
 
 #### The Vipps deeplink URL
 
-Vipps responds to the initiate payment request with an URL.
-The URL depends on whether the initiate request was provided the `isApp` parameter:
+Vipps responds to the
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST)
+request with an URL.
+The URL is normally a `https://` URL, which automatically opens Vipps if the
+apps is installed.
 
-- `"isApp":false` (or not provided): The URL is for the Vipps "landing page", with `https://`.
-- `"isApp": true`: The URL is for an deeplink, for app-switch to Vipps, with `vipps://`.
+It is possible to explicitly force a `vipps://` URL by sending the optional
+`isApp` parameter:
 
-Example: Response body for `"isApp":false`, to the landing page:
+* `"isApp":false` (or not sent at all): The URL is `https://`, which handles
+  everything automatically for you.
+  The phone's operating system will know, through "universal linking", that
+  the `https://api.vipps.no` URL should open the Vipps app, and not the default
+  web browser.
+* `"isApp": true`: The URL is for an deeplink, for forced app-switch to Vipps, with `vipps://`.
+  **Please note:** In our test environment (MT) the scheme is `vippsMT://`
+
+If the user does not have Vipps installed:
+* `"isApp":false` (or not sent at all): The Vipps landing page will be shown,
+   and the user can enter a phone number and pay on a device with Vipps installed.
+* `"isApp": true`: The user will be sent to App Store or Google Play.
+
+Example: Response body for `"isApp":false` (or not sent at all):
 
 ```json
 {
   "orderId": "acme-shop-123-order123abc",
-  "url": "https://api.vipps.no/dwo-api-application/v1/deeplink/vippsgateway?v=2&token=eyJraWQiOiJqd3RrZXkiLC <snip>"
+  "url": "https://api.vipps.no/dwo-api-application/v1/deeplink/vippsgateway?v=2&token=eyJraWQiOiJqd3RrZXkiLC <truncated>"
 }
 ```
 
-Example: Response body for `"isApp":true`, with a deeplink for app-switch:
+Example: Response body for `"isApp":true`, with a forced app-switch to Vipps:
 
 ```json
 {
   "orderId": "acme-shop-123-order123abc",
-  "url": "vipps://?token=eyJraWQiOiJqd3RrZXkiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiO <snip>"
+  "url": "vipps://?token=eyJraWQiOiJqd3RrZXkiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiO <truncated>"
 }
 ```
 
-The `url` is truncated, but the format is correct.
+**Important:** Using `isApp` comes with some extra responsibility:
+* The merchant's native app must be sure that the user's phone can open the
+  `vipps://` deeplink, as the
+  [Vipps landing page](#the-vipps-landing-page)
+  will not be shown to the user, and it will therefore not be possible to
+  enter a phone number and pay with Vipps on another device.
+* Vipps requires a minimum version of the phone's operating system. At the time
+  of writing this is iOS 12 (from 2018) or Android 6 (from 2015). If the user
+  has an older version of the operating system, Vipps can not be used.
+  The merchant must keep track of this by checking the Apple App Store and
+  Google Play.
+
+Because of the above our general recommendation is to _not use `isApp`, but leave
+this to Vipps, and let the automatic work for you.
+
+If you do want to use `isApp` the flow is as follows:
+
+1. Merchant initiates the payment with `isApp:true` parameter:
+   [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST).
+2. Vipps returns a `deeplink` URL as response to initiate payment.
+3. The merchant uses the `vipps://` URL to invoke Vipps.
+4. Vipps is automatically opened.
+5. The user accepts or rejects the payment request in Vipps.
+6. The Vipps backend makes a call to the merchant's `callbackPrefix` with information about the payment.
+7. When the payment process is completed, Vipps redirects to the merchant using the `fallBack` URL.
+
 
 **Please note:** The user should be send _directly_ to the deeplink.
 Rewriting the deeplink URL in any way may break the payment process.
