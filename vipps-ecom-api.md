@@ -48,7 +48,7 @@ Document version 2.5.74.
   * [Desktop flow](#desktop-flow)
   * [Payments initiated in an app](#payments-initiated-in-an-app)
   * [Initiate payment flow: API calls](#initiate-payment-flow-api-calls)
-    * [The Vipps deeplink URL](#the-vipps-deeplink-url)
+  * [The Vipps deeplink URL](#the-vipps-deeplink-url)
   * [Payment identification](#payment-identification)
   * [Payment retries](#payment-retries)
   * [orderId recommendations](#orderid-recommendations)
@@ -468,7 +468,7 @@ If payments are always initiated in the merchant's native app, there
 is no need to pass any additional parameters: Vipps will handle everything
 automatically.
 
-It is possible to send the optional `isApp` parameter, which cames with some
+It is possible to send the optional `isApp` parameter, which comes with some
 additional responsibility.
 
 See:
@@ -543,7 +543,7 @@ See
 [Datatilsynet's information](https://www.datatilsynet.no/rettigheter-og-plikter/personopplysninger/)
 about which types of information is sensitive (in Norwegian).
 
-#### The Vipps deeplink URL
+### The Vipps deeplink URL
 
 Vipps responds to the
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST)
@@ -551,16 +551,18 @@ request with an URL.
 The URL is normally a `https://` URL, which automatically opens Vipps if the
 apps is installed.
 
-It is possible to explicitly force a `vipps://` URL by sending the optional
-`isApp` parameter:
+#### isApp
 
-* `"isApp":false` (or not sent at all): The URL is `https://`, which handles
+If the payment is initiated in a native app it is possible to explicitly force
+a `vipps://` URL by sending the optional `isApp` parameter in the initiate call:
+
+* `"isApp": false` (or not sent at all): The URL is `https://`, which handles
   everything automatically for you.
   The phone's operating system will know, through "universal linking", that
   the `https://api.vipps.no` URL should open the Vipps app, and not the default
   web browser.
   **Please note:** In some cases this requires the user to approve that
-  Vipps is opened, but this is only the first time.
+  Vipps is opened, but this is usually only the first time.
 * `"isApp": true`: The URL is for an deeplink, for forced app-switch to Vipps, with `vipps://`.
   **Please note:** In our test environment (MT) the scheme is `vippsMT://`
 
