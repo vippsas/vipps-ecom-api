@@ -54,7 +54,7 @@ paths:
         The access token endpoint is used to get the JWT (JSON Web Token) that
         must be passed in every API request in the `Authorization` header.
         The access token is a base64-encoded string value that must be
-        aquired first before making any Vipps API calls.
+        acquired first before making any Vipps API calls.
         The access token is valid for 1 hour in the test environment
         and 24 hours in the production environment.
       operationId: fetchAuthorizationTokenUsingPost
@@ -128,7 +128,7 @@ paths:
           description: >-
             Token provided by the merchant in the initiate payment request as
             `authToken`. Used so that the merchant may authenticate the request
-            fromn Vipps.
+            from Vipps.
           schema:
             type: string
           example: ae0cb90d91b4a84a
@@ -159,7 +159,7 @@ paths:
         Once the transaction is successfully initiated in Vipps, you will receive a
         response with a URL that will direct the customer to the Vipps landing page.
         The landing page detects if the request comes from a mobile or laptop/desktop device,
-        and if on a mobile device automatically switches to the Vipps app if it is intalled.
+        and if on a mobile device automatically switches to the Vipps app if it is installed.
         The merchant may also pass the 'isApp: true' parameter that will make Vipps
         respond with a app-switch deeplink that will take the customer directly
         to the Vipps app. This is normally not necessary, as Vipps handles this automatically.
@@ -247,7 +247,7 @@ paths:
               summary: 'Callback : Transaction Update'
               description: >-
                 This API call allows Vipps to send the transaction details to the merchant.
-                For regular ecomm payments the order and transaction details will be shared.
+                For regular eCom payments the order and transaction details will be shared.
                 For Vipps Hurtigkasse (express checkout) payments it will in addition provide
                 user details and shipping details.
                 Vipps will add `/v2/payments/{orderId}` to the end of this URL.
@@ -279,7 +279,7 @@ paths:
               summary: 'Callback : Transaction Update'
               description: >-
                 This API call allows Vipps to send the transaction details to the merchant.
-                For regular ecomm payments the order and transaction details will be shared.
+                For regular eCom payments the order and transaction details will be shared.
                 For Vipps Hurtigkasse (express checkout) payments it will in addition provide
                 user details and shipping details.
                 Vipps will add `/v2/payments/{orderId}` to the end of this URL.
@@ -389,7 +389,7 @@ paths:
       summary: 'Callback : Transaction Update'
       description: >-
         This API call allows Vipps to send the transaction details.
-        For regular ecomm payments the order and transaction details will be shared.
+        For regular eCom payments the order and transaction details will be shared.
         For Vipps Hurtigkasse (express checkout) payments it will provide user details and
         shipping details addition to the order and transaction details.
         Vipps will add `/v2/payments/{orderId}` to the end of this URL.
@@ -447,7 +447,7 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: The `orderId`is specified when initiating the paymemt.
+          description: The `orderId`is specified when initiating the payment.
           required: true
           schema:
             type: string
@@ -556,7 +556,7 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: The `orderId`is specified when initiating the paymemt.
+          description: The `orderId`is specified when initiating the payment.
           required: true
           schema:
             type: string
@@ -745,10 +745,10 @@ paths:
       description: >-
         The API allows a merchant to do a refund of already captured
         transaction. There is an option to do a partial refund of the captured
-        amount. Refunded amount cannot be larger than captured. Timeframe for
+        amount. Refunded amount cannot be larger than captured. Time frame for
         issuing a refund for a payment is 365 days from the date payment has
         been captured. If the refund payment service call is called after the
-        refund timeframe, service call will respond with an error. Refunded
+        refund time frame, service call will respond with an error. Refunded
         funds will be transferred from the merchant account to the customer
         credit card that was used in payment flow. Pay attention that in order
         to perform refund, there must be enough funds at merchant settlements
@@ -757,7 +757,7 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: The `orderId`is specified when initiating the paymemt.
+          description: The `orderId`is specified when initiating the payment.
           required: true
           schema:
             type: string
@@ -865,7 +865,7 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: The `orderId`is specified when initiating the paymemt.
+          description: The `orderId`is specified when initiating the payment.
           required: true
           schema:
             type: string
@@ -951,7 +951,7 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: The `orderId`is specified when initiating the paymemt.
+          description: The `orderId`is specified when initiating the payment.
           required: true
           schema:
             type: string
@@ -1043,7 +1043,7 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: The `orderId`is specified when initiating the paymemt.
+          description: The `orderId`is specified when initiating the payment.
           required: true
           schema:
             type: string
@@ -1187,7 +1187,7 @@ components:
           pattern: '^\d{8}$'
         token:
           type: string
-          description: The token value recieved in the `url` property in the Initiate response
+          description: The token value received in the `url` property in the Initiate response
           example: eyJraWQiOiJqd3R
     Address:
       type: object
@@ -1247,7 +1247,7 @@ components:
             - Norway
         zipCode:
           type: string
-          description: "Postcode (apologies for not useing `postCode` as elsewhere)"
+          description: "Postcode (apologies for not using `postCode` as elsewhere)"
           example: "0154"
     PaymentShippingDetails:
       type: object
@@ -1303,7 +1303,7 @@ components:
             - VOID
         operationSuccess:
           type: boolean
-          description: If the corrosponding operation was successfull.
+          description: If the corresponding operation was successful.
           example: true
         requestId:
           type: string
@@ -1343,7 +1343,7 @@ components:
       properties:
         bankIdVerified:
           type: string
-          description: Optional Y/N string indicating if the user in bankId vertified, must be requested during onboarding.
+          description: Optional Y/N string indicating if the user in bankId verified, must be requested during onboarding.
           example: 'Y'
           enum:
             - Y
@@ -1717,7 +1717,7 @@ components:
             also redirect a user to the app if the user is using a mobile browser.
             This link will timeout after 5 minutes.
             This .c is a shortened deeplink URL.
-            The URL received fromn Vipps should not be changed, and the format may change without notice.
+            The URL received from Vipps should not be changed, and the format may change without notice.
           example: 'https://api.vipps.no/dwo-api-application/v1/deeplink/vippsgateway?v=2&token=eyJraWQiOiJqd3RrZXkiLC <snip>'
     ShippingDetailsRequest:
       type: object
@@ -2006,7 +2006,7 @@ components:
             Required for Vipps Hurtigkasse (express checkout) payments. This callback URL will be
             used by Vipps to inform the merchant that the user has revoked
             his/her consent: This Vipps user does do not want the merchant to
-            store or use his/her personal information anymore. Required by GDPR.
+            store or use his/her personal information any longer. Required by GDPR.
             Vipps will add `/v2/consents/{userId}` to the end or this URL.
             URLs passed to Vipps must validate, see
             [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
@@ -2162,7 +2162,7 @@ components:
         mobileNumber:
           type: string
           description: >-
-            Mobile number of the user who has to pay for the transation from
+            Mobile number of the user who has to pay for the transaction from
             Vipps. Allowed format: xxxxxxxx. No country code.
           minLength: 8
           maxLength: 8
@@ -2177,7 +2177,7 @@ components:
           $ref: '#/components/schemas/CancelTransaction'
         shouldReleaseRemainingFunds:
           type: boolean
-          description: An opt-in field to instuct the release of remaining funds after a partial capture.
+          description: An opt-in field to instruct the release of remaining funds after a partial capture.
           default: false
       required:
         - merchantInfo
