@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.22
+  version: 1.6.23
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -153,13 +153,13 @@ paths:
       summary: Initiate Payment
       description: >-
         This API call allows the merchants to initiate payments.
-        The `merchantSerialNumber` (MSN) specifies which sales unit the payments is for.
+        The `merchantSerialNumber` (MSN) specifies which sales unit the payment is for.
         Payments are uniquely identified with the `merchantSerialNumber` and `orderId` together.
         The merchant-provided `orderId` must be unique per sales unit.
         Once the transaction is successfully initiated in Vipps, you will receive a
         response with a URL that will direct the customer to the Vipps landing page.
         The landing page detects if the request comes from a mobile or laptop/desktop device,
-        and if on a mobile device automatically switches to the Vipps app if it is installed.
+        and if on a mobile device automatically switches to the Vipps app, if it is installed.
         The merchant may also pass the 'isApp: true' parameter that will make Vipps
         respond with a app-switch deeplink that will take the customer directly
         to the Vipps app. This is normally not necessary, as Vipps handles this automatically.
@@ -390,7 +390,7 @@ paths:
       description: >-
         This API call allows Vipps to send the transaction details.
         For regular eCom payments the order and transaction details will be shared.
-        For Vipps Hurtigkasse (express checkout) payments it will provide user details and
+        For Vipps Hurtigkasse (express checkout) payments it will provides user details and
         shipping details addition to the order and transaction details.
         Vipps will add `/v2/payments/{orderId}` to the end of this URL.
         URLs passed to Vipps must validate, see
@@ -447,7 +447,7 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: The `orderId`is specified when initiating the payment.
+          description: The `orderId` is specified when initiating the payment.
           required: true
           schema:
             type: string
@@ -551,12 +551,12 @@ paths:
         Please note that in a case of communication errors during an initiate payment service call
         between Vipps and PSP/Acquirer/Issuer; even in a case that customer has
         confirmed a payment, the payment will be cancelled by Vipps. Note this
-        means you can not cancel a captured payment.
+        means you cannot cancel a captured payment.
       operationId: cancelPaymentRequestUsingPUT
       parameters:
         - name: orderId
           in: path
-          description: The `orderId`is specified when initiating the payment.
+          description: The `orderId` is specified when initiating the payment.
           required: true
           schema:
             type: string
@@ -653,7 +653,7 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: The `orderId`is specified when initiating the payment.
+          description: The `orderId` is specified when initiating the payment.
           required: true
           schema:
             type: string
@@ -743,7 +743,7 @@ paths:
         - Vipps eCom API
       summary: 'Refund Payment '
       description: >-
-        The API allows a merchant to do a refund of already captured
+        The API allows a merchant to do a refund of an already captured
         transaction. There is an option to do a partial refund of the captured
         amount. Refunded amount cannot be larger than captured. Time frame for
         issuing a refund for a payment is 365 days from the date payment has
@@ -757,7 +757,7 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: The `orderId`is specified when initiating the payment.
+          description: The `orderId` is specified when initiating the payment.
           required: true
           schema:
             type: string
@@ -865,7 +865,7 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: The `orderId`is specified when initiating the payment.
+          description: The `orderId` is specified when initiating the payment.
           required: true
           schema:
             type: string
@@ -951,7 +951,7 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: The `orderId`is specified when initiating the payment.
+          description: The `orderId` is specified when initiating the payment.
           required: true
           schema:
             type: string
@@ -1043,7 +1043,7 @@ paths:
       parameters:
         - name: orderId
           in: path
-          description: The `orderId`is specified when initiating the payment.
+          description: The `orderId` is specified when initiating the payment.
           required: true
           schema:
             type: string
@@ -1081,7 +1081,9 @@ paths:
       tags:
         - Vipps Userinfo API
       summary: Get Userinfo
-      description: This endpoint returns the payload with the information that the user has consented to share. Find more info on the `/userinfo` endpoint at the OIDC Standard https://openid.net/specs/openid-connect-core-1_0.html#UserInfo
+      description: >-
+        This endpoint returns the payload with the information that the user has consented to share. 
+        Find more info on the `/userinfo` endpoint at the OIDC Standard https://openid.net/specs/openid-connect-core-1_0.html#UserInfo
       operationId: getUserinfo
       parameters:
         - name: sub
@@ -1981,7 +1983,7 @@ components:
           type: string
           description: >-
             Authorization token that the merchant could share to make callbacks
-            more secure. If provided this token will be returned as an
+            more secure. If provided, this token will be returned as an
             `Authorization` header for our callbacks. This includes shipping
             details and callback.
           maxLength: 255
@@ -2005,7 +2007,7 @@ components:
           description: >-
             Required for Vipps Hurtigkasse (express checkout) payments. This callback URL will be
             used by Vipps to inform the merchant that the user has revoked
-            his/her consent: This Vipps user does do not want the merchant to
+            his/her consent: This Vipps user does not want the merchant to
             store or use his/her personal information any longer. Required by GDPR.
             Vipps will add `/v2/consents/{userId}` to the end or this URL.
             URLs passed to Vipps must validate, see
@@ -2050,9 +2052,10 @@ components:
         paymentType:
           type: string
           description: >-
-            This parameter will identify difference between a regular ecomm
-            payment and ecomm express payment. For Vipps Hurtigkasse (express checkout), use: "eComm
-            Express Payment". Express checkouts requires `consentRemovalPrefix`.
+            This parameter will identify difference between a regular ecommerce
+            payment and an ecommerce express payment. For Vipps Hurtigkasse (express checkout), use: "eComm
+            Express Payment". Express checkouts require `consentRemovalPrefix`. 
+            Note, use the value exactly as it is shown below (i.e., "eComm" with two m's). 
           enum:
             - eComm Regular Payment
             - eComm Express Payment
