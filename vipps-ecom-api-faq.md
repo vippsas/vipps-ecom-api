@@ -605,6 +605,10 @@ It is also possible to do refunds on
 [portal.vipps.no](https://portal.vipps.no).
 
 Refunds can be made up to 365 days after payment or reservation.
+Very old payments have a higher risk of being problematic, because people
+change banks, leave the country, die, etc,
+and this then requires time-consuming manual work.
+Vipps therefore limits refunds to 365 days.
 
 ### How can I refund only a part of a payment?
 
