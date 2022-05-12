@@ -111,6 +111,30 @@
 			"key": "transactionTextCancel",
 			"value": "Transaction cancelled through Postman",
 			"enabled": true
+		},
+		{
+			"key": "vipps_system_name",
+			"value": "postman",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "vipps_system_version",
+			"value": "2.0",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "vipps_system_plugin_name",
+			"value": "vipps-postman",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "vipps_system_plugin_version",
+			"value": "2.0",
+			"type": "default",
+			"enabled": true
 		}
 	],
 	"_postman_variable_scope": "environment",

@@ -44,6 +44,36 @@
 								"key": "Content-Type",
 								"value": "application/x-www-form-urlencoded",
 								"type": "text"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{Ocp-Apim-Subscription-Key}}",
+								"type": "default"
+							},
+							{
+								"key": "Merchant-Serial-Number",
+								"value": "{{merchantSerialNumber}}",
+								"type": "default"
+							},
+							{
+								"key": "Vipps-System-Name",
+								"value": "{{vipps_system_name}}",
+								"type": "default"
+							},
+							{
+								"key": "Vipps-System-Version",
+								"value": "{{vipps_system_version}}",
+								"type": "default"
+							},
+							{
+								"key": "Vipps-System-Plugin-Name",
+								"value": "{{vipps_system_plugin_name}}",
+								"type": "default"
+							},
+							{
+								"key": "Vipps-System-Plugin-Version",
+								"value": "{{vipps_system_plugin_version}}",
+								"type": "default"
 							}
 						],
 						"body": {
@@ -80,6 +110,36 @@
 								"key": "Authorization",
 								"type": "text",
 								"value": "Bearer {{login_token}}"
+							},
+							{
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "{{Ocp-Apim-Subscription-Key}}",
+								"type": "default"
+							},
+							{
+								"key": "Merchant-Serial-Number",
+								"value": "{{merchantSerialNumber}}",
+								"type": "default"
+							},
+							{
+								"key": "Vipps-System-Name",
+								"value": "{{vipps_system_name}}",
+								"type": "default"
+							},
+							{
+								"key": "Vipps-System-Version",
+								"value": "{{vipps_system_version}}",
+								"type": "default"
+							},
+							{
+								"key": "Vipps-System-Plugin-Name",
+								"value": "{{vipps_system_plugin_name}}",
+								"type": "default"
+							},
+							{
+								"key": "Vipps-System-Plugin-Version",
+								"value": "{{vipps_system_plugin_version}}",
+								"type": "default"
 							}
 						],
 						"url": {
@@ -136,8 +196,18 @@
 							},
 							{
 								"key": "Vipps-System-Version",
-								"value": "{{collection_version}}",
+								"value": "{{vipps_system_version}}",
 								"type": "text"
+							},
+							{
+								"key": "Vipps-System-Plugin-Name",
+								"value": "{{vipps_system_plugin_name}}",
+								"type": "default"
+							},
+							{
+								"key": "Vipps-System-Plugin-Version",
+								"value": "{{vipps_system_plugin_version}}",
+								"type": "default"
 							}
 						],
 						"body": {
@@ -199,6 +269,16 @@
 								"key": "Vipps-System-Version",
 								"value": "{{collection_version}}",
 								"type": "text"
+							},
+							{
+								"key": "Vipps-System-Plugin-Name",
+								"value": "{{vipps_system_plugin_name}}",
+								"type": "default"
+							},
+							{
+								"key": "Vipps-System-Plugin-Version",
+								"value": "{{vipps_system_plugin_version}}",
+								"type": "default"
 							}
 						],
 						"body": {
@@ -252,6 +332,26 @@
 					{
 						"key": "Ocp-Apim-Subscription-Key",
 						"value": "{{Ocp-Apim-Subscription-Key}}"
+					},
+					{
+						"key": "Vipps-System-Name",
+						"value": "{{vipps_system_name}}",
+						"type": "default"
+					},
+					{
+						"key": "Vipps-System-Version",
+						"value": "{{vipps_system_version}}",
+						"type": "default"
+					},
+					{
+						"key": "Vipps-System-Plugin-Name",
+						"value": "{{vipps_system_plugin_name}}",
+						"type": "default"
+					},
+					{
+						"key": "Vipps-System-Plugin-Version",
+						"value": "{{vipps_system_plugin_version}}",
+						"type": "default"
 					}
 				],
 				"body": {
@@ -312,30 +412,28 @@
 						"value": "Bearer {{access_token}}"
 					},
 					{
+						"key": "Merchant-Serial-Number",
+						"value": "{{merchantSerialNumber}}",
+						"type": "text"
+					},
+					{
 						"key": "Vipps-System-Name",
 						"value": "{{vipps_system_name}}",
 						"type": "text"
 					},
 					{
 						"key": "Vipps-System-Version",
-						"value": "{{collection_version}}",
+						"value": "{{vipps_system_version}}",
 						"type": "text"
 					},
 					{
 						"key": "Vipps-System-Plugin-Name",
-						"value": "",
-						"type": "text",
-						"disabled": true
+						"value": "{{vipps_system_plugin_name}}",
+						"type": "text"
 					},
 					{
 						"key": "Vipps-System-Plugin-Version",
-						"value": "",
-						"type": "text",
-						"disabled": true
-					},
-					{
-						"key": "Merchant-Serial-Number",
-						"value": "{{merchantSerialNumber}}",
+						"value": "{{vipps_system_plugin_version}}",
 						"type": "text"
 					}
 				],
@@ -354,7 +452,8 @@
 						"payments",
 						""
 					]
-				}
+				},
+				"description": "This is the default, simple initiate request."
 			},
 			"response": []
 		},
@@ -399,30 +498,28 @@
 						"value": "Bearer {{access_token}}"
 					},
 					{
+						"key": "Merchant-Serial-Number",
+						"value": "{{merchantSerialNumber}}",
+						"type": "text"
+					},
+					{
 						"key": "Vipps-System-Name",
 						"value": "{{vipps_system_name}}",
 						"type": "text"
 					},
 					{
 						"key": "Vipps-System-Version",
-						"value": "{{collection_version}}",
+						"value": "{{vipps_system_version}}",
 						"type": "text"
 					},
 					{
 						"key": "Vipps-System-Plugin-Name",
-						"value": "",
-						"type": "text",
-						"disabled": true
+						"value": "{{vipps_system_plugin_name}}",
+						"type": "text"
 					},
 					{
 						"key": "Vipps-System-Plugin-Version",
-						"value": "",
-						"type": "text",
-						"disabled": true
-					},
-					{
-						"key": "Merchant-Serial-Number",
-						"value": "{{merchantSerialNumber}}",
+						"value": "{{vipps_system_plugin_version}}",
 						"type": "text"
 					}
 				],
@@ -441,7 +538,8 @@
 						"payments",
 						""
 					]
-				}
+				},
+				"description": "An express checkout payment that provides shipping information.\nIf the enduser has not already consented to sharing information from Vipps to the merchant, they will be asked for any remaining consents before completing the payment flow."
 			},
 			"response": []
 		},
@@ -486,6 +584,11 @@
 						"value": "Bearer {{access_token}}"
 					},
 					{
+						"key": "Merchant-Serial-Number",
+						"type": "text",
+						"value": "{{merchantSerialNumber}}"
+					},
+					{
 						"key": "Vipps-System-Name",
 						"type": "text",
 						"value": "{{vipps_system_name}}"
@@ -493,24 +596,17 @@
 					{
 						"key": "Vipps-System-Version",
 						"type": "text",
-						"value": "{{collection_version}}"
+						"value": "{{vipps_system_version}}"
 					},
 					{
 						"key": "Vipps-System-Plugin-Name",
 						"type": "text",
-						"value": "",
-						"disabled": true
+						"value": "{{vipps_system_plugin_name}}"
 					},
 					{
 						"key": "Vipps-System-Plugin-Version",
 						"type": "text",
-						"value": "",
-						"disabled": true
-					},
-					{
-						"key": "Merchant-Serial-Number",
-						"type": "text",
-						"value": "{{merchantSerialNumber}}"
+						"value": "{{vipps_system_plugin_version}}"
 					}
 				],
 				"body": {
@@ -528,7 +624,8 @@
 						"payments",
 						""
 					]
-				}
+				},
+				"description": "A payment that enables the possibility to fetch profile information for a user.\n\nIf the enduser has not already consented to sharing information from Vipps to the merchant, they will be asked for any remaining consents before completing the payment flow."
 			},
 			"response": []
 		},
@@ -560,6 +657,31 @@
 					{
 						"key": "Ocp-Apim-Subscription-Key",
 						"value": "{{Ocp-Apim-Subscription-Key}}"
+					},
+					{
+						"key": "Merchant-Serial-Number",
+						"value": "{{merchantSerialNumber}}",
+						"type": "default"
+					},
+					{
+						"key": "Vipps-System-Name",
+						"value": "{{vipps_system_plugin_name}}",
+						"type": "default"
+					},
+					{
+						"key": "Vipps-System-Version",
+						"value": "{{vipps_system_version}}",
+						"type": "default"
+					},
+					{
+						"key": "Vipps-System-Plugin_Name",
+						"value": "{{vipps_system_plugin_name}}",
+						"type": "default"
+					},
+					{
+						"key": "Vipps-System-Plugin-Version",
+						"value": "{{vipps_system_plugin_version}}",
+						"type": "default"
 					}
 				],
 				"url": {
@@ -604,30 +726,28 @@
 						"value": "{{Ocp-Apim-Subscription-Key}}"
 					},
 					{
+						"key": "Merchant-Serial-Number",
+						"value": "{{merchantSerialNumber}}",
+						"type": "text"
+					},
+					{
 						"key": "Vipps-System-Name",
 						"value": "{{vipps_system_name}}",
 						"type": "text"
 					},
 					{
 						"key": "Vipps-System-Version",
-						"value": "{{collection_version}}",
+						"value": "{{vipps_system_version}}",
 						"type": "text"
 					},
 					{
 						"key": "Vipps-System-Plugin-Name",
-						"value": "",
-						"type": "text",
-						"disabled": true
+						"value": "{{vipps_system_plugin_name}}",
+						"type": "text"
 					},
 					{
 						"key": "Vipps-System-Plugin-Version",
-						"value": "",
-						"type": "text",
-						"disabled": true
-					},
-					{
-						"key": "Merchant-Serial-Number",
-						"value": "{{merchantSerialNumber}}",
+						"value": "{{vipps_system_plugin_version}}",
 						"type": "text"
 					}
 				],
@@ -665,30 +785,28 @@
 						"value": "Bearer {{access_token}}"
 					},
 					{
+						"key": "Merchant-Serial-Number",
+						"value": "{{merchantSerialNumber}}",
+						"type": "text"
+					},
+					{
 						"key": "Vipps-System-Name",
 						"value": "{{vipps_system_name}}",
 						"type": "text"
 					},
 					{
 						"key": "Vipps-System-Version",
-						"value": "{{collection_version}}",
+						"value": "{{vipps_system_version}}",
 						"type": "text"
 					},
 					{
 						"key": "Vipps-System-Plugin-Name",
-						"value": "",
-						"type": "text",
-						"disabled": true
+						"value": "{{vipps_system_plugin_name}}",
+						"type": "text"
 					},
 					{
 						"key": "Vipps-System-Plugin-Version",
-						"value": "",
-						"type": "text",
-						"disabled": true
-					},
-					{
-						"key": "Merchant-Serial-Number",
-						"value": "{{merchantSerialNumber}}",
+						"value": "{{vipps_system_plugin_version}}",
 						"type": "text"
 					}
 				],
@@ -745,30 +863,28 @@
 						"value": "{{orderId}}XIDC1"
 					},
 					{
+						"key": "Merchant-Serial-Number",
+						"value": "{{merchantSerialNumber}}",
+						"type": "text"
+					},
+					{
 						"key": "Vipps-System-Name",
 						"value": "{{vipps_system_name}}",
 						"type": "text"
 					},
 					{
 						"key": "Vipps-System-Version",
-						"value": "{{collection_version}}",
+						"value": "{{vipps_system_version}}",
 						"type": "text"
 					},
 					{
 						"key": "Vipps-System-Plugin-Name",
-						"value": "",
-						"type": "text",
-						"disabled": true
+						"value": "{{vipps_system_plugin_name}}",
+						"type": "text"
 					},
 					{
 						"key": "Vipps-System-Plugin-Version",
-						"value": "",
-						"type": "text",
-						"disabled": true
-					},
-					{
-						"key": "Merchant-Serial-Number",
-						"value": "{{merchantSerialNumber}}",
+						"value": "{{vipps_system_plugin_version}}",
 						"type": "text"
 					}
 				],
@@ -814,30 +930,28 @@
 						"value": "{{orderId}}XIDR1"
 					},
 					{
+						"key": "Merchant-Serial-Number",
+						"value": "{{merchantSerialNumber}}",
+						"type": "text"
+					},
+					{
 						"key": "Vipps-System-Name",
 						"value": "{{vipps_system_name}}",
 						"type": "text"
 					},
 					{
 						"key": "Vipps-System-Version",
-						"value": "{{collection_version}}",
+						"value": "{{vipps_system_version}}",
 						"type": "text"
 					},
 					{
 						"key": "Vipps-System-Plugin-Name",
-						"value": "",
-						"type": "text",
-						"disabled": true
+						"value": "{{vipps_system_plugin_name}}",
+						"type": "text"
 					},
 					{
 						"key": "Vipps-System-Plugin-Version",
-						"value": "",
-						"type": "text",
-						"disabled": true
-					},
-					{
-						"key": "Merchant-Serial-Number",
-						"value": "{{merchantSerialNumber}}",
+						"value": "{{vipps_system_plugin_version}}",
 						"type": "text"
 					}
 				],
@@ -885,11 +999,7 @@
 	"variable": [
 		{
 			"key": "collection_version",
-			"value": "2021-12-14"
-		},
-		{
-			"key": "vipps_system_name",
-			"value": "postman"
+			"value": "2022-05-10"
 		}
 	]
 }
