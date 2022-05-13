@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.12.7.
+Document version 3.12.8.
 
 ### Table of contents
 
@@ -1510,7 +1510,7 @@ the user is sent to Vipps to pay the total amount.
       "redirect_url": "https://example.com/vipps/ecom-api/initiate/acme-shop-123-order123abc",
       "image_url": "https://example.com/images/vipps-logo.png",
       "fee": 0,
-      "description": "Pay with Vipps"
+      "description": "Husk: Vipps er gebyrfritt når du betaler til bedrifter."
    }
 ]
 ```
@@ -1521,7 +1521,7 @@ the user is sent to Vipps to pay the total amount.
 | `redirect_url` | Merchant hosted url redirecting to [the Vipps payment deeplink URL](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#the-vipps-deeplink-url)|
 | `image_url`    | The logo to be shown for this payment method. See: [Vipps design guidelines](https://github.com/vippsas/vipps-design-guidelines).  |
 | `fee`          | Should not be applicable because of PSD2 surcharge ban.  |
-| `description`  | Optional text describing Vipps as payment method.        |
+| `description`  | The `description` field should state that there is no fee when paying with Vipps. The Norwegian text above says: "Vipps is without fees when paying businesses".  |
 
 Follow Klarna's process to get the External Payment Method activated for
 your account, described in the
