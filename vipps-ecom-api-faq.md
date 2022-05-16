@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.12.8.
+Document version 3.12.9.
 
 ### Table of contents
 
@@ -782,8 +782,9 @@ You can log in on
 [portal.vipps.no](https://portal.vipps.no)
 to check if your sale unit has `skipLandingPage` enabled.
 
-If you are a partner and want to check a merchant, you can simply
-try to initiate a payment with `skipLandingPage`.
+If you are a partner and want to check a merchant, see the
+[Partner API](https://github.com/vippsas/vipps-partner-api).
+Or you can simply try to initiate a payment with `skipLandingPage`.
 If you do not get an error, it's active.
 If you get an error, it's not active.
 
