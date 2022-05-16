@@ -396,6 +396,9 @@ you can make a small payment (2 kr), check the payment with
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET),
 and cancel (if it was `RESERVE` and reserve capture) or refund (if it was `SALE` and direct capture).
 
+If you are a partner and want to check a merchant, see the
+[Partner API](https://github.com/vippsas/vipps-partner-api).
+
 ### How do I turn direct capture on or off?
 
 You can't turn _direct capture_ on or off as a merchant.
