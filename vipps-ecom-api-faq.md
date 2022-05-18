@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.12.9.
+Document version 3.12.10.
 
 ### Table of contents
 
@@ -1099,6 +1099,9 @@ Please follow these steps to make sure everything is correct:
 6. If you are a partner and you are using partner keys: Double check everything
    described here:
    [Partner keys](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#partner-keys).
+7. Make sure that you are using a valid access token. See
+   [Getting started: Get an access token](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#get-an-access-token)
+   for details, how long it is valid, etc.
 
 You can log in to
 [portal.vipps.no](https://portal.vipps.no)
