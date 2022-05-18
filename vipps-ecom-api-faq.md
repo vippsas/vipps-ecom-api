@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.12.7.
+Document version 3.12.10.
 
 ### Table of contents
 
@@ -396,6 +396,9 @@ you can make a small payment (2 kr), check the payment with
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET),
 and cancel (if it was `RESERVE` and reserve capture) or refund (if it was `SALE` and direct capture).
 
+If you are a partner and want to check a merchant, see the
+[Partner API](https://github.com/vippsas/vipps-partner-api).
+
 ### How do I turn direct capture on or off?
 
 You can't turn _direct capture_ on or off as a merchant.
@@ -782,8 +785,9 @@ You can log in on
 [portal.vipps.no](https://portal.vipps.no)
 to check if your sale unit has `skipLandingPage` enabled.
 
-If you are a partner and want to check a merchant, you can simply
-try to initiate a payment with `skipLandingPage`.
+If you are a partner and want to check a merchant, see the
+[Partner API](https://github.com/vippsas/vipps-partner-api).
+Or you can simply try to initiate a payment with `skipLandingPage`.
 If you do not get an error, it's active.
 If you get an error, it's not active.
 
@@ -1095,6 +1099,9 @@ Please follow these steps to make sure everything is correct:
 6. If you are a partner and you are using partner keys: Double check everything
    described here:
    [Partner keys](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#partner-keys).
+7. Make sure that you are using a valid access token. See
+   [Getting started: Get an access token](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#get-an-access-token)
+   for details, how long it is valid, etc.
 
 You can log in to
 [portal.vipps.no](https://portal.vipps.no)
@@ -1510,7 +1517,7 @@ the user is sent to Vipps to pay the total amount.
       "redirect_url": "https://example.com/vipps/ecom-api/initiate/acme-shop-123-order123abc",
       "image_url": "https://example.com/images/vipps-logo.png",
       "fee": 0,
-      "description": "Pay with Vipps"
+      "description": "Husk: Vipps er gebyrfritt når du betaler til bedrifter."
    }
 ]
 ```
@@ -1521,7 +1528,7 @@ the user is sent to Vipps to pay the total amount.
 | `redirect_url` | Merchant hosted url redirecting to [the Vipps payment deeplink URL](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#the-vipps-deeplink-url)|
 | `image_url`    | The logo to be shown for this payment method. See: [Vipps design guidelines](https://github.com/vippsas/vipps-design-guidelines).  |
 | `fee`          | Should not be applicable because of PSD2 surcharge ban.  |
-| `description`  | Optional text describing Vipps as payment method.        |
+| `description`  | The `description` field should state that there is no fee when paying with Vipps. The Norwegian text above says: "Vipps is without fees when paying businesses".  |
 
 Follow Klarna's process to get the External Payment Method activated for
 your account, described in the
