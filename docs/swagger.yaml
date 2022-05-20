@@ -1328,6 +1328,8 @@ components:
           maxLength: 100
     CancelTransaction:
       type: object
+      required:
+        - transactionText
       properties:
         transactionText:
           type: string
