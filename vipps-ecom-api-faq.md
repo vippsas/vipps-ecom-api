@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.12.12.
+Document version 3.12.13.
 
 ### Table of contents
 
@@ -1517,7 +1517,7 @@ the user is sent to Vipps to pay the total amount.
       "redirect_url": "https://example.com/vipps/ecom-api/initiate/acme-shop-123-order123abc",
       "image_url": "https://example.com/images/vipps-logo.png",
       "fee": 0,
-      "description": "Husk: Vipps er gebyrfritt når du betaler til bedrifter."
+      "description": "Husk: Vipps er alltid gebyrfritt når du betaler til bedrifter."
    }
 ]
 ```
