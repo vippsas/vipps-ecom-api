@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.24
+  version: 1.6.25
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -66,7 +66,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/AuthorizationTokenResponse'
         default:
-          $ref: '#/components/responses/Default'
+          $ref: '#/components/responses/ErrorResponse'
   '[consentRemovalPrefix]/v2/consents/{userId}':
     delete:
       tags:
@@ -381,7 +381,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaymentInitiationResponse'
         default:
-          $ref: '#/components/responses/Default'
+          $ref: '#/components/responses/ErrorResponse'
   '[callbackPrefix]/v2/payments/{orderId}':
     post:
       tags:
@@ -539,7 +539,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/TransactionResponse'
         default:
-          $ref: '#/components/responses/Default'
+          $ref: '#/components/responses/ErrorResponse'
   '/ecomm/v2/payments/{orderId}/cancel':
     put:
       tags:
@@ -639,7 +639,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/CancelTransactionResponse'
         default:
-          $ref: '#/components/responses/Default'
+          $ref: '#/components/responses/ErrorResponse'
   '/ecomm/v2/payments/{orderId}/authorize':
     put:
       tags:
@@ -736,7 +736,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/TransactionResponse'
         default:
-          $ref: '#/components/responses/Default'
+          $ref: '#/components/responses/ErrorResponse'
   '/ecomm/v2/payments/{orderId}/refund':
     post:
       tags:
@@ -847,7 +847,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/RefundTransactionResponse'
         default:
-          $ref: '#/components/responses/Default'
+          $ref: '#/components/responses/ErrorResponse'
   '/ecomm/v2/integration-test/payments/{orderId}/approve':
     post:
       tags:
@@ -936,7 +936,7 @@ paths:
         '200':
           description: Force approve payment response
         default:
-          $ref: '#/components/responses/Default'
+          $ref: '#/components/responses/ErrorResponse'
   '/ecomm/v2/payments/{orderId}/details':
     get:
       tags:
@@ -1028,7 +1028,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/TransactionDetails'
         default:
-          $ref: '#/components/responses/Default'
+          $ref: '#/components/responses/ErrorResponse'
   '/ecomm/v2/payments/{orderId}/status':
     get:
       deprecated: true
@@ -1075,14 +1075,14 @@ paths:
               schema:
                 $ref: '#/components/schemas/PaymentStatus'
         default:
-          $ref: '#/components/responses/Default'
+          $ref: '#/components/responses/ErrorResponse'
   '/vipps-userinfo-api/userinfo/{sub}':
     get:
       tags:
         - Vipps Userinfo API
       summary: Get Userinfo
       description: >-
-        This endpoint returns the payload with the information that the user has consented to share. 
+        This endpoint returns the payload with the information that the user has consented to share.
         Find more info on the `/userinfo` endpoint at the OIDC Standard https://openid.net/specs/openid-connect-core-1_0.html#UserInfo
       operationId: getUserinfo
       parameters:
@@ -2056,8 +2056,8 @@ components:
           description: >-
             This parameter will identify difference between a regular ecommerce
             payment and an ecommerce express payment. For Vipps Hurtigkasse (express checkout), use: "eComm
-            Express Payment". Express checkouts require `consentRemovalPrefix`. 
-            Note, use the value exactly as it is shown below (i.e., "eComm" with two m's). 
+            Express Payment". Express checkouts require `consentRemovalPrefix`.
+            Note, use the value exactly as it is shown below (i.e., "eComm" with two m's).
           enum:
             - eComm Regular Payment
             - eComm Express Payment
@@ -2371,8 +2371,12 @@ components:
           type: object
           additionalProperties:
             type: object
-    ErrorObject:
+    ErrorFromAzure:
       type: object
+      description: >-
+        An error from Microsoft Azure. Vipps has limited control of these errors,
+        and can not give asd detailed infomration as with the erroers from our own code.
+        The most important property is the HTTP status code.
       required:
         - responseInfo
         - result
@@ -2387,7 +2391,7 @@ components:
               type: integer
               example: 401
             responseMessage:
-              type: string
+              type: "Unauthorized"
         result:
           type: object
           required:
@@ -2395,10 +2399,14 @@ components:
           properties:
             message:
               type: string
-              description: "A description of what went wrong. See https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#errors"
-              example: "Refused by issuer because of expired card"
+              description: "When possible: A description of what went wrong."
+              example: "An error from Azure API Management, possibly related to authentication"
     Error:
       type: object
+      description: >-
+        An error from Vipps.
+        The most important property is the HTTP status code.
+        The response body contains more details of the error.
       required:
         - errorGroup
         - errorCode
@@ -2432,11 +2440,15 @@ components:
       items:
         $ref: '#/components/schemas/Error'
   responses:
-    Default:
-      description: Possible error responses. See [Responses](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
+    ErrorResponse:
+      description: >-
+        Possible error responses.
+        Errors can be from both Vipps' own code (where we have full control) and
+        from Microsoft Azure (where we rely on standard functionality).
+        See [Responses](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
       content:
         application/json;charset=UTF-8:
           schema:
             oneOf:
               - $ref: '#/components/schemas/ErrorArray'
-              - $ref: '#/components/schemas/ErrorObject'
+              - $ref: '#/components/schemas/ErrorFromAzure'
