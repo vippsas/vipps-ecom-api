@@ -2375,7 +2375,7 @@ components:
       type: object
       description: >-
         An error from Microsoft Azure. Vipps has limited control of these errors,
-        and can not give asd detailed information as with the errors from our own code.
+        and can not give as detailed information as with the errors from our own code.
         The most important property is the HTTP status code.
       required:
         - responseInfo
@@ -2391,7 +2391,8 @@ components:
               type: integer
               example: 401
             responseMessage:
-              type: "Unauthorized"
+              type: string
+              example: "Unauthorized"
         result:
           type: object
           required:
