@@ -2401,7 +2401,7 @@ components:
             message:
               type: string
               description: "When possible: A description of what went wrong."
-              example: "An error from Azure API Management, possibly related to authentication"
+              example: "(An error from Azure API Management, possibly related to authentication)"
     Error:
       type: object
       description: >-
@@ -2446,7 +2446,8 @@ components:
         Possible error responses.
         Errors can be from both Vipps' own code (where we have full control) and
         from Microsoft Azure (where we rely on standard functionality).
-        See [Responses](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
+        See the [Common errors" section of the FAQ](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md).
+        See also: [Responses](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
       content:
         application/json;charset=UTF-8:
           schema:
