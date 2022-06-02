@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.12.10.
+Document version 3.12.12.
 
 ### Table of contents
 
@@ -1673,6 +1673,21 @@ There is no separate API for this, but an attempt to
 with a phone number that is not registered with Vipps will fail with error 81,
 `User not registered with Vipps`.
 See: [Error codes](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes).
+
+Users that install Vipps accept the terms and conditions, including being
+"looked up" by the merchant if the payment is initiated with the phone number
+is specified.  It is of course possible to pay with Vipps without sharing the
+phone number with the merchant.
+See
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
+for the details of initiating payments with and without phone number.
+See also
+[privacy and terms](https://vipps.no/vilkar/)
+on vipps.no.
+
+There are users with unlisted numbers, users with secret number, etc.
+These users can still pay with Vipps, since their phone number is
+not shared with anyone without their explicit consent.
 
 ### How can I save the customer's phone number?
 

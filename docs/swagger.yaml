@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.23
+  version: 1.6.24
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -1328,6 +1328,8 @@ components:
           maxLength: 100
     CancelTransaction:
       type: object
+      required:
+        - transactionText
       properties:
         transactionText:
           type: string
