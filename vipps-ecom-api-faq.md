@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.12.14.
+Document version 3.12.12.
 
 ### Table of contents
 
@@ -382,9 +382,7 @@ See:
 
 ### How can I check if I have "reserve capture" or "direct capture"?
 
-Vipps can no longer manually check this for merchant or partners.
-
-All merchants can log in on
+All customers can log in on
 [portal.vipps.no](https://portal.vipps.no)
 and check the capture type for all their sale units under the "Utvikler" menu item.
 
@@ -392,20 +390,14 @@ You can also find information on how to change capture type there.
 We require BankID login for this, as "direct capture" requires additional
 compliance checks.
 
-If you are a partner and want to check a merchant, see the
-[Partner API](https://github.com/vippsas/vipps-partner-api).
-
-If you are a partner and do not yet use the Partner API, you can ask the
-merchant to create a user for you on
-[portal.vipps.no](https://portal.vipps.no)
-so you can check on behalf of the merchant as
-[described in detail with screenshots](https://github.com/vippsas/vipps-partner/blob/main/add-portal-user.md).
-
 If you are not able to log in on
 [portal.vipps.no](https://portal.vipps.no)
 you can make a small payment (2 kr), check the payment with
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET),
 and cancel (if it was `RESERVE` and reserve capture) or refund (if it was `SALE` and direct capture).
+
+If you are a partner and want to check a merchant, see the
+[Partner API](https://github.com/vippsas/vipps-partner-api).
 
 ### How do I turn direct capture on or off?
 
@@ -789,28 +781,13 @@ in the API guide.
 
 ### How can I check if I have skipLandingPage activated?
 
-Vipps can no longer manually check this for merchant or partners.
-
-All merchants can log in on
+You can log in on
 [portal.vipps.no](https://portal.vipps.no)
-and check if a sale unit has `skipLandingPage` enabled
-for all their sale units under the "Utvikler" menu item.
-
-You can also find information on how to activate `skipLandingPage` there.
+to check if your sale unit has `skipLandingPage` enabled.
 
 If you are a partner and want to check a merchant, see the
 [Partner API](https://github.com/vippsas/vipps-partner-api).
-
-If you are a partner and do not yet use the Partner API, you can ask the
-merchant to create a user for you on
-[portal.vipps.no](https://portal.vipps.no)
-so you can check on behalf of the merchant as
-[described in detail with screenshots](https://github.com/vippsas/vipps-partner/blob/main/add-portal-user.md).
-
-If you are not able to log in on
-[portal.vipps.no](https://portal.vipps.no)
-you can make a small payment (2 kr)
-with `skipLandingPage`.
+Or you can simply try to initiate a payment with `skipLandingPage`.
 If you do not get an error, it's active.
 If you get an error, it's not active.
 
@@ -1540,7 +1517,7 @@ the user is sent to Vipps to pay the total amount.
       "redirect_url": "https://example.com/vipps/ecom-api/initiate/acme-shop-123-order123abc",
       "image_url": "https://example.com/images/vipps-logo.png",
       "fee": 0,
-      "description": "Husk: Vipps er alltid gebyrfritt når du betaler til bedrifter."
+      "description": "Husk: Vipps er gebyrfritt når du betaler til bedrifter."
    }
 ]
 ```
