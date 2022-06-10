@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.13.0.
+Document version 3.13.1.
 
 ### Table of contents
 
@@ -73,6 +73,7 @@ Document version 3.13.0.
   + [Why do I get `unauthorized_client`?](#why-do-i-get-unauthorized_client)
   + [Why do I get `Payment failed`?](#why-do-i-get-payment-failed)
   * [Why do I get an error about having Vipps installed and being 15 years old?](#why-do-i-get-an-error-about-having-vipps-installed-and-being-15-years-old)
+  * [Why do I get `Invalid MSN: 654321`?](#why-do-i-get-invalid-msn-654321)
 * [Other questions](#other-questions)
   + [Can you send us logs so we can look for errors?](#can-you-send-us-logs-so-we-can-look-for-errors)
   + [How do I perform "testing in production"?](#how-do-i-perform-testing-in-production)
