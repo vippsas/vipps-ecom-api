@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.13.1.
+Document version 3.13.2.
 
 ### Table of contents
 
@@ -68,7 +68,7 @@ Document version 3.13.1.
   + [Why do I get `HTTP 500 Internal Server Error`?](#why-do-i-get-http-500-internal-server-error)
   + [Why do I get `errorCode 35 "Requested Order not found"`?](#why-do-i-get-errorcode-35-requested-order-not-found)
   + [Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`?](#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked)
-  + [Why do I get `Merchant Not Allowed for Ecommerce Payment`?](#why-do-i-get-merchant-not-allowed-for-ecommerce-payment)
+  + [Why do I get `merchant not allowed for Ecommerce Payment`?](#why-do-i-get-merchant-not-allowed-for-ecommerce-payment)
   + [Why do I not get the `sub` from `/details`?](#why-do-i-not-get-the-sub-from-details)
   + [Why do I get `unauthorized_client`?](#why-do-i-get-unauthorized_client)
   + [Why do I get `Payment failed`?](#why-do-i-get-payment-failed)
@@ -1162,18 +1162,15 @@ Merchants that only have access to the
 [Vipps Login API](https://github.com/vippsas/vipps-login-api)
 and attempt to use the Vipps eCom API will get this error, with
 `Merchant Not Allowed for Ecommerce Payment` in the body.
-
 This is because the compliance checks required for Vipps eCom API are not
 done for merchants that only need the Vipps Login API.
 If you need access to the Vipps eCom API, you can apply for it on
 [portal.vipps.no](https://portal.vipps.no).
 
-Using a sale unit that only has been approved for the Vipps Login API to
-receive payments is a breach of the Vipps terms and conditions.
-
-You can log in to
-[portal.vipps.no](https://portal.vipps.no)
-to double check your API keys, sale units and API products.
+Partners can get this error if they use
+[partner keys](https://github.com/vippsas/vipps-partner#partner-keys),
+but do not send the
+`Merchant-Serial-Number` header.
 
 ### Why do I get `HTTP 429 Too Many Requests`?
 
@@ -1277,6 +1274,9 @@ access to the Vipps eCom API.
 
 All sale units that have been approved for the Vipps eCom API can also use
 the Vipps Login API, but not the other way around.
+
+See:
+[Why do I get `HTTP 403 Forbidden`?](#why-do-i-get-http-403-forbidden)
 
 ### Why do I not get the `sub` from `/details`?
 
