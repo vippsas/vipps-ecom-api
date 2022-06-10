@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.12.14.
+Document version 3.13.0.
 
 ### Table of contents
 
@@ -1343,6 +1343,16 @@ as it gives a faster payment process and a better user experience.
 You are probably attempting to use a real Vipps user in the test environment.
 See:
 [The Vipps Test Environment (MT)](https://github.com/vippsas/vipps-developers/blob/master/vipps-test-environment.md).
+
+### Why do I get `Invalid MSN: 654321`?
+
+If you get the error
+`"Invalid MSN: 654321. Check your API keys on portal.vipps.no and see the eCom FAQ for tips."`
+it is because you are using API keys that are not valid for the specified MSN.
+
+This can happen when:
+- A partner tries to use partner keys for a sale unit that is not registered with them as partner.
+- API keys for the test environment is used in the production ewnvironment, or opposite.
 
 ## Other questions
 
