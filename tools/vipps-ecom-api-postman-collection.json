@@ -334,6 +334,11 @@
 						"value": "{{Ocp-Apim-Subscription-Key}}"
 					},
 					{
+						"key": "Merchant-Serial-Number",
+						"value": "{{merchantSerialNumber}}",
+						"type": "default"
+					},
+					{
 						"key": "Vipps-System-Name",
 						"value": "{{vipps_system_name}}",
 						"type": "default"
@@ -860,7 +865,7 @@
 					},
 					{
 						"key": "X-Request-Id",
-						"value": "{{orderId}}XIDC1"
+						"value": "{{orderId}}"
 					},
 					{
 						"key": "Merchant-Serial-Number",
@@ -927,7 +932,7 @@
 					},
 					{
 						"key": "X-Request-Id",
-						"value": "{{orderId}}XIDR1"
+						"value": "{{orderId}}"
 					},
 					{
 						"key": "Merchant-Serial-Number",
