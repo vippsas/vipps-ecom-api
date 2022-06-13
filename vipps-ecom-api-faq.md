@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.13.2.
+Document version 3.13.3.
 
 ### Table of contents
 
@@ -353,15 +353,16 @@ Vipps supports both _reserve-capture_ and _direct capture_:
   is not available or sold out, e.g. digital services.
   Direct capture requires additional compliance checks of the merchant.
 
-**Important:** It's completely fine to use "reserve capture" almost like
+**Important:** It's completely fine to use "reserve capture" almost exactly like
 "direct capture": Just do the capture immediately after the reservation.
 The user experience is exactly the same.
 
 Some things to consider:
-* If a payment has been _reserved_ (as with "reserve capture"), the merchant can make a `/cancel` call to
-  immediately release the reservation and make available in the customer's account.
+* If a payment has been _reserved_ (as with "reserve capture"), the merchant can
+  make a `/cancel` call to immediately release the reservation and make available
+  in the customer's account.
 * If a payment has been _captured_ (as with "direct capture"), the merchant has to
-  make a `/refund` call, and it then takes days before the amount is
+  make a `/refund` call, and it then takes several days before the amount is
   available in the customer's account.
 * With "reserve capture" it is possible to reserve a higher amount and only
   capture a part of it (useful for electric car charging stations, etc).
@@ -375,7 +376,8 @@ See:
 
 ### When should I use "Direct Capture"?
 
-You can probably use "reserve capture", and just do the capture right after the reserve.
+You can probably use "reserve capture", and just do the capture right after the
+reserve.
 
 See:
 * [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
@@ -411,21 +413,16 @@ and cancel (if it was `RESERVE` and reserve capture) or refund (if it was `SALE`
 ### How do I turn direct capture on or off?
 
 You can't turn _direct capture_ on or off as a merchant.
-This must be requested of your Key Account Manager.
-If you do not have a KAM: Please log in on
-[portal.vipps.no](https://portal.vipps.no),
-find the right sale unit and click the email link under the "i" information bubble.
+A sale unit can only have one capture type, and it must be configured by Vipps.
 
-To get both _direct capture_ and _reserve capture_ you must request two
-different sale units, as this can not be specified in the API calls.
+**Please note:** Vipps only offers "direct capture" for merchants that use
+Vipps through a partner, and for merchants that have a Key Account Manager.
 
-You can create new sale units in the
-[test environment](https://github.com/vippsas/vipps-developers/blob/master/vipps-test-environment.md)
-yourself on
-[portal.vipps.no](https://portal.vipps.no):
-On the page with the API keys for the test environment there is a button
-for creating additional sale units, and you can then select
-"direct capture" or "reserve capture", and also `skipLandingPage`.
+"Direct capture"" must be requested by the partner from the partner manager,
+or by KAM merchants from the Key Account Manager.
+
+See:
+* [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
 
 ### For how long is a payment reserved?
 
