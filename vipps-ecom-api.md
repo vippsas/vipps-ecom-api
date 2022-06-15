@@ -22,7 +22,7 @@ with
 
 API version: 2.0.0.
 
-Document version 2.5.74.
+Document version 2.5.75.
 
 ## Table of contents
 
@@ -1332,7 +1332,12 @@ The payment must be `RESERVED` for this to take effect.
 If this value is not set it will default to `false`. When `shouldReleaseRemainingFunds` is set to `false`
 any request to cancel after a partial or full capture has been performed will be rejected.
 
-This is a useful and recommended feature as it releases any reserved balance back to the customer immediately.
+This is a useful and recommended feature as it releases any reserved balance
+as soon as the card issuer and/or bank permits.
+
+See also the FAQ:
+[How long does it take from a refund is made until the money is in the customer's account?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
+
 
 Example Request:
 

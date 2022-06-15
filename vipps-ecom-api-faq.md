@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.13.4.
+Document version 3.13.5.
 
 ### Table of contents
 
@@ -36,7 +36,7 @@ Document version 3.13.4.
 * [Refunds](#refunds)
   + [How can I refund a payment?](#how-can-i-refund-a-payment)
   + [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
-  + [How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customer-s-account)
+  + [How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
   + [Is it possible for a merchant to pay a Vipps user?](#is-it-possible-for-a-merchant-to-pay-a-vipps-user)
 * [Users and payments](#users-and-payments)
   + [When do users get a "soft decline" and need to complete a 3-D Secure verification?](#when-do-users-get-a-soft-decline-and-need-to-complete-a-3-d-secure-verification)
