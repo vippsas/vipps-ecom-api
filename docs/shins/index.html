@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Vipps eCommerce API v1.6.25</title>
+    <title>Vipps eCommerce API v1.6.26</title>
 
     <style>
     </style>
@@ -1624,7 +1624,7 @@ Darkula color scheme from the JetBrains family of IDEs
               <ul class="toc-list-h2">
                 
                   <li>
-                    <a href="#fetch-authorization-token" class="toc-h2 toc-link" data-title="">Fetch authorization token</a>
+                    <a href="#fetch-the-jwt-authorization-token" class="toc-h2 toc-link" data-title="">Fetch the JWT authorization token</a>
                     
                   </li>
                 
@@ -1972,7 +1972,7 @@ Darkula color scheme from the JetBrains family of IDEs
 </ul>
 <h1 id="vipps-ecommerce-api-authorization-service">Authorization Service</h1>
 <p>Authorization Service</p>
-<h2 id="fetch-authorization-token">Fetch authorization token</h2>
+<h2 id="fetch-the-jwt-authorization-token">Fetch the JWT authorization token</h2>
 <p><a id="opIdfetchAuthorizationTokenUsingPost"></a></p>
 <blockquote>
 <p>Code samples</p>
@@ -2114,7 +2114,7 @@ System.out.println(response.toString());
 </code></pre>
 <p><code>POST /accesstoken/get</code></p>
 <p>The access token endpoint is used to get the JWT (JSON Web Token) that must be passed in every API request in the <code>Authorization</code> header. The access token is a base64-encoded string value that must be acquired first before making any Vipps API calls. The access token is valid for 1 hour in the test environment and 24 hours in the production environment.</p>
-<h3 id="fetch-authorization-token-parameters">Parameters</h3>
+<h3 id="fetch-the-jwt-authorization-token-parameters">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -2165,7 +2165,7 @@ System.out.println(response.toString());
   <span class="hljs-attr">&quot;access_token&quot;</span>: <span class="hljs-string">&quot;eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...&quot;</span>
 }
 </code></pre>
-<h3 id="fetch-authorization-token-responses">Responses</h3>
+<h3 id="fetch-the-jwt-authorization-token-responses">Responses</h3>
 <table>
 <thead>
 <tr>
@@ -2190,7 +2190,7 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h3 id="fetch-authorization-token-responseschema">Response Schema</h3>
+<h3 id="fetch-the-jwt-authorization-token-responseschema">Response Schema</h3>
 <h4 id="enumerated-values">Enumerated Values</h4>
 <table>
 <thead>
@@ -2449,7 +2449,7 @@ System.out.println(response.toString());
 
 </code></pre>
 <p><code>POST /ecomm/v2/payments</code></p>
-<p>This API call allows the merchants to initiate payments. The <code>merchantSerialNumber</code> (MSN) specifies which sales unit the payment is for. Payments are uniquely identified with the <code>merchantSerialNumber</code> and <code>orderId</code> together. The merchant-provided <code>orderId</code> must be unique per sales unit. Once the transaction is successfully initiated in Vipps, you will receive a response with a URL that will direct the customer to the Vipps landing page. The landing page detects if the request comes from a mobile or laptop/desktop device, and if on a mobile device automatically switches to the Vipps app, if it is installed. The merchant may also pass the 'isApp: true' parameter that will make Vipps respond with a app-switch deeplink that will take the customer directly to the Vipps app. This is normally not necessary, as Vipps handles this automatically. URLs passed to Vipps must validate, see <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">URL validation</a>. The URLs must use HTTPS.</p>
+<p>This API call allows the merchants to initiate payments. The <code>merchantSerialNumber</code> (MSN) specifies which sales unit the payment is for. Payments are uniquely identified with the <code>merchantSerialNumber</code> and <code>orderId</code> together. The merchant-provided <code>orderId</code> must be unique per sales unit. Once the transaction is successfully initiated in Vipps, you will receive a response with a URL that will direct the customer to the Vipps landing page (when using a laptop/esktop), or app-switch to Vipps (when using a phone). The landing page detects if the request comes from a mobile or laptop/desktop device, and if on a mobile device automatically switches to the Vipps app, if it is installed. The merchant may also pass the 'isApp: true' parameter that will make Vipps respond with a app-switch deeplink that will take the customer directly to the Vipps app. This is normally not necessary, as Vipps handles this automatically. URLs passed to Vipps must validate, see <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">URL validation</a>. The URLs must use HTTPS.</p>
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -2587,7 +2587,7 @@ System.out.println(response.toString());
 <td>body</td>
 <td><a href="#schemamerchantinfo">MerchantInfo</a></td>
 <td>true</td>
-<td>none</td>
+<td>Information about the merchant.</td>
 </tr>
 <tr>
 <td>»» authToken</td>
@@ -2734,7 +2734,7 @@ System.out.println(response.toString());
 <td>body</td>
 <td><a href="#schemaadditionaltransactiondata">AdditionalTransactionData</a></td>
 <td>false</td>
-<td>none</td>
+<td>Additional data about the payment. This is only required in special situations, and may usually be ignored.</td>
 </tr>
 <tr>
 <td>»»» passengerName</td>
@@ -5805,7 +5805,7 @@ System.out.println(response.toString());
 
 </code></pre>
 <p><code>POST [shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails</code></p>
-<p>This API endpoint on the merchant side allows Vipps to get the shipping cost and method based on the provided address and product details. The primary use of this service is Vipps Hurtigkasse (express checkout) where Vipps needs to present shipping cost and method to the Vipps user. Vipps will add <code>/v2/payments/{orderId}/shippingDetails</code> to the end of this URL. Vipps has a <em>10 second timeout</em> for these requests, and thus requires a quick reply from the merchant's server for successful payments. URLs passed to Vipps must validate, see <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">URL validation</a>. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080. The URL must use HTTPS.</p>
+<p>This API endpoint on the merchant side allows Vipps to get the shipping cost and method based on the provided address and product details. The primary use of this service is Vipps Hurtigkasse (express checkout) where Vipps needs to present shipping cost and method to the Vipps user. Vipps will add <code>/v2/payments/{orderId}/shippingDetails</code> to the end of this URL. Vipps has a <em>10 second timeout</em> for these requests, to ensure a good user expefrience, and thus requires a quick reply from the merchant's server for successful payments. URLs passed to Vipps must validate, see <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">URL validation</a>. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080. The URL must use HTTPS.</p>
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -5843,7 +5843,7 @@ System.out.println(response.toString());
 <td>header</td>
 <td>string</td>
 <td>false</td>
-<td>Token provided by the merchant in the initiate payment request as <code>authToken</code>. Used so that the merchant may authenticate the request from Vipps.</td>
+<td>Token provided by the merchant in the initiate payment request as <code>authToken</code>. Vipps useds this token when making calls to the merchant's servers. Used so that the merchant may authenticate the request from Vipps.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -5960,7 +5960,7 @@ System.out.println(response.toString());
 <tr>
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
-<td>Fetch Shipping Cost &amp; Method.</td>
+<td>Fetch shipping cost and method.</td>
 <td><a href="#schemafetchshippingcostresponse">FetchShippingCostResponse</a></td>
 </tr>
 </tbody>
@@ -7819,6 +7819,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
+<p>The full details, including the log/history, for the payment.</p>
 <h3 id="properties-17">Properties</h3>
 <table>
 <thead>
@@ -7871,7 +7872,7 @@ System.out.println(response.toString());
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>The user identifier if using profile flow. This should be used against the userInfo endpoint: GET:/vipps-userinfo-api/userinfo/{sub} The <code>sub</code> is added asynchronously, so if the <code>/details</code> request is made within (milli)seconds of the payment approval in the app, it may not be available. If that happens, simply make another <code>/details</code> request.</td>
+<td>The user identifier if using profile flow. This should be used with the userInfo endpoint: <code>GET:/vipps-userinfo-api/userinfo/{sub}</code>. The <code>sub</code> is added asynchronously, so if the <code>/details</code> request is made within (milli)seconds of the payment approval in the app, it may not be available. If that happens, simply make another <code>/details</code> request.</td>
 </tr>
 </tbody>
 </table>
@@ -7999,6 +8000,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
+<p>Some details about the orderId is included, but for the full details a call to /details is required.</p>
 <h3 id="properties-20">Properties</h3>
 <table>
 <thead>
@@ -8059,6 +8061,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
+<p>Some details about the orderId is included, but for the full details a call to /details is required.</p>
 <h3 id="properties-21">Properties</h3>
 <table>
 <thead>
@@ -8126,6 +8129,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
+<p>Some details about the orderId is included, but for the full details a call to /details is required.</p>
 <h3 id="properties-22">Properties</h3>
 <table>
 <thead>
@@ -8351,7 +8355,7 @@ System.out.println(response.toString());
 <td><a href="#schemamerchantinfo">MerchantInfo</a></td>
 <td>true</td>
 <td>none</td>
-<td>none</td>
+<td>Information about the merchant.</td>
 </tr>
 <tr>
 <td>transaction</td>
@@ -8436,7 +8440,7 @@ System.out.println(response.toString());
 <td><a href="#schemaadditionaltransactiondata">AdditionalTransactionData</a></td>
 <td>false</td>
 <td>none</td>
-<td>none</td>
+<td>Additional data about the payment. This is only required in special situations, and may usually be ignored.</td>
 </tr>
 <tr>
 <td>useExplicitCheckoutFlow</td>
@@ -8500,6 +8504,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
+<p>Additional data about the payment. This is only required in special situations, and may usually be ignored.</p>
 <h3 id="properties-27">Properties</h3>
 <table>
 <thead>
@@ -8575,6 +8580,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
+<p>Information about the merchant.</p>
 <h3 id="properties-28">Properties</h3>
 <table>
 <thead>
