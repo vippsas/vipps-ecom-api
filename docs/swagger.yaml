@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.25
+  version: 1.6.26
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -21,7 +21,7 @@ paths:
     post:
       tags:
         - Authorization Service
-      summary: Fetch authorization token
+      summary: Fetch the JWT authorization token
       parameters:
         - name: client_id
           in: header
@@ -107,8 +107,9 @@ paths:
         where Vipps needs to present shipping cost and method to the Vipps user.
         Vipps will add `/v2/payments/{orderId}/shippingDetails` to the end of
         this URL.
-        Vipps has a *10 second timeout* for these requests, and thus requires
-        a quick reply from the merchant's server for successful payments.
+        Vipps has a *10 second timeout* for these requests, to ensure a good
+        user expefrience, and thus requires a quick reply from the merchant's
+        server for successful payments.
         URLs passed to Vipps must validate, see
         [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
         We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
@@ -127,8 +128,9 @@ paths:
           in: header
           description: >-
             Token provided by the merchant in the initiate payment request as
-            `authToken`. Used so that the merchant may authenticate the request
-            from Vipps.
+            `authToken`.
+            Vipps useds this token when making calls to the merchant's servers.
+            Used so that the merchant may authenticate the request from Vipps.
           schema:
             type: string
           example: ae0cb90d91b4a84a
@@ -141,7 +143,7 @@ paths:
         required: true
       responses:
         '200':
-          description: Fetch Shipping Cost & Method.
+          description: Fetch shipping cost and method.
           content:
             application/json;charset=UTF-8:
               schema:
@@ -157,7 +159,8 @@ paths:
         Payments are uniquely identified with the `merchantSerialNumber` and `orderId` together.
         The merchant-provided `orderId` must be unique per sales unit.
         Once the transaction is successfully initiated in Vipps, you will receive a
-        response with a URL that will direct the customer to the Vipps landing page.
+        response with a URL that will direct the customer to the Vipps landing page
+        (when using a laptop/esktop), or app-switch to Vipps (when using a phone).
         The landing page detects if the request comes from a mobile or laptop/desktop device,
         and if on a mobile device automatically switches to the Vipps app, if it is installed.
         The merchant may also pass the 'isApp: true' parameter that will make Vipps
@@ -323,7 +326,7 @@ paths:
                 - name: userId
                   in: path
                   description: >-
-                    URL encoded userId provided when requesting user information from Vipps.
+                    URL-encoded userId provided when requesting user information from Vipps.
                     Received by callback or get detail request.
                   required: true
                   schema:
@@ -1670,6 +1673,8 @@ components:
           example: One pair of Vipps socks
           maxLength: 100
     TransactionDetails:
+      description: >-
+        The full details, including the log/history, for the payment.
       type: object
       properties:
         orderId:
@@ -1695,7 +1700,7 @@ components:
           type: string
           description: >-
             The user identifier if using profile flow.
-            This should be used against the userInfo endpoint: GET:/vipps-userinfo-api/userinfo/{sub}
+            This should be used with the userInfo endpoint: `GET:/vipps-userinfo-api/userinfo/{sub}`.
             The `sub` is added asynchronously, so if the `/details` request
             is made within (milli)seconds of the payment approval in the app, it may not be
             available. If that happens, simply make another `/details` request.
@@ -1752,6 +1757,9 @@ components:
           maxLength: 100
           example: posten-servicepakke
     RefundTransactionResponse:
+      description: >-
+        Some details about the orderId is included, but for the full details
+        a call to /details is required.
       type: object
       required:
         - orderId
@@ -1769,6 +1777,9 @@ components:
         transactionSummary:
           $ref: '#/components/schemas/TransactionSummary'
     TransactionResponse:
+      description: >-
+        Some details about the orderId is included, but for the full details
+        a call to /details is required.
       type: object
       required:
         - orderId
@@ -1794,6 +1805,9 @@ components:
         transactionSummary:
           $ref: '#/components/schemas/TransactionSummary'
     CancelTransactionResponse:
+      description: >-
+        Some details about the orderId is included, but for the full details
+        a call to /details is required.
       type: object
       required:
         - orderId
@@ -1933,6 +1947,9 @@ components:
           description: Use the extended UX flow for express checkout which forces users to confirm their address and shipping choices
           example: true
     AdditionalTransactionData:
+      description: >-
+        Additional data about the payment.
+        This is only required in special situations, and may usually be ignored.
       type: object
       required:
         - passengerName
@@ -1975,6 +1992,8 @@ components:
           maxLength: 6
           example: "123456"
     MerchantInfo:
+      description: >-
+        Information about the merchant.
       type: object
       required:
         - callbackPrefix
