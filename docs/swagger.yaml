@@ -338,7 +338,7 @@ paths:
         shippingDetails:
           '{$request.body#/merchantInfo/shippingDetailsPrefix}/v2/payments/{$request.body#/transaction/orderId}/shippingDetails':
             post:
-              summary: Fetch Shipping Cost & Method (for Vipps Hurtigkasse (express checkout))
+              summary: Fetch shipping cost and method (for Vipps Hurtigkasse (express checkout))
               description: >-
                 This API endpoint on the merchant side allows Vipps to get the shipping
                 cost and method based on the provided address and product details. The
