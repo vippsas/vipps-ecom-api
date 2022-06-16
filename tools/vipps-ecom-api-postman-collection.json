@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "d5323a19-9d2f-41c0-9569-32f4b216f706",
-		"name": "eCommerce API v3 - Collection",
+		"name": "eCommerce API v2 - Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -332,6 +332,11 @@
 					{
 						"key": "Ocp-Apim-Subscription-Key",
 						"value": "{{Ocp-Apim-Subscription-Key}}"
+					},
+					{
+						"key": "Merchant-Serial-Number",
+						"value": "{{merchantSerialNumber}}",
+						"type": "default"
 					},
 					{
 						"key": "Vipps-System-Name",
@@ -860,7 +865,7 @@
 					},
 					{
 						"key": "X-Request-Id",
-						"value": "{{orderId}}XIDC1"
+						"value": "{{orderId}}"
 					},
 					{
 						"key": "Merchant-Serial-Number",
@@ -927,7 +932,7 @@
 					},
 					{
 						"key": "X-Request-Id",
-						"value": "{{orderId}}XIDR1"
+						"value": "{{orderId}}"
 					},
 					{
 						"key": "Merchant-Serial-Number",

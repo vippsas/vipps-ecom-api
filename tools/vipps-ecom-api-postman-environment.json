@@ -1,6 +1,6 @@
 {
 	"id": "c4c3427b-fd37-4431-b4fb-a175cfba74ff",
-	"name": "eCommerce API v3 - Environment",
+	"name": "eCommerce API v2 - Environment",
 	"values": [
 		{
 			"key": "client_id",
