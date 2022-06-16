@@ -108,7 +108,7 @@ paths:
         Vipps will add `/v2/payments/{orderId}/shippingDetails` to the end of
         this URL.
         Vipps has a *10 second timeout* for these requests, to ensure a good
-        user expefrience, and thus requires a quick reply from the merchant's
+        user experience, and thus requires a quick reply from the merchant's
         server for successful payments.
         URLs passed to Vipps must validate, see
         [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
@@ -129,7 +129,7 @@ paths:
           description: >-
             Token provided by the merchant in the initiate payment request as
             `authToken`.
-            Vipps useds this token when making calls to the merchant's servers.
+            Vipps uses this token when making calls to the merchant's servers.
             Used so that the merchant may authenticate the request from Vipps.
           schema:
             type: string
