@@ -5805,7 +5805,7 @@ System.out.println(response.toString());
 
 </code></pre>
 <p><code>POST [shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails</code></p>
-<p>This API endpoint on the merchant side allows Vipps to get the shipping cost and method based on the provided address and product details. The primary use of this service is Vipps Hurtigkasse (express checkout) where Vipps needs to present shipping cost and method to the Vipps user. Vipps will add <code>/v2/payments/{orderId}/shippingDetails</code> to the end of this URL. Vipps has a <em>10 second timeout</em> for these requests, to ensure a good user expefrience, and thus requires a quick reply from the merchant's server for successful payments. URLs passed to Vipps must validate, see <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">URL validation</a>. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080. The URL must use HTTPS.</p>
+<p>This API endpoint on the merchant side allows Vipps to get the shipping cost and method based on the provided address and product details. The primary use of this service is Vipps Hurtigkasse (express checkout) where Vipps needs to present shipping cost and method to the Vipps user. Vipps will add <code>/v2/payments/{orderId}/shippingDetails</code> to the end of this URL. Vipps has a <em>10 second timeout</em> for these requests, to ensure a good user experience, and thus requires a quick reply from the merchant's server for successful payments. URLs passed to Vipps must validate, see <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">URL validation</a>. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080. The URL must use HTTPS.</p>
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -5843,7 +5843,7 @@ System.out.println(response.toString());
 <td>header</td>
 <td>string</td>
 <td>false</td>
-<td>Token provided by the merchant in the initiate payment request as <code>authToken</code>. Vipps useds this token when making calls to the merchant's servers. Used so that the merchant may authenticate the request from Vipps.</td>
+<td>Token provided by the merchant in the initiate payment request as <code>authToken</code>. Vipps uses this token when making calls to the merchant's servers. Used so that the merchant may authenticate the request from Vipps.</td>
 </tr>
 <tr>
 <td>body</td>
