@@ -2437,12 +2437,12 @@ components:
           description: "The error group. See: https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-groups"
           enum:
             - Authentication
-            - Payments
+            - Payment
             - InvalidRequest
             - VippsError
             - User
             - Merchant
-          example: "Payments"
+          example: "Payment"
         errorCode:
           type: string
           description: "The error code. See: https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes"
