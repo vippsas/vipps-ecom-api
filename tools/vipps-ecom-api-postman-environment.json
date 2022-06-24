@@ -34,7 +34,7 @@
 		},
 		{
 			"key": "mobileNumber",
-			"value": "<input the mobile number for the test app profile you have received or registered",
+			"value": "<Input the mobile number for the test app profile you have received or registered>",
 			"enabled": true
 		},
 		{
