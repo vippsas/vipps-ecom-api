@@ -12,7 +12,7 @@ Document version 2.5.76.
 
 ## Table of contents
 
-* [Flow diagram](#flow-diagram)
+* [Payment flows](#payment-flows)
 * [Call by call guide](#call-by-call-guide)
 * [API endpoints](#api-endpoints)
 * [Authentication](#authentication)
@@ -108,7 +108,15 @@ Document version 2.5.76.
 * [Recommendations regarding handling redirects](#recommendations-regarding-handling-redirects)
 * [Questions?](#questions)
 
-## Flow diagram
+
+## Payment flows
+
+There are several ways to use the Vipps eCom API.
+
+* Vipps online (*Vipps på nett*) - Let your customers pay with Vipps online or in your app. All your customer needs to provide is their mobile number, then they pay in Vipps with one click. See [Vipps eCommerce API: How It Works](vipps-ecom-api-howitworks.md).
+* Vipps checkout - Provide an integrated checkout experience on your web store. The customer logs in with their Vipps app and then, in your web store, they are presented with all the payment and delivery options in one place.
+* Vipps in store (*Vipps i kassa*) - Get Vipps in the cash register system. Enter the phone number at checkout and the customer pays directly from Vipps. See [Vipps in store](vipps-in-store-howitworks.md).
+
 
 This diagram shows a simplified payment flow:
 
@@ -117,6 +125,9 @@ This diagram shows a simplified payment flow:
 See [Get payment details](#get-payment-details) for more details about
 the detailed flow, and [Payment states](#payment-states) for the corresponding
 states.
+
+The flow of settlements and how to retrieve them are described in
+[Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
 
 ## Call by call guide
 
@@ -444,7 +455,7 @@ If Vipps is installed, Vipps will automatically be opened.
 ### Payments initiated in an app
 
 If payments are always initiated in the merchant's native app, there
-is no need to pass any additional parameters: Vipps will handle everything
+is no need to pass any additional parameters. Vipps will handle everything
 automatically.
 
 It is possible to send the optional `isApp` parameter, which comes with some
@@ -632,7 +643,7 @@ is to make a new initiate call with a new `orderId`. Vipps has no concept
 of relation between orders, so the "retry" payment is in no way connected
 to the first payment attempt.
 
-### orderId recommendations
+### OrderId recommendations
 
 A `orderId` must be unique for the MSN (Merchant Serial Number, the id of
 the sale unit). The `orderId` is case sensitive.
