@@ -2150,7 +2150,7 @@ See [HTTP response codes](#http-response-codes).
 | Error groups   | Description                                                  |
 | -------------- | ------------------------------------------------------------ |
 | Authentication | Authentication Failure because of wrong credentials provided |
-| Payments       | Failure while doing a payment authorization                  |
+| Payment        | Failure while doing a payment authorization                  |
 | InvalidRequest | Request contains invalid parameters                          |
 | VippsError     | Internal Vipps application error                             |
 | User           | Error related to the Vipps user (Example: Not a Vipps user)  |
