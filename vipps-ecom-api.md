@@ -111,19 +111,20 @@ Document version 2.5.76.
 
 ## Payment flows
 
-There are several ways to use the Vipps eCom API.
+There are many ways to use the Vipps eCom API. For example:
 
-* Vipps online (*Vipps på nett*) - Let your customers pay with Vipps online or in your app. All your customer needs to provide is their mobile number, then they pay in Vipps with one click. See [Vipps eCommerce API: How It Works](vipps-ecom-api-howitworks.md).
-* Vipps checkout - Provide an integrated checkout experience on your web store. The customer logs in with their Vipps app and then, in your web store, they are presented with all the payment and delivery options in one place.
-* Vipps in store (*Vipps i kassa*) - Get Vipps in the cash register system. Enter the phone number at checkout and the customer pays directly from Vipps. See [Vipps in store](vipps-in-store-howitworks.md).
+* Vipps in store (*Vipps i kassa*) - The customer tells their phone number to the cashier, the payment command is initiated from the Point Of Sale (POS) system, then the customer confirms the purchase through their Vipps mobile app. See [Vipps in store](vipps-in-store-howitworks.md) for more information.
+* Vipps online (*Vipps på nett*) - The customer enters their mobile number into the app or website, the payment command is initiated from the site, then the customer confirms the purchase through their Vipps mobile app. See [Vipps eCommerce API: How It Works](vipps-ecom-api-howitworks.md) for more information.
+* Vipps express checkout (*Vipps Hurtigkasse*) - Same as Vipps online with the addition that they are presented with delivery options in the Vipps mobile app.
+* Vipps checkout - Similar to Vipps online in that the customer enters their mobile number into the website, the payment command is initiated from the site, and the Vipps mobile app opens.  But then, through the Vipps mobile app, the customer gives consent to provide the information to the app or website. Their address, phone, and payment information will be prefilled in the website where they can continue their purchase.
 
 
 This diagram shows a simplified payment flow:
 
 ![Vipps checkout flow chart](images/flow-diagram.png)
 
-See [Get payment details](#get-payment-details) for more details about
-the detailed flow, and [Payment states](#payment-states) for the corresponding
+See [Get payment details](#get-payment-details) for more information about
+the detailed flow and [Payment states](#payment-states) for the corresponding
 states.
 
 The flow of settlements and how to retrieve them are described in
@@ -1426,10 +1427,9 @@ our [Recurring Repo.](https://github.com/vippsas/vipps-recurring-api)
 
 ## Get payment details
 
-Retrieves the full history of a payment, and whether the operations were
-successful or not.
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET) retrieves the full history of a payment and the status of the operations.
 
-Swagger: [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
+
 
 ### Payment states
 
@@ -1449,7 +1449,7 @@ Swagger: [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/
 ### Requests and responses
 
 Please note that the response from
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET))
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
 always contains _the entire history_ of payments for the order, not just the current status.
 
 **Important:** The `operationSuccess` field indicates whether an operation was successful or not.
