@@ -113,11 +113,10 @@ Document version 2.5.76.
 
 There are many ways to use the Vipps eCom API. For example:
 
-* Vipps in store (*Vipps i kassa*) - The customer tells their phone number to the cashier, the payment command is initiated from the Point Of Sale (POS) system, then the customer confirms the purchase through their Vipps mobile app. See [Vipps in store](vipps-in-store-howitworks.md) for more information.
-* Vipps online (*Vipps på nett*) - The customer enters their mobile number into the app or website, the payment command is initiated from the site, then the customer confirms the purchase through their Vipps mobile app. See [Vipps eCommerce API: How It Works](vipps-ecom-api-howitworks.md) for more information.
-* Vipps express checkout (*Vipps Hurtigkasse*) - Same as Vipps online with the addition that they are presented with delivery options in the Vipps mobile app.
-* Vipps checkout - Similar to Vipps online in that the customer enters their mobile number into the website, the payment command is initiated from the site, and the Vipps mobile app opens.  But then, through the Vipps mobile app, the customer gives consent to provide the information to the app or website. Their address, phone, and payment information will be prefilled in the website where they can continue their purchase.
-
+* *Vipps Online (aka Vipps på nett)* - The customer selects Vipps as the method of payment and enters their mobile number into the app or website. The merchant initiates the payment command. The customer confirms the purchase through their Vipps app. If the purchase is approved, the merchant registers the sale in their system. See [Vipps eCommerce API: How It Works](vipps-ecom-api-howitworks.md) for more information.
+* *Vipps Express Checkout (aka Vipps Hurtigkasse)* - The same as *Vipps Online* except that the shipping address and package delivery options that are selected in the Vipps app.
+* *Vipps Checkout* - The same as *Vipps Online* except that, instead of confirming the purchase in the Vipps app, the customer consents to sharing their personal information (e.g., address, phone, and payment information). They then complete the purchase from the website where their information is automatically pre-filled.
+* *Vipps In Store (aka Vipps i kassa)* - The same as *Vipps Online* except that the phone number is provided to the service provider who then initiates the payment through their Point of Sale (POS) system. See [Vipps in store](vipps-in-store-howitworks.md) for more information.
 
 This diagram shows a simplified payment flow:
 
