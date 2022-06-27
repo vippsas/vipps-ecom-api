@@ -1,9 +1,9 @@
 # Vipps In Store: How It Works
 
-This page shows an example of how you can offer contactless payment to your customers by integrating Vipps in your POS system.
+Vipps i store is designed for stores that want to let customers pay easily and quickly from their own phone, without the need to touch the terminal. This page shows an example of how you can offer contactless payment to your customers by integrating Vipps in your POS system.
 
-For technical documentation go to
-[Vipps eCom API](https://github.com/vippsas/vipps-ecom-api)
+
+It is also possible to use our simpler solution Vippsnummer, but then the amount must be entered manually at checkout, and there will be some follow-up with accounting and settlement.
 
 
 ## The payment process in store
@@ -42,6 +42,8 @@ Take a look at the technical documentation in the [Vipps eCommerce API Guide](ht
 
 
 ## Questions?
+
+For information in Norwegian, see: [Vipps i kassa (POS)](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/vipps-i-kassa/).
 
 We're always happy to help with code or other questions you might have!
 Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),

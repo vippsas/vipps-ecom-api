@@ -2,14 +2,6 @@
 
 This is how payment with Vipps eCommerce works.
 
-For technical documentation go to:
-[Vipps eCom API](https://github.com/vippsas/vipps-ecom-api),
-with
-[Swagger specifications](https://vippsas.github.io/vipps-ecom-api/),
-[Postman collections](tools/),
-[example code](https://github.com/vippsas/vipps-developers/tree/master/code-examples/ecom_python_example),
-[integration checklist](vipps-ecom-api-checklist.md)
-and the [FAQ](vipps-ecom-api-faq.md).
 
 ## The ecommerce payment process
 
@@ -63,6 +55,9 @@ Take a look at the technical documentation in the [Vipps eCommerce API Guide](ht
 
 
 ## Questions?
+
+
+For information in Norwegian, see: [Vipps på nett](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).
 
 We're always happy to help with code or other questions you might have!
 Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),

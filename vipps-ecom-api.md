@@ -6,27 +6,13 @@ The Vipps eCom API is used by
 [Vipps i kassa (POS)](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/vipps-i-kassa/),
 native apps and other solutions.
 
-See: [How it works](vipps-ecom-api-howitworks.md).
-
-These Swagger/OpenAPI representations may be useful to get a quick overview:
-* [Swagger](https://vippsas.github.io/vipps-ecom-api/)
-* [ReDoc](https://vippsas.github.io/vipps-ecom-api/redoc.html)
-* [Shins](https://vippsas.github.io/vipps-ecom-api/shins/index.html)
-
-See: Vipps eCom API [GitHub repository](https://github.com/vippsas/vipps-ecom-api),
-with
-[Postman collections](tools/),
-[example code](https://github.com/vippsas/vipps-developers/tree/master/code-examples/ecom_python_example),
-[integration checklist](vipps-ecom-api-checklist.md),
-[FAQ](vipps-ecom-api-faq.md).
-
 API version: 2.0.0.
 
-Document version 2.5.75.
+Document version 2.5.76.
 
 ## Table of contents
 
-* [Flow diagram](#flow-diagram)
+* [Payment flows](#payment-flows)
 * [Call by call guide](#call-by-call-guide)
 * [API endpoints](#api-endpoints)
 * [Authentication](#authentication)
@@ -122,15 +108,26 @@ Document version 2.5.75.
 * [Recommendations regarding handling redirects](#recommendations-regarding-handling-redirects)
 * [Questions?](#questions)
 
-## Flow diagram
+
+## Payment flows
+
+There are many ways to use the Vipps eCom API. For example:
+
+* *Vipps Online (aka Vipps på nett)* - The customer selects Vipps as the method of payment and enters their mobile number into the app or website. The merchant initiates the payment command. The customer confirms the purchase through their Vipps app. If the purchase is approved, the merchant registers the sale in their system. See [Vipps eCommerce API: How It Works](vipps-ecom-api-howitworks.md) for more information.
+* *Vipps Express Checkout (aka Vipps Hurtigkasse)* - The same as *Vipps Online* except that the shipping address and package delivery options that are selected in the Vipps app.
+* *Vipps Checkout* - The same as *Vipps Online* except that, instead of confirming the purchase in the Vipps app, the customer consents to sharing their personal information (e.g., address, phone, and payment information). They then complete the purchase from the website where their information is automatically pre-filled.
+* *Vipps In Store (aka Vipps i kassa)* - The same as *Vipps Online* except that the phone number is provided to the service provider who then initiates the payment through their Point of Sale (POS) system. See [Vipps in store](vipps-in-store-howitworks.md) for more information.
 
 This diagram shows a simplified payment flow:
 
 ![Vipps checkout flow chart](images/flow-diagram.png)
 
-See [Get payment details](#get-payment-details) for more details about
-the detailed flow, and [Payment states](#payment-states) for the corresponding
+See [Get payment details](#get-payment-details) for more information about
+the detailed flow and [Payment states](#payment-states) for the corresponding
 states.
+
+The flow of settlements and how to retrieve them are described in
+[Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
 
 ## Call by call guide
 
@@ -209,30 +206,22 @@ that _everyone_ sends it, also when using the merchant's own API keys.
 The `Merchant-Serial-Number` header can be used with all API keys, and can
 speed up any trouble-shooting of API problems quite a bit.
 
-| Header                        | Description                                  | Example value       |
-| ----------------------------- | -------------------------------------------- | ------------------- |
-| `Merchant-Serial-Number`      | The MSN for the sale unit                    | `123456`            |
-| `Vipps-System-Name`           | The name of the ecommerce solution           | `woocommerce`       |
-| `Vipps-System-Version`        | The version number of the ecommerce solution | `5.4`               |
-| `Vipps-System-Plugin-Name`    | The name of the ecommerce plugin             | `vipps-woocommerce` |
-| `Vipps-System-Plugin-Version` | The version number of the ecommerce plugin   | `1.4.1`             |
+**Important:** Please use self-explanatory, human readable and reasonably short
+values that uniquely identify the system (and plugin).
 
-### Example headers
-
-If the vendor's name is "Acme AS", and the vendor offers two different systems
+For example, if the vendor's name is "Acme AS" and the vendor offers two different systems,
 one for point of sale (POS) integrations and one for web shops,
 the headers should be:
 
-| Header                        | Example value for POS | Example value for webshop | Example value for Vending machines |
-| ----------------------------- | --------------------- | ------------------- | ------------------- |
-| `Merchant-Serial-Number`      | `123456`              | `123456`            | `123456`            |
-| `Vipps-System-Name`           | `acme`                | `acme`              | `acme`              |
-| `Vipps-System-Version`        | `1.7`                 | `2.6`               | `2.6`               |
-| `Vipps-System-Plugin-Name`    | `acme-pos`            | `acme-webshop`      | `acme-vending`      |
-| `Vipps-System-Plugin-Version` | `3.2`                 | `4.3`               | `4.3`               |
+| Header                        | Description                                  | Example value for POS | Example value for webshop | Example value for Vending machines |
+| ----------------------------- | -------------------------------------------- | --------------------- | ------------------- | ------------------- |
+| `Merchant-Serial-Number`      | The MSN for the sale unit                    | `123456`              | `123456`            | `123456`            |
+| `Vipps-System-Name`           | The name of the ecommerce solution           | `acme`                | `acme`              | `acme`              |
+| `Vipps-System-Version`        | The version number of the ecommerce solution | `1.7`                 | `2.6`               | `2.6`               |
+| `Vipps-System-Plugin-Name`    | The name of the ecommerce plugin             | `acme-pos`            | `acme-webshop`      | `acme-vending`      |
+| `Vipps-System-Plugin-Version` | The version number of the ecommerce plugin   | `3.2`                 | `4.3`               | `4.3`               |
 
-**Important:** Please use self-explanatory, human readable and reasonably short
-values that uniquely identify the system (and plugin).
+
 
 ## Initiate
 
@@ -466,7 +455,7 @@ If Vipps is installed, Vipps will automatically be opened.
 ### Payments initiated in an app
 
 If payments are always initiated in the merchant's native app, there
-is no need to pass any additional parameters: Vipps will handle everything
+is no need to pass any additional parameters. Vipps will handle everything
 automatically.
 
 It is possible to send the optional `isApp` parameter, which comes with some
@@ -654,7 +643,7 @@ is to make a new initiate call with a new `orderId`. Vipps has no concept
 of relation between orders, so the "retry" payment is in no way connected
 to the first payment attempt.
 
-### orderId recommendations
+### OrderId recommendations
 
 A `orderId` must be unique for the MSN (Merchant Serial Number, the id of
 the sale unit). The `orderId` is case sensitive.
@@ -1437,10 +1426,9 @@ our [Recurring Repo.](https://github.com/vippsas/vipps-recurring-api)
 
 ## Get payment details
 
-Retrieves the full history of a payment, and whether the operations were
-successful or not.
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET) retrieves the full history of a payment and the status of the operations.
 
-Swagger: [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
+
 
 ### Payment states
 
@@ -1460,7 +1448,7 @@ Swagger: [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/
 ### Requests and responses
 
 Please note that the response from
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET))
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
 always contains _the entire history_ of payments for the order, not just the current status.
 
 **Important:** The `operationSuccess` field indicates whether an operation was successful or not.
