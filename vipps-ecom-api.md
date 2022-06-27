@@ -166,12 +166,12 @@ Payments are supported in both web browsers and in native apps (via deep-linking
 | Operation                                                                                                            | Description                                                                                               | Endpoint                                                                                                                            |
 | -------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
 | [Initiate payment](#initiate)                                                                                        | Payment initiation, the first request in the payment flow. This _reserves_ an amount.                     | [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST)                   |
-| [Capture payment](#capture)                                                                                          | When an amount has been reserved, and the goods are (about to be) shipped, the payment must be _captured_ | [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/capturePaymentUsingPOST)    |
+| [Capture payment](#capture)                                                                                          | When an amount has been reserved, and the goods are (about to be) shipped, the payment must be _captured_. | [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/capturePaymentUsingPOST)    |
 | [Cancel payment](#cancel)                                                                                            | The merchant may cancel a reserved amount, but not on a captured amount.                                  | [`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/cancelPaymentRequestUsingPUT) |
 | [Refund payment](#refund)                                                                                            | The merchant may refund a captured amount.                                                                | [`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/refundPaymentUsingPOST)      |
 | [Get payment details](#get-payment-details)                                                                          | The full history of the payment.                                                                          | [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)   |
 | [Access Token](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#get-an-access-token) | Fetch the access token                                                                                    | [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-ecom-api/#/Authorization_Service/fetchAuthorizationTokenUsingPost)        |
-| Get order status                                                                                                     | Deprecated, use [Get payment details](#get-payment-details)                                               | [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)   |
+| Get order status                                                                                                     | Deprecated, use [Get payment details](#get-payment-details).                                               | Deprecated, use [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)   |
 
 See the
 [eCom API checklist](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md).
@@ -242,15 +242,15 @@ Amounts are specified in minor units.
 For Norwegian kroner (NOK) that means 1 kr = 100 øre.
 Example: 499 kr = 49900 øre.
 
-When you initiate a payment it will only be _reserved_ until you capture it.
+When you initiate a payment, it will only be _reserved_ until you capture it.
 Vipps supports both _reserve capture_ and _direct capture_ payment flows.
 
 #### Reserve capture
 
-**Reserve capture** is the default. When you initiate a payment it will be
+**Reserve capture** is the default. When you initiate a payment, it will be
 reserved until you capture it.
 
-According to Norwegian regulations you can _not_ capture a payment until
+According to Norwegian regulations, you are not allowed to capture a payment until
 the product or service is provided to the customer. For more information,
 please see the Consumer Authority's
 [Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
@@ -267,17 +267,17 @@ See [Direct capture](#direct-capture-1) for more details.
 
 #### When to use reserve capture and direct capture
 
-Merchants can not choose between _reserve capture_ and _direct capture_
+Merchants cannot choose between _reserve capture_ and _direct capture_
 themselves, the type of capture is configured by Vipps after the additional
 compliance checks, required by the authorities, have been completed.
 
 **Important:** It's completely fine to use "reserve capture" almost like
-"direct capture": Just do the capture right after the reservation.
+"direct capture". Just perform the capture immediately after the reservation.
 The user experience is exactly the same, and you have the opportunity to
-a `/cancel` with instant effect instead of a `/refund` that takes days.
+perform a `/cancel` with instant effect instead of a `/refund` that takes days.
 
-See the
-[FAQ](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#what-is-the-difference-between-reserve-capture-and-direct-capture).
+For more information, see the
+[what is the difference between reserve capture and direct capture](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#what-is-the-difference-between-reserve-capture-and-direct-capture)  in the FAQ.
 
 ### Express checkout payments
 
@@ -418,7 +418,7 @@ If Vipps is installed, Vipps will automatically be opened.
    `fallBack` URL that the merchant provided earlier.
 
 **Please note:**
-1. Vipps can not guarantee that the user will get to the
+1. Vipps cannot guarantee that the user will get to the
    `fallBack` URL, since the user may switch away from Vipps or "kill" the app,
    or there may be network or battery problems, etc. before the URL is opened.
    If the merchant relies 100 % on users visiting the `fallback` URL, there will
@@ -430,7 +430,7 @@ If Vipps is installed, Vipps will automatically be opened.
    [Recommendations regarding handling redirects](#recommendations-regarding-handling-redirects).
 3. Because of the above, a successful payment _must not_ rely on session cookies
    in the browser.
-4. Vipps can not guarantee a particular sequence of callback and fallback,
+4. Vipps cannot guarantee a particular sequence of callback and fallback,
    as this depends on user actions, network connectivity/speed, etc.
    Because of this, it is not possible to base an integration on a specific
    sequence of events.
@@ -590,7 +590,7 @@ The effect of the above is the same in all normal cases.
   enter a phone number and pay with Vipps on another device.
 * Vipps requires a minimum version of the phone's operating system. At the time
   of writing this is iOS 12 (from 2018) or Android 6 (from 2015). If the user
-  has an older version of the operating system, Vipps can not be used.
+  has an older version of the operating system, Vipps cannot be used.
   The merchant must keep track of this by checking the Apple App Store and
   Google Play.
 * If `"isApp":true` is used in an embedded web browser, such as
@@ -747,8 +747,8 @@ following events:
 - Payment rejected
 - Payment timed out
 
-Vipps makes _one_ attempt at a callback, and can not guarantee that it succeeds,
-as it depends on network, firewalls and other factors that Vipps can not control.
+Vipps makes _one_ attempt at a callback, and cannot guarantee that it succeeds,
+as it depends on network, firewalls and other factors that Vipps cannot control.
 
 If the communication is broken during the process for some reason, and Vipps
 is not able to execute callback to the merchant's server, the callback will
@@ -925,13 +925,13 @@ These are the statuses provided by Vipps in the callbacks by
 |                  | `SALE`           | Payment captured with direct capture, by merchant (after `RESERVED`)                                                                           |
 |                  | `RESERVE_FAILED` | Reserve failed because of insufficient funds, invalid card, or similar                                                                         |
 |                  | `SALE_FAILED`    | Direct failed because of insufficient funds, invalid card, or similar                                                                          |
-|                  | `CANCELLED`      | Payment canceled, by user in Vipps                                                                                                             |
+|                  | `CANCELLED`      | Payment cancelled, by user in Vipps                                                                                                             |
 |                  | `REJECTED`       | User did not act on the payment (timeout, etc)                                                                                                 |
 | Express checkout | `RESERVE`        | Payment reserved, by user accepting the payment in Vipps (it _is_ correct that this is different from `RESERVED` for regular checkout - sorry) |
 |                  | `SALE`           | Payment captured with direct capture, by merchant (after `RESERVE`)                                                                            |
 |                  | `RESERVE_FAILED` | Reserve failed because of insufficient funds, invalid card, or similar                                                                         |
 |                  | `SALE_FAILED`    | Direct failed because of insufficient funds, invalid card, or similar                                                                          |
-|                  | `CANCELLED`      | Payment canceled, by user in Vipps                                                                                                             |
+|                  | `CANCELLED`      | Payment cancelled, by user in Vipps                                                                                                             |
 |                  | `REJECTED`       | User did not act on the payment (timeout, etc)                                                                                                 |
 
 See also: [Get payment details](#get-payment-details).
@@ -1168,16 +1168,16 @@ See the FAQ:
 
 _Reserve capture_ is the normal flow.
 
-When then end user approves an initiated payment it will be reserved until you
-capture it. When the order is reserved the amount is marked as reserved by the
+When then end user approves an initiated payment, it will be reserved until you
+capture it. When the order is reserved, the amount is marked as reserved by the
 bank, but not transferred.
 
 ### Direct capture
 
 When _direct capture_ is activated, all payment reservations will instantly be captured.
 
-When doing _direct capture_ Vipps is responsible for the customer receiving the purchased product.
-Because of this, _direct capture_ requires additional compliance checks, and the following
+When doing _direct capture_, Vipps is responsible for the customer receiving the purchased product.
+Because of this, _direct capture_ requires additional compliance checks and the following
 requirements apply:
 
 - The merchant must have an annual revenue of more than 10 million NOK
@@ -1186,7 +1186,7 @@ requirements apply:
 
 To request _direct capture_, please contact your KAM or Partner Manager.
 
-Please note that we still recommend using "reserve capture" in all situations. Just do the capture right after the reserve.
+Please note that we still recommend using "reserve capture" in all situations. Then perform the capture immediately after the reserve.
 
 
 ### Capture payment
@@ -1195,13 +1195,13 @@ Capture payment allows the merchant to capture the reserved amount.
 The API allows for both a _full amount capture_ and a _partial amount capture_.
 
 The amount to capture cannot be higher than the reserved amount. According to
-Norwegian regulations, capture can not be done before the goods have been shipped.
-The transaction text is mandatory, and is displayed to end user in Vipps.
+Norwegian regulations, capture cannot be done before the goods have been shipped.
+The transaction text is mandatory and is displayed to the end user in the Vipps app.
 
 ### Partial capture
 
-Partial capture may be used if not the entire order is shipped or for other
-reasons. Partial capture may be called as many times as required as long as
+Partial capture may be used in cases where a partial order is shipped or for other
+reasons. Partial capture may be called as many times as required, as long as
 there is a remaining reserved amount to capture.
 
 If one or more partial captures have been made, the remaining amount
@@ -1243,7 +1243,7 @@ The payment flow can be aborted, under certain circumstances:
 - When the merchant cancels.
 - Timeouts: If the user does not confirm, etc.
 
-Partially captured reservations can not be cancelled.
+Partially captured reservations cannot be cancelled.
 
 After cancellation, the order gets a new status:
 
@@ -1309,7 +1309,7 @@ for the same order will return the following, regardless of whether the
 transaction has been reserved before the cancellation: `CANCEL`.
 
 **Please note:** If the user is already in a 3-D Secure session, the payment
-can not be cancelled as described above.
+cannot be cancelled as described above.
 
 ### Cancelling a partially captured order
 
@@ -1437,9 +1437,9 @@ our [Recurring Repo.](https://github.com/vippsas/vipps-recurring-api)
 | 0   | -          | Initiate | Payment initiation                                             | `INITIATE` |
 | 1   | Initiate   | -        | The merchant has initiated the payment                         | `INITIATE` |
 | -   |            | Reserve  | The user has accepted the payment and amount has been reserved | `RESERVE`  |
-| -   |            | Cancel   | The user has canceled the order                                | `CANCEL`   |
+| -   |            | Cancel   | The user has cancelled the order                                | `CANCEL`   |
 | 2   | Reserve    | Capture  | The merchant captures the payment, and ships                   | `CAPTURE`  |
-| -   |            | Cancel   | The merchant has canceled the order                            | `VOID`     |
+| -   |            | Cancel   | The merchant has cancelled the order                            | `VOID`     |
 | 3   | Capture    | --       | A final state: Payment fully processed                         | `CAPTURE`  |
 | -   |            | Refund   | The merchant has refunded the money to the user                | `REFUND`   |
 | 4   | Cancel     | --       | A final state: Payment cancelled                               | -          |
@@ -1459,9 +1459,9 @@ always contains _the entire history_ of payments for the order, not just the cur
 | `RESERVE`  | Payment reserved, by user accepting the payment in Vipps |
 | `CAPTURE`  | Payment captured, by merchant (after `RESERVE`)          |
 | `REFUND`   | Payment refunded, by merchant (after `CAPTURE`)          |
-| `CANCEL`   | Payment canceled, by user in Vipps                       |
+| `CANCEL`   | Payment cancelled, by user in Vipps                       |
 | `SALE`     | Payment captured with direct capture, by merchant        |
-| `VOID`     | Payment canceled, by merchant                            |
+| `VOID`     | Payment cancelled, by merchant                            |
 
 ### Example response
 
@@ -2100,7 +2100,7 @@ In order to use this approach, when creating the payment in the merchant has to 
 
 (and _only_ "INTENT", no parameters etc.)
 
-This will cause Vipps to simply close after a successful or canceled ecom payment, and fall back to the calling merchant app.
+This will cause Vipps to simply close after a successful or cancelled ecom payment, and fall back to the calling merchant app.
 
 The merchant app activity that resumes again (after Vipps closes) has to override onActivityResult method to pick up the thread again here. Example:
 
@@ -2174,7 +2174,7 @@ to retrieve all the information about the payment.
 | Payment     | 93         | Captured amount must be the same in an Idempotent retry                                             |
 | Payment     | 95         | Payments can only be refunded up to 365 days after reservation                                      |
 | Payment     | 96         | Payments can only be captured up to 180 days after reservation                                      |
-| Payment     | 1501       | This person can not pay to companies. Used for Vipps users under the age of 15.                     |
+| Payment     | 1501       | This person cannot pay to companies. Used for Vipps users under the age of 15.                     |
 | Payment     | 1082       | This person is not BankID verified. Only applies for test users.                                    |
 | InvalidRequest | -       | The field name will be the error code. Description about what exactly the field error is.           |
 | VippsError  | 91         | Transaction is not allowed                                                                          |
