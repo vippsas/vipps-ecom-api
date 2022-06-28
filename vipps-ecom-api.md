@@ -8,7 +8,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.5.76.
+Document version 2.5.77.
 
 ## Table of contents
 
@@ -55,9 +55,9 @@ Document version 2.5.76.
   * [Get shipping details](#get-shipping-details)
   * [Transaction update](#transaction-update)
   * [Remove User Consent](#remove-user-consent)
-* [Skip landing page](#skip-landing-page)
-* [Reserve](#reserve)
 * [The Vipps landing page](#the-vipps-landing-page)
+  * [Skip landing page](#skip-landing-page)
+* [Reserve](#reserve)
 * [Capture](#capture)
   * [Reserve capture](#reserve-capture)
   * [Direct capture](#direct-capture)
@@ -1043,7 +1043,35 @@ the merchant is obliged to handle the user details as per the GDPR guidelines.
 The request path will include a `userId` that Vipps will have provided as
 part of callback and also made accessible through [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET).
 
-## Skip landing page
+## The Vipps landing page
+
+When a user is directed to the `url` from initiate payment, they will either be taken to Vipps or to the Vipps landing page:
+
+- In a mobile browser, the Vipps app will automatically be opened with app-switch.
+- In a desktop browser, the landing page will prompt the user for the phone number (the number may also be pre-filled, see below).
+  The user enters or confirms the phone number. Then on their phone, the user gets a push notification and Vipps then prompts for confirmation.
+
+![The Vipps landing page](images/vipps-flow-landing-page.png)
+
+The Vipps landing page is mandatory and provides a consistent and recognizable user experience
+that helps guide the user through the payment flow.
+Our data shows that the landing page gives a higher success rate and lower drop-off,
+because the users get a familiar user experience and know the payment flow.
+In this way, Vipps takes responsibility for helping the user from the browser to the app,
+and to complete the payment in a familiar way.
+
+**Please note:** Never show the Vipps landing page inside an iframe.
+That will make it impossible for the user to reliably be redirected back to the
+merchant's website, and result in a lower success rate.
+In general: Any "optimization" of the payment flow may break the Vipps payment flow - if not today, then later.
+
+The user's phone number can be set in the payment initiation call:
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST).
+
+The user's phone number is remembered by the user's browser,
+eliminating the need for re-typing it on subsequent purchases.
+
+### Skip landing page
 
 _This functionality is only available for special cases._
 
@@ -1078,36 +1106,6 @@ The respective amount will be reserved for future capturing.
 
 For example:
 ![Payment confirmation](images/vipps-flow-reserve.png)
-
-## The Vipps landing page
-
-When a user is directed to the `url` from initiate payment, they will either be taken to Vipps or to the Vipps landing page:
-
-- In a mobile browser, the Vipps app will automatically be opened with app-switch.
-- In a desktop browser, the landing page will prompt the user for the phone number (the number may also be pre-filled, see below).
-  The user enters or confirms the phone number. Then on their phone, the user gets a push notification and Vipps then prompts for confirmation.
-
-![The Vipps landing page](images/vipps-flow-landing-page.png)
-
-The Vipps landing page is mandatory and provides a consistent and recognizable user experience
-that helps guide the user through the payment flow.
-Our data shows that the landing page gives a higher success rate and lower drop-off,
-because the users get a familiar user experience and know the payment flow.
-In this way, Vipps takes responsibility for helping the user from the browser to the app,
-and to complete the payment in a familiar way.
-
-**Please note:** Never show the Vipps landing page inside an iframe.
-That will make it impossible for the user to reliably be redirected back to the
-merchant's website, and result in a lower success rate.
-In general: Any "optimization" of the payment flow may break the Vipps payment flow - if not today, then later.
-
-The user's phone number can be set in the payment initiation call:
-[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST).
-
-The user's phone number is remembered by the user's browser,
-eliminating the need for re-typing it on subsequent purchases.
-
-See also: [Skip landing page](#skip-landing-page).
 
 ## Capture
 
