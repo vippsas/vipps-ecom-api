@@ -757,6 +757,9 @@ not be retried.
 If you do not receive any confirmation on the payment request, you _must_ call
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET) to get the status of the payment.
 
+**Please note:** Do not rely only on callbacks alone, but also poll the `/details` endpoint
+as described in
+[Polling guidelines](#polling-guidelines).
 
 **Note:** Callback URLs _must_ use HTTPS.
 
