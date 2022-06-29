@@ -50,7 +50,7 @@ Document version 2.5.77.
   * [Callback statuses](#callback-statuses)
 * [Timeouts](#timeouts)
   * [Using a phone](#using-a-phone)
-  * [Using a laptop/desktop](#using-a-laptopdesktop)
+  * [Using a PC](#using-a-pc)
 * [Express checkout API endpoints required on the merchant side](#express-checkout-api-endpoints-required-on-the-merchant-side)
   * [Get shipping details](#get-shipping-details)
   * [Transaction update](#transaction-update)
@@ -1091,7 +1091,7 @@ If you want to check if a sale unit is allowed to use `skipLandingPage`:
 2. Check the response code and message. The API will return an error if attempting to use
    `skipLandingPage` without being whitelisted.
 
-If you need to whitelist a sale unit, see
+If you need to whitelist a sale unit, see FAQ:
 [Is it possible to skip the landing page](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#is-it-possible-to-skip-the-landing-page).
 
 **Please note:** When using `skipLandingPage`, the user is not sent to a
@@ -1112,15 +1112,14 @@ For example:
 Capture is done with
 [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/capturePaymentUsingPOST).
 
-We strongly recommend to use the idempotency key `X-Request-Id`. If a capture
+We strongly recommend that you use the idempotency key, `X-Request-Id`, in the capture call. Then, if a capture
 request fails for any reason, it can be retried with the same idempotency key.
 You can use any unique id for your `X-Request-Id`.
-See the API specification for details.
+See the [API specification](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/capturePaymentUsingPOST) for details.
 
-There is only a need to specify the `amount` when doing a
-[partial capture](#partial-capture).
-To perform a normal capture of the entire amount `amount` can be
-omitted from the API request (not sent at all), set to `null` or set to `0`.
+When doing a [partial capture](#partial-capture), you only need to specify the `amount`.
+To perform a normal capture of the entire amount, `amount` can be
+omitted from the API request (i.e., not sent at all), set to `null` or set to `0`.
 
 **Please note:** It is important to check the response of the `/capture`
 call. The capture is only successful when the response is `HTTP 200 OK`.
@@ -1129,19 +1128,20 @@ Use
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
 to get all the details of a payment.
 
-There are two types of capture: _reserve capture_ and _direct capture_.
-Reserve capture is the default. When you initiate a payment it will be reserved
-until you capture it. With direct capture the reservation is instantly captured.
+There are two types of capture: _reserve capture_ (default) and _direct capture_.
+By default, when you initiate a payment, it will be reserved
+until you capture it. With direct capture, the reservation is captured instantly.
 
-- If a payment has been reserved, the merchant can make a
+The advantage to using _reserve capture_ is that you can release the reservation immediately:
+
+- For a *reserved* payment, the merchant can make a
   [`/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
   call to
-  immediately release the reservation and make available in the customer's
+  immediately release the reservation and make it available in the customer's
   account.
-- If a payment has been captured, the merchant has to make a
+- For a *captured* payment, the merchant must make a
   [`/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST)
-  call, and
-  it then takes a few days before the amount is available in the customer's account.
+  call. It then takes a few days before the amount is available in the customer's account.
 
 Capture can be made up to 180 days after reservation.
 Attempting to capture an older payment will result in a
@@ -1155,7 +1155,7 @@ See the FAQ:
 
 _Reserve capture_ is the normal flow.
 
-When then end user approves an initiated payment, it will be reserved until you
+When the end user approves an initiated payment, it will be reserved until you
 capture it. When the order is reserved, the amount is marked as reserved by the
 bank, but not transferred.
 
@@ -1188,15 +1188,15 @@ The transaction text is mandatory and is displayed to the end user in the Vipps 
 ### Partial capture
 
 Partial capture may be used in cases where a partial order is shipped or for other
-reasons. Partial capture may be called as many times as required, as long as
-there is a remaining reserved amount to capture.
+reasons. Partial capture may be called as many times as required while
+there is a remaining reserved amount.
 
-If one or more partial captures have been made, the remaining amount
-(if there is one) will be automatically refunded after a few days.
-See the FAQ for
-[details](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#for-how-long-is-an-initiated-payment-reserved).
+If one or more partial captures have been made, any remaining reserved amount
+will be automatically released after a few days.
+See also the FAQ: 
+[For how long is a payment reserved](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#for-how-long-is-a-payment-reserved).
 
-It is not possible to refund the remaining amount (since it has not been captured),
+It is not possible to refund the remaining amount since it has not been captured,
 and it is not possible to cancel the reservation, since some of it has been captured.
 
 These two truncated examples show the responses for a reservation of
@@ -1281,7 +1281,7 @@ in Vipps, you can send a
 request while the transaction is in the `INITIATE` stage.
 
 This may be useful in face-to-face situations where a customer's phone runs out
-of battery, or if the customer suddenly changes his/her mind and want to buy
+of battery, or if the customer suddenly changes their mind and wants to buy
 more and the amount for the payment increases.
 This should not be considered a consistent or guaranteed operation,
 as the `/cancel` request depends on actions taken by the user in the app.
@@ -1300,15 +1300,17 @@ cannot be cancelled as described above.
 
 ### Cancelling a partially captured order
 
-If you wish to cancel an order which you have partially captured: Send a
+If you wish to cancel an order that you have partially captured, send a
 [`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
 request with `shouldReleaseRemainingFunds: true` in the body.
 The payment must be `RESERVED` for this to take effect.
 
-If this value is not set it will default to `false`. When `shouldReleaseRemainingFunds` is set to `false`
+If `shouldReleaseRemainingFunds` is not set, it will default to `false`.
+
+When `shouldReleaseRemainingFunds` is set to `false`,
 any request to cancel after a partial or full capture has been performed will be rejected.
 
-This is a useful and recommended feature as it releases any reserved balance
+This is a useful and recommended feature, as it releases any reserved balance
 as soon as the card issuer and/or bank permits.
 
 See also the FAQ:
@@ -1350,7 +1352,7 @@ Response:
 }
 ```
 
-**Please note:** Once this operation has been performed there will be zero funds remaining to capture. Do not call this endpoint until you are sure you have captured all you need.
+**Please note:** Once this operation has been performed, there will be zero funds remaining to capture. Do not call this endpoint until you are sure you have captured all you need.
 
 ## Refund
 
@@ -1360,10 +1362,10 @@ The refund can be a partial or full.
 Partial refunds are done by specifying an `amount` which is lower than the captured amount.
 The refunded amount cannot be larger than the captured amount.
 
-In a capture request the merchant may also use the `X-Request-Id`header. This header is an idempotency header ensuring that if the merchant retries a request with the same `X-Request-Id` the retried request will not make additional changes.
+In a capture request, the merchant may also use the `X-Request-Id` header. This header is an idempotency header ensuring that, if the merchant retries a request with the same `X-Request-Id`, the retried request will not make additional changes.
 
 You can use any unique id for your `X-Request-Id`.
-See the API specification for details.
+See the [API specification](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/refundPaymentUsingPOST) for details.
 
 Refunds can be made up to 365 days after reservation.
 Attempting to refund an older payment will result in a
