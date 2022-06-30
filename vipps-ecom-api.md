@@ -8,7 +8,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.5.77.
+Document version 2.5.78.
 
 ## Table of contents
 
@@ -618,8 +618,8 @@ The deeplink URL is only valid for five minutes.
 Attempts at using it after that will result in a timeout and an error.
 
 See:
-* [Timeouts](#timeouts).
-* [Can I send a Vipps payment link in an SMS or email?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#can-i-send-a-vipps-payment-link-in-an-sms-or-email).
+* [Timeouts](#timeouts)
+* [Can I send a Vipps payment link in an SMS or email?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#can-i-send-a-vipps-payment-link-in-an-sms-or-email)
 
 ### Payment identification
 
@@ -1424,18 +1424,18 @@ our [Recurring Repo.](https://github.com/vippsas/vipps-recurring-api)
 
 ### Payment states
 
-| #   | From-state | To-state | Description                                                    | Operation  |
-| --- | ---------- | -------- | -------------------------------------------------------------- | ---------- |
-| 0   | -          | Initiate | Payment initiation                                             | `INITIATE` |
-| 1   | Initiate   | -        | The merchant has initiated the payment                         | `INITIATE` |
-| -   |            | Reserve  | The user has accepted the payment and amount has been reserved | `RESERVE`  |
-| -   |            | Cancel   | The user has cancelled the order                               | `CANCEL`   |
-| 2   | Reserve    | Capture  | The merchant captures the payment, and ships                   | `CAPTURE`  |
-| -   |            | Cancel   | The merchant has cancelled the order                           | `VOID`     |
-| 3   | Capture    | --       | A final state: Payment fully processed                         | `CAPTURE`  |
-| -   |            | Refund   | The merchant has refunded the money to the user                | `REFUND`   |
-| 4   | Cancel     | --       | A final state: Payment cancelled                               | -          |
-| 5   | Refund     | --       | A final state: Payment refunded                                | -          |
+| #   | From-state | To-state | Description | Operation  |
+| --- | ---------- | -------- | ----------- | ---------- |
+| 0   | - | Initiate | Payment initiation | `INITIATE` |
+| 1   | | - | The merchant has initiated the payment | `INITIATE` |
+| -   | | | The user has accepted the payment and amount has been reserved | `RESERVE` |
+| -   | | Cancel | The user has cancelled the order | `CANCEL` |
+| 2   | Reserve | Capture  | The merchant captures the payment and ships | `CAPTURE` |
+| -   | | Cancel | The merchant has cancelled the order | `VOID` |
+| 3   | Capture | -- | A final state: Payment fully processed | `CAPTURE` |
+| -   | | Refund | The merchant has refunded the money to the user | `REFUND` |
+| 4   | Cancel  | -- | A final state: Payment cancelled | - |
+| 5   | Refund  | -- | A final state: Payment refunded | - |
 
 ### Requests and responses
 
@@ -1509,17 +1509,17 @@ always contains _the entire history_ of payments for the order, not just the cur
 ```
 
 **Please note:** The `transactionSummary` will not be part of the response if
-the user not reacted to the Vipps landing page or app-switch. `bankIdentificationNumber` will be part of `transactionSummary` only in the response of `GET:/ecomm/v2/payments/{orderId}/details` endpoint.
+the user does not react to the Vipps landing page or app-switch. `bankIdentificationNumber` will only be part of `transactionSummary` in the response of the `GET:/ecomm/v2/payments/{orderId}/details` endpoint.
 
 ### Polling guidelines
 
-General guidelines for When to start polling with
+General guidelines for when to start polling with
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET):
 
 1. Start after 5 seconds
 2. Check every 2 seconds
 
-These are reasonable values, but different merchants have different use cases,
+These are reasonable values, but different merchants have different use cases
 and values should be adapted to the specific case.
 
 See [Timeouts](#timeouts) for details about timeouts.
@@ -1532,29 +1532,31 @@ See [Timeouts](#timeouts) for details about timeouts.
 ## Userinfo
 
 Vipps offers the possibility for merchants to ask for the user's profile information as part of the payment flow.
-This is done through Vipps Userinfo which
-You can learn more at the [OIDC Standard](https://openid.net/specs/openid-connect-core-1_0.html#UserInfo).
+This is done through Vipps Userinfo which follows
+the [OIDC Standard](https://openid.net/specs/openid-connect-core-1_0.html#UserInfo).
 
-To enable the possibility to fetch profile information for a user the merchant can add a `scope`
+To enable the possibility to fetch profile information for a user, the merchant can add a `scope`
 parameter to the initiate call:
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST).
 
-If the enduser has not already consented to sharing information from Vipps to the
-merchant, the user will be asked for any remaining consents before completing the payment flow.
-Once the payment flow is completed the merchant can get the profile
+If the end user has not already consented to sharing information from Vipps to the
+merchant, they will be asked for any remaining consents before completing the payment flow.
+Once the payment flow is completed, the merchant can get the profile
 information from our Userinfo endpoint.
 
-A users consent to share information with a merchant applies across our services. Thus, if the merchant implements Vipps login
-in addition to profile information as part of the payment flow, the merchant can also use Vipps to log the user in without the need for additional consents.
+A user's consent to share information with a merchant applies across our services. Thus, if the merchant implements Vipps Login as part of the payment flow,
+in addition to profile information, they can also use Vipps to log the user in without the need for additional consents.
+
+Example of the userInfo flow:
 
 ![User info flow](images/userinfo-flow.png)
-*The userInfo flow*
+
 
 ### scope
 
 | scope            | Description | User consent required |
 | ---------------- | ----------- | --------------------- |
-| `address`        | A list containing the user's addresses. The list always contains the home address from the National Population Register, and can also include work address and other addresses added by the user in Vipps. | yes |
+| `address`        | A list containing the user's addresses. The list always contains the home address from the National Population Register and can also include work address and other addresses added by the user in Vipps. | yes |
 | `birthDate`      | Birth date. Verified with BankID. | yes |
 | `email`          | Email address. The flag `email_verified : true` (or `false`) in the response indicates whether the email address is verified. | yes |
 | `name`           | First, middle and given name. Verified with the National Population Register. | yes |
