@@ -1098,10 +1098,8 @@ paths:
         - in: header
           name: Authorization
           description: >-
-            The access token is a base64-encoded string that is required for all API calls.
-            It is a JWT (JSON Web Token).
-            The access token is fetched from the `POST:/accesstoken/get` endpoint.
-            It is valid for 1 hour in the test environment and 24 hours in the production environment.
+            The access token is required to authorize the userinfo request. It should be sent as a Bearer token. 
+            The access token is received on a successful request to the token endpoint `POST:/oauth2/token` from the Vipps Login API.
           required: true
           schema:
             type: string

@@ -46,11 +46,6 @@
 								"type": "text"
 							},
 							{
-								"key": "Ocp-Apim-Subscription-Key",
-								"value": "{{Ocp-Apim-Subscription-Key}}",
-								"type": "default"
-							},
-							{
 								"key": "Merchant-Serial-Number",
 								"value": "{{merchantSerialNumber}}",
 								"type": "default"
@@ -110,11 +105,6 @@
 								"key": "Authorization",
 								"type": "text",
 								"value": "Bearer {{login_token}}"
-							},
-							{
-								"key": "Ocp-Apim-Subscription-Key",
-								"value": "{{Ocp-Apim-Subscription-Key}}",
-								"type": "default"
 							},
 							{
 								"key": "Merchant-Serial-Number",
