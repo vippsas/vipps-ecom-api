@@ -75,8 +75,8 @@ Document version 2.5.78.
   * [Polling guidelines](#polling-guidelines)
 * [Get payment status](#get-payment-status)
 * [Userinfo](#userinfo)
-  * [scope](#scope)
-  * [Userinfo call by call guide](#userinfo-call-by-call-guide)
+  * [Scope](#scope)
+  * [Userinfo call-by-call guide](#userinfo-call-by-call-guide)
   * [Get userinfo](#get-userinfo)
   * [Userinfo call](#userinfo-call)
   * [Consent](#consent)
@@ -188,8 +188,7 @@ All Vipps API calls are authenticated and authorized with an access token
 
 For more information about how to obtain an access token and all details around this, please see:
 [Quick overview of how to make an API call](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#quick-overview-of-how-to-make-an-api-call)
-in the
-[Getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md).
+in the Getting started guide.
 
 ## Vipps HTTP headers
 
@@ -1552,9 +1551,11 @@ Example of the userInfo flow:
 ![User info flow](images/userinfo-flow.png)
 
 
-### scope
+### Scope
 
-| scope            | Description | User consent required |
+Scope is the type of information you want access to. This can include any of the following values, separated by a space.
+
+| Scope            | Description | User consent required |
 | ---------------- | ----------- | --------------------- |
 | `address`        | A list containing the user's addresses. The list always contains the home address from the National Population Register and can also include work address and other addresses added by the user in Vipps. | yes |
 | `birthDate`      | Birth date. Verified with BankID. | yes |
@@ -1566,28 +1567,30 @@ Example of the userInfo flow:
 
 See the API specification for the formats and other details for each scope.
 
-**Please note:** If the e-mail address that is delivered has the flag `email_verified : false`
+**Please note:** If the e-mail address that is delivered has the flag `email_verified : false`,
 this address should not be used to link the user to an existing account without
 further authentication. Such authentication could be to prompt the user to
-login to the original account or confirm the account linking by having a
+log in to the original account or to confirm the account linking by providing a
 confirmation link sent to the email address.
 
-### Userinfo call by call guide
+### Userinfo call-by-call guide
 
 Scenario: You want to complete a payment and get the name and phone number of
-a customer.
+a customer. Details about each step are described in the sections below.
 
 1. Retrieve the access token:
-   [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-recurring-api/#/Access%20Controller/getAccessToken).
-2. Add scope to the transaction object and include the scope you wish to get
-   access to (valid scope) before calling
-   [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
-3. The user consents to the information sharing and perform the payment in Vipps.
-4. Retrieve the `sub` by calling
-   [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
-5. Using the sub from step 4, call
+   [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-ecom-api/#/Authorization%20Service/fetchAuthorizationTokenUsingPost).
+2. Add `scope` to the
+   [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST) call and include the scopes you need access to (e.g., "name address email phoneNumber birthDate"). Separate scopes with spaces.
+3. The user consents to sharing the information and performs the payment in Vipps.
+4. You retrieve the user identifier, `sub`, by calling
+   [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET).
+5. Retrieve a login token via the Vipps Login API:
+   [`POST:/access-management-1.0/access/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Login%20API/oauth2Token). Do not include the ``Ocp-Apim-Subscription-Key`` header or you will get an authorization error.
+6. Using the `sub` from step 4, call
    [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getUserinfo)
    to retrieve the user's information.
+   Do not include the ``Ocp-Apim-Subscription-Key`` header. See more information under [Userinfo call](#userinfo-call).
 
 **Please note:** The `sub` is added asynchronously, so if the `/details` request
 is made within (milli)seconds of the payment approval in the app, it may not be
@@ -1604,7 +1607,7 @@ and will result in a `HTTP Unauthorized 401` error.
 
 ### Get userinfo
 
-Once the user completes the session a unique identifier `sub` can be retrieved from the
+Once the user completes the session, a unique identifier `sub` can be retrieved from the
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET) endpoint.
 
 Example `sub` format:
@@ -1621,20 +1624,31 @@ The `sub` is based on the user's national identity number ("fødselsnummer"
 in Norway), and does not change (except in very special cases).
 
 **Please note:** It is recommended to get the user's information directly after
-completing the transaction. There is however a _time limit of 168 hours_
-(one week) to retrieve the consented profile data from the `/userinfo` endpoint to
+completing the transaction. There is a _time limit of 168 hours_
+(one week) to retrieve the consented profile data from the `/userinfo` endpoint. This is to
 better support merchants that depend on manual steps/checks in their process of
 fetching the profile data. The merchant will get the information that is in the
 user profile at the time when they actually fetch the information. This means
 that the information might have changed from the time the user completed the
 transaction and the fetching of the profile data.
 
+
+### Userinfo authorization token
+
+For authorization, you need to get a new access token from the access-management path:
+[`POST:/access-management-1.0/access/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Login%20API/oauth2Token).
+Do not include the ``Ocp-Apim-Subscription-Key`` header or you will get an authorization error.
+
+**Important note:** Do not include any `OCP-APIM-Subscription-Key` key in the header. This is because the call is part of
+Vipps Login and is therefore _not_ under the same subscription as eComm. It will result in a `HTTP Unauthorized 401` error.
+
 ### Userinfo call
 
 This endpoint returns the payload with the information that the user has consented to share.
 
-Call [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getUserinfo)
-with the `sub` that was retrieved earlier. See below on how to construct the call.
+The call is:
+[`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getUserinfo).
+Provide the `sub` that was retrieved earlier.
 
 **Request**
 
@@ -1642,14 +1656,14 @@ _Headers_
 
 | Header        | Description             |
 | ------------- | ----------------------- |
-| Authorization | "Bearer {Access Token}" |
+| Authorization | "Bearer {Login Token}"  |
 
-The access token is received on a successful request to the token endpoint described in [Authentication](#authentication).
+Authorization requires the new access token you got from
+[`POST:/access-management-1.0/access/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Login%20API/oauth2Token).
 
-**Important note:** `OCP-APIM-Subscription-Key` used for the eCom API must _not_ be included. This is because userinfo is part of
-Vipps Login and is therefore _not_ under the same subscription, and will result in a `HTTP Unauthorized 401` error.
+**Important note:** Do not include any `OCP-APIM-Subscription-Key` key in the header as it will result in a `HTTP Unauthorized 401` error.
 
-**Example response:**
+**Example response from a successful call:**
 
 ```json
 {
@@ -1699,31 +1713,34 @@ Vipps Login and is therefore _not_ under the same subscription, and will result 
 }
 ```
 
+Userinfo sequence:
+
 ![Userinfo sequence](images/userinfo-direct.png)
 
 ### Consent
 
 A user's consent to share information with a merchant applies across all Vipps
-services. Thus, if the merchant implements Vipps Login in addition to profile
-information as part of the payment flow, the merchant can also use Vipps to
+services. Thus, if the merchant implements Vipps Login as part of the payment flow,
+in addition to profile information, they can also use Vipps to
 log the user in without the need for additional consent.
 
 The user is presented with a consent card that must be accepted before
-approving the payment in Vipps. The following screens show examples
+approving the payment in Vipps. The following screenshots show examples
 of consent cards for Android(left) and iOS(right):
 
 ![Consent card](images/share-user-info.png)
 
 **Please note:** This operation has an "all or nothing" approach, so a user must
 complete a valid payment and consent to _all_ values in order to complete the
-session. If a user chooses to reject the terms the payment will not be
+session. If a user chooses to reject the terms, the payment will not be
 processed. Unless the whole flow is completed, this will be handled as a
 failed payment by the eCom API.
 
 ## HTTP response codes
 
 This API returns the following HTTP statuses in the responses.
-See the [API specification](https://github.com/vippsas/vipps-ecom-api).
+See the [API specification](https://github.com/vippsas/vipps-ecom-api) to find out which
+statuses returned for which endpoints.
 
 | HTTP status             | Description                                            |
 | ----------------------- | ------------------------------------------------------ |
@@ -1741,7 +1758,7 @@ See the [API specification](https://github.com/vippsas/vipps-ecom-api).
 HTTP responses with errors from the application gateway contain one error JSON object.
 Error responses produced from the application gateway include `401`, `403`, `422` and `429`.
 
-HTTP responses with errors from the Vipps backend will contain an _array_ of JSON objects.
+Note that the HTTP responses that contains errors from the Vipps backend will contain an _array_ of JSON objects.
 
 See [Errors](#errors) for more details.
 
@@ -1773,24 +1790,22 @@ is _far_ higher.
 
 ## Partner keys
 
-In addition to the normal [Authentication](#authentication) we offer _partner keys_,
+In addition to the normal [Authentication](#authentication), we offer _partner keys_
 which let a partner make API calls on behalf of a merchant.
 
-If you are a Vipps partner managing agreements on behalf of Vipps merchants you
+If you are a Vipps partner managing agreements on behalf of Vipps merchants, you
 can use your own API credentials to authenticate, and then send
 the `Merchant-Serial-Number` header to identify which of your merchants you
 are acting on behalf of. The `Merchant-Serial-Number` must be sent in the header
 of all API requests.
 
-By including the [Vipps HTTP Headers](#vipps-http-headers) you will make
+By including the [Vipps HTTP Headers](#vipps-http-headers), you will make
 it easier to investigate problems, if anything unexpected happens. Partners may
 re-use the values of the `Vipps-System-Name` and `Vipps-System-Plugin-Name` in
-the plugins headers if having different values do not make sense.
+the plugins headers, if having different values does not make sense.
 Note that the HTTP Headers are mandatory for partners and platforms.
 
-Here's an example of headers (please refer to the
-[API specification](https://vippsas.github.io/vipps-ecom-api/)
-for all the details):
+Here's an example of headers:
 
 ```http
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni <snip>
@@ -1803,6 +1818,9 @@ Vipps-System-Plugin-Version: 4.5.6
 Content-Type: application/json
 ```
 
+Please refer to the
+[API specification](https://vippsas.github.io/vipps-ecom-api/) for all the details.
+
 **Please note:** The Merchant Serial Number (MSN) is a unique id for the sale
 unit. This is a required parameter if you are a Vipps partner making API requests
 on behalf of a merchant. The partner must use the _merchant's_ MSN, not the
@@ -1811,13 +1829,13 @@ merchants making API calls for themselves.
 
 ## Idempotency
 
-In a capture request the merchant may also use the `X-Request-Id` header.
-This header is an idempotency header ensuring that if the merchant retries
-a request with the same `X-Request-Id` the retried request will not make
+In a capture request, the merchant may also use the `X-Request-Id` header.
+This header is an idempotency header ensuring that, if the merchant retries
+a request with the same `X-Request-Id`, the retried request will not make
 additional changes.
 
 You can use any unique id for your `X-Request-Id`.
-See the API specification for details.
+See the [API specification](https://vippsas.github.io/vipps-ecom-api/) for details.
 
 Request:
 
