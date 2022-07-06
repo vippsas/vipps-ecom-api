@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Vipps eCommerce API v1.6.26</title>
+    <title>Vipps eCommerce API v1.6.27</title>
 
     <style>
     </style>
@@ -2267,9 +2267,9 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments \
   },
   &quot;merchantInfo&quot;: {
     &quot;authToken&quot;: &quot;iOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImllX3FXQ1hoWHh0MXpJ&quot;,
-    &quot;callbackPrefix&quot;: &quot;https://example.com/vipps/callbacks-for-payment-updates&quot;,
+    &quot;callbackPrefix&quot;: &quot;https://example.com/vipps/callbacks-for-payment-update-from-vipps&quot;,
     &quot;consentRemovalPrefix&quot;: &quot;https://example.com/vipps/consent-removal&quot;,
-    &quot;fallBack&quot;: &quot;https://example.com/vipps/fallback-order-result-page/acme-shop-123-order123abc&quot;,
+    &quot;fallBack&quot;: &quot;https://example.com/vipps/fallback-result-page-for-both-success-and-failure/acme-shop-123-order123abc&quot;,
     &quot;isApp&quot;: false,
     &quot;merchantSerialNumber&quot;: &quot;123456&quot;,
     &quot;paymentType&quot;: &quot;eComm Regular Payment&quot;,
@@ -2459,9 +2459,9 @@ System.out.println(response.toString());
   },
   <span class="hljs-attr">&quot;merchantInfo&quot;</span>: {
     <span class="hljs-attr">&quot;authToken&quot;</span>: <span class="hljs-string">&quot;iOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImllX3FXQ1hoWHh0MXpJ&quot;</span>,
-    <span class="hljs-attr">&quot;callbackPrefix&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/callbacks-for-payment-updates&quot;</span>,
+    <span class="hljs-attr">&quot;callbackPrefix&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/callbacks-for-payment-update-from-vipps&quot;</span>,
     <span class="hljs-attr">&quot;consentRemovalPrefix&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/consent-removal&quot;</span>,
-    <span class="hljs-attr">&quot;fallBack&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/fallback-order-result-page/acme-shop-123-order123abc&quot;</span>,
+    <span class="hljs-attr">&quot;fallBack&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/fallback-result-page-for-both-success-and-failure/acme-shop-123-order123abc&quot;</span>,
     <span class="hljs-attr">&quot;isApp&quot;</span>: <span class="hljs-literal">false</span>,
     <span class="hljs-attr">&quot;merchantSerialNumber&quot;</span>: <span class="hljs-string">&quot;123456&quot;</span>,
     <span class="hljs-attr">&quot;paymentType&quot;</span>: <span class="hljs-string">&quot;eComm Regular Payment&quot;</span>,
@@ -2615,7 +2615,7 @@ System.out.println(response.toString());
 <td>body</td>
 <td>string</td>
 <td>true</td>
-<td>Vipps will use the fallBack URL to redirect the Vipps user to the merchant’s confirmation page once the payment is completed in Vipps. This is normally the “success page”, although the “fallback” name is ambiguous (the same URL is also used if payment was not successful). In other words: This is the URL Vipps sends the Vipps user back to. URLs passed to Vipps must validate, see <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">URL validation</a>. The URL must use HTTPS, or a custom URL scheme like &quot;myapp://&quot;&quot;.</td>
+<td>Vipps will use the fallBack URL to redirect the Vipps user to the merchant’s confirmation page once the payment is completed in Vipps. This is normally the “success page”, although the “fallback” name is ambiguous (the same URL is also used if payment was not successful). In other words: This is the URL Vipps sends the Vipps user back to. The page must handle both successful payments and payment failures. URLs passed to Vipps must validate, see <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">URL validation</a>. The URL must use HTTPS, or a custom URL scheme like &quot;myapp://&quot;&quot;.</td>
 </tr>
 <tr>
 <td>»» isApp</td>
@@ -8296,9 +8296,9 @@ System.out.println(response.toString());
   },
   <span class="hljs-attr">&quot;merchantInfo&quot;</span>: {
     <span class="hljs-attr">&quot;authToken&quot;</span>: <span class="hljs-string">&quot;iOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImllX3FXQ1hoWHh0MXpJ&quot;</span>,
-    <span class="hljs-attr">&quot;callbackPrefix&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/callbacks-for-payment-updates&quot;</span>,
+    <span class="hljs-attr">&quot;callbackPrefix&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/callbacks-for-payment-update-from-vipps&quot;</span>,
     <span class="hljs-attr">&quot;consentRemovalPrefix&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/consent-removal&quot;</span>,
-    <span class="hljs-attr">&quot;fallBack&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/fallback-order-result-page/acme-shop-123-order123abc&quot;</span>,
+    <span class="hljs-attr">&quot;fallBack&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/fallback-result-page-for-both-success-and-failure/acme-shop-123-order123abc&quot;</span>,
     <span class="hljs-attr">&quot;isApp&quot;</span>: <span class="hljs-literal">false</span>,
     <span class="hljs-attr">&quot;merchantSerialNumber&quot;</span>: <span class="hljs-string">&quot;123456&quot;</span>,
     <span class="hljs-attr">&quot;paymentType&quot;</span>: <span class="hljs-string">&quot;eComm Regular Payment&quot;</span>,
@@ -8561,9 +8561,9 @@ System.out.println(response.toString());
 <a id="tocsmerchantinfo"></a></p>
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">&quot;authToken&quot;</span>: <span class="hljs-string">&quot;iOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImllX3FXQ1hoWHh0MXpJ&quot;</span>,
-  <span class="hljs-attr">&quot;callbackPrefix&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/callbacks-for-payment-updates&quot;</span>,
+  <span class="hljs-attr">&quot;callbackPrefix&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/callbacks-for-payment-update-from-vipps&quot;</span>,
   <span class="hljs-attr">&quot;consentRemovalPrefix&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/consent-removal&quot;</span>,
-  <span class="hljs-attr">&quot;fallBack&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/fallback-order-result-page/acme-shop-123-order123abc&quot;</span>,
+  <span class="hljs-attr">&quot;fallBack&quot;</span>: <span class="hljs-string">&quot;https://example.com/vipps/fallback-result-page-for-both-success-and-failure/acme-shop-123-order123abc&quot;</span>,
   <span class="hljs-attr">&quot;isApp&quot;</span>: <span class="hljs-literal">false</span>,
   <span class="hljs-attr">&quot;merchantSerialNumber&quot;</span>: <span class="hljs-string">&quot;123456&quot;</span>,
   <span class="hljs-attr">&quot;paymentType&quot;</span>: <span class="hljs-string">&quot;eComm Regular Payment&quot;</span>,
@@ -8619,7 +8619,7 @@ System.out.println(response.toString());
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>Vipps will use the fallBack URL to redirect the Vipps user to the merchant’s confirmation page once the payment is completed in Vipps. This is normally the “success page”, although the “fallback” name is ambiguous (the same URL is also used if payment was not successful). In other words: This is the URL Vipps sends the Vipps user back to. URLs passed to Vipps must validate, see <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">URL validation</a>. The URL must use HTTPS, or a custom URL scheme like &quot;myapp://&quot;&quot;.</td>
+<td>Vipps will use the fallBack URL to redirect the Vipps user to the merchant’s confirmation page once the payment is completed in Vipps. This is normally the “success page”, although the “fallback” name is ambiguous (the same URL is also used if payment was not successful). In other words: This is the URL Vipps sends the Vipps user back to. The page must handle both successful payments and payment failures. URLs passed to Vipps must validate, see <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">URL validation</a>. The URL must use HTTPS, or a custom URL scheme like &quot;myapp://&quot;&quot;.</td>
 </tr>
 <tr>
 <td>isApp</td>
