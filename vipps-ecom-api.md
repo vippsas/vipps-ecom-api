@@ -8,7 +8,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.5.78.
+Document version 2.5.79.
 
 ## Table of contents
 
@@ -477,8 +477,8 @@ A minimal example:
   "customerInfo": {},
   "merchantInfo": {
     "merchantSerialNumber": "123456",
-    "callbackPrefix": "https://example.com/vipps/callbacks-for-payment-update",
-    "fallBack": "https://example.com/vipps/fallback-result-page/acme-shop-123-order123abc"
+    "callbackPrefix": "https://example.com/vipps/callbacks-for-payment-update-from-vipps",
+    "fallBack": "https://example.com/vipps/fallback-result-page-for-both-success-and-failure/acme-shop-123-order123abc"
   },
   "transaction": {
     "orderId": "acme-shop-123-order123abc",
@@ -497,9 +497,9 @@ An express payment example with more parameters provided:
   },
   "merchantInfo": {
     "authToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni <snip>",
-    "callbackPrefix": "https://example.com/vipps/callbacks-for-payment-update",
+    "callbackPrefix": "https://example.com/vipps/callbacks-for-payment-update-from-vipps",
     "consentRemovalPrefix": "https://example.com/vipps/consents/",
-    "fallBack": "https://example.com/vipps/fallback-result-page/acme-shop-123-order123abc",
+    "fallBack": "https://example.com/vipps/fallback-result-page-for-both-success-and-failure/acme-shop-123-order123abc",
     "merchantSerialNumber": 123456,
     "shippingDetailsPrefix": "https://example.com/vipps/shipping/",
     "paymentType": "eComm Express Payment",
@@ -707,7 +707,7 @@ It is, naturally, not possible to use `http://localhost` or
 Ngrok may also be an option: https://ngrok.com
 
 Here is a simple Java class suitable for testing URLs,
-using the dummy URL `https://example.com/vipps/fallback-result-page/acme-shop-123-order123abc`:
+using the dummy URL `https://example.com/vipps/fallback-result-page-for-both-success-and-failure/acme-shop-123-order123abc`:
 
 ```java
 import org.apache.commons.validator.routines.UrlValidator;
@@ -716,7 +716,7 @@ public class UrlValidate {
  public static void main(String[] args) {
   UrlValidator urlValidator = new UrlValidator();
 
-  if (urlValidator.isValid("https://example.com/vipps/fallback-result-page/acme-shop-123-order123abc")) {
+  if (urlValidator.isValid("https://example.com/vipps/fallback-result-page-for-both-success-and-failure/acme-shop-123-order123abc")) {
    System.out.println("URL is valid");
   } else {
    System.out.println("URL is invalid");
@@ -978,7 +978,7 @@ address), the parameter `staticShippingDetails` can be used in the initiate call
 Then, there is no need to implement
 [`POST:/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/fetchShippingCostUsingPOST).
 
-See 
+See
 [Initiate payment flow: API calls](#initiate-payment-flow-api-calls) for details.
 
 ### Get shipping details
@@ -1196,7 +1196,7 @@ there is a remaining reserved amount.
 
 If one or more partial captures have been made, any remaining reserved amount
 will be automatically released after a few days.
-See also the FAQ: 
+See also the FAQ:
 [For how long is a payment reserved](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#for-how-long-is-a-payment-reserved).
 
 It is not possible to refund the remaining amount since it has not been captured,
