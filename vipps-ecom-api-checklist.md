@@ -2,7 +2,7 @@
 
 API version: 2.0.
 
-Document version 2.1.9.
+Document version 2.1.10.
 
 ## Checklist
 
@@ -14,7 +14,8 @@ Document version 2.1.9.
     - [ ] Details [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
     - For examples of requests and responses, see the Postman collection in [tools](tools/).
 - [ ] Send the [Vipps HTTP headers](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#vipps-http-headers)
-      in all API requests for better tracking and troubleshooting (mandatory for partners and platforms):
+      in all API requests for better tracking and troubleshooting
+      (mandatory for partners and platforms, who must send these headers as part of the checklist approval):
     - [ ] `Merchant-Serial-Number`    
     - [ ] `Vipps-System-Name`
     - [ ] `Vipps-System-Version`
