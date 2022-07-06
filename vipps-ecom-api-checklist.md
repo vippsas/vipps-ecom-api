@@ -2,7 +2,7 @@
 
 API version: 2.0.
 
-Document version 2.1.8.
+Document version 2.1.9.
 
 ## Checklist
 
@@ -36,7 +36,8 @@ Document version 2.1.8.
  - [ ] Avoid Integration pitfalls
     - [ ] The Merchant _must not_ rely on `fallback` or `callback` alone, and must poll
           [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
-          as documented (this is part of the first item in this checklist, but it's still a common error). Follow our [polling recommendations](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#polling-guidelines).  
+          as documented (this is part of the first item in this checklist, but it's still a common error).
+          Follow our [polling recommendations](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#polling-guidelines).  
     - [ ] The merchant must handle that the `fallback` URL is opened in the default browser on the phone,
           and not in a specific browser, in a specific tab, in an embedded browser, requiring a session token, etc.
           See the API guide:
@@ -59,7 +60,8 @@ Document version 2.1.8.
    BankID on
    [portal.vipps.no](https://portal.vipps.no)
    and retrieve API keys.
-4. The merchant completes all checklist items above. Please double check to avoid mistakes.
+4. The merchant completes all checklist items above.
+   Please double check to avoid mistakes.
 5. The merchant verifies the integration in the test environment by checking that
    there are test IDs (`orderId`) in the
    [Vipps test environment](https://github.com/vippsas/vipps-developers#the-vipps-test-environment-mt),
