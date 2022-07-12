@@ -1930,9 +1930,8 @@ components:
           description: Skips the landing page for whitelisted sale units. Requires a valid customerInfo.mobileNumber.
         scope:
           type: string
-          description: The requested OIDC scope for use with userinfo
-          example: 'name address email'
-          enum:
+          description: |
+            The requested OIDC scope for use with userinfo, possible values are 
             - name
             - address
             - email
@@ -1940,6 +1939,7 @@ components:
             - birthDate
             - nin
             - accountNumbers
+          example: 'name address email'
         additionalData:
           $ref: '#/components/schemas/AdditionalTransactionData'
         useExplicitCheckoutFlow:
