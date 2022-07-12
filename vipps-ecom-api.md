@@ -2188,10 +2188,6 @@ to retrieve all the information about the payment.
 | Merchant    | 21         | Reference orderId is not valid |
 | Merchant    | 22         | Reference orderId is not in valid state |
 | Merchant    | 97         | The merchant is not approved by Vipps to receive payments |
-|             | 121        | Agreement not found |
-|             | 122        | Agreement not active |
-|             | 123        | Connected payment source not active for Agreement |
-|             | 124        | No Network token available for this Agreement |
 
 ## Testing
 
