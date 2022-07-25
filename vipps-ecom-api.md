@@ -1580,16 +1580,18 @@ Scenario: You want to complete a payment and get the name and phone number of
 a customer. Details about each step are described in the sections below.
 
 1. Retrieve the access token:
-   [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-recurring-api/#/Access%20Controller/getAccessToken).
-2. Add scope to the transaction object and include the scope you wish to get
-   access to (valid scope) before calling
-   [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
-3. The user consents to the information sharing and perform the payment in Vipps.
-4. Retrieve the `sub` by calling
-   [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
-5. Using the sub from step 4, call
+   [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-ecom-api/#/Authorization%20Service/fetchAuthorizationTokenUsingPost).
+2. Add `scope` to the
+   [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST) call and include the scopes you need access to (e.g., "name address email phoneNumber birthDate"). Separate scopes with spaces.
+3. The user consents to sharing the information and performs the payment in Vipps.
+4. You retrieve the user identifier, `sub`, by calling
+   [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET).
+5. Retrieve a login token via the Vipps Login API:
+   [`POST:/access-management-1.0/access/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Login%20API/oauth2Token). Do not include the ``Ocp-Apim-Subscription-Key`` header or you will get an authorization error.
+6. Using the `sub` from step 4, call
    [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getUserinfo)
    to retrieve the user's information.
+   Do not include the ``Ocp-Apim-Subscription-Key`` header. See more information under [Userinfo call](#userinfo-call).
 
 **Please note:** The `sub` is added asynchronously, so if the `/details` request
 is made within (milli)seconds of the payment approval in the app, it may not be
@@ -1631,6 +1633,16 @@ user profile at the time when they actually fetch the information. This means
 that the information might have changed from the time the user completed the
 transaction and the fetching of the profile data.
 
+
+### Userinfo authorization token
+
+For authorization, you need to get a new access token from the access-management path:
+[`POST:/access-management-1.0/access/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Login%20API/oauth2Token).
+Do not include the ``Ocp-Apim-Subscription-Key`` header or you will get an authorization error.
+
+**Important note:** Do not include any `OCP-APIM-Subscription-Key` key in the header. This is because the call is part of
+Vipps Login and is therefore _not_ under the same subscription as eComm. It will result in a `HTTP Unauthorized 401` error.
+
 ### Userinfo call
 
 This endpoint returns the payload with the information that the user has consented to share.
@@ -1646,10 +1658,10 @@ _Headers_
 | ------------- | ----------------------- |
 | Authorization | "Bearer {Access Token}" |
 
-The access token is received on a successful request to the token endpoint described in [Authentication](#authentication).
+Authorization requires the new access token you got from
+[`POST:/access-management-1.0/access/oauth2/token`](https://vippsas.github.io/vipps-login-api/#/Vipps%20Login%20API/oauth2Token).
 
-**Important note:** `OCP-APIM-Subscription-Key` used for the eCom API must _not_ be included. This is because userinfo is part of
-Vipps Login and is therefore _not_ under the same subscription, and will result in a `HTTP Unauthorized 401` error.
+**Important note:** Do not include any `OCP-APIM-Subscription-Key` key in the header as it will result in a `HTTP Unauthorized 401` error.
 
 **Example response from a successful call:**
 
