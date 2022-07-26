@@ -1648,6 +1648,8 @@ _Headers_
 | ------------- | ----------------------- |
 | Authorization | "Bearer {Access Token}" |
 
+The access token is received on a successful request to the token endpoint described in [Authentication](#authentication).
+
 **Important note:** `OCP-APIM-Subscription-Key` used for the eCom API must _not_ be included. This is because userinfo is part of
 Vipps Login and is therefore _not_ under the same subscription, and will result in a `HTTP Unauthorized 401` error.
 
