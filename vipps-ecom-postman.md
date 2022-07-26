@@ -37,63 +37,62 @@ Import the collection by following the steps below:
 
 ### Step 4: Run the examples
 
-#### 1. A simple payment
+See the  [eCommerce API Specifications](https://vippsas.github.io/vipps-ecom-api/#/) for details about the calls.
+
+#### 1. A regular eCommerce payment
 
 1. Send request `Get Access Token`. This provides you with access to the API.
 
-   [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-ecom-api/#/Authorization%20Service/fetchAuthorizationTokenUsingPost)
+1. Send request `Initiate Payment`. This is to demonstrate a simple payment by using
+   [`POST:/v3/psppayments/init/`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST).
 
-1. Send request `Initiate Payment`. This is to demonstrate a simple payment.
+   Ctrl+click on the link that appears and it will take you to the website where you can enter your test phone number and complete the payment authorization in the Vipps app in your mobile test environment.
 
-   `Ctrl+click` on the link that appears and it will take you to the website where you can enter your test phone number and complete the payment authorization in the Vipps app in your mobile test environment.
+   The `orderId` in this Postman example is now set in the environment and can be used for subsequent calls.
 
-   [`POST:/v3/psppayments/init/`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
+1. Send request `Get Payment Details` for information about this payment by using [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET).
 
-1. Send request `Get Payment Details` for information about this payment. The `orderId` in this Postman example is set for the previous call.
+1. Send request `Capture Payment` to capture this payment with [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/capturePaymentUsingPOST).
 
-   [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
+1. Send request `Refund Payment` to refund this payment with [`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST).
+
+See [Regular eCommerce payments](vipps-ecom-api.md#regular-ecommerce-payments) for more information from the eCommerce API guide.
 
 #### 2. An express checkout payment (*Vipps Hurtigkasse*)
 
 1. Send request `Get Access Token`, if you haven't already.
 
-   [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-ecom-api/#/Authorization%20Service/fetchAuthorizationTokenUsingPost)
+1. Send request `Initiate Payment - Express Checkout`. This demonstrates the type of payment where the user selects their shipping methods within the Vipps app instead of on the website.
 
-1. Send request `Initiate Payment - Express Checkout`. This demonstrates the type of payment where the user selects their shipping methods within the Vipps app instead of on the website. To enable this functionality, you provide the object `staticShippingDetails` with your relevant details in the body of the call.
+   To enable this functionality, you provide the object `staticShippingDetails` with your relevant details in the body of the call 
+   [`POST:/v3/psppayments/init/`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST).
 
-   `Ctrl+click` on the link that appears and it will take you to the website where you can enter your test phone number and complete the payment authorization in the Vipps app in your mobile test environment.
+   Ctrl+click on the link that appears and complete the payment authorization.
 
-   [`POST:/v3/psppayments/init/`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
+1. Send request `Get Payment Details` for information about this payment by using [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET).
 
-1. Send request `Get Payment Details` for information about this payment. The `orderId` in this Postman example is set for the previous call.
+1. This time, instead of capturing the order, cancel it. Send request `Cancel Payment` to cancel this payment with [`POST:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT).
 
-   [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
+See [Express checkout payments](vipps-ecom-api.md#express-checkout-payments) for more information from the eCommerce API guide.
 
 #### 3. Getting userinfo
 
 1. Send request `Get Access Token`, if you haven't already.
 
-   [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-ecom-api/#/Authorization%20Service/fetchAuthorizationTokenUsingPost)
+1. Send request `Initiate Payment - Profile flow`. Provide the `scope` object in the [`POST:/v3/psppayments/init/`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST) call. This contains the information types that you want access to, separated by spaces (e.g., "name address email phoneNumber birthDate").
 
-1. Send request `Initiate Payment - Profile flow`. Here, the `scope` object contains the information types that you want access to, separated by spaces (e.g., "name address email phoneNumber birthDate").
+   Ctrl+click on the link that appears and complete the authorization.
 
-   `Ctrl+click` on the link that appears and it will take you to the website where you can enter your test phone number and complete the payment authorization in the Vipps app in your mobile test environment.
 
-   If you have not already provided access to these scopes, you will be requested to authorize the access.
-
-   [`POST:/v3/psppayments/init/`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
-
-1. Send request `Get Payment Details` for information about this payment.
+1. Send request `Get Payment Details` with `orderId` for information about this payment by using [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET).
 
    Here, the user identifier, `sub`, is retrieved from the response and set as a variable.
 
-   [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
 
-1. Send request `Get Userinfo`. This uses the `sub` variable from the previous call.
+1. Send request `Get Userinfo`. This uses [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getUserinfo) with the `sub` variable from the previous call.
 
-   [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getUserinfo)
+See [Userinfo](vipps-ecom-api.md#userinfo) for more information from the eCommerce API guide..
 
-See [Userinfo in the eCommerce API guide](vipps-ecom-api.md#userinfo) for more information.
 
 ## Questions?
 
