@@ -6,296 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "Vipps Login",
-			"item": [
-				{
-					"name": "Create Vipps Login Token",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"login_token\", jsonData.access_token);"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "basic",
-							"basic": [
-								{
-									"key": "password",
-									"value": "{{client_secret}}",
-									"type": "string"
-								},
-								{
-									"key": "username",
-									"value": "{{client_id}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/x-www-form-urlencoded",
-								"type": "text"
-							},
-							{
-								"key": "Merchant-Serial-Number",
-								"value": "{{merchantSerialNumber}}",
-								"type": "default"
-							},
-							{
-								"key": "Vipps-System-Name",
-								"value": "{{vipps_system_name}}",
-								"type": "default"
-							},
-							{
-								"key": "Vipps-System-Version",
-								"value": "{{vipps_system_version}}",
-								"type": "default"
-							},
-							{
-								"key": "Vipps-System-Plugin-Name",
-								"value": "{{vipps_system_plugin_name}}",
-								"type": "default"
-							},
-							{
-								"key": "Vipps-System-Plugin-Version",
-								"value": "{{vipps_system_plugin_version}}",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "urlencoded",
-							"urlencoded": [
-								{
-									"key": "grant_type",
-									"value": "client_credentials",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{base_url}}/access-management-1.0/access/oauth2/token",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"access-management-1.0",
-								"access",
-								"oauth2",
-								"token"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Userinfo",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"type": "text",
-								"value": "Bearer {{login_token}}"
-							},
-							{
-								"key": "Merchant-Serial-Number",
-								"value": "{{merchantSerialNumber}}",
-								"type": "default"
-							},
-							{
-								"key": "Vipps-System-Name",
-								"value": "{{vipps_system_name}}",
-								"type": "default"
-							},
-							{
-								"key": "Vipps-System-Version",
-								"value": "{{vipps_system_version}}",
-								"type": "default"
-							},
-							{
-								"key": "Vipps-System-Plugin-Name",
-								"value": "{{vipps_system_plugin_name}}",
-								"type": "default"
-							},
-							{
-								"key": "Vipps-System-Plugin-Version",
-								"value": "{{vipps_system_plugin_version}}",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "{{base_url}}/vipps-userinfo-api/userinfo/{{sub}}",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"vipps-userinfo-api",
-								"userinfo",
-								"{{sub}}"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "QR",
-			"item": [
-				{
-					"name": "Generate QR Code Short URL",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {}
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}",
-								"type": "text"
-							},
-							{
-								"key": "Ocp-Apim-Subscription-Key",
-								"value": "{{Ocp-Apim-Subscription-Key}}",
-								"type": "text"
-							},
-							{
-								"key": "Merchant-Serial-Number",
-								"value": "{{merchantSerialNumber}}",
-								"type": "text"
-							},
-							{
-								"key": "Accept",
-								"value": "text/targetUrl",
-								"type": "text"
-							},
-							{
-								"key": "Vipps-System-Name",
-								"value": "{{vipps_system_name}}",
-								"type": "text"
-							},
-							{
-								"key": "Vipps-System-Version",
-								"value": "{{vipps_system_version}}",
-								"type": "text"
-							},
-							{
-								"key": "Vipps-System-Plugin-Name",
-								"value": "{{vipps_system_plugin_name}}",
-								"type": "default"
-							},
-							{
-								"key": "Vipps-System-Plugin-Version",
-								"value": "{{vipps_system_plugin_version}}",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"url\": \"{{vippsLandingPageURL}}\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}/qr/v1",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"qr",
-								"v1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Generate QR Code PNG",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {}
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{access_token}}",
-								"type": "text"
-							},
-							{
-								"key": "Ocp-Apim-Subscription-Key",
-								"value": "{{Ocp-Apim-Subscription-Key}}",
-								"type": "text"
-							},
-							{
-								"key": "Merchant-Serial-Number",
-								"value": "{{merchantSerialNumber}}",
-								"type": "text"
-							},
-							{
-								"key": "Accept",
-								"value": "image/png",
-								"type": "text"
-							},
-							{
-								"key": "Vipps-System-Name",
-								"value": "{{vipps_system_name}}",
-								"type": "text"
-							},
-							{
-								"key": "Vipps-System-Version",
-								"value": "{{collection_version}}",
-								"type": "text"
-							},
-							{
-								"key": "Vipps-System-Plugin-Name",
-								"value": "{{vipps_system_plugin_name}}",
-								"type": "default"
-							},
-							{
-								"key": "Vipps-System-Plugin-Version",
-								"value": "{{vipps_system_plugin_version}}",
-								"type": "default"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"url\": \"{{vippsLandingPageURL}}\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{base_url}}/qr/v1",
-							"host": [
-								"{{base_url}}"
-							],
-							"path": [
-								"qr",
-								"v1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Get Access Token",
 			"event": [
 				{
@@ -625,77 +335,6 @@
 			"response": []
 		},
 		{
-			"name": "Get Order Status",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"exec": [
-							""
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"disabled": true
-					},
-					{
-						"key": "Authorization",
-						"value": "Bearer {{access_token}}"
-					},
-					{
-						"key": "Ocp-Apim-Subscription-Key",
-						"value": "{{Ocp-Apim-Subscription-Key}}"
-					},
-					{
-						"key": "Merchant-Serial-Number",
-						"value": "{{merchantSerialNumber}}",
-						"type": "default"
-					},
-					{
-						"key": "Vipps-System-Name",
-						"value": "{{vipps_system_plugin_name}}",
-						"type": "default"
-					},
-					{
-						"key": "Vipps-System-Version",
-						"value": "{{vipps_system_version}}",
-						"type": "default"
-					},
-					{
-						"key": "Vipps-System-Plugin_Name",
-						"value": "{{vipps_system_plugin_name}}",
-						"type": "default"
-					},
-					{
-						"key": "Vipps-System-Plugin-Version",
-						"value": "{{vipps_system_plugin_version}}",
-						"type": "default"
-					}
-				],
-				"url": {
-					"raw": "{{base_url}}/ecomm/v2/payments/{{orderId}}/status",
-					"host": [
-						"{{base_url}}"
-					],
-					"path": [
-						"ecomm",
-						"v2",
-						"payments",
-						"{{orderId}}",
-						"status"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Get Payment Details",
 			"event": [
 				{
@@ -965,6 +604,56 @@
 						"payments",
 						"{{orderId}}",
 						"refund"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Userinfo",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "Merchant-Serial-Number",
+						"value": "{{merchantSerialNumber}}",
+						"type": "default"
+					},
+					{
+						"key": "Vipps-System-Name",
+						"value": "{{vipps_system_name}}",
+						"type": "default"
+					},
+					{
+						"key": "Vipps-System-Version",
+						"value": "{{vipps_system_version}}",
+						"type": "default"
+					},
+					{
+						"key": "Vipps-System-Plugin-Name",
+						"value": "{{vipps_system_plugin_name}}",
+						"type": "default"
+					},
+					{
+						"key": "Vipps-System-Plugin-Version",
+						"value": "{{vipps_system_plugin_version}}",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/vipps-userinfo-api/userinfo/{{sub}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"vipps-userinfo-api",
+						"userinfo",
+						"{{sub}}"
 					]
 				}
 			},

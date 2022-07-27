@@ -8,12 +8,12 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.5.79.
+Document version 2.5.80.
 
 ## Table of contents
 
 * [Payment flows](#payment-flows)
-* [Call by call guide](#call-by-call-guide)
+* [Call-by-call guide](#call-by-call-guide)
 * [API endpoints](#api-endpoints)
 * [Authentication](#authentication)
 * [Vipps HTTP headers](#vipps-http-headers)
@@ -129,7 +129,7 @@ states.
 The flow of settlements and how to retrieve them are described in
 [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
 
-## Call by call guide
+## Call-by-call guide
 
 The normal "happy day" flow for a payment is:
 
@@ -150,6 +150,8 @@ The normal "happy day" flow for a payment is:
 4. Capture the payment:
    [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/capturePaymentUsingPOST).
    See [Regular eCommerce payments](#regular-ecommerce-payments).
+
+To test this out, see the step-by-step instructions in the [Postman guide](vipps-ecom-postman.md).
 
 There is, of course, much more to this. The user may cancel, or not act on, the
 payment, firewalls may block the callback, Vipps Hurtigkasse
@@ -1580,16 +1582,20 @@ Scenario: You want to complete a payment and get the name and phone number of
 a customer. Details about each step are described in the sections below.
 
 1. Retrieve the access token:
-   [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-recurring-api/#/Access%20Controller/getAccessToken).
+   [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-ecom-api/#/Authorization%20Service/fetchAuthorizationTokenUsingPost).
 2. Add scope to the transaction object and include the scope you wish to get
    access to (valid scope) before calling
    [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
+   Include the scopes you need access to (e.g., "name address email phoneNumber birthDate"), separated by spaces.
 3. The user consents to the information sharing and perform the payment in Vipps.
 4. Retrieve the `sub` by calling
    [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
 5. Using the sub from step 4, call
    [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getUserinfo)
    to retrieve the user's information.
+   Do not include the ``Ocp-Apim-Subscription-Key`` header. See more information under [Userinfo call](#userinfo-call).
+
+To test this out, see the step-by-step instructions in the [Postman guide](vipps-ecom-postman.md).
 
 **Please note:** The `sub` is added asynchronously, so if the `/details` request
 is made within (milli)seconds of the payment approval in the app, it may not be
