@@ -391,7 +391,7 @@
 						""
 					]
 				},
-				"description": "An express checkout payment that provides shipping information.\nIf the enduser has not already consented to sharing information from Vipps to the merchant, they will be asked for any remaining consents before completing the payment flow."
+				"description": "An express checkout payment that provides shipping information.\nIf the end user has not already consented to sharing information from Vipps to the merchant, they will be asked for any remaining consents before completing the payment flow."
 			},
 			"response": []
 		},

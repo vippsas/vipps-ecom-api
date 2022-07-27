@@ -46,9 +46,10 @@ See the  [eCommerce API Specifications](https://vippsas.github.io/vipps-ecom-api
 1. Send request `Initiate Payment`. This is to demonstrate a simple payment by using
    [`POST:/v3/psppayments/init/`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST).
 
-   Ctrl+click on the link that appears and it will take you to the website where you can enter your test phone number and complete the payment authorization in the Vipps app in your mobile test environment.
+   Ctrl+click on the link that appears and it will take you to the Vipps landing page.
+   Enter your test phone number and complete the payment authorization in the Vipps app in your mobile test environment.
 
-   The `orderId` in this Postman example is now set in the environment and can be used for subsequent calls.
+   The `orderId` and `vippsLandingPageUrl` variables are now in the environment of this Postman example and can be used for subsequent calls relating to this purchase.
 
 1. Send request `Get Payment Details` for information about this payment by using [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET).
 
@@ -68,6 +69,8 @@ See [Regular eCommerce payments](vipps-ecom-api.md#regular-ecommerce-payments) f
    [`POST:/v3/psppayments/init/`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST).
 
    Ctrl+click on the link that appears and complete the payment authorization.
+
+   The `orderId` and `vippsLandingPageUrl` variables are now in the environment of this Postman example and can be used for subsequent calls relating to this purchase.
 
 1. Send request `Get Payment Details` for information about this payment by using [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET).
 
@@ -93,6 +96,23 @@ See [Express checkout payments](vipps-ecom-api.md#express-checkout-payments) for
 
 See [Userinfo](vipps-ecom-api.md#userinfo) for more information from the eCommerce API guide..
 
+
+#### 4. Generating a link to the Vipps landing page
+
+When you run any of the `Initiate Payment` examples, they will set the `vippsLandingPageUrl` variable in the environment.
+With this url, you can generate a short url or a QR code to take the user to the Vipps landing page for a one-time payment.
+
+1. Send request `Get Access Token`, if you haven't already.
+
+1. Send request `Initiate Payment - Express Checkout`.
+
+1. Send request `Generate QR Code Short URL`. Using [`POST:/qr/v1`](https://vippsas.github.io/vipps-qr-api/#/One%20time%20payment%20QR/generateOtpQr), this returns a url that can be used to open the Vipps landing page.
+
+1. Send request `Generate QR Code PNG`. Using [`POST:/qr/v1`](https://vippsas.github.io/vipps-qr-api/#/One%20time%20payment%20QR/generateOtpQr), this returns a url that can be used to show a QR code. Scanning the QR code will take you to the Vipps landing page.
+
+
+
+This is done in cooperation with the Vipps QR API. See [One-time payment QR](https://github.com/vippsas/vipps-qr-api#one-time-payment-qr) in the Vipps QR API guide for more details about this and other QR services.
 
 ## Questions?
 

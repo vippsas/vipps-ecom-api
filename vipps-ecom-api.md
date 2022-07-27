@@ -56,6 +56,7 @@ Document version 2.5.80.
   * [Transaction update](#transaction-update)
   * [Remove User Consent](#remove-user-consent)
 * [The Vipps landing page](#the-vipps-landing-page)
+  * [Generating a QR code to the Vipps landing page](#generating-a-qr-code-to-the-vipps-landing-page)
   * [Skip landing page](#skip-landing-page)
 * [Reserve](#reserve)
 * [Capture](#capture)
@@ -1075,6 +1076,18 @@ The user's phone number can be set in the payment initiation call:
 
 The user's phone number is remembered by the user's browser,
 eliminating the need for re-typing it on subsequent purchases.
+
+### Generating a QR code to the Vipps landing page
+
+You can generate a short url or a QR code to take the user to the Vipps landing page for a one-time payment.
+
+<p align="center">
+  <img src="images/demo-qr.svg" alt="Demo QR" width="250">
+</p>
+
+This is done in cooperation with the Vipps QR API. See [One-time payment QR](https://github.com/vippsas/vipps-qr-api#one-time-payment-qr) in the Vipps QR API guide for more details about this and other QR services.
+
+See the [eCom Postman guide](vipps-ecom-postman.md) for step-by-step examples of generating QR codes and short links for one-time payments initiated from the eCom API.
 
 ### Skip landing page
 
