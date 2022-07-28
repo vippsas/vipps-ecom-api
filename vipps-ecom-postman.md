@@ -99,7 +99,7 @@ With this url, you can generate a QR code to take you to the Vipps landing page 
 
 1. Send request `Initiate Payment`.
 
-1. Send request `Generate QR Code PNG`. This uses [`POST:/qr/v1`](https://vippsas.github.io/vipps-qr-api/#/One%20time%20payment%20QR/generateOtpQr) to provide a url that can be used to show a QR code. Ctrl+click the link to see the image. Scanning the QR should open the test app on your phone.
+1. Send request `Generate QR Code PNG`. This uses [`POST:/qr/v1`](https://vippsas.github.io/vipps-qr-api/#/One%20time%20payment%20QR/generateOtpQr) to provide a url that can be used to show a QR code. Ctrl+click the link to see the QR code. Scanning the QR should open the test app on your phone.
 
 This is done in cooperation with the Vipps QR API. See [One-time payment QR](https://github.com/vippsas/vipps-qr-api#one-time-payment-qr) for more details.
 
