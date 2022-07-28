@@ -68,6 +68,11 @@
 			"enabled": true
 		},
 		{
+			"key": "vippsLandingPageURL",
+			"value": "<This value will be overwritten on each Initiate Payment call. It will contain a url to the Vipps landing page, obtained from the eCom api.>",
+			"enabled": true
+		},
+		{
 			"key": "shippingCost1",
 			"value": "30",
 			"enabled": true
