@@ -46,10 +46,12 @@ See the  [eCommerce API Specifications](https://vippsas.github.io/vipps-ecom-api
 1. Send request `Initiate Payment`. This is to demonstrate a simple payment by using
    [`POST:/v3/psppayments/init/`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST).
 
+   The `orderId` and `vippsLandingPageUrl` variables are now in the environment of this Postman example and can be used for subsequent calls relating to this purchase.
+
    Ctrl+click on the link that appears and it will take you to the Vipps landing page.
    Enter your test phone number and complete the payment authorization in the Vipps app in your mobile test environment.
+   Alternatively, you could [Generate a QR code to the Vipps Landing page](#4-generating-a-qr-code-to-the-vipps-landing-page).
 
-   The `orderId` and `vippsLandingPageUrl` variables are now in the environment of this Postman example and can be used for subsequent calls relating to this purchase.
 
 1. Send request `Get Payment Details` for information about this payment by using [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET).
 
@@ -61,8 +63,6 @@ See [Regular eCommerce payments](vipps-ecom-api.md#regular-ecommerce-payments) f
 
 #### 2. An express checkout payment (*Vipps Hurtigkasse*)
 
-1. Send request `Get Access Token`, if you haven't already.
-
 1. Send request `Initiate Payment - Express Checkout`. This demonstrates the type of payment where the user selects their shipping methods within the Vipps app instead of on the website.
 
    To enable this functionality, you provide the object `staticShippingDetails` with your relevant details in the body of the call 
@@ -70,17 +70,13 @@ See [Regular eCommerce payments](vipps-ecom-api.md#regular-ecommerce-payments) f
 
    Ctrl+click on the link that appears and complete the payment authorization.
 
-   The `orderId` and `vippsLandingPageUrl` variables are now in the environment of this Postman example and can be used for subsequent calls relating to this purchase.
-
 1. Send request `Get Payment Details` for information about this payment by using [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET).
 
 1. This time, instead of capturing the order, cancel it. Send request `Cancel Payment` to cancel this payment with [`POST:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT).
 
 See [Express checkout payments](vipps-ecom-api.md#express-checkout-payments) for more information from the eCommerce API guide.
 
-#### 3. Getting userinfo
-
-1. Send request `Get Access Token`, if you haven't already.
+#### 3. Getting access to user info
 
 1. Send request `Initiate Payment - Profile flow`. Provide the `scope` object in the [`POST:/v3/psppayments/init/`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST) call. This contains the information types that you want access to, separated by spaces (e.g., "name address email phoneNumber birthDate").
 
@@ -94,7 +90,7 @@ See [Express checkout payments](vipps-ecom-api.md#express-checkout-payments) for
 
 1. Send request `Get Userinfo`. This uses [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getUserinfo) with the `sub` variable from the previous call.
 
-See [Userinfo](vipps-ecom-api.md#userinfo) for more information from the eCommerce API guide..
+See [Userinfo](vipps-ecom-api.md#userinfo) for more information.
 
 #### 4. Generating a QR code to the Vipps landing page
 
