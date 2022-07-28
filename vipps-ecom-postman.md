@@ -96,23 +96,16 @@ See [Express checkout payments](vipps-ecom-api.md#express-checkout-payments) for
 
 See [Userinfo](vipps-ecom-api.md#userinfo) for more information from the eCommerce API guide..
 
+#### 4. Generating a QR code to the Vipps landing page
 
-#### 4. Generating a link to the Vipps landing page
+When you run any of the `Initiate Payment` examples, the `vippsLandingPageUrl` variable gets set in the environment.
+With this url, you can generate a QR code to take you to the Vipps landing page for a one-time payment.
 
-When you run any of the `Initiate Payment` examples, they will set the `vippsLandingPageUrl` variable in the environment.
-With this url, you can generate a short url or a QR code to take the user to the Vipps landing page for a one-time payment.
+1. Send request `Initiate Payment`.
 
-1. Send request `Get Access Token`, if you haven't already.
+1. Send request `Generate QR Code PNG`. This uses [`POST:/qr/v1`](https://vippsas.github.io/vipps-qr-api/#/One%20time%20payment%20QR/generateOtpQr) to a url that can be used to show a QR code. Ctrl+click the link to see the image. Scanning the QR will open a browser on your phone here in the test environment, but in production, it should open the Vipps app on the user's phone..
 
-1. Send request `Initiate Payment - Express Checkout`.
-
-1. Send request `Generate QR Code Short URL`. Using [`POST:/qr/v1`](https://vippsas.github.io/vipps-qr-api/#/One%20time%20payment%20QR/generateOtpQr), this returns a url that can be used to open the Vipps landing page.
-
-1. Send request `Generate QR Code PNG`. Using [`POST:/qr/v1`](https://vippsas.github.io/vipps-qr-api/#/One%20time%20payment%20QR/generateOtpQr), this returns a url that can be used to show a QR code. Scanning the QR code will take you to the Vipps landing page.
-
-
-
-This is done in cooperation with the Vipps QR API. See [One-time payment QR](https://github.com/vippsas/vipps-qr-api#one-time-payment-qr) in the Vipps QR API guide for more details about this and other QR services.
+This is done in cooperation with the Vipps QR API. See [One-time payment QR](https://github.com/vippsas/vipps-qr-api#one-time-payment-qr) for more details.
 
 ## Questions?
 
