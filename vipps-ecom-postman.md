@@ -65,7 +65,7 @@ See [Regular eCommerce payments](vipps-ecom-api.md#regular-ecommerce-payments) f
 
 1. Send request `Initiate Payment - Express Checkout`. This demonstrates the type of payment where the user selects their shipping methods within the Vipps app instead of on the website.
 
-   To enable this functionality, you provide the object `staticShippingDetails` with your relevant details in the body of the call 
+   To enable this functionality, you provide the object `staticShippingDetails` with your relevant details in the body of the call
    [`POST:/v3/psppayments/init/`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST).
 
    Ctrl+click on the link that appears and complete the payment authorization.
@@ -99,7 +99,11 @@ With this url, you can generate a QR code to take you to the Vipps landing page 
 
 1. Send request `Initiate Payment`.
 
-1. Send request `Generate QR Code PNG`. This uses [`POST:/qr/v1`](https://vippsas.github.io/vipps-qr-api/#/One%20time%20payment%20QR/generateOtpQr) to provide a url that can be used to show a QR code. Ctrl+click the link to see the QR code. Scanning the QR should open the test app on your phone.
+   The `orderId` and `vippsLandingPageUrl` variables are now in the environment of this Postman example
+
+1. Send request `Generate QR Code PNG`. This uses [`POST:/qr/v1`](https://vippsas.github.io/vipps-qr-api/#/One%20time%20payment%20QR/generateOtpQr) to provide a url that can be used to show a QR code.
+
+   Ctrl+click the link to see the QR code. Scanning the QR should open the test app on your phone and allow you to complete the one-time purchase.
 
 This is done in cooperation with the Vipps QR API. See [One-time payment QR](https://github.com/vippsas/vipps-qr-api#one-time-payment-qr) for more details.
 
