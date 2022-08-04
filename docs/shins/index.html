@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Vipps eCommerce API v1.6.27</title>
+    <title>Vipps eCommerce API v1.6.28</title>
 
     <style>
     </style>
@@ -3505,7 +3505,7 @@ System.out.println(response.toString());
 
 </code></pre>
 <p><code>PUT /ecomm/v2/payments/{orderId}/cancel</code></p>
-<p>This API call allows merchants to cancel a reserved or initiated transaction. In order to enable cancellation of remaining funds after partial capture, the <code>shouldReleaseRemainingFunds</code> flag must be set. Please note that in a case of communication errors during an initiate payment service call between Vipps and PSP/Acquirer/Issuer; even in a case that customer has confirmed a payment, the payment will be cancelled by Vipps. Note this means you cannot cancel a captured payment.</p>
+<p>This API call allows merchants to cancel a reserved or initiated transaction as long as it is less than 6 months old. In order to enable cancellation of remaining funds after partial capture, the <code>shouldReleaseRemainingFunds</code> flag must be set. Please note that the payment will be cancelled by Vipps even in cases of communication errors during an initiate payment service call between Vipps and PSP/Acquirer/Issuer and even in cases where the customer has confirmed a payment. Note this means you cannot cancel a captured payment.</p>
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
