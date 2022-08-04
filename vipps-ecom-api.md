@@ -8,7 +8,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.5.80.
+Document version 2.5.81.
 
 ## Table of contents
 
@@ -1242,22 +1242,23 @@ These two truncated examples show the responses for a reservation of
 
 The Cancel request allows the merchant to cancel a reserved or initiated transaction.
 
-The payment flow can be aborted, under certain circumstances:
+Please note that it is not possible to cancel a request that is over 6 months old.
+
+The payment flow can be aborted under certain circumstances:
 
 - When the user cancels (rejects) the initiated payment in Vipps.
 - When the merchant cancels.
 - Timeouts: If the user does not confirm, etc.
 
-Partially captured reservations cannot be cancelled.
-
 After cancellation, the order gets a new status:
 
-- If an order is cancelled by the merchant, it gets the status `VOID`.
-- If an order is cancelled by the user, it gets the status `CANCEL`.
+- If an order is cancelled by the merchant, the status becomes `VOID`.
+- If an order is cancelled by the user, the status becomes `CANCEL`.
 
-API Specification: [`PUT:/ecomm/v2/payments/acme-shop-123-order123abc/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/cancelPaymentRequestUsingPUT)
+Example Request:
 
-Request:
+[`PUT:/ecomm/v2/payments/acme-shop-123-order123abc/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/cancelPaymentRequestUsingPUT)
+
 
 ```json
 {
@@ -1389,9 +1390,10 @@ Refunds can be made up to 365 days after reservation.
 Attempting to refund an older payment will result in a
 `HTTP 400 Bad Request`.
 
-API Specification: [`POST:/ecomm/v2/payments/acme-shop-123-order123abc/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/refundPaymentUsingPOST)
+Example Request:
 
-Request:
+[`POST:/ecomm/v2/payments/acme-shop-123-order123abc/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/refundPaymentUsingPOST)
+
 
 ```json
 {
@@ -1843,7 +1845,7 @@ additional changes.
 You can use any unique id for your `X-Request-Id`.
 See the [API specification](https://vippsas.github.io/vipps-ecom-api/) for details.
 
-Request:
+Example Request:
 
 [`POST:/ecomm/v2/payments/acme-shop-123-order123abc/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/capturePaymentUsingPOST)
 
