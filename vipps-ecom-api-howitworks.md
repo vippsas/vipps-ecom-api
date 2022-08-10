@@ -2,11 +2,9 @@
 
 This is how payment with Vipps eCommerce works.
 
-
 ## The ecommerce payment process
 
 ![Ecom process](images/vipps-ecom-process-svg.svg)
-
 
 ## 1. Pay with Vipps
 
@@ -51,11 +49,9 @@ The payment is transferred to the merchant’s account. This may take 2-3 days d
 
 ## Great! Now you know how the payment process works.
 
-Take a look at the technical documentation in the [Vipps eCommerce API Guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md)
-
+Take a look at the technical documentation in the [Vipps eCommerce API Guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md).
 
 ## Questions?
-
 
 For information in Norwegian, see: [Vipps på nett](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).
 

@@ -8,7 +8,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.5.81.
+Document version 2.5.82.
 
 ## Table of contents
 
@@ -467,6 +467,7 @@ additional responsibility.
 
 See:
 * [The Vipps deeplink URL](#the-vipps-deeplink-url)
+* [IsApp](#isapp)
 
 ### Initiate payment flow: API calls
 
@@ -547,7 +548,7 @@ apps is installed.
 
 #### isApp
 
-If the payment is initiated in a native app it is possible to explicitly force
+If the payment is initiated in a native app, it is possible to explicitly force
 a `vipps://` URL by sending the optional `isApp` parameter in the initiate call:
 
 * `"isApp": false` (or not sent at all): The URL is `https://`, which handles
@@ -555,10 +556,10 @@ a `vipps://` URL by sending the optional `isApp` parameter in the initiate call:
   The phone's operating system will know, through "universal linking", that
   the `https://api.vipps.no` URL should open the Vipps app, and not the default
   web browser.
-  **Please note:** In some cases this requires the user to approve that
+  **Please note:** In some cases, this requires the user to approve that
   Vipps is opened, but this is usually only the first time.
-* `"isApp": true`: The URL is for an deeplink, for forced app-switch to Vipps, with `vipps://`.
-  **Please note:** In our test environment (MT) the scheme is `vippsMT://`
+* `"isApp": true`: The URL is for a deeplink, for forced app-switch to Vipps, with `vipps://`.
+  **Please note:** In our test environment (MT), the scheme is `vippsMT://`
 
 If the user does not have Vipps installed:
 * `"isApp":false` (or not sent at all): The Vipps landing page will be shown,
@@ -613,7 +614,7 @@ If you do want to use `isApp` the flow is as follows:
 6. The Vipps backend makes a call to the merchant's `callbackPrefix` with information about the payment.
 7. When the payment process is completed, Vipps redirects to the merchant using the `fallBack` URL.
 
-**Please note:** The user should be send _directly_ to the deeplink.
+**Please note:** The user should be sent _directly_ to the deeplink.
 Rewriting the deeplink URL in any way may break the payment process.
 If not today, it may break if Vipps changes some details later.
 
@@ -633,14 +634,14 @@ and `orderId`:
 - `orderId`: Must be unique for the `merchantSerialNumber`. Example: `acme-shop-123-order123abc`.
   See: [orderId recommendations](#orderid-recommendations).
 
-To initiate an express checkout payment the payment initiation call must include
+To initiate an express checkout payment, the payment initiation call must include
 the `"paymentType": "eComm Express Payment"` parameter. If this parameter is not
 passed, the payment type will default to regular payment.
 
 ### Payment retries
 
-If a user cancels, or does not act, on a payment, there is no way to "retry"
-a payment.
+If a user cancels or does not act on a payment, there is no way to "retry"
+the payment.
 
 The initiate call is not idempotent, so the closest to a "retry"
 is to make a new initiate call with a new `orderId`. Vipps has no concept
@@ -649,18 +650,18 @@ to the first payment attempt.
 
 ### OrderId recommendations
 
-A `orderId` must be unique for the MSN (Merchant Serial Number, the id of
-the sale unit). The `orderId` is case sensitive.
-The `orderId` does not need to be globally unique, so several
+An `orderId` must be unique for the sale unit Merchant Serial Number (MSN) (i.e., the id of
+the sale unit). The `orderId` does not need to be globally unique, so several
 MSNs may use the same `orderId`, as long as it is unique for each sale unit.
 
-While the minimum length for `orderId` _technically_ is just one character,
-we _strongly_ recommend to use `orderId` format that makes it easy to
-search for them in logs. This means that `acme-shop-123-order123abc` is a better
+The `orderId` is case-sensitive.
+While the minimum length for `orderId` is _technically_ just one character,
+we _strongly_ recommend to use a format that makes it easy to
+find in the logs. For example, `acme-shop-123-order123abc` is a better
 format than `123456`.
 
-If you ever have a problem that requires us to search in our logs, we need
-`orderId`s that are "unique enough" to actually find them. An `orderId` that
+If you ever have a problem that requires us to search in our logs, we need an
+`orderId` that is "unique enough" to actually find. An `orderId` that
 is just a number may not be possible to find, and then we are not able to help.
 
 A good starting point is to use UUID,
@@ -675,13 +676,14 @@ tend to remove them, and this may cause misunderstandings.
 
 If you have multiple sale units, prefixing the `orderId` with the MSN
 for each sale unit is recommended: If the MSN is `654321`, the
-`orderId`s could be `654321-acme-shop-123-order123abc`.
+`orderId` could be `654321-acme-shop-123-order123abc`.
 
 If you need to make multiple attempts at paying the same order, you can
-add a suffix to the orderId to make it unique: If your internal orderId is
-`acme-shop-123-order123abc` you can add `-1` to get a unique _Vipps_ orderId
+add a suffix to the orderId to make it unique. For example, if your internal orderId is
+`acme-shop-123-order123abc`, you can add `-1` to get a unique _Vipps_ orderId
 `acme-shop-123-order123abc-1` for the first attempt,
-`acme-shop-123-order123abc-2` for the second, etc. This is useful when a customer:
+`acme-shop-123-order123abc-2` for the second, etc.
+This is useful when a customer does the following:
 
 1. Adds a product to the cart
 2. Goes to the payment page and selects Vipps
@@ -691,7 +693,7 @@ add a suffix to the orderId to make it unique: If your internal orderId is
 
 ### URL Validation
 
-All URLs in Vipps eCommerce API are validated with the
+All URLs in the Vipps eCommerce API are validated with the
 [Apache Commons UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
 
 If `isApp` is true, the `fallBack` URL is not validated with Apache Commons UrlValidator,
@@ -1082,7 +1084,7 @@ eliminating the need for re-typing it on subsequent purchases.
 If you have user-facing screen, you may want to generate a QR code based on the landing page url, instead of asking the user for their phone number. Scanning the QR will take them directly to the payment in their Vipps app.
 
 <p align="center">
-  <img src="images/demo-qr.svg" alt="Demo QR" width="250">
+  <img src="images/demo-qr.svg" alt="Demo QR" width="250"/>
 </p>
 
 This is done in cooperation with the Vipps QR API. See [One-time payment QR](https://github.com/vippsas/vipps-qr-api#one-time-payment-qr) in the Vipps QR API guide for more details about this and other QR services.
