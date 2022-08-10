@@ -220,7 +220,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"merchantInfo\": {\n    \"merchantSerialNumber\": \"{{merchantSerialNumber}}\",\n    \"callbackPrefix\":\"{{callbackPrefix}}\",\n    \"fallBack\": \"{{fallBack}}\",\n    \"authToken\": \"{{$guid}}\",\n    \"isApp\":false\n  },\n  \"customerInfo\": {\n    \"mobileNumber\": \"{{mobileNumber}}\"\n  },\n  \"transaction\": {\n    \"orderId\": \"{{orderId}}\",\n    \"amount\": {{amount}},\n    \"transactionText\": \"{{transactionTextInitiate}}\",\n    \"skipLandingPage\": false\n}\n}"
+					"raw": "{\n  \"merchantInfo\": {\n    \"authToken\": \"{{$guid}}\",\n    \"callbackPrefix\":\"{{callbackPrefix}}\",\n    \"fallBack\": \"{{fallBack}}\",\n    \"isApp\":false,\n    \"merchantSerialNumber\": \"{{merchantSerialNumber}}\"\n  },\n  \"customerInfo\": {\n    \"mobileNumber\": \"{{mobileNumber}}\"\n  },\n  \"transaction\": {\n    \"amount\": {{amount}},\n    \"orderId\": \"{{orderId}}\",\n    \"transactionText\": \"{{transactionTextInitiate}}\",\n    \"skipLandingPage\": false\n}\n}"
 				},
 				"url": {
 					"raw": "{{base_url}}/ecomm/v2/payments/",
@@ -306,7 +306,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"merchantInfo\": {\r\n    \"merchantSerialNumber\": \"{{merchantSerialNumber}}\",\r\n    \"callbackPrefix\":\"{{callbackPrefix}}\",\r\n    \"shippingDetailsPrefix\": \"{{shippingDetailsPrefix}}\",\r\n    \"consentRemovalPrefix\": \"{{consentRemovalPrefix}}\",\r\n    \"paymentType\": \"eComm Express Payment\",\r\n    \"fallBack\": \"{{fallBack}}\",\r\n    \"authToken\": \"{{$guid}}\",\r\n    \"isApp\":false,\r\n    \"staticShippingDetails\": [\r\n\t\t{\r\n\t\t    \"isDefault\": \"Y\",\r\n\t\t    \"priority\": 1,\r\n\t\t    \"shippingCost\": {{shippingCost1}},\r\n\t\t    \"shippingMethod\": \"{{shippingMethod1}}\",\r\n\t\t    \"shippingMethodId\": \"shippingMethodId1\"\r\n\t\t},\r\n\t\t{\r\n\t\t    \"isDefault\": \"N\",\r\n\t\t    \"priority\": 2,\r\n\t\t    \"shippingCost\": {{shippingCost2}},\r\n\t\t    \"shippingMethod\": \"{{shippingMethod2}}\",\r\n\t\t    \"shippingMethodId\": \"shippingMethodId2\"\r\n\t\t}\r\n\t]\r\n  },\r\n  \"customerInfo\": {\r\n    \"mobileNumber\": \"{{mobileNumber}}\"\r\n  },\r\n  \"transaction\": {\r\n    \"orderId\": \"{{orderId}}\",\r\n    \"amount\": {{amount}},\r\n    \"transactionText\": \"{{transactionTextInitiate}}\"\r\n  }\r\n}"
+					"raw": "{\r\n  \"merchantInfo\": {\r\n    \"authToken\": \"{{$guid}}\",\r\n    \"callbackPrefix\":\"{{callbackPrefix}}\",\r\n    \"consentRemovalPrefix\": \"{{consentRemovalPrefix}}\",\r\n    \"fallBack\": \"{{fallBack}}\",\r\n    \"isApp\":false,\r\n    \"merchantSerialNumber\": \"{{merchantSerialNumber}}\",\r\n    \"paymentType\": \"eComm Express Payment\",\r\n    \"shippingDetailsPrefix\": \"{{shippingDetailsPrefix}}\",\r\n    \"staticShippingDetails\": [\r\n\t\t{\r\n\t\t    \"isDefault\": \"Y\",\r\n\t\t    \"priority\": 1,\r\n\t\t    \"shippingCost\": {{shippingCost1}},\r\n\t\t    \"shippingMethod\": \"{{shippingMethod1}}\",\r\n\t\t    \"shippingMethodId\": \"shippingMethodId1\"\r\n\t\t},\r\n\t\t{\r\n\t\t    \"isDefault\": \"N\",\r\n\t\t    \"priority\": 2,\r\n\t\t    \"shippingCost\": {{shippingCost2}},\r\n\t\t    \"shippingMethod\": \"{{shippingMethod2}}\",\r\n\t\t    \"shippingMethodId\": \"shippingMethodId2\"\r\n\t\t}\r\n\t]\r\n  },\r\n  \"customerInfo\": {\r\n    \"mobileNumber\": \"{{mobileNumber}}\"\r\n  },\r\n  \"transaction\": {\r\n    \"amount\": {{amount}},\r\n    \"orderId\": \"{{orderId}}\",\r\n    \"transactionText\": \"{{transactionTextInitiate}}\"\r\n  }\r\n}"
 				},
 				"url": {
 					"raw": "{{base_url}}/ecomm/v2/payments/",
@@ -392,7 +392,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"merchantInfo\": {\n    \"merchantSerialNumber\": \"{{merchantSerialNumber}}\",\n    \"callbackPrefix\":\"{{callbackPrefix}}\",\n    \"fallBack\": \"{{fallBack}}\",\n    \"authToken\": \"{{$guid}}\",\n    \"isApp\":false\n  },\n  \"customerInfo\": {\n    \"mobileNumber\": \"{{mobileNumber}}\"\n  },\n  \"transaction\": {\n    \"orderId\": \"{{orderId}}\",\n    \"amount\": {{amount}},\n    \"transactionText\": \"{{transactionTextInitiate}}\",\n    \"skipLandingPage\": false,\n    \"scope\": \"address name email birthDate phoneNumber\"\n}\n}"
+					"raw": "{\n  \"merchantInfo\": {\n    \"authToken\": \"{{$guid}}\",\n    \"callbackPrefix\":\"{{callbackPrefix}}\",\n    \"fallBack\": \"{{fallBack}}\",\n    \"isApp\":false,\n    \"merchantSerialNumber\": \"{{merchantSerialNumber}}\"\n  },\n  \"customerInfo\": {\n    \"mobileNumber\": \"{{mobileNumber}}\"\n  },\n  \"transaction\": {\n    \"amount\": {{amount}},\n    \"orderId\": \"{{orderId}}\",\n    \"transactionText\": \"{{transactionTextInitiate}}\",\n    \"skipLandingPage\": false,\n    \"scope\": \"address name email birthDate phoneNumber\"\n}\n}"
 				},
 				"url": {
 					"raw": "{{base_url}}/ecomm/v2/payments/",
