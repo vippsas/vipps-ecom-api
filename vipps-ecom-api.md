@@ -2205,7 +2205,7 @@ to retrieve all the information about the payment.
 | VippsError  | 99         | Description of the internal error |
 | user        | 81         | User not registered with Vipps |
 | user        | 82         | User app version not supported |
-| Merchant    | 31         | Merchant is blocked because of <reason> |
+| Merchant    | 31         | Merchant is blocked because of [reason] |
 | Merchant    | 32         | Receiving limit of merchant is exceeded |
 | Merchant    | 33         | Number of payment requests has been exceeded |
 | Merchant    | 34         | Unique constraint violation of the orderId |
