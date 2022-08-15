@@ -186,7 +186,7 @@ than we have to. The general rule is that if the problem must be corrected by
 the user in Vipps, all necessary information will be provided to the user in Vipps.
 
 **Tip:** Everyone can test their Vipps credit and debit cards in our demo store:
-[https://demo.vipps.no](demo.vipps.no).
+[demo.vipps.no](https://demo.vipps.no).
 
 See:
 [All errors](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes).

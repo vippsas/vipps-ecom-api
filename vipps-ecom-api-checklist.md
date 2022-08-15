@@ -2,7 +2,7 @@
 
 API version: 2.0.
 
-Document version 2.1.10.
+Document version 2.1.11.
 
 ## Checklist
 
@@ -12,11 +12,11 @@ Document version 2.1.10.
     - [ ] Cancel [`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
     - [ ] Full and partial Refund [`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST)
     - [ ] Details [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
-    - For examples of requests and responses, see the Postman collection in [tools](tools/).
+    - For examples of requests and responses, see the [Postman collection](./tools/vipps-ecom-api-postman-collection.json) and [environment](./tools/vipps-ecom-api-postman-environment.json).
 - [ ] Send the [Vipps HTTP headers](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#vipps-http-headers)
       in all API requests for better tracking and troubleshooting
       (mandatory for partners and platforms, who must send these headers as part of the checklist approval):
-    - [ ] `Merchant-Serial-Number`    
+    - [ ] `Merchant-Serial-Number`
     - [ ] `Vipps-System-Name`
     - [ ] `Vipps-System-Version`
     - [ ] `Vipps-System-Plugin-Name`
