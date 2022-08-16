@@ -695,7 +695,7 @@ This is useful when a customer does the following:
 ### transactionText recommendations
 
 All Vipps payments are initiated with a text that appears in Vipps, using the
-`trsnsactionText` parameter. There are separate texts for the different actions:
+`transactionText` parameter. There are separate texts for the different actions:
 Initiate, capture, cancel, refund.
 
 The text should be as user-friendly and informative as possible.
