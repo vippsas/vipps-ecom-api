@@ -708,6 +708,7 @@ We recommend the following, using the example "Vipps webshop":
 | ----------------- | --------------------------------- | -------------------- |
 | Initiate, one item (the `transactionText` is shown in the push message and on the payment screen)| `One pair of Vipps socks`, `Orderid acme-shop-123-order123abc in Vipps webshop`        | `Payment`, `Vipps webshop`, `Shop number 12345`, `Vipps` |
 | Initiate, multiple items or a shopping basket | `One pair of Vipps socks, one XL hoodie, ...` (truncated to ~100 characters) or `Payment for order acme-shop-123-order123abc in Vipps webshop` | (same as above) |
+| Initiate, reservation of maximum amount | `Midlertidig reservasjon. Du bli kun belastet for faktisk bruk.` |
 | Capture (the `transactionText` is shown on the receipt)          | `Order acme-shop-123-order123abc. Thank you for shopping at Vipps webshop!`| (same as above) |
 | Refund            | `Refund for order acme-shop-123-order123abc` | `Refund`, `Orderid acme-shop-123-order123abc` |
 
