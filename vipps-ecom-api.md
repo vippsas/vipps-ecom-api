@@ -8,7 +8,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.6.2.
+Document version 2.6.3.
 
 ## Table of contents
 
@@ -2224,7 +2224,7 @@ to retrieve all the information about the payment.
 | VippsError  | 94         | Order locked and is already processing. This can occur if a bank has problems, and Vipps needs to wait and/or clean up. |
 | VippsError  | 98         | Too many concurrent requests. Used only to prevent incorrect API use. |
 | VippsError  | 99         | Description of the internal error |
-| user        | 81         | User not registered with Vipps |
+| user        | 81         | User not registered with Vipps. This error is also sent if the Vipps user is under 15 years old and can not pay businesses) |
 | user        | 82         | User app version not supported |
 | Merchant    | 31         | Merchant is blocked because of [reason] |
 | Merchant    | 32         | Receiving limit of merchant is exceeded |
