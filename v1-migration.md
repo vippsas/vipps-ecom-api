@@ -13,7 +13,7 @@ for a detailed description of the v2 flow.
 
 The initiate payment response will contain a unique URL for each order. Either a standard `https://` URL or a deeplink URL, prefixed with `vipps://`.
 
-<img src="images/landing-page.png" width="300"/>
+![Vipps landing page](images/landing-page.png)
 
 *Note: On mobile devices "Universal Linking" will be used for `https` URLs, which will automatically open [Vipps](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#desktop-browsers-and-mobile-browsers).*
 
