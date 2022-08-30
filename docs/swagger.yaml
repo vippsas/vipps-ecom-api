@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.28
+  version: 1.6.29
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -1256,6 +1256,7 @@ components:
           example: "0154"
     PaymentShippingDetails:
       type: object
+      description: "The shipping details for this payment. Only used for Vipps Hurtigkasse (express payment)."
       required:
         - shippingCost
         - shippingMethod
@@ -1341,6 +1342,7 @@ components:
           maxLength: 100
     UserDetails:
       type: object
+      description: "Only used for Vipps Hurtigkasse (express payment) and when using Userinfo."
       required:
         - email
         - firstName
@@ -1931,7 +1933,7 @@ components:
         scope:
           type: string
           description: |
-            The requested OIDC scope for use with userinfo, possible values are 
+            The requested OIDC scope for use with userinfo, possible values are
             - name
             - address
             - email
