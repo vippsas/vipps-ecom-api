@@ -1342,7 +1342,7 @@ components:
           maxLength: 100
     UserDetails:
       type: object
-      description: "Only used for Vipps Hurtigkasse (express payment) and when using Userdetails."
+      description: "Only used for Vipps Hurtigkasse (express payment) and when using Userinfo."
       required:
         - email
         - firstName
