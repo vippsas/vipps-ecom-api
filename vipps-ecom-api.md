@@ -8,7 +8,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.6.3.
+Document version 2.6.4.
 
 ## Table of contents
 
@@ -1548,6 +1548,9 @@ always contains _the entire history_ of payments for the order, not just the cur
 
 **Please note:** The `transactionSummary` will not be part of the response if
 the user does not react to the Vipps landing page or app-switch. `bankIdentificationNumber` will only be part of `transactionSummary` in the response of the `GET:/ecomm/v2/payments/{orderId}/details` endpoint.
+
+If paymentType is set to `eComm Express Payment` you will get `shippingDetails` and `userDetails` in addition to `transactionLogHistory` and `transactionSummary`. 
+
 
 ### Polling guidelines
 
