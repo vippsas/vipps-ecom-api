@@ -1329,12 +1329,16 @@ as the `/cancel` request depends on actions taken by the user in the app.
 
 If the
 [`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
-request is successful, the payment state will be: `Cancelled`.
+request is successful, the payment state in the response will be: `CANCELLED`.  
+> **Warning**
+> The [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET) endpoint however will return `CANCEL`, _not_ `CANCELLED`.
 
 A call to
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
 for the same order will return the following, regardless of whether the
-transaction has been reserved before the cancellation: `CANCEL`.
+transaction has been reserved before the cancellation: `CANCEL`. 
+> **Note** 
+> If the order is in the state `RESERVED` and then cancelled by the merchant, the status will be `VOID`.
 
 **Please note:** If the user is already in a 3-D Secure session, the payment
 cannot be cancelled as described above.
