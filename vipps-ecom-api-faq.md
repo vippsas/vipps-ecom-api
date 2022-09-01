@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.13.6.
+Document version 3.13.7.
 
 ### Table of contents
 
@@ -417,11 +417,11 @@ A sale unit can only have one capture type, and it must be configured by Vipps.
 
 **Please note:** Vipps only offers "direct capture" for merchants that use
 Vipps through a partner, and for merchants that have a Key Account Manager.
-
 "Direct capture"" must be requested by the partner from the partner manager,
 or by KAM merchants from the Key Account Manager.
 
 See:
+* [When should I use "Direct Capture"?](#when-should-i-use-direct-capture)
 * [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
 
 ### For how long is a payment reserved?
