@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.13.7.
+Document version 3.13.8.
 
 ### Table of contents
 
@@ -377,7 +377,7 @@ See:
 ### When should I use "Direct Capture"?
 
 You can probably use "reserve capture", and just do the capture right after the
-reserve.
+reserve. This has some benefits, see the first link below.
 
 See:
 * [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
