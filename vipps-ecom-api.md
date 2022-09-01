@@ -8,7 +8,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.6.4.
+Document version 2.6.5.
 
 ## Table of contents
 
@@ -348,15 +348,14 @@ To get the new express checkout flow: Specify this in addition, in the
 `"useExplicitCheckoutFlow": true`
 
 See
-[`POST:/ecomm/v2/payments](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
 for more details.
 
-
+The new explicit checkout flow (`"useExplicitCheckoutFlow": true`):
 ![New explicit checkout flow](images/express-explicit-flow.png)
-*The new explicit checkout flow ("useExplicitCheckoutFlow": true)*
 
+The old checkout flow (`"useExplicitCheckoutFlow": false`):
 ![The old checkout flow](images/express-explicit-false.png)
-*The old checkout flow ("useExplicitCheckoutFlow": false)*
 
 #### Shipping and static shipping details
 
@@ -1549,7 +1548,7 @@ always contains _the entire history_ of payments for the order, not just the cur
 **Please note:** The `transactionSummary` will not be part of the response if
 the user does not react to the Vipps landing page or app-switch. `bankIdentificationNumber` will only be part of `transactionSummary` in the response of the `GET:/ecomm/v2/payments/{orderId}/details` endpoint.
 
-If paymentType is set to `eComm Express Payment` you will get `shippingDetails` and `userDetails` in addition to `transactionLogHistory` and `transactionSummary`. 
+If paymentType is set to `eComm Express Payment` you will get `shippingDetails` and `userDetails` in addition to `transactionLogHistory` and `transactionSummary`.
 
 
 ### Polling guidelines
