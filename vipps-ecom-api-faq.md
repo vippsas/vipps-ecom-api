@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.13.5.
+Document version 3.13.6.
 
 ### Table of contents
 
@@ -778,7 +778,9 @@ If you need to skip the landing page for a different reason:
 Contact your Key Account Manager. If you do not have a KAM:
 Please log in on
 [portal.vipps.no](https://portal.vipps.no),
-find the right sale unit and click the email link under the "i" information bubble.
+open the "Utvikler" (Developer) tab,
+find the right sale unit and
+click the email link under the "i" information bubble.
 Include a detailed description of why it is not possible to display the landing page.
 
 See:
