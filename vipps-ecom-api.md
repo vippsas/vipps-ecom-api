@@ -1273,7 +1273,8 @@ The payment flow can be aborted under certain circumstances:
 
 After cancellation, the order gets a new status:
 
-- If an order is cancelled by the merchant, the status becomes `VOID`.
+- If an order is cancelled by the merchant while it's in the `RESERVE` state, the status becomes `VOID`.
+- If an order is cancelled by the merchant while it's in the `INITIATE` state, the status becomes `CANCEL`.
 - If an order is cancelled by the user, the status becomes `CANCEL`.
 
 Example Request:
