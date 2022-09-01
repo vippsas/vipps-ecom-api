@@ -1,3 +1,10 @@
+<!-- START_METADATA
+---
+title: API Guide
+sidebar_position: 15
+---
+END_METADATA -->
+
 # Vipps eCommerce API
 
 The Vipps eCom API is used by
@@ -9,6 +16,8 @@ native apps and other solutions.
 API version: 2.0.0.
 
 Document version 2.6.4.
+
+<!-- START_TOC -->
 
 ## Table of contents
 
@@ -110,6 +119,7 @@ Document version 2.6.4.
 * [Recommendations regarding handling redirects](#recommendations-regarding-handling-redirects)
 * [Questions?](#questions)
 
+<!-- END_TOC -->
 
 ## Payment flows
 

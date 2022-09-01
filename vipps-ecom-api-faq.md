@@ -1,3 +1,10 @@
+<!-- START_METADATA
+---
+title: FAQ
+sidebar_position: 25
+---
+END_METADATA -->
+
 # Vipps eCommerce API: Frequently Asked Questions
 
 See:

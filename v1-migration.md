@@ -1,3 +1,10 @@
+<!-- START_METADATA
+---
+title: V1 Migration
+sidebar_position: 40
+---
+END_METADATA -->
+
 # Migration from eCom API v1 to eCom API v2
 
 Document version 1.1.4.

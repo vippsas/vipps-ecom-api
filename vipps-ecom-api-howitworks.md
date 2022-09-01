@@ -1,3 +1,10 @@
+<!-- START_METADATA
+---
+title: How it works
+sidebar_position: 6
+---
+END_METADATA -->
+
 # Vipps eCommerce API: How It Works
 
 This is how payment with Vipps eCommerce works.
