@@ -1,3 +1,10 @@
+<!-- START_METADATA
+---
+title: API Guide
+sidebar_position: 15
+---
+END_METADATA -->
+
 # Vipps eCommerce API
 
 The Vipps eCom API is used by
@@ -8,7 +15,9 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.6.4.
+Document version 2.6.5.
+
+<!-- START_TOC -->
 
 ## Table of contents
 
@@ -110,6 +119,7 @@ Document version 2.6.4.
 * [Recommendations regarding handling redirects](#recommendations-regarding-handling-redirects)
 * [Questions?](#questions)
 
+<!-- END_TOC -->
 
 ## Payment flows
 
@@ -348,15 +358,14 @@ To get the new express checkout flow: Specify this in addition, in the
 `"useExplicitCheckoutFlow": true`
 
 See
-[`POST:/ecomm/v2/payments](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
 for more details.
 
-
+The new explicit checkout flow (`"useExplicitCheckoutFlow": true`):
 ![New explicit checkout flow](images/express-explicit-flow.png)
-*The new explicit checkout flow ("useExplicitCheckoutFlow": true)*
 
+The old checkout flow (`"useExplicitCheckoutFlow": false`):
 ![The old checkout flow](images/express-explicit-false.png)
-*The old checkout flow ("useExplicitCheckoutFlow": false)*
 
 #### Shipping and static shipping details
 
@@ -1273,7 +1282,8 @@ The payment flow can be aborted under certain circumstances:
 
 After cancellation, the order gets a new status:
 
-- If an order is cancelled by the merchant, the status becomes `VOID`.
+- If an order is cancelled by the merchant while it's in the `RESERVE` state, the status becomes `VOID`.
+- If an order is cancelled by the merchant while it's in the `INITIATE` state, the status becomes `CANCEL`.
 - If an order is cancelled by the user, the status becomes `CANCEL`.
 
 Example Request:
@@ -1328,12 +1338,16 @@ as the `/cancel` request depends on actions taken by the user in the app.
 
 If the
 [`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
-request is successful, the payment state will be: `Cancelled`.
+request is successful, the payment state in the response will be: `CANCELLED`.  
+> **Warning**
+> The [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET) endpoint however will return `CANCEL`, _not_ `CANCELLED`.
 
 A call to
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
 for the same order will return the following, regardless of whether the
-transaction has been reserved before the cancellation: `CANCEL`.
+transaction has been reserved before the cancellation: `CANCEL`. 
+> **Note** 
+> If the order is in the state `RESERVED` and then cancelled by the merchant, the status will be `VOID`.
 
 **Please note:** If the user is already in a 3-D Secure session, the payment
 cannot be cancelled as described above.
@@ -1548,6 +1562,9 @@ always contains _the entire history_ of payments for the order, not just the cur
 
 **Please note:** The `transactionSummary` will not be part of the response if
 the user does not react to the Vipps landing page or app-switch. `bankIdentificationNumber` will only be part of `transactionSummary` in the response of the `GET:/ecomm/v2/payments/{orderId}/details` endpoint.
+
+If paymentType is set to `eComm Express Payment` you will get `shippingDetails` and `userDetails` in addition to `transactionLogHistory` and `transactionSummary`.
+
 
 ### Polling guidelines
 

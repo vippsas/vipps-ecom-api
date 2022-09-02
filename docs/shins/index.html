@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Vipps eCommerce API v1.6.28</title>
+    <title>Vipps eCommerce API v1.6.29</title>
 
     <style>
     </style>
@@ -6735,6 +6735,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
+<p>The shipping details for this payment. Only used for Vipps Hurtigkasse (express payment).</p>
 <h3 id="properties-5">Properties</h3>
 <table>
 <thead>
@@ -6943,6 +6944,7 @@ System.out.println(response.toString());
 }
 
 </code></pre>
+<p>Only used for Vipps Hurtigkasse (express payment) and when using Userinfo.</p>
 <h3 id="properties-8">Properties</h3>
 <table>
 <thead>
@@ -7827,7 +7829,7 @@ System.out.println(response.toString());
 <td><a href="#schemapaymentshippingdetails">PaymentShippingDetails</a></td>
 <td>false</td>
 <td>none</td>
-<td>none</td>
+<td>The shipping details for this payment. Only used for Vipps Hurtigkasse (express payment).</td>
 </tr>
 <tr>
 <td>transactionLogHistory</td>
@@ -7848,7 +7850,7 @@ System.out.println(response.toString());
 <td><a href="#schemauserdetails">UserDetails</a></td>
 <td>false</td>
 <td>none</td>
-<td>none</td>
+<td>Only used for Vipps Hurtigkasse (express payment) and when using Userinfo.</td>
 </tr>
 <tr>
 <td>sub</td>
@@ -8416,7 +8418,7 @@ System.out.println(response.toString());
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>The requested OIDC scope for use with userinfo, possible values are <br />- name<br />- address<br />- email<br />- phoneNumber<br />- birthDate<br />- nin<br />- accountNumbers</td>
+<td>The requested OIDC scope for use with userinfo, possible values are<br />- name<br />- address<br />- email<br />- phoneNumber<br />- birthDate<br />- nin<br />- accountNumbers</td>
 </tr>
 <tr>
 <td>additionalData</td>
@@ -9011,7 +9013,7 @@ System.out.println(response.toString());
 <td><a href="#schemauserdetails">UserDetails</a></td>
 <td>true</td>
 <td>none</td>
-<td>none</td>
+<td>Only used for Vipps Hurtigkasse (express payment) and when using Userinfo.</td>
 </tr>
 <tr>
 <td>errorInfo</td>
