@@ -1,3 +1,10 @@
+<!-- START_METADATA
+---
+title: Checklist
+sidebar_position: 20
+---
+END_METADATA -->
+
 # Vipps eCommerce API Checklist
 
 API version: 2.0.

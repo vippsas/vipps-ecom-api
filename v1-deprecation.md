@@ -1,3 +1,10 @@
+<!-- START_METADATA
+---
+title: V1 Deprecation
+sidebar_position: 45
+---
+END_METADATA -->
+
 # Deprecation of the Vipps eCom API v1
 
 This is the message we sent to communicate the deprecation of the API.
