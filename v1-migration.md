@@ -22,7 +22,7 @@ The initiate payment response will contain a unique URL for each order. Either a
 
 ![Vipps landing page](images/landing-page.png)
 
-*Note: On mobile devices "Universal Linking" will be used for `https` URLs, which will automatically open [Vipps](vipps-ecom-api.md#desktop-browsers-and-mobile-browsers).*
+*Note: On mobile devices "Universal Linking" will be used for `https` URLs, which will automatically open [Vipps](vipps-ecom-api.md#phone-and-mobile-browser-flow).*
 
 
 ## Skip landing page
@@ -47,7 +47,7 @@ If `isApp` is `true` then an appswitch deeplink URL with a unique token for that
 
 ### Initiate payment example
 
-See [here](vipps-ecom-api.md#initiate-payment-flows) for full overview of initiate payment.
+See [here](vipps-ecom-api.md#initiate) for full overview of initiate payment.
 
 ### Request Body
 
