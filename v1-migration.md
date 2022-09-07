@@ -22,14 +22,14 @@ The initiate payment response will contain a unique URL for each order. Either a
 
 ![Vipps landing page](images/landing-page.png)
 
-*Note: On mobile devices "Universal Linking" will be used for `https` URLs, which will automatically open [Vipps](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#desktop-browsers-and-mobile-browsers).*
+*Note: On mobile devices "Universal Linking" will be used for `https` URLs, which will automatically open [Vipps](vipps-ecom-api.md#phone-and-mobile-browser-flow).*
 
 
 ## Skip landing page
 
 Skipping the landing page is reserved for special cases, where displaying it is not possible.
 See the details in the
-[skip landing page section](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#skip-landing-page)
+[skip landing page section](vipps-ecom-api.md#skip-landing-page)
 in the API guide.
 
 See the [FAQ](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-faq.md#is-it-possible-to-skip-the-landing-page).
@@ -47,7 +47,7 @@ If `isApp` is `true` then an appswitch deeplink URL with a unique token for that
 
 ### Initiate payment example
 
-See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#initiate-payment-flows) for full overview of initiate payment.
+See [here](vipps-ecom-api.md#initiate) for full overview of initiate payment.
 
 ### Request Body
 
@@ -98,7 +98,7 @@ If you do not have a fallback (or "result" page), you can use the main URL for y
 `https://example.com/fallback-dummy`, or similar. Please use a URL that returns `HTTP 200 OK`.
 
 The URL must be valid.
-See [here](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation) for details.
+See [here](vipps-ecom-api.md#url-validation) for details.
 
 ## Migration
 

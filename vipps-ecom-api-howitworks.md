@@ -56,7 +56,7 @@ The payment is transferred to the merchant’s account. This may take 2-3 days d
 
 ## Great! Now you know how the payment process works.
 
-Take a look at the technical documentation in the [Vipps eCommerce API Guide](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md).
+Take a look at the technical documentation in the [Vipps eCommerce API Guide](vipps-ecom-api.md).
 
 ## Questions?
 

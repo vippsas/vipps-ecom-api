@@ -13,14 +13,14 @@ Document version 2.1.11.
 
 ## Checklist
 
-- [ ] Integrate _all_ the [API endpoints](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#api-endpoints):
+- [ ] Integrate _all_ the [API endpoints](vipps-ecom-api.md#api-endpoints):
     - [ ] Initiate [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
     - [ ] Full and partial Capture [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/capturePaymentUsingPOST)
     - [ ] Cancel [`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
     - [ ] Full and partial Refund [`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST)
     - [ ] Details [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
     - For examples of requests and responses, see the [Postman collection](./tools/vipps-ecom-api-postman-collection.json) and [environment](./tools/vipps-ecom-api-postman-environment.json).
-- [ ] Send the [Vipps HTTP headers](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#vipps-http-headers)
+- [ ] Send the [Vipps HTTP headers](vipps-ecom-api.md#vipps-http-headers)
       in all API requests for better tracking and troubleshooting
       (mandatory for partners and platforms, who must send these headers as part of the checklist approval):
     - [ ] `Merchant-Serial-Number`
@@ -28,10 +28,10 @@ Document version 2.1.11.
     - [ ] `Vipps-System-Version`
     - [ ] `Vipps-System-Plugin-Name`
     - [ ] `Vipps-System-Plugin-Version`
-- [ ] Follow the [orderId recommendations](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#orderid-recommendations).
+- [ ] Follow the [orderId recommendations](vipps-ecom-api.md#orderid-recommendations).
 - [ ] Correctly handle callbacks from Vipps, both for successful and unsuccessful payments.
       See the API documentation for
-      [how callback URLs are built](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callback-endpoints),
+      [how callback URLs are built](vipps-ecom-api.md#callback-endpoints),
       make test calls to make sure you handle the `POST` requests correctly.
       Vipps does not have capacity to manually do this for you.
     - [ ] Callback [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)
@@ -40,17 +40,17 @@ Document version 2.1.11.
               [`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/fetchShippingCostUsingPOST)
         - [ ] Remove consent
               [`DELETE:[consetRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/removeUserConsentUsingDELETE)
- - [ ] Make sure to log and handle [all errors](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#errors).
+ - [ ] Make sure to log and handle [all errors](vipps-ecom-api.md#errors).
  - [ ] Avoid Integration pitfalls
     - [ ] The Merchant _must not_ rely on `fallback` or `callback` alone, and must poll
           [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
           as documented (this is part of the first item in this checklist, but it's still a common error).
-          Follow our [polling recommendations](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#polling-guidelines).  
+          Follow our [polling recommendations](vipps-ecom-api.md#polling-guidelines).  
     - [ ] The merchant must handle that the `fallback` URL is opened in the default browser on the phone,
           and not in a specific browser, in a specific tab, in an embedded browser, requiring a session token, etc.
           See the API guide:
-          [Recommendations regarding handling redirects](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#recommendations-regarding-handling-redirects).
-          See the FAQ: [How can I open the fallback URL in a specific (embedded) browser?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser)
+          [Recommendations regarding handling redirects](vipps-ecom-api.md#recommendations-regarding-handling-redirects).
+          See the FAQ: [How can I open the fallback URL in a specific (embedded) browser?](vipps-ecom-api-faq.md#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser)
     - [ ] The Vipps branding must be according to the
           [Vipps design guidelines](https://github.com/vippsas/vipps-design-guidelines).
     - [ ] Make sure your customer service, etc has all the tools and information they need

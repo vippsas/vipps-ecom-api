@@ -158,7 +158,7 @@ The normal "happy day" flow for a payment is:
    See
    [Get payment details](#get-payment-details)
    and
-   [Polling guidelines](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#polling-guidelines).
+   [Polling guidelines](vipps-ecom-api.md#polling-guidelines).
 4. Capture the payment:
    [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/capturePaymentUsingPOST).
    See [Regular eCommerce payments](#regular-ecommerce-payments).
@@ -188,7 +188,7 @@ Payments are supported in both web browsers and in native apps (via deep-linking
 | Get order status | Deprecated, use [Get payment details](#get-payment-details). | Deprecated, use [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)  |
 
 See the
-[eCom API checklist](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-checklist.md).
+[eCom API checklist](vipps-ecom-api-checklist.md).
 
 ## Authentication
 
@@ -291,7 +291,7 @@ The user experience is exactly the same, and you have the opportunity to
 perform a `/cancel` with instant effect instead of a `/refund` that takes days.
 
 For more information, see the
-[what is the difference between reserve capture and direct capture](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#what-is-the-difference-between-reserve-capture-and-direct-capture)  in the FAQ.
+[what is the difference between reserve capture and direct capture](vipps-ecom-api-faq.md#what-is-the-difference-between-reserve-capture-and-direct-capture)  in the FAQ.
 
 ### Express checkout payments
 
@@ -633,7 +633,7 @@ Attempts at using it after that will result in a timeout and an error.
 
 See:
 * [Timeouts](#timeouts)
-* [Can I send a Vipps payment link in an SMS or email?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#can-i-send-a-vipps-payment-link-in-an-sms-or-email)
+* [Can I send a Vipps payment link in an SMS or email?](vipps-ecom-api-faq.md#can-i-send-a-vipps-payment-link-in-an-sms-or-email)
 
 ### Payment identification
 
@@ -799,7 +799,7 @@ as described in
 **Note:** Callback URLs _must_ use HTTPS.
 
 See the FAQ:
-[Why do I not get callbacks from Vipps?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#why-do-i-not-get-callbacks-from-vipps)
+[Why do I not get callbacks from Vipps?](vipps-ecom-api-faq.md#why-do-i-not-get-callbacks-from-vipps)
 
 ### Callback endpoints
 
@@ -1140,7 +1140,7 @@ If you want to check if a sale unit is allowed to use `skipLandingPage`:
    `skipLandingPage` without being whitelisted.
 
 If you need to whitelist a sale unit, see FAQ:
-[Is it possible to skip the landing page](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#is-it-possible-to-skip-the-landing-page).
+[Is it possible to skip the landing page](vipps-ecom-api-faq.md#is-it-possible-to-skip-the-landing-page).
 
 **Please note:** When using `skipLandingPage`, the user is not sent to a
 URL after completion of the payment. The "result page" is just the confirmation
@@ -1196,8 +1196,8 @@ Attempting to capture an older payment will result in a
 `HTTP 400 Bad Request`.
 
 See the FAQ:
-* [What is the difference between "Reserve Capture" and "Direct Capture"?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#what-is-the-difference-between-reserve-capture-and-direct-capture)
-* [For how long is a payment reserved?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#for-how-long-is-a-payment-reserved)
+* [What is the difference between "Reserve Capture" and "Direct Capture"?](vipps-ecom-api-faq.md#what-is-the-difference-between-reserve-capture-and-direct-capture)
+* [For how long is a payment reserved?](vipps-ecom-api-faq.md#for-how-long-is-a-payment-reserved)
 
 ### Reserve capture
 
@@ -1242,7 +1242,7 @@ there is a remaining reserved amount.
 If one or more partial captures have been made, any remaining reserved amount
 will be automatically released after a few days.
 See also the FAQ:
-[For how long is a payment reserved](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#for-how-long-is-a-payment-reserved).
+[For how long is a payment reserved](vipps-ecom-api-faq.md#for-how-long-is-a-payment-reserved).
 
 It is not possible to refund the remaining amount since it has not been captured,
 and it is not possible to cancel the reservation, since some of it has been captured.
@@ -1368,7 +1368,7 @@ This is a useful and recommended feature, as it releases any reserved balance
 as soon as the card issuer and/or bank permits.
 
 See also the FAQ:
-[How long does it take from a refund is made until the money is in the customer's account?](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
+[How long does it take from a refund is made until the money is in the customer's account?](vipps-ecom-api-faq.md#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
 
 
 Example Request:
