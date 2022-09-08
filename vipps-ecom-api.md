@@ -15,7 +15,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.6.5.
+Document version 2.6.6.
 
 <!-- START_TOC -->
 
@@ -1345,8 +1345,8 @@ request is successful, the payment state in the response will be: `CANCELLED`.
 A call to
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
 for the same order will return the following, regardless of whether the
-transaction has been reserved before the cancellation: `CANCEL`. 
-> **Note** 
+transaction has been reserved before the cancellation: `CANCEL`.
+> **Note**
 > If the order is in the state `RESERVED` and then cancelled by the merchant, the status will be `VOID`.
 
 **Please note:** If the user is already in a 3-D Secure session, the payment
@@ -2302,6 +2302,9 @@ Example for demonstration purposes that should be handled.
 5. The OS opens the URL in the default browser: Safari (not Chrome).
 6. The merchant handles the redirect without the customer noticing any
    discrepancies from the browser switch.
+
+**Please note:** If the user has installed an ad blocker, that may cause problems
+opening URL with custom schemes.
 
 ## Questions?
 
