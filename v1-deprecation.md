@@ -1,7 +1,6 @@
 <!-- START_METADATA
 ---
-title: V1 Deprecation
-sidebar_position: 45
+draft: true
 ---
 END_METADATA -->
 
