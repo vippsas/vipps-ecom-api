@@ -5,7 +5,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.13.9.
+Document version 3.13.10.
 
 <!-- START_TOC -->
 
@@ -1198,31 +1198,32 @@ See: [Why do I get `errorCode 35 "Requested Order not found"`?](#why-do-i-get-er
 
 Something _might_ be wrong on our side and we are working to fix it!
 
-But: It's usually a problem with the request, and that our validation does not catch it.
-In other words: We should perhaps have returned `HTTP 400 Bad Request`.
+But: It's usually a problem with your request, and that our validation does not catch it.
+In other words: We should have returned `HTTP 400 Bad Request`.
 
-One example: You will get a 500 error if the MSN is sent as an integer:
-`merchantSerialNumber":654321` instead of a string: `merchantSerialNumber":"654321"`.
-
-Please make sure the JSON payload in your API request validates.
-That is the most common source of this type of error.
-
-Please check the capitalization of the parameters.
-We will return `HTTP 500 Error` if the incorrect `fallback` is used instead of
-the correct `fallBack`. We _should_ have returned `HTTP 400 Bad Request`,
-and we hope to add stricter request validation, but other tasks have higher priority.
-
-We strongly recommend using
-[Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
-to manually do API calls, to see the correct request.
+Some tips:
+* Please make sure the JSON payload in your API request validates.
+  That is the most common source of this type of error.
+* We strongly recommend using
+  [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
+  to manually do API calls, to see the correct request.
+  Use Postman's
+  [Inspect](https://blog.postman.com/debugging-postman-requests/)
+  functionality to see the complete requeet.
+* You will get a 500 error if the MSN is sent as an integer:
+  `merchantSerialNumber":654321` instead of a string: `merchantSerialNumber":"654321"`.
+* The same will happen if the `amount` is not an integer.
+* Please check the capitalization of the parameters.
+  We will return `HTTP 500 Error` if the incorrect `fallback` is used instead of
+  the correct `fallBack`.
 
 Check both the HTTP response header and the response body from our API for errors.
 For most errors the body contains an explanation of what went wrong.
 
-**Please note:** If you get a 500 error in the test environment, it may be a glitch in the SQL server.
-We are running a "weaker" instance than in production, and on very rare occasions
-this can cause SQL errors that result in a `HTTP 500 Server Error`.
-Retry the call, and see if it helps.
+**Please note:** If you get a `HTTP 500 Internal Server Error` in the test environment,
+it may be a glitch in the SQL server. We are running a "weaker" instance than in
+production, and on very rare occasions this can cause SQL errors that result in
+a `HTTP 500 Server Error`. Retry the call, and see if it helps.
 
 See:
 * [Errors](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#errors).
