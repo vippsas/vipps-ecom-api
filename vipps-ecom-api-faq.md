@@ -14,6 +14,7 @@ See:
 
 Document version 3.13.10.
 
+<!-- START_TOC -->
 
 ### Table of contents
 
@@ -106,6 +107,7 @@ Document version 3.13.10.
   + [Where can I find information about settlements?](#where-can-i-find-information-about-settlements)
 - [Questions?](#questions)
 
+<!-- END_TOC -->
 ## Requirements
 
 ### What are the requirements for Vipps merchants?
