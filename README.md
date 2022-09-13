@@ -13,8 +13,12 @@ The Vipps eCom API is used by
 [Vipps i kassa (POS)](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/vipps-i-kassa/),
 native apps and other solutions.
 
-💥 Preview the new documentation pages here: https://vippsas.github.io/vipps-developer-docs/
-See the disclaimer: https://vippsas.github.io/vipps-developer-docs/docs/examples/
+<!-- START_COMMENT -->
+
+💥 Preview the new documentation pages here: <https://vippsas.github.io/vipps-developer-docs/>.
+See the disclaimer: <https://vippsas.github.io/vipps-developer-docs/docs/examples/>.
+
+<!-- END_COMMENT -->
 
 ## Getting started
 
