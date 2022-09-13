@@ -35,10 +35,6 @@ Review the [Getting Started](https://github.com/vippsas/vipps-developers/blob/ma
 * [Postman guide](vipps-ecom-postman.md): Step-by-step guide for using the eCom API Postman collection of examples.
 * [Vipps eCom example](https://github.com/vippsas/vipps-developers/tree/master/code-examples/ecom_python_example): A simple example implementation for the eCom API using Python.
 
-## Upgrading from eCom API v1
-
-* [Vipps eCom API v1 deprecation](v1-deprecation.md)
-* [Vipps eCom API v2 migration](v1-migration.md)
 
 ## Questions?
 
