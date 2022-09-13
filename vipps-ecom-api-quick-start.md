@@ -28,7 +28,7 @@ Document version: 1.0.0.
 
 **TODO:**
 - Recommend Postman and our official collection and environment, refer to the Postman guide.
-- Link to ReDocusaurus for exeamples of requests and responses. Avoid duplicating them here, and more maintenance.
+- Link to ReDocusaurus for exemples of requests and responses. Avoid duplicating them here, and more maintenance.
 
 ## 1. Get API keys
 
