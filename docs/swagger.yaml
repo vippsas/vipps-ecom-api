@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.29
+  version: 1.6.30
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -1357,10 +1357,6 @@ components:
           enum:
             - Y
             - N
-        dateOfBirth:
-          type: string
-          description: "Optional date of birth information, must be requested during onboarding. Please note: We will at some point move to ISO 8601: YYYY-MM-DD"
-          example: 12-3-1988
         email:
           type: string
           description: Email address
@@ -1380,13 +1376,6 @@ components:
           minLength: 8
           maxLength: 8
           pattern: '^\d{8}$'
-        ssn:
-          type: string
-          description: Optional social security number for the user, must be requested during onboarding.
-          example: '12345678901'
-          minLength: 11
-          maxLength: 11
-          pattern: '^\d{11}$'
         userId:
           type: string
           example: 'uiJskNQ6qNN1iwN891uuob=='
