@@ -30,7 +30,7 @@ Document version: 1.0.0.
 - Recommend Postman and our official collection and environment, refer to the Postman guide.
 - Link to ReDocusaurus for exeamples of requests and responses. Avoid duplicating them here, and more maintenance.
 
-## 1 Get API keys
+## 1. Get API keys
 
 See:
 [Getting started: Get credentials](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#get-credentials).
@@ -55,11 +55,13 @@ See [Initiate](#initiate).
 ## 5. Receive the callback with the payment status
 
 [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/transactionUpdateCallbackForRegularPaymentUsingPOST).
+
 See [Callbacks](#callbacks).
 
 ## 6. Get the payment details
 
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET).
+
 This is optional, but _must_ be done if no callback has been received.
 See
 [Get payment details](#get-payment-details)
@@ -69,6 +71,7 @@ and
 ## 7. Capture the payment
 
 [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/capturePaymentUsingPOST).
+
 See [Regular eCommerce payments](#regular-ecommerce-payments).
 
 ## Questions?
