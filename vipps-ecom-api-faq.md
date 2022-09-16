@@ -8,15 +8,16 @@ END_METADATA -->
 # Vipps eCommerce API: Frequently Asked Questions
 
 See:
+
 * [Vipps eCommerce API guide](vipps-ecom-api.md)
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.13.10.
+Document version 3.13.11.
 
 <!-- START_TOC -->
 
-### Table of contents
+## Table of contents
 
 * [Requirements](#requirements)
   + [What are the requirements for Vipps merchants?](#what-are-the-requirements-for-vipps-merchants)
@@ -50,7 +51,7 @@ Document version 3.13.10.
 * [Users and payments](#users-and-payments)
   + [When do users get a "soft decline" and need to complete a 3-D Secure verification?](#when-do-users-get-a-soft-decline-and-need-to-complete-a-3-d-secure-verification)
   + [Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
-  + [Is there an API for retrieving information about a merchant's payments?](#is-there-an-api-for-retrieving-information-about-a-merchant-s-payments)
+  + [Is there an API for retrieving information about a merchant's payments?](#is-there-an-api-for-retrieving-information-about-a-merchants-payments)
   + [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
   + [How can I check if I have skipLandingPage activated?](#how-can-i-check-if-i-have-skiplandingpage-activated)
   + [Can I show the landing page in an iframe?](#can-i-show-the-landing-page-in-an-iframe)
@@ -65,9 +66,9 @@ Document version 3.13.10.
   + [In which sequence are callbacks and fallbacks done?](#in-which-sequence-are-callbacks-and-fallbacks-done)
   + [Where can I find reports on transactions?](#where-can-i-find-reports-on-transactions)
 * [Problems for end users](#problems-for-end-users)
-  + [Why don't I receive the payment notification?](#why-don-t-i-receive-the-payment-notification)
+  + [Why don't I receive the payment notification?](#why-dont-i-receive-the-payment-notification)
   + [Why am I not sent back to where I came from when I have paid?](#why-am-i-not-sent-back-to-where-i-came-from-when-i-have-paid)
-  + [Why can't I scan the Vipps QR on the terminal with the camera app?](#why-can-t-i-scan-the-vipps-qr-on-the-terminal-with-the-camera-app)
+  + [Why can't I scan the Vipps QR on the terminal with the camera app?](#why-cant-i-scan-the-vipps-qr-on-the-terminal-with-the-camera-app)
 * [Common errors](#common-errors)
   + [Why do I not get callbacks from Vipps?](#why-do-i-not-get-callbacks-from-vipps)
   + [Why do I get `HTTP 401 Unauthorized`?](#why-do-i-get-http-401-unauthorized)
@@ -86,7 +87,7 @@ Document version 3.13.10.
 * [Other questions](#other-questions)
   + [Can you send us logs so we can look for errors?](#can-you-send-us-logs-so-we-can-look-for-errors)
   + [How do I perform "testing in production"?](#how-do-i-perform-testing-in-production)
-  + [What do we have to do with PSD2's SCA requirements?](#what-do-we-have-to-do-with-psd2-s-sca-requirements)
+  + [What do we have to do with PSD2's SCA requirements?](#what-do-we-have-to-do-with-psd2s-sca-requirements)
   + [How can I use Vipps for different types of payments?](#how-can-i-use-vipps-for-different-types-of-payments)
   + [How do I set up multiple sale units?](#how-do-i-set-up-multiple-sale-units)
   + [How can I change my organization number?](#how-can-i-change-my-organization-number)
@@ -102,10 +103,10 @@ Document version 3.13.10.
   + [Which API keys should I use?](#which-api-keys-should-i-use)
   + [Do we need to support callbacks?](#do-we-need-to-support-callbacks)
   + [How can I check if a person has Vipps?](#how-can-i-check-if-a-person-has-vipps)
-  + [How can I save the customer's phone number?](#how-can-i-save-the-customer-s-phone-number)
+  + [How can I save the customer's phone number?](#how-can-i-save-the-customers-phone-number)
   + [How can we mass sign up merchants?](#how-can-we-mass-sign-up-merchants)
   + [Where can I find information about settlements?](#where-can-i-find-information-about-settlements)
-- [Questions?](#questions)
+* [Questions?](#questions)
 
 <!-- END_TOC -->
 ## Requirements
@@ -128,13 +129,13 @@ can't be used for
 [Vipps på Nett](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/),
 [Vipps Logg Inn](https://vipps.no/produkter-og-tjenester/bedrift/logg-inn-med-vipps/logg-inn-med-vipps/)
 or
-[Vipps Faste Betalinger](https://vipps.no/produkter-og-tjenester/bedrift/faste-betalinger/faste-betalinger/).
+[Vipps Faste Betalinger (Recurring payments)](https://vipps.no/produkter-og-tjenester/bedrift/faste-betalinger/faste-betalinger/).
 You need
 [Vipps på Nett](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).
 
 The reason for this is that the Norwegian Tax Administration considers
 "Vippsnummer" to be cash transactions,
-while eCommerce is defined as remote sales ("fjernhandel"). The regulations
+while eCommerce is defined as remote sales (in Norwegian, *fjernhandel*). The regulations
 associated with both are different enough to require this policy.
 
 ## Common problems
@@ -222,6 +223,7 @@ If the shipping cost is 300 kr, a capture of 1000 + 3000 kr = 1300 NOK will fail
 
 It is not possible to capture more than the reserved amount, as that would
 make this sequence possible:
+
 1. The merchant initiates a payment of 1000 NOK
 2. The user confirms the 1000 NOK payment in Vipps
 3. The merchant captures 50 000 NOK from the user
@@ -231,6 +233,7 @@ that would make it possible to charge a user's card without requiring the user
 to confirm the payment in Vipps first.
 
 See:
+
 * [Cancelling a pending order](vipps-ecom-api.md#cancelling-a-pending-order)
 * [For how long is a payment reserved?](#for-how-long-is-a-payment-reserved)
 
@@ -238,7 +241,7 @@ See:
 
 If you get a CORS (Cross-Origin Resource Sharing) error, it is from your side,
 not an error from Vipps. You are most likely attempting to call the Vipps API
-from a website, and your webserver's configuration prevents it.
+from a website, and your web server's configuration prevents it.
 
 CORS is a protocol that enables scripts running on a browser client to interact
 with resources from a different origin. Sometimes servers are configured to
@@ -246,7 +249,7 @@ prevent this, and that results in a CORS error.
 
 Vipps only receives the API requests over HTTPS, and has no way of detecting
 how the request was made on the caller side - it all looks the same.
-We can not fix the CORS error for you.
+We cannot fix the CORS error for you.
 
 You can read more about CORS here:
 [CORS Tutorial: A Guide to Cross-Origin Resource Sharing](https://auth0.com/blog/cors-tutorial-a-guide-to-cross-origin-resource-sharing/).
@@ -305,7 +308,7 @@ shows the customer names for
 payments. For other payments, such as
 [Vipps på nett](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/)
 and
-[Vipps Faste betalinger](https://vipps.no/produkter-og-tjenester/bedrift/faste-betalinger/faste-betalinger/)
+[Vipps Faste betalinger (Recurring payments)](https://vipps.no/produkter-og-tjenester/bedrift/faste-betalinger/faste-betalinger/)
 the `orderId` is shown instead of the customer name.
 
 You can click the little "i" in the header on the transaction overview and see the same info as above.
@@ -332,14 +335,21 @@ product or service is provided to the customer. See:
 [Forbrukerkjøpsloven §38](https://lovdata.no/lov/1988-05-13-27/§49)
 (in Norwegian):
 
+
 >Følger ikke betalingstiden av avtalen, skal forbrukeren betale når selgeren krever det.
 >Hvis ikke noe annet er avtalt, har forbrukeren ikke plikt til å betale kjøpesummen uten at tingen blir overlevert eller stilt til hans eller hennes rådighet i samsvar med avtalen og loven.
 >Forbrukeren er ikke bundet av en forhåndsavtale om plikt til å betale på et bestemt tidspunkt uavhengig av om selgeren oppfyller til rett tid.
 
+This roughly translates to:
+
+>If the payment time does not follow the agreement, the consumer must pay when the seller demands it.
+>If nothing else has been agreed, the consumer has no obligation to pay the purchase price without the item being handed over or placed at his or her disposal in accordance with the agreement and the law.
+>The consumer is not bound by a prior agreement on the obligation to pay at a specific time regardless of whether the seller fulfils on time.
+
 For more information, please see the Consumer Authority's
 [Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
 
-Vipps can not offer legal advice for this.
+Vipps cannot offer legal advice for this.
 
 See more details below:
 
@@ -368,6 +378,7 @@ Vipps supports both _reserve-capture_ and _direct capture_:
 The user experience is exactly the same.
 
 Some things to consider:
+
 * If a payment has been _reserved_ (as with "reserve capture"), the merchant can
   make a `/cancel` call to immediately release the reservation and make available
   in the customer's account.
@@ -380,6 +391,7 @@ Some things to consider:
   with multiple captures ("partial capture").
 
 See:
+
 * [When should I charge the customer?](#when-should-i-charge-the-customer)
 * [When should I use "Direct Capture"?](#when-should-i-use-direct-capture)
 * [How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
@@ -390,6 +402,7 @@ You can probably use "reserve capture", and just do the capture right after the
 reserve. This has some benefits, see the first link below.
 
 See:
+
 * [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
 * [Regular eCommerce payments](vipps-ecom-api.md#regular-ecommerce-payments) for more details.
 
@@ -431,6 +444,7 @@ Vipps through a partner, and for merchants that have a Key Account Manager.
 or by KAM merchants from the Key Account Manager.
 
 See:
+
 * [When should I use "Direct Capture"?](#when-should-i-use-direct-capture)
 * [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
 
@@ -461,13 +475,13 @@ If the account has sufficient funds, the payment will be successful.
 
 If the user's account has insufficient funds at this time, the payment will
 either succeed and put the customer's card/account in the negative (as
-an overdraft), or fail because the customer's card/account can not be put into
+an overdraft), or fail because the customer's card/account cannot be put into
 the negative - for example youth accounts.
-Vipps can not know in advance what will happen.
+Vipps cannot know in advance what will happen.
 
 It is also possible that the card expires, is blocked, etc somewhere between
 the time of reservation and the time of capture.
-Vipps can not know in advance what will happen.
+Vipps cannot know in advance what will happen.
 
 In many cases the bank will have a register of expired reservations and they
 will force the capture through if the account allows this.
@@ -494,9 +508,9 @@ See:
 Yes, but only if you are not legally allowed to accept credit card payments.
 
 Sale units can be configured to only accept payments from debit cards, so
-customers can not pay with credit cards. This is not configurable by the
+customers cannot pay with credit cards. This is not configurable by the
 merchant. Please contact your KAM or
-[Vipps Kundesenter](https://vipps.no/kontakt-oss/bedrift/vipps/)
+[Vipps Customer Center](https://vipps.no/kontakt-oss/bedrift/vipps/)
 if you need this.
 
 ### Can I initiate a Vipps payment with a QR code?
@@ -521,11 +535,11 @@ The only ways to initiate Vipps payments from a QR code are:
   Vipps will be opened, and the payment request will be displayed.
   The user then has a few minutes to complete the payment. See:
   [Timeouts](vipps-ecom-api.md#timeouts).
-* [Vippnummer](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/),
+* [Vippsnummer](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/),
   the solution for flea markets, etc – which does not have any external API.
   This solution uses a static QR code for the sale unit, available on
   [portal.vipps.no](https://portal.vipps.no).
-  Vippsnummer can not be used for online sales, etc, as it does not meet the
+  Vippsnummer cannot be used for online sales, etc, as it does not meet the
   legal requirements.
 * [Vipps i terminal](https://www.vipps.no/produkter-og-tjenester/privat/vipps-i-terminal/vipps-i-terminal/):
   Merchant-presented, dynamic QR shown on the display of a payment terminal.
@@ -585,19 +599,20 @@ Vipps is required to check your website and that it meets the
 requirements set by Norwegian law and regulation.
 
 See:
+
 * [Can I initiate a Vipps payment with a QR code?](#can-i-initiate-a-vipps-payment-with-a-qr-code)
 * [Can I send a Vipps payment link in an SMS, QR or email?](#can-i-send-a-vipps-payment-link-in-an-sms-qr-or-email)
 
 ### Can I whitelist my URL for a Vipps QR?
 
-There is no need for whitelisting QR codes anymore. It was previously a temporary solution a merchant to whitelist a URL to support users scanning
+There is no need for whitelisting QR codes any longer. It was previously a temporary solution a merchant to whitelist a URL to support users scanning
 a Vipps-branded QR to be sent directly to the merchant's URL.
 
 The previous whitelisting functionality has been replaced by [the Vipps QR API](https://github.com/vippsas/vipps-qr-api).
 
 The API supports static [merchant redirect URLs](https://github.com/vippsas/vipps-qr-api#merchant-redirect-qr) with possibility to update the target URL for stickers, billboards, TV-commercials, magazine ads, etc.
 
-The API also support a [one-time payment QR code](https://github.com/vippsas/vipps-qr-api#one-time-payment-qr) for customer facing screens in POS situations.    
+The API also support a [one-time payment QR code](https://github.com/vippsas/vipps-qr-api#one-time-payment-qr) for customer facing screens in POS situations.
 
 ### Can I use a different currency than NOK?
 
@@ -654,7 +669,7 @@ The partial capture (the 750 of the 1000 NOK in the example above)
 is normally confirmed in the bank after 3-10 days, but it sometimes takes even
 longer. When this is done, the bank will make the remaining (250 NOK) available
 in the customer's account again. This process depends entirely on the customer's
-bank, and Vipps can not speed it up.
+bank, and Vipps cannot speed it up.
 
 Banks keep reservations for the same number of days regardless of whether there
 has been one or more captures. Banks do not extend the reservation if a partial
@@ -848,8 +863,8 @@ If you want to charge a fee (like 3 %) of your payments, you can:
 1. Receive the full payment, take your 3 %, and then pay the remaining
    97 % to your customer (merchant). In order to receive payments in this way,
    you may need the regulatory approval as
-   [e-pengeforetak](https://www.finanstilsynet.no/konsesjon/e-pengeforetak/)
-   from Finanstilsynet.
+   [e-pengeforetak (i.e., *e-money institution*)](https://www.finanstilsynet.no/konsesjon/e-pengeforetak/)
+   from the Finanstilsynet.
 2. Have your customer (merchant) receive the full payment directly, then send an
    invoice for your 3 % fee.
 
@@ -872,13 +887,14 @@ are covered elsewhere in this FAQ:
   [Is it possible for a merchant to pay a Vipps user?](#is-it-possible-for-a-merchant-to-pay-a-vipps-user)
 
 So, there are two alternatives:
+
 1. The shopping center is the only Vipps merchant, and all payments from Vipps
    users is to this merchant. Vipps is not involved in the cooperation between
    the shopping center and it's merchants, and it is completely up to them
    to operate according to Norwegian laws and regulation.
 2. Each merchant in the shopping center is a Vipps merchant, and each payment
    from a Vipps user is made directly to the merchant. This means that a
-   common shopping cart for all merchants can not be paid in one operation,
+   common shopping cart for all merchants cannot be paid in one operation,
    since: All payments with Vipps must be to a merchant that is a customer of Vipps.
 
 ### Can I create a service to match buyers and sellers?
@@ -889,7 +905,7 @@ and this is defined in the regulatory approval for Vipps from Finanstilsynet.
 If the service receives payment from a buyer and then pays the seller,
 so that the service "holds" the money even for a short time, the service
 will need the regulatory approval as
-[e-pengeforetak](https://www.finanstilsynet.no/konsesjon/e-pengeforetak/).
+[e-pengeforetak (i.e., *e-money institution*)](https://www.finanstilsynet.no/konsesjon/e-pengeforetak/).
 
 If the service sells access, in the form of a subscription or per-use, the
 service is _most likely_ a regular Vipps eCom customer, and can use
@@ -898,16 +914,17 @@ the
 or one of our
 [plugins](https://github.com/vippsas/vipps-developers#plugins).
 
-Vipps can not offer legal advice for this.
+Vipps cannot offer legal advice for this.
 
 ### Can I use Vipps for crowdfunding?
 
 That depends, but probably: No.
 
-Vipps can not keep money for merchants.
+Vipps cannot keep money for merchants.
 All Vipps payments must be made to a company that is a customer of Vipps.
 
 See:
+
 * [What are the requirements for Vipps merchants?](#what-are-the-requirements-for-vipps-merchants)
 * [Can I create a marketplace with multiple merchants?](#can-i-create-a-marketplace-with-multiple-merchants)
 * [Can I create a service to match buyers and sellers?](#can-i-create-a-service-to-match-buyers-and-sellers)
@@ -967,9 +984,10 @@ reservation and the capture are payments, and that they have paid twice.
 Most banks manage to do this properly, but apparently not all.
 
 Please check the Vipps payment:
+
 1. Find the Vipps `orderId` for the payment.
 2. Log in on [portal.vipps.no](https://portal.vipps.no).
-3. Click "Transaksjoner" and then "Søk på ID"
+3. Click "Transaksjoner" (*Transactions*) and then "Søk på ID" (*Search for ID*)
 4. Search for the `orderId` from step 1.
 5. Click the order.
 6. See the "History" details.
@@ -979,6 +997,7 @@ this functionality when integrating with Vipps:
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET)
 
 The user can also check the payment in Vipps:
+
 1. Start Vipps and log in.
 2. Press "Payments" on the main screen.
 3. Scroll down and press "History"
@@ -990,7 +1009,7 @@ See:
 
 ### In which sequence are callbacks and fallbacks done?
 
-Vipps can not guarantee a particular sequence, as this depends on user
+Vipps cannot guarantee a particular sequence, as this depends on user
 actions, network connectivity/speed, etc. Because of this, it is not
 possible to base an integration on a specific sequence of events.
 
@@ -1011,9 +1030,9 @@ See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settl
 
 Push notifications must be active for Vipps to send payment notifications.
 
-Push notifications are "best effort", and Vipps can not guarantee that all
+Push notifications are "best effort", and Vipps cannot guarantee that all
 push notifications arrive. It depends on services, networks, etc that Vipps
-can not control.
+cannot control.
 
 If Vipps is already open and active when the push notification is received,
 the user must press the "Send" button and move to the payments screen to see
@@ -1027,6 +1046,7 @@ browser in Instagram, instead of the default Safari browser), the `fallback` URL
 (the result page) will still be opened in the default browser.
 
 See:
+
 * [How can I open the fallback URL in a specific (embedded) browser?](#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser).
 * [Recommendations regarding handling redirects](vipps-ecom-api.md#recommendations-regarding-handling-redirects).
 
@@ -1074,6 +1094,7 @@ complete HTTP request, and any other related details, so we can investigate.
 **Please note:** Callback URLs _must_ use HTTPS.
 
 See:
+
 * [Callback](vipps-ecom-api.md#callback-endpoints)
 * [How to test your own callbacks](vipps-ecom-api.md#how-to-test-your-own-callbacks).
 
@@ -1082,21 +1103,21 @@ See:
 If you get a `HTTP 401 Unauthorized` response, the reason for the error is in the
 response body, such as:
 
-```
+```text
 Access denied due to invalid subscription key.
 Make sure to provide a valid key for an active subscription.
 ```
 
 or
 
-```
+```text
 Access denied due to missing subscription key.
 Make sure to include subscription key when making requests to an API.
 ```
 
 or
 
-```
+```json
 {
   "errorCode":"Unauthorized",
   "errorMessage":"Subscription not found",
@@ -1157,11 +1178,11 @@ See:
 If you are absolutely, completely 100 % sure that you have done everything
 correctly, and it _still_ doesn't work, you can regenerate the API keys on
 [portal.vipps.no](https://portal.vipps.no).
-This should never be necessary, and we can not think of any situations where
+This should never be necessary, and we cannot think of any situations where
 this fixes any known problem, so it's our very last suggestion.
 The old API keys will of course stop working when they have been regenerated.
 
-**Important:** Vipps can not help with the debugging of your code,
+**Important:** Vipps cannot help with the debugging of your code,
 we can only help with the API requests and response. Please do not send us your
 source code asking us to fix it for you.
 
@@ -1208,6 +1229,7 @@ But: It's usually a problem with your request, and that our validation does not 
 In other words: We should have returned `HTTP 400 Bad Request`.
 
 Some tips:
+
 * Please make sure the JSON payload in your API request validates.
   That is the most common source of this type of error.
 * We strongly recommend using
@@ -1215,7 +1237,7 @@ Some tips:
   to manually do API calls, to see the correct request.
   Use Postman's
   [Inspect](https://blog.postman.com/debugging-postman-requests/)
-  functionality to see the complete requeet.
+  functionality to see the complete request.
 * You will get a 500 error if the MSN is sent as an integer:
   `merchantSerialNumber":654321` instead of a string: `merchantSerialNumber":"654321"`.
 * The same will happen if the `amount` is not an integer.
@@ -1232,8 +1254,9 @@ production, and on very rare occasions this can cause SQL errors that result in
 a `HTTP 500 Server Error`. Retry the call, and see if it helps.
 
 See:
+
 * [Errors](vipps-ecom-api.md#errors).
-* [Statuspage](https://github.com/vippsas/vipps-developers#status-page).
+* [Status page](https://github.com/vippsas/vipps-developers#status-page).
 
 ### Why do I get `errorCode 35 "Requested Order not found"`?
 
@@ -1245,6 +1268,7 @@ the API keys for a different sale unit (MSN).
 The `orderId`s is not globally unique, they are only unique per MSN.
 
 See:
+
 * [Why do I get `HTTP 404 Not Found`?](#why-do-i-get-http-404-not-found)
 * [Error codes](vipps-ecom-api.md#error-codes).
 
@@ -1263,7 +1287,7 @@ aware of the consequences. If a sale unit has been incorrectly deactivated,
 the merchant can reactivate it again.
 
 **Please note:** We require BankID for deactivation and reactivation,
-and can not help with this based on email requests.
+and cannot help with this based on email requests.
 
 Deactivation can also happen if the test merchant is not being used for a _very long_ time.
 Please
@@ -1300,13 +1324,13 @@ If you use the correct `scope` in the payment initiation, but don't get the
 [orderId recommendations](vipps-ecom-api.md#orderid-recommendations).
 Very short orderIds don't work well with our database index, and may cause
 an internal timeout, and we "have to" send the response without the `sub`.
-We can not enforce longer orderIds due to backwards compatibility.
+We cannot enforce longer orderIds due to backwards compatibility.
 
 ### Why do I get `unauthorized_client`?
 
 If you get errors like below from Microsoft Azure, you are not using the right API keys:
 
-```
+```json
 {
   "error": "unauthorized_client",
   "error_description":
@@ -1321,7 +1345,7 @@ If you get errors like below from Microsoft Azure, you are not using the right A
 }
 ```
 
-```
+```json
 {
   "error":"unauthorized_client",
   "error_description":
@@ -1367,14 +1391,15 @@ If you get the error
 it is because you are using API keys that are not valid for the specified MSN.
 
 This can happen when:
+
 - A partner tries to use partner keys for a sale unit that is not registered with them as partner.
-- API keys for the test environment is used in the production ewnvironment, or opposite.
+- API keys for the test environment is used in the production environment, or opposite.
 
 ## Other questions
 
 ### Can you send us logs so we can look for errors?
 
-No. Vipps can not extract logging info for one merchant or one MSN. There are
+No. Vipps cannot extract logging info for one merchant or one MSN. There are
 terabytes of data, and it's not trivial to provide data for just one merchant
 or MSN.
 
@@ -1421,10 +1446,10 @@ to the requirements.
 
 It's possible to use the Vipps eCom API for several different types of payments.
 
-Let's say you run a bookstore. You can then use Vipps eCom API in several different ways, such as:
+Let's say you run a book store. You can then use Vipps eCom API in several different ways, such as:
 
 1. A webshop that sells physical books:
-   Vipps eCom API with "reserve capture", since you can not capture the payment before the book is shipped.
+   Vipps eCom API with "reserve capture", since you cannot capture the payment before the book is shipped.
 2. A webshop that sells digital, downloadable books that are immediately available:
    Vipps eCom API with either "reserve capture" or "direct capture", depending on whether the digital product
    needs to be generated or not.
@@ -1432,7 +1457,7 @@ Let's say you run a bookstore. You can then use Vipps eCom API in several differ
    Vipps eCom API with "direct capture", possibly integrated with the POS.
 4. A physical store where customers can buy physical books by scanning a
    QR code in the window, and have the physical book delivered by mail:
-   Vipps eCom API with "reserve capture", since you can not capture the payment before the book is shipped.
+   Vipps eCom API with "reserve capture", since you cannot capture the payment before the book is shipped.
 
 The regulatory requirements are different for different types of purchases.
 One major difference is if the cardholder is physically present and
@@ -1499,7 +1524,7 @@ If all sale units have the same organization number, there are two alternatives:
 
 ### How can I change my organization number?
 
-A company can not change its organization number.
+A company cannot change its organization number.
 
 Companies (merchants) sometimes merge with other companies, are acquired, etc.
 We sometimes get requests from companies that have "changed organization numbers",
@@ -1533,6 +1558,7 @@ rely on this alone - being able to actively retrieving information with `GET` me
 is a requirement.
 
 See:
+
 * [Vipps eCom API checklist](vipps-ecom-api-checklist.md)
 * [Vipps PSP API checklist](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-checklist.md)
 
@@ -1559,8 +1585,8 @@ the example below shows.
 All information about price, shipping, etc must be done in Klarna Checkout, before
 the user is sent to Vipps to pay the total amount.
 
-```
-"external_payment_methods":[
+```json
+"external_payment_methods": [
    {
       "name": "Vipps",
       "redirect_url": "https://example.com/vipps/ecom-api/initiate/acme-shop-123-order123abc",
@@ -1570,6 +1596,8 @@ the user is sent to Vipps to pay the total amount.
    }
 ]
 ```
+
+Note, the description translates to: _Remember: Vipps is always fee-free when you pay to companies_.
 
 | Field          | Description                                              |
 | -------------- | -------------------------------------------------------- |
@@ -1587,7 +1615,7 @@ Using this method will add Vipps as an payment alternative inside KCO.
 See:
 [External payment methods & external checkouts](https://docs.klarna.com/klarna-checkout/in-depth-knowledge/external-payment-methods/).
 
-**Please note:** Vipps has limited knowledge of Klarna Checkout, and can not
+**Please note:** Vipps has limited knowledge of Klarna Checkout, and cannot
 help with all the details.
 
 **Important:** When using Vipps as an external payment method in Klarna Checkout
@@ -1653,10 +1681,12 @@ presenting the result of the payment in some other way on the screen, and
 also that an error messages if something went wrong.
 
 If it is not possible for the POS solution to handle a fallback URL you may use one of the following options:
+
 1. Set fallbackURL to be the merchants website
 2. Set fallbackURL to be this Vipps hosted static page: [www.vipps.no/thankyoupage/](https://www.vipps.no/thankyoupage/)
 
 See also:
+
 - [QR API](https://github.com/vippsas/vipps-qr-api/)
 - [Error codes](vipps-ecom-api.md#error-codes)
 - [Do we need to support callbacks?](#do-we-need-to-support-callbacks)
@@ -1685,7 +1715,7 @@ As an alternative an online sale log must be available for Vipps.
 4. If the merchant already has a customer relationship with Vipps, a new sales
    unit must be created, with `skipLandingPage` activated.
    The
-   [Vipps Kundesenter](https://vipps.no/hjelp/vipps/)
+   [Vipps customer center](https://vipps.no/hjelp/vipps/)
    can help with this.
    See: [FAQ](#is-it-possible-to-skip-the-landing-page).
 5. The POS vendor normally uses partner keys, as documented in
@@ -1749,6 +1779,7 @@ is entered in the POS, the merchant can of course save it -
 complying with GDPR, etc.
 
 See:
+
 * [Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user).
 * [The Vipps QR API](https://github.com/vippsas/vipps-qr-api)
 
