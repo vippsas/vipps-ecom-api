@@ -33,7 +33,7 @@ Review the [Getting Started](https://github.com/vippsas/vipps-developers/blob/ma
 ## Examples
 
 * [Postman guide](vipps-ecom-postman.md): Step-by-step guide for using the eCom API Postman collection of examples.
-* [Vipps eCom example](https://github.com/vippsas/vipps-developers/tree/master/code-examples/ecom_python_example): A simple example implementation for the eCom API using Python.
+
 
 
 ## Questions?
