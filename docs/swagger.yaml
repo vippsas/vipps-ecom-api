@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.31
+  version: 1.6.32
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -1409,6 +1409,7 @@ components:
         email_verified:
           description: 'Boolean value if the End user''s email address is verified.'
           type: boolean
+          example: true
         family_name:
           description: 'Surname(s) or last name(s) of the end user.'
           type: string
@@ -1460,6 +1461,7 @@ components:
         default:
           description: 'If this is default address'
           type: boolean
+          example: true
         formatted:
           description: 'End user address as a formatted string'
           type: string
@@ -2196,6 +2198,7 @@ components:
           type: boolean
           description: An opt-in field to instruct the release of remaining funds after a partial capture.
           default: false
+          example: false
       required:
         - merchantInfo
         - transaction
