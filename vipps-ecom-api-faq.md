@@ -417,7 +417,7 @@ so you can check on behalf of the merchant as
 If you are not able to log in on
 [portal.vipps.no](https://portal.vipps.no)
 you can make a small payment (2 kr), check the payment with
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET),
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET),
 and cancel (if it was `RESERVE` and reserve capture) or refund (if it was `SALE` and direct capture).
 
 ### How do I turn direct capture on or off?
@@ -481,9 +481,9 @@ Attempting to capture an older payment will result in a
 `HTTP 400 Bad Request`.
 
 The
-[`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/capturePaymentUsingPOST)
+[`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/capturePaymentUsingPOST)
 and
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET)
 API calls will always return the correct status.
 
 See:
@@ -504,7 +504,7 @@ if you need this.
 It is not possible to use a _static_ QR code to initiate payments with the eCom API.
 
 With the eCom API all payments are initiated by calling
-[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST),
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST),
 with a unique `orderId` for each payment.
 
 This is not possible with a static QR code on a sticker, etc, but
@@ -614,7 +614,7 @@ See: [Regular eCom Payments](vipps-ecom-api.md#regular-ecommerce-payments).
 ### How can I refund a payment?
 
 This depends on your eCommerce solution. The Vipps API supports refunds with
-[`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/refundPaymentUsingPOST).
+[`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST).
 For details on how to offer refunds, please refer to the documentation for your eCommerce solution.
 
 All integrations with the Vipps eCom API _must_  support refunds. See the
@@ -644,7 +644,7 @@ See:
 
 * The long version: It _is_ possible to cancel the remaining reservation after a
 partial capture through Vipps: Send a
-[`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
+[`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/cancelPaymentRequestUsingPUT)
 request with `shouldReleaseRemainingFunds: true` in the body.
 The payment must be `RESERVED` for this to take effect.
 See:
@@ -740,7 +740,7 @@ and
 [Vipps Recurring API: Userinfo](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api.md#userinfo).
 
 This is done by adding a `scope` parameter to the initiate calls:
-[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST) (eCom)
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST) (eCom)
 and
 [`POST:/recurring/v2/agreements`](https://vippsas.github.io/vipps-recurring-api/#/Agreement%20Controller/draftAgreement) (Recurring):
 
@@ -761,7 +761,7 @@ There is no other API to look up a user's address, retrieve a user's purchases, 
 
 Not for aggregated data.
 There is an API to retrieve all details for a specific `orderId`:
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET).
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET).
 
 And there is
 [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements)
@@ -976,7 +976,7 @@ Please check the Vipps payment:
 
 This is of course also supported in the API, and it is a requirement to use
 this functionality when integrating with Vipps:
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET)
 
 The user can also check the payment in Vipps:
 1. Start Vipps and log in.
@@ -1346,7 +1346,7 @@ To fix this, please check that you are using the right API keys, similar to:
 
 This error is shown in Vipps if you use Vipps Hurtigkasse (express checkout) and respond
 incorrectly to the request for
-[`[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Merchant%20Endpoints/fetchShippingCostUsingPOST).
+[`[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Merchant-Endpoints/operation/fetchShippingCostUsingPOST).
 
 Please verify that your response is correct.
 
@@ -1718,7 +1718,7 @@ This is also required if you do support callbacks.
 ### How can I check if a person has Vipps?
 
 There is no separate API for this, but an attempt to
-[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/initiatePaymentV3UsingPOST)
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST)
 with a phone number that is not registered with Vipps will fail with error 81,
 `User not registered with Vipps`.
 See: [Error codes](vipps-ecom-api.md#error-codes).
@@ -1728,7 +1728,7 @@ Users that install Vipps accept the terms and conditions, including being
 is specified.  It is of course possible to pay with Vipps without sharing the
 phone number with the merchant.
 See
-[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST)
 for the details of initiating payments with and without phone number.
 See also
 [privacy and terms](https://vipps.no/vilkar/)

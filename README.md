@@ -26,9 +26,9 @@ Review the [Getting Started](https://github.com/vippsas/vipps-developers/blob/ma
 
 ## eCom API
 
-* [Vipps eCommerce API guide](vipps-ecom-api.md): Developer guide for Vipps eCom API.
-* [Vipps eCommerce API Checklist](vipps-ecom-api-checklist.md): For direct and POS integrations.
-* [Swagger](https://vippsas.github.io/vipps-ecom-api/), [ReDoc](https://vippsas.github.io/vipps-developer-docs/api/ecom): eCom API Reference Specifications.
+* [API guide](vipps-ecom-api.md): Developer guide for Vipps eCom API.
+* [API Checklist](vipps-ecom-api-checklist.md): For direct and POS integrations.
+* [API Reference](https://vippsas.github.io/vipps-developer-docs/api/ecom): eCom API Reference Specifications.
 
 ## Examples
 

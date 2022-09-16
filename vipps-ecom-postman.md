@@ -44,14 +44,14 @@ Import the collection by following the steps below:
 
 ### Step 4: Run the examples
 
-See the  [eCommerce API Specifications](https://vippsas.github.io/vipps-ecom-api/#/) for details about the calls.
+See the  [eCommerce API Specifications](https://vippsas.github.io/vipps-developer-docs/api/ecom) for details about the calls.
 
 #### 1. A regular eCommerce payment
 
 1. Send request `Get Access Token`. This provides you with access to the API.
 
 1. Send request `Initiate Payment`. This is to demonstrate a simple payment by using
-   [`POST:/v3/psppayments/init/`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST).
+   [`POST:/v3/psppayments/init/`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST).
 
    The `orderId` and `vippsLandingPageUrl` variables are now in the environment of this Postman example and can be used for subsequent calls relating to this purchase.
 
@@ -60,11 +60,11 @@ See the  [eCommerce API Specifications](https://vippsas.github.io/vipps-ecom-api
    Alternatively, you could [Generate a QR code to the Vipps Landing page](#4-generating-a-qr-code-to-the-vipps-landing-page).
 
 
-1. Send request `Get Payment Details` for information about this payment by using [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET).
+1. Send request `Get Payment Details` for information about this payment by using [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET).
 
-1. Send request `Capture Payment` to capture this payment with [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/capturePaymentUsingPOST).
+1. Send request `Capture Payment` to capture this payment with [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/capturePaymentUsingPOST).
 
-1. Send request `Refund Payment` to refund this payment with [`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST).
+1. Send request `Refund Payment` to refund this payment with [`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST).
 
 See [Regular eCommerce payments](vipps-ecom-api.md#regular-ecommerce-payments) for more information from the eCommerce API guide.
 
@@ -73,29 +73,29 @@ See [Regular eCommerce payments](vipps-ecom-api.md#regular-ecommerce-payments) f
 1. Send request `Initiate Payment - Express Checkout`. This demonstrates the type of payment where the user selects their shipping methods within the Vipps app instead of on the website.
 
    To enable this functionality, you provide the object `staticShippingDetails` with your relevant details in the body of the call
-   [`POST:/v3/psppayments/init/`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST).
+   [`POST:/v3/psppayments/init/`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST).
 
    Ctrl+click on the link that appears and complete the payment authorization.
 
-1. Send request `Get Payment Details` for information about this payment by using [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET).
+1. Send request `Get Payment Details` for information about this payment by using [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET).
 
-1. This time, instead of capturing the order, cancel it. Send request `Cancel Payment` to cancel this payment with [`POST:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT).
+1. This time, instead of capturing the order, cancel it. Send request `Cancel Payment` to cancel this payment with [`POST:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/cancelPaymentRequestUsingPUT).
 
 See [Express checkout payments](vipps-ecom-api.md#express-checkout-payments) for more information from the eCommerce API guide.
 
 #### 3. Getting access to user info
 
-1. Send request `Initiate Payment - Profile flow`. Provide the `scope` object in the [`POST:/v3/psppayments/init/`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST) call. This contains the information types that you want access to, separated by spaces (e.g., "name address email phoneNumber birthDate").
+1. Send request `Initiate Payment - Profile flow`. Provide the `scope` object in the [`POST:/v3/psppayments/init/`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST) call. This contains the information types that you want access to, separated by spaces (e.g., "name address email phoneNumber birthDate").
 
    Ctrl+click on the link that appears and complete the authorization.
 
 
-1. Send request `Get Payment Details` with `orderId` for information about this payment by using [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET).
+1. Send request `Get Payment Details` with `orderId` for information about this payment by using [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET).
 
    Here, the user identifier, `sub`, is retrieved from the response and set as a variable.
 
 
-1. Send request `Get Userinfo`. This uses [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getUserinfo) with the `sub` variable from the previous call.
+1. Send request `Get Userinfo`. This uses [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-Userinfo-API/operation/getUserinfo) with the `sub` variable from the previous call.
 
 See [Userinfo](vipps-ecom-api.md#userinfo) for more information.
 
