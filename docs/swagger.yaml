@@ -3,7 +3,7 @@ info:
   description: |
     # Vipps eCommerce API
     Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.30
+  version: 1.6.31
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -1935,7 +1935,8 @@ components:
           $ref: '#/components/schemas/AdditionalTransactionData'
         useExplicitCheckoutFlow:
           type: boolean
-          description: Use the extended UX flow for express checkout which forces users to confirm their address and shipping choices
+          description: Use the new and improved extended UX flow for express checkout which forces users to confirm their address and shipping choices
+          default: false
           example: true
     AdditionalTransactionData:
       description: >-
