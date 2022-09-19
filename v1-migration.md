@@ -23,7 +23,6 @@ The initiate payment response will contain a unique URL for each order. Either a
 
 *Note: On mobile devices "Universal Linking" will be used for `https` URLs, which will automatically open [Vipps](vipps-ecom-api.md#phone-and-mobile-browser-flow).*
 
-
 ## Skip landing page
 
 Skipping the landing page is reserved for special cases, where displaying it is not possible.
@@ -32,7 +31,6 @@ See the details in the
 in the API guide.
 
 See the [FAQ](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-faq.md#is-it-possible-to-skip-the-landing-page).
-
 
 ## Phone number is optional
 
@@ -50,7 +48,7 @@ See [here](vipps-ecom-api.md#initiate) for full overview of initiate payment.
 
 ### Request Body
 
-```
+```json
 {
   "customerInfo": {
       "mobileNumber": "48059528"
@@ -70,7 +68,7 @@ See [here](vipps-ecom-api.md#initiate) for full overview of initiate payment.
 
 ### Response body App Switch (`isApp: true`)
 
-```
+```json
 {
     "orderId": "id170",
     "url": "vipps://?token=eyJraWQiOiJqd3RrZXkiLCJ[...]"
@@ -79,7 +77,7 @@ See [here](vipps-ecom-api.md#initiate) for full overview of initiate payment.
 
 ### Response body HTTPS (`isApp: false`)
 
-```
+```json
 {
     "orderId": "id170",
     "url": "https://api.vipps.no/dwo-api-application/v1/deeplink/vippsgateway?v=2&token=eyJraWQiOiJqd3RrZXkiLCJ[...]"
@@ -106,7 +104,7 @@ for eCom v2.
 
 ## Subscription keys
 
-When you have received confirmation that your new sales unit is created, then you can retrieve the API keys on https://portal.vipps.no. See [Getting started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md).
+When you have received confirmation that your new sales unit is created, then you can retrieve the API keys on <https://portal.vipps.no>. See [Getting started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md).
 
 ## New endpoint
 
@@ -117,7 +115,7 @@ The eCom v2 API is available at ```ecomm/v2/payments```:
 
 ## Documentation
 
-The eCom v2 API documentation is available here: https://github.com/vippsas/vipps-ecom-api
+The eCom v2 API documentation is available here: <https://github.com/vippsas/vipps-ecom-api>
 
 # Questions?
 

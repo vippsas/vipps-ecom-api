@@ -24,7 +24,7 @@ See the disclaimer: <https://vippsas.github.io/vipps-developer-docs/docs/example
 
 Review the [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md) pages for information about API keys, product activation, contact information, contribution guidelines, etc.
 
-## eCom API
+## eCommerce API
 
 * [API guide](vipps-ecom-api.md): Developer guide for Vipps eCom API.
 * [API Checklist](vipps-ecom-api-checklist.md): For direct and POS integrations.
@@ -33,8 +33,6 @@ Review the [Getting Started](https://github.com/vippsas/vipps-developers/blob/ma
 ## Examples
 
 * [Postman guide](vipps-ecom-postman.md): Step-by-step guide for using the eCom API Postman collection of examples.
-
-
 
 ## Questions?
 
