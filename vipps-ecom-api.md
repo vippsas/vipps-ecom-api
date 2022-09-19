@@ -902,7 +902,7 @@ for testing your callbacks.
    `https://example.com/vipps/callback/v2/payments/acme-shop-123-order123abc`.
 3. Test the callback by making a POST request to your callback URL with the JSON file as request body:
 
-   ```bash
+   ```http
    http POST https://example.com/vipps/callback/v2/payments/acme-shop-123-order123abc < callback.json
    ```
 
