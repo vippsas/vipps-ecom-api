@@ -48,7 +48,7 @@ The main benefits of the eCom v2 API:
 
 Some customers have not been able to use the eCom v2 API because they have not
 had a display available for the landing page. In these special cases we offer a
-feature to skip the landing page. Customers who can not display the landing page
+feature to skip the landing page. Customers who cannot display the landing page
 can see more details about the "skipLandingPage" functionality
 [here](vipps-ecom-api.md#skip-landing-page).
 

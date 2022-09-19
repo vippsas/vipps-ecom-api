@@ -9,7 +9,7 @@ END_METADATA -->
 
 API version: 2.0.
 
-Document version 2.1.11.
+Document version 2.1.12.
 
 ## Checklist
 
@@ -39,7 +39,7 @@ Document version 2.1.11.
         - [ ] Shipping details
               [`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Merchant-Endpoints/operation/fetchShippingCostUsingPOST)
         - [ ] Remove consent
-              [`DELETE:[consetRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Merchant-Endpoints/operation/removeUserConsentUsingDELETE)
+              [`DELETE:[consentRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Merchant-Endpoints/operation/removeUserConsentUsingDELETE)
  - [ ] Make sure to log and handle [all errors](vipps-ecom-api.md#errors).
  - [ ] Avoid Integration pitfalls
     - [ ] The Merchant _must not_ rely on `fallback` or `callback` alone, and must poll
@@ -100,7 +100,7 @@ Document version 2.1.11.
 
 See: [Vipps partners](https://github.com/vippsas/vipps-partner#vipps-partners).
 
-# Questions?
+## Questions?
 
 We're always happy to help with code or other questions you might have!
 Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),
