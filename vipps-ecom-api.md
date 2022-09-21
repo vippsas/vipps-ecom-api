@@ -15,14 +15,14 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.6.6.
+Document version 2.6.7.
 
 <!-- START_TOC -->
 
 ## Table of contents
 
 * [Payment flows](#payment-flows)
-* [Call-by-call guide](#call-by-call-guide)
+* [Quick start](#quick-start)
 * [API endpoints](#api-endpoints)
 * [Authentication](#authentication)
 * [Vipps HTTP headers](#vipps-http-headers)
@@ -124,10 +124,24 @@ Document version 2.6.6.
 
 There are many ways to use the Vipps eCom API. For example:
 
-* *Vipps Online (aka Vipps på nett)* - The customer selects Vipps as the method of payment and enters their mobile number into the app or website. The merchant initiates the payment command. The customer confirms the purchase through their Vipps app. If the purchase is approved, the merchant registers the sale in their system. See [Vipps eCommerce API: How It Works](vipps-ecom-api-howitworks.md) for more information.
-* *Vipps Express Checkout (aka Vipps Hurtigkasse)* - The same as *Vipps Online* except that the shipping address and package delivery options that are selected in the Vipps app.
-* *Vipps Checkout* - The same as *Vipps Online* except that, instead of confirming the purchase in the Vipps app, the customer consents to sharing their personal information (e.g., address, phone, and payment information). They then complete the purchase from the website where their information is automatically pre-filled.
-* *Vipps In Store (aka Vipps i kassa)* - The same as *Vipps Online* except that the phone number is provided to the service provider who then initiates the payment through their Point of Sale (POS) system. See [Vipps in store](vipps-in-store-howitworks.md) for more information.
+* *Vipps Online (aka Vipps på nett)* - The customer selects Vipps as the method
+  of payment and enters their mobile number into the app or website. The merchant
+  initiates the payment command. The customer confirms the purchase through their
+  Vipps app. If the purchase is approved, the merchant registers the sale in
+  their system. See
+  [Vipps eCommerce API: How It Works](vipps-ecom-api-howitworks.md) for more information.
+* *Vipps Express Checkout (aka Vipps Hurtigkasse)* - The same as *Vipps Online*
+  except that the shipping address and package delivery options that are selected
+  in the Vipps app.
+* *Vipps Checkout* - The same as *Vipps Online* except that, instead of
+  confirming the purchase in the Vipps app, the customer consents to sharing
+  their personal information (e.g., address, phone, and payment information).
+  They then complete the purchase from the website where their information is
+  automatically pre-filled.
+* *Vipps In Store (aka Vipps i kassa)* - The same as *Vipps Online* except that
+  the phone number is provided to the service provider who then initiates the
+  payment through their Point of Sale (POS) system. See
+  [Vipps in store](vipps-in-store-howitworks.md) for more information.
 
 This diagram shows a simplified payment flow:
 
@@ -140,36 +154,13 @@ states.
 The flow of settlements and how to retrieve them are described in
 [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
 
-## Call-by-call guide
+## Quick start
 
-The normal "happy day" flow for a payment is:
+The normal "happy day" flow for a payment is documented in the
+[Quick start guide](vipps-ecom-api-quick-start.md).
 
-1. Initiate the payment:
-   [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST).
-   The user can now confirm the payment in Vipps, setting the payment status to reserved.
-   See [Initiate](#initiate).
-2. Receive the callback with the payment status:
-   [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Merchant-Endpoints/operation/transactionUpdateCallbackForRegularPaymentUsingPOST).
-   See [Callbacks](#callbacks).
-3. Get the payment details:
-   [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET).
-   This is optional, but *must* be done if no callback has been received.
-   See
-   [Get payment details](#get-payment-details)
-   and
-   [Polling guidelines](vipps-ecom-api.md#polling-guidelines).
-4. Capture the payment:
-   [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/capturePaymentUsingPOST).
-   See [Regular eCommerce payments](#regular-ecommerce-payments).
-
-To test this out, see the step-by-step instructions in the [Postman guide](vipps-ecom-postman.md).
-
-There is, of course, much more to this. The user may cancel, or not act on, the
-payment, firewalls may block the callback, Vipps Hurtigkasse
-(express checkout) address and shipping lookups may fail, etc.
-
-We have done our best to document everything about this API, and you *should*
-have all information needed to integrate with Vipps.
+This API guide is extensive: We have done our best to document everything about
+this API, and you *should* have all information needed to integrate with Vipps.
 
 ## API endpoints
 
