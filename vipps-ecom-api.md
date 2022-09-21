@@ -1107,7 +1107,9 @@ If you have user-facing screen, you may want to generate a QR code based on the 
 
 This is done in cooperation with the Vipps QR API. See [One-time payment QR](https://github.com/vippsas/vipps-qr-api#one-time-payment-qr) in the Vipps QR API guide for more details about this and other QR services.
 
-See the [eCom Postman guide](vipps-ecom-postman.md) for step-by-step examples of generating QR codes and short links for one-time payments initiated from the eCom API.
+See the
+[Quick start](vipps-ecom-api-quick-start.md)
+for step-by-step examples of generating QR codes and short links for one-time payments initiated from the eCom API.
 
 ### Skip landing page
 
@@ -1630,7 +1632,8 @@ a customer. Details about each step are described in the sections below.
    to retrieve the user's information.
    Do not include the ``Ocp-Apim-Subscription-Key`` header. See more information under [Userinfo call](#userinfo-call).
 
-To test this out, see the step-by-step instructions in the [Postman guide](vipps-ecom-postman.md).
+To test this out, see the step-by-step instructions in the
+[Quick start](vipps-ecom-api-quick-start.md).
 
 **Please note:** The `sub` is added asynchronously, so if the `/details` request
 is made within (milli)seconds of the payment approval in the app, it may not be

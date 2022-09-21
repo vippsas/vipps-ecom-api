@@ -32,7 +32,7 @@ Review the [Getting Started](https://github.com/vippsas/vipps-developers/blob/ma
 
 ## Examples
 
-* [Postman guide](vipps-ecom-postman.md): Step-by-step guide for using the eCom API Postman collection of examples.
+* [Quick start](vipps-ecom-api-quick-start.md): Step-by-step guide for using the eCom API.
 
 ## Questions?
 
