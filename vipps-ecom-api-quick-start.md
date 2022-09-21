@@ -15,7 +15,7 @@ Document version: 1.0.0.
 
 # Table of contents
 
-* [1 Get API keys](#1-get-api-keys)
+* [1. Get API keys](#1-get-api-keys)
 * [2. Install the test app](#2-install-the-test-app)
 * [3. Get access token](#3-get-access-token)
 * [4. Initiate the payment:](#4-initiate-the-payment)
