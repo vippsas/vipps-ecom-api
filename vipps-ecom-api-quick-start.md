@@ -27,6 +27,7 @@ Document version: 1.0.0.
 <!-- END_TOC -->
 
 **TODO:**
+
 - Recommend Postman and our official collection and environment, refer to the Postman guide.
 - Link to ReDocusaurus for examples of requests and responses. Avoid duplicating them here, and more maintenance.
 
@@ -47,20 +48,20 @@ See:
 
 ## 4. Initiate the payment:
 
-[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST).
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
 
 The user can now confirm the payment in Vipps, setting the payment status to reserved.
 See [Initiate](#initiate).
 
 ## 5. Receive the callback with the payment status
 
-[`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/transactionUpdateCallbackForRegularPaymentUsingPOST).
+[`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/transactionUpdateCallbackForRegularPaymentUsingPOST)
 
 See [Callbacks](#callbacks).
 
 ## 6. Get the payment details
 
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET).
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
 
 This is optional, but _must_ be done if no callback has been received.
 See
@@ -70,7 +71,7 @@ and
 
 ## 7. Capture the payment
 
-[`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/capturePaymentUsingPOST).
+[`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/capturePaymentUsingPOST)
 
 See [Regular eCommerce payments](#regular-ecommerce-payments).
 
