@@ -23,6 +23,8 @@ END_METADATA -->
 
 <!-- END_TOC -->
 
+Document version 1.0.0.
+
 ## Postman
 
 [Postman](https://www.getpostman.com/) is a common tool for working with REST APIs.
@@ -31,9 +33,6 @@ See the [Postman documentation](https://www.getpostman.com/docs/) for more infor
 
 By following the steps below, you can make calls to all the
 endpoints, and see the full `request` and `response` for each call.
-
-We also have a short
-[getting started guide to Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md).
 
 ### Step 1: Get the Postman collection
 
