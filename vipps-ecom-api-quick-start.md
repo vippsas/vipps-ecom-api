@@ -6,7 +6,7 @@ sidebar_position: 12
 END_METADATA -->
 
 
-# Quick Start
+# Quick start
 
 Technical information for Vipps partners.
 
@@ -14,7 +14,7 @@ Document version: 1.1.0.
 
 <!-- START_TOC -->
 
-# Table of contents
+## Table of contents
 
 * [1. Get API keys](#1-get-api-keys)
 * [2. Install the test app](#2-install-the-test-app)
@@ -33,15 +33,15 @@ See the
 [Postman guide](vipps-ecom-postman.md)
 for more details.
 
-## 1. Get API keys
-
-See:
-[Getting started: Get credentials](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#get-credentials).
-
-## 2. Install the test app
+## 1. Install the test app
 
 See:
 [The Vipps Test Environment (MT): Vipps test apps](https://github.com/vippsas/vipps-developers/blob/master/vipps-test-environment.md#vipps-test-apps)
+
+## 2. Get API keys
+
+See:
+[Getting started: Get credentials](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#get-credentials).
 
 ## 3. Get access token
 
