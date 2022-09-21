@@ -1,6 +1,7 @@
 <!-- START_METADATA
 ---
-draft: true
+title: Quick start guide
+sidebar_position: 12
 ---
 END_METADATA -->
 
@@ -9,7 +10,7 @@ END_METADATA -->
 
 Technical information for Vipps partners.
 
-Document version: 1.0.0.
+Document version: 1.1.0.
 
 <!-- START_TOC -->
 
@@ -29,7 +30,12 @@ Document version: 1.0.0.
 **TODO:**
 
 - Recommend Postman and our official collection and environment, refer to the Postman guide.
-- Link to ReDocusaurus for examples of requests and responses. Avoid duplicating them here, and more maintenance.
+
+We strongly recommend using Postman to make API calls and see exactly what is
+sent in the requests and responses.
+See the
+[Postman guide](vipps-ecom-postman.md)
+for more details.
 
 ## 1. Get API keys
 
@@ -48,20 +54,31 @@ See:
 
 ## 4. Initiate the payment:
 
-[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST)
+
+The response will be a URL to the Vipps landing page.
+Copy this URL and open it in a browser.
+The phone number of your test user should already be filled in if you are using
+our Postman collection, so you only have to click "Next".
 
 The user can now confirm the payment in Vipps, setting the payment status to reserved.
 See [Initiate](#initiate).
 
+You may have to "pull to refresh" in the test app to see the payment.
+
 ## 5. Receive the callback with the payment status
 
-[`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/transactionUpdateCallbackForRegularPaymentUsingPOST)
+Vipps now makes a callback to the URL specified in `callbackPrefix`:
+
+[`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Merchant-Endpoints/operation/transactionUpdateCallbackForRegularPaymentUsingPOST)
 
 See [Callbacks](#callbacks).
 
 ## 6. Get the payment details
 
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/getPaymentDetailsUsingGET)
+In addition to receiving the callback you can poll the status of the payment:
+
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET)
 
 This is optional, but _must_ be done if no callback has been received.
 See
@@ -71,7 +88,10 @@ and
 
 ## 7. Capture the payment
 
-[`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps_eCom_API/capturePaymentUsingPOST)
+When a payment has been reserved (confirmed by the user in the Vipps app)
+you can capture it:
+
+[`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/capturePaymentUsingPOST)
 
 See [Regular eCommerce payments](#regular-ecommerce-payments).
 
