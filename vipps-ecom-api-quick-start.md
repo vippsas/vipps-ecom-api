@@ -1,12 +1,12 @@
 <!-- START_METADATA
 ---
-title: Quick start guide
+title: Quick Start
 sidebar_position: 12
 ---
 END_METADATA -->
 
 
-# Vipps eCom API quick start
+# Quick Start
 
 Technical information for Vipps partners.
 
@@ -26,10 +26,6 @@ Document version: 1.1.0.
 * [Questions?](#questions)
 
 <!-- END_TOC -->
-
-**TODO:**
-
-- Recommend Postman and our official collection and environment, refer to the Postman guide.
 
 We strongly recommend using Postman to make API calls and see exactly what is
 sent in the requests and responses.
