@@ -62,8 +62,14 @@ Install Postman and import the collection by following the steps below:
 
 ## Make API calls
 
+For all of the following, you will start by sending request `Get Access Token`.
+This provides you with access to the API.
+
+   The access token is valid for 1 hour in the test environment
+   and 24 hours in the production environment.
+
 See the
-[eCommerce API specification](https://vippsas.github.io/vipps-developer-docs/api/ecom)
+[API reference](https://vippsas.github.io/vipps-developer-docs/api/ecom)
 for details about the calls.
 
 ### A regular eCommerce payment
