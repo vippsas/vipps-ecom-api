@@ -16,10 +16,10 @@ END_METADATA -->
   * [Step 2: Import the Postman environment](#step-2-import-the-postman-environment)
   * [Step 3: Set up Postman environment](#step-3-set-up-postman-environment)
 * [Make API calls](#make-api-calls)
-    * [A regular eCommerce payment](#a-regular-ecommerce-payment)
-    * [An express checkout payment (*Vipps Hurtigkasse*)](#an-express-checkout-payment-vipps-hurtigkasse)
-    * [Getting access to user info](#getting-access-to-user-info)
-    * [Generating a QR code to the Vipps landing page](#generating-a-qr-code-to-the-vipps-landing-page)
+  * [A regular eCommerce payment](#a-regular-ecommerce-payment)
+  * [An express checkout payment (*Vipps Hurtigkasse*)](#an-express-checkout-payment-vipps-hurtigkasse)
+  * [Getting access to user info](#getting-access-to-user-info)
+  * [Generating a QR code to the Vipps landing page](#generating-a-qr-code-to-the-vipps-landing-page)
 * [Questions?](#questions)
 
 <!-- END_TOC -->
