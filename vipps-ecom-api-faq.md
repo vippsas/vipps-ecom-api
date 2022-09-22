@@ -13,7 +13,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.13.11.
+Document version 3.13.12.
 
 <!-- START_TOC -->
 
@@ -947,7 +947,7 @@ The solution is to check with
 [`GET:/ecomm/v2/payments/{orderId}/details`](vipps-ecom-api.md#get-payment-details).
 
 You can use
-[Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
+[Postman](https://github.com/vippsas/vipps-developers/blob/master/vipps-quick-start-guides.md)
 to manually do API calls, Use the "inspect" functionality to see the complete requests and responses.
 
 See:
@@ -1162,7 +1162,7 @@ You can log in to
 to double check your API keys, sale units and API products.
 
 You can use
-[Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
+[Postman](https://github.com/vippsas/vipps-developers/blob/master/vipps-quick-start-guides.md)
 to manually do API calls, Use the "inspect" functionality to see the complete requests and responses.
 
 See:
@@ -1233,7 +1233,7 @@ Some tips:
 * Please make sure the JSON payload in your API request validates.
   That is the most common source of this type of error.
 * We strongly recommend using
-  [Postman](https://github.com/vippsas/vipps-developers/blob/master/postman-guide.md)
+  [Postman](https://github.com/vippsas/vipps-developers/blob/master/vipps-quick-start-guides.md)
   to manually do API calls, to see the correct request.
   Use Postman's
   [Inspect](https://blog.postman.com/debugging-postman-requests/)

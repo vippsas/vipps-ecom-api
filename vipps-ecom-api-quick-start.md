@@ -10,6 +10,7 @@ END_METADATA -->
 <!-- START_TOC -->
 
 ## Table of Contents
+
 * [Postman](#postman)
   * [Step 1: Get the Postman collection](#step-1-get-the-postman-collection)
   * [Step 2: Import the Postman environment](#step-2-import-the-postman-environment)
@@ -83,7 +84,7 @@ for details about the calls.
    You have now confirmed the payment in Vipps, setting the payment status to reserved.
 
    Alternatively, you could
-   [Generate a QR code to the Vipps Landing page](#4-generating-a-qr-code-to-the-vipps-landing-page).
+   [Generate a QR code to the Vipps Landing page](#generating-a-qr-code-to-the-vipps-landing-page).
 
 1. Send request `Get Payment Details` for information about this payment by using
    [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET).
