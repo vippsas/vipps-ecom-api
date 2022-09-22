@@ -66,7 +66,7 @@ See the
 [eCommerce API specification](https://vippsas.github.io/vipps-developer-docs/api/ecom)
 for details about the calls.
 
-#### A regular eCommerce payment
+### A regular eCommerce payment
 
 1. Send request `Get Access Token`. This provides you with access to the API.
 
@@ -99,7 +99,7 @@ See
 [Regular eCommerce payments](vipps-ecom-api.md#regular-ecommerce-payments)
 for more information from the eCommerce API guide.
 
-#### An express checkout payment (*Vipps Hurtigkasse*)
+### An express checkout payment (*Vipps Hurtigkasse*)
 
 1. Send request `Initiate Payment - Express Checkout`. This demonstrates the type
    of payment where the user selects their shipping methods within the Vipps app
@@ -122,7 +122,7 @@ See
 [Express checkout payments](vipps-ecom-api.md#express-checkout-payments)
 for more information from the eCommerce API guide.
 
-#### Getting access to user info
+### Getting access to user info
 
 1. Send request `Initiate Payment - Profile flow`. Provide the `scope` object in the
    [`POST:/v3/psppayments/init/`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST)
@@ -144,7 +144,7 @@ See
 [Userinfo](vipps-ecom-api.md#userinfo)
 for more information.
 
-#### Generating a QR code to the Vipps landing page
+### Generating a QR code to the Vipps landing page
 
 When you run any of the `Initiate Payment` examples, the `vippsLandingPageUrl` variable gets set in the environment.
 With this url, you can generate a QR code to take you to the Vipps landing page for a one-time payment.
