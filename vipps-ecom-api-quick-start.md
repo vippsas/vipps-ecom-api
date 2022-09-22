@@ -23,7 +23,7 @@ END_METADATA -->
 
 <!-- END_TOC -->
 
-Document version 1.0.0.
+Document version 1.0.1.
 
 ## Postman
 
@@ -70,7 +70,7 @@ for details about the calls.
 1. Send request `Get Access Token`. This provides you with access to the API.
 
 1. Send request `Initiate Payment`. This is to demonstrate a simple payment by using
-   [`POST:/v3/psppayments/init/`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST).
+   [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST).
 
    The `orderId` and `vippsLandingPageUrl` variables are now in the environment
    of this Postman example and can be used for subsequent calls relating to this purchase.
