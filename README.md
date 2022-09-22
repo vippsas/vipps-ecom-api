@@ -31,10 +31,6 @@ Review the [Getting Started](https://github.com/vippsas/vipps-developers/blob/ma
 * [API Checklist](vipps-ecom-api-checklist.md): For direct and POS integrations.
 * [API Reference](https://vippsas.github.io/vipps-developer-docs/api/ecom): eCom API Reference Specifications.
 
-## Examples
-
-* [Quick start](vipps-ecom-api-quick-start.md): Step-by-step guide for using the eCom API.
-
 ## Questions?
 
 For more information, see:
