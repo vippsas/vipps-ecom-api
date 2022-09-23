@@ -1,7 +1,7 @@
 <!-- START_METADATA
 ---
 title: Quick start
-sidebar_position: 30
+sidebar_position: 10
 ---
 END_METADATA -->
 
