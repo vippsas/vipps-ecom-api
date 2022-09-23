@@ -15,7 +15,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.6.7.
+Document version 2.6.8.
 
 <!-- START_TOC -->
 
@@ -718,6 +718,8 @@ If `isApp` is true, the `fallBack` URL is not validated with Apache Commons UrlV
 as the app-switch URL may be something like `vipps://`, which is not a valid URL.
 
 The endpoints required by Vipps must be publicly available.
+
+We also require the hostnames to resolve with DNS.
 
 Please note:
 
