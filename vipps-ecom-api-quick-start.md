@@ -12,6 +12,7 @@ END_METADATA -->
 ## Table of Contents
 
 * [Postman](#postman)
+  * [Prerequisites](#prerequisites)
   * [Step 1: Get the Postman collection](#step-1-get-the-postman-collection)
   * [Step 2: Import the Postman environment](#step-2-import-the-postman-environment)
   * [Step 3: Set up Postman environment](#step-3-set-up-postman-environment)
@@ -24,16 +25,18 @@ END_METADATA -->
 
 <!-- END_TOC -->
 
-Document version 1.0.1.
+Document version 1.0.2.
 
 ## Postman
 
-[Postman](https://www.getpostman.com/) is a common tool for working with REST APIs.
-We offer a [Postman Collection](https://www.getpostman.com/collection) to make development easier.
-See the [Postman documentation](https://www.getpostman.com/docs/) for more information about using Postman.
+### Prerequisites
 
-By following the steps below, you can make calls to all the
-endpoints, and see the full `request` and `response` for each call.
+* If you are not familiar with Postman, review
+[Getting started with Postman](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/vipps-quick-start-guides#getting-started-with-postman).
+
+* You will need a merchant test account.
+If you haven't already set this up, see
+[Test Merchants](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/vipps-test-environment#test-merchants).
 
 ### Step 1: Get the Postman collection
 
