@@ -1665,8 +1665,9 @@ components:
         orderId:
           type: string
           description: >-
-            Id which uniquely identifies a payment. Maximum length is 50
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+            An id that uniquely identifies a payment.
+            Please see the orderId recommendations in the API guide.
+            Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
           example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
@@ -1698,8 +1699,9 @@ components:
         orderId:
           type: string
           description: >-
-            Id which uniquely identifies a payment. Maximum length is 50
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+            An id that uniquely identifies a payment.
+            Please see the orderId recommendations in the API guide.
+            Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
           example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
@@ -1752,8 +1754,9 @@ components:
         orderId:
           type: string
           description: >-
-            Id which uniquely identifies a payment. Maximum length is 50
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+            An id that uniquely identifies a payment.
+            Please see the orderId recommendations in the API guide.
+            Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
           example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
@@ -1780,8 +1783,9 @@ components:
         orderId:
           type: string
           description: >-
-            Id which uniquely identifies a payment. Maximum length is 50
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+            An id that uniquely identifies a payment.
+            Please see the orderId recommendations in the API guide.
+            Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
           example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
@@ -1808,8 +1812,9 @@ components:
         orderId:
           type: string
           description: >-
-            Id which uniquely identifies a payment. Maximum length is 50
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+            An id that uniquely identifies a payment.
+            Please see the orderId recommendations in the API guide.
+            Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
           example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
@@ -1898,8 +1903,9 @@ components:
         orderId:
           type: string
           description: >-
-            Id which uniquely identifies a payment. Maximum length is 50
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+            An id that uniquely identifies a payment.
+            Please see the orderId recommendations in the API guide.
+            Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
           example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
@@ -2092,8 +2098,9 @@ components:
         orderId:
           type: string
           description: >-
-            Id which uniquely identifies a payment. Maximum length is 50
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+            An id that uniquely identifies a payment.
+            Please see the orderId recommendations in the API guide.
+            Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
           example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
@@ -2219,8 +2226,9 @@ components:
         orderId:
           type: string
           description: >-
-            Id which uniquely identifies a payment. Maximum length is 50
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+            An id that uniquely identifies a payment.
+            Please see the orderId recommendations in the API guide.
+            Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
           example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
@@ -2252,8 +2260,9 @@ components:
         orderId:
           type: string
           description: >-
-            Id which uniquely identifies a payment. Maximum length is 50
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+            An id that uniquely identifies a payment.
+            Please see the orderId recommendations in the API guide.
+            Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
           example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
@@ -2313,8 +2322,9 @@ components:
         orderId:
           type: string
           description: >-
-            Id which uniquely identifies a payment. Maximum length is 50
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+            An id that uniquely identifies a payment.
+            Please see the orderId recommendations in the API guide.
+            Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
           example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
