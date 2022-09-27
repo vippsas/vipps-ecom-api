@@ -72,7 +72,7 @@ paths:
         - Merchant Endpoints
       summary: Remove User Consent (for Vipps Hurtigkasse (express checkout))
       description: >-
-        This API endpoint on the merchant side allows Vipps to send consent
+        This API endpoint on the merchant side lets Vipps send consent
         removal requests to the merchant. When receiving requests the merchant
         is obliged to remove the user details permanently, as per the GDPR
         guidelines. Vipps will add `/v2/consents/{userId}` to the end of this URL.
@@ -99,7 +99,7 @@ paths:
         - Merchant Endpoints
       summary: Fetch Shipping Cost & Method (for Vipps Hurtigkasse (express checkout))
       description: >-
-        This API endpoint on the merchant side allows Vipps to get the shipping
+        This API endpoint on the merchant side lets Vipps get the shipping
         cost and method based on the provided address and product details. The
         primary use of this service is Vipps Hurtigkasse (express checkout)
         where Vipps needs to present shipping cost and method to the Vipps user.
@@ -151,7 +151,7 @@ paths:
         - Vipps eCom API
       summary: Initiate Payment
       description: >-
-        This API call allows the merchants to initiate payments.
+        This API call lets the merchants initiate payments.
         The `merchantSerialNumber` (MSN) specifies which sales unit the payment is for.
         Payments are uniquely identified with the `merchantSerialNumber` and `orderId` together.
         The merchant-provided `orderId` must be unique per sales unit.
@@ -245,7 +245,7 @@ paths:
             post:
               summary: 'Callback : Transaction Update'
               description: >-
-                This API call allows Vipps to send the transaction details to the merchant.
+                This API call lets Vipps send the transaction details to the merchant.
                 For regular eCom payments the order and transaction details will be shared.
                 For Vipps Hurtigkasse (express checkout) payments it will in addition provide
                 user details and shipping details.
@@ -276,7 +276,7 @@ paths:
             post:
               summary: 'Callback : Transaction Update'
               description: >-
-                This API call allows Vipps to send the transaction details to the merchant.
+                This API call lets Vipps send the transaction details to the merchant.
                 For regular eCom payments the order and transaction details will be shared.
                 For Vipps Hurtigkasse (express checkout) payments it will in addition provide
                 user details and shipping details.
@@ -307,7 +307,7 @@ paths:
             delete:
               summary: Remove User Consent (for Vipps Hurtigkasse (express checkout))
               description: >-
-                This API endpoint on the merchant side allows Vipps to send consent
+                This API endpoint on the merchant side lets Vipps send consent
                 removal requests to merchant. When receiving requests the merchant is
                 obliged to remove the user details permanently, as per the GDPR
                 guidelines. Vipps will add `/v2/consents/{userId}` to the end of this URL.
@@ -333,7 +333,7 @@ paths:
             post:
               summary: Fetch shipping cost and method (for Vipps Hurtigkasse (express checkout))
               description: >-
-                This API endpoint on the merchant side allows Vipps to get the shipping
+                This API endpoint on the merchant side lets Vipps get the shipping
                 cost and method based on the provided address and product details. The
                 primary use of this service is Vipps Hurtigkasse (express checkout)
                 where Vipps needs to present shipping cost and method to the Vipps user.
@@ -383,7 +383,7 @@ paths:
         - Merchant Endpoints
       summary: 'Callback : Transaction Update'
       description: >-
-        This API call allows Vipps to send the transaction details.
+        This API call lets Vipps send the transaction details.
         For regular eCom payments the order and transaction details will be shared.
         For Vipps Hurtigkasse (express checkout) payments it will provides user details and
         shipping details addition to the order and transaction details.
@@ -429,7 +429,7 @@ paths:
         - Vipps eCom API
       summary: 'Capture Payment'
       description: >-
-        This API call allows merchant to capture the reserved amount. Amount to
+        This API call lets merchant capture the reserved amount. Amount to
         capture cannot be higher than reserved. The API also allows capturing
         a partial amount of the reserved amount. Partial capture can be called as
         many times as required so long there is a remaining reserved amount to capture.
@@ -541,7 +541,7 @@ paths:
         - Vipps eCom API
       summary: Cancel Payment
       description: >-
-        This API call allows merchants to cancel a reserved or initiated transaction as long as it is less than 6 months old.
+        This API call lets merchants cancel a reserved or initiated transaction as long as it is less than 6 months old.
         In order to enable cancellation of remaining funds after partial capture, the `shouldReleaseRemainingFunds` flag must be set.
         Please note that the payment will be cancelled by Vipps even in cases of communication errors during an initiate payment service call
         between Vipps and PSP/Acquirer/Issuer and even in cases where the customer has
@@ -641,7 +641,7 @@ paths:
         - Vipps eCom API
       summary: Authorize Payment
       description: >-
-        The API call allows merchant to refresh the authorizations of the payment. A reservation's lifetime
+        The API call lets merchant refresh the authorizations of the payment. A reservation's lifetime
         is defined by the scheme. Typically 7 days for Visa, and 30 days for Mastercard.
         This is currently _not yet_  available in the production environment.
       operationId: authorizePaymentUsingPut
@@ -738,7 +738,7 @@ paths:
         - Vipps eCom API
       summary: 'Refund Payment '
       description: >-
-        The API allows a merchant to do a refund of an already captured
+        The API lets a merchant do a refund of an already captured
         transaction. There is an option to do a partial refund of the captured
         amount. Refunded amount cannot be larger than captured. Time frame for
         issuing a refund for a payment is 365 days from the date payment has
@@ -849,7 +849,7 @@ paths:
         - Vipps eCom API
       summary: 'Force Approve Payment'
       description: >-
-        This endpoint allows developers to approve a payment through the Vipps eCom API
+        This endpoint lets developers approve a payment through the Vipps eCom API
         without the use of the Vipps app. This is useful for automated testing.
         Express checkout is not supported for this endpoint.
         The endpoint is only available in our Test environment.
@@ -938,7 +938,7 @@ paths:
         - Vipps eCom API
       summary: Get Payment Details
       description: >-
-        This API call allows merchant to get the details of a payment
+        This API call lets merchant get the details of a payment
         transaction. Service call returns detailed transaction history of given
         payment where events are sorted from newest to oldest for when the
         transaction occurred.
@@ -1031,7 +1031,7 @@ paths:
         - Vipps eCom API
       summary: 'Deprecated: Get Order Status'
       description: >-
-        This API call allows the merchant to get the status of the last payment
+        This API call lets the merchant get the status of the last payment
         transaction. Primarily use of this service is meant for inApp where
         simple response to check order status is preferred.
       operationId: getOrderStatusUsingGET
