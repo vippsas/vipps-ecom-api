@@ -2,7 +2,7 @@ openapi: '3.0.0'
 info:
   description: |
     For details, see the [API Guide](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
-  version: 1.6.33
+  version: 1.6.34
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -2049,7 +2049,7 @@ components:
           example: false
           default: false
           description: >-
-            This parameter indicates whether payment request is triggered from
+            This optional parameter indicates whether payment request is triggered from
             Mobile App or Web browser. Based on this value, response will be
             redirect URL for Vipps landing page or deeplink URL to connect vipps
             App. When isApp is set to true, URLs passed to Vipps will not be
@@ -2067,7 +2067,7 @@ components:
         paymentType:
           type: string
           description: >-
-            This parameter will identify difference between a regular ecommerce
+            This optional parameter will identify difference between a regular ecommerce
             payment and an ecommerce express payment. For Vipps Hurtigkasse (express checkout), use: "eComm
             Express Payment". Express checkouts require `consentRemovalPrefix`.
             Note, use the value exactly as it is shown below (i.e., "eComm" with two m's).
