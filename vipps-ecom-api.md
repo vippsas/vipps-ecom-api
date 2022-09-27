@@ -2218,7 +2218,7 @@ to retrieve all the information about the payment.
 | Payment     | 42         | Refused by issuer bank. Vipps can not provide more details. |
 | Payment     | 43         | Refused by issuer bank because of invalid a amount. Vipps can not provide more details. |
 | Payment     | 44         | Refused by issuer because of expired card. Vipps can not provide more details. |
-| Payment     | 45         | Reservation failed. Either because the user cancelled, the user did not act, or for some unknown reason. |
+| Payment     | 45         | Reservation failed. The payment was not acted upon by the customer. |
 | Payment     | 51         | Cannot cancel an already captured order. Use `/refund` instead. |
 | Payment     | 52         | Cancellation failed. |
 | Payment     | 53         | Cannot cancel an order that is not reserved. The user must first accept the payment. |
