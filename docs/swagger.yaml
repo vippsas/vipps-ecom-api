@@ -1031,9 +1031,9 @@ paths:
         - Vipps eCom API
       summary: 'Deprecated: Get Order Status'
       description: >-
-        This API call lets the merchant get the status of the last payment
-        transaction. Primarily use of this service is meant for inApp where
-        simple response to check order status is preferred.
+        This deprecated endpoint lets the merchant get the status of the last payment
+        transaction. The response may be confusing.
+        Please use `/details` instead, as it offers more information.
       operationId: getOrderStatusUsingGET
       parameters:
         - name: orderId
