@@ -25,7 +25,7 @@ END_METADATA -->
 
 <!-- END_TOC -->
 
-Document version 1.0.2.
+Document version 1.0.3.
 
 ## Postman
 
@@ -116,7 +116,7 @@ for more information from the eCommerce API guide.
 
    To enable this functionality, you provide the object `staticShippingDetails`
    with your relevant details in the body of the call
-   [`POST:/v3/psppayments/init/`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST).
+   [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST).
 
    Ctrl+click on the link that appears and complete the payment authorization.
 
@@ -134,7 +134,7 @@ for more information from the eCommerce API guide.
 ### Getting access to user info
 
 1. Send request `Initiate Payment - Profile flow`. Provide the `scope` object in the
-   [`POST:/v3/psppayments/init/`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST)
+   [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST)
    call. This contains the information types that you want access to, separated
    by spaces (e.g., "name address email phoneNumber birthDate").
 
