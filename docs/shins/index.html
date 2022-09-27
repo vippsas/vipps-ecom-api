@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Vipps eCommerce API v1.6.33</title>
+    <title>Vipps eCommerce API v1.6.34</title>
 
     <style>
     </style>
@@ -2221,7 +2221,7 @@ System.out.println(response.toString());
 </tbody>
 </table>
 <h1 id="vipps-ecommerce-api-vipps-ecom-api">Vipps eCom API</h1>
-<p>Functionality provided by the Vipps eCommerce API</p>
+<p>Functionality provided by the Vipps eCommerce API. For details, see the <a href="https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api">API Guide</a>.</p>
 <h2 id="initiate-payment">Initiate Payment</h2>
 <p><a id="opIdinitiatePaymentV3UsingPOST"></a></p>
 <blockquote>
@@ -2443,7 +2443,7 @@ System.out.println(response.toString());
 
 </code></pre>
 <p><code>POST /ecomm/v2/payments</code></p>
-<p>This API call allows the merchants to initiate payments. The <code>merchantSerialNumber</code> (MSN) specifies which sales unit the payment is for. Payments are uniquely identified with the <code>merchantSerialNumber</code> and <code>orderId</code> together. The merchant-provided <code>orderId</code> must be unique per sales unit. Once the transaction is successfully initiated in Vipps, you will receive a response with a URL that will direct the customer to the Vipps landing page (when using a laptop/esktop), or app-switch to Vipps (when using a phone). The landing page detects if the request comes from a mobile or laptop/desktop device, and if on a mobile device automatically switches to the Vipps app, if it is installed. The merchant may also pass the 'isApp: true' parameter that will make Vipps respond with a app-switch deeplink that will take the customer directly to the Vipps app. This is normally not necessary, as Vipps handles this automatically. URLs passed to Vipps must validate, see <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">URL validation</a>. The URLs must use HTTPS.</p>
+<p>This API call lets the merchants initiate payments. The <code>merchantSerialNumber</code> (MSN) specifies which sales unit the payment is for. Payments are uniquely identified with the <code>merchantSerialNumber</code> and <code>orderId</code> together. The merchant-provided <code>orderId</code> must be unique per sales unit. Once the transaction is successfully initiated in Vipps, you will receive a response with a URL that will direct the customer to the Vipps landing page (when using a laptop/esktop), or app-switch to Vipps (when using a phone). The landing page detects if the request comes from a mobile or laptop/desktop device, and if on a mobile device automatically switches to the Vipps app, if it is installed. The merchant may also pass the optional 'isApp: true' parameter that will make Vipps respond with a app-switch deeplink that will take the customer directly to the Vipps app. This is normally not necessary, as Vipps handles this automatically. URLs passed to Vipps must validate, see the API guide. The URLs must use HTTPS.</p>
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -2588,35 +2588,35 @@ System.out.println(response.toString());
 <td>body</td>
 <td>string</td>
 <td>false</td>
-<td>Authorization token that the merchant could share to make callbacks more secure. If provided, this token will be returned as an <code>Authorization</code> header for our callbacks. This includes shipping details and callback.</td>
+<td>An optional authorization token that the merchant could share to make callbacks more secure. If provided, this token will be returned as an <code>Authorization</code> header for our callbacks. This includes shipping details and callback.</td>
 </tr>
 <tr>
 <td>»» callbackPrefix</td>
 <td>body</td>
 <td>string</td>
 <td>true</td>
-<td>This is an URL for Vipps to call at the merchant's server to provide updated information about the order after the payment request. Domain name and context path should be provided by merchant as the value for this parameter. Vipps will add <code>/v2/payments/{orderId}</code> to the end or this URL. URLs passed to Vipps must validate, see <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">URL validation</a>. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080. The URL must use HTTPS.</td>
+<td>This is an URL for Vipps to call at the merchant's server to provide updated information about the order after the payment request. Domain name and context path should be provided by merchant as the value for this parameter. Vipps will add <code>/v2/payments/{orderId}</code> to the end or this URL. URLs passed to Vipps must validate, see the API guide. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080. The URL must use HTTPS.</td>
 </tr>
 <tr>
 <td>»» consentRemovalPrefix</td>
 <td>body</td>
 <td>string</td>
 <td>false</td>
-<td>Required for Vipps Hurtigkasse (express checkout) payments. This callback URL will be used by Vipps to inform the merchant that the user has revoked his/her consent: This Vipps user does not want the merchant to store or use his/her personal information any longer. Required by GDPR. Vipps will add <code>/v2/consents/{userId}</code> to the end or this URL. URLs passed to Vipps must validate, see <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">URL validation</a>. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080. The URL must use HTTPS.</td>
+<td>Required for Vipps Hurtigkasse (express checkout) payments. This callback URL will be used by Vipps to inform the merchant that the user has revoked his/her consent: This Vipps user does not want the merchant to store or use his/her personal information any longer. Required by GDPR. Vipps will add <code>/v2/consents/{userId}</code> to the end or this URL. URLs passed to Vipps must validate, see the API guide. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080. The URL must use HTTPS.</td>
 </tr>
 <tr>
 <td>»» fallBack</td>
 <td>body</td>
 <td>string</td>
 <td>true</td>
-<td>Vipps will use the fallBack URL to redirect the Vipps user to the merchant’s confirmation page once the payment is completed in Vipps. This is normally the “success page”, although the “fallback” name is ambiguous (the same URL is also used if payment was not successful). In other words: This is the URL Vipps sends the Vipps user back to. The page must handle both successful payments and payment failures. URLs passed to Vipps must validate, see <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">URL validation</a>. The URL must use HTTPS, or a custom URL scheme like &quot;myapp://&quot;&quot;.</td>
+<td>Vipps will use the fallBack URL to redirect the Vipps user to the merchant’s confirmation page once the payment is completed in Vipps. This is normally the “success page”, although the “fallback” name is ambiguous (the same URL is also used if payment was not successful). In other words: This is the URL Vipps sends the Vipps user back to. The page must handle both successful payments and payment failures. URLs passed to Vipps must validate, see the API guide. The URL must use HTTPS, or a custom URL scheme like &quot;myapp://&quot;&quot;.</td>
 </tr>
 <tr>
 <td>»» isApp</td>
 <td>body</td>
 <td>boolean</td>
 <td>false</td>
-<td>This parameter indicates whether payment request is triggered from Mobile App or Web browser. Based on this value, response will be redirect URL for Vipps landing page or deeplink URL to connect vipps App. When isApp is set to true, URLs passed to Vipps will not be validated as regular URLs.</td>
+<td>This optional parameter indicates whether payment request is triggered from Mobile App or Web browser. Based on this value, response will be redirect URL for Vipps landing page or deeplink URL to connect vipps App. When isApp is set to true, URLs passed to Vipps will not be validated as regular URLs.</td>
 </tr>
 <tr>
 <td>»» merchantSerialNumber</td>
@@ -2630,14 +2630,14 @@ System.out.println(response.toString());
 <td>body</td>
 <td>string</td>
 <td>false</td>
-<td>This parameter will identify difference between a regular ecommerce payment and an ecommerce express payment. For Vipps Hurtigkasse (express checkout), use: &quot;eComm Express Payment&quot;. Express checkouts require <code>consentRemovalPrefix</code>. Note, use the value exactly as it is shown below (i.e., &quot;eComm&quot; with two m's).</td>
+<td>This optional parameter will identify difference between a regular ecommerce payment and an ecommerce express payment. For Vipps Hurtigkasse (express checkout), use: &quot;eComm Express Payment&quot;. Express checkouts require <code>consentRemovalPrefix</code>. Note, use the value exactly as it is shown below (i.e., &quot;eComm&quot; with two m's).</td>
 </tr>
 <tr>
 <td>»» shippingDetailsPrefix</td>
 <td>body</td>
 <td>string</td>
 <td>false</td>
-<td>In case of Vipps Hurtigkasse (express checkout) payment, merchant should pass this prefix to let Vipps fetch shipping cost and method related details. Vipps will add <code>/v2/payments/{orderId}/shippingDetails</code> to the end or this URL. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.</td>
+<td>In case of Vipps Hurtigkasse (express checkout) payment, merchant should pass this prefix to let Vipps fetch shipping cost and method related details. Vipps will add <code>/v2/payments/{orderId}/shippingDetails</code> to the end or this URL. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080. The URL must use HTTPS.</td>
 </tr>
 <tr>
 <td>»» staticShippingDetails</td>
@@ -2700,7 +2700,7 @@ System.out.println(response.toString());
 <td>body</td>
 <td>string</td>
 <td>true</td>
-<td>Id which uniquely identifies a payment. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
+<td>An id that uniquely identifies a payment. Please see the orderId recommendations in the API guide. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
 </tr>
 <tr>
 <td>»» transactionText</td>
@@ -3082,7 +3082,7 @@ System.out.println(response.toString());
 
 </code></pre>
 <p><code>POST /ecomm/v2/payments/{orderId}/capture</code></p>
-<p>This API call allows merchant to capture the reserved amount. Amount to capture cannot be higher than reserved. The API also allows capturing a partial amount of the reserved amount. Partial capture can be called as many times as required so long there is a remaining reserved amount to capture. The transaction text is not optional and is used as a proof of delivery (tracking code, consignment number etc.). In a case of direct capture, both the reservation and the capture are executed in a single operation. It is important to check the response, and the capture is only successful when the response is <code>HTTP 200 OK</code>.</p>
+<p>This API call lets merchant capture the reserved amount. Amount to capture cannot be higher than reserved. The API also allows capturing a partial amount of the reserved amount. Partial capture can be called as many times as required so long there is a remaining reserved amount to capture. The transaction text is not optional and is used as a proof of delivery (tracking code, consignment number etc.). In a case of direct capture, both the reservation and the capture are executed in a single operation. It is important to check the response, and the capture is only successful when the response is <code>HTTP 200 OK</code>.</p>
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -3096,7 +3096,7 @@ System.out.println(response.toString());
   }
 }
 </code></pre>
-<h3 id="capture-payment--parameters">Parameters</h3>
+<h3 id="capture-payment-parameters">Parameters</h3>
 <table>
 <thead>
 <tr>
@@ -3247,7 +3247,7 @@ System.out.println(response.toString());
   }
 }
 </code></pre>
-<h3 id="capture-payment--responses">Responses</h3>
+<h3 id="capture-payment-responses">Responses</h3>
 <table>
 <thead>
 <tr>
@@ -3272,7 +3272,7 @@ System.out.println(response.toString());
 </tr>
 </tbody>
 </table>
-<h3 id="capture-payment--responseschema">Response Schema</h3>
+<h3 id="capture-payment-responseschema">Response Schema</h3>
 <h4 id="enumerated-values-4">Enumerated Values</h4>
 <table>
 <thead>
@@ -3499,7 +3499,7 @@ System.out.println(response.toString());
 
 </code></pre>
 <p><code>PUT /ecomm/v2/payments/{orderId}/cancel</code></p>
-<p>This API call allows merchants to cancel a reserved or initiated transaction as long as it is less than 6 months old. In order to enable cancellation of remaining funds after partial capture, the <code>shouldReleaseRemainingFunds</code> flag must be set. Please note that the payment will be cancelled by Vipps even in cases of communication errors during an initiate payment service call between Vipps and PSP/Acquirer/Issuer and even in cases where the customer has confirmed a payment. Note this means you cannot cancel a captured payment.</p>
+<p>This API call lets merchants cancel a reserved or initiated transaction as long as it is less than 6 months old. In order to enable cancellation of remaining funds after partial capture, the <code>shouldReleaseRemainingFunds</code> flag must be set. Please note that the payment will be cancelled by Vipps even in cases of communication errors during an initiate payment service call between Vipps and PSP/Acquirer/Issuer and even in cases where the customer has confirmed a payment. Note this means you cannot cancel a captured payment.</p>
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -3905,7 +3905,7 @@ System.out.println(response.toString());
 
 </code></pre>
 <p><code>PUT /ecomm/v2/payments/{orderId}/authorize</code></p>
-<p>The API call allows merchant to refresh the authorizations of the payment. A reservation's lifetime is defined by the scheme. Typically 7 days for Visa, and 30 days for Mastercard. This is currently <em>not yet</em>  available in the production environment.</p>
+<p>The API call lets merchant refresh the authorizations of the payment. A reservation's lifetime is defined by the scheme. Typically 7 days for Visa, and 30 days for Mastercard. This is currently <em>not yet</em>  available in the production environment.</p>
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -4297,7 +4297,7 @@ System.out.println(response.toString());
 
 </code></pre>
 <p><code>POST /ecomm/v2/payments/{orderId}/refund</code></p>
-<p>The API allows a merchant to do a refund of an already captured transaction. There is an option to do a partial refund of the captured amount. Refunded amount cannot be larger than captured. Time frame for issuing a refund for a payment is 365 days from the date payment has been captured. If the refund payment service call is called after the refund time frame, service call will respond with an error. Refunded funds will be transferred from the merchant account to the customer credit card that was used in payment flow. Pay attention that in order to perform refund, there must be enough funds at merchant settlements account.</p>
+<p>The API lets a merchant do a refund of an already captured transaction. There is an option to do a partial refund of the captured amount. Refunded amount cannot be larger than captured. Time frame for issuing a refund for a payment is 365 days from the date payment has been captured. If the refund payment service call is called after the refund time frame, service call will respond with an error. Refunded funds will be transferred from the merchant account to the customer credit card that was used in payment flow. Pay attention that in order to perform refund, there must be enough funds at merchant settlements account.</p>
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -4708,7 +4708,7 @@ System.out.println(response.toString());
 
 </code></pre>
 <p><code>POST /ecomm/v2/integration-test/payments/{orderId}/approve</code></p>
-<p>This endpoint allows developers to approve a payment through the Vipps eCom API without the use of the Vipps app. This is useful for automated testing. Express checkout is not supported for this endpoint. The endpoint is only available in our Test environment. Attempted use of the endpoint in production is not allowed, and will fail. Important: All test users must manually approve at least one payment in Vipps (using the app) before this endpoint can be used for that user.</p>
+<p>This endpoint lets developers approve a payment through the Vipps eCom API without the use of the Vipps app. This is useful for automated testing. Express checkout is not supported for this endpoint. The endpoint is only available in our Test environment. Attempted use of the endpoint in production is not allowed, and will fail. Important: All test users must manually approve at least one payment in Vipps (using the app) before this endpoint can be used for that user.</p>
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -5067,7 +5067,7 @@ System.out.println(response.toString());
 
 </code></pre>
 <p><code>GET /ecomm/v2/payments/{orderId}/details</code></p>
-<p>This API call allows merchant to get the details of a payment transaction. Service call returns detailed transaction history of given payment where events are sorted from newest to oldest for when the transaction occurred.</p>
+<p>This API call lets merchant get the details of a payment transaction. Service call returns detailed transaction history of given payment where events are sorted from newest to oldest for when the transaction occurred.</p>
 <h3 id="get-payment-details-parameters">Parameters</h3>
 <table>
 <thead>
@@ -5389,7 +5389,7 @@ System.out.println(response.toString());
 
 </code></pre>
 <p><code>GET /ecomm/v2/payments/{orderId}/status</code></p>
-<p>This API call allows the merchant to get the status of the last payment transaction. Primarily use of this service is meant for inApp where simple response to check order status is preferred.</p>
+<p>This deprecated endpoint lets the merchant get the status of the last payment transaction. The response may be confusing. Please use <code>/details</code> instead, as it offers more information.</p>
 <h3 id="deprecated--get-order-status-parameters">Parameters</h3>
 <table>
 <thead>
@@ -5597,7 +5597,7 @@ System.out.println(response.toString());
 
 </code></pre>
 <p><code>DELETE [consentRemovalPrefix]/v2/consents/{userId}</code></p>
-<p>This API endpoint on the merchant side allows Vipps to send consent removal requests to the merchant. When receiving requests the merchant is obliged to remove the user details permanently, as per the GDPR guidelines. Vipps will add <code>/v2/consents/{userId}</code> to the end of this URL. URLs passed to Vipps must validate, see <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">URL validation</a>. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080. The URL must use HTTPS.</p>
+<p>This API endpoint on the merchant side lets Vipps send consent removal requests to the merchant. When receiving requests the merchant is obliged to remove the user details permanently, as per the GDPR guidelines. Vipps will add <code>/v2/consents/{userId}</code> to the end of this URL. URLs passed to Vipps must validate, see the API guide. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080. The URL must use HTTPS.</p>
 <h3 id="remove-user-consent--for-vipps-hurtigkasse--express-checkout---parameters">Parameters</h3>
 <table>
 <thead>
@@ -5780,7 +5780,7 @@ System.out.println(response.toString());
 
 </code></pre>
 <p><code>POST [shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails</code></p>
-<p>This API endpoint on the merchant side allows Vipps to get the shipping cost and method based on the provided address and product details. The primary use of this service is Vipps Hurtigkasse (express checkout) where Vipps needs to present shipping cost and method to the Vipps user. Vipps will add <code>/v2/payments/{orderId}/shippingDetails</code> to the end of this URL. Vipps has a <em>10 second timeout</em> for these requests, to ensure a good user experience, and thus requires a quick reply from the merchant's server for successful payments. URLs passed to Vipps must validate, see <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">URL validation</a>. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080. The URL must use HTTPS.</p>
+<p>This API endpoint on the merchant side lets Vipps get the shipping cost and method based on the provided address and product details. The primary use of this service is Vipps Hurtigkasse (express checkout) where Vipps needs to present shipping cost and method to the Vipps user. Vipps will add <code>/v2/payments/{orderId}/shippingDetails</code> to the end of this URL. Vipps has a <em>10 second timeout</em> for these requests, to ensure a good user experience, and thus requires a quick reply from the merchant's server for successful payments. URLs passed to Vipps must validate, see the API guide. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080. The URL must use HTTPS.</p>
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -5818,7 +5818,7 @@ System.out.println(response.toString());
 <td>header</td>
 <td>string</td>
 <td>false</td>
-<td>Token provided by the merchant in the initiate payment request as <code>authToken</code>. Vipps uses this token when making calls to the merchant's servers. Used so that the merchant may authenticate the request from Vipps.</td>
+<td>The token provided by the merchant in the initiate payment request as <code>authToken</code> (an optional parameter). Vipps uses this token when making calls to the merchant's servers. Used so that the merchant may authenticate the request from Vipps.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -6103,7 +6103,7 @@ System.out.println(response.toString());
 
 </code></pre>
 <p><code>POST [callbackPrefix]/v2/payments/{orderId}</code></p>
-<p>This API call allows Vipps to send the transaction details. For regular eCom payments the order and transaction details will be shared. For Vipps Hurtigkasse (express checkout) payments it will provides user details and shipping details addition to the order and transaction details. Vipps will add <code>/v2/payments/{orderId}</code> to the end of this URL. URLs passed to Vipps must validate, see <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">URL validation</a>. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080. The URL must use HTTPS.</p>
+<p>This API call lets Vipps send the transaction details. For regular eCom payments the order and transaction details will be shared. For Vipps Hurtigkasse (express checkout) payments it will provides user details and shipping details addition to the order and transaction details. Vipps will add <code>/v2/payments/{orderId}</code> to the end of this URL. URLs passed to Vipps must validate, see the API guide. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080. The URL must use HTTPS.</p>
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -6168,7 +6168,7 @@ System.out.println(response.toString());
 <td>header</td>
 <td>string</td>
 <td>false</td>
-<td>Token provided by the merchant in initiate payment request as <code>authToken</code>. Used so that the merchant may authenticate the request from Vipps.</td>
+<td>The token provided by the merchant in the initiate payment request as <code>authToken</code> (an optional parameter). Vipps uses this token when making calls to the merchant's servers. Used so that the merchant may authenticate the request from Vipps.</td>
 </tr>
 <tr>
 <td>body</td>
@@ -7792,7 +7792,7 @@ System.out.println(response.toString());
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Id which uniquely identifies a payment. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
+<td>An id that uniquely identifies a payment. Please see the orderId recommendations in the API guide. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
 </tr>
 <tr>
 <td>shippingDetails</td>
@@ -7859,7 +7859,7 @@ System.out.println(response.toString());
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>Id which uniquely identifies a payment. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
+<td>An id that uniquely identifies a payment. Please see the orderId recommendations in the API guide. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
 </tr>
 <tr>
 <td>url</td>
@@ -7973,7 +7973,7 @@ System.out.println(response.toString());
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>Id which uniquely identifies a payment. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
+<td>An id that uniquely identifies a payment. Please see the orderId recommendations in the API guide. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
 </tr>
 <tr>
 <td>transaction</td>
@@ -8041,7 +8041,7 @@ System.out.println(response.toString());
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>Id which uniquely identifies a payment. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
+<td>An id that uniquely identifies a payment. Please see the orderId recommendations in the API guide. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
 </tr>
 <tr>
 <td>transactionInfo</td>
@@ -8109,7 +8109,7 @@ System.out.println(response.toString());
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>Id which uniquely identifies a payment. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
+<td>An id that uniquely identifies a payment. Please see the orderId recommendations in the API guide. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
 </tr>
 <tr>
 <td>transactionInfo</td>
@@ -8367,7 +8367,7 @@ System.out.println(response.toString());
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>Id which uniquely identifies a payment. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
+<td>An id that uniquely identifies a payment. Please see the orderId recommendations in the API guide. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
 </tr>
 <tr>
 <td>transactionText</td>
@@ -8514,35 +8514,35 @@ System.out.println(response.toString());
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Authorization token that the merchant could share to make callbacks more secure. If provided, this token will be returned as an <code>Authorization</code> header for our callbacks. This includes shipping details and callback.</td>
+<td>An optional authorization token that the merchant could share to make callbacks more secure. If provided, this token will be returned as an <code>Authorization</code> header for our callbacks. This includes shipping details and callback.</td>
 </tr>
 <tr>
 <td>callbackPrefix</td>
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>This is an URL for Vipps to call at the merchant's server to provide updated information about the order after the payment request. Domain name and context path should be provided by merchant as the value for this parameter. Vipps will add <code>/v2/payments/{orderId}</code> to the end or this URL. URLs passed to Vipps must validate, see <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">URL validation</a>. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080. The URL must use HTTPS.</td>
+<td>This is an URL for Vipps to call at the merchant's server to provide updated information about the order after the payment request. Domain name and context path should be provided by merchant as the value for this parameter. Vipps will add <code>/v2/payments/{orderId}</code> to the end or this URL. URLs passed to Vipps must validate, see the API guide. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080. The URL must use HTTPS.</td>
 </tr>
 <tr>
 <td>consentRemovalPrefix</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Required for Vipps Hurtigkasse (express checkout) payments. This callback URL will be used by Vipps to inform the merchant that the user has revoked his/her consent: This Vipps user does not want the merchant to store or use his/her personal information any longer. Required by GDPR. Vipps will add <code>/v2/consents/{userId}</code> to the end or this URL. URLs passed to Vipps must validate, see <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">URL validation</a>. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080. The URL must use HTTPS.</td>
+<td>Required for Vipps Hurtigkasse (express checkout) payments. This callback URL will be used by Vipps to inform the merchant that the user has revoked his/her consent: This Vipps user does not want the merchant to store or use his/her personal information any longer. Required by GDPR. Vipps will add <code>/v2/consents/{userId}</code> to the end or this URL. URLs passed to Vipps must validate, see the API guide. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080. The URL must use HTTPS.</td>
 </tr>
 <tr>
 <td>fallBack</td>
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>Vipps will use the fallBack URL to redirect the Vipps user to the merchant’s confirmation page once the payment is completed in Vipps. This is normally the “success page”, although the “fallback” name is ambiguous (the same URL is also used if payment was not successful). In other words: This is the URL Vipps sends the Vipps user back to. The page must handle both successful payments and payment failures. URLs passed to Vipps must validate, see <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">URL validation</a>. The URL must use HTTPS, or a custom URL scheme like &quot;myapp://&quot;&quot;.</td>
+<td>Vipps will use the fallBack URL to redirect the Vipps user to the merchant’s confirmation page once the payment is completed in Vipps. This is normally the “success page”, although the “fallback” name is ambiguous (the same URL is also used if payment was not successful). In other words: This is the URL Vipps sends the Vipps user back to. The page must handle both successful payments and payment failures. URLs passed to Vipps must validate, see the API guide. The URL must use HTTPS, or a custom URL scheme like &quot;myapp://&quot;&quot;.</td>
 </tr>
 <tr>
 <td>isApp</td>
 <td>boolean</td>
 <td>false</td>
 <td>none</td>
-<td>This parameter indicates whether payment request is triggered from Mobile App or Web browser. Based on this value, response will be redirect URL for Vipps landing page or deeplink URL to connect vipps App. When isApp is set to true, URLs passed to Vipps will not be validated as regular URLs.</td>
+<td>This optional parameter indicates whether payment request is triggered from Mobile App or Web browser. Based on this value, response will be redirect URL for Vipps landing page or deeplink URL to connect vipps App. When isApp is set to true, URLs passed to Vipps will not be validated as regular URLs.</td>
 </tr>
 <tr>
 <td>merchantSerialNumber</td>
@@ -8556,14 +8556,14 @@ System.out.println(response.toString());
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>This parameter will identify difference between a regular ecommerce payment and an ecommerce express payment. For Vipps Hurtigkasse (express checkout), use: &quot;eComm Express Payment&quot;. Express checkouts require <code>consentRemovalPrefix</code>. Note, use the value exactly as it is shown below (i.e., &quot;eComm&quot; with two m's).</td>
+<td>This optional parameter will identify difference between a regular ecommerce payment and an ecommerce express payment. For Vipps Hurtigkasse (express checkout), use: &quot;eComm Express Payment&quot;. Express checkouts require <code>consentRemovalPrefix</code>. Note, use the value exactly as it is shown below (i.e., &quot;eComm&quot; with two m's).</td>
 </tr>
 <tr>
 <td>shippingDetailsPrefix</td>
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>In case of Vipps Hurtigkasse (express checkout) payment, merchant should pass this prefix to let Vipps fetch shipping cost and method related details. Vipps will add <code>/v2/payments/{orderId}/shippingDetails</code> to the end or this URL. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.</td>
+<td>In case of Vipps Hurtigkasse (express checkout) payment, merchant should pass this prefix to let Vipps fetch shipping cost and method related details. Vipps will add <code>/v2/payments/{orderId}/shippingDetails</code> to the end or this URL. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080. The URL must use HTTPS.</td>
 </tr>
 <tr>
 <td>staticShippingDetails</td>
@@ -8626,7 +8626,7 @@ System.out.println(response.toString());
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Id which uniquely identifies a payment. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
+<td>An id that uniquely identifies a payment. Please see the orderId recommendations in the API guide. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
 </tr>
 <tr>
 <td>transactionInfo</td>
@@ -8960,7 +8960,7 @@ System.out.println(response.toString());
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>Id which uniquely identifies a payment. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
+<td>An id that uniquely identifies a payment. Please see the orderId recommendations in the API guide. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
 </tr>
 <tr>
 <td>shippingDetails</td>
@@ -9039,7 +9039,7 @@ System.out.println(response.toString());
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>Id which uniquely identifies a payment. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
+<td>An id that uniquely identifies a payment. Please see the orderId recommendations in the API guide. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
 </tr>
 <tr>
 <td>transactionInfo</td>
@@ -9180,7 +9180,7 @@ System.out.println(response.toString());
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>Id which uniquely identifies a payment. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
+<td>An id that uniquely identifies a payment. Please see the orderId recommendations in the API guide. Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.</td>
 </tr>
 <tr>
 <td>shippingDetails</td>
