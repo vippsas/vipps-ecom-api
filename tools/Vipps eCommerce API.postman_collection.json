@@ -1,0 +1,2579 @@
+{
+	"info": {
+		"_postman_id": "7541412c-4315-4b76-9193-f239959881aa",
+		"name": "Vipps eCommerce API",
+		"description": "For details, see the [API Guide](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ecomm/v2",
+			"item": [
+				{
+					"name": "payments",
+					"item": [
+						{
+							"name": "{order Id}",
+							"item": [
+								{
+									"name": "Capture Payment",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+												"key": "Ocp-Apim-Subscription-Key",
+												"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+											},
+											{
+												"description": "(Required) Used for making requests idempotent. Adding the `X-Request-Id` header will allow repeated requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Required for making partial captures. You can use any unique id for your X-Request-Id. Max 40 characters.",
+												"key": "X-Request-Id",
+												"value": "kRk3uEeiogxLu1yGSZRlNgsIv3TuNS"
+											},
+											{
+												"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+												"key": "Merchant-Serial-Number",
+												"value": "123456"
+											},
+											{
+												"description": "The name of the ecommerce solution. One word in lowercase letters is good.",
+												"key": "Vipps-System-Name",
+												"value": "woocommerce"
+											},
+											{
+												"description": "The version number of the ecommerce solution.",
+												"key": "Vipps-System-Version",
+												"value": "5.4"
+											},
+											{
+												"description": "The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.",
+												"key": "Vipps-System-Plugin-Name",
+												"value": "vipps-woocommerce"
+											},
+											{
+												"description": "The version number of the ecommerce plugin (if applicable).",
+												"key": "Vipps-System-Plugin-Version",
+												"value": "1.2.1"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json;charset=UTF-8"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json;charset=UTF-8"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"merchantInfo\": {\n    \"merchantSerialNumber\": \"123456\"\n  },\n  \"transaction\": {\n    \"transactionText\": \"One pair of Vipps socks\",\n    \"amount\": 49900\n  }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/ecomm/v2/payments/:orderId/capture",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"ecomm",
+												"v2",
+												"payments",
+												":orderId",
+												"capture"
+											],
+											"variable": [
+												{
+													"key": "orderId",
+													"value": "consectetur adipisicing deserunt sunt ut",
+													"description": "(Required) The `orderId` is specified when initiating the payment."
+												}
+											]
+										},
+										"description": "This API call lets merchant capture the reserved amount. Amount to capture cannot be higher than reserved. The API also allows capturing a partial amount of the reserved amount. Partial capture can be called as many times as required so long there is a remaining reserved amount to capture. The transaction text is not optional and is used as a proof of delivery (tracking code, consignment number etc.). In a case of direct capture, both the reservation and the capture are executed in a single operation. It is important to check the response, and the capture is only successful when the response is `HTTP 200 OK`."
+									},
+									"response": [
+										{
+											"name": "Capture payment response",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "(Required) The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the `POST:/accesstoken/get` endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.",
+														"key": "Authorization",
+														"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+													},
+													{
+														"description": "(Required) The content type must be `application/json`",
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+														"key": "Ocp-Apim-Subscription-Key",
+														"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+													},
+													{
+														"description": "(Required) Used for making requests idempotent. Adding the `X-Request-Id` header will allow repeated requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Required for making partial captures. You can use any unique id for your X-Request-Id. Max 40 characters.",
+														"key": "X-Request-Id",
+														"value": "kRk3uEeiogxLu1yGSZRlNgsIv3TuNS"
+													},
+													{
+														"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+														"key": "Merchant-Serial-Number",
+														"value": "123456"
+													},
+													{
+														"description": "The name of the ecommerce solution. One word in lowercase letters is good.",
+														"key": "Vipps-System-Name",
+														"value": "woocommerce"
+													},
+													{
+														"description": "The version number of the ecommerce solution.",
+														"key": "Vipps-System-Version",
+														"value": "5.4"
+													},
+													{
+														"description": "The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.",
+														"key": "Vipps-System-Plugin-Name",
+														"value": "vipps-woocommerce"
+													},
+													{
+														"description": "The version number of the ecommerce plugin (if applicable).",
+														"key": "Vipps-System-Plugin-Version",
+														"value": "1.2.1"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/ecomm/v2/payments/:orderId/capture",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"ecomm",
+														"v2",
+														"payments",
+														":orderId",
+														"capture"
+													],
+													"variable": [
+														{
+															"key": "orderId",
+															"value": "consectetur adipisicing deserunt sunt ut",
+															"description": "(Required) The `orderId` is specified when initiating the payment."
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json;charset=UTF-8"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"orderId\": \"acme-shop-123-order123abc\",\n  \"paymentInstrument\": \"Mastercard\",\n  \"transactionInfo\": {\n    \"amount\": 49900,\n    \"status\": \"Captured\",\n    \"timeStamp\": \"2018-12-12T11:18:38.246Z\",\n    \"transactionId\": \"5001420062\",\n    \"transactionText\": \"One pair of Vipps socks\"\n  },\n  \"transactionSummary\": {\n    \"capturedAmount\": 49900,\n    \"refundedAmount\": 0,\n    \"remainingAmountToCapture\": 0,\n    \"remainingAmountToRefund\": 49900,\n    \"bankIdentificationNumber\": 123456\n  }\n}"
+										},
+										{
+											"name": "Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the [\"Common errors\" section of the FAQ](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md). See also: [Responses](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "(Required) The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the `POST:/accesstoken/get` endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.",
+														"key": "Authorization",
+														"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+													},
+													{
+														"description": "(Required) The content type must be `application/json`",
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+														"key": "Ocp-Apim-Subscription-Key",
+														"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+													},
+													{
+														"description": "(Required) Used for making requests idempotent. Adding the `X-Request-Id` header will allow repeated requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Required for making partial captures. You can use any unique id for your X-Request-Id. Max 40 characters.",
+														"key": "X-Request-Id",
+														"value": "kRk3uEeiogxLu1yGSZRlNgsIv3TuNS"
+													},
+													{
+														"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+														"key": "Merchant-Serial-Number",
+														"value": "123456"
+													},
+													{
+														"description": "The name of the ecommerce solution. One word in lowercase letters is good.",
+														"key": "Vipps-System-Name",
+														"value": "woocommerce"
+													},
+													{
+														"description": "The version number of the ecommerce solution.",
+														"key": "Vipps-System-Version",
+														"value": "5.4"
+													},
+													{
+														"description": "The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.",
+														"key": "Vipps-System-Plugin-Name",
+														"value": "vipps-woocommerce"
+													},
+													{
+														"description": "The version number of the ecommerce plugin (if applicable).",
+														"key": "Vipps-System-Plugin-Version",
+														"value": "1.2.1"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/ecomm/v2/payments/:orderId/capture",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"ecomm",
+														"v2",
+														"payments",
+														":orderId",
+														"capture"
+													],
+													"variable": [
+														{
+															"key": "orderId",
+															"value": "consectetur adipisicing deserunt sunt ut",
+															"description": "(Required) The `orderId` is specified when initiating the payment."
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json;charset=UTF-8"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"errorGroup\": \"Payment\",\n    \"errorCode\": \"44\",\n    \"errorMessage\": \"Refused by issuer because of expired card\",\n    \"contextId\": \"f70b8bf7-c843-4bea-95d9-94725b19895f\"\n  },\n  {\n    \"errorGroup\": \"Payment\",\n    \"errorCode\": \"44\",\n    \"errorMessage\": \"Refused by issuer because of expired card\",\n    \"contextId\": \"f70b8bf7-c843-4bea-95d9-94725b19895f\"\n  }\n]"
+										}
+									]
+								},
+								{
+									"name": "Cancel Payment",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+												"key": "Ocp-Apim-Subscription-Key",
+												"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+											},
+											{
+												"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+												"key": "Merchant-Serial-Number",
+												"value": "123456"
+											},
+											{
+												"description": "The name of the ecommerce solution. One word in lowercase letters is good.",
+												"key": "Vipps-System-Name",
+												"value": "woocommerce"
+											},
+											{
+												"description": "The version number of the ecommerce solution.",
+												"key": "Vipps-System-Version",
+												"value": "5.4"
+											},
+											{
+												"description": "The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.",
+												"key": "Vipps-System-Plugin-Name",
+												"value": "vipps-woocommerce"
+											},
+											{
+												"description": "The version number of the ecommerce plugin (if applicable).",
+												"key": "Vipps-System-Plugin-Version",
+												"value": "1.2.1"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json;charset=UTF-8"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json;charset=UTF-8"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"merchantInfo\": {\n    \"merchantSerialNumber\": \"123456\"\n  },\n  \"transaction\": {\n    \"transactionText\": \"One pair of Vipps socks\"\n  },\n  \"shouldReleaseRemainingFunds\": false\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/ecomm/v2/payments/:orderId/cancel",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"ecomm",
+												"v2",
+												"payments",
+												":orderId",
+												"cancel"
+											],
+											"variable": [
+												{
+													"key": "orderId",
+													"value": "consectetur adipisicing deserunt sunt ut",
+													"description": "(Required) The `orderId` is specified when initiating the payment."
+												}
+											]
+										},
+										"description": "This API call lets merchants cancel a reserved or initiated transaction as long as it is less than 6 months old. In order to enable cancellation of remaining funds after partial capture, the `shouldReleaseRemainingFunds` flag must be set. Please note that the payment will be cancelled by Vipps even in cases of communication errors during an initiate payment service call between Vipps and PSP/Acquirer/Issuer and even in cases where the customer has confirmed a payment. Note this means you cannot cancel a captured payment."
+									},
+									"response": [
+										{
+											"name": "Cancel payment response",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"description": "(Required) The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the `POST:/accesstoken/get` endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.",
+														"key": "Authorization",
+														"value": "consectetur adipisicing deserunt sunt ut"
+													},
+													{
+														"description": "(Required) The content type must be `application/json`",
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+														"key": "Ocp-Apim-Subscription-Key",
+														"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+													},
+													{
+														"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+														"key": "Merchant-Serial-Number",
+														"value": "123456"
+													},
+													{
+														"description": "The name of the ecommerce solution. One word in lowercase letters is good.",
+														"key": "Vipps-System-Name",
+														"value": "woocommerce"
+													},
+													{
+														"description": "The version number of the ecommerce solution.",
+														"key": "Vipps-System-Version",
+														"value": "5.4"
+													},
+													{
+														"description": "The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.",
+														"key": "Vipps-System-Plugin-Name",
+														"value": "vipps-woocommerce"
+													},
+													{
+														"description": "The version number of the ecommerce plugin (if applicable).",
+														"key": "Vipps-System-Plugin-Version",
+														"value": "1.2.1"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"merchantInfo\": {\n    \"merchantSerialNumber\": \"123456\"\n  },\n  \"transaction\": {\n    \"transactionText\": \"One pair of Vipps socks\"\n  },\n  \"shouldReleaseRemainingFunds\": false\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/ecomm/v2/payments/:orderId/cancel",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"ecomm",
+														"v2",
+														"payments",
+														":orderId",
+														"cancel"
+													],
+													"variable": [
+														{
+															"key": "orderId",
+															"value": "consectetur adipisicing deserunt sunt ut",
+															"description": "(Required) The `orderId` is specified when initiating the payment."
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json;charset=UTF-8"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"orderId\": \"acme-shop-123-order123abc\",\n  \"paymentInstrument\": \"Mastercard\",\n  \"transactionInfo\": {\n    \"amount\": 49900,\n    \"status\": \"Captured\",\n    \"timeStamp\": \"2018-12-12T11:18:38.246Z\",\n    \"transactionText\": \"One pair of Vipps socks\",\n    \"transactionId\": \"5001420062\"\n  },\n  \"transactionSummary\": {\n    \"capturedAmount\": 49900,\n    \"refundedAmount\": 0,\n    \"remainingAmountToCapture\": 0,\n    \"remainingAmountToRefund\": 49900,\n    \"bankIdentificationNumber\": 123456\n  }\n}"
+										},
+										{
+											"name": "Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the [\"Common errors\" section of the FAQ](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md). See also: [Responses](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"description": "(Required) The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the `POST:/accesstoken/get` endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.",
+														"key": "Authorization",
+														"value": "consectetur adipisicing deserunt sunt ut"
+													},
+													{
+														"description": "(Required) The content type must be `application/json`",
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+														"key": "Ocp-Apim-Subscription-Key",
+														"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+													},
+													{
+														"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+														"key": "Merchant-Serial-Number",
+														"value": "123456"
+													},
+													{
+														"description": "The name of the ecommerce solution. One word in lowercase letters is good.",
+														"key": "Vipps-System-Name",
+														"value": "woocommerce"
+													},
+													{
+														"description": "The version number of the ecommerce solution.",
+														"key": "Vipps-System-Version",
+														"value": "5.4"
+													},
+													{
+														"description": "The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.",
+														"key": "Vipps-System-Plugin-Name",
+														"value": "vipps-woocommerce"
+													},
+													{
+														"description": "The version number of the ecommerce plugin (if applicable).",
+														"key": "Vipps-System-Plugin-Version",
+														"value": "1.2.1"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"merchantInfo\": {\n    \"merchantSerialNumber\": \"123456\"\n  },\n  \"transaction\": {\n    \"transactionText\": \"One pair of Vipps socks\"\n  },\n  \"shouldReleaseRemainingFunds\": false\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/ecomm/v2/payments/:orderId/cancel",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"ecomm",
+														"v2",
+														"payments",
+														":orderId",
+														"cancel"
+													],
+													"variable": [
+														{
+															"key": "orderId",
+															"value": "consectetur adipisicing deserunt sunt ut",
+															"description": "(Required) The `orderId` is specified when initiating the payment."
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json;charset=UTF-8"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"errorGroup\": \"Payment\",\n    \"errorCode\": \"44\",\n    \"errorMessage\": \"Refused by issuer because of expired card\",\n    \"contextId\": \"f70b8bf7-c843-4bea-95d9-94725b19895f\"\n  },\n  {\n    \"errorGroup\": \"Payment\",\n    \"errorCode\": \"44\",\n    \"errorMessage\": \"Refused by issuer because of expired card\",\n    \"contextId\": \"f70b8bf7-c843-4bea-95d9-94725b19895f\"\n  }\n]"
+										}
+									]
+								},
+								{
+									"name": "Authorize Payment",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+												"key": "Ocp-Apim-Subscription-Key",
+												"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+											},
+											{
+												"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+												"key": "Merchant-Serial-Number",
+												"value": "123456"
+											},
+											{
+												"description": "The name of the ecommerce solution. One word in lowercase letters is good.",
+												"key": "Vipps-System-Name",
+												"value": "woocommerce"
+											},
+											{
+												"description": "The version number of the ecommerce solution.",
+												"key": "Vipps-System-Version",
+												"value": "5.4"
+											},
+											{
+												"description": "The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.",
+												"key": "Vipps-System-Plugin-Name",
+												"value": "vipps-woocommerce"
+											},
+											{
+												"description": "The version number of the ecommerce plugin (if applicable).",
+												"key": "Vipps-System-Plugin-Version",
+												"value": "1.2.1"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json;charset=UTF-8"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json;charset=UTF-8"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"merchantInfo\": {\n    \"merchantSerialNumber\": \"123456\"\n  }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/ecomm/v2/payments/:orderId/authorize",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"ecomm",
+												"v2",
+												"payments",
+												":orderId",
+												"authorize"
+											],
+											"variable": [
+												{
+													"key": "orderId",
+													"value": "consectetur adipisicing deserunt sunt ut",
+													"description": "(Required) The `orderId` is specified when initiating the payment."
+												}
+											]
+										},
+										"description": "The API call lets merchant refresh the authorizations of the payment. A reservation's lifetime is defined by the scheme. Typically 7 days for Visa, and 30 days for Mastercard. This is currently _not yet_  available in the production environment."
+									},
+									"response": [
+										{
+											"name": "Cancel payment response",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"description": "(Required) The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the `POST:/accesstoken/get` endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.",
+														"key": "Authorization",
+														"value": "consectetur adipisicing deserunt sunt ut"
+													},
+													{
+														"description": "(Required) The content type must be `application/json`",
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+														"key": "Ocp-Apim-Subscription-Key",
+														"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+													},
+													{
+														"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+														"key": "Merchant-Serial-Number",
+														"value": "123456"
+													},
+													{
+														"description": "The name of the ecommerce solution. One word in lowercase letters is good.",
+														"key": "Vipps-System-Name",
+														"value": "woocommerce"
+													},
+													{
+														"description": "The version number of the ecommerce solution.",
+														"key": "Vipps-System-Version",
+														"value": "5.4"
+													},
+													{
+														"description": "The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.",
+														"key": "Vipps-System-Plugin-Name",
+														"value": "vipps-woocommerce"
+													},
+													{
+														"description": "The version number of the ecommerce plugin (if applicable).",
+														"key": "Vipps-System-Plugin-Version",
+														"value": "1.2.1"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"merchantInfo\": {\n    \"merchantSerialNumber\": \"123456\"\n  }\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/ecomm/v2/payments/:orderId/authorize",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"ecomm",
+														"v2",
+														"payments",
+														":orderId",
+														"authorize"
+													],
+													"variable": [
+														{
+															"key": "orderId",
+															"value": "consectetur adipisicing deserunt sunt ut",
+															"description": "(Required) The `orderId` is specified when initiating the payment."
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json;charset=UTF-8"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"orderId\": \"acme-shop-123-order123abc\",\n  \"paymentInstrument\": \"Mastercard\",\n  \"transactionInfo\": {\n    \"amount\": 49900,\n    \"status\": \"Captured\",\n    \"timeStamp\": \"2018-12-12T11:18:38.246Z\",\n    \"transactionId\": \"5001420062\",\n    \"transactionText\": \"One pair of Vipps socks\"\n  },\n  \"transactionSummary\": {\n    \"capturedAmount\": 49900,\n    \"refundedAmount\": 0,\n    \"remainingAmountToCapture\": 0,\n    \"remainingAmountToRefund\": 49900,\n    \"bankIdentificationNumber\": 123456\n  }\n}"
+										},
+										{
+											"name": "Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the [\"Common errors\" section of the FAQ](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md). See also: [Responses](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).",
+											"originalRequest": {
+												"method": "PUT",
+												"header": [
+													{
+														"description": "(Required) The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the `POST:/accesstoken/get` endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.",
+														"key": "Authorization",
+														"value": "consectetur adipisicing deserunt sunt ut"
+													},
+													{
+														"description": "(Required) The content type must be `application/json`",
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+														"key": "Ocp-Apim-Subscription-Key",
+														"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+													},
+													{
+														"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+														"key": "Merchant-Serial-Number",
+														"value": "123456"
+													},
+													{
+														"description": "The name of the ecommerce solution. One word in lowercase letters is good.",
+														"key": "Vipps-System-Name",
+														"value": "woocommerce"
+													},
+													{
+														"description": "The version number of the ecommerce solution.",
+														"key": "Vipps-System-Version",
+														"value": "5.4"
+													},
+													{
+														"description": "The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.",
+														"key": "Vipps-System-Plugin-Name",
+														"value": "vipps-woocommerce"
+													},
+													{
+														"description": "The version number of the ecommerce plugin (if applicable).",
+														"key": "Vipps-System-Plugin-Version",
+														"value": "1.2.1"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"merchantInfo\": {\n    \"merchantSerialNumber\": \"123456\"\n  }\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/ecomm/v2/payments/:orderId/authorize",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"ecomm",
+														"v2",
+														"payments",
+														":orderId",
+														"authorize"
+													],
+													"variable": [
+														{
+															"key": "orderId",
+															"value": "consectetur adipisicing deserunt sunt ut",
+															"description": "(Required) The `orderId` is specified when initiating the payment."
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json;charset=UTF-8"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"errorGroup\": \"Payment\",\n    \"errorCode\": \"44\",\n    \"errorMessage\": \"Refused by issuer because of expired card\",\n    \"contextId\": \"f70b8bf7-c843-4bea-95d9-94725b19895f\"\n  },\n  {\n    \"errorGroup\": \"Payment\",\n    \"errorCode\": \"44\",\n    \"errorMessage\": \"Refused by issuer because of expired card\",\n    \"contextId\": \"f70b8bf7-c843-4bea-95d9-94725b19895f\"\n  }\n]"
+										}
+									]
+								},
+								{
+									"name": "Refund Payment ",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+												"key": "Ocp-Apim-Subscription-Key",
+												"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+											},
+											{
+												"description": "(Required) Used for making requests idempotent. Adding the `X-Request-Id` header will allow repeated requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Max 40 characters. Required if the amount is partial.",
+												"key": "X-Request-Id",
+												"value": "kRk3uEeiogxLu1yGSZRlNgsIv3TuNS"
+											},
+											{
+												"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+												"key": "Merchant-Serial-Number",
+												"value": "123456"
+											},
+											{
+												"description": "The name of the ecommerce solution. One word in lowercase letters is good.",
+												"key": "Vipps-System-Name",
+												"value": "woocommerce"
+											},
+											{
+												"description": "The version number of the ecommerce solution.",
+												"key": "Vipps-System-Version",
+												"value": "5.4"
+											},
+											{
+												"description": "The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.",
+												"key": "Vipps-System-Plugin-Name",
+												"value": "vipps-woocommerce"
+											},
+											{
+												"description": "The version number of the ecommerce plugin (if applicable).",
+												"key": "Vipps-System-Plugin-Version",
+												"value": "1.2.1"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json;charset=UTF-8"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json;charset=UTF-8"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"merchantInfo\": {\n    \"merchantSerialNumber\": \"123456\"\n  },\n  \"transaction\": {\n    \"transactionText\": \"One pair of Vipps socks\",\n    \"amount\": 49900\n  }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/ecomm/v2/payments/:orderId/refund",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"ecomm",
+												"v2",
+												"payments",
+												":orderId",
+												"refund"
+											],
+											"variable": [
+												{
+													"key": "orderId",
+													"value": "consectetur adipisicing deserunt sunt ut",
+													"description": "(Required) The `orderId` is specified when initiating the payment."
+												}
+											]
+										},
+										"description": "The API lets a merchant do a refund of an already captured transaction. There is an option to do a partial refund of the captured amount. Refunded amount cannot be larger than captured. Time frame for issuing a refund for a payment is 365 days from the date payment has been captured. If the refund payment service call is called after the refund time frame, service call will respond with an error. Refunded funds will be transferred from the merchant account to the customer credit card that was used in payment flow. Pay attention that in order to perform refund, there must be enough funds at merchant settlements account."
+									},
+									"response": [
+										{
+											"name": "Refund payment response",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "(Required) The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the `POST:/accesstoken/get` endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.",
+														"key": "Authorization",
+														"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+													},
+													{
+														"description": "(Required) The content type must be `application/json`",
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+														"key": "Ocp-Apim-Subscription-Key",
+														"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+													},
+													{
+														"description": "(Required) Used for making requests idempotent. Adding the `X-Request-Id` header will allow repeated requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Max 40 characters. Required if the amount is partial.",
+														"key": "X-Request-Id",
+														"value": "kRk3uEeiogxLu1yGSZRlNgsIv3TuNS"
+													},
+													{
+														"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+														"key": "Merchant-Serial-Number",
+														"value": "123456"
+													},
+													{
+														"description": "The name of the ecommerce solution. One word in lowercase letters is good.",
+														"key": "Vipps-System-Name",
+														"value": "woocommerce"
+													},
+													{
+														"description": "The version number of the ecommerce solution.",
+														"key": "Vipps-System-Version",
+														"value": "5.4"
+													},
+													{
+														"description": "The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.",
+														"key": "Vipps-System-Plugin-Name",
+														"value": "vipps-woocommerce"
+													},
+													{
+														"description": "The version number of the ecommerce plugin (if applicable).",
+														"key": "Vipps-System-Plugin-Version",
+														"value": "1.2.1"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/ecomm/v2/payments/:orderId/refund",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"ecomm",
+														"v2",
+														"payments",
+														":orderId",
+														"refund"
+													],
+													"variable": [
+														{
+															"key": "orderId",
+															"value": "consectetur adipisicing deserunt sunt ut",
+															"description": "(Required) The `orderId` is specified when initiating the payment."
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json;charset=UTF-8"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"orderId\": \"acme-shop-123-order123abc\",\n  \"transaction\": {\n    \"amount\": 49900,\n    \"status\": \"Captured\",\n    \"timeStamp\": \"2018-12-12T11:18:38.246Z\",\n    \"transactionId\": \"5001420062\",\n    \"transactionText\": \"One pair of Vipps socks\"\n  },\n  \"transactionSummary\": {\n    \"capturedAmount\": 49900,\n    \"refundedAmount\": 0,\n    \"remainingAmountToCapture\": 0,\n    \"remainingAmountToRefund\": 49900,\n    \"bankIdentificationNumber\": 123456\n  }\n}"
+										},
+										{
+											"name": "Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the [\"Common errors\" section of the FAQ](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md). See also: [Responses](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "(Required) The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the `POST:/accesstoken/get` endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.",
+														"key": "Authorization",
+														"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+													},
+													{
+														"description": "(Required) The content type must be `application/json`",
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+														"key": "Ocp-Apim-Subscription-Key",
+														"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+													},
+													{
+														"description": "(Required) Used for making requests idempotent. Adding the `X-Request-Id` header will allow repeated requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Max 40 characters. Required if the amount is partial.",
+														"key": "X-Request-Id",
+														"value": "kRk3uEeiogxLu1yGSZRlNgsIv3TuNS"
+													},
+													{
+														"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+														"key": "Merchant-Serial-Number",
+														"value": "123456"
+													},
+													{
+														"description": "The name of the ecommerce solution. One word in lowercase letters is good.",
+														"key": "Vipps-System-Name",
+														"value": "woocommerce"
+													},
+													{
+														"description": "The version number of the ecommerce solution.",
+														"key": "Vipps-System-Version",
+														"value": "5.4"
+													},
+													{
+														"description": "The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.",
+														"key": "Vipps-System-Plugin-Name",
+														"value": "vipps-woocommerce"
+													},
+													{
+														"description": "The version number of the ecommerce plugin (if applicable).",
+														"key": "Vipps-System-Plugin-Version",
+														"value": "1.2.1"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/ecomm/v2/payments/:orderId/refund",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"ecomm",
+														"v2",
+														"payments",
+														":orderId",
+														"refund"
+													],
+													"variable": [
+														{
+															"key": "orderId",
+															"value": "consectetur adipisicing deserunt sunt ut",
+															"description": "(Required) The `orderId` is specified when initiating the payment."
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json;charset=UTF-8"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"errorGroup\": \"Payment\",\n    \"errorCode\": \"44\",\n    \"errorMessage\": \"Refused by issuer because of expired card\",\n    \"contextId\": \"f70b8bf7-c843-4bea-95d9-94725b19895f\"\n  },\n  {\n    \"errorGroup\": \"Payment\",\n    \"errorCode\": \"44\",\n    \"errorMessage\": \"Refused by issuer because of expired card\",\n    \"contextId\": \"f70b8bf7-c843-4bea-95d9-94725b19895f\"\n  }\n]"
+										}
+									]
+								},
+								{
+									"name": "Get Payment Details",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+												"key": "Ocp-Apim-Subscription-Key",
+												"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+											},
+											{
+												"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+												"key": "Merchant-Serial-Number",
+												"value": "123456"
+											},
+											{
+												"description": "The name of the ecommerce solution. One word in lowercase letters is good.",
+												"key": "Vipps-System-Name",
+												"value": "woocommerce"
+											},
+											{
+												"description": "The version number of the ecommerce solution.",
+												"key": "Vipps-System-Version",
+												"value": "5.4"
+											},
+											{
+												"description": "The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.",
+												"key": "Vipps-System-Plugin-Name",
+												"value": "vipps-woocommerce"
+											},
+											{
+												"description": "The version number of the ecommerce plugin (if applicable).",
+												"key": "Vipps-System-Plugin-Version",
+												"value": "1.2.1"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json;charset=UTF-8"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/ecomm/v2/payments/:orderId/details",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"ecomm",
+												"v2",
+												"payments",
+												":orderId",
+												"details"
+											],
+											"variable": [
+												{
+													"key": "orderId",
+													"value": "consectetur adipisicing deserunt sunt ut",
+													"description": "(Required) The `orderId` is specified when initiating the payment."
+												}
+											]
+										},
+										"description": "This API call lets merchant get the details of a payment transaction. Service call returns detailed transaction history of given payment where events are sorted from newest to oldest for when the transaction occurred."
+									},
+									"response": [
+										{
+											"name": "Get payment Details",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "(Required) The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the `POST:/accesstoken/get` endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.",
+														"key": "Authorization",
+														"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+													},
+													{
+														"description": "(Required) The content type must be `application/json`",
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+														"key": "Ocp-Apim-Subscription-Key",
+														"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+													},
+													{
+														"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+														"key": "Merchant-Serial-Number",
+														"value": "123456"
+													},
+													{
+														"description": "The name of the ecommerce solution. One word in lowercase letters is good.",
+														"key": "Vipps-System-Name",
+														"value": "woocommerce"
+													},
+													{
+														"description": "The version number of the ecommerce solution.",
+														"key": "Vipps-System-Version",
+														"value": "5.4"
+													},
+													{
+														"description": "The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.",
+														"key": "Vipps-System-Plugin-Name",
+														"value": "vipps-woocommerce"
+													},
+													{
+														"description": "The version number of the ecommerce plugin (if applicable).",
+														"key": "Vipps-System-Plugin-Version",
+														"value": "1.2.1"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/ecomm/v2/payments/:orderId/details",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"ecomm",
+														"v2",
+														"payments",
+														":orderId",
+														"details"
+													],
+													"variable": [
+														{
+															"key": "orderId",
+															"value": "consectetur adipisicing deserunt sunt ut",
+															"description": "(Required) The `orderId` is specified when initiating the payment."
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json;charset=UTF-8"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"orderId\": \"acme-shop-123-order123abc\",\n  \"shippingDetails\": {\n    \"shippingCost\": 1500,\n    \"shippingMethod\": \"Posten Servicepakke\",\n    \"shippingMethodId\": \"ex dolore culpa\",\n    \"address\": {\n      \"addressLine1\": \"Robert Levins gate 5\",\n      \"city\": \"Oslo\",\n      \"country\": \"Norway\",\n      \"postCode\": \"0154\",\n      \"addressLine2\": \"Att: Rune Garborg\"\n    }\n  },\n  \"transactionLogHistory\": [\n    {\n      \"operation\": \"RESERVE\",\n      \"amount\": -69717578,\n      \"operationSuccess\": true,\n      \"transactionText\": \"One pair of Vipps socks\",\n      \"requestId\": \"12983921873981899000\",\n      \"timeStamp\": \"2019-02-05T12:27:42.311Z\",\n      \"transactionId\": \"5001446662\"\n    },\n    {\n      \"operation\": \"RESERVE\",\n      \"amount\": 95017143,\n      \"operationSuccess\": true,\n      \"transactionText\": \"One pair of Vipps socks\",\n      \"requestId\": \"12983921873981899000\",\n      \"timeStamp\": \"2019-02-05T12:27:42.311Z\",\n      \"transactionId\": \"5001446662\"\n    }\n  ],\n  \"transactionSummary\": {\n    \"capturedAmount\": 49900,\n    \"refundedAmount\": 0,\n    \"remainingAmountToCapture\": 0,\n    \"remainingAmountToRefund\": 49900,\n    \"bankIdentificationNumber\": 123456\n  },\n  \"userDetails\": {\n    \"email\": \"user@example.com\",\n    \"firstName\": \"Ada\",\n    \"lastName\": \"Lovelace\",\n    \"mobileNumber\": \"91234567\",\n    \"userId\": \"uiJskNQ6qNN1iwN891uuob==\",\n    \"bankIdVerified\": \"Y\"\n  },\n  \"sub\": \"commodo ex\"\n}"
+										},
+										{
+											"name": "Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the [\"Common errors\" section of the FAQ](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md). See also: [Responses](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "(Required) The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the `POST:/accesstoken/get` endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.",
+														"key": "Authorization",
+														"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+													},
+													{
+														"description": "(Required) The content type must be `application/json`",
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+														"key": "Ocp-Apim-Subscription-Key",
+														"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+													},
+													{
+														"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+														"key": "Merchant-Serial-Number",
+														"value": "123456"
+													},
+													{
+														"description": "The name of the ecommerce solution. One word in lowercase letters is good.",
+														"key": "Vipps-System-Name",
+														"value": "woocommerce"
+													},
+													{
+														"description": "The version number of the ecommerce solution.",
+														"key": "Vipps-System-Version",
+														"value": "5.4"
+													},
+													{
+														"description": "The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.",
+														"key": "Vipps-System-Plugin-Name",
+														"value": "vipps-woocommerce"
+													},
+													{
+														"description": "The version number of the ecommerce plugin (if applicable).",
+														"key": "Vipps-System-Plugin-Version",
+														"value": "1.2.1"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/ecomm/v2/payments/:orderId/details",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"ecomm",
+														"v2",
+														"payments",
+														":orderId",
+														"details"
+													],
+													"variable": [
+														{
+															"key": "orderId",
+															"value": "consectetur adipisicing deserunt sunt ut",
+															"description": "(Required) The `orderId` is specified when initiating the payment."
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json;charset=UTF-8"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"errorGroup\": \"Payment\",\n    \"errorCode\": \"44\",\n    \"errorMessage\": \"Refused by issuer because of expired card\",\n    \"contextId\": \"f70b8bf7-c843-4bea-95d9-94725b19895f\"\n  },\n  {\n    \"errorGroup\": \"Payment\",\n    \"errorCode\": \"44\",\n    \"errorMessage\": \"Refused by issuer because of expired card\",\n    \"contextId\": \"f70b8bf7-c843-4bea-95d9-94725b19895f\"\n  }\n]"
+										}
+									]
+								},
+								{
+									"name": "Deprecated: Get Order Status",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+												"key": "Ocp-Apim-Subscription-Key",
+												"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json;charset=UTF-8"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/ecomm/v2/payments/:orderId/status",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"ecomm",
+												"v2",
+												"payments",
+												":orderId",
+												"status"
+											],
+											"variable": [
+												{
+													"key": "orderId",
+													"value": "consectetur adipisicing deserunt sunt ut",
+													"description": "(Required) The `orderId` is specified when initiating the payment."
+												}
+											]
+										},
+										"description": "This deprecated endpoint lets the merchant get the status of the last payment transaction. The response may be confusing. Please use `/details` instead, as it offers more information."
+									},
+									"response": [
+										{
+											"name": "Get order status",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "(Required) The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the `POST:/accesstoken/get` endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.",
+														"key": "Authorization",
+														"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+													},
+													{
+														"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+														"key": "Ocp-Apim-Subscription-Key",
+														"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/ecomm/v2/payments/:orderId/status",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"ecomm",
+														"v2",
+														"payments",
+														":orderId",
+														"status"
+													],
+													"variable": [
+														{
+															"key": "orderId",
+															"value": "consectetur adipisicing deserunt sunt ut",
+															"description": "(Required) The `orderId` is specified when initiating the payment."
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json;charset=UTF-8"
+												}
+											],
+											"cookie": [],
+											"body": "{\n  \"orderId\": \"acme-shop-123-order123abc\",\n  \"transactionInfo\": {\n    \"amount\": 49900,\n    \"status\": \"RESERVE\",\n    \"timeStamp\": \"2018-12-12T11:18:38.246Z\",\n    \"transactionId\": \"5001420062\"\n  }\n}"
+										},
+										{
+											"name": "Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the [\"Common errors\" section of the FAQ](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md). See also: [Responses](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "(Required) The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the `POST:/accesstoken/get` endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.",
+														"key": "Authorization",
+														"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+													},
+													{
+														"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+														"key": "Ocp-Apim-Subscription-Key",
+														"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/ecomm/v2/payments/:orderId/status",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"ecomm",
+														"v2",
+														"payments",
+														":orderId",
+														"status"
+													],
+													"variable": [
+														{
+															"key": "orderId",
+															"value": "consectetur adipisicing deserunt sunt ut",
+															"description": "(Required) The `orderId` is specified when initiating the payment."
+														}
+													]
+												}
+											},
+											"status": "Internal Server Error",
+											"code": 500,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json;charset=UTF-8"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"errorGroup\": \"Payment\",\n    \"errorCode\": \"44\",\n    \"errorMessage\": \"Refused by issuer because of expired card\",\n    \"contextId\": \"f70b8bf7-c843-4bea-95d9-94725b19895f\"\n  },\n  {\n    \"errorGroup\": \"Payment\",\n    \"errorCode\": \"44\",\n    \"errorMessage\": \"Refused by issuer because of expired card\",\n    \"contextId\": \"f70b8bf7-c843-4bea-95d9-94725b19895f\"\n  }\n]"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Initiate Payment",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+										"key": "Ocp-Apim-Subscription-Key",
+										"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+									},
+									{
+										"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+										"key": "Merchant-Serial-Number",
+										"value": "123456"
+									},
+									{
+										"description": "The name of the ecommerce solution. One word in lowercase letters is good.",
+										"key": "Vipps-System-Name",
+										"value": "woocommerce"
+									},
+									{
+										"description": "The version number of the ecommerce solution.",
+										"key": "Vipps-System-Version",
+										"value": "5.4"
+									},
+									{
+										"description": "The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.",
+										"key": "Vipps-System-Plugin-Name",
+										"value": "vipps-woocommerce"
+									},
+									{
+										"description": "The version number of the ecommerce plugin (if applicable).",
+										"key": "Vipps-System-Plugin-Version",
+										"value": "1.2.1"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json;charset=UTF-8"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json;charset=UTF-8"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"customerInfo\": {\n    \"mobileNumber\": \"63006657\"\n  },\n  \"merchantInfo\": {\n    \"callbackPrefix\": \"https://example.com/vipps/callbacks-for-payment-update-from-vipps\",\n    \"fallBack\": \"https://example.com/vipps/fallback-result-page-for-both-success-and-failure/acme-shop-123-order123abc\",\n    \"merchantSerialNumber\": \"123456\",\n    \"authToken\": \"iOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImllX3FXQ1hoWHh0MXpJ\",\n    \"consentRemovalPrefix\": \"https://example.com/vipps/consent-removal\",\n    \"isApp\": false,\n    \"paymentType\": \"eComm Regular Payment\",\n    \"shippingDetailsPrefix\": \"https://example.com/vipps/shipping\",\n    \"staticShippingDetails\": [\n      {\n        \"isDefault\": \"Y\",\n        \"shippingCost\": 9900,\n        \"shippingMethod\": \"Posten Servicepakke\",\n        \"shippingMethodId\": \"posten-servicepakke\",\n        \"priority\": 91995468\n      },\n      {\n        \"isDefault\": \"Y\",\n        \"shippingCost\": 9900,\n        \"shippingMethod\": \"Posten Servicepakke\",\n        \"shippingMethodId\": \"posten-servicepakke\",\n        \"priority\": -91278537\n      }\n    ]\n  },\n  \"transaction\": {\n    \"amount\": 49900,\n    \"orderId\": \"acme-shop-123-order123abc\",\n    \"transactionText\": \"One pair of Vipps socks\",\n    \"skipLandingPage\": false,\n    \"scope\": \"name address email\",\n    \"additionalData\": {\n      \"passengerName\": \"FLYER / MARY MS.\",\n      \"airlineCode\": \"074\",\n      \"airlineDesignatorCode\": \"KL\",\n      \"ticketNumber\": \"074-5799804843\",\n      \"agencyInvoiceNumber\": \"123456\"\n    },\n    \"useExplicitCheckoutFlow\": true\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/ecomm/v2/payments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ecomm",
+										"v2",
+										"payments"
+									]
+								},
+								"description": "This API call lets the merchants initiate payments. The `merchantSerialNumber` (MSN) specifies which sales unit the payment is for. Payments are uniquely identified with the `merchantSerialNumber` and `orderId` together. The merchant-provided `orderId` must be unique per sales unit. Once the transaction is successfully initiated in Vipps, you will receive a response with a URL that will direct the customer to the Vipps landing page (when using a laptop/esktop), or app-switch to Vipps (when using a phone). The landing page detects if the request comes from a mobile or laptop/desktop device, and if on a mobile device automatically switches to the Vipps app, if it is installed. The merchant may also pass the optional 'isApp: true' parameter that will make Vipps respond with a app-switch deeplink that will take the customer directly to the Vipps app. This is normally not necessary, as Vipps handles this automatically. URLs passed to Vipps must validate, see the API guide. The URLs must use HTTPS."
+							},
+							"response": [
+								{
+									"name": "Response for Initiate Payment",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "(Required) The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the `POST:/accesstoken/get` endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.",
+												"key": "Authorization",
+												"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+											},
+											{
+												"description": "(Required) The content type must be `application/json`",
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+												"key": "Ocp-Apim-Subscription-Key",
+												"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+											},
+											{
+												"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+												"key": "Merchant-Serial-Number",
+												"value": "123456"
+											},
+											{
+												"description": "The name of the ecommerce solution. One word in lowercase letters is good.",
+												"key": "Vipps-System-Name",
+												"value": "woocommerce"
+											},
+											{
+												"description": "The version number of the ecommerce solution.",
+												"key": "Vipps-System-Version",
+												"value": "5.4"
+											},
+											{
+												"description": "The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.",
+												"key": "Vipps-System-Plugin-Name",
+												"value": "vipps-woocommerce"
+											},
+											{
+												"description": "The version number of the ecommerce plugin (if applicable).",
+												"key": "Vipps-System-Plugin-Version",
+												"value": "1.2.1"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"customerInfo\": {\n    \"mobileNumber\": \"20863062\"\n  },\n  \"merchantInfo\": {\n    \"callbackPrefix\": \"https://example.com/vipps/callbacks-for-payment-update-from-vipps\",\n    \"fallBack\": \"https://example.com/vipps/fallback-result-page-for-both-success-and-failure/acme-shop-123-order123abc\",\n    \"merchantSerialNumber\": \"123456\",\n    \"authToken\": \"iOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImllX3FXQ1hoWHh0MXpJ\",\n    \"consentRemovalPrefix\": \"https://example.com/vipps/consent-removal\",\n    \"isApp\": false,\n    \"paymentType\": \"eComm Regular Payment\",\n    \"shippingDetailsPrefix\": \"https://example.com/vipps/shipping\",\n    \"staticShippingDetails\": [\n      {\n        \"isDefault\": \"Y\",\n        \"shippingCost\": 9900,\n        \"shippingMethod\": \"Posten Servicepakke\",\n        \"shippingMethodId\": \"posten-servicepakke\",\n        \"priority\": 72309754\n      },\n      {\n        \"isDefault\": \"Y\",\n        \"shippingCost\": 9900,\n        \"shippingMethod\": \"Posten Servicepakke\",\n        \"shippingMethodId\": \"posten-servicepakke\",\n        \"priority\": -18659516\n      }\n    ]\n  },\n  \"transaction\": {\n    \"amount\": 49900,\n    \"orderId\": \"acme-shop-123-order123abc\",\n    \"transactionText\": \"One pair of Vipps socks\",\n    \"skipLandingPage\": false,\n    \"scope\": \"name address email\",\n    \"additionalData\": {\n      \"passengerName\": \"FLYER / MARY MS.\",\n      \"airlineCode\": \"074\",\n      \"airlineDesignatorCode\": \"KL\",\n      \"ticketNumber\": \"074-5799804843\",\n      \"agencyInvoiceNumber\": \"123456\"\n    },\n    \"useExplicitCheckoutFlow\": true\n  }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/ecomm/v2/payments",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"ecomm",
+												"v2",
+												"payments"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=UTF-8"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"orderId\": \"acme-shop-123-order123abc\",\n  \"url\": \"https://api.vipps.no/dwo-api-application/v1/deeplink/vippsgateway?v=2&token=eyJraWQiOiJqd3RrZXkiLC <snip>\"\n}"
+								},
+								{
+									"name": "Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the [\"Common errors\" section of the FAQ](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md). See also: [Responses](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "(Required) The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the `POST:/accesstoken/get` endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.",
+												"key": "Authorization",
+												"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+											},
+											{
+												"description": "(Required) The content type must be `application/json`",
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+												"key": "Ocp-Apim-Subscription-Key",
+												"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+											},
+											{
+												"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+												"key": "Merchant-Serial-Number",
+												"value": "123456"
+											},
+											{
+												"description": "The name of the ecommerce solution. One word in lowercase letters is good.",
+												"key": "Vipps-System-Name",
+												"value": "woocommerce"
+											},
+											{
+												"description": "The version number of the ecommerce solution.",
+												"key": "Vipps-System-Version",
+												"value": "5.4"
+											},
+											{
+												"description": "The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.",
+												"key": "Vipps-System-Plugin-Name",
+												"value": "vipps-woocommerce"
+											},
+											{
+												"description": "The version number of the ecommerce plugin (if applicable).",
+												"key": "Vipps-System-Plugin-Version",
+												"value": "1.2.1"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"customerInfo\": {\n    \"mobileNumber\": \"20863062\"\n  },\n  \"merchantInfo\": {\n    \"callbackPrefix\": \"https://example.com/vipps/callbacks-for-payment-update-from-vipps\",\n    \"fallBack\": \"https://example.com/vipps/fallback-result-page-for-both-success-and-failure/acme-shop-123-order123abc\",\n    \"merchantSerialNumber\": \"123456\",\n    \"authToken\": \"iOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImllX3FXQ1hoWHh0MXpJ\",\n    \"consentRemovalPrefix\": \"https://example.com/vipps/consent-removal\",\n    \"isApp\": false,\n    \"paymentType\": \"eComm Regular Payment\",\n    \"shippingDetailsPrefix\": \"https://example.com/vipps/shipping\",\n    \"staticShippingDetails\": [\n      {\n        \"isDefault\": \"Y\",\n        \"shippingCost\": 9900,\n        \"shippingMethod\": \"Posten Servicepakke\",\n        \"shippingMethodId\": \"posten-servicepakke\",\n        \"priority\": 72309754\n      },\n      {\n        \"isDefault\": \"Y\",\n        \"shippingCost\": 9900,\n        \"shippingMethod\": \"Posten Servicepakke\",\n        \"shippingMethodId\": \"posten-servicepakke\",\n        \"priority\": -18659516\n      }\n    ]\n  },\n  \"transaction\": {\n    \"amount\": 49900,\n    \"orderId\": \"acme-shop-123-order123abc\",\n    \"transactionText\": \"One pair of Vipps socks\",\n    \"skipLandingPage\": false,\n    \"scope\": \"name address email\",\n    \"additionalData\": {\n      \"passengerName\": \"FLYER / MARY MS.\",\n      \"airlineCode\": \"074\",\n      \"airlineDesignatorCode\": \"KL\",\n      \"ticketNumber\": \"074-5799804843\",\n      \"agencyInvoiceNumber\": \"123456\"\n    },\n    \"useExplicitCheckoutFlow\": true\n  }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/ecomm/v2/payments",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"ecomm",
+												"v2",
+												"payments"
+											]
+										}
+									},
+									"status": "Internal Server Error",
+									"code": 500,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json;charset=UTF-8"
+										}
+									],
+									"cookie": [],
+									"body": "[\n  {\n    \"errorGroup\": \"Payment\",\n    \"errorCode\": \"44\",\n    \"errorMessage\": \"Refused by issuer because of expired card\",\n    \"contextId\": \"f70b8bf7-c843-4bea-95d9-94725b19895f\"\n  },\n  {\n    \"errorGroup\": \"Payment\",\n    \"errorCode\": \"44\",\n    \"errorMessage\": \"Refused by issuer because of expired card\",\n    \"contextId\": \"f70b8bf7-c843-4bea-95d9-94725b19895f\"\n  }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Force Approve Payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+							},
+							{
+								"description": "Id used for making requests idempotent. Adding this ID will allow the merchant to retry requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Max 40 characters.",
+								"key": "X-Request-Id",
+								"value": "kRk3uEeiogxLu1yGSZRlNgsIv3TuNS"
+							},
+							{
+								"description": "The name of the ecommerce solution. One word in lowercase letters is good.",
+								"key": "Vipps-System-Name",
+								"value": "woocommerce"
+							},
+							{
+								"description": "The version number of the ecommerce solution.",
+								"key": "Vipps-System-Version",
+								"value": "5.4"
+							},
+							{
+								"description": "The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.",
+								"key": "Vipps-System-Plugin-Name",
+								"value": "vipps-woocommerce"
+							},
+							{
+								"description": "The version number of the ecommerce plugin (if applicable).",
+								"key": "Vipps-System-Plugin-Version",
+								"value": "1.2.1"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"customerPhoneNumber\": \"91234567\",\n  \"token\": \"eyJraWQiOiJqd3R\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/ecomm/v2/integration-test/payments/:orderId/approve",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"ecomm",
+								"v2",
+								"integration-test",
+								"payments",
+								":orderId",
+								"approve"
+							],
+							"variable": [
+								{
+									"key": "orderId",
+									"value": "consectetur adipisicing deserunt sunt ut",
+									"description": "(Required) The `orderId` is specified when initiating the payment."
+								}
+							]
+						},
+						"description": "This endpoint lets developers approve a payment through the Vipps eCom API without the use of the Vipps app. This is useful for automated testing. Express checkout is not supported for this endpoint. The endpoint is only available in our Test environment. Attempted use of the endpoint in production is not allowed, and will fail. Important: All test users must manually approve at least one payment in Vipps (using the app) before this endpoint can be used for that user."
+					},
+					"response": [
+						{
+							"name": "Force approve payment response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the `POST:/accesstoken/get` endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.",
+										"key": "Authorization",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+									},
+									{
+										"description": "(Required) The content type must be `application/json`",
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+										"key": "Ocp-Apim-Subscription-Key",
+										"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+									},
+									{
+										"description": "Id used for making requests idempotent. Adding this ID will allow the merchant to retry requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Max 40 characters.",
+										"key": "X-Request-Id",
+										"value": "kRk3uEeiogxLu1yGSZRlNgsIv3TuNS"
+									},
+									{
+										"description": "The name of the ecommerce solution. One word in lowercase letters is good.",
+										"key": "Vipps-System-Name",
+										"value": "woocommerce"
+									},
+									{
+										"description": "The version number of the ecommerce solution.",
+										"key": "Vipps-System-Version",
+										"value": "5.4"
+									},
+									{
+										"description": "The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.",
+										"key": "Vipps-System-Plugin-Name",
+										"value": "vipps-woocommerce"
+									},
+									{
+										"description": "The version number of the ecommerce plugin (if applicable).",
+										"key": "Vipps-System-Plugin-Version",
+										"value": "1.2.1"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/ecomm/v2/integration-test/payments/:orderId/approve",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ecomm",
+										"v2",
+										"integration-test",
+										"payments",
+										":orderId",
+										"approve"
+									],
+									"variable": [
+										{
+											"key": "orderId",
+											"value": "consectetur adipisicing deserunt sunt ut",
+											"description": "(Required) The `orderId` is specified when initiating the payment."
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the [\"Common errors\" section of the FAQ](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md). See also: [Responses](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the `POST:/accesstoken/get` endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.",
+										"key": "Authorization",
+										"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+									},
+									{
+										"description": "(Required) The content type must be `application/json`",
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"description": "(Required) The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+										"key": "Ocp-Apim-Subscription-Key",
+										"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+									},
+									{
+										"description": "Id used for making requests idempotent. Adding this ID will allow the merchant to retry requests without it making additional changes. Unique for orderId, merchantSerialNumber and endpoint. Max 40 characters.",
+										"key": "X-Request-Id",
+										"value": "kRk3uEeiogxLu1yGSZRlNgsIv3TuNS"
+									},
+									{
+										"description": "The name of the ecommerce solution. One word in lowercase letters is good.",
+										"key": "Vipps-System-Name",
+										"value": "woocommerce"
+									},
+									{
+										"description": "The version number of the ecommerce solution.",
+										"key": "Vipps-System-Version",
+										"value": "5.4"
+									},
+									{
+										"description": "The name of the ecommerce plugin (if applicable). One word in lowercase letters is good.",
+										"key": "Vipps-System-Plugin-Name",
+										"value": "vipps-woocommerce"
+									},
+									{
+										"description": "The version number of the ecommerce plugin (if applicable).",
+										"key": "Vipps-System-Plugin-Version",
+										"value": "1.2.1"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/ecomm/v2/integration-test/payments/:orderId/approve",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"ecomm",
+										"v2",
+										"integration-test",
+										"payments",
+										":orderId",
+										"approve"
+									],
+									"variable": [
+										{
+											"key": "orderId",
+											"value": "consectetur adipisicing deserunt sunt ut",
+											"description": "(Required) The `orderId` is specified when initiating the payment."
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=UTF-8"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"errorGroup\": \"Payment\",\n    \"errorCode\": \"44\",\n    \"errorMessage\": \"Refused by issuer because of expired card\",\n    \"contextId\": \"f70b8bf7-c843-4bea-95d9-94725b19895f\"\n  },\n  {\n    \"errorGroup\": \"Payment\",\n    \"errorCode\": \"44\",\n    \"errorMessage\": \"Refused by issuer because of expired card\",\n    \"contextId\": \"f70b8bf7-c843-4bea-95d9-94725b19895f\"\n  }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Fetch the JWT authorization token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"description": "(Required) The `client_id` is available on portal.vipps.no, under the 'Utvikler' tab.",
+						"key": "client_id",
+						"value": "fb492b5e-7907-4d83-ba20-c7fb60ca35de"
+					},
+					{
+						"description": "(Required) The `client_secret` is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+						"key": "client_secret",
+						"value": "Y8Kteew6GE2ZmeycEt6egg=="
+					},
+					{
+						"description": "(Required) The subscription key for the authorization token is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json;charset=UTF-8"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/accesstoken/get",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"accesstoken",
+						"get"
+					]
+				},
+				"description": "The access token endpoint is used to get the JWT (JSON Web Token) that must be passed in every API request in the `Authorization` header. The access token is a base64-encoded string value that must be acquired first before making any Vipps API calls. The access token is valid for 1 hour in the test environment and 24 hours in the production environment."
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "(Required) The `client_id` is available on portal.vipps.no, under the 'Utvikler' tab.",
+								"key": "client_id",
+								"value": "fb492b5e-7907-4d83-ba20-c7fb60ca35de"
+							},
+							{
+								"description": "(Required) The `client_secret` is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+								"key": "client_secret",
+								"value": "Y8Kteew6GE2ZmeycEt6egg=="
+							},
+							{
+								"description": "(Required) The subscription key for the authorization token is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/accesstoken/get",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"accesstoken",
+								"get"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"token_type\": \"Bearer\",\n  \"expires_in\": 3600,\n  \"ext_expires_in\": 3600,\n  \"expires_on\": 1547823408,\n  \"not_before\": 1547819508,\n  \"resource\": \"00000002-0000-0000-c000-000000000000\",\n  \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni...\"\n}"
+				},
+				{
+					"name": "Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the [\"Common errors\" section of the FAQ](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md). See also: [Responses](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "(Required) The `client_id` is available on portal.vipps.no, under the 'Utvikler' tab.",
+								"key": "client_id",
+								"value": "fb492b5e-7907-4d83-ba20-c7fb60ca35de"
+							},
+							{
+								"description": "(Required) The `client_secret` is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+								"key": "client_secret",
+								"value": "Y8Kteew6GE2ZmeycEt6egg=="
+							},
+							{
+								"description": "(Required) The subscription key for the authorization token is available on portal.vipps.no, under the 'Utvikler' tab. Keep it secret.",
+								"key": "Ocp-Apim-Subscription-Key",
+								"value": "0f14ebcab0ec4b29ae0cb90d91b4a84a"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/accesstoken/get",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"accesstoken",
+								"get"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						}
+					],
+					"cookie": [],
+					"body": "[\n  {\n    \"errorGroup\": \"Payment\",\n    \"errorCode\": \"44\",\n    \"errorMessage\": \"Refused by issuer because of expired card\",\n    \"contextId\": \"f70b8bf7-c843-4bea-95d9-94725b19895f\"\n  },\n  {\n    \"errorGroup\": \"Payment\",\n    \"errorCode\": \"44\",\n    \"errorMessage\": \"Refused by issuer because of expired card\",\n    \"contextId\": \"f70b8bf7-c843-4bea-95d9-94725b19895f\"\n  }\n]"
+				}
+			]
+		},
+		{
+			"name": "Remove User Consent (for Vipps Hurtigkasse (express checkout))",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/[consentRemovalPrefix]/v2/consents/:userId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"[consentRemovalPrefix]",
+						"v2",
+						"consents",
+						":userId"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "uiJskNQ6qNN1iwN891uuob==",
+							"description": "(Required) URL-encoded `userId` provided when requesting user information from Vipps. Received by callback or with `/detail` request."
+						}
+					]
+				},
+				"description": "This API endpoint on the merchant side lets Vipps send consent removal requests to the merchant. When receiving requests the merchant is obliged to remove the user details permanently, as per the GDPR guidelines. Vipps will add `/v2/consents/{userId}` to the end of this URL. URLs passed to Vipps must validate, see the API guide. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080. The URL must use HTTPS."
+			},
+			"response": [
+				{
+					"name": "Remove User Consent (for Vipps Hurtigkasse (express checkout))",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/[consentRemovalPrefix]/v2/consents/:userId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"[consentRemovalPrefix]",
+								"v2",
+								"consents",
+								":userId"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "uiJskNQ6qNN1iwN891uuob==",
+									"description": "(Required) URL-encoded `userId` provided when requesting user information from Vipps. Received by callback or with `/detail` request."
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Fetch Shipping Cost & Method (for Vipps Hurtigkasse (express checkout))",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json;charset=UTF-8"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"addressId\": 100,\n  \"addressLine1\": \"Robert Levins gate 5\",\n  \"city\": \"Oslo\",\n  \"country\": \"NO\",\n  \"postCode\": \"0154\",\n  \"addressLine2\": \"c/o Rune Garborg\",\n  \"addressType\": \"H\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/[shippingDetailsPrefix]/v2/payments/:orderId/shippingDetails",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"[shippingDetailsPrefix]",
+						"v2",
+						"payments",
+						":orderId",
+						"shippingDetails"
+					],
+					"variable": [
+						{
+							"key": "orderId",
+							"value": "acme-shop-123-order123abc",
+							"description": "(Required) orderId"
+						}
+					]
+				},
+				"description": "This API endpoint on the merchant side lets Vipps get the shipping cost and method based on the provided address and product details. The primary use of this service is Vipps Hurtigkasse (express checkout) where Vipps needs to present shipping cost and method to the Vipps user. Vipps will add `/v2/payments/{orderId}/shippingDetails` to the end of this URL. Vipps has a *10 second timeout* for these requests, to ensure a good user experience, and thus requires a quick reply from the merchant's server for successful payments. URLs passed to Vipps must validate, see the API guide. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080. The URL must use HTTPS."
+			},
+			"response": [
+				{
+					"name": "Fetch shipping cost and method.",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "The token provided by the merchant in the initiate payment request as `authToken` (an optional parameter). Vipps uses this token when making calls to the merchant's servers. Used so that the merchant may authenticate the request from Vipps.",
+								"key": "Authorization",
+								"value": "ae0cb90d91b4a84a"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"addressId\": 100,\n  \"addressLine1\": \"Robert Levins gate 5\",\n  \"city\": \"Oslo\",\n  \"country\": \"NO\",\n  \"postCode\": \"0154\",\n  \"addressLine2\": \"c/o Rune Garborg\",\n  \"addressType\": \"H\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/[shippingDetailsPrefix]/v2/payments/:orderId/shippingDetails",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"[shippingDetailsPrefix]",
+								"v2",
+								"payments",
+								":orderId",
+								"shippingDetails"
+							],
+							"variable": [
+								{
+									"key": "orderId",
+									"value": "acme-shop-123-order123abc",
+									"description": "(Required) orderId"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"addressId\": 78990344,\n  \"orderId\": \"acme-shop-123-order123abc\",\n  \"shippingDetails\": [\n    {\n      \"isDefault\": \"N\",\n      \"shippingCost\": 9900,\n      \"shippingMethod\": \"Posten Servicepakke\",\n      \"shippingMethodId\": \"posten-servicepakke\",\n      \"priority\": -16088552\n    },\n    {\n      \"isDefault\": \"Y\",\n      \"shippingCost\": 9900,\n      \"shippingMethod\": \"Posten Servicepakke\",\n      \"shippingMethodId\": \"posten-servicepakke\",\n      \"priority\": -2705116\n    }\n  ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Callback : Transaction Update",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"merchantSerialNumber\": \"123456\",\n  \"orderId\": \"acme-shop-123-order123abc\",\n  \"shippingDetails\": {\n    \"address\": {\n      \"addressLine1\": \"Robert Levins gate 5\",\n      \"city\": \"Oslo\",\n      \"country\": \"Norway\",\n      \"addressLine2\": \"Att: Rune Garborg\",\n      \"zipCode\": \"0154\"\n    },\n    \"shippingCost\": 9900,\n    \"shippingMethod\": \"Posten Servicepakke\",\n    \"shippingMethodId\": \"posten-servicepakke\"\n  },\n  \"userDetails\": {\n    \"email\": \"user@example.com\",\n    \"firstName\": \"Ada\",\n    \"lastName\": \"Lovelace\",\n    \"mobileNumber\": \"91234567\",\n    \"userId\": \"uiJskNQ6qNN1iwN891uuob==\",\n    \"bankIdVerified\": \"Y\"\n  },\n  \"transactionInfo\": {\n    \"amount\": 49900,\n    \"status\": \"RESERVE\",\n    \"timeStamp\": \"2018-12-12T11:18:38.246Z\",\n    \"transactionId\": \"5001420062\"\n  },\n  \"errorInfo\": {\n    \"errorGroup\": \"Payment\",\n    \"errorCode\": \"44\",\n    \"errorMessage\": \"Refused by issuer because of expired card\",\n    \"contextId\": \"f70b8bf7-c843-4bea-95d9-94725b19895f\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/[callbackPrefix]/v2/payments/:orderId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"[callbackPrefix]",
+						"v2",
+						"payments",
+						":orderId"
+					],
+					"variable": [
+						{
+							"key": "orderId",
+							"value": "acme-shop-123-order123abc",
+							"description": "(Required) orderId"
+						}
+					]
+				},
+				"description": "This API call lets Vipps send the transaction details. For regular eCom payments the order and transaction details will be shared. For Vipps Hurtigkasse (express checkout) payments it will provides user details and shipping details addition to the order and transaction details. Vipps will add `/v2/payments/{orderId}` to the end of this URL. URLs passed to Vipps must validate, see the API guide. We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080. The URL must use HTTPS."
+			},
+			"response": [
+				{
+					"name": "All ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "The token provided by the merchant in the initiate payment request as `authToken` (an optional parameter). Vipps uses this token when making calls to the merchant's servers. Used so that the merchant may authenticate the request from Vipps.",
+								"key": "Authorization",
+								"value": "ae0cb90d91b4a84a"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"merchantSerialNumber\": \"123456\",\n  \"orderId\": \"acme-shop-123-order123abc\",\n  \"shippingDetails\": {\n    \"address\": {\n      \"addressLine1\": \"Robert Levins gate 5\",\n      \"city\": \"Oslo\",\n      \"country\": \"Norway\",\n      \"addressLine2\": \"Att: Rune Garborg\",\n      \"zipCode\": \"0154\"\n    },\n    \"shippingCost\": 9900,\n    \"shippingMethod\": \"Posten Servicepakke\",\n    \"shippingMethodId\": \"posten-servicepakke\"\n  },\n  \"userDetails\": {\n    \"email\": \"user@example.com\",\n    \"firstName\": \"Ada\",\n    \"lastName\": \"Lovelace\",\n    \"mobileNumber\": \"91234567\",\n    \"userId\": \"uiJskNQ6qNN1iwN891uuob==\",\n    \"bankIdVerified\": \"Y\"\n  },\n  \"transactionInfo\": {\n    \"amount\": 49900,\n    \"status\": \"RESERVE\",\n    \"timeStamp\": \"2018-12-12T11:18:38.246Z\",\n    \"transactionId\": \"5001420062\"\n  },\n  \"errorInfo\": {\n    \"errorGroup\": \"Payment\",\n    \"errorCode\": \"44\",\n    \"errorMessage\": \"Refused by issuer because of expired card\",\n    \"contextId\": \"f70b8bf7-c843-4bea-95d9-94725b19895f\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/[callbackPrefix]/v2/payments/:orderId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"[callbackPrefix]",
+								"v2",
+								"payments",
+								":orderId"
+							],
+							"variable": [
+								{
+									"key": "orderId",
+									"value": "acme-shop-123-order123abc",
+									"description": "(Required) orderId"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "Get Userinfo",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+						"key": "Merchant-Serial-Number",
+						"value": "123456"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json;charset=UTF-8"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/vipps-userinfo-api/userinfo/:sub",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"vipps-userinfo-api",
+						"userinfo",
+						":sub"
+					],
+					"variable": [
+						{
+							"key": "sub",
+							"value": "consectetur adipisicing deserunt sunt ut",
+							"description": "(Required) The `sub` is specified when fetching payment details"
+						}
+					]
+				},
+				"description": "This endpoint returns the payload with the information that the user has consented to share. Find more info on the `/userinfo` endpoint at the OIDC Standard https://openid.net/specs/openid-connect-core-1_0.html#UserInfo"
+			},
+			"response": [
+				{
+					"name": "Get Userinfo",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the `POST:/accesstoken/get` endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.",
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+							},
+							{
+								"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+								"key": "Merchant-Serial-Number",
+								"value": "123456"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/vipps-userinfo-api/userinfo/:sub",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"vipps-userinfo-api",
+								"userinfo",
+								":sub"
+							],
+							"variable": [
+								{
+									"key": "sub",
+									"value": "consectetur adipisicing deserunt sunt ut",
+									"description": "(Required) The `sub` is specified when fetching payment details"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"accounts\": [\n    {\n      \"account_name\": \"id Ut enim deserunt fugiat\",\n      \"account_number\": \"labore veniam in\",\n      \"bank_name\": \"mollit Duis nulla eu sint\"\n    },\n    {\n      \"account_name\": \"offic\",\n      \"account_number\": \"voluptate cupidatat esse\",\n      \"bank_name\": \"irure occaecat ea\"\n    }\n  ],\n  \"address\": {},\n  \"other_addresses\": [\n    {\n      \"addressLine1\": \"Robert Levins gate 5\",\n      \"city\": \"Oslo\",\n      \"country\": \"Norway\",\n      \"postCode\": \"0154\",\n      \"addressLine2\": \"Att: Rune Garborg\"\n    },\n    {\n      \"addressLine1\": \"Robert Levins gate 5\",\n      \"city\": \"Oslo\",\n      \"country\": \"Norway\",\n      \"postCode\": \"0154\",\n      \"addressLine2\": \"Att: Rune Garborg\"\n    }\n  ],\n  \"birthdate\": \"2000-12-31\",\n  \"email\": \"dolor sunt nisi eu laboris\",\n  \"email_verified\": true,\n  \"family_name\": \"sed consectetur qui elit in\",\n  \"given_name\": \"elit laboris ipsum nisi\",\n  \"name\": \"deserunt Duis Ut sint\",\n  \"nin\": \"09057517287\",\n  \"phone_number\": \"035336204990031\",\n  \"sid\": \"7d78a726-af92-499e-b857-de263ef9a969\",\n  \"sub\": \"c06c4afe-d9e1-4c5d-939a-177d752a0944\"\n}"
+				},
+				{
+					"name": "Bad Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the `POST:/accesstoken/get` endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.",
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+							},
+							{
+								"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+								"key": "Merchant-Serial-Number",
+								"value": "123456"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/vipps-userinfo-api/userinfo/:sub",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"vipps-userinfo-api",
+								"userinfo",
+								":sub"
+							],
+							"variable": [
+								{
+									"key": "sub",
+									"value": "consectetur adipisicing deserunt sunt ut",
+									"description": "(Required) The `sub` is specified when fetching payment details"
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"type\": \"voluptate do\",\n  \"title\": \"quis\",\n  \"status\": \"elit in Lorem dolore\",\n  \"detail\": \"aute laboris sed esse\",\n  \"instance\": \"elit et laboris\",\n  \"extraInfo\": {\n    \"nulla_fa3\": {},\n    \"enim_5d\": {}\n  }\n}"
+				},
+				{
+					"name": "Unauthorized",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the `POST:/accesstoken/get` endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.",
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+							},
+							{
+								"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+								"key": "Merchant-Serial-Number",
+								"value": "123456"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/vipps-userinfo-api/userinfo/:sub",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"vipps-userinfo-api",
+								"userinfo",
+								":sub"
+							],
+							"variable": [
+								{
+									"key": "sub",
+									"value": "consectetur adipisicing deserunt sunt ut",
+									"description": "(Required) The `sub` is specified when fetching payment details"
+								}
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"type\": \"voluptate do\",\n  \"title\": \"quis\",\n  \"status\": \"elit in Lorem dolore\",\n  \"detail\": \"aute laboris sed esse\",\n  \"instance\": \"elit et laboris\",\n  \"extraInfo\": {\n    \"nulla_fa3\": {},\n    \"enim_5d\": {}\n  }\n}"
+				},
+				{
+					"name": "Forbidden",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the `POST:/accesstoken/get` endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.",
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+							},
+							{
+								"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+								"key": "Merchant-Serial-Number",
+								"value": "123456"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/vipps-userinfo-api/userinfo/:sub",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"vipps-userinfo-api",
+								"userinfo",
+								":sub"
+							],
+							"variable": [
+								{
+									"key": "sub",
+									"value": "consectetur adipisicing deserunt sunt ut",
+									"description": "(Required) The `sub` is specified when fetching payment details"
+								}
+							]
+						}
+					},
+					"status": "Forbidden",
+					"code": 403,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"type\": \"voluptate do\",\n  \"title\": \"quis\",\n  \"status\": \"elit in Lorem dolore\",\n  \"detail\": \"aute laboris sed esse\",\n  \"instance\": \"elit et laboris\",\n  \"extraInfo\": {\n    \"nulla_fa3\": {},\n    \"enim_5d\": {}\n  }\n}"
+				},
+				{
+					"name": "Not Found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the `POST:/accesstoken/get` endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.",
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+							},
+							{
+								"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+								"key": "Merchant-Serial-Number",
+								"value": "123456"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/vipps-userinfo-api/userinfo/:sub",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"vipps-userinfo-api",
+								"userinfo",
+								":sub"
+							],
+							"variable": [
+								{
+									"key": "sub",
+									"value": "consectetur adipisicing deserunt sunt ut",
+									"description": "(Required) The `sub` is specified when fetching payment details"
+								}
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"type\": \"voluptate do\",\n  \"title\": \"quis\",\n  \"status\": \"elit in Lorem dolore\",\n  \"detail\": \"aute laboris sed esse\",\n  \"instance\": \"elit et laboris\",\n  \"extraInfo\": {\n    \"nulla_fa3\": {},\n    \"enim_5d\": {}\n  }\n}"
+				},
+				{
+					"name": "Internal Server Error",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) The access token is a base64-encoded string that is required for all API calls. It is a JWT (JSON Web Token). The access token is fetched from the `POST:/accesstoken/get` endpoint. It is valid for 1 hour in the test environment and 24 hours in the production environment.",
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+							},
+							{
+								"description": "The Merchant Serial Number (MSN) is a unique id for the sale unit that this payment is made for. This is a required parameter if you are a Vipps eCom partner making payments on behalf of a merchant. The partner must use the merchant's MSN (not the partner's MSN). This parameter is optional, and recommended, for regular Vipps merchants making payments for themselves.",
+								"key": "Merchant-Serial-Number",
+								"value": "123456"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/vipps-userinfo-api/userinfo/:sub",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"vipps-userinfo-api",
+								"userinfo",
+								":sub"
+							],
+							"variable": [
+								{
+									"key": "sub",
+									"value": "consectetur adipisicing deserunt sunt ut",
+									"description": "(Required) The `sub` is specified when fetching payment details"
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=UTF-8"
+						}
+					],
+					"cookie": [],
+					"body": "{\n  \"type\": \"voluptate do\",\n  \"title\": \"quis\",\n  \"status\": \"elit in Lorem dolore\",\n  \"detail\": \"aute laboris sed esse\",\n  \"instance\": \"elit et laboris\",\n  \"extraInfo\": {\n    \"nulla_fa3\": {},\n    \"enim_5d\": {}\n  }\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://apitest.vipps.no",
+			"type": "string"
+		}
+	]
+}

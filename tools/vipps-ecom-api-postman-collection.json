@@ -619,6 +619,87 @@
 			"response": []
 		},
 		{
+			"name": "Force Approve Payment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Ocp-Apim-Subscription-Key",
+						"value": "{{Ocp-Apim-Subscription-Key}}"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					},
+					{
+						"key": "X-Request-Id",
+						"value": "{{orderId}}"
+					},
+					{
+						"key": "Merchant-Serial-Number",
+						"value": "{{merchantSerialNumber}}",
+						"type": "text"
+					},
+					{
+						"key": "Vipps-System-Name",
+						"value": "{{vipps_system_name}}",
+						"type": "text"
+					},
+					{
+						"key": "Vipps-System-Version",
+						"value": "{{vipps_system_version}}",
+						"type": "text"
+					},
+					{
+						"key": "Vipps-System-Plugin-Name",
+						"value": "{{vipps_system_plugin_name}}",
+						"type": "text"
+					},
+					{
+						"key": "Vipps-System-Plugin-Version",
+						"value": "{{vipps_system_plugin_version}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"customerPhoneNumber\": \"91234567\",\n  \"token\": \"eyJraWQiOiJqd3R\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/ecomm/v2/integration-test/payments/:orderId/approve",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"ecomm",
+						"v2",
+						"integration-test",
+						"payments",
+						":orderId",
+						"approve"
+					],
+					"variable": [
+						{
+							"key": "orderId",
+							"value": "{{orderId}}",
+							"description": "(Required) The `orderId` is specified when initiating the payment."
+						}
+					]
+				},
+				"description": "This endpoint lets developers approve a payment through the Vipps eCom API without the use of the Vipps app. This is useful for automated testing. Express checkout is not supported for this endpoint. The endpoint is only available in our Test environment. Attempted use of the endpoint in production is not allowed, and will fail. Important: All test users must manually approve at least one payment in Vipps (using the app) before this endpoint can be used for that user."
+			},
+			"response": []
+		},
+		{
 			"name": "Refund Payment",
 			"request": {
 				"method": "POST",
