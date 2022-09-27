@@ -160,7 +160,7 @@ paths:
         (when using a laptop/esktop), or app-switch to Vipps (when using a phone).
         The landing page detects if the request comes from a mobile or laptop/desktop device,
         and if on a mobile device automatically switches to the Vipps app, if it is installed.
-        The merchant may also pass the 'isApp: true' parameter that will make Vipps
+        The merchant may also pass the optional 'isApp: true' parameter that will make Vipps
         respond with a app-switch deeplink that will take the customer directly
         to the Vipps app. This is normally not necessary, as Vipps handles this automatically.
         URLs passed to Vipps must validate, see the API guide.
