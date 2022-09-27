@@ -15,7 +15,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.6.9.
+Document version 2.6.10.
 
 <!-- START_TOC -->
 
@@ -657,6 +657,10 @@ While the minimum length for `orderId` is *technically* just one character,
 we *strongly* recommend to use a format that makes it easy to
 find in the logs. For example, `acme-shop-123-order123abc` is a better
 format than `123456`.
+
+**Please note:** Very short orderIds (just a few digits() can cause internal
+processing in Vipps' systems to be slower than when using recommended
+`orderId`s, and this _can_ cause problems.
 
 If you ever have a problem that requires us to search in our logs, we need an
 `orderId` that is "unique enough" to actually find. An `orderId` that
