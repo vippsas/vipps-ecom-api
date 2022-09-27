@@ -8,7 +8,9 @@ tags:
   - name: Authorization Service
     description: Authorization Service
   - name: Vipps eCom API
-    description: Functionality provided by the Vipps eCommerce API
+    description: >-
+      Functionality provided by the Vipps eCommerce API.
+      For details, see the [API Guide](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
   - name: Merchant Endpoints
     description: >-
       These endpoints must be implemented by the merchant, and are called by Vipps.
