@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Vipps eCommerce API v1.6.29</title>
+    <title>Vipps eCommerce API v1.6.33</title>
 
     <style>
     </style>
@@ -1614,11 +1614,6 @@ Darkula color scheme from the JetBrains family of IDEs
 	  	<ul class="toc-list-h1">
         
           <li>
-            <a href="#vipps-ecommerce-api" class="toc-h1 toc-link" data-title="Vipps eCommerce API">Vipps eCommerce API</a>
-            
-          </li>
-        
-          <li>
             <a href="#vipps-ecommerce-api-authorization-service" class="toc-h1 toc-link" data-title="Authorization Service">Authorization Service</a>
             
               <ul class="toc-list-h2">
@@ -1959,8 +1954,7 @@ Darkula color scheme from the JetBrains family of IDEs
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="vipps-ecommerce-api">Vipps eCommerce API</h1>
-<p>Additional API documentation: <a href="https://github.com/vippsas/vipps-ecom-api/">https://github.com/vippsas/vipps-ecom-api/</a></p>
+        <p>For details, see the <a href="https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api">API Guide</a>.</p>
 <p>Base URLs:</p>
 <ul>
 <li>
@@ -2776,7 +2770,7 @@ System.out.println(response.toString());
 <td>body</td>
 <td>boolean</td>
 <td>false</td>
-<td>Use the extended UX flow for express checkout which forces users to confirm their address and shipping choices</td>
+<td>Use the new and improved extended UX flow for express checkout which forces users to confirm their address and shipping choices</td>
 </tr>
 </tbody>
 </table>
@@ -5191,12 +5185,10 @@ System.out.println(response.toString());
   },
   <span class="hljs-attr">&quot;userDetails&quot;</span>: {
     <span class="hljs-attr">&quot;bankIdVerified&quot;</span>: <span class="hljs-string">&quot;Y&quot;</span>,
-    <span class="hljs-attr">&quot;dateOfBirth&quot;</span>: <span class="hljs-string">&quot;12-3-1988&quot;</span>,
     <span class="hljs-attr">&quot;email&quot;</span>: <span class="hljs-string">&quot;user@example.com&quot;</span>,
     <span class="hljs-attr">&quot;firstName&quot;</span>: <span class="hljs-string">&quot;Ada&quot;</span>,
     <span class="hljs-attr">&quot;lastName&quot;</span>: <span class="hljs-string">&quot;Lovelace&quot;</span>,
     <span class="hljs-attr">&quot;mobileNumber&quot;</span>: <span class="hljs-string">&quot;91234567&quot;</span>,
-    <span class="hljs-attr">&quot;ssn&quot;</span>: <span class="hljs-string">&quot;12345678901&quot;</span>,
     <span class="hljs-attr">&quot;userId&quot;</span>: <span class="hljs-string">&quot;uiJskNQ6qNN1iwN891uuob==&quot;</span>
   },
   <span class="hljs-attr">&quot;sub&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
@@ -5989,12 +5981,10 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/{orderId} \
   },
   &quot;userDetails&quot;: {
     &quot;bankIdVerified&quot;: &quot;Y&quot;,
-    &quot;dateOfBirth&quot;: &quot;12-3-1988&quot;,
     &quot;email&quot;: &quot;user@example.com&quot;,
     &quot;firstName&quot;: &quot;Ada&quot;,
     &quot;lastName&quot;: &quot;Lovelace&quot;,
     &quot;mobileNumber&quot;: &quot;91234567&quot;,
-    &quot;ssn&quot;: &quot;12345678901&quot;,
     &quot;userId&quot;: &quot;uiJskNQ6qNN1iwN891uuob==&quot;
   },
   &quot;errorInfo&quot;: {
@@ -6140,12 +6130,10 @@ System.out.println(response.toString());
   },
   <span class="hljs-attr">&quot;userDetails&quot;</span>: {
     <span class="hljs-attr">&quot;bankIdVerified&quot;</span>: <span class="hljs-string">&quot;Y&quot;</span>,
-    <span class="hljs-attr">&quot;dateOfBirth&quot;</span>: <span class="hljs-string">&quot;12-3-1988&quot;</span>,
     <span class="hljs-attr">&quot;email&quot;</span>: <span class="hljs-string">&quot;user@example.com&quot;</span>,
     <span class="hljs-attr">&quot;firstName&quot;</span>: <span class="hljs-string">&quot;Ada&quot;</span>,
     <span class="hljs-attr">&quot;lastName&quot;</span>: <span class="hljs-string">&quot;Lovelace&quot;</span>,
     <span class="hljs-attr">&quot;mobileNumber&quot;</span>: <span class="hljs-string">&quot;91234567&quot;</span>,
-    <span class="hljs-attr">&quot;ssn&quot;</span>: <span class="hljs-string">&quot;12345678901&quot;</span>,
     <span class="hljs-attr">&quot;userId&quot;</span>: <span class="hljs-string">&quot;uiJskNQ6qNN1iwN891uuob==&quot;</span>
   },
   <span class="hljs-attr">&quot;errorInfo&quot;</span>: {
@@ -6934,12 +6922,10 @@ System.out.println(response.toString());
 <a id="tocsuserdetails"></a></p>
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">&quot;bankIdVerified&quot;</span>: <span class="hljs-string">&quot;Y&quot;</span>,
-  <span class="hljs-attr">&quot;dateOfBirth&quot;</span>: <span class="hljs-string">&quot;12-3-1988&quot;</span>,
   <span class="hljs-attr">&quot;email&quot;</span>: <span class="hljs-string">&quot;user@example.com&quot;</span>,
   <span class="hljs-attr">&quot;firstName&quot;</span>: <span class="hljs-string">&quot;Ada&quot;</span>,
   <span class="hljs-attr">&quot;lastName&quot;</span>: <span class="hljs-string">&quot;Lovelace&quot;</span>,
   <span class="hljs-attr">&quot;mobileNumber&quot;</span>: <span class="hljs-string">&quot;91234567&quot;</span>,
-  <span class="hljs-attr">&quot;ssn&quot;</span>: <span class="hljs-string">&quot;12345678901&quot;</span>,
   <span class="hljs-attr">&quot;userId&quot;</span>: <span class="hljs-string">&quot;uiJskNQ6qNN1iwN891uuob==&quot;</span>
 }
 
@@ -6963,13 +6949,6 @@ System.out.println(response.toString());
 <td>false</td>
 <td>none</td>
 <td>Optional Y/N string indicating if the user in bankId verified, must be requested during onboarding.</td>
-</tr>
-<tr>
-<td>dateOfBirth</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>Optional date of birth information, must be requested during onboarding. Please note: We will at some point move to ISO 8601: YYYY-MM-DD</td>
 </tr>
 <tr>
 <td>email</td>
@@ -6998,13 +6977,6 @@ System.out.println(response.toString());
 <td>true</td>
 <td>none</td>
 <td>Mobile number</td>
-</tr>
-<tr>
-<td>ssn</td>
-<td>string</td>
-<td>false</td>
-<td>none</td>
-<td>Optional social security number for the user, must be requested during onboarding.</td>
 </tr>
 <tr>
 <td>userId</td>
@@ -7792,12 +7764,10 @@ System.out.println(response.toString());
   },
   <span class="hljs-attr">&quot;userDetails&quot;</span>: {
     <span class="hljs-attr">&quot;bankIdVerified&quot;</span>: <span class="hljs-string">&quot;Y&quot;</span>,
-    <span class="hljs-attr">&quot;dateOfBirth&quot;</span>: <span class="hljs-string">&quot;12-3-1988&quot;</span>,
     <span class="hljs-attr">&quot;email&quot;</span>: <span class="hljs-string">&quot;user@example.com&quot;</span>,
     <span class="hljs-attr">&quot;firstName&quot;</span>: <span class="hljs-string">&quot;Ada&quot;</span>,
     <span class="hljs-attr">&quot;lastName&quot;</span>: <span class="hljs-string">&quot;Lovelace&quot;</span>,
     <span class="hljs-attr">&quot;mobileNumber&quot;</span>: <span class="hljs-string">&quot;91234567&quot;</span>,
-    <span class="hljs-attr">&quot;ssn&quot;</span>: <span class="hljs-string">&quot;12345678901&quot;</span>,
     <span class="hljs-attr">&quot;userId&quot;</span>: <span class="hljs-string">&quot;uiJskNQ6qNN1iwN891uuob==&quot;</span>
   },
   <span class="hljs-attr">&quot;sub&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
@@ -8432,7 +8402,7 @@ System.out.println(response.toString());
 <td>boolean</td>
 <td>false</td>
 <td>none</td>
-<td>Use the extended UX flow for express checkout which forces users to confirm their address and shipping choices</td>
+<td>Use the new and improved extended UX flow for express checkout which forces users to confirm their address and shipping choices</td>
 </tr>
 </tbody>
 </table>
@@ -8951,12 +8921,10 @@ System.out.println(response.toString());
   },
   <span class="hljs-attr">&quot;userDetails&quot;</span>: {
     <span class="hljs-attr">&quot;bankIdVerified&quot;</span>: <span class="hljs-string">&quot;Y&quot;</span>,
-    <span class="hljs-attr">&quot;dateOfBirth&quot;</span>: <span class="hljs-string">&quot;12-3-1988&quot;</span>,
     <span class="hljs-attr">&quot;email&quot;</span>: <span class="hljs-string">&quot;user@example.com&quot;</span>,
     <span class="hljs-attr">&quot;firstName&quot;</span>: <span class="hljs-string">&quot;Ada&quot;</span>,
     <span class="hljs-attr">&quot;lastName&quot;</span>: <span class="hljs-string">&quot;Lovelace&quot;</span>,
     <span class="hljs-attr">&quot;mobileNumber&quot;</span>: <span class="hljs-string">&quot;91234567&quot;</span>,
-    <span class="hljs-attr">&quot;ssn&quot;</span>: <span class="hljs-string">&quot;12345678901&quot;</span>,
     <span class="hljs-attr">&quot;userId&quot;</span>: <span class="hljs-string">&quot;uiJskNQ6qNN1iwN891uuob==&quot;</span>
   },
   <span class="hljs-attr">&quot;errorInfo&quot;</span>: {
@@ -9314,12 +9282,10 @@ System.out.println(response.toString());
   },
   <span class="hljs-attr">&quot;userDetails&quot;</span>: {
     <span class="hljs-attr">&quot;bankIdVerified&quot;</span>: <span class="hljs-string">&quot;Y&quot;</span>,
-    <span class="hljs-attr">&quot;dateOfBirth&quot;</span>: <span class="hljs-string">&quot;12-3-1988&quot;</span>,
     <span class="hljs-attr">&quot;email&quot;</span>: <span class="hljs-string">&quot;user@example.com&quot;</span>,
     <span class="hljs-attr">&quot;firstName&quot;</span>: <span class="hljs-string">&quot;Ada&quot;</span>,
     <span class="hljs-attr">&quot;lastName&quot;</span>: <span class="hljs-string">&quot;Lovelace&quot;</span>,
     <span class="hljs-attr">&quot;mobileNumber&quot;</span>: <span class="hljs-string">&quot;91234567&quot;</span>,
-    <span class="hljs-attr">&quot;ssn&quot;</span>: <span class="hljs-string">&quot;12345678901&quot;</span>,
     <span class="hljs-attr">&quot;userId&quot;</span>: <span class="hljs-string">&quot;uiJskNQ6qNN1iwN891uuob==&quot;</span>
   },
   <span class="hljs-attr">&quot;errorInfo&quot;</span>: {

@@ -1,9 +1,8 @@
 openapi: '3.0.0'
 info:
   description: |
-    # Vipps eCommerce API
-    Additional API documentation: https://github.com/vippsas/vipps-ecom-api/
-  version: 1.6.29
+    For details, see the [API Guide](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
+  version: 1.6.33
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -1357,10 +1356,6 @@ components:
           enum:
             - Y
             - N
-        dateOfBirth:
-          type: string
-          description: "Optional date of birth information, must be requested during onboarding. Please note: We will at some point move to ISO 8601: YYYY-MM-DD"
-          example: 12-3-1988
         email:
           type: string
           description: Email address
@@ -1380,13 +1375,6 @@ components:
           minLength: 8
           maxLength: 8
           pattern: '^\d{8}$'
-        ssn:
-          type: string
-          description: Optional social security number for the user, must be requested during onboarding.
-          example: '12345678901'
-          minLength: 11
-          maxLength: 11
-          pattern: '^\d{11}$'
         userId:
           type: string
           example: 'uiJskNQ6qNN1iwN891uuob=='
@@ -1420,6 +1408,7 @@ components:
         email_verified:
           description: 'Boolean value if the End user''s email address is verified.'
           type: boolean
+          example: true
         family_name:
           description: 'Surname(s) or last name(s) of the end user.'
           type: string
@@ -1471,6 +1460,7 @@ components:
         default:
           description: 'If this is default address'
           type: boolean
+          example: true
         formatted:
           description: 'End user address as a formatted string'
           type: string
@@ -1946,7 +1936,8 @@ components:
           $ref: '#/components/schemas/AdditionalTransactionData'
         useExplicitCheckoutFlow:
           type: boolean
-          description: Use the extended UX flow for express checkout which forces users to confirm their address and shipping choices
+          description: Use the new and improved extended UX flow for express checkout which forces users to confirm their address and shipping choices
+          default: false
           example: true
     AdditionalTransactionData:
       description: >-
@@ -2206,6 +2197,7 @@ components:
           type: boolean
           description: An opt-in field to instruct the release of remaining funds after a partial capture.
           default: false
+          example: false
       required:
         - merchantInfo
         - transaction

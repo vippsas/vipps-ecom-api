@@ -9,17 +9,17 @@ END_METADATA -->
 
 API version: 2.0.
 
-Document version 2.1.11.
+Document version 2.1.12.
 
 ## Checklist
 
 - [ ] Integrate _all_ the [API endpoints](vipps-ecom-api.md#api-endpoints):
-    - [ ] Initiate [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/initiatePaymentV3UsingPOST)
-    - [ ] Full and partial Capture [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/capturePaymentUsingPOST)
-    - [ ] Cancel [`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
-    - [ ] Full and partial Refund [`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST)
-    - [ ] Details [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
-    - For examples of requests and responses, see the [Postman collection](./tools/vipps-ecom-api-postman-collection.json) and [environment](./tools/vipps-ecom-api-postman-environment.json).
+    - [ ] Initiate [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST)
+    - [ ] Full and partial Capture [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/capturePaymentUsingPOST)
+    - [ ] Cancel [`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/cancelPaymentRequestUsingPUT)
+    - [ ] Full and partial Refund [`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST)
+    - [ ] Details [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET)
+    - For examples of requests and responses, see the [Postman collection](tools/vipps-ecom-api-postman-collection.json) and [environment](tools/vipps-ecom-api-postman-environment.json).
 - [ ] Send the [Vipps HTTP headers](vipps-ecom-api.md#vipps-http-headers)
       in all API requests for better tracking and troubleshooting
       (mandatory for partners and platforms, who must send these headers as part of the checklist approval):
@@ -34,16 +34,16 @@ Document version 2.1.11.
       [how callback URLs are built](vipps-ecom-api.md#callback-endpoints),
       make test calls to make sure you handle the `POST` requests correctly.
       Vipps does not have capacity to manually do this for you.
-    - [ ] Callback [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/transactionUpdateCallbackForRegularPaymentUsingPOST)
+    - [ ] Callback [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Merchant-Endpoints/operation/transactionUpdateCallbackForRegularPaymentUsingPOST)
     - [ ] For Vipps Hurtigkasse (express checkout) only:
         - [ ] Shipping details
-              [`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/fetchShippingCostUsingPOST)
+              [`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Merchant-Endpoints/operation/fetchShippingCostUsingPOST)
         - [ ] Remove consent
-              [`DELETE:[consetRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-ecom-api/#/Endpoints_required_by_Vipps_from_the_merchant/removeUserConsentUsingDELETE)
+              [`DELETE:[consentRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Merchant-Endpoints/operation/removeUserConsentUsingDELETE)
  - [ ] Make sure to log and handle [all errors](vipps-ecom-api.md#errors).
  - [ ] Avoid Integration pitfalls
     - [ ] The Merchant _must not_ rely on `fallback` or `callback` alone, and must poll
-          [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/getPaymentDetailsUsingGET)
+          [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET)
           as documented (this is part of the first item in this checklist, but it's still a common error).
           Follow our [polling recommendations](vipps-ecom-api.md#polling-guidelines).  
     - [ ] The merchant must handle that the `fallback` URL is opened in the default browser on the phone,
@@ -75,18 +75,18 @@ Document version 2.1.11.
    [Vipps test environment](https://github.com/vippsas/vipps-developers#the-vipps-test-environment-mt),
    with the following states:
     - A complete order ending in `REFUND`
-      ([`/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST)
+      ([`/refund`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST)
       request).
     - A complete order ending in `VOID`
-      ([`/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
+      ([`/cancel`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/cancelPaymentRequestUsingPUT)
       request).
     - In the test environment this must be verified using the API itself.
 6. The Merchant verifies the integration in the production environment (similar to step 5):
     - A complete order ending in `REFUND`
-      ([`/refund`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST)
+      ([`/refund`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST)
       request).
     - For *reserve capture*: A complete order ending in `VOID`
-      ([`/cancel`](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/cancelPaymentRequestUsingPUT)
+      ([`/cancel`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/cancelPaymentRequestUsingPUT)
       request after reserve).
     - We recommend checking this using both the API itself and the API Dashboard available under "Utvikler" on
       [portal.vipps.no](https://portal.vipps.no).  
@@ -100,7 +100,7 @@ Document version 2.1.11.
 
 See: [Vipps partners](https://github.com/vippsas/vipps-partner#vipps-partners).
 
-# Questions?
+## Questions?
 
 We're always happy to help with code or other questions you might have!
 Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),
