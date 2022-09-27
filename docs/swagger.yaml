@@ -2,13 +2,15 @@ openapi: '3.0.0'
 info:
   description: |
     For details, see the [API Guide](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
-  version: 1.6.33
+  version: 1.6.34
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
     description: Authorization Service
   - name: Vipps eCom API
-    description: Functionality provided by the Vipps eCommerce API
+    description: >-
+      Functionality provided by the Vipps eCommerce API.
+      For details, see the [API Guide](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
   - name: Merchant Endpoints
     description: >-
       These endpoints must be implemented by the merchant, and are called by Vipps.
@@ -72,12 +74,11 @@ paths:
         - Merchant Endpoints
       summary: Remove User Consent (for Vipps Hurtigkasse (express checkout))
       description: >-
-        This API endpoint on the merchant side allows Vipps to send consent
+        This API endpoint on the merchant side lets Vipps send consent
         removal requests to the merchant. When receiving requests the merchant
         is obliged to remove the user details permanently, as per the GDPR
         guidelines. Vipps will add `/v2/consents/{userId}` to the end of this URL.
-        URLs passed to Vipps must validate, see
-        [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
+        URLs passed to Vipps must validate, see the API guide.
         We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
         The URL must use HTTPS.
       operationId: removeUserConsentUsingDELETE
@@ -100,7 +101,7 @@ paths:
         - Merchant Endpoints
       summary: Fetch Shipping Cost & Method (for Vipps Hurtigkasse (express checkout))
       description: >-
-        This API endpoint on the merchant side allows Vipps to get the shipping
+        This API endpoint on the merchant side lets Vipps get the shipping
         cost and method based on the provided address and product details. The
         primary use of this service is Vipps Hurtigkasse (express checkout)
         where Vipps needs to present shipping cost and method to the Vipps user.
@@ -109,8 +110,7 @@ paths:
         Vipps has a *10 second timeout* for these requests, to ensure a good
         user experience, and thus requires a quick reply from the merchant's
         server for successful payments.
-        URLs passed to Vipps must validate, see
-        [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
+        URLs passed to Vipps must validate, see the API guide.
         We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
         The URL must use HTTPS.
       operationId: fetchShippingCostUsingPOST
@@ -126,8 +126,8 @@ paths:
         - name: Authorization
           in: header
           description: >-
-            Token provided by the merchant in the initiate payment request as
-            `authToken`.
+            The token provided by the merchant in the initiate payment request
+            as `authToken` (an optional parameter).
             Vipps uses this token when making calls to the merchant's servers.
             Used so that the merchant may authenticate the request from Vipps.
           schema:
@@ -153,7 +153,7 @@ paths:
         - Vipps eCom API
       summary: Initiate Payment
       description: >-
-        This API call allows the merchants to initiate payments.
+        This API call lets the merchants initiate payments.
         The `merchantSerialNumber` (MSN) specifies which sales unit the payment is for.
         Payments are uniquely identified with the `merchantSerialNumber` and `orderId` together.
         The merchant-provided `orderId` must be unique per sales unit.
@@ -162,11 +162,10 @@ paths:
         (when using a laptop/esktop), or app-switch to Vipps (when using a phone).
         The landing page detects if the request comes from a mobile or laptop/desktop device,
         and if on a mobile device automatically switches to the Vipps app, if it is installed.
-        The merchant may also pass the 'isApp: true' parameter that will make Vipps
+        The merchant may also pass the optional 'isApp: true' parameter that will make Vipps
         respond with a app-switch deeplink that will take the customer directly
         to the Vipps app. This is normally not necessary, as Vipps handles this automatically.
-        URLs passed to Vipps must validate, see
-        [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
+        URLs passed to Vipps must validate, see the API guide.
         The URLs must use HTTPS.
       operationId: initiatePaymentV3UsingPOST
       parameters:
@@ -248,15 +247,14 @@ paths:
             post:
               summary: 'Callback : Transaction Update'
               description: >-
-                This API call allows Vipps to send the transaction details to the merchant.
+                This API call lets Vipps send the transaction details to the merchant.
                 For regular eCom payments the order and transaction details will be shared.
                 For Vipps Hurtigkasse (express checkout) payments it will in addition provide
                 user details and shipping details.
                 Vipps will add `/v2/payments/{orderId}` to the end of this URL.
                 Vipps has a *3 second timeout* for these requests, and thus requires
                 a quick reply from the merchant's server for successful payments.
-                URLs passed to Vipps must validate, see
-                [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
+                URLs passed to Vipps must validate, see the API guide.
                 We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
                 The URL must use HTTPS.
               operationId: InitiatePaymentTransactionUpdateCallbackForRegularPaymentUsingPOSTExpress
@@ -280,15 +278,14 @@ paths:
             post:
               summary: 'Callback : Transaction Update'
               description: >-
-                This API call allows Vipps to send the transaction details to the merchant.
+                This API call lets Vipps send the transaction details to the merchant.
                 For regular eCom payments the order and transaction details will be shared.
                 For Vipps Hurtigkasse (express checkout) payments it will in addition provide
                 user details and shipping details.
                 Vipps will add `/v2/payments/{orderId}` to the end of this URL.
                 Vipps has a *3 second timeout* for these requests, and thus requires
                 a quick reply from the merchant's server for successful payments.
-                URLs passed to Vipps must validate, see
-                [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
+                URLs passed to Vipps must validate, see the API guide.
                 We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
                 The URL must use HTTPS.
               operationId: InitiatePaymentTransactionUpdateCallbackForRegularPaymentUsingPOSTExpress
@@ -312,12 +309,11 @@ paths:
             delete:
               summary: Remove User Consent (for Vipps Hurtigkasse (express checkout))
               description: >-
-                This API endpoint on the merchant side allows Vipps to send consent
+                This API endpoint on the merchant side lets Vipps send consent
                 removal requests to merchant. When receiving requests the merchant is
                 obliged to remove the user details permanently, as per the GDPR
                 guidelines. Vipps will add `/v2/consents/{userId}` to the end of this URL.
-                URLs passed to Vipps must validate, see
-                [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
+                URLs passed to Vipps must validate, see the API guide.
                 We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
                 The URL must use HTTPS.
               operationId: removeUserConsentUsingDELETE
@@ -339,7 +335,7 @@ paths:
             post:
               summary: Fetch shipping cost and method (for Vipps Hurtigkasse (express checkout))
               description: >-
-                This API endpoint on the merchant side allows Vipps to get the shipping
+                This API endpoint on the merchant side lets Vipps get the shipping
                 cost and method based on the provided address and product details. The
                 primary use of this service is Vipps Hurtigkasse (express checkout)
                 where Vipps needs to present shipping cost and method to the Vipps user.
@@ -349,8 +345,7 @@ paths:
                 a quick reply from the merchant's server for successful payments.
                 If the merchant does not respond in time, the user will get an
                 error in Vipps saying "No shipping methods found".
-                URLs passed to Vipps must validate, see
-                [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
+                URLs passed to Vipps must validate, see the API guide.
                 We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
                 The URL must use HTTPS.
               operationId: fetchShippingCostUsingPOST
@@ -390,13 +385,12 @@ paths:
         - Merchant Endpoints
       summary: 'Callback : Transaction Update'
       description: >-
-        This API call allows Vipps to send the transaction details.
+        This API call lets Vipps send the transaction details.
         For regular eCom payments the order and transaction details will be shared.
         For Vipps Hurtigkasse (express checkout) payments it will provides user details and
         shipping details addition to the order and transaction details.
         Vipps will add `/v2/payments/{orderId}` to the end of this URL.
-        URLs passed to Vipps must validate, see
-        [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
+        URLs passed to Vipps must validate, see the API guide.
         We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
         The URL must use HTTPS.
       operationId: transactionUpdateCallbackForRegularPaymentUsingPOST
@@ -412,9 +406,10 @@ paths:
         - name: Authorization
           in: header
           description: >-
-            Token provided by the merchant in initiate payment request as
-            `authToken`. Used so that the merchant may authenticate the request
-            from Vipps.
+            The token provided by the merchant in the initiate payment request
+            as `authToken` (an optional parameter).
+            Vipps uses this token when making calls to the merchant's servers.
+            Used so that the merchant may authenticate the request from Vipps.
           schema:
             type: string
           example: ae0cb90d91b4a84a
@@ -434,9 +429,9 @@ paths:
     post:
       tags:
         - Vipps eCom API
-      summary: 'Capture Payment '
+      summary: 'Capture Payment'
       description: >-
-        This API call allows merchant to capture the reserved amount. Amount to
+        This API call lets merchant capture the reserved amount. Amount to
         capture cannot be higher than reserved. The API also allows capturing
         a partial amount of the reserved amount. Partial capture can be called as
         many times as required so long there is a remaining reserved amount to capture.
@@ -548,7 +543,7 @@ paths:
         - Vipps eCom API
       summary: Cancel Payment
       description: >-
-        This API call allows merchants to cancel a reserved or initiated transaction as long as it is less than 6 months old.
+        This API call lets merchants cancel a reserved or initiated transaction as long as it is less than 6 months old.
         In order to enable cancellation of remaining funds after partial capture, the `shouldReleaseRemainingFunds` flag must be set.
         Please note that the payment will be cancelled by Vipps even in cases of communication errors during an initiate payment service call
         between Vipps and PSP/Acquirer/Issuer and even in cases where the customer has
@@ -648,7 +643,7 @@ paths:
         - Vipps eCom API
       summary: Authorize Payment
       description: >-
-        The API call allows merchant to refresh the authorizations of the payment. A reservation's lifetime
+        The API call lets merchant refresh the authorizations of the payment. A reservation's lifetime
         is defined by the scheme. Typically 7 days for Visa, and 30 days for Mastercard.
         This is currently _not yet_  available in the production environment.
       operationId: authorizePaymentUsingPut
@@ -745,7 +740,7 @@ paths:
         - Vipps eCom API
       summary: 'Refund Payment '
       description: >-
-        The API allows a merchant to do a refund of an already captured
+        The API lets a merchant do a refund of an already captured
         transaction. There is an option to do a partial refund of the captured
         amount. Refunded amount cannot be larger than captured. Time frame for
         issuing a refund for a payment is 365 days from the date payment has
@@ -856,7 +851,7 @@ paths:
         - Vipps eCom API
       summary: 'Force Approve Payment'
       description: >-
-        This endpoint allows developers to approve a payment through the Vipps eCom API
+        This endpoint lets developers approve a payment through the Vipps eCom API
         without the use of the Vipps app. This is useful for automated testing.
         Express checkout is not supported for this endpoint.
         The endpoint is only available in our Test environment.
@@ -945,7 +940,7 @@ paths:
         - Vipps eCom API
       summary: Get Payment Details
       description: >-
-        This API call allows merchant to get the details of a payment
+        This API call lets merchant get the details of a payment
         transaction. Service call returns detailed transaction history of given
         payment where events are sorted from newest to oldest for when the
         transaction occurred.
@@ -1038,9 +1033,9 @@ paths:
         - Vipps eCom API
       summary: 'Deprecated: Get Order Status'
       description: >-
-        This API call allows the merchant to get the status of the last payment
-        transaction. Primarily use of this service is meant for inApp where
-        simple response to check order status is preferred.
+        This deprecated endpoint lets the merchant get the status of the last payment
+        transaction. The response may be confusing.
+        Please use `/details` instead, as it offers more information.
       operationId: getOrderStatusUsingGET
       parameters:
         - name: orderId
@@ -1672,8 +1667,9 @@ components:
         orderId:
           type: string
           description: >-
-            Id which uniquely identifies a payment. Maximum length is 50
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+            An id that uniquely identifies a payment.
+            Please see the orderId recommendations in the API guide.
+            Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
           example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
@@ -1705,8 +1701,9 @@ components:
         orderId:
           type: string
           description: >-
-            Id which uniquely identifies a payment. Maximum length is 50
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+            An id that uniquely identifies a payment.
+            Please see the orderId recommendations in the API guide.
+            Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
           example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
@@ -1759,8 +1756,9 @@ components:
         orderId:
           type: string
           description: >-
-            Id which uniquely identifies a payment. Maximum length is 50
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+            An id that uniquely identifies a payment.
+            Please see the orderId recommendations in the API guide.
+            Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
           example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
@@ -1787,8 +1785,9 @@ components:
         orderId:
           type: string
           description: >-
-            Id which uniquely identifies a payment. Maximum length is 50
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+            An id that uniquely identifies a payment.
+            Please see the orderId recommendations in the API guide.
+            Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
           example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
@@ -1815,8 +1814,9 @@ components:
         orderId:
           type: string
           description: >-
-            Id which uniquely identifies a payment. Maximum length is 50
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+            An id that uniquely identifies a payment.
+            Please see the orderId recommendations in the API guide.
+            Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
           example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
@@ -1905,8 +1905,9 @@ components:
         orderId:
           type: string
           description: >-
-            Id which uniquely identifies a payment. Maximum length is 50
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+            An id that uniquely identifies a payment.
+            Please see the orderId recommendations in the API guide.
+            Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
           example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
@@ -1996,7 +1997,7 @@ components:
         authToken:
           type: string
           description: >-
-            Authorization token that the merchant could share to make callbacks
+            An optional authorization token that the merchant could share to make callbacks
             more secure. If provided, this token will be returned as an
             `Authorization` header for our callbacks. This includes shipping
             details and callback.
@@ -2010,8 +2011,7 @@ components:
             Domain name and context path should be provided by merchant as the
             value for this parameter. Vipps will add `/v2/payments/{orderId}` to
             the end or this URL.
-            URLs passed to Vipps must validate, see
-            [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
+            URLs passed to Vipps must validate, see the API guide.
             We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
             The URL must use HTTPS.
           maxLength: 255
@@ -2024,8 +2024,7 @@ components:
             his/her consent: This Vipps user does not want the merchant to
             store or use his/her personal information any longer. Required by GDPR.
             Vipps will add `/v2/consents/{userId}` to the end or this URL.
-            URLs passed to Vipps must validate, see
-            [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
+            URLs passed to Vipps must validate, see the API guide.
             We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
             The URL must use HTTPS.
           maxLength: 255
@@ -2039,8 +2038,7 @@ components:
             is ambiguous (the same URL is also used if payment was not successful).
             In other words: This is the URL Vipps sends the Vipps user back to.
             The page must handle both successful payments and payment failures.
-            URLs passed to Vipps must validate, see
-            [URL validation](https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation).
+            URLs passed to Vipps must validate, see the API guide.
             The URL must use HTTPS, or a custom URL scheme like "myapp://"".
           maxLength: 255
           example: 'https://example.com/vipps/fallback-result-page-for-both-success-and-failure/acme-shop-123-order123abc'
@@ -2049,7 +2047,7 @@ components:
           example: false
           default: false
           description: >-
-            This parameter indicates whether payment request is triggered from
+            This optional parameter indicates whether payment request is triggered from
             Mobile App or Web browser. Based on this value, response will be
             redirect URL for Vipps landing page or deeplink URL to connect vipps
             App. When isApp is set to true, URLs passed to Vipps will not be
@@ -2067,7 +2065,7 @@ components:
         paymentType:
           type: string
           description: >-
-            This parameter will identify difference between a regular ecommerce
+            This optional parameter will identify difference between a regular ecommerce
             payment and an ecommerce express payment. For Vipps Hurtigkasse (express checkout), use: "eComm
             Express Payment". Express checkouts require `consentRemovalPrefix`.
             Note, use the value exactly as it is shown below (i.e., "eComm" with two m's).
@@ -2084,6 +2082,7 @@ components:
             Vipps will add `/v2/payments/{orderId}/shippingDetails` to the end
             or this URL.
             We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
+            The URL must use HTTPS.
           maxLength: 255
           example: 'https://example.com/vipps/shipping'
         staticShippingDetails:
@@ -2101,8 +2100,9 @@ components:
         orderId:
           type: string
           description: >-
-            Id which uniquely identifies a payment. Maximum length is 50
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+            An id that uniquely identifies a payment.
+            Please see the orderId recommendations in the API guide.
+            Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
           example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
@@ -2228,8 +2228,9 @@ components:
         orderId:
           type: string
           description: >-
-            Id which uniquely identifies a payment. Maximum length is 50
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+            An id that uniquely identifies a payment.
+            Please see the orderId recommendations in the API guide.
+            Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
           example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
@@ -2261,8 +2262,9 @@ components:
         orderId:
           type: string
           description: >-
-            Id which uniquely identifies a payment. Maximum length is 50
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+            An id that uniquely identifies a payment.
+            Please see the orderId recommendations in the API guide.
+            Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
           example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
@@ -2322,8 +2324,9 @@ components:
         orderId:
           type: string
           description: >-
-            Id which uniquely identifies a payment. Maximum length is 50
-            alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+            An id that uniquely identifies a payment.
+            Please see the orderId recommendations in the API guide.
+            Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
           example: acme-shop-123-order123abc
           pattern: '^[a-zA-Z0-9-]{1,50}$'
           maxLength: 50
