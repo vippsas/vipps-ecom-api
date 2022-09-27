@@ -7,14 +7,17 @@ END_METADATA -->
 
 # Quick start
 
+Use the eCom API to initiate payments, get payment details, capture payments, and refund payments.
+You can also perform express checkout payments and get access to user info.
+
 <!-- START_TOC -->
 
 ## Table of Contents
 
 * [Postman](#postman)
   * [Prerequisites](#prerequisites)
-  * [Step 1: Get the Postman collection](#step-1-get-the-postman-collection)
-  * [Step 2: Import the Postman environment](#step-2-import-the-postman-environment)
+  * [Step 1: Get the Vipps Postman collection and environment](#step-1-get-the-vipps-postman-collection-and-environment)
+  * [Step 2: Import the Vipps Postman files](#step-2-import-the-vipps-postman-files)
   * [Step 3: Set up Postman environment](#step-3-set-up-postman-environment)
 * [Make API calls](#make-api-calls)
   * [A regular eCommerce payment](#a-regular-ecommerce-payment)
@@ -25,30 +28,27 @@ END_METADATA -->
 
 <!-- END_TOC -->
 
-Document version 1.0.3.
+Document version 1.0.4.
 
 ## Postman
 
 ### Prerequisites
 
-* If you are not familiar with Postman, review
-[Getting started with Postman](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/vipps-quick-start-guides#getting-started-with-postman).
+Review
+[Vipps quick start guides](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/vipps-quick-start-guides) for information about getting your test environment set up.
 
-* You will need a merchant test account.
-If you haven't already set this up, see
-[Test Merchants](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/vipps-test-environment#test-merchants).
+### Step 1: Get the Vipps Postman collection and environment
 
-### Step 1: Get the Postman collection
+Save the following files to your computer:
 
-Install Postman and import the collection by following the steps below:
+* [Vipps eCom API Postman collection](tools/vipps-ecom-api-postman-collection.json)
+* [Vipps eCom API Postman environment](tools/vipps-ecom-api-postman-environment.json)
 
-1. Click `Import` in the upper-left corner.
-2. Import the [vipps-ecom-api-postman-collection.json](./tools/vipps-ecom-api-postman-collection.json) file.
+### Step 2: Import the Vipps Postman files
 
-### Step 2: Import the Postman environment
-
-1. Click `Import` in the upper-left corner.
-2. Import the [vipps-ecom-api-postman-environment.json](./tools/vipps-ecom-api-postman-environment.json) file.
+1. In Postman, click *Import* in the upper-left corner.
+1. In the dialog that opens, with *File* selected, click *Upload Files*.
+1. Select the two files you have just downloaded and click *Import*.
 
 ### Step 3: Set up Postman environment
 
@@ -56,21 +56,20 @@ Install Postman and import the collection by following the steps below:
 2. Click the "eye" icon and, in the dropdown window, click `Edit` in the top-right corner.
 3. Fill in the `Current Value` for the following fields to get started.
    For the first three keys, go to *Vipps Portal* > *Utvikler* ->  *Test Keys*.
-   - `client_id` - Merchant key is required for getting the access token.
-   - `client_secret` - Merchant key is required for getting the access token.
-   - `Ocp-Apim-Subscription-Key` - Merchant subscription key.
-   - `merchantSerialNumber` - Merchant id.
-   - `mobileNumber` - The mobile number for the test app profile you have received or registered.
-   - `amount` - The desired amount Integer value minimum 100 in øre.
+   * `client_id` - Merchant key is required for getting the access token.
+   * `client_secret` - Merchant key is required for getting the access token.
+   * `Ocp-Apim-Subscription-Key` - Merchant subscription key.
+   * `merchantSerialNumber` - Merchant id.
+   * `mobileNumber` - The mobile number for the test app profile you have received or registered.
+   * `amount` - The desired amount Integer value minimum 100 in øre.
 
 ## Make API calls
 
 For all of the following, you will start by sending request `Get Access Token`.
 This provides you with access to the API.
 
-   The access token is valid for 1 hour in the test environment
-   and 24 hours in the production environment.
-
+The access token is valid for 1 hour in the test environment
+and 24 hours in the production environment.
 See the
 [API reference](https://vippsas.github.io/vipps-developer-docs/api/ecom)
 for details about the calls.
