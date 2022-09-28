@@ -24,7 +24,7 @@
 		},
 		{
 			"key": "amount",
-			"value": "<Enter desired amount Integer value minimum 100 in Øre>",
+			"value": "499",
 			"enabled": true
 		},
 		{
@@ -39,22 +39,22 @@
 		},
 		{
 			"key": "callbackPrefix",
-			"value": "<Input your callback URL here - this is where we will send the callback after user has confirmed payment>",
+			"value": "https://example.com/",
 			"enabled": true
 		},
 		{
 			"key": "fallBack",
-			"value": "<Input your fallback URL here - this is where the user will be redirected to after confirming mobile number>",
+			"value": "https://example.com/",
 			"enabled": true
 		},
 		{
 			"key": "shippingDetailsPrefix",
-			"value": "<Input your shippingDetails URL here - this is where we will request shippingDetails>",
+			"value": "https://example.com/",
 			"enabled": true
 		},
 		{
 			"key": "consentRemovalPrefix",
-			"value": "<Input your consentRemoval URL here - this is where we will inform that the user has removed consent>",
+			"value": "https://example.com/",
 			"enabled": true
 		},
 		{
