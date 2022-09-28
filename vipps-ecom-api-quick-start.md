@@ -99,7 +99,7 @@ for details about the calls.
    [Generate a QR code to the Vipps Landing page](#generating-a-qr-code-to-the-vipps-landing-page).
 
 1. Send request `Get Payment Details` for information about this payment by using
-   [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET). You will see the details appear in the 
+   [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET). You will see the details appear in the lower pane.
 
 1. Send request `Capture Payment` to capture this payment with
    [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/capturePaymentUsingPOST).
