@@ -61,7 +61,11 @@ Save the following files to your computer:
    * `Ocp-Apim-Subscription-Key` - Merchant subscription key.
    * `merchantSerialNumber` - Merchant id.
    * `mobileNumber` - The mobile number for the test app profile you have received or registered.
-   * `amount` - The desired amount Integer value minimum 100 in øre.
+
+You can update any of the other environment variables. Be aware of this:
+
+* Any currency amount must be an Integer value minimum 100 in øre.
+* Any URL must be `https`.
 
 ## Make API calls
 
@@ -85,7 +89,7 @@ for details about the calls.
    of this Postman example and can be used for subsequent calls relating to this purchase.
 
    The response will be a URL to the Vipps landing page.
-   Ctrl+click (Command-click on macOS) on the link that appears and it will take
+   *Ctrl+click* (*Command-click* on macOS) on the link that appears and it will take
    you to the Vipps landing page.
    The phone number of your test user should already be filled in, so you only have to click "Next".
 
@@ -95,7 +99,7 @@ for details about the calls.
    [Generate a QR code to the Vipps Landing page](#generating-a-qr-code-to-the-vipps-landing-page).
 
 1. Send request `Get Payment Details` for information about this payment by using
-   [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET).
+   [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET). You will see the details appear in the 
 
 1. Send request `Capture Payment` to capture this payment with
    [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/capturePaymentUsingPOST).

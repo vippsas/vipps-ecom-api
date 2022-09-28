@@ -24,7 +24,7 @@
 		},
 		{
 			"key": "amount",
-			"value": "<Enter desired amount Integer value minimum 100 in Øre>",
+			"value": "499",
 			"enabled": true
 		},
 		{
@@ -39,12 +39,12 @@
 		},
 		{
 			"key": "callbackPrefix",
-			"value": "<Input your callback URL here - this is where we will send the callback after user has confirmed payment>",
+			"value": "https://example.com/",
 			"enabled": true
 		},
 		{
 			"key": "fallBack",
-			"value": "<Input your fallback URL here - this is where the user will be redirected to after confirming mobile number>",
+			"value": "https://example.com/",
 			"enabled": true
 		},
 		{
