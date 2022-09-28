@@ -15,7 +15,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.6.10.
+Document version 2.6.11.
 
 <!-- START_TOC -->
 
@@ -2287,16 +2287,16 @@ handling from a value in the redirect URL (`fallback`).
 
 Example for demonstration purposes that should be handled.
 
-1. User starts is in web session in the Chrome web browser.
-2. A Vipps purchase is started, with a redirect URL (`fallback`) specified by the Merchant.
+1. The user starts is in web session in the Chrome or Firefox web browser on a phone.
+2. A Vipps purchase is started, with a redirect URL (`fallback`) specified by the merchant.
 3. The user completes the purchase in Vipps.
-4. Vipps (the app) redirects the user by opening the URL specified in step 2.
-5. The OS opens the URL in the default browser: Safari (not Chrome).
+4. Vipps (the app) redirects the user by asking the phone's operating system to open the URL specified in step 2.
+5. The OS opens the URL in the default browser: Safari (not Chrome or Firefox).
 6. The merchant handles the redirect without the customer noticing any
    discrepancies from the browser switch.
 
 **Please note:** If the user has installed an ad blocker, that may cause problems
-opening URL with custom schemes.
+opening URL with custom URL schemes.
 
 ## Questions?
 
