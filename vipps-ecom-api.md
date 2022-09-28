@@ -15,7 +15,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.6.11.
+Document version 2.6.12.
 
 <!-- START_TOC -->
 
@@ -2285,9 +2285,9 @@ Because of this Vipps recommends a stateless approach on the website that
 is supposed to be the end session. An example would a polling-based result
 handling from a value in the redirect URL (`fallback`).
 
-Example for demonstration purposes that should be handled.
+AN example with iOS of how redirects should be handled.
 
-1. The user starts is in web session in the Chrome or Firefox web browser on a phone.
+1. The user starts is in web session in the Chrome or Firefox web browser on a phone (not the default Safari browser).
 2. A Vipps purchase is started, with a redirect URL (`fallback`) specified by the merchant.
 3. The user completes the purchase in Vipps.
 4. Vipps (the app) redirects the user by asking the phone's operating system to open the URL specified in step 2.
