@@ -24,11 +24,12 @@ You can also perform express checkout payments and get access to user info.
   * [An express checkout payment (*Vipps Hurtigkasse*)](#an-express-checkout-payment-vipps-hurtigkasse)
   * [Getting access to user info](#getting-access-to-user-info)
   * [Generating a QR code to the Vipps landing page](#generating-a-qr-code-to-the-vipps-landing-page)
+  * [Test with Force Approve](#test-with-force-approve)
 * [Questions?](#questions)
 
 <!-- END_TOC -->
 
-Document version 1.0.4.
+Document version 1.0.5.
 
 ## Postman
 
