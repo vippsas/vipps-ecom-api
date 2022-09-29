@@ -176,6 +176,31 @@ This is done in cooperation with the Vipps QR API. See
 [One-time payment QR](https://github.com/vippsas/vipps-qr-api#one-time-payment-qr)
 for more details.
 
+### Test with Force Approve
+
+You can use the
+[`Force Approve Payment`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/integrationTestApprovePayment)
+endpoint
+to approve an eCom API payment without signing in to the Vipps MT app,
+The endpoint is only available in our test environment.
+
+**Important:** All test users must manually approve at least one payment in
+Vipps (using the app) before "force approve" can be used for that user.
+If this has not been done, you will get an error.
+This is because the user needs to be registered as
+"bankID verified" in the backend, and this is happens automatically in
+the test environment when using Vipps (the app), but not with "force approve".
+
+1. Send request `Initiate Payment`.
+
+   The `orderId` and `payment token` variables are now in the environment of this Postman example.
+
+1. Send request `Force Approve Payment`. The payment then should be approved.
+
+1. You can check the details by sending `Get Payment Details`.
+
+See [API guide: Testing](vipps-ecom-api#testing)
+
 ## Questions?
 
 We're always happy to help with code or other questions you might have!
