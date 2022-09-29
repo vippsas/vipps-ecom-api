@@ -171,6 +171,9 @@
 							"if(pm.response.code === 200) { ",
 							"    var jsonData = pm.response.json();",
 							"    pm.environment.set('vippsLandingPageURL', jsonData.url);",
+							"    var str = jsonData.url",
+							"    var str2 = str.split('=', 3)[2]",
+							"    pm.environment.set('payment_token', str2);",
 							"}"
 						],
 						"type": "text/javascript"
@@ -257,6 +260,9 @@
 							"if(pm.response.code === 200) { ",
 							"    var jsonData = pm.response.json();",
 							"    pm.environment.set('vippsLandingPageURL', jsonData.url);",
+							"    var str = jsonData.url",
+							"    var str2 = str.split('=', 3)[2]",
+							"    pm.environment.set('payment_token', str2);",
 							"}"
 						],
 						"type": "text/javascript"
@@ -343,6 +349,9 @@
 							"if(pm.response.code === 200) { ",
 							"    var jsonData = pm.response.json();",
 							"    pm.environment.set('vippsLandingPageURL', jsonData.url);",
+							"    var str = jsonData.url",
+							"    var str2 = str.split('=', 3)[2]",
+							"    pm.environment.set('payment_token', str2);",
 							"}"
 						],
 						"type": "text/javascript"
@@ -667,7 +676,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"customerPhoneNumber\": \"91234567\",\n  \"token\": \"eyJraWQiOiJqd3R\"\n}",
+					"raw": "{\n  \"customerPhoneNumber\": \"{{mobileNumber}}\",\n  \"token\": \"{{payment_token}}\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -675,7 +684,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{base_url}}/ecomm/v2/integration-test/payments/:orderId/approve",
+					"raw": "{{base_url}}/ecomm/v2/integration-test/payments/{{orderId}}/approve",
 					"host": [
 						"{{base_url}}"
 					],
@@ -684,15 +693,8 @@
 						"v2",
 						"integration-test",
 						"payments",
-						":orderId",
+						"{{orderId}}",
 						"approve"
-					],
-					"variable": [
-						{
-							"key": "orderId",
-							"value": "{{orderId}}",
-							"description": "(Required) The `orderId` is specified when initiating the payment."
-						}
 					]
 				},
 				"description": "This endpoint lets developers approve a payment through the Vipps eCom API without the use of the Vipps app. This is useful for automated testing. Express checkout is not supported for this endpoint. The endpoint is only available in our Test environment. Attempted use of the endpoint in production is not allowed, and will fail. Important: All test users must manually approve at least one payment in Vipps (using the app) before this endpoint can be used for that user."
