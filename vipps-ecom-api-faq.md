@@ -13,7 +13,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.13.12.
+Document version 3.13.13.
 
 <!-- START_TOC -->
 
@@ -1394,6 +1394,7 @@ This can happen when:
 
 - A partner tries to use partner keys for a sale unit that is not registered with them as partner.
 - API keys for the test environment is used in the production environment, or opposite.
+- Partner keys are used, but the `Merchant-Serial-Number` HTTP header is not used correctly.
 
 ## Other questions
 
