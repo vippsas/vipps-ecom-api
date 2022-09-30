@@ -13,7 +13,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.13.13.
+Document version 3.13.14.
 
 <!-- START_TOC -->
 
@@ -31,7 +31,7 @@ Document version 3.13.13.
   + [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
   + [Why are the customer names not shown on the transaction overview?](#why-are-the-customer-names-not-shown-on-the-transaction-overview)
 * [Reservations and captures](#reservations-and-captures)
-  * [When should I charge the customer?](#when-should-i-charge-the-customer)
+  + [When should I charge the customer?](#when-should-i-charge-the-customer)
   + [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
   + [When should I use "Direct Capture"?](#when-should-i-use-direct-capture)
   + [How can I check if I have "reserve capture" or "direct capture"?](#how-can-i-check-if-i-have-reserve-capture-or-direct-capture)
@@ -325,7 +325,7 @@ not physically present. It does also not comply with "Kassaloven".
 
 ## Reservations and captures
 
-## When should I charge the customer?
+### When should I charge the customer?
 
 You should charge the customer when the product or service is delivered.
 That is usually when the product is shipped.
