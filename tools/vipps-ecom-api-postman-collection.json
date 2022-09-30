@@ -609,7 +609,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": " {\n    \"merchantInfo\": {\n        \"merchantSerialNumber\": \"{{merchantSerialNumber}}\"\n    },\n    \"transaction\": {\n        \"amount\": {{amount_capture}},\n        \"transactionText\": \"{{transactionTextCapture}}\"\n    }\n }"
+					"raw": " {\n    \"merchantInfo\": {\n        \"merchantSerialNumber\": \"{{merchantSerialNumber}}\"\n    },\n    \"transaction\": {\n        \"transactionText\": \"{{transactionTextCapture}}\"\n    }\n }"
 				},
 				"url": {
 					"raw": "{{base_url}}/ecomm/v2/payments/{{orderId}}/capture",
