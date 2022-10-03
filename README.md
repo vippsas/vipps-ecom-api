@@ -2,6 +2,7 @@
 ---
 title: Introduction
 sidebar_position: 1
+hide_table_of_contents: true
 ---
 END_METADATA -->
 
@@ -20,6 +21,11 @@ See the disclaimer: <https://vippsas.github.io/vipps-developer-docs/docs/example
 
 <!-- END_COMMENT -->
 
+## How it works
+
+* [Vipps In Store](vipps-in-store-howitworks.md): How the Vipps eCom API can be integrated in your Point Of Sale (POS) system.
+* [Vipps eCommerce API: How It Works](vipps-ecom-api-howitworks.md):  Let your customers pay with Vipps online or in your app. All your customer needs to provide is their mobile number, then they pay in Vipps with one click.
+
 ## Getting started
 
 Review the [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md) pages for information about API keys, product activation, contact information, contribution guidelines, etc.
@@ -29,16 +35,10 @@ Review the [Getting Started](https://github.com/vippsas/vipps-developers/blob/ma
 * [API Quick Start](vipps-ecom-api-quick-start.md): Quick Start.
 * [API guide](vipps-ecom-api.md): Developer guide for Vipps eCom API.
 * [API Checklist](vipps-ecom-api-checklist.md): For direct and POS integrations.
+* [API FAQ](vipps-ecom-api-faq.md): Questions and answers.
 * [API Reference](https://vippsas.github.io/vipps-developer-docs/api/ecom): eCom API Reference Specifications.
 
 ## Questions?
-
-For more information, see:
-
-* [Vipps In Store](vipps-in-store-howitworks.md): How the Vipps eCom API can be integrated in your Point Of Sale (POS) system.
-* [Vipps eCommerce API: How It Works](vipps-ecom-api-howitworks.md):  Let your customers pay with Vipps online or in your app. All your customer needs to provide is their mobile number, then they pay in Vipps with one click.
-* [Frequently Asked Questions](vipps-ecom-api-faq.md): Questions and answers.
-* [Vipps plugins](https://github.com/vippsas/vipps-plugins): Open source plugins for various web solutions.
 
 We're always happy to help with code or other questions you might have!
 Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),
