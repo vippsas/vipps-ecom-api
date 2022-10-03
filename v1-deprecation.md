@@ -66,7 +66,7 @@ We have also released new APIs that may be interesting, such as:
 * [Vipps Invoice API ("Vipps Regninger")](https://github.com/vippsas/vipps-invoice-api)
 * [Vipps Log In](https://github.com/vippsas/vipps-login-api)
 
-Vipps also has [plugins](https://github.com/vippsas/vipps-developers#plugins) available:
+Vipps also has [plugins](https://github.com/vippsas/vipps-plugins) available:
 * [Vipps for WooCommerce (Wordpress)](https://wordpress.org/plugins/woo-vipps/)
 * [Vipps for Magento](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/magento/)
 * Upcoming: Vipps for Shopify, Vipps for Drupal and Vipps for Episerver.

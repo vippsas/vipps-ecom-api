@@ -912,7 +912,7 @@ service is _most likely_ a regular Vipps eCom customer, and can use
 the
 [Vipps eCom API](https://github.com/vippsas/vipps-ecom-api)
 or one of our
-[plugins](https://github.com/vippsas/vipps-developers#plugins).
+[plugins](https://github.com/vippsas/vipps-plugins).
 
 Vipps cannot offer legal advice for this.
 

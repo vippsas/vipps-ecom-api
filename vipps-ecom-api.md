@@ -202,7 +202,7 @@ Vipps eCom API. These headers provide useful metadata about the merchant's syste
 which help Vipps improve our services, and also help in investigating problems.
 
 These headers are **required for plugins and partners** and sent by the recent versions of
-[the official Vipps plugins](https://github.com/vippsas/vipps-developers#plugins)
+[the official Vipps plugins](https://github.com/vippsas/vipps-plugins)
 and we recommend all customers with direct integration with the API to also do so.
 
 Partners must always send the `Merchant-Serial-Number` header, and we recommend
