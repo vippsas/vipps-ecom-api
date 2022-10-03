@@ -343,7 +343,7 @@ See
 for more details.
 
 The new express checkout flow (`"useExplicitCheckoutFlow": true`):
-![New explicit checkout flow](images/express-explicit-flow.png)
+![New explicit checkout flow](images/vipps-ecom-confirm-express.png)
 
 The old express checkout flow (`"useExplicitCheckoutFlow": false`):
 ![The old checkout flow](images/vipps-ecom-confirm-express-old.png)
