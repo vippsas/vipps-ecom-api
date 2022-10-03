@@ -912,7 +912,7 @@ service is _most likely_ a regular Vipps eCom customer, and can use
 the
 [Vipps eCom API](https://github.com/vippsas/vipps-ecom-api)
 or one of our
-[plugins](https://github.com/vippsas/vipps-developers#plugins).
+[plugins](https://github.com/vippsas/vipps-plugins).
 
 Vipps cannot offer legal advice for this.
 
@@ -1079,7 +1079,7 @@ end of your `callbackPrefix` and make a callback to
 
 If you do not receive a callback, it could be because your firewall is blocking
 our requests. See:
-[Vipps request servers](https://github.com/vippsas/vipps-developers/blob/master/README.md#vipps-request-servers).
+[Vipps request servers](https://github.com/vippsas/vipps-developers/blob/master/vipps-resources.md#vipps-request-servers).
 
 Please check your own logs for any signs of problems. If your
 `orderId` is `acme-shop-123-order123abc`: Search your logs for `acme-shop-123-order123abc`.
@@ -1256,7 +1256,7 @@ a `HTTP 500 Server Error`. Retry the call, and see if it helps.
 See:
 
 * [Errors](vipps-ecom-api.md#errors).
-* [Status page](https://github.com/vippsas/vipps-developers#status-page).
+* [Status page](https://github.com/vippsas/vipps-developers/blob/master/vipps-resources.md#status-page).
 
 ### Why do I get `errorCode 35 "Requested Order not found"`?
 

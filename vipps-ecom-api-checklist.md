@@ -9,7 +9,7 @@ END_METADATA -->
 
 API version: 2.0.
 
-Document version 2.1.12.
+Document version 2.1.13.
 
 ## Checklist
 
@@ -19,7 +19,7 @@ Document version 2.1.12.
     - [ ] Cancel [`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/cancelPaymentRequestUsingPUT)
     - [ ] Full and partial Refund [`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST)
     - [ ] Details [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET)
-    - For examples of requests and responses, see the [Postman collection](tools/vipps-ecom-api-postman-collection.json) and [environment](tools/vipps-ecom-api-postman-environment.json).
+    - For examples of requests and responses, see the [Postman collection](tools/vipps-ecom-api-postman-collection.json) and [environment](https://github.com/vippsas/vipps-developers/blob/master/tools/vipps-api-global-postman-environment.json).
 - [ ] Send the [Vipps HTTP headers](vipps-ecom-api.md#vipps-http-headers)
       in all API requests for better tracking and troubleshooting
       (mandatory for partners and platforms, who must send these headers as part of the checklist approval):
@@ -72,7 +72,7 @@ Document version 2.1.12.
    Please double check to avoid mistakes.
 5. The merchant verifies the integration in the test environment by checking that
    there are test IDs (`orderId`) in the
-   [Vipps test environment](https://github.com/vippsas/vipps-developers#the-vipps-test-environment-mt),
+   [Vipps test environment](https://github.com/vippsas/vipps-developers/blob/master/vipps-test-environment.md),
    with the following states:
     - A complete order ending in `REFUND`
       ([`/refund`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST)
