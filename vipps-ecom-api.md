@@ -15,7 +15,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.6.12.
+Document version 2.6.13.
 
 <!-- START_TOC -->
 
