@@ -15,7 +15,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.6.13.
+Document version 2.6.14.
 
 <!-- START_TOC -->
 
@@ -337,19 +337,16 @@ You do not have to make any changes other than to specify
 `"paymentType": "eComm Express Payment"`.
 
 To get the new express checkout flow: Specify this in addition, in the
-`transaction` object:
-
-`"useExplicitCheckoutFlow": true`
-
+`transaction` object: `"useExplicitCheckoutFlow": true`.
 See
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST)
 for more details.
 
-The new explicit checkout flow (`"useExplicitCheckoutFlow": true`):
+The new express checkout flow (`"useExplicitCheckoutFlow": true`):
 ![New explicit checkout flow](images/express-explicit-flow.png)
 
-The old checkout flow (`"useExplicitCheckoutFlow": false`):
-![The old checkout flow](images/express-explicit-false.png)
+The old express checkout flow (`"useExplicitCheckoutFlow": false`):
+![The old checkout flow](images/vipps-ecom-confirm-express-old.png)
 
 #### Shipping and static shipping details
 

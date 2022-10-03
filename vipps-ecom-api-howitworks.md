@@ -32,9 +32,19 @@ If the payment was started from a mobile device, the app wil automatically switc
 
 The user receives a push notification on their phone. They log in to Vipps, and confirm the payment. The payment is reserved and the user gets a receipt of the successful payment
 
-For express checkout they also have to choose a shipping cost alternative.
+For Vipps Hurtigkasse (express checkout) the user also have to choose a
+shipping method.
 
-![Confirm payment](images/vipps-ecom-step3-2.svg)
+![Confirm payment](images/vipps-ecom-confirm.png)
+
+For Vipps Hurtigkasse (express checkout):
+
+The new express checkout flow (`"useExplicitCheckoutFlow": true`):
+![New explicit checkout flow](images/express-explicit-flow.png)
+
+The old express checkout flow (`"useExplicitCheckoutFlow": false`):
+![The old checkout flow](images/vipps-ecom-confirm-express-old.png)
+
 
 ## 4. Order Confirmation
 
