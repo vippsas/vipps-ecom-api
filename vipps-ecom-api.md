@@ -922,7 +922,7 @@ API Spec:
 ### Vipps callback servers
 
 The callbacks from Vipps are made from the servers described in
-[Vipps request servers](https://github.com/vippsas/vipps-developers#vipps-request-servers).
+[Vipps request servers](https://github.com/vippsas/vipps-developers/blob/master/vipps-resources.md#vipps-request-servers).
 
 Please make sure that requests from these servers are allowed through firewalls, etc.
 
