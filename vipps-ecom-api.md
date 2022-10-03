@@ -2298,6 +2298,9 @@ An example with iOS of how redirects should be handled.
 **Please note:** If the user has installed an ad blocker, that may cause problems
 opening URL with custom URL schemes.
 
+Apple has some information about
+[changing the default browser on iOS](https://support.apple.com/en-us/HT211336).
+
 ## Questions?
 
 We're always happy to help with code or other questions you might have!
