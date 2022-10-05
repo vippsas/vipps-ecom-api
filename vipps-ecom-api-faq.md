@@ -1718,7 +1718,7 @@ Stores must be able to search for `orderId` for payments made in other stores. T
 
 NB: With `partner keys`, do not let the cashier input `Merchant-Serial-Number` themselves. These must be locked and connected to the store selection to reduce risk of adding the wrong store.
 
-**B:** If partner keys is not used
+**B:** If partner keys are not used
 In this case a centralized system need to store credentials from all sale units within the enterprise.
 Store B must be able to request a `refund` from the sentral system based on the original `orderID` and location for the order origin (Store A).  
 **Technical:** Use Store A credentials to authenticate, add original `orderID` to the [refund](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST) request.
