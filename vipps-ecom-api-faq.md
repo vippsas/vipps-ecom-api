@@ -1703,7 +1703,7 @@ It may be relevant for enterprise setup, omnichannel, multiple physical stores w
 
 **Prerequisites:** 
 Stores or a centralized system (e.g. from a headquarter) must have access to all store credentials, or use [partner keys](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#partner-keys). 
-Stores must be able to search for `orderId` from other stores or request it from the centralized system.
+Stores must be able to search for `orderID` from other stores or request it from the centralized system.
 
 **User story:** A user buys a product from Store A.
 The user then visits Store B to return some goods. Store B wants to be able to refund on behalf of Store A. 
@@ -1713,8 +1713,8 @@ The user then visits Store B to return some goods. Store B wants to be able to r
 **Recommended solutions:** 
 
 **A:** If [partner keys](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#partner-keys) is used for all stores
-Stores must be able to search for `orderId` for payments made in other stores. The cashier can then search and select `orderId` from Store A and click `refund`.  
-**Technical:** Use [partner keys](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#partner-keys) to authenticate, add `Merchant-Serial-Number` from Store A to the request header and original `orderId` to the [refund](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST) request.
+Stores must be able to search for `orderID` for payments made in other stores. The cashier can then search and select `orderID` from Store A and click `refund`.  
+**Technical:** Use [partner keys](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#partner-keys) to authenticate, add `Merchant-Serial-Number` from Store A to the request header and original `orderID` to the [refund](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST) request.
 
 NB: With `partner keys`, do not let the cashier input `Merchant-Serial-Number` themselves. These must be locked and connected to the store selection to reduce risk of adding the wrong store.
 
