@@ -98,6 +98,7 @@ Document version 3.13.14.
 * [Frequently Asked Questions for POS integrations](#frequently-asked-questions-for-pos-integrations)
   + [How do I use the one-time payment QR?](#how-do-i-use-the-one-time-payment-qr)
   + [How can we be whitelisted for `skipLandingPage`?](#how-can-we-be-whitelisted-for-skiplandingpage)
+  + [Handling refunds on behalf of other stores](#handling-refunds-on-behalf-of-other-stores)
   + [Distance selling from a POS solution](#distance-selling-from-a-pos-solution)
   + [What is the process to go live in production?](#what-is-the-process-to-go-live-in-production)
   + [Which API keys should I use?](#which-api-keys-should-i-use)
@@ -1695,6 +1696,33 @@ See also:
 ### How can we be whitelisted for `skipLandingPage`?
 
 See: [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
+
+### Handling refunds on behalf of other stores
+
+It may be relevant for enterprise setup, omnichannel, multiple physical stores within the same chain to refund orders on behalf of other stores. 
+
+**Pre requisites:** 
+Stores or centralized system (e.g. from headquarter) must have access to all store credentials, or use [partner keys](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#partner-keys). 
+Stores must be able to search for `orderID` from other stores or request it from the centralized system.
+
+**User story:** A user buy a product from Store A.
+Customer visit Store B to refund some goods. Store B wants to be able to refund on behalf of Store A. 
+
+**Problem:** Refunds can only be performed through the same sale unit where the payment origin from.
+
+**Recommended solutions:** 
+
+**A:** If [partner keys](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#partner-keys) is used for all stores
+Stores must be able to search for `orderID` from other stores. Cashier search and select `orderID` from Store A and click `refund`.  
+**Technical:** Use [partner keys](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#partner-keys) to authenticate, add `Merchant-Serial-Number` from Store A to the request header and original `orderID` to the [refund](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST) request.
+
+NB: With `partner keys`, do not let the cashier input `Merchant-Serial-Number` themselves. These must be locked and connected to the store selection to reduce risk of adding wrong store.
+
+**B:** If partner keys is not used
+In this case a centralized system need to store credentials from all sale units within the enterprise.
+Store B must be able to request a `refund` from the sentral system based on the original `orderID` and location for the order origin (Store A).  
+**Technical:** Use Store A credentials to authenticate, add original `orderID` to the [refund](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST) request.
+
 
 ### Distance selling from a POS solution
 
