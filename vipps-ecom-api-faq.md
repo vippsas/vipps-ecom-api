@@ -1708,7 +1708,7 @@ Stores must be able to search for `orderID` from other stores or request it from
 **User story:** A user buy a product from Store A.
 Customer visit Store B to refund some goods. Store B wants to be able to refund on behalf of Store A. 
 
-**Problem:** Refunds can only be performed through the same sale unit where the payment origin from.
+**Problem:** Refunds can only be performed by the sale unit where the payment originated from: Store A.
 
 **Recommended solutions:** 
 
