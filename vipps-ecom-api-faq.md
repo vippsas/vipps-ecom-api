@@ -1702,7 +1702,7 @@ See: [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-land
 It may be relevant for enterprise setup, omnichannel, multiple physical stores within the same chain to refund orders on behalf of other stores. 
 
 **Prerequisites:** 
-Stores or centralized system (e.g. from headquarter) must have access to all store credentials, or use [partner keys](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#partner-keys). 
+Stores or a centralized system (e.g. from a headquarter) must have access to all store credentials, or use [partner keys](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#partner-keys). 
 Stores must be able to search for `orderID` from other stores or request it from the centralized system.
 
 **User story:** A user buy a product from Store A.
