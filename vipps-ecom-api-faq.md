@@ -1725,7 +1725,7 @@ Store B must be able to request a `refund` from the sentral system based on the 
 
 **C:** Use same sale unit for all locations
 It is possible to use one sale unit (one MSN) for all stores, and use a prefix in the `orderID` to identify which orders belong to which sale units.
-This will result in having one settlement for all. You decide what the `orderID` contains, and it may be up to 50 characters. See: [orderID recommendation](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#orderid-recommendations). You will use the same API keys for all stores. 
+This will result in having one settlement for all. You decide what the `orderId` contains, and it may be up to 50 characters. See: [orderId recommendation](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#orderid-recommendations). You will use the same API keys for all stores. 
 
 ### Distance selling from a POS solution
 
