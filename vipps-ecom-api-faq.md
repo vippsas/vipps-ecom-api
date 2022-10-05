@@ -1703,7 +1703,7 @@ It may be relevant for enterprise setup, omnichannel, multiple physical stores w
 
 **Prerequisites:** 
 Stores or a centralized system (e.g. from a headquarter) must have access to all store credentials, or use [partner keys](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#partner-keys). 
-Stores must be able to search for `orderID` from other stores or request it from the centralized system.
+Stores must be able to search for `orderId` from other stores or request it from the centralized system.
 
 **User story:** A user buy a product from Store A.
 Customer visit Store B to refund some goods. Store B wants to be able to refund on behalf of Store A. 
