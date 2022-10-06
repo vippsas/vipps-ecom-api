@@ -7,6 +7,13 @@ END_METADATA -->
 
 # Vipps eCommerce API Checklist
 
+<!-- START_COMMENT -->
+
+💥 Please use the new documentation:
+[Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
+
+<!-- END_COMMENT -->
+
 API version: 2.0.
 
 Document version 2.1.13.

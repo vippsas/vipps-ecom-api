@@ -7,6 +7,13 @@ END_METADATA -->
 
 # Vipps eCommerce API: How It Works
 
+<!-- START_COMMENT -->
+
+💥 Please use the new documentation:
+[Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
+
+<!-- END_COMMENT -->
+
 This is how payment with Vipps eCommerce works.
 
 ## The ecommerce payment process
