@@ -10,6 +10,13 @@ END_METADATA -->
 
 # Vipps eCommerce API
 
+<!-- START_COMMENT -->
+
+ℹ️ Please use the new documentation:
+[Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
+
+<!-- END_COMMENT -->
+
 The eCom API allows you to create various online payment flows using Vipps, including express checkout. Initiate payments, get payment details, capture payments, and refund payments.
 
 The eCom API supports
@@ -17,13 +24,6 @@ The eCom API supports
 [Vipps Checkout](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/vipps-checkout/),
 [Vipps i kassa (POS)](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/vipps-i-kassa/),
 native apps and other solutions.
-
-<!-- START_COMMENT -->
-
-💥 Please use the new documentation:
-[Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
-
-<!-- END_COMMENT -->
 
 ## How it works
 
