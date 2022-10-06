@@ -36,7 +36,7 @@ You can also perform express checkout payments and get access to user info.
 
 <!-- END_TOC -->
 
-Document version 1.1.0.
+Document version 1.1.1.
 
 ## Postman
 
@@ -50,7 +50,7 @@ Review
 Save the following files to your computer:
 
 * [Vipps eCom API Postman collection](tools/vipps-ecom-api-postman-collection.json)
-* [Vipps API Global Postman environment](https://github.com/vippsas/vipps-developers/blob/master/tools/vipps-api-global-postman-environment.json)
+* [Vipps API Global Postman environment](https://raw.githubusercontent.com/vippsas/vipps-developers/master/tools/vipps-api-global-postman-environment.json)
 
 ### Step 2: Import the Vipps Postman files
 
