@@ -7,6 +7,13 @@ END_METADATA -->
 
 # Vipps eCommerce API: Frequently Asked Questions
 
+<!-- START_COMMENT -->
+
+💥 Please use the new documentation:
+[Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
+
+<!-- END_COMMENT -->
+
 See:
 
 * [Vipps eCommerce API guide](vipps-ecom-api.md)
@@ -1699,18 +1706,18 @@ See: [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-land
 
 ### Handling refunds on behalf of other stores
 
-It may be relevant for enterprise setup, omnichannel, multiple physical stores within the same chain to refund orders on behalf of other stores. 
+It may be relevant for enterprise setup, omnichannel, multiple physical stores within the same chain to refund orders on behalf of other stores.
 
-**Prerequisites:** 
-Stores or a centralized system (e.g. from a headquarter) must have access to all store credentials, or use [partner keys](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#partner-keys). 
+**Prerequisites:**
+Stores or a centralized system (e.g. from a headquarter) must have access to all store credentials, or use [partner keys](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#partner-keys).
 Stores must be able to search for `orderId` from other stores or request it from the centralized system.
 
 **User story:** A user buys a product from Store A.
-The user then visits Store B to return some goods. Store B wants to be able to refund on behalf of Store A. 
+The user then visits Store B to return some goods. Store B wants to be able to refund on behalf of Store A.
 
 **Problem:** Refunds can only be performed by the sale unit where the payment originated from: Store A.
 
-**Recommended solutions:** 
+**Recommended solutions:**
 
 **A:** If [partner keys](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#partner-keys) is used for all stores
 Stores must be able to search for `orderId` for payments made in other stores. The cashier can then search and select `orderId` from Store A and click `refund`.  
@@ -1725,7 +1732,7 @@ Store B must be able to request a `refund` from the sentral system based on the 
 
 **C:** Use same sale unit for all locations
 It is possible to use one sale unit (one MSN) for all stores, and use a prefix in the `orderId` to identify which orders belong to which sale units.
-This will result in having one settlement for all. You decide what the `orderId` contains, and it may be up to 50 characters. See: [orderId recommendation](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#orderid-recommendations). You will use the same API keys for all stores. 
+This will result in having one settlement for all. You decide what the `orderId` contains, and it may be up to 50 characters. See: [orderId recommendation](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#orderid-recommendations). You will use the same API keys for all stores.
 
 ### Distance selling from a POS solution
 

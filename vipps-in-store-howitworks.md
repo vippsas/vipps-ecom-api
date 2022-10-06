@@ -7,6 +7,13 @@ END_METADATA -->
 
 # Vipps In Store: How It Works
 
+<!-- START_COMMENT -->
+
+💥 Please use the new documentation:
+[Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
+
+<!-- END_COMMENT -->
+
 Vipps i store is designed for stores that want to let customers pay easily and quickly from their own phone, without the need to touch the terminal. This page shows an example of how you can offer contactless payment to your customers by integrating Vipps in your POS system.
 
 
