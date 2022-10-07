@@ -7,6 +7,13 @@ END_METADATA -->
 
 # Vipps eCommerce API
 
+<!-- START_COMMENT -->
+
+ℹ️ Please use the new documentation:
+[Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
+
+<!-- END_COMMENT -->
+
 The Vipps eCom API is used by
 [Vipps på nett (*Vipps Online*)](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/),
 [Vipps Checkout](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/vipps-checkout/),
@@ -15,7 +22,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.6.12.
+Document version 2.6.14.
 
 <!-- START_TOC -->
 
@@ -202,7 +209,7 @@ Vipps eCom API. These headers provide useful metadata about the merchant's syste
 which help Vipps improve our services, and also help in investigating problems.
 
 These headers are **required for plugins and partners** and sent by the recent versions of
-[the official Vipps plugins](https://github.com/vippsas/vipps-developers#plugins)
+[the official Vipps plugins](https://github.com/vippsas/vipps-plugins)
 and we recommend all customers with direct integration with the API to also do so.
 
 Partners must always send the `Merchant-Serial-Number` header, and we recommend
@@ -337,19 +344,16 @@ You do not have to make any changes other than to specify
 `"paymentType": "eComm Express Payment"`.
 
 To get the new express checkout flow: Specify this in addition, in the
-`transaction` object:
-
-`"useExplicitCheckoutFlow": true`
-
+`transaction` object: `"useExplicitCheckoutFlow": true`.
 See
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST)
 for more details.
 
-The new explicit checkout flow (`"useExplicitCheckoutFlow": true`):
-![New explicit checkout flow](images/express-explicit-flow.png)
+The new express checkout flow (`"useExplicitCheckoutFlow": true`):
+![New explicit checkout flow](images/vipps-ecom-confirm-express.png)
 
-The old checkout flow (`"useExplicitCheckoutFlow": false`):
-![The old checkout flow](images/express-explicit-false.png)
+The old express checkout flow (`"useExplicitCheckoutFlow": false`):
+![The old checkout flow](images/vipps-ecom-confirm-express-old.png)
 
 #### Shipping and static shipping details
 
@@ -922,7 +926,7 @@ API Spec:
 ### Vipps callback servers
 
 The callbacks from Vipps are made from the servers described in
-[Vipps request servers](https://github.com/vippsas/vipps-developers#vipps-request-servers).
+[Vipps request servers](https://github.com/vippsas/vipps-developers/blob/master/vipps-resources.md#vipps-request-servers).
 
 Please make sure that requests from these servers are allowed through firewalls, etc.
 
@@ -2297,6 +2301,9 @@ An example with iOS of how redirects should be handled.
 
 **Please note:** If the user has installed an ad blocker, that may cause problems
 opening URL with custom URL schemes.
+
+Apple has some information about
+[changing the default browser on iOS](https://support.apple.com/en-us/HT211336).
 
 ## Questions?
 

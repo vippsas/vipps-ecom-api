@@ -2,23 +2,33 @@
 ---
 title: Introduction
 sidebar_position: 1
+hide_table_of_contents: true
+pagination_next: null
+pagination_prev: null
 ---
 END_METADATA -->
 
 # Vipps eCommerce API
 
-The Vipps eCom API is used by
+<!-- START_COMMENT -->
+
+ℹ️ Please use the new documentation:
+[Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
+
+<!-- END_COMMENT -->
+
+The eCom API allows you to create various online payment flows using Vipps, including express checkout. Initiate payments, get payment details, capture payments, and refund payments.
+
+The eCom API supports
 [Vipps på nett](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/),
 [Vipps Checkout](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/vipps-checkout/),
 [Vipps i kassa (POS)](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/vipps-i-kassa/),
 native apps and other solutions.
 
-<!-- START_COMMENT -->
+## How it works
 
-💥 Preview the new documentation pages here: <https://vippsas.github.io/vipps-developer-docs/>.
-See the disclaimer: <https://vippsas.github.io/vipps-developer-docs/docs/examples/>.
-
-<!-- END_COMMENT -->
+* [Vipps eCommerce API: How It Works](vipps-ecom-api-howitworks.md):  Let your customers pay with Vipps online or in your app. All your customer needs to provide is their mobile number, then they pay in Vipps with one click.
+* [Vipps In Store](vipps-in-store-howitworks.md): How the Vipps eCom API can be integrated in your Point Of Sale (POS) system.
 
 ## Getting started
 
@@ -29,16 +39,10 @@ Review the [Getting Started](https://github.com/vippsas/vipps-developers/blob/ma
 * [API Quick Start](vipps-ecom-api-quick-start.md): Quick Start.
 * [API guide](vipps-ecom-api.md): Developer guide for Vipps eCom API.
 * [API Checklist](vipps-ecom-api-checklist.md): For direct and POS integrations.
+* [API FAQ](vipps-ecom-api-faq.md): Questions and answers.
 * [API Reference](https://vippsas.github.io/vipps-developer-docs/api/ecom): eCom API Reference Specifications.
 
 ## Questions?
-
-For more information, see:
-
-* [Vipps In Store](vipps-in-store-howitworks.md): How the Vipps eCom API can be integrated in your Point Of Sale (POS) system.
-* [Vipps eCommerce API: How It Works](vipps-ecom-api-howitworks.md):  Let your customers pay with Vipps online or in your app. All your customer needs to provide is their mobile number, then they pay in Vipps with one click.
-* [Frequently Asked Questions](vipps-ecom-api-faq.md): Questions and answers.
-* [Vipps plugins](https://github.com/vippsas/vipps-plugins): Open source plugins for various web solutions.
 
 We're always happy to help with code or other questions you might have!
 Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),

@@ -7,6 +7,13 @@ END_METADATA -->
 
 # Vipps eCommerce API: Frequently Asked Questions
 
+<!-- START_COMMENT -->
+
+ℹ️ Please use the new documentation:
+[Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
+
+<!-- END_COMMENT -->
+
 See:
 
 * [Vipps eCommerce API guide](vipps-ecom-api.md)
@@ -98,6 +105,7 @@ Document version 3.13.14.
 * [Frequently Asked Questions for POS integrations](#frequently-asked-questions-for-pos-integrations)
   + [How do I use the one-time payment QR?](#how-do-i-use-the-one-time-payment-qr)
   + [How can we be whitelisted for `skipLandingPage`?](#how-can-we-be-whitelisted-for-skiplandingpage)
+  + [Handling refunds on behalf of other stores](#handling-refunds-on-behalf-of-other-stores)
   + [Distance selling from a POS solution](#distance-selling-from-a-pos-solution)
   + [What is the process to go live in production?](#what-is-the-process-to-go-live-in-production)
   + [Which API keys should I use?](#which-api-keys-should-i-use)
@@ -912,7 +920,7 @@ service is _most likely_ a regular Vipps eCom customer, and can use
 the
 [Vipps eCom API](https://github.com/vippsas/vipps-ecom-api)
 or one of our
-[plugins](https://github.com/vippsas/vipps-developers#plugins).
+[plugins](https://github.com/vippsas/vipps-plugins).
 
 Vipps cannot offer legal advice for this.
 
@@ -1079,7 +1087,7 @@ end of your `callbackPrefix` and make a callback to
 
 If you do not receive a callback, it could be because your firewall is blocking
 our requests. See:
-[Vipps request servers](https://github.com/vippsas/vipps-developers/blob/master/README.md#vipps-request-servers).
+[Vipps request servers](https://github.com/vippsas/vipps-developers/blob/master/vipps-resources.md#vipps-request-servers).
 
 Please check your own logs for any signs of problems. If your
 `orderId` is `acme-shop-123-order123abc`: Search your logs for `acme-shop-123-order123abc`.
@@ -1256,7 +1264,7 @@ a `HTTP 500 Server Error`. Retry the call, and see if it helps.
 See:
 
 * [Errors](vipps-ecom-api.md#errors).
-* [Status page](https://github.com/vippsas/vipps-developers#status-page).
+* [Status page](https://github.com/vippsas/vipps-developers/blob/master/vipps-resources.md#status-page).
 
 ### Why do I get `errorCode 35 "Requested Order not found"`?
 
@@ -1695,6 +1703,36 @@ See also:
 ### How can we be whitelisted for `skipLandingPage`?
 
 See: [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
+
+### Handling refunds on behalf of other stores
+
+It may be relevant for enterprise setup, omnichannel, multiple physical stores within the same chain to refund orders on behalf of other stores.
+
+**Prerequisites:**
+Stores or a centralized system (e.g. from a headquarter) must have access to all store credentials, or use [partner keys](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#partner-keys).
+Stores must be able to search for `orderId` from other stores or request it from the centralized system.
+
+**User story:** A user buys a product from Store A.
+The user then visits Store B to return some goods. Store B wants to be able to refund on behalf of Store A.
+
+**Problem:** Refunds can only be performed by the sale unit where the payment originated from: Store A.
+
+**Recommended solutions:**
+
+**A:** If [partner keys](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#partner-keys) is used for all stores
+Stores must be able to search for `orderId` for payments made in other stores. The cashier can then search and select `orderId` from Store A and click `refund`.  
+**Technical:** Use [partner keys](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#partner-keys) to authenticate, add `Merchant-Serial-Number` from Store A to the request header and original `orderId` to the [refund](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST) request.
+
+NB: With `partner keys`, do not let the cashier input `Merchant-Serial-Number` themselves. These must be locked and connected to the store selection to reduce risk of adding the wrong store.
+
+**B:** If partner keys are not used
+In this case a centralized system needs to store credentials from all sale units within the enterprise.
+Store B must be able to request a `refund` from the sentral system based on the original `orderId` and location for the order origin (Store A).  
+**Technical:** Use Store A credentials to authenticate, add original `orderId` to the [refund](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST) request.
+
+**C:** Use same sale unit for all locations
+It is possible to use one sale unit (one MSN) for all stores, and use a prefix in the `orderId` to identify which orders belong to which sale units.
+This will result in having one settlement for all. You decide what the `orderId` contains, and it may be up to 50 characters. See: [orderId recommendation](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#orderid-recommendations). You will use the same API keys for all stores.
 
 ### Distance selling from a POS solution
 

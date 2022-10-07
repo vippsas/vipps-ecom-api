@@ -7,6 +7,13 @@ END_METADATA -->
 
 # Quick start
 
+<!-- START_COMMENT -->
+
+ℹ️ Please use the new documentation:
+[Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
+
+<!-- END_COMMENT -->
+
 Use the eCom API to initiate payments, get payment details, capture payments, and refund payments.
 You can also perform express checkout payments and get access to user info.
 
@@ -29,7 +36,7 @@ You can also perform express checkout payments and get access to user info.
 
 <!-- END_TOC -->
 
-Document version 1.0.5.
+Document version 1.1.1.
 
 ## Postman
 
@@ -43,7 +50,7 @@ Review
 Save the following files to your computer:
 
 * [Vipps eCom API Postman collection](tools/vipps-ecom-api-postman-collection.json)
-* [Vipps eCom API Postman environment](tools/vipps-ecom-api-postman-environment.json)
+* [Vipps API Global Postman environment](https://raw.githubusercontent.com/vippsas/vipps-developers/master/tools/vipps-api-global-postman-environment.json)
 
 ### Step 2: Import the Vipps Postman files
 
@@ -56,7 +63,7 @@ Save the following files to your computer:
 1. Click the down arrow, next to the "eye" icon in the top-right corner, and select the environment you have imported.
 2. Click the "eye" icon and, in the dropdown window, click `Edit` in the top-right corner.
 3. Fill in the `Current Value` for the following fields to get started.
-   For the first three keys, go to *Vipps Portal* > *Utvikler* ->  *Test Keys*.
+   For the first keys, go to *Vipps Portal* > *Utvikler* ->  *Test Keys*.
    * `client_id` - Merchant key is required for getting the access token.
    * `client_secret` - Merchant key is required for getting the access token.
    * `Ocp-Apim-Subscription-Key` - Merchant subscription key.
@@ -66,7 +73,7 @@ Save the following files to your computer:
 You can update any of the other environment variables. Be aware of this:
 
 * Any currency amount must be an Integer value minimum 100 in øre.
-* Any URL must be `https`.
+* Most URLs must be `https`.
 
 ## Make API calls
 
