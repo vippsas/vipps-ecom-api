@@ -1391,7 +1391,11 @@ as it gives a faster payment process and a better user experience.
 ### Why do I get error 81 and `User not registered with Vipps`?
 
 The most common reasons are:
-* The phone number is incorrectly formatted. See the API specification:
+* The phone number is incorrectly formatted.
+  Vipps attempts to correct incorrectly formatted phone numbers
+  instead of responding with `HTTP 400 Bad Request`.
+  In cases where the phone number still fails, the error will be `errorCode: 81`.
+  See the API specification:
   [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST).
 * The user is under 15 years old and cannot pay businesses. Vipps cannot give more details.
 * The phone number is not for a Vipps user.
