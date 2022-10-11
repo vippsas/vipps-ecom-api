@@ -1397,8 +1397,10 @@ The most common reasons are:
   In cases where the phone number still fails, the error will be `errorCode: 81`.
   See the API specification:
   [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST).
-* The user is under 15 years old and cannot pay businesses. Vipps cannot give more details.
+* The user is under 15 years old and cannot pay businesses.
 * The phone number is not for a Vipps user.
+
+Vipps cannot give more details.
 
 ### Why do I get an error about having Vipps installed and being 15 years old?
 
