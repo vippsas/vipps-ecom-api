@@ -25,9 +25,11 @@ The eCom API supports
 [Vipps i kassa (POS)](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/vipps-i-kassa/),
 native apps and other solutions.
 
-Review
+## Getting started
+
+See
 [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
-for information about API keys, product activation, contact information, contribution guidelines, etc.
+for information about API keys, product activation, how to make API calls, etc.
 
 ## How it works
 
