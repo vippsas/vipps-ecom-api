@@ -22,7 +22,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.6.15.
+Document version 2.6.16.
 
 <!-- START_TOC -->
 
@@ -2242,7 +2242,7 @@ to retrieve all the information about the payment.
 | VippsError  | 94         | Order locked and is already processing. This can occur if a bank has problems, and Vipps needs to wait and/or clean up. |
 | VippsError  | 98         | Too many concurrent requests. Used only to prevent incorrect API use. |
 | VippsError  | 99         | The request body should contain a description of the internal error. |
-| user        | 81         | User unknown. The phone number is either not a Vipps user, or the user is under 15 years old and cannot pay businesses. Vipps cannot give more details. This error also occurs if using a non-Norwegian phone number.|
+| user        | 81         | User unknown. The phone number is either incorrectly formatted (see the API specification), is not a Vipps user, or the user is under 15 years old and cannot pay businesses. Vipps cannot give more details. This error also occurs if using a non-Norwegian phone number.|
 | user        | 82         | User app version not supported. |
 | Merchant    | 31         | Merchant is blocked because of [reason]. |
 | Merchant    | 32         | Receiving limit of merchant is exceeded. |
