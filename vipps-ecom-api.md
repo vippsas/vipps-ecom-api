@@ -22,7 +22,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.6.14.
+Document version 2.6.15.
 
 <!-- START_TOC -->
 
@@ -1143,6 +1143,13 @@ If you want to check if a sale unit is allowed to use `skipLandingPage`:
 
 If you need to whitelist a sale unit, see FAQ:
 [Is it possible to skip the landing page](vipps-ecom-api-faq.md#is-it-possible-to-skip-the-landing-page).
+
+**Important:** It is crucial to use the correct format for the user's
+phone number when using `"skipLandingPage": true`.
+If not, the payment will fail.
+See
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST)
+for details.
 
 **Please note:** When using `skipLandingPage`, the user is not sent to a
 URL after completion of the payment. The "result page" is just the confirmation
