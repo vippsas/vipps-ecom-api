@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Vipps eCommerce API v1.6.35</title>
+    <title>Vipps eCommerce API v1.6.36</title>
 
     <style>
     </style>
@@ -2574,7 +2574,7 @@ System.out.println(response.toString());
 <td>body</td>
 <td>string</td>
 <td>false</td>
-<td>Mobile number of the user who has to pay for the transaction from Vipps. Allowed format: xxxxxxxx. No country code.</td>
+<td>The phone number of the Vipps user. Allowed format: '91234567'. No <code>+47</code>, (or similar) country code. No <code>00</code> prefix. No spaces. Vipps attempts to correct incorrectly formatted phone numbers instead of responding with <code>HTTP 400 Bad Request</code>. In cases where the phone number still fails, the error will be <code>errorCode: 81</code>.</td>
 </tr>
 <tr>
 <td>» merchantInfo</td>
@@ -8805,7 +8805,7 @@ System.out.println(response.toString());
 <td>string</td>
 <td>false</td>
 <td>none</td>
-<td>Mobile number of the user who has to pay for the transaction from Vipps. Allowed format: xxxxxxxx. No country code.</td>
+<td>The phone number of the Vipps user. Allowed format: '91234567'. No <code>+47</code>, (or similar) country code. No <code>00</code> prefix. No spaces. Vipps attempts to correct incorrectly formatted phone numbers instead of responding with <code>HTTP 400 Bad Request</code>. In cases where the phone number still fails, the error will be <code>errorCode: 81</code>.</td>
 </tr>
 </tbody>
 </table>
