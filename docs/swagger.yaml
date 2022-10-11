@@ -2,7 +2,7 @@ openapi: '3.0.0'
 info:
   description: |
     For details, see the [API Guide](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
-  version: 1.6.35
+  version: 1.6.36
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -2180,8 +2180,15 @@ components:
         mobileNumber:
           type: string
           description: >-
-            Mobile number of the user who has to pay for the transaction from
-            Vipps. Allowed format: xxxxxxxx. No country code.
+            The phone number of the Vipps user.
+            Allowed format: '91234567'.
+            No `+47`, (or similar) country code.
+            No `00` prefix.
+            No spaces.
+            Vipps attempts to correct incorrectly formatted phone numbers
+            instead of responding with `HTTP 400 Bad Request`.
+            In cases where the phone number still fails, the error will be
+            `errorCode: 81`.
           minLength: 8
           maxLength: 8
           example: 91234567
