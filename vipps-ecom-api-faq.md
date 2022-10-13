@@ -763,9 +763,12 @@ has to log into Vipps with their BankID verified identity to use their card.
 No. Vipps does not offer a lookup service for this, as we do not want to
 leak information about users. If a payment is initiated for a user that can
 not pay businesses, the response will be an error.
-Vipps does not distinguish between the following:
+
+Vipps does not distinguish between the following when initiating a payment with
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST)
+and the API call contains a phone number that can not be used to complete the payment:
 * Not a Vipps user
-* A Vipps user, but under 15 years old
+* A Vipps user, but too young to pay businesses
 * A previous Vipps user that has deleted his/her account
 * A Vipps user that has his/her account temporarily or permanently blocked.
 
