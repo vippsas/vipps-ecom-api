@@ -22,7 +22,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.6.17.
+Document version 2.3.0.
 
 <!-- START_TOC -->
 
@@ -34,8 +34,8 @@ Document version 2.6.17.
 - [Authentication](#authentication)   
 - [Vipps HTTP headers](#vipps-http-headers)   
 - [Initiate](#initiate)   
+  - [Regular payments and express payments](#regular-payments-and-express-payments)   
   - [Regular eCommerce payments](#regular-ecommerce-payments)   
-     - [When to use reserve capture and direct capture](#when-to-use-reserve-capture-and-direct-capture)   
   - [Express checkout payments](#express-checkout-payments)   
      - [Old and new express checkout flow](#old-and-new-express-checkout-flow)   
      - [How to specify the old or new express checkout flow](#how-to-specify-the-old-or-new-express-checkout-flow)   
@@ -75,13 +75,11 @@ Document version 2.6.17.
 - [Capture](#capture)   
   - [Reserve capture](#reserve-capture)   
   - [Direct capture](#direct-capture)   
-  - [Capture payment](#capture-payment)   
   - [Partial capture](#partial-capture)   
 - [Cancel](#cancel)   
   - [Cancelling a pending order](#cancelling-a-pending-order)   
   - [Cancelling a partially captured order](#cancelling-a-partially-captured-order)   
 - [Refund](#refund)   
-- [Recurring eCommerce payments](#recurring-ecommerce-payments)   
 - [Get payment details](#get-payment-details)   
   - [Payment states](#payment-states)   
   - [Requests and responses](#requests-and-responses)   
