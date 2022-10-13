@@ -20,7 +20,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.13.15.
+Document version 3.13.16.
 
 <!-- START_TOC -->
 
@@ -57,6 +57,7 @@ Document version 3.13.15.
   * [Is it possible for a merchant to pay a Vipps user?](#is-it-possible-for-a-merchant-to-pay-a-vipps-user)
 * [Users and payments](#users-and-payments)
   * [When do users get a "soft decline" and need to complete a 3-D Secure verification?](#when-do-users-get-a-soft-decline-and-need-to-complete-a-3-d-secure-verification)
+  * [Is there an API for checking if a number belongs to a Vipps user?](#is-there-an-api-for-checking-ig-a-user-belongs-to-a-vipps-user)
   * [Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
   * [Is there an API for retrieving information about a merchant's payments?](#is-there-an-api-for-retrieving-information-about-a-merchants-payments)
   * [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
@@ -756,6 +757,17 @@ than when using a card directly.
 Vipps also has an extremely low fraud rate, as it is impossible to pay
 with a card that has been invalidated in any way by the issuer, and all users
 has to log into Vipps with their BankID verified identity to use their card.
+
+### Is there an API for checking if a number belongs to a Vipps user?
+
+No. Vipps does not offer a lookup service for this, as we do not want to
+leak information about users. If a payment is initiated for a user that can
+not pay businesses, the response will be an error.
+Vipps does not distinguish between the following:
+* Not a Vipps user
+* A Vipps user, but under 15 years old
+* A previous Vipps user that has deleted his/her account
+* A Vipps user that has his/her account temporarily or permanently blocked.
 
 ### Is there an API for retrieving information about a Vipps user?
 
