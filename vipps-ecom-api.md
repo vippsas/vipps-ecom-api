@@ -891,26 +891,26 @@ for testing your callbacks.
    and the `orderId` is `acme-shop-123-order123abc`.
 3. Test the callback by making a POST request to your callback URL with the JSON file as request body:
 
-   ```http
+   ```
    http POST https://example.com/vipps/callback/v2/payments/acme-shop-123-order123abc < callback.json
    ```
 
 4. If it does not return `HTTP 200 OK`, your callback handling does not work,
-   and you hmust correct it.
+   and you must correct it.
 
-We recommend checking callbacks on the API Dashboard available under "Utvikler" on
-[portal.vipps.no](https://portal.vipps.no).
+We recommend checking callbacks on the
+[API Dashboard](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/vipps-resources#api-dashboard).
 
 ### Authorization for callbacks
 
 If you provide the `authToken` when initiating a payment with
 [`POST:/ecomm/v2/payments/{orderId}`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Merchant-Endpoints/operation/transactionUpdateCallbackForRegularPaymentUsingPOST),
-the `authToken` will be send as an `Authorization` header in the callback and
+the `authToken` will be sent as an `Authorization` header in the callback and
 shipping details requests. Please note that this is unrelated to the
 [authentication](#authentication)
 required by the Vipps API.
 
-API Spec:
+API spec:
 [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Merchant-Endpoints/operation/transactionUpdateCallbackForRegularPaymentUsingPOST)
 
 ### Vipps callback servers
