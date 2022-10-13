@@ -1191,20 +1191,13 @@ This has some benefits. See:
 
 When *direct capture* is activated, all payment reservations will instantly be captured.
 
-When doing *direct capture*, Vipps is responsible for the customer receiving the purchased product.
-Because of this, *direct capture* requires additional compliance checks and the following
-requirements apply:
+With *direct capture*, Vipps is responsible for the customer receiving the purchased product.
+Because of this, *direct capture* requires additional compliance checks.
 
-Please note that we still recommend using "reserve capture" in all situations. Then perform the capture immediately after the reserve.
+We strongly recommend using "reserve capture" in all situations.
 
-### Capture payment
-
-Capture payment allows the merchant to capture the reserved amount.
-The API allows for both a *full amount capture* and a *partial amount capture*.
-
-The amount to capture cannot be higher than the reserved amount. According to
-Norwegian regulations, capture cannot be done before the goods have been shipped.
-The transaction text is mandatory and is displayed to the end user in the Vipps app.
+See the FAQ:
+* [When should I use "Direct Capture"?](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#when-should-i-use-direct-capture)
 
 ### Partial capture
 
