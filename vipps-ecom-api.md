@@ -1207,38 +1207,16 @@ there is a remaining reserved amount.
 
 If one or more partial captures have been made, any remaining reserved amount
 will be automatically released after a few days.
-See also the FAQ:
-[For how long is a payment reserved](vipps-ecom-api-faq.md#for-how-long-is-a-payment-reserved).
 
-It is not possible to refund the remaining amount since it has not been captured,
-and it is not possible to cancel the reservation, since some of it has been captured.
-
-These two truncated examples show the responses for a reservation of
-200.00 NOK, and a partial capture of 100.00 NOK:
-
-```json
-"transactionSummary": {
-    "capturedAmount": 20000,
-    "remainingAmountToCapture": 0,
-    "refundedAmount": 0,
-    "remainingAmountToRefund": 0
-}
-```
-
-```json
-"transactionsummary": {
-    "capturedAmount": 10000,
-    "remainingAmountToCapture": 10000,
-    "refundedAmount": 0,
-    "remainingAmountToRefund": 0
-}
-```
+It is also possible to explicitly release the remainin funds. See:
+[Cancelling a partially captured order](#cancelling-a-partially-captured-order).
 
 ## Cancel
 
 The Cancel request allows the merchant to cancel a reserved or initiated transaction.
 
-Please note that it is not possible to cancel a request that is over 6 months old.
+Please note that it is not possible to cancel a request that is over 180 days old.
+Attempting to calnce an older payment will result in a `HTTP 400 Bad Request`.
 
 The payment flow can be aborted under certain circumstances:
 
@@ -1370,17 +1348,21 @@ Response:
 }
 ```
 
-**Please note:** Once this operation has been performed, there will be zero funds remaining to capture. Do not call this endpoint until you are sure you have captured all you need.
+**Please note:** Once this operation has been performed, there will be zero
+funds remaining to capture. Do not call this endpoint until you are sure you
+have captured all you need.
 
 ## Refund
 
 The merchant can initiate a refund of the captured amount.
 The refund can be a partial or full.
 
-Partial refunds are done by specifying an `amount` which is lower than the captured amount.
-The refunded amount cannot be larger than the captured amount.
+Partial refunds are done by specifying an `amount` which is lower than the
+captured amount. The refunded amount cannot be larger than the captured amount.
 
-In a capture request, the merchant may also use the `X-Request-Id` header. This header is an idempotency header ensuring that, if the merchant retries a request with the same `X-Request-Id`, the retried request will not make additional changes.
+In a capture request, the merchant may also use the `X-Request-Id` header. This
+header is an idempotency header ensuring that, if the merchant retries a request
+with the same `X-Request-Id`, the retried request will not make additional changes.
 
 You can use any unique id for your `X-Request-Id`.
 See the [API specification](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST) for details.
