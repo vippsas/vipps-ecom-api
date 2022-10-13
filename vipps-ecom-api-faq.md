@@ -20,7 +20,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.13.16.
+Document version 3.14.0.
 
 <!-- START_TOC -->
 
@@ -54,19 +54,15 @@ Document version 3.13.16.
   * [How can I refund a payment?](#how-can-i-refund-a-payment)
   * [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
   * [How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
-  * [Is it possible for a merchant to pay a Vipps user?](#is-it-possible-for-a-merchant-to-pay-a-vipps-user)
 * [Users and payments](#users-and-payments)
   * [Is there an API for checking if a number belongs to a Vipps user?](#is-there-an-api-for-checking-if-a-number-belongs-to-a-vipps-user)
   * [Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
-  * [Is there an API for retrieving information about a merchant's payments?](#is-there-an-api-for-retrieving-information-about-a-merchants-payments)
-* [The Vipps landing page](#the-vipps-landing-page)
-  * [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
-  * [How can I check if I have skipLandingPage activated?](#how-can-i-check-if-i-have-skiplandingpage-activated)
-  * [Can I show the landing page in an iframe?](#can-i-show-the-landing-page-in-an-iframe)
+  * [Where can I find information about payment and settlements?](#where-can-i-find-information-about-payment-and-settlements)
   * [Can I split payments to charge a fee?](#can-i-split-payments-to-charge-a-fee)
   * [Can I create a marketplace with multiple merchants?](#can-i-create-a-marketplace-with-multiple-merchants)
   * [Can I create a service to match buyers and sellers?](#can-i-create-a-service-to-match-buyers-and-sellers)
   * [Can I use Vipps for crowdfunding?](#can-i-use-vipps-for-crowdfunding)
+  * [Is it possible for a merchant to pay a Vipps user?](#is-it-possible-for-a-merchant-to-pay-a-vipps-user)
   * [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-cant-find-it)
   * [How long is an initiated order valid, if the user does not confirm in the Vipps app?](#how-long-is-an-initiated-order-valid-if-the-user-does-not-confirm-in-the-vipps-app)
   * [How long does it take until the money is in my account?](#how-long-does-it-take-until-the-money-is-in-my-account)
@@ -74,6 +70,10 @@ Document version 3.13.16.
   * [In which sequence are callbacks and fallbacks done?](#in-which-sequence-are-callbacks-and-fallbacks-done)
   * [Where can I find reports on transactions?](#where-can-i-find-reports-on-transactions)
   * [When do users get a "soft decline" and need to complete a 3-D Secure verification?](#when-do-users-get-a-soft-decline-and-need-to-complete-a-3-d-secure-verification)
+* [The Vipps landing page](#the-vipps-landing-page)
+  * [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
+  * [How can I check if I have skipLandingPage activated?](#how-can-i-check-if-i-have-skiplandingpage-activated)
+  * [Can I show the landing page in an iframe?](#can-i-show-the-landing-page-in-an-iframe)
 * [Problems for end users](#problems-for-end-users)
   * [Why don't I receive the payment notification?](#why-dont-i-receive-the-payment-notification)
   * [Why am I not sent back to where I came from when I have paid?](#why-am-i-not-sent-back-to-where-i-came-from-when-i-have-paid)
@@ -103,7 +103,7 @@ Document version 3.13.16.
   * [Can I use Vipps with Klarna Checkout?](#can-i-use-vipps-with-klarna-checkout)
   * [What functionality is included in the eCom API, but not the PSP API?](#what-functionality-is-included-in-the-ecom-api-but-not-the-psp-api)
   * [What do we have to do with PSD2's SCA requirements?](#what-do-we-have-to-do-with-psd2s-sca-requirements)
-* [How can I change partner for my integration with Vipps?](#how-can-i-change-partner-for-my-integration-with-vipps)
+  * [How can I change partner for my integration with Vipps?](#how-can-i-change-partner-for-my-integration-with-vipps)
 * [Frequently Asked Questions for POS integrations](#frequently-asked-questions-for-pos-integrations)
   * [How do I use the one-time payment QR?](#how-do-i-use-the-one-time-payment-qr)
   * [How can we be whitelisted for `skipLandingPage`?](#how-can-we-be-whitelisted-for-skiplandingpage)
@@ -115,7 +115,6 @@ Document version 3.13.16.
   * [How can I check if a person has Vipps?](#how-can-i-check-if-a-person-has-vipps)
   * [How can I save the customer's phone number?](#how-can-i-save-the-customers-phone-number)
   * [How can we mass sign up merchants?](#how-can-we-mass-sign-up-merchants)
-  * [Where can I find information about settlements?](#where-can-i-find-information-about-settlements)
 * [Questions?](#questions)
 
 <!-- END_TOC -->
@@ -704,34 +703,6 @@ Vipps does not have more information than what is available through our API:
 
 See: [Settlements](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/settlements/).
 
-### Is it possible for a merchant to pay a Vipps user?
-
-No. Vipps has no functionality for a merchant to paying to a Vipps user,
-except for refunding (part of) a payment.
-
-Vipps only has APIs for paying from a person to a merchant.
-
-It is not possible to pay from one merchant to another merchant,
-or to pay from a merchant to a person.
-
-There are several reasons for this, including:
-
-* The Norwegian "Straksbetaling" (instant payments) system is not designed
-  for this, and not all banks support it.
-* There are other account-to-account payment methods, but all have their
-  idiosyncrasies, and none are a perfect fit.
-* Payouts to cards is different than accounts, and will depend on the PSPs,
-  which brings another set of challenges.
-* Some merchant accounts requires "four eyes" before making payments from them,
-  and Vipps does not have this functionality in the API.
-* The SCA (Secure Customer Authentication) required by PSD2 further complicates
-  payouts, both with an API and on [portal.vipps.no](https://portal.vipps.no).
-
-Vipps does have functionality for getting the user's bank accounts enrolled in
-Vipps, with the user's consent. Payments may then be made to the bank account.
-See:
-[Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
-
 ## Users and payments
 
 ### Is there an API for checking if a number belongs to a Vipps user?
@@ -773,85 +744,15 @@ information to third parties, and Vipps does not allow it.
 The Vipps user must always give consent to sharing data with a merchant.
 There is no other API to look up a user's address, retrieve a user's purchases, etc.
 
-### Is there an API for retrieving information about a merchant's payments?
+### Where can I find information about payment and settlements?
+
+[portal.vipps.no](https://portal.vipps.no)
+provides information about your transactions, sale units and settlement reports.
+You can also subscribe to daily or monthly transaction reports by email.
 
 See:
 * [Report API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/report-api).
 * [Settlements](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/settlements/)
-
-## The Vipps landing page
-
-### Is it possible to skip the landing page?
-
-Only in special cases, where displaying it is not possible.
-
-This feature has to be specially enabled by Vipps for eligible sale units:
-The sale units must be whitelisted by Vipps.
-Skipping the landing page is typically used at physical points of sale
-where there is no display available.
-
-The Vipps landing page is more than just a web page, it is an entire
-application and it plays an important role in the Vipps payment process.
-See the landing page information in the API Guide:
-[The Vipps landing page](vipps-ecom-api.md#the-vipps-landing-page).
-
-If you need to skip the landing page in a Point of Sale (POS) solution, see:
-[What is the process to go live in production?](#what-is-the-process-to-go-live-in-production).
-
-If you need to skip the landing page for a different reason:
-Contact your Key Account Manager. If you do not have a KAM:
-Please log in on
-[portal.vipps.no](https://portal.vipps.no),
-open the "Utvikler" (Developer) tab,
-find the right sale unit and
-click the email link under the "i" information bubble.
-Include a detailed description of why it is not possible to display the landing page.
-
-See:
-[Skip landing page](vipps-ecom-api.md#skip-landing-page)
-in the API guide.
-
-### How can I check if I have skipLandingPage activated?
-
-Vipps can no longer manually check this for merchant or partners.
-
-All merchants can log in on
-[portal.vipps.no](https://portal.vipps.no)
-and check if a sale unit has `skipLandingPage` enabled
-for all their sale units under the "Utvikler" menu item.
-
-You can also find information on how to activate `skipLandingPage` there.
-
-If you are a partner and want to check a merchant, see the
-[Partner API](https://github.com/vippsas/vipps-partner-api).
-
-If you are a partner and do not yet use the Partner API, you can ask the
-merchant to create a user for you on
-[portal.vipps.no](https://portal.vipps.no)
-so you can check on behalf of the merchant as
-[described in detail with screenshots](https://github.com/vippsas/vipps-partner/blob/main/add-portal-user.md).
-
-If you are not able to log in on
-[portal.vipps.no](https://portal.vipps.no)
-you can make a small payment (2 kr)
-with `skipLandingPage`.
-If you do not get an error, it's active.
-If you get an error, it's not active.
-
-See:
-[Skip landing page](vipps-ecom-api.md#skip-landing-page)
-in the API guide.
-
-### Can I show the landing page in an iframe?
-
-No. Never show the Vipps landing page inside an iframe. That will make it
-impossible for the user to reliably be redirected back to the merchant's website,
-and result in a lower success rate. In general: Any "optimization" of the payment
-flow may break the Vipps payment flow - if not today, then later.
-
-See:
-[Skip landing page](vipps-ecom-api.md#skip-landing-page)
-in the API guide.
 
 ### Can I split payments to charge a fee?
 
@@ -927,6 +828,34 @@ See:
 * [What are the requirements for Vipps merchants?](#what-are-the-requirements-for-vipps-merchants)
 * [Can I create a marketplace with multiple merchants?](#can-i-create-a-marketplace-with-multiple-merchants)
 * [Can I create a service to match buyers and sellers?](#can-i-create-a-service-to-match-buyers-and-sellers)
+
+### Is it possible for a merchant to pay a Vipps user?
+
+No. Vipps has no functionality for a merchant to paying to a Vipps user,
+except for refunding (part of) a payment.
+
+Vipps only has APIs for paying from a person to a merchant.
+
+It is not possible to pay from one merchant to another merchant,
+or to pay from a merchant to a person.
+
+There are several reasons for this, including:
+
+* The Norwegian "Straksbetaling" (instant payments) system is not designed
+  for this, and not all banks support it.
+* There are other account-to-account payment methods, but all have their
+  idiosyncrasies, and none are a perfect fit.
+* Payouts to cards is different than accounts, and will depend on the PSPs,
+  which brings another set of challenges.
+* Some merchant accounts requires "four eyes" before making payments from them,
+  and Vipps does not have this functionality in the API.
+* The SCA (Secure Customer Authentication) required by PSD2 further complicates
+  payouts, both with an API and on [portal.vipps.no](https://portal.vipps.no).
+
+Vipps does have functionality for getting the user's bank accounts enrolled in
+Vipps, with the user's consent. Payments may then be made to the bank account.
+See:
+[Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
 
 ### I have initiated an order but I can't find it!
 
@@ -1047,6 +976,80 @@ than when using a card directly.
 Vipps also has an extremely low fraud rate, as it is impossible to pay
 with a card that has been invalidated in any way by the issuer, and all users
 has to log into Vipps with their BankID verified identity to use their card.
+
+## The Vipps landing page
+
+### Is it possible to skip the landing page?
+
+Only in special cases, where displaying it is not possible.
+
+This feature has to be specially enabled by Vipps for eligible sale units:
+The sale units must be whitelisted by Vipps.
+Skipping the landing page is typically used at physical points of sale
+where there is no display available.
+
+The Vipps landing page is more than just a web page, it is an entire
+application and it plays an important role in the Vipps payment process.
+See the landing page information in the API Guide:
+[The Vipps landing page](vipps-ecom-api.md#the-vipps-landing-page).
+
+If you need to skip the landing page in a Point of Sale (POS) solution, see:
+[What is the process to go live in production?](#what-is-the-process-to-go-live-in-production).
+
+If you need to skip the landing page for a different reason:
+Contact your Key Account Manager. If you do not have a KAM:
+Please log in on
+[portal.vipps.no](https://portal.vipps.no),
+open the "Utvikler" (Developer) tab,
+find the right sale unit and
+click the email link under the "i" information bubble.
+Include a detailed description of why it is not possible to display the landing page.
+
+See:
+[Skip landing page](vipps-ecom-api.md#skip-landing-page)
+in the API guide.
+
+### How can I check if I have skipLandingPage activated?
+
+Vipps can no longer manually check this for merchant or partners.
+
+All merchants can log in on
+[portal.vipps.no](https://portal.vipps.no)
+and check if a sale unit has `skipLandingPage` enabled
+for all their sale units under the "Utvikler" menu item.
+
+You can also find information on how to activate `skipLandingPage` there.
+
+If you are a partner and want to check a merchant, see the
+[Partner API](https://github.com/vippsas/vipps-partner-api).
+
+If you are a partner and do not yet use the Partner API, you can ask the
+merchant to create a user for you on
+[portal.vipps.no](https://portal.vipps.no)
+so you can check on behalf of the merchant as
+[described in detail with screenshots](https://github.com/vippsas/vipps-partner/blob/main/add-portal-user.md).
+
+If you are not able to log in on
+[portal.vipps.no](https://portal.vipps.no)
+you can make a small payment (2 kr)
+with `skipLandingPage`.
+If you do not get an error, it's active.
+If you get an error, it's not active.
+
+See:
+[Skip landing page](vipps-ecom-api.md#skip-landing-page)
+in the API guide.
+
+### Can I show the landing page in an iframe?
+
+No. Never show the Vipps landing page inside an iframe. That will make it
+impossible for the user to reliably be redirected back to the merchant's website,
+and result in a lower success rate. In general: Any "optimization" of the payment
+flow may break the Vipps payment flow - if not today, then later.
+
+See:
+[Skip landing page](vipps-ecom-api.md#skip-landing-page)
+in the API guide.
 
 ## Problems for end users
 
@@ -1670,7 +1673,7 @@ two-factor authentication featuring either PIN or biometrics in addition to
 device possession. In addition Vipps has implemented a Dynamic Linking according
 to the requirements.
 
-## How can I change partner for my integration with Vipps?
+### How can I change partner for my integration with Vipps?
 
 See:
 [How to change partners for a merchant](https://github.com/vippsas/vipps-partner#how-to-change-partners-for-a-merchant).
@@ -1842,10 +1845,6 @@ See:
 ### How can we mass sign up merchants?
 
 See: [Vipps Partners: How to sign up new merchants](https://github.com/vippsas/vipps-partner#how-to-sign-up-new-merchants).
-
-### Where can I find information about settlements?
-
-See: [Settlements](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/settlements/).
 
 ## Questions?
 
