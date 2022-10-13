@@ -1000,11 +1000,10 @@ See
 
 ### Get shipping details
 
-The [`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Merchant-Endpoints/operation/fetchShippingCostUsingPOST) API call is for express payments and allows Vipps to get the shipping
-cost and method based on the provided address and product details. This is only
-relevant for express checkout payments where Vipps needs to present shipping
-cost and method to the user.
-This service must be implemented by the merchant.
+The
+[`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Merchant-Endpoints/operation/fetchShippingCostUsingPOST)
+API endpoint _on the merchant's side_ is for express payments and allows Vipps
+to get the shipping cost and method based on the provided address and product details.
 
 Request:
 
@@ -1052,7 +1051,9 @@ See
 
 ### Remove User Consent
 
-The [`DELETE:[consentRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Merchant-Endpoints/operation/removeUserConsentUsingDELETE) API call allows Vipps to send an end user's consent removal request to the merchant.
+The
+[`DELETE:[consentRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Merchant-Endpoints/operation/removeUserConsentUsingDELETE)
+API endpoint _on the merchant's side_ allows Vipps to send an end user's consent removal request to the merchant.
 This endpoint is required for express checkout.
 
 When receiving this request,
