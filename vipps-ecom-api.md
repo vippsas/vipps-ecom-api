@@ -1408,11 +1408,6 @@ Response:
 }
 ```
 
-## Recurring eCommerce payments
-
-Recurring eCommerce is its own separate product and can be found described in details in
-our [Recurring Repo.](https://github.com/vippsas/vipps-recurring-api)
-
 ## Get payment details
 
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET) retrieves the full history of a payment and the status of the operations.
@@ -1504,9 +1499,12 @@ always contains *the entire history* of payments for the order, not just the cur
 ```
 
 **Please note:** The `transactionSummary` will not be part of the response if
-the user does not react to the Vipps landing page or app-switch. `bankIdentificationNumber` will only be part of `transactionSummary` in the response of the `GET:/ecomm/v2/payments/{orderId}/details` endpoint.
+the user does not react to the Vipps landing page or app-switch.
+`bankIdentificationNumber` will only be part of `transactionSummary` in the
+response of the `GET:/ecomm/v2/payments/{orderId}/details` endpoint.
 
-If paymentType is set to `eComm Express Payment` you will get `shippingDetails` and `userDetails` in addition to `transactionLogHistory` and `transactionSummary`.
+If paymentType is set to `eComm Express Payment` you will get `shippingDetails`
+and `userDetails` in addition to `transactionLogHistory` and `transactionSummary`.
 
 ### Polling guidelines
 
@@ -1780,39 +1778,8 @@ is *far* higher.
 In addition to the normal [Authentication](#authentication), we offer *partner keys*
 which let a partner make API calls on behalf of a merchant.
 
-If you are a Vipps partner managing agreements on behalf of Vipps merchants, you
-can use your own API credentials to authenticate, and then send
-the `Merchant-Serial-Number` header to identify which of your merchants you
-are acting on behalf of. The `Merchant-Serial-Number` must be sent in the header
-of all API requests.
-
-By including the [Vipps HTTP Headers](#vipps-http-headers), you will make
-it easier to investigate problems, if anything unexpected happens. Partners may
-re-use the values of the `Vipps-System-Name` and `Vipps-System-Plugin-Name` in
-the plugins headers, if having different values does not make sense.
-Note that the HTTP Headers are mandatory for partners and platforms.
-
-Here's an example of headers:
-
-```http
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni <snip>
-Ocp-Apim-Subscription-Key: 0f14ebcab0ec4b29ae0cb90d91b4a84a
-Merchant-Serial-Number: 123456
-Vipps-System-Name: Acme Enterprises Ecommerce DeLuxe
-Vipps-System-Version: 3.1.2
-Vipps-System-Plugin-Name: acme-webshop
-Vipps-System-Plugin-Version: 4.5.6
-Content-Type: application/json
-```
-
-Please refer to the
-[API reference](https://vippsas.github.io/vipps-developer-docs/api/ecom) for all the details.
-
-**Please note:** The Merchant Serial Number (MSN) is a unique id for the sale
-unit. This is a required parameter if you are a Vipps partner making API requests
-on behalf of a merchant. The partner must use the *merchant's* MSN, not the
-partner's MSN. This parameter is also recommended for regular Vipps
-merchants making API calls for themselves.
+See:
+[Partner keys](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/partner-keys).
 
 ## Idempotency
 
@@ -1906,15 +1873,32 @@ using same idempotency key (see [Idempotency](#idempotency)).
 
 ### Clean-up strategies
 
-Vipps recommends merchants implement a robust clean up strategy for all orders where the goods or services are not issued to the user.
+Vipps recommends merchants implement a robust clean up strategy for all orders
+where the goods or services are not issued to the user.
 
 An example case would be:
 
-Bank X is having issues and transactions for their customers are slow (15+ seconds) for a significant period of time. As a result of this the user decides to close the Vipps app while the transaction is being processed, they do not then see the final result in the Vipps app. This transaction will eventually result in a successful reservation. The user then returns to the Merchants app, but as the entry was not via an expected app-switch from the Vipps app, state is not correctly resumed. The user attempts a second payment, which this time goes through in a timely manner, and upon app-switch back the user is issued their goods/services.
+Bank X is having issues and transactions for their customers are slow (15+ seconds)
+for a significant period of time. As a result of this the user decides to close
+the Vipps app while the transaction is being processed, they do not then see the
+final result in the Vipps app. This transaction will eventually result in a
+successful reservation. The user then returns to the Merchants app, but as the
+entry was not via an expected app-switch from the Vipps app, state is not correctly
+resumed. The user attempts a second payment, which this time goes through in a
+timely manner, and upon app-switch back the user is issued their goods/services.
 
-The user has now two reservations and only received goods/services once. It is the merchants responsibility here to ensure the first order, for which no goods/services were issued, should be cancelled to remove the reservation from the customers account.
+The user has now two reservations and only received goods/services once. It is
+the merchant's responsibility here to ensure the first order, for which no
+goods/services were issued, should be cancelled to remove the reservation from
+the customers account.
 
-Vipps recommends polling [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET) until either a `REJECT`, `USER_CANCEL`, `RESERVE` or `SALE` status is received, and then performing the appropriate action based on the status of product issuing. The user should also be notified that the merchant has issued any product to ensure they do not naturally retry the purchase. This includes using sms/email strategy if it is unclear that the user in on the merchants website/app to see confirmation.
+Vipps recommends polling
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET)
+until either a `REJECT`, `USER_CANCEL`, `RESERVE` or `SALE` status is received,
+and then performing the appropriate action based on the status of product issuing.
+The user should also be notified that the merchant has issued any product to
+ensure they do not naturally retry the purchase. This includes using sms/email
+strategy if it is unclear that the user in on the merchants website/app to see confirmation.
 
 ### Recommendations for handling very high traffic
 
