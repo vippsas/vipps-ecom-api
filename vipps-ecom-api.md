@@ -233,6 +233,12 @@ the headers should be:
 
 ## Initiate
 
+Payment amounts must be in NOK, be non-zero *and* larger than 1 NOK (1 NOK = 100 øre).
+
+Amounts are specified in minor units.
+For Norwegian kroner (NOK) that means 1 kr = 100 øre.
+Example: 499 kr = 49900 øre.
+
 Vipps eCommerce API offers two types of payments:
 
 1. Regular eCommerce payments
@@ -244,44 +250,21 @@ Examples from a demo website:
 
 ### Regular eCommerce payments
 
-Payment amounts must be in NOK, be non-zero *and* larger than 1 NOK (1 NOK = 100 øre).
+When you initiate a payment, it will normally only be *reserved* until you capture it.
 
-Amounts are specified in minor units.
-For Norwegian kroner (NOK) that means 1 kr = 100 øre.
-Example: 499 kr = 49900 øre.
+This has some benefits:
+* If a payment has been _reserved_, the merchant can
+  make a `/cancel` call to immediately release the reservation and make available
+  in the customer's account.
+* It is possible to reserve a higher amount and only
+  capture a part of it (useful for electric car charging stations, etc).
+  It is also possible to capture the full amount
+  with multiple captures ("partial capture").
 
-When you initiate a payment, it will only be *reserved* until you capture it.
-Vipps supports both *reserve capture* and *direct capture* payment flows.
-
-**Reserve capture** is the default. When you initiate a payment, it will be
-reserved until you capture it.
-
-According to Norwegian regulations, you are not allowed to capture a payment until
-the product or service is provided to the customer. For more information,
-please see the Consumer Authority's
-[Guidelines for the standard sales conditions for consumer purchases of goods over the internet](https://www.forbrukertilsynet.no/english/guidelines/guidelines-the-standard-sales-conditions-consumer-purchases-of-goods-the-internet).
-
-See [Reserve capture](#reserve-capture) for more details.
-
-**Direct capture** causes all payment reservations to be instantly be captured.
-This is intended for situations where the product or service is immediately
-provided to the customer, e.g. digital services.
-
-See [Direct capture](#direct-capture) for more details.
-
-#### When to use reserve capture and direct capture
-
-Merchants cannot choose between *reserve capture* and *direct capture*
-themselves, the type of capture is configured by Vipps after the additional
-compliance checks, required by the authorities, have been completed.
-
-**Important:** It's completely fine to use "reserve capture" almost like
-"direct capture". Just perform the capture immediately after the reservation.
-The user experience is exactly the same, and you have the opportunity to
-perform a `/cancel` with instant effect instead of a `/refund` that takes days.
-
-For more information, see the
-[what is the difference between reserve capture and direct capture](vipps-ecom-api-faq.md#what-is-the-difference-between-reserve-capture-and-direct-capture)  in the FAQ.
+See:
+* [When should I charge the customer](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#when-should-i-charge-the-customer).
+* [What is the difference between "Reserve Capture" and "Direct Capture"?](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#what-is-the-difference-between-reserve-capture-and-direct-capture)
+* [When should I use "Direct Capture"?](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#when-should-i-use-direct-capture)
 
 ### Express checkout payments
 
@@ -721,23 +704,20 @@ We recommend the following, using the example "Vipps webshop":
 All URLs in the Vipps eCommerce API are validated with the
 [Apache Commons UrlValidator](https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html).
 
-If `isApp` is true, the `fallBack` URL is not validated with Apache Commons UrlValidator,
-as the app-switch URL may be something like `vipps://`, which is not a valid URL.
-
-The endpoints required by Vipps must be publicly available.
-
-We also require the hostnames to resolve with DNS.
-
-Please note:
-
+**Please note:**
 * The `callbackPrefix` URL *must* use HTTPS.
 * The `fallBack` URL must use either HTTPS or a custom URL scheme (`myapp://`).
+* The endpoints required by Vipps must be publicly available.
+* The hostnames must resolve with DNS.
 
 URLs that start with `http://localhost` will be rejected. If you want to use
 localhost as fallback, please use `http://127.0.0.1`.
 It is, naturally, not possible to use `http://localhost` or
 `http://127.0.0.1` for the callback, as the Vipps backend would then call itself.
 Ngrok may also be an option: <https://ngrok.com>
+
+If `isApp` is true, the `fallBack` URL is not validated with Apache Commons UrlValidator,
+as the app-switch URL may be something like `vipps://`, which is not a valid URL.
 
 Here is a simple Java class suitable for testing URLs,
 using the dummy URL `https://example.com/vipps/fallback-result-page-for-both-success-and-failure/acme-shop-123-order123abc`:
