@@ -20,7 +20,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.13.15.
+Document version 3.14.0.
 
 <!-- START_TOC -->
 
@@ -31,19 +31,19 @@ Document version 3.13.15.
   * [Can I use my "Vippsnummer" in my webshop?](#can-i-use-my-vippsnummer-in-my-webshop)
 * [Common problems](#common-problems)
   * [Why do payments fail?](#why-do-payments-fail)
+  * [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
   * [Why does capture fail?](#why-does-capture-fail)
   * [Why do I get a CORS error?](#why-do-i-get-a-cors-error)
   * [How can I open the fallback URL in a specific (embedded) browser?](#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser)
   * [How can I measure Vipps sales with Google Analytics, Facebook pixel, etc?](#how-can-i-measure-vipps-sales-with-google-analytics-facebook-pixel-etc)
-  * [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
   * [Why are the customer names not shown on the transaction overview?](#why-are-the-customer-names-not-shown-on-the-transaction-overview)
 * [Reservations and captures](#reservations-and-captures)
+  * [For how long is a payment reserved?](#for-how-long-is-a-payment-reserved)
   * [When should I charge the customer?](#when-should-i-charge-the-customer)
   * [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
   * [When should I use "Direct Capture"?](#when-should-i-use-direct-capture)
   * [How can I check if I have "reserve capture" or "direct capture"?](#how-can-i-check-if-i-have-reserve-capture-or-direct-capture)
   * [How do I turn direct capture on or off?](#how-do-i-turn-direct-capture-on-or-off)
-  * [For how long is a payment reserved?](#for-how-long-is-a-payment-reserved)
   * [Can I prevent people from paying with credit cards?](#can-i-prevent-people-from-paying-with-credit-cards)
   * [Can I initiate a Vipps payment with a QR code?](#can-i-initiate-a-vipps-payment-with-a-qr-code)
   * [Can I send a Vipps payment link in an SMS, QR or email?](#can-i-send-a-vipps-payment-link-in-an-sms-qr-or-email)
@@ -54,28 +54,29 @@ Document version 3.13.15.
   * [How can I refund a payment?](#how-can-i-refund-a-payment)
   * [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
   * [How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
-  * [Is it possible for a merchant to pay a Vipps user?](#is-it-possible-for-a-merchant-to-pay-a-vipps-user)
 * [Users and payments](#users-and-payments)
-  * [When do users get a "soft decline" and need to complete a 3-D Secure verification?](#when-do-users-get-a-soft-decline-and-need-to-complete-a-3-d-secure-verification)
+  * [Is there an API for checking if a number belongs to a Vipps user?](#is-there-an-api-for-checking-if-a-number-belongs-to-a-vipps-user)
   * [Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
-  * [Is there an API for retrieving information about a merchant's payments?](#is-there-an-api-for-retrieving-information-about-a-merchants-payments)
-  * [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
-  * [How can I check if I have skipLandingPage activated?](#how-can-i-check-if-i-have-skiplandingpage-activated)
-  * [Can I show the landing page in an iframe?](#can-i-show-the-landing-page-in-an-iframe)
+  * [Where can I find information about payment and settlements?](#where-can-i-find-information-about-payment-and-settlements)
   * [Can I split payments to charge a fee?](#can-i-split-payments-to-charge-a-fee)
   * [Can I create a marketplace with multiple merchants?](#can-i-create-a-marketplace-with-multiple-merchants)
   * [Can I create a service to match buyers and sellers?](#can-i-create-a-service-to-match-buyers-and-sellers)
   * [Can I use Vipps for crowdfunding?](#can-i-use-vipps-for-crowdfunding)
+  * [Is it possible for a merchant to pay a Vipps user?](#is-it-possible-for-a-merchant-to-pay-a-vipps-user)
   * [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-cant-find-it)
   * [How long is an initiated order valid, if the user does not confirm in the Vipps app?](#how-long-is-an-initiated-order-valid-if-the-user-does-not-confirm-in-the-vipps-app)
   * [How long does it take until the money is in my account?](#how-long-does-it-take-until-the-money-is-in-my-account)
   * [Why has one of my customers been charged twice for the same payment?](#why-has-one-of-my-customers-been-charged-twice-for-the-same-payment)
   * [In which sequence are callbacks and fallbacks done?](#in-which-sequence-are-callbacks-and-fallbacks-done)
   * [Where can I find reports on transactions?](#where-can-i-find-reports-on-transactions)
+  * [When do users get a "soft decline" and need to complete a 3-D Secure verification?](#when-do-users-get-a-soft-decline-and-need-to-complete-a-3-d-secure-verification)
+* [The Vipps landing page](#the-vipps-landing-page)
+  * [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-landing-page)
+  * [How can I check if I have skipLandingPage activated?](#how-can-i-check-if-i-have-skiplandingpage-activated)
+  * [Can I show the landing page in an iframe?](#can-i-show-the-landing-page-in-an-iframe)
 * [Problems for end users](#problems-for-end-users)
   * [Why don't I receive the payment notification?](#why-dont-i-receive-the-payment-notification)
   * [Why am I not sent back to where I came from when I have paid?](#why-am-i-not-sent-back-to-where-i-came-from-when-i-have-paid)
-  * [Why can't I scan the Vipps QR on the terminal with the camera app?](#why-cant-i-scan-the-vipps-qr-on-the-terminal-with-the-camera-app)
 * [Common errors](#common-errors)
   * [Why do I not get callbacks from Vipps?](#why-do-i-not-get-callbacks-from-vipps)
   * [Why do I get `HTTP 401 Unauthorized`?](#why-do-i-get-http-401-unauthorized)
@@ -95,14 +96,14 @@ Document version 3.13.15.
 * [Other questions](#other-questions)
   * [Can you send us logs so we can look for errors?](#can-you-send-us-logs-so-we-can-look-for-errors)
   * [How do I perform "testing in production"?](#how-do-i-perform-testing-in-production)
-  * [What do we have to do with PSD2's SCA requirements?](#what-do-we-have-to-do-with-psd2s-sca-requirements)
   * [How can I use Vipps for different types of payments?](#how-can-i-use-vipps-for-different-types-of-payments)
   * [How do I set up multiple sale units?](#how-do-i-set-up-multiple-sale-units)
   * [How can I change my organization number?](#how-can-i-change-my-organization-number)
   * [What about webhooks?](#what-about-webhooks)
   * [Can I use Vipps with Klarna Checkout?](#can-i-use-vipps-with-klarna-checkout)
   * [What functionality is included in the eCom API, but not the PSP API?](#what-functionality-is-included-in-the-ecom-api-but-not-the-psp-api)
-* [How can I change partner for my integration with Vipps?](#how-can-i-change-partner-for-my-integration-with-vipps)
+  * [What do we have to do with PSD2's SCA requirements?](#what-do-we-have-to-do-with-psd2s-sca-requirements)
+  * [How can I change partner for my integration with Vipps?](#how-can-i-change-partner-for-my-integration-with-vipps)
 * [Frequently Asked Questions for POS integrations](#frequently-asked-questions-for-pos-integrations)
   * [How do I use the one-time payment QR?](#how-do-i-use-the-one-time-payment-qr)
   * [How can we be whitelisted for `skipLandingPage`?](#how-can-we-be-whitelisted-for-skiplandingpage)
@@ -114,7 +115,6 @@ Document version 3.13.15.
   * [How can I check if a person has Vipps?](#how-can-i-check-if-a-person-has-vipps)
   * [How can I save the customer's phone number?](#how-can-i-save-the-customers-phone-number)
   * [How can we mass sign up merchants?](#how-can-we-mass-sign-up-merchants)
-  * [Where can I find information about settlements?](#where-can-i-find-information-about-settlements)
 * [Questions?](#questions)
 
 <!-- END_TOC -->
@@ -212,6 +212,25 @@ the user in Vipps, all necessary information will be provided to the user in Vip
 See:
 [All errors](vipps-ecom-api.md#error-codes).
 
+### Why does Vipps Hurtigkasse (express checkout) fail?
+
+When using Vipps Hurtigkasse (express checkout), Vipps makes a callback to the
+merchant's server to retrieve the merchant's shipping methods for the user's
+address. Vipps sends the user's address (with the user's consent) to the
+merchant, and the merchant responds with the shipping methods and cost.
+
+If the merchant's server is slow, or has a slow internet connection,
+the delay may cause Vipps Hurtigkasse to fail due to a timeout.
+
+The solution to this is a faster server and internet connection, or to provide
+the shipping methods as part of the payment initiation. See:
+[Express checkout API endpoints required on the merchant side](vipps-ecom-api.md#express-checkout-api-endpoints-required-on-the-merchant-side).
+
+**Please note:** If you are not shipping any products you should use
+[Userinfo](vipps-ecom-api.md#userinfo)
+instead of Vipps Hurtigkasse, so you avoid asking the customer in a pub
+for the shipping method for the drinks, etc.
+
 ### Why does capture fail?
 
 The most common reasons are:
@@ -290,25 +309,6 @@ activity. This must be done by the merchant itself.
 See:
 [Initiate payment flow: Phone and browser](vipps-ecom-api.md#initiate-payment-flow-phone-and-browser).
 
-### Why does Vipps Hurtigkasse (express checkout) fail?
-
-When using Vipps Hurtigkasse (express checkout), Vipps makes a callback to the
-merchant's server to retrieve the merchant's shipping methods for the user's
-address. Vipps sends the user's address (with the user's consent) to the
-merchant, and the merchant responds with the shipping methods and cost.
-
-If the merchant's server is slow, or has a slow internet connection,
-the delay may cause Vipps Hurtigkasse to fail due to a timeout.
-
-The solution to this is a faster server and internet connection, or to provide
-the shipping methods as part of the payment initiation. See:
-[Express checkout API endpoints required on the merchant side](vipps-ecom-api.md#express-checkout-api-endpoints-required-on-the-merchant-side).
-
-**Please note:** If you are not shipping any products you should use
-[Userinfo](vipps-ecom-api.md#userinfo)
-instead of Vipps Hurtigkasse, so you avoid asking the customer in a pub
-for the shipping method for the drinks, etc.
-
 ### Why are the customer names not shown on the transaction overview?
 
 The transaction overview on
@@ -334,6 +334,62 @@ to get customer's consent to share name, email address, etc.
 not physically present. It does also not comply with "Kassaloven".
 
 ## Reservations and captures
+
+### For how long is a payment reserved?
+
+That depends. Vipps does not control the behaviour of the customer's card or account.
+
+The details may change, but the information below is the best Vipps can offer.
+
+* VISA reservations are valid for 7 days (but only 5 for Visa Electron).
+  The banks will release the reservation after 4-7 days, but if the capture is
+  done within the 7 days, VISA guarantees that the capture will succeed.
+  Vipps' PSP is Adyen, and they have some documentation for
+  [VISA reservations](https://docs.adyen.com/online-payments/adjust-authorisation#visa).
+
+* MasterCard reservations are valid for 30 days.
+  The banks may release the reservation before this, but if the capture is
+  done within the 30 days, MasterCard guarantees that the capture will succeed.
+  Vipps' PSP is Adyen, and they have some documentation for
+ [Mastercard reservations](https://docs.adyen.com/online-payments/adjust-authorisation#mastercard).
+
+Vipps cannot and does not automatically change the status of a reservation.
+
+If a capture attempt is made more than 7 days (VISA) or 30 days (MasterCard)
+after the payment has been initiated _and_ the reservation has been released
+by the bank in the meantime, Vipps will make a new payment request to the bank.
+If the account has sufficient funds, the payment will be successful.
+
+If the user's account has insufficient funds at this time, the payment will
+either succeed and put the customer's card/account in the negative (as
+an overdraft), or fail because the customer's card/account cannot be put into
+the negative - for example youth accounts.
+Vipps cannot know in advance what will happen.
+
+It is also possible that the card expires, is blocked, etc somewhere between
+the time of reservation and the time of capture.
+Vipps cannot know in advance what will happen.
+
+In many cases the bank will have a register of expired reservations and they
+will force the capture through if the account allows this.
+This will put the account in the negative.
+
+Customers may, understandably, be dissatisfied if the capture puts their account
+in the negative, so please avoid this.
+
+Capture can be made up to 180 days after reservation.
+Attempting to capture an older payment will result in a
+`HTTP 400 Bad Request`.
+
+The
+[`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/capturePaymentUsingPOST)
+and
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET)
+API calls will always return the correct status.
+
+See:
+[How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment).
+
 
 ### When should I charge the customer?
 
@@ -457,61 +513,6 @@ See:
 
 * [When should I use "Direct Capture"?](#when-should-i-use-direct-capture)
 * [What is the difference between "Reserve Capture" and "Direct Capture"?](#what-is-the-difference-between-reserve-capture-and-direct-capture)
-
-### For how long is a payment reserved?
-
-That depends. Vipps does not control the behaviour of the customer's card or account.
-
-The details may change, but the information below is the best Vipps can offer.
-
-* VISA reservations are valid for 7 days (but only 5 for Visa Electron).
-  The banks will release the reservation after 4-7 days, but if the capture is
-  done within the 7 days, VISA guarantees that the capture will succeed.
-  Vipps' PSP is Adyen, and they have some documentation for
-  [VISA reservations](https://docs.adyen.com/online-payments/adjust-authorisation#visa).
-
-* MasterCard reservations are valid for 30 days.
-  The banks may release the reservation before this, but if the capture is
-  done within the 30 days, MasterCard guarantees that the capture will succeed.
-  Vipps' PSP is Adyen, and they have some documentation for
- [Mastercard reservations](https://docs.adyen.com/online-payments/adjust-authorisation#mastercard).
-
-Vipps cannot and does not automatically change the status of a reservation.
-
-If a capture attempt is made more than 7 days (VISA) or 30 days (MasterCard)
-after the payment has been initiated _and_ the reservation has been released
-by the bank in the meantime, Vipps will make a new payment request to the bank.
-If the account has sufficient funds, the payment will be successful.
-
-If the user's account has insufficient funds at this time, the payment will
-either succeed and put the customer's card/account in the negative (as
-an overdraft), or fail because the customer's card/account cannot be put into
-the negative - for example youth accounts.
-Vipps cannot know in advance what will happen.
-
-It is also possible that the card expires, is blocked, etc somewhere between
-the time of reservation and the time of capture.
-Vipps cannot know in advance what will happen.
-
-In many cases the bank will have a register of expired reservations and they
-will force the capture through if the account allows this.
-This will put the account in the negative.
-
-Customers may, understandably, be dissatisfied if the capture puts their account
-in the negative, so please avoid this.
-
-Capture can be made up to 180 days after reservation.
-Attempting to capture an older payment will result in a
-`HTTP 400 Bad Request`.
-
-The
-[`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/capturePaymentUsingPOST)
-and
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET)
-API calls will always return the correct status.
-
-See:
-[How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment).
 
 ### Can I prevent people from paying with credit cards?
 
@@ -690,7 +691,7 @@ remaining amount. If no capture has been made, the entire reserved amount is
 cancelled. Banks "count the days" from when the reservation was made, so the
 merchant must make the capture, or all captures, before the reservation expires.
 
-See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
+See: [Settlements](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/settlements/).
 
 ### How long does it take from a refund is made until the money is in the customer's account?
 
@@ -700,62 +701,23 @@ It can take much longer, up to 10 days, and depends on the bank(s).
 Vipps does not have more information than what is available through our API:
 [`GET:/ecomm/v2/payments/{orderId}/details`](vipps-ecom-api.md#get-payment-details).
 
-See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
-
-### Is it possible for a merchant to pay a Vipps user?
-
-No. Vipps has no functionality for a merchant to paying to a Vipps user,
-except for refunding (part of) a payment.
-
-Vipps only has APIs for paying from a person to a merchant.
-
-It is not possible to pay from one merchant to another merchant,
-or to pay from a merchant to a person.
-
-There are several reasons for this, including:
-
-* The Norwegian "Straksbetaling" (instant payments) system is not designed
-  for this, and not all banks support it.
-* There are other account-to-account payment methods, but all have their
-  idiosyncrasies, and none are a perfect fit.
-* Payouts to cards is different than accounts, and will depend on the PSPs,
-  which brings another set of challenges.
-* Some merchant accounts requires "four eyes" before making payments from them,
-  and Vipps does not have this functionality in the API.
-* The SCA (Secure Customer Authentication) required by PSD2 further complicates
-  payouts, both with an API and on [portal.vipps.no](https://portal.vipps.no).
-
-Vipps does have functionality for getting the user's bank accounts enrolled in
-Vipps, with the user's consent. Payments may then be made to the bank account.
-See:
-[Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
+See: [Settlements](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/settlements/).
 
 ## Users and payments
 
-### When do users get a "soft decline" and need to complete a 3-D Secure verification?
+### Is there an API for checking if a number belongs to a Vipps user?
 
-Vipps handles everything related to "soft declines" and 3-D Secure.
-Vipps also handles BankID verification, when that is required.
-There is nothing a merchant needs to to.
+No. Vipps does not offer a lookup service for this, as we do not want to
+leak information about users. If a payment is initiated for a user that can
+not pay businesses, the response will be an error.
 
-Vipps uses delegated SCA (Secure Customer Authentication) from the banks, and
-significantly simplifies the user experience, as there is normally no need for
-BankID verification.
-
-The biometric login in Vipps is enough.
-
-Vipps uses tokenized cards, which eliminates the need for "soft decline".
-As long as the token is valid, the user never has to verify the card again.
-
-In order to prevent misuse and fraud Vipps require users to do a 3-D Secure
-verification if the user has paid more than 15 000 NOK during the last five days.
-
-In short: Users paying with Vipps has a much faster and simpler user experience
-than when using a card directly.
-
-Vipps also has an extremely low fraud rate, as it is impossible to pay
-with a card that has been invalidated in any way by the issuer, and all users
-has to log into Vipps with their BankID verified identity to use their card.
+Vipps does not distinguish between the following when initiating a payment with
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST)
+and the API call contains a phone number that can not be used to complete the payment:
+* Not a Vipps user
+* A Vipps user, but too young to pay businesses
+* A previous Vipps user that has deleted his/her account
+* A Vipps user that has his/her account temporarily or permanently blocked.
 
 ### Is there an API for retrieving information about a Vipps user?
 
@@ -782,87 +744,15 @@ information to third parties, and Vipps does not allow it.
 The Vipps user must always give consent to sharing data with a merchant.
 There is no other API to look up a user's address, retrieve a user's purchases, etc.
 
-### Is there an API for retrieving information about a merchant's payments?
+### Where can I find information about payment and settlements?
 
-Not for aggregated data.
-There is an API to retrieve all details for a specific `orderId`:
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET).
-
-And there is
-[Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements)
-with information about settlement reports in various formats.
-
-### Is it possible to skip the landing page?
-
-Only in special cases, where displaying it is not possible.
-
-This feature has to be specially enabled by Vipps for eligible sale units:
-The sale units must be whitelisted by Vipps.
-Skipping the landing page is typically used at physical points of sale
-where there is no display available.
-
-The Vipps landing page is more than just a web page, it is an entire
-application and it plays an important role in the Vipps payment process.
-See the landing page information in the API Guide:
-[The Vipps landing page](vipps-ecom-api.md#the-vipps-landing-page).
-
-If you need to skip the landing page in a Point of Sale (POS) solution, see:
-[What is the process to go live in production?](#what-is-the-process-to-go-live-in-production).
-
-If you need to skip the landing page for a different reason:
-Contact your Key Account Manager. If you do not have a KAM:
-Please log in on
-[portal.vipps.no](https://portal.vipps.no),
-open the "Utvikler" (Developer) tab,
-find the right sale unit and
-click the email link under the "i" information bubble.
-Include a detailed description of why it is not possible to display the landing page.
+[portal.vipps.no](https://portal.vipps.no)
+provides information about your transactions, sale units and settlement reports.
+You can also subscribe to daily or monthly transaction reports by email.
 
 See:
-[Skip landing page](vipps-ecom-api.md#skip-landing-page)
-in the API guide.
-
-### How can I check if I have skipLandingPage activated?
-
-Vipps can no longer manually check this for merchant or partners.
-
-All merchants can log in on
-[portal.vipps.no](https://portal.vipps.no)
-and check if a sale unit has `skipLandingPage` enabled
-for all their sale units under the "Utvikler" menu item.
-
-You can also find information on how to activate `skipLandingPage` there.
-
-If you are a partner and want to check a merchant, see the
-[Partner API](https://github.com/vippsas/vipps-partner-api).
-
-If you are a partner and do not yet use the Partner API, you can ask the
-merchant to create a user for you on
-[portal.vipps.no](https://portal.vipps.no)
-so you can check on behalf of the merchant as
-[described in detail with screenshots](https://github.com/vippsas/vipps-partner/blob/main/add-portal-user.md).
-
-If you are not able to log in on
-[portal.vipps.no](https://portal.vipps.no)
-you can make a small payment (2 kr)
-with `skipLandingPage`.
-If you do not get an error, it's active.
-If you get an error, it's not active.
-
-See:
-[Skip landing page](vipps-ecom-api.md#skip-landing-page)
-in the API guide.
-
-### Can I show the landing page in an iframe?
-
-No. Never show the Vipps landing page inside an iframe. That will make it
-impossible for the user to reliably be redirected back to the merchant's website,
-and result in a lower success rate. In general: Any "optimization" of the payment
-flow may break the Vipps payment flow - if not today, then later.
-
-See:
-[Skip landing page](vipps-ecom-api.md#skip-landing-page)
-in the API guide.
+* [Report API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/report-api).
+* [Settlements](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/settlements/)
 
 ### Can I split payments to charge a fee?
 
@@ -939,6 +829,34 @@ See:
 * [Can I create a marketplace with multiple merchants?](#can-i-create-a-marketplace-with-multiple-merchants)
 * [Can I create a service to match buyers and sellers?](#can-i-create-a-service-to-match-buyers-and-sellers)
 
+### Is it possible for a merchant to pay a Vipps user?
+
+No. Vipps has no functionality for a merchant to paying to a Vipps user,
+except for refunding (part of) a payment.
+
+Vipps only has APIs for paying from a person to a merchant.
+
+It is not possible to pay from one merchant to another merchant,
+or to pay from a merchant to a person.
+
+There are several reasons for this, including:
+
+* The Norwegian "Straksbetaling" (instant payments) system is not designed
+  for this, and not all banks support it.
+* There are other account-to-account payment methods, but all have their
+  idiosyncrasies, and none are a perfect fit.
+* Payouts to cards is different than accounts, and will depend on the PSPs,
+  which brings another set of challenges.
+* Some merchant accounts requires "four eyes" before making payments from them,
+  and Vipps does not have this functionality in the API.
+* The SCA (Secure Customer Authentication) required by PSD2 further complicates
+  payouts, both with an API and on [portal.vipps.no](https://portal.vipps.no).
+
+Vipps does have functionality for getting the user's bank accounts enrolled in
+Vipps, with the user's consent. Payments may then be made to the bank account.
+See:
+[Is there an API for retrieving information about a Vipps user?](#is-there-an-api-for-retrieving-information-about-a-vipps-user)
+
 ### I have initiated an order but I can't find it!
 
 If you have multiple sale units: Make sure you use the correct API keys, and that
@@ -975,7 +893,7 @@ See: [Timeouts](vipps-ecom-api.md#timeouts).
 
 ### How long does it take until the money is in my account?
 
-See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
+See: [Settlements](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/settlements/).
 
 ### Why has one of my customers been charged twice for the same payment?
 
@@ -1032,7 +950,106 @@ See:
 your transactions, sale units and settlement reports.
 You can also subscribe to daily or monthly transaction reports by email.
 
-See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
+See: [Settlements](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/settlements/).
+
+### When do users get a "soft decline" and need to complete a 3-D Secure verification?
+
+Vipps handles everything related to "soft declines" and 3-D Secure.
+Vipps also handles BankID verification, when that is required.
+There is nothing a merchant needs to to.
+
+Vipps uses delegated SCA (Secure Customer Authentication) from the banks, and
+significantly simplifies the user experience, as there is normally no need for
+BankID verification.
+
+The biometric login in Vipps is enough.
+
+Vipps uses tokenized cards, which eliminates the need for "soft decline".
+As long as the token is valid, the user never has to verify the card again.
+
+In order to prevent misuse and fraud Vipps require users to do a 3-D Secure
+verification if the user has paid more than 15 000 NOK during the last five days.
+
+In short: Users paying with Vipps has a much faster and simpler user experience
+than when using a card directly.
+
+Vipps also has an extremely low fraud rate, as it is impossible to pay
+with a card that has been invalidated in any way by the issuer, and all users
+has to log into Vipps with their BankID verified identity to use their card.
+
+## The Vipps landing page
+
+### Is it possible to skip the landing page?
+
+Only in special cases, where displaying it is not possible.
+
+This feature has to be specially enabled by Vipps for eligible sale units:
+The sale units must be whitelisted by Vipps.
+Skipping the landing page is typically used at physical points of sale
+where there is no display available.
+
+The Vipps landing page is more than just a web page, it is an entire
+application and it plays an important role in the Vipps payment process.
+See the landing page information in the API Guide:
+[The Vipps landing page](vipps-ecom-api.md#the-vipps-landing-page).
+
+If you need to skip the landing page in a Point of Sale (POS) solution, see:
+[What is the process to go live in production?](#what-is-the-process-to-go-live-in-production).
+
+If you need to skip the landing page for a different reason:
+Contact your Key Account Manager. If you do not have a KAM:
+Please log in on
+[portal.vipps.no](https://portal.vipps.no),
+open the "Utvikler" (Developer) tab,
+find the right sale unit and
+click the email link under the "i" information bubble.
+Include a detailed description of why it is not possible to display the landing page.
+
+See:
+[Skip landing page](vipps-ecom-api.md#skip-landing-page)
+in the API guide.
+
+### How can I check if I have skipLandingPage activated?
+
+Vipps can no longer manually check this for merchant or partners.
+
+All merchants can log in on
+[portal.vipps.no](https://portal.vipps.no)
+and check if a sale unit has `skipLandingPage` enabled
+for all their sale units under the "Utvikler" menu item.
+
+You can also find information on how to activate `skipLandingPage` there.
+
+If you are a partner and want to check a merchant, see the
+[Partner API](https://github.com/vippsas/vipps-partner-api).
+
+If you are a partner and do not yet use the Partner API, you can ask the
+merchant to create a user for you on
+[portal.vipps.no](https://portal.vipps.no)
+so you can check on behalf of the merchant as
+[described in detail with screenshots](https://github.com/vippsas/vipps-partner/blob/main/add-portal-user.md).
+
+If you are not able to log in on
+[portal.vipps.no](https://portal.vipps.no)
+you can make a small payment (2 kr)
+with `skipLandingPage`.
+If you do not get an error, it's active.
+If you get an error, it's not active.
+
+See:
+[Skip landing page](vipps-ecom-api.md#skip-landing-page)
+in the API guide.
+
+### Can I show the landing page in an iframe?
+
+No. Never show the Vipps landing page inside an iframe. That will make it
+impossible for the user to reliably be redirected back to the merchant's website,
+and result in a lower success rate. In general: Any "optimization" of the payment
+flow may break the Vipps payment flow - if not today, then later.
+
+See:
+[Skip landing page](vipps-ecom-api.md#skip-landing-page)
+in the API guide.
 
 ## Problems for end users
 
@@ -1059,19 +1076,6 @@ See:
 
 * [How can I open the fallback URL in a specific (embedded) browser?](#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser).
 * [Recommendations regarding handling redirects](vipps-ecom-api.md#recommendations-regarding-handling-redirects).
-
-### Why can't I scan the Vipps QR on the terminal with the camera app?
-
-Vipps QR codes on the payment terminal display must be scanned with Vipps.
-Scanning with a camera app will not work, as the QR code does not contain a
-URL that the phone understands.
-
-The QR code contents is a
-[EMV QR code](https://www.emvco.com/emv-technologies/qrcodes/),
-and this format is understood by Vipps, but not the camera app.
-
-Scanning with the camera app may lead to a Google search for a long sequence
-of digits and letters.
 
 ## Common errors
 
@@ -1451,22 +1455,6 @@ You can order Vipps on
 We recommend testing with 2 NOK, even though 1 NOK is the smallest possible amount.
 1 NOK is not reliable, as it gets low priority in some systems.
 
-### What do we have to do with PSD2's SCA requirements?
-
-Nothing. Vipps will handle everything for you - both bankID and 3-D Secure.
-
-SCA (Strong customer authentication) is a security requirement related to PSD2,
-to reduce the risk of fraud and protect customer's data.
-
-Vipps uses delegated SCA, which makes it easier to users to pay with Vipps
-than with stand-alone card payments. The result is a higher completion rate.
-
-Delegated SCA is Vipps' primary way of solving the SCA requirements. For
-this solution Vipps has developed a SCA compliant solution that consists of a
-two-factor authentication featuring either PIN or biometrics in addition to
-device possession. In addition Vipps has implemented a Dynamic Linking according
-to the requirements.
-
 ### How can I use Vipps for different types of payments?
 
 It's possible to use the Vipps eCom API for several different types of payments.
@@ -1529,7 +1517,7 @@ If all sale units have the same organization number, there are two alternatives:
 1: Recommended: Multiple sale units (multiple MSNs): One sale unit per store. Each sale unit will have its
    own MSN (Merchant Serial Number), and the `orderId` may be whatever you want.
    Each sale unit gets its own
-   [settlement files](https://github.com/vippsas/vipps-developers/tree/master/settlements).
+   [settlement files](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/settlements/).
    You will need separate API keys for each sale unit (store).
    If you have a Vipps platform partner, the partner will use the
    [partner keys](https://github.com/vippsas/vipps-partner#partner-keys)
@@ -1539,7 +1527,7 @@ If all sale units have the same organization number, there are two alternatives:
 2: Use only one sale unit (one MSN) for all stores, and use the `orderId` to identify
    which orders belong to which sale units.
    All sale units are in the same
-   [settlement report](https://github.com/vippsas/vipps-developers/tree/master/settlements).
+   [settlement report](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/settlements/).
    You decide what the `orderId` contains, and it may be up to 50 characters. See:
    [orderId recommendation](vipps-ecom-api.md#orderid-recommendations).
    You will use the same API keys for all stores.
@@ -1669,7 +1657,23 @@ The Vipps eCom API has some functionality that is not available in the PSP API:
    There is nothing a merchant needs to do.
    This give a consistent user experience and a very high completion rate.
 
-## How can I change partner for my integration with Vipps?
+### What do we have to do with PSD2's SCA requirements?
+
+Nothing. Vipps will handle everything for you - both bankID and 3-D Secure.
+
+SCA (Strong customer authentication) is a security requirement related to PSD2,
+to reduce the risk of fraud and protect customer's data.
+
+Vipps uses delegated SCA, which makes it easier to users to pay with Vipps
+than with stand-alone card payments. The result is a higher completion rate.
+
+Delegated SCA is Vipps' primary way of solving the SCA requirements. For
+this solution Vipps has developed a SCA compliant solution that consists of a
+two-factor authentication featuring either PIN or biometrics in addition to
+device possession. In addition Vipps has implemented a Dynamic Linking according
+to the requirements.
+
+### How can I change partner for my integration with Vipps?
 
 See:
 [How to change partners for a merchant](https://github.com/vippsas/vipps-partner#how-to-change-partners-for-a-merchant).
@@ -1841,10 +1845,6 @@ See:
 ### How can we mass sign up merchants?
 
 See: [Vipps Partners: How to sign up new merchants](https://github.com/vippsas/vipps-partner#how-to-sign-up-new-merchants).
-
-### Where can I find information about settlements?
-
-See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
 
 ## Questions?
 
