@@ -1082,14 +1082,12 @@ See:
 ### Why do I not get callbacks from Vipps?
 
 Please make sure the URLs you provide to Vipps are reachable from outside your
-own environment. Have a look at the API guide, manually "build" the callback
-URL in the same way as Vipps does, and confirm that you are getting a
-`HTTP 200 OK` response.
+own environment.
 
-If your `callbackPrefix` is `https://example.com/vipps/callback` and your
-`orderId` is `acme-shop-123-order123abc`, Vipps will add `/v2/payments/acme-shop-123-order123abc` at the
-end of your `callbackPrefix` and make a callback to
-`https://example.com/vipps/callback/v2/payments/acme-shop-123-order123abc`.
+Have a look at the
+[Callback](vipps-ecom-api.md#callback-endpoints)
+section in the API guide, and see
+[How to test your own callbacks](vipps-ecom-api.md#how-to-test-your-own-callbacks).
 
 If you do not receive a callback, it could be because your firewall is blocking
 our requests. See:
@@ -1101,16 +1099,6 @@ Please check your own logs for any signs of problems. If your
 Check the API Dashboard on
 [portal.vipps.no](https://portal.vipps.no)
 for problems with the callbacks. The API Dashboard is under "Utvikler".
-
-If you need help solving a callback-related problem, please send us a
-complete HTTP request, and any other related details, so we can investigate.
-
-**Please note:** Callback URLs _must_ use HTTPS.
-
-See:
-
-* [Callback](vipps-ecom-api.md#callback-endpoints)
-* [How to test your own callbacks](vipps-ecom-api.md#how-to-test-your-own-callbacks).
 
 ### Why do I get `HTTP 401 Unauthorized`?
 
@@ -1166,7 +1154,7 @@ Please follow these steps to make sure everything is correct:
    [Errors](vipps-ecom-api.md#errors).
 6. If you are a partner and you are using partner keys: Double check everything
    described here:
-   [Partner keys](vipps-ecom-api.md#partner-keys).
+   [Partner keys](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/partner-keys).
 7. Make sure that you are using a valid access token. See
    [Getting started: Get an access token](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#get-an-access-token)
    for details, how long it is valid, etc.
@@ -1174,13 +1162,12 @@ Please follow these steps to make sure everything is correct:
 You can log in to
 [portal.vipps.no](https://portal.vipps.no)
 to double check your API keys, sale units and API products.
+See:
+[Getting the API keys](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#getting-the-api-keys).
 
 You can use
 [Postman](https://github.com/vippsas/vipps-developers/blob/master/vipps-quick-start-guides.md)
 to manually do API calls, Use the "inspect" functionality to see the complete requests and responses.
-
-See:
-[Getting the API keys](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#getting-the-api-keys).
 
 You also need to make sure you have access to the right API.
 See:
@@ -1206,13 +1193,14 @@ Merchants that only have access to the
 [Vipps Login API](https://github.com/vippsas/vipps-login-api)
 and attempt to use the Vipps eCom API will get this error, with
 `Merchant Not Allowed for Ecommerce Payment` in the body.
+
 This is because the compliance checks required for Vipps eCom API are not
 done for merchants that only need the Vipps Login API.
 If you need access to the Vipps eCom API, you can apply for it on
 [portal.vipps.no](https://portal.vipps.no).
 
 Partners can get this error if they use
-[partner keys](https://github.com/vippsas/vipps-partner#partner-keys),
+[Partner keys](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/partner-keys),
 but do not send the
 `Merchant-Serial-Number` header.
 
@@ -1420,9 +1408,12 @@ it is because you are using API keys that are not valid for the specified MSN.
 
 This can happen when:
 
-- A partner tries to use partner keys for a sale unit that is not registered with them as partner.
+- A partner tries to use
+  [Partner keys](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/partner-keys)
+  for a sale unit that is not registered with them as partner.
 - API keys for the test environment is used in the production environment, or opposite.
-- Partner keys are used, but the `Merchant-Serial-Number` HTTP header is not used correctly.
+- [Partner keys](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/partner-keys)
+  are used, but the `Merchant-Serial-Number` HTTP header is not used correctly.
 
 ## Other questions
 
@@ -1520,7 +1511,7 @@ If all sale units have the same organization number, there are two alternatives:
    [settlement files](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/settlements/).
    You will need separate API keys for each sale unit (store).
    If you have a Vipps platform partner, the partner will use the
-   [partner keys](https://github.com/vippsas/vipps-partner#partner-keys)
+   [Partner keys](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/partner-keys)
    for all the sale units.
    See: [How can I use Vipps for different types of payments?](#how-can-i-use-vipps-for-different-types-of-payments).
 
@@ -1532,7 +1523,7 @@ If all sale units have the same organization number, there are two alternatives:
    [orderId recommendation](vipps-ecom-api.md#orderid-recommendations).
    You will use the same API keys for all stores.
    If you have a Vipps platform partner, the partner will use the
-   [partner keys](https://github.com/vippsas/vipps-partner#partner-keys)
+   [Partner keys](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/partner-keys)
    for all the sale units.
 
 ### How can I change my organization number?
@@ -1729,7 +1720,8 @@ See: [Is it possible to skip the landing page?](#is-it-possible-to-skip-the-land
 It may be relevant for enterprise setup, omnichannel, multiple physical stores within the same chain to refund orders on behalf of other stores.
 
 **Prerequisites:**
-Stores or a centralized system (e.g. from a headquarter) must have access to all store credentials, or use [partner keys](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#partner-keys).
+Stores or a centralized system (e.g. from a headquarter) must have access to all store credentials, or use
+[Partner keys](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/partner-keys).
 Stores must be able to search for `orderId` from other stores or request it from the centralized system.
 
 **User story:** A user buys a product from Store A.
@@ -1739,13 +1731,21 @@ The user then visits Store B to return some goods. Store B wants to be able to r
 
 **Recommended solutions:**
 
-**A:** If [partner keys](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#partner-keys) is used for all stores
+**A:** If
+[Partner keys](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/partner-keys)
+are used for all stores
 Stores must be able to search for `orderId` for payments made in other stores. The cashier can then search and select `orderId` from Store A and click `refund`.  
-**Technical:** Use [partner keys](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#partner-keys) to authenticate, add `Merchant-Serial-Number` from Store A to the request header and original `orderId` to the [refund](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST) request.
+**Technical:** Use
+[Partner keys](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/partner-keys)
+to authenticate, add `Merchant-Serial-Number` from Store A to the request header and original `orderId` to the [refund](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST) request.
 
-NB: With `partner keys`, do not let the cashier input `Merchant-Serial-Number` themselves. These must be locked and connected to the store selection to reduce risk of adding the wrong store.
+NB: With
+[Partner keys](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/partner-keys)
+, do not let the cashier input `Merchant-Serial-Number` themselves. These must be locked and connected to the store selection to reduce risk of adding the wrong store.
 
-**B:** If partner keys are not used
+**B:** If
+[Partner keys](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/partner-keys)
+are not used
 In this case a centralized system needs to store credentials from all sale units within the enterprise.
 Store B must be able to request a `refund` from the sentral system based on the original `orderId` and location for the order origin (Store A).  
 **Technical:** Use Store A credentials to authenticate, add original `orderId` to the [refund](https://vippsas.github.io/vipps-ecom-api/#/Vipps%20eCom%20API/refundPaymentUsingPOST) request.
@@ -1777,8 +1777,8 @@ As an alternative an online sale log must be available for Vipps.
    [Vipps customer center](https://vipps.no/hjelp/vipps/)
    can help with this.
    See: [FAQ](#is-it-possible-to-skip-the-landing-page).
-5. The POS vendor normally uses partner keys, as documented in
-   [Vipps Partners: Partner keys](https://github.com/vippsas/vipps-partner#partner-keys).
+5. The POS vendor normally uses
+   [Partner keys](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/partner-keys).
    If not: The merchant
    [retrieves the API keys](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#getting-the-api-keys)
    and provides them in a secure way to the partner.
@@ -1788,10 +1788,12 @@ As an alternative an online sale log must be available for Vipps.
 
 ### Which API keys should I use?
 
-You should probably use _partner keys_ ,and not separate API keys for each of
+You should probably use
+[Partner keys](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/partner-keys)
+,and not separate API keys for each of
 your merchants. But it depends.
 
-See: [Vipps Partners: Partner keys](https://github.com/vippsas/vipps-partner#partner-keys).
+See: [Partner keys](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/partner-keys).
 
 ### Do we need to support callbacks?
 
