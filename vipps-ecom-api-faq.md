@@ -1082,14 +1082,12 @@ See:
 ### Why do I not get callbacks from Vipps?
 
 Please make sure the URLs you provide to Vipps are reachable from outside your
-own environment. Have a look at the API guide, manually "build" the callback
-URL in the same way as Vipps does, and confirm that you are getting a
-`HTTP 200 OK` response.
+own environment.
 
-If your `callbackPrefix` is `https://example.com/vipps/callback` and your
-`orderId` is `acme-shop-123-order123abc`, Vipps will add `/v2/payments/acme-shop-123-order123abc` at the
-end of your `callbackPrefix` and make a callback to
-`https://example.com/vipps/callback/v2/payments/acme-shop-123-order123abc`.
+Have a look at the
+[Callback](vipps-ecom-api.md#callback-endpoints)
+section in the API guide, and see
+[How to test your own callbacks](vipps-ecom-api.md#how-to-test-your-own-callbacks).
 
 If you do not receive a callback, it could be because your firewall is blocking
 our requests. See:
@@ -1101,16 +1099,6 @@ Please check your own logs for any signs of problems. If your
 Check the API Dashboard on
 [portal.vipps.no](https://portal.vipps.no)
 for problems with the callbacks. The API Dashboard is under "Utvikler".
-
-If you need help solving a callback-related problem, please send us a
-complete HTTP request, and any other related details, so we can investigate.
-
-**Please note:** Callback URLs _must_ use HTTPS.
-
-See:
-
-* [Callback](vipps-ecom-api.md#callback-endpoints)
-* [How to test your own callbacks](vipps-ecom-api.md#how-to-test-your-own-callbacks).
 
 ### Why do I get `HTTP 401 Unauthorized`?
 
