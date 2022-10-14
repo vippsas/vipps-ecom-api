@@ -241,8 +241,9 @@ When you initiate a payment, it will normally only be *reserved* until you captu
 
 This has some benefits:
 * If a payment has been _reserved_, the merchant can
-  make a `/cancel` call to immediately release the reservation and make available
-  in the customer's account.
+  make a
+  [`PUT:/ecomm/v2/payments/acme-shop-123-order123abc/cancel`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/cancelPaymentRequestUsingPUT)
+  call to immediately release the reservation.
 * It is possible to reserve a higher amount and only
   capture a part of it (useful for electric car charging stations, etc).
   It is also possible to capture the full amount
@@ -772,6 +773,7 @@ The callback request body is different for the different payment types:
 * `"eComm Regular Payment"`: The callback contains the order and transaction details.
 * `"eComm Express Payment"`: The callback contains the order and transaction details
   *and in addition* the user details and shipping details.
+* If [Userinfo](#userinfo) is used: The callback is the same as for `"eComm Express Payment"`.
 
 See:
 * [Callback examples](#callback-examples).
@@ -1217,7 +1219,7 @@ It is also possible to explicitly release the remainin funds. See:
 The Cancel request allows the merchant to cancel a reserved or initiated transaction.
 
 Please note that it is not possible to cancel a request that is over 180 days old.
-Attempting to calnce an older payment will result in a `HTTP 400 Bad Request`.
+Attempting to cancel an older payment will result in a `HTTP 400 Bad Request`.
 
 The payment flow can be aborted under certain circumstances:
 
