@@ -1162,13 +1162,12 @@ Please follow these steps to make sure everything is correct:
 You can log in to
 [portal.vipps.no](https://portal.vipps.no)
 to double check your API keys, sale units and API products.
+See:
+[Getting the API keys](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#getting-the-api-keys).
 
 You can use
 [Postman](https://github.com/vippsas/vipps-developers/blob/master/vipps-quick-start-guides.md)
 to manually do API calls, Use the "inspect" functionality to see the complete requests and responses.
-
-See:
-[Getting the API keys](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#getting-the-api-keys).
 
 You also need to make sure you have access to the right API.
 See:
