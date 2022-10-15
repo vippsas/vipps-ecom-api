@@ -22,7 +22,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.7.0.
+Document version 2.7.1.
 
 <!-- START_TOC -->
 
@@ -944,10 +944,6 @@ These are the statuses provided by Vipps in the callbacks by
 
 For a full history of a payment, use
 [`[callbackPrefix]/v2/payments/{orderId}/details`]( https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET). See [Get payment details](#get-payment-details) for more information.
-
-**Please note:** We recommend
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET)
-for fetching all the details for a payment.
 
 ## Timeouts
 
