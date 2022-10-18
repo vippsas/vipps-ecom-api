@@ -22,7 +22,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.7.1.
+Document version 2.8.0.
 
 <!-- START_TOC -->
 
@@ -184,50 +184,19 @@ Payments are supported in both web browsers and in native apps (via deep-linking
 See the
 [eCom API checklist](vipps-ecom-api-checklist.md).
 
-## Authentication
-
-All Vipps API calls are authenticated and authorized with an access token
-(JWT bearer token) and an API subscription key:
-
-| Header Name                 | Header Value                | Description      |
-|:----------------------------|:----------------------------|:-----------------|
-| `Authorization`             | `Bearer <JWT access token>` | Type: Authorization token. This obtained as described in [Getting started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md): [Get an access token](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#get-an-access-token) |
-| `Ocp-Apim-Subscription-Key` | Base 64 encoded string      | The subscription key for this API. This is available on [portal.vipps.no](https://portal.vipps.no). |
-
-For more information about how to obtain an access token and all details around this, please see:
-[Quick overview of how to make an API call](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#quick-overview-of-how-to-make-an-api-call)
-in the
-[Getting started guide](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md).
-
 ## Vipps HTTP headers
 
-Please use the following Vipps HTTP headers for all requests to the
-Vipps eCom API. These headers provide useful metadata about the merchant's system,
-which help Vipps improve our services, and also help in investigating problems.
+We recommend using the standard Vipps HTTP headers for all requests.
 
-These headers are **required for plugins and partners** and sent by the recent versions of
-[the official Vipps plugins](https://github.com/vippsas/vipps-plugins)
-and we recommend all customers with direct integration with the API to also do so.
+See [Vipps HTTP headers](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#vipps-http-headers)
+in the Getting started guide, for details.
 
-Partners must always send the `Merchant-Serial-Number` header, and we recommend
-that *everyone* sends it, also when using the merchant's own API keys.
-The `Merchant-Serial-Number` header can be used with all API keys, and can
-speed up any trouble-shooting of API problems quite a bit.
+## Authentication
 
-**Important:** Please use self-explanatory, human readable and reasonably short
-values that uniquely identify the system (and plugin).
-
-For example, if the vendor's name is "Acme AS" and the vendor offers two different systems,
-one for point of sale (POS) integrations and one for web shops,
-the headers should be:
-
-| Header                        | Description                                  | Example value for POS | Example value for webshop | Example value for Vending machines |
-|:------------------------------|:---------------------------------------------|:----------------------|:--------------------------|:-|
-| `Merchant-Serial-Number`      | The MSN for the sale unit                    | `123456`              | `123456`                  | `123456` |
-| `Vipps-System-Name`           | The name of the ecommerce solution           | `acme`                | `acme`                    | `acme` |
-| `Vipps-System-Version`        | The version number of the ecommerce solution | `1.7`                 | `2.6`                     | `2.6` |
-| `Vipps-System-Plugin-Name`    | The name of the ecommerce plugin             | `acme-pos`            | `acme-webshop`            | `acme-vending` |
-| `Vipps-System-Plugin-Version` | The version number of the ecommerce plugin   | `3.2`                 | `4.3`                     | `4.3` |
+All Vipps API calls are authenticated with an access token and an API subscription key.
+See
+[Get an access token](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#get-an-access-token)
+in the Getting started guide, for details.
 
 ## Initiate
 
@@ -240,6 +209,7 @@ Example: 499 kr = 49900 øre.
 When you initiate a payment, it will normally only be *reserved* until you capture it.
 
 This has some benefits:
+
 * If a payment has been _reserved_, the merchant can
   make a
   [`PUT:/ecomm/v2/payments/acme-shop-123-order123abc/cancel`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/cancelPaymentRequestUsingPUT)
@@ -250,6 +220,7 @@ This has some benefits:
   with multiple captures ("partial capture").
 
 See:
+
 * [Reserve](#reserve)
 * [Capture](#capture)
 * [When should I charge the customer](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#when-should-i-charge-the-customer).
@@ -273,6 +244,7 @@ This is the typical flow, where the user adds items to a shopping cart,
 enters the shipping address and pays.
 
 See:
+
 * [How it works](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-howitworks)
 * [How it works in the store](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-in-store-howitworks)
 
@@ -1157,7 +1129,8 @@ Capture is done with
 We strongly recommend that you use the idempotency key, `X-Request-Id`, in the capture call. Then, if a capture
 request fails for any reason, it can be retried with the same idempotency key.
 You can use any unique id for your `X-Request-Id`.
-See the [API specification](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/capturePaymentUsingPOST) for details.
+
+See the [X-Request-Id in the capturePaymentUsingPOST specification](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/capturePaymentUsingPOST) for details.
 
 To perform a normal capture of the entire amount, `amount` can be
 omitted from the API request (i.e., not sent at all), set to `null` or set to `0`.
@@ -1171,6 +1144,7 @@ Attempting to capture an older payment will result in a
 `HTTP 400 Bad Request`.
 
 See the FAQ:
+
 * [When should I charge the customer](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#when-should-i-charge-the-customer).
 * [What is the difference between "Reserve Capture" and "Direct Capture"?](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#what-is-the-difference-between-reserve-capture-and-direct-capture)
 * [When should I use "Direct Capture"?](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#when-should-i-use-direct-capture)
@@ -1359,12 +1333,7 @@ The refund can be a partial or full.
 Partial refunds are done by specifying an `amount` which is lower than the
 captured amount. The refunded amount cannot be larger than the captured amount.
 
-In a capture request, the merchant may also use the `X-Request-Id` header. This
-header is an idempotency header ensuring that, if the merchant retries a request
-with the same `X-Request-Id`, the retried request will not make additional changes.
-
-You can use any unique id for your `X-Request-Id`.
-See the [API specification](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST) for details.
+In a capture request, the merchant may also use the `X-Request-Id` header. See [Idempotency](#idempotency) for details.
 
 Refunds can be made up to 365 days after reservation.
 Attempting to refund an older payment will result in a
@@ -1787,8 +1756,9 @@ This header is an idempotency header ensuring that, if the merchant retries
 a request with the same `X-Request-Id`, the retried request will not make
 additional changes.
 
-You can use any unique id for your `X-Request-Id`.
-See the [API reference](https://vippsas.github.io/vipps-developer-docs/api/ecom) for details.
+See the
+[Idempotency header](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#idempotency-header)
+for more details.
 
 Example Request:
 
