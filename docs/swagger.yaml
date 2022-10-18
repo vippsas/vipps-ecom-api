@@ -1949,7 +1949,6 @@ components:
         - passengerName
         - airlineCode
         - airlineDesignatorCode
-        - ticketNumber
         - agencyInvoiceNumber
       properties:
         passengerName:
