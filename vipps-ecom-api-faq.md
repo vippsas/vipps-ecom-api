@@ -691,7 +691,7 @@ remaining amount. If no capture has been made, the entire reserved amount is
 cancelled. Banks "count the days" from when the reservation was made, so the
 merchant must make the capture, or all captures, before the reservation expires.
 
-See: [Settlements](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/settlements/).
+See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/common-topics/settlements/).
 
 ### How long does it take from a refund is made until the money is in the customer's account?
 
@@ -701,7 +701,7 @@ It can take much longer, up to 10 days, and depends on the bank(s).
 Vipps does not have more information than what is available through our API:
 [`GET:/ecomm/v2/payments/{orderId}/details`](vipps-ecom-api.md#get-payment-details).
 
-See: [Settlements](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/settlements/).
+See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/common-topics/settlements/).
 
 ## Users and payments
 
@@ -751,8 +751,9 @@ provides information about your transactions, sale units and settlement reports.
 You can also subscribe to daily or monthly transaction reports by email.
 
 See:
+
 * [Report API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/report-api).
-* [Settlements](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/settlements/)
+* [Settlements](https://github.com/vippsas/vipps-developers/tree/master/common-topics/settlements/)
 
 ### Can I split payments to charge a fee?
 
@@ -875,7 +876,7 @@ The solution is to check with
 [`GET:/ecomm/v2/payments/{orderId}/details`](vipps-ecom-api.md#get-payment-details).
 
 You can use
-[Postman](https://github.com/vippsas/vipps-developers/blob/master/vipps-quick-start-guides.md)
+[Postman](https://github.com/vippsas/vipps-developers/blob/master/developer-resources/quick-start-guides.md)
 to manually do API calls, Use the "inspect" functionality to see the complete requests and responses.
 
 See:
@@ -893,7 +894,7 @@ See: [Timeouts](vipps-ecom-api.md#timeouts).
 
 ### How long does it take until the money is in my account?
 
-See: [Settlements](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/settlements/).
+See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/common-topics/settlements/).
 
 ### Why has one of my customers been charged twice for the same payment?
 
@@ -950,7 +951,7 @@ See:
 your transactions, sale units and settlement reports.
 You can also subscribe to daily or monthly transaction reports by email.
 
-See: [Settlements](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/settlements/).
+See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/common-topics/settlements/).
 
 ### When do users get a "soft decline" and need to complete a 3-D Secure verification?
 
@@ -1091,7 +1092,7 @@ section in the API guide, and see
 
 If you do not receive a callback, it could be because your firewall is blocking
 our requests. See:
-[Vipps request servers](https://github.com/vippsas/vipps-developers/blob/master/vipps-resources.md#vipps-request-servers).
+[Vipps request servers](https://github.com/vippsas/vipps-developers/blob/master/developer-resources/servers.md#vipps-request-servers).
 
 Please check your own logs for any signs of problems. If your
 `orderId` is `acme-shop-123-order123abc`: Search your logs for `acme-shop-123-order123abc`.
@@ -1145,7 +1146,7 @@ Please follow these steps to make sure everything is correct:
    They are case sensitive: `Authorization: Bearer <snip>` is not the same as `Authorization: bearer <snip>`.
 4. Make sure you are using the right environment and check that you are using
    the correct API keys for the right sale unit in that environment. The
-   [test environment](https://github.com/vippsas/vipps-developers/blob/master/vipps-test-environment.md)
+   [test environment](https://github.com/vippsas/vipps-developers/blob/master/developer-resources/test-environment.md)
    is completely separate from the production environment, and both the MSN and
    the API keys are different.
 5. Check both the HTTP response header and the response body from our API for errors.
@@ -1166,7 +1167,7 @@ See:
 [Getting the API keys](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#getting-the-api-keys).
 
 You can use
-[Postman](https://github.com/vippsas/vipps-developers/blob/master/vipps-quick-start-guides.md)
+[Postman](https://github.com/vippsas/vipps-developers/blob/master/developer-resources/quick-start-guides.md)
 to manually do API calls, Use the "inspect" functionality to see the complete requests and responses.
 
 You also need to make sure you have access to the right API.
@@ -1235,7 +1236,7 @@ Some tips:
 * Please make sure the JSON payload in your API request validates.
   That is the most common source of this type of error.
 * We strongly recommend using
-  [Postman](https://github.com/vippsas/vipps-developers/blob/master/vipps-quick-start-guides.md)
+  [Postman](https://github.com/vippsas/vipps-developers/blob/master/developer-resources/quick-start-guides.md)
   to manually do API calls, to see the correct request.
   Use Postman's
   [Inspect](https://blog.postman.com/debugging-postman-requests/)
@@ -1258,7 +1259,7 @@ a `HTTP 500 Server Error`. Retry the call, and see if it helps.
 See:
 
 * [Errors](vipps-ecom-api.md#errors).
-* [Status page](https://github.com/vippsas/vipps-developers/blob/master/vipps-resources.md#status-page).
+* [Status page](https://github.com/vippsas/vipps-developers/blob/master/developer-resources/status-pages.md).
 
 ### Why do I get `errorCode 35 "Requested Order not found"`?
 
@@ -1398,7 +1399,7 @@ Vipps cannot give more details.
 
 You are probably attempting to use a real Vipps user in the test environment.
 See:
-[The Vipps Test Environment (MT)](https://github.com/vippsas/vipps-developers/blob/master/vipps-test-environment.md).
+[The Vipps Test Environment (MT)](https://github.com/vippsas/vipps-developers/blob/master/developer-resources/test-environment.md).
 
 ### Why do I get `Invalid MSN: 654321`?
 
@@ -1508,7 +1509,7 @@ If all sale units have the same organization number, there are two alternatives:
 1: Recommended: Multiple sale units (multiple MSNs): One sale unit per store. Each sale unit will have its
    own MSN (Merchant Serial Number), and the `orderId` may be whatever you want.
    Each sale unit gets its own
-   [settlement files](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/settlements/).
+   [settlement files](https://github.com/vippsas/vipps-developers/tree/master/common-topics/settlements/).
    You will need separate API keys for each sale unit (store).
    If you have a Vipps platform partner, the partner will use the
    [Partner keys](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/partner-keys)
@@ -1518,7 +1519,7 @@ If all sale units have the same organization number, there are two alternatives:
 2: Use only one sale unit (one MSN) for all stores, and use the `orderId` to identify
    which orders belong to which sale units.
    All sale units are in the same
-   [settlement report](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/settlements/).
+   [settlement report](https://github.com/vippsas/vipps-developers/tree/master/common-topics/settlements/).
    You decide what the `orderId` contains, and it may be up to 50 characters. See:
    [orderId recommendation](vipps-ecom-api.md#orderid-recommendations).
    You will use the same API keys for all stores.
@@ -1853,6 +1854,6 @@ See: [Vipps Partners: How to sign up new merchants](https://github.com/vippsas/v
 We're always happy to help with code or other questions you might have!
 Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),
 a [pull request](https://github.com/vippsas/vipps-ecom-api/pulls),
-or [contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md).
+or [contact us](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/contact).
 
-Sign up for our [Technical newsletter for developers](https://github.com/vippsas/vipps-developers/tree/master/newsletters).
+Sign up for our [Technical newsletter for developers](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/newsletters).

@@ -156,7 +156,7 @@ the detailed flow and [Payment states](#payment-states) for the corresponding
 states.
 
 The flow of settlements and how to retrieve them are described in
-[Settlements](https://github.com/vippsas/vipps-developers/tree/master/settlements).
+[Settlements](https://github.com/vippsas/vipps-developers/tree/master/common-topics/settlements).
 
 ## Quick start
 
@@ -865,7 +865,7 @@ for testing your callbacks.
    and the `orderId` is `acme-shop-123-order123abc`.
 3. Test the callback by making a POST request to your callback URL with the JSON file as request body:
 
-   ```
+   ```http
    http POST https://example.com/vipps/callback/v2/payments/acme-shop-123-order123abc < callback.json
    ```
 
@@ -873,7 +873,7 @@ for testing your callbacks.
    and you must correct it.
 
 We recommend checking callbacks on the
-[API Dashboard](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/vipps-resources#api-dashboard).
+[API Dashboard](https://github.com/vippsas/vipps-developers/blob/master/developer-resources/api-dashboard.md).
 
 ### Authorization for callbacks
 
@@ -890,7 +890,7 @@ API spec:
 ### Vipps callback servers
 
 The callbacks from Vipps are made from the servers described in
-[Vipps request servers](https://github.com/vippsas/vipps-developers/blob/master/vipps-resources.md#vipps-request-servers).
+[Vipps request servers](https://github.com/vippsas/vipps-developers/blob/master/developer-resources/servers.md#vipps-request-servers).
 
 Please make sure that requests from these servers are allowed through firewalls, etc.
 
@@ -2151,7 +2151,7 @@ to retrieve all the information about the payment.
 ## Testing
 
 To facilitate automated testing in
-[The Vipps Test Environment (MT)](https://github.com/vippsas/vipps-developers/blob/master/vipps-test-environment.md)
+[The Vipps Test Environment (MT)](https://github.com/vippsas/vipps-developers/blob/master/developer-resources/test-environment.md)
 the Vipps eCom API provides a "force approve" endpoint to avoid manual
 payment confirmation in the Vipps app:
 [`POST:/ecomm/v2/integration-test/payments/{orderId}/approve`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/integrationTestApprovePayment)
@@ -2209,6 +2209,6 @@ Apple has some information about
 We're always happy to help with code or other questions you might have!
 Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),
 a [pull request](https://github.com/vippsas/vipps-ecom-api/pulls),
-or [contact us](https://github.com/vippsas/vipps-developers/blob/master/contact.md).
+or [contact us](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/contact).
 
-Sign up for our [Technical newsletter for developers](https://github.com/vippsas/vipps-developers/tree/master/newsletters).
+Sign up for our [Technical newsletter for developers](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/newsletters).
