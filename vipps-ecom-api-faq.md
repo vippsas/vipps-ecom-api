@@ -20,7 +20,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.14.0.
+Document version 3.14.1.
 
 <!-- START_TOC -->
 
@@ -1415,6 +1415,18 @@ This can happen when:
 - API keys for the test environment is used in the production environment, or opposite.
 - [Partner keys](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/partner-keys)
   are used, but the `Merchant-Serial-Number` HTTP header is not used correctly.
+
+### Why do I get "Invalid MSN: 654321. This MSN is not valid for the provided supermerchant id."?
+
+This error can be caused by the partner making the API request:
+* Uses API keys for the test environment in the production environment, or opposite.
+* Uses a MSN for the test environment in the production environment, or opposite.
+* Uses
+  [partner keys](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/partner-keys),
+  but does not send the required `Merchant-Serial-Number` header.
+
+Note that there _is no MSN_ in the error message in the example above.
+That means it's missing from the request.
 
 ## Other questions
 
