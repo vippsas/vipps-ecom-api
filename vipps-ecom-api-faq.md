@@ -1401,11 +1401,7 @@ You are probably attempting to use a real Vipps user in the test environment.
 See:
 [The Vipps Test Environment (MT)](https://github.com/vippsas/vipps-developers/blob/master/developer-resources/test-environment.md).
 
-### Why do I get `Invalid MSN: 654321`?
-
-If you get the error
-`"Invalid MSN: 654321. Check your API keys on portal.vipps.no and see the eCom FAQ for tips."`
-it is because you are using API keys that are not valid for the specified MSN.
+### Why do I get "Invalid MSN: 654321. Check your API keys on portal.vipps.no and see the eCom FAQ for tips.""?
 
 This can happen when:
 
