@@ -1401,7 +1401,7 @@ You are probably attempting to use a real Vipps user in the test environment.
 See:
 [The Vipps Test Environment (MT)](https://github.com/vippsas/vipps-developers/blob/master/developer-resources/test-environment.md).
 
-### Why do I get "Invalid MSN: 654321. Check your API keys on portal.vipps.no and see the eCom FAQ for tips.""?
+### Why do I get `Invalid MSN: 654321. Check your API keys on portal.vipps.no and see the eCom FAQ for tips.`?
 
 This can happen when:
 
@@ -1412,7 +1412,7 @@ This can happen when:
 - [Partner keys](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/partner-keys)
   are used, but the `Merchant-Serial-Number` HTTP header is not used correctly.
 
-### Why do I get "Invalid MSN: 654321. This MSN is not valid for the provided supermerchant id."?
+### Why do I get `Invalid MSN: 654321. This MSN is not valid for the provided supermerchant id.`?
 
 This error can be caused by the partner making the API request:
 * Uses API keys for the test environment in the production environment, or opposite.
