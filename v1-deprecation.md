@@ -8,7 +8,7 @@ END_METADATA -->
 
 This is the message we sent to communicate the deprecation of the API.
 
-Document version 1.2.0.
+Document version 1.2.1.
 
 <br/>
 <br/>
@@ -49,8 +49,8 @@ The main benefits of the eCom v2 API:
 Some customers have not been able to use the eCom v2 API because they have not
 had a display available for the landing page. In these special cases we offer a
 feature to skip the landing page. Customers who cannot display the landing page
-can see more details about the "skipLandingPage" functionality
-[here](vipps-ecom-api.md#skip-landing-page).
+can see more details about the
+[skipLandingPage](https://github.com/vippsas/vipps-developers/blob/master/common-topics/vipps-landing-page.md#skip-landing-page).
 
 Vipps is piloting a solution for tokenised BankAxept-payments in payment terminals using Vipps
 as a wallet. To learn about availability, contact your payment terminal provider.
@@ -62,11 +62,13 @@ You can contact Vipps Integration if you have questions. See contact information
 information about test environments, test apps, etc [here](https://github.com/vippsas/vipps-developers).
 
 We have also released new APIs that may be interesting, such as:
+
 * [Vipps Recurring API ("faste betalinger")](https://github.com/vippsas/vipps-recurring-api)
 * [Vipps Invoice API ("Vipps Regninger")](https://github.com/vippsas/vipps-invoice-api)
 * [Vipps Log In](https://github.com/vippsas/vipps-login-api)
 
 Vipps also has [plugins](https://github.com/vippsas/vipps-plugins) available:
+
 * [Vipps for WooCommerce (Wordpress)](https://wordpress.org/plugins/woo-vipps/)
 * [Vipps for Magento](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/magento/)
 * Upcoming: Vipps for Shopify, Vipps for Drupal and Vipps for Episerver.

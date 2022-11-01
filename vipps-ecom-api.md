@@ -221,11 +221,10 @@ This has some benefits:
 
 See:
 
-* [Reserve](#reserve)
-* [Capture](#capture)
-* [When should I charge the customer](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#when-should-i-charge-the-customer).
-* [What is the difference between "Reserve Capture" and "Direct Capture"?](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#what-is-the-difference-between-reserve-capture-and-direct-capture)
-* [When should I use "Direct Capture"?](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#when-should-i-use-direct-capture)
+* [Reserve and capture](https://github.com/vippsas/vipps-developers/blob/master/common-topics/reserve-and-capture.md)
+* [When should I charge the customer](https://github.com/vippsas/vipps-developers/blob/master/faqs/reserve-and-capture-faq.md#when-should-i-charge-the-customer).
+* [What is the difference between "Reserve Capture" and "Direct Capture"?](https://github.com/vippsas/vipps-developers/blob/master/faqs/reserve-and-capture-faq.md#what-is-the-difference-between-reserve-capture-and-direct-capture)
+* [When should I use "Direct Capture"?](https://github.com/vippsas/vipps-developers/blob/master/faqs/reserve-and-capture-faq.md#when-should-i-use-direct-capture)
 
 ### Regular payments and express payments
 
@@ -1285,7 +1284,7 @@ This is a useful and recommended feature, as it releases any reserved balance
 as soon as the card issuer and/or bank permits.
 
 See also the FAQ:
-[How long does it take from a refund is made until the money is in the customer's account?](vipps-ecom-api-faq.md#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
+[How long does it take from a refund is made until the money is in the customer's account?](https://github.com/vippsas/vipps-developers/blob/master/faqs/refunds-faq.md#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
 
 Example Request:
 
@@ -1486,7 +1485,7 @@ General guidelines for when to start polling with
 These are reasonable values, but different merchants have different use cases
 and values should be adapted to the specific case.
 
-See [Timeouts](#timeouts) for details about timeouts.
+See [Timeouts](https://github.com/vippsas/vipps-developers/blob/master/common-topics/timeouts.md) for details about timeouts.
 
 ## Get payment status
 
@@ -1748,7 +1747,7 @@ In addition to the normal [Authentication](#authentication), we offer *partner k
 which let a partner make API calls on behalf of a merchant.
 
 See:
-[Partner keys](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/partner-keys).
+[Partner keys](https://github.com/vippsas/vipps-partner/blob/main/partner-keys.md).
 
 ## Idempotency
 

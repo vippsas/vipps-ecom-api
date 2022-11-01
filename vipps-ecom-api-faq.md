@@ -20,7 +20,7 @@ See:
 * [Vipps Recurring API FAQ](https://github.com/vippsas/vipps-recurring-api/blob/master/vipps-recurring-api-faq.md)
 * [Getting Started](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md)
 
-Document version 3.14.0.
+Document version 3.14.1.
 
 <!-- START_TOC -->
 
@@ -545,7 +545,7 @@ The only ways to initiate Vipps payments from a QR code are:
   When the Vipps user scans the QR containing the deeplink URL (with either the camera app or with Vipps),
   Vipps will be opened, and the payment request will be displayed.
   The user then has a few minutes to complete the payment. See:
-  [Timeouts](vipps-ecom-api.md#timeouts).
+  [Timeouts](https://github.com/vippsas/vipps-developers/blob/master/common-topics/timeouts.md).
 * [Vippsnummer](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/),
   the solution for flea markets, etc – which does not have any external API.
   This solution uses a static QR code for the sale unit, available on
@@ -890,7 +890,7 @@ It's important that the merchant waits (at least) this long, otherwise the Vipps
 user may confirm in the Vipps app, and right after get an error from the merchant
 that the order has been cancelled.
 
-See: [Timeouts](vipps-ecom-api.md#timeouts).
+See: [Timeouts](https://github.com/vippsas/vipps-developers/blob/master/common-topics/timeouts.md).
 
 ### How long does it take until the money is in my account?
 
@@ -1007,7 +1007,7 @@ click the email link under the "i" information bubble.
 Include a detailed description of why it is not possible to display the landing page.
 
 See:
-[Skip landing page](vipps-ecom-api.md#skip-landing-page)
+[Skip landing page](https://github.com/vippsas/vipps-developers/blob/master/common-topics/vipps-landing-page.md#skip-landing-page)
 in the API guide.
 
 ### How can I check if I have skipLandingPage activated?
@@ -1038,7 +1038,7 @@ If you do not get an error, it's active.
 If you get an error, it's not active.
 
 See:
-[Skip landing page](vipps-ecom-api.md#skip-landing-page)
+[Skip landing page](https://github.com/vippsas/vipps-developers/blob/master/common-topics/vipps-landing-page.md#skip-landing-page)
 in the API guide.
 
 ### Can I show the landing page in an iframe?
@@ -1049,7 +1049,7 @@ and result in a lower success rate. In general: Any "optimization" of the paymen
 flow may break the Vipps payment flow - if not today, then later.
 
 See:
-[Skip landing page](vipps-ecom-api.md#skip-landing-page)
+[Skip landing page](https://github.com/vippsas/vipps-developers/blob/master/common-topics/vipps-landing-page.md#skip-landing-page)
 in the API guide.
 
 ## Problems for end users

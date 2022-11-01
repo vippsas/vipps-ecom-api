@@ -6,7 +6,7 @@ END_METADATA -->
 
 # Migration from eCom API v1 to eCom API v2
 
-Document version 1.1.4.
+Document version 1.1.5.
 
 This document explains the key differences between eCom API v1 and eCom API v2.
 
@@ -27,10 +27,9 @@ The initiate payment response will contain a unique URL for each order. Either a
 
 Skipping the landing page is reserved for special cases, where displaying it is not possible.
 See the details in the
-[skip landing page section](vipps-ecom-api.md#skip-landing-page)
-in the API guide.
+[skip landing page section](https://github.com/vippsas/vipps-developers/blob/master/common-topics/vipps-landing-page.md#skip-landing-page).
 
-See the [FAQ](https://github.com/vippsas/vipps-psp-api/blob/master/vipps-psp-api-faq.md#is-it-possible-to-skip-the-landing-page).
+See the [FAQ](https://github.com/vippsas/vipps-developers/blob/master/faqs/vipps-landing-page-faq.md#is-it-possible-to-skip-the-landing-page).
 
 ## Phone number is optional
 

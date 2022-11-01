@@ -16,7 +16,7 @@ END_METADATA -->
 
 API version: 2.0.
 
-Document version 2.1.14.
+Document version 2.1.15.
 
 ## Checklist
 
@@ -57,7 +57,7 @@ Document version 2.1.14.
           and not in a specific browser, in a specific tab, in an embedded browser, requiring a session token, etc.
           See the API guide:
           [Recommendations regarding handling redirects](vipps-ecom-api.md#recommendations-regarding-handling-redirects).
-          See the FAQ: [How can I open the fallback URL in a specific (embedded) browser?](vipps-ecom-api-faq.md#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser)
+          See the FAQ: [How can I open the fallback URL in a specific (embedded) browser?](https://github.com/vippsas/vipps-developers/blob/master/faqs/common-problems-faq.md#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser)
     - [ ] The Vipps branding must be according to the
           [Vipps design guidelines](https://github.com/vippsas/vipps-design-guidelines).
     - [ ] Make sure your customer service, etc has all the tools and information they need
