@@ -22,7 +22,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.8.1.
+Document version 2.9.0.
 
 <!-- START_TOC -->
 
@@ -1575,28 +1575,25 @@ failed payment by the eCom API.
 
 ## HTTP response codes
 
-This API returns the following HTTP statuses in the responses.
-See the [API specification](https://github.com/vippsas/vipps-ecom-api) for more information.
+This API returns the following HTTP statuses in the responses:
 
-| HTTP status             | Description                                        |
-|:------------------------|:---------------------------------------------------|
-| `200 OK`                | Request successful                                 |
-| `201 Created`           | Request successful, resource created               |
-| `204 No Content`        | Request successful, but empty result               |
-| `400 Bad Request`       | Invalid request, see the error for details         |
-| `401 Unauthorized`      | Invalid credentials                                |
-| `403 Forbidden`         | Authentication ok, but credentials lacks authorization |
-| `404 Not Found`         | The resource was not found                         |
-| `409 Conflict`          | Unsuccessful due to conflicting resource           |
-| `429 Too Many Requests` | Look at table below to view current rate limits    |
-| `500 Server Error`      | An internal Vipps problem.                         |
+- `200 OK`
+- `201 Created`
+- `204 No Content`
+- `400 Bad Request`
+- `401 Unauthorized`
+- `403 Forbidden`
+- `404 Not Found`
+- `409 Conflict`
+- `429 Too Many Requests`
+- `500 Server Error`
 
-HTTP responses with errors from the application gateway contain one error JSON object.
-Error responses produced from the application gateway include `401`, `403`, `422` and `429`.
+For more information about the HTTP response codes and JSON object in the responses, see [HTTP response codes](https://github.com/vippsas/vipps-developers/blob/master/common-topics/http-response-codes.md) in the Common topics.
 
-Note that the HTTP responses that contain errors from the Vipps backend will contain an *array* of JSON objects.
+For details about the specific eCom errors and responses, see:
 
-See [Errors](#errors) for more details.
+- [OpenAPI specification](https://vippsas.github.io/vipps-developer-docs/api/ecom)
+- [Errors](#errors)
 
 ## Rate limiting
 
