@@ -509,85 +509,10 @@ apps is installed (and the Vipps landing page if not).
 
 #### isApp
 
-If the payment is initiated in a native app, it is possible to explicitly force
-a `vipps://` URL by sending the optional `isApp` parameter in the initiate call:
+See
+[isApp](https://github.com/vippsas/vipps-developers/blob/master/common-topics/isApp.md)
+in Common topics.
 
-* `"isApp": false` (or not sent at all): The URL is `https://`, which handles
-  everything automatically for you.
-  The phone's operating system will know, through "universal linking", that
-  the `https://api.vipps.no` URL should open the Vipps app, and not the default
-  web browser.
-  **Please note:** In some cases, this requires the user to approve that
-  Vipps is opened, but this is usually only the first time.
-* `"isApp": true`: The URL is for a deeplink, for forced app-switch to Vipps, with `vipps://`.
-  **Please note:** In our test environment (MT), the scheme is `vippsMT://`
-
-If the user does not have Vipps installed:
-
-* `"isApp":false` (or not sent at all): The Vipps landing page will be shown,
-   and the user can enter a phone number and pay on a device with Vipps installed.
-* `"isApp": true`: The user will get an error message saying that the link can
-  not be opened.
-
-Example: Response body for `"isApp":false` (or not sent at all):
-
-```json
-{
-  "orderId": "acme-shop-123-order123abc",
-  "url": "https://api.vipps.no/dwo-api-application/v1/deeplink/vippsgateway?v=2&token=eyJraWQiOiJqd3RrZXkiLC <truncated>"
-}
-```
-
-Example: Response body for `"isApp":true`, with a forced app-switch to Vipps:
-
-```json
-{
-  "orderId": "acme-shop-123-order123abc",
-  "url": "vipps://?token=eyJraWQiOiJqd3RrZXkiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiO <truncated>"
-}
-```
-
-The effect of the above is the same in all normal cases.
-
-**Important:** Using `isApp` comes with some extra responsibility:
-
-* The merchant's native app must be sure that the user's phone can open the
-  `vipps://` deeplink, as the
-  [Vipps landing page](#the-vipps-landing-page)
-  will not be shown to the user, and it will therefore not be possible to
-  enter a phone number and pay with Vipps on another device.
-* Vipps requires a minimum version of the phone's operating system. At the time
-  of writing this is iOS 12 (from 2018) or Android 6 (from 2015). If the user
-  has an older version of the operating system, Vipps cannot be used.
-  The merchant must keep track of this by checking the Apple App Store and
-  Google Play.
-* If `"isApp":true` is used in an embedded web browser, such as
-  Instagram or Facebook, the `vipps://` URL will not work, since the
-  embedded browser does not know what to do with it.
-  The user will get an error from the embedded browser.
-
-If you do want to use `isApp` the flow is as follows:
-
-1. Merchant initiates the payment with `isApp: true` parameter:
-   [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST).
-2. Vipps returns a `deeplink` URL on the `vipps://` format as response to initiate payment.
-3. The merchant uses the `vipps://` URL to invoke Vipps (never change the URL, use it *exactly* as sent from Vipps)
-4. Vipps is automatically opened, without the user having to click "OK" or accept.
-5. The user accepts (or rejects) the payment request in Vipps.
-6. The Vipps backend makes a call to the merchant's `callbackPrefix` with information about the payment.
-7. When the payment process is completed, Vipps redirects to the merchant using the `fallBack` URL.
-
-**Please note:** The user should be sent *directly* to the deeplink.
-Rewriting the deeplink URL in any way may break the payment process.
-If not today, it may break if Vipps changes some details later.
-
-The deeplink URL is only valid for five minutes.
-Attempts at using it after that will result in a timeout and an error.
-
-See:
-
-* [Timeouts](#timeouts)
-* [Can I send a Vipps payment link in an SMS or email?](vipps-ecom-api-faq.md#can-i-send-a-vipps-payment-link-in-an-sms-or-email)
 
 ### Payment identification
 
@@ -610,51 +535,9 @@ to the first payment attempt.
 
 ### OrderId recommendations
 
-An `orderId` must be unique for the sale unit Merchant Serial Number (MSN) (i.e., the id of
-the sale unit). The `orderId` does not need to be globally unique, so several
-MSNs may use the same `orderId`, as long as it is unique for each sale unit.
-
-The `orderId` is case-sensitive.
-We *strongly* recommend to use a format like `acme-shop-123-order123abc`,
-instead of just `123456`.
-
-**Please note:** Very short orderIds (just a few digits() can cause internal
-processing in Vipps' systems to be slower than when using recommended
-`orderId`s, and this _can_ cause problems, such as timeouts.
-
-If you ever have a problem that requires us to search in our logs, we need an
-`orderId` that is "unique enough" to actually find. An `orderId` that
-is just a number may not be possible to find, and then we are not able to help.
-
-It is possible to use
-[UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier),
-on the format `123e4567-e89b-12d3-a456-426614174000`, but remember
-that `orderId` is shown to the user in Vipps.
-We recommend something more user friendly, like `acme-shop-123-order123abc`.
-
-The maximum length of an `orderId` is 50 alphanumeric characters:
-`a-z`, `A-Z`, `0-9` and `-` (hyphen).
-Leading zeros should be avoided, as some applications (like Excel)
-tend to remove them, and this may cause misunderstandings.
-
-If you have multiple sale units, prefixing the `orderId` with the MSN
-for each sale unit is recommended: If the MSN is `654321`, the
-`orderId` could be `654321-acme-shop-123-order123abc`.
-
-If you need to make multiple attempts at paying the "same" order, you can
-add a suffix to the orderId to make it unique on the Vipps side.
-For example, if your internal orderId is
-`acme-shop-123-order123abc`, you can add `-1` to get a unique *Vipps* orderId
-`acme-shop-123-order123abc-1` for the first attempt,
-`acme-shop-123-order123abc-2` for the second, etc.
-
-This is useful when a customer does the following:
-
-1. Adds a product to the cart
-2. Goes to the payment page and selects Vipps
-3. Gets the payment request in Vipps *but cancels* (or does nothing)
-4. Adds another product to the same cart (or order)
-5. Repeats steps 2 and 3.
+See
+[OrderId recommendations](https://github.com/vippsas/vipps-developers/blob/master/common-topics/orderid.md)
+in Common topics.
 
 ### transactionText recommendations
 
