@@ -22,7 +22,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.8.0.
+Document version 2.8.1.
 
 <!-- START_TOC -->
 
@@ -188,8 +188,8 @@ See the
 
 We recommend using the standard Vipps HTTP headers for all requests.
 
-See [Vipps HTTP headers](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#vipps-http-headers)
-in the Getting started guide, for details.
+See [Vipps HTTP headers](https://github.com/vippsas/vipps-developers/blob/master/common-topics/http-headers.md)
+in the Common topics guide, for details.
 
 ## Authentication
 
@@ -1757,7 +1757,7 @@ a request with the same `X-Request-Id`, the retried request will not make
 additional changes.
 
 See the
-[Idempotency header](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#idempotency-header)
+[Idempotency header](https://github.com/vippsas/vipps-developers/blob/master/common-topics/http-headers.md#idempotency)
 for more details.
 
 Example Request:
@@ -1826,7 +1826,7 @@ something else, and Vipps is not able to execute callback, the callback will
 not be retried.
 
 In other words, if the merchant doesn’t receive any confirmation on payment
-request call within callback timeframe, merchant must call
+request call within callback time frame, merchant must call
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET)
 to get the response of payment request.
 
