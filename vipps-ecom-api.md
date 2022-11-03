@@ -563,7 +563,7 @@ Callback are made for the following events:
 cannot rely on callbacks alone. You must also poll
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET)
 as described in the
-[Polling guidelines](#polling-guidelines).
+[Polling guidelines](https://github.com/vippsas/vipps-developers/blob/master/common-topics/polling-guidelines.md) in the Common topics.
 
 **Important:**
 * Vipps makes *one* attempt at a callback and cannot guarantee that it succeeds,
@@ -1287,16 +1287,9 @@ and `userDetails` in addition to `transactionLogHistory` and `transactionSummary
 
 ### Polling guidelines
 
-General guidelines for when to start polling with
-[`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET):
-
-1. Start after 5 seconds
-2. Check every 2 seconds
-
-These are reasonable values, but different merchants have different use cases
-and values should be adapted to the specific case.
-
-See [Timeouts](https://github.com/vippsas/vipps-developers/blob/master/common-topics/timeouts.md) for details about timeouts.
+See
+[Polling guidelines](https://github.com/vippsas/vipps-developers/blob/master/common-topics/polling-guidelines.md)
+in the Common topics.
 
 ## Get payment status
 
@@ -1372,8 +1365,8 @@ To test this out, see the step-by-step instructions in the
 is made within (milli)seconds of the payment approval in the app, it may not be
 available. If that happens, simply make another `/details` request.
 See
-[Polling guidelines](#polling-guidelines)
-for more recommendations.
+[Polling guidelines](https://github.com/vippsas/vipps-developers/blob/master/common-topics/polling-guidelines.md)
+in the Common topics for more recommendations.
 
 **Important note:** The API call to
 [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-recurring-api/#/Userinfo%20Endpoint/getUserinfo)
