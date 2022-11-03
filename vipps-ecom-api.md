@@ -930,14 +930,69 @@ For more details, see
 Capture is done with
 [`POST:/ecomm/v2/payments/{orderId}/capture`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/capturePaymentUsingPOST).
 
-We strongly recommend that you use the idempotency key,
-[X-Request-Id](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/capturePaymentUsingPOST)
-in the capture call. Then, if a capture
+Use the idempotency key, `X-Request-Id`, in the capture call. Then, if a capture
 request fails for any reason, it can be retried with the same idempotency key.
+You can use any unique id for your `X-Request-Id`.
+
+See the [X-Request-Id in the capturePaymentUsingPOST specification](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/capturePaymentUsingPOST) for details.
+
+To perform a normal capture of the entire amount, `amount` can be
+omitted from the API request (i.e., not sent at all), set to `null` or set to `0`.
+When doing a [partial capture](#partial-capture), you need to specify the `amount`.
+
+**Please note:** It is important to check the response of the `/capture`
+call. The capture is only successful when the response is `HTTP 200 OK`.
+
+Capture can be made up to 180 days after reservation.
+Attempting to capture an older payment will result in a
+`HTTP 400 Bad Request`.
+
+See the FAQ:
+
+* [When should I charge the customer](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#when-should-i-charge-the-customer).
+* [What is the difference between "Reserve Capture" and "Direct Capture"?](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#what-is-the-difference-between-reserve-capture-and-direct-capture)
+* [When should I use "Direct Capture"?](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#when-should-i-use-direct-capture)
+
 
 See
 [Common topics: capture](https://github.com/vippsas/vipps-developers/blob/master/common-topics/reserve-and-capture.md#capture)
 for more details.
+
+### Reserve capture
+
+*Reserve capture* is the normal flow.
+
+When the end user approves an initiated payment, it will be reserved until you
+capture it. When the order is reserved, the amount is marked as reserved by the
+bank, but not transferred.
+
+This has some benefits. See:
+[What is the difference between "Reserve Capture" and "Direct Capture"?](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#what-is-the-difference-between-reserve-capture-and-direct-capture)
+
+### Direct capture
+
+When *direct capture* is activated, all payment reservations will instantly be captured.
+
+With *direct capture*, Vipps is responsible for the customer receiving the purchased product.
+Because of this, *direct capture* requires additional compliance checks.
+
+We strongly recommend using "reserve capture" in all situations.
+
+See the FAQ:
+
+* [When should I use "Direct Capture"?](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#when-should-i-use-direct-capture)
+
+### Partial capture
+
+Partial capture may be used in cases where a partial order is shipped or for other
+reasons. Partial capture may be called as many times as required while
+there is a remaining reserved amount.
+
+If one or more partial captures have been made, any remaining reserved amount
+will be automatically released after a few days.
+
+It is also possible to explicitly release the remaining funds. See:
+[Cancelling a partially captured order](#cancelling-a-partially-captured-order).
 
 ## Cancel
 
