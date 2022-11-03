@@ -906,10 +906,12 @@ phone number, without loading the landing page.
 If the sale unit is not whitelisted, the request will fail and an error message will be returned.
 
 See FAQ:
+
 * [Is it possible to skip the landing page](vipps-ecom-api-faq.md#is-it-possible-to-skip-the-landing-page)
 * [How can I check if I have skipLandingPage activated?](vipps-ecom-api-faq#how-can-i-check-if-i-have-skiplandingpage-activated)
 
 **Important:** When using `"skipLandingPage": true`:
+
 * The user is not able to provide a different phne number for completing the payment.
 * It is crucial to use the correct format for the user's phone number.
   If not, the payment will fail.
@@ -938,7 +940,9 @@ See the [X-Request-Id in the capturePaymentUsingPOST specification](https://vipp
 
 To perform a normal capture of the entire amount, `amount` can be
 omitted from the API request (i.e., not sent at all), set to `null` or set to `0`.
-When doing a [partial capture](#partial-capture), you need to specify the `amount`.
+When doing a
+[partial capture](https://github.com/vippsas/vipps-developers/blob/master/common-topics/reserve-and-capture.md#partial-capture),
+you need to specify the `amount`.
 
 **Please note:** It is important to check the response of the `/capture`
 call. The capture is only successful when the response is `HTTP 200 OK`.
