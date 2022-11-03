@@ -956,43 +956,7 @@ See the FAQ:
 
 See
 [Common topics: capture](https://github.com/vippsas/vipps-developers/blob/master/common-topics/reserve-and-capture.md#capture)
-for more details.
-
-### Reserve capture
-
-*Reserve capture* is the normal flow.
-
-When the end user approves an initiated payment, it will be reserved until you
-capture it. When the order is reserved, the amount is marked as reserved by the
-bank, but not transferred.
-
-This has some benefits. See:
-[What is the difference between "Reserve Capture" and "Direct Capture"?](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#what-is-the-difference-between-reserve-capture-and-direct-capture)
-
-### Direct capture
-
-When *direct capture* is activated, all payment reservations will instantly be captured.
-
-With *direct capture*, Vipps is responsible for the customer receiving the purchased product.
-Because of this, *direct capture* requires additional compliance checks.
-
-We strongly recommend using "reserve capture" in all situations.
-
-See the FAQ:
-
-* [When should I use "Direct Capture"?](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#when-should-i-use-direct-capture)
-
-### Partial capture
-
-Partial capture may be used in cases where a partial order is shipped or for other
-reasons. Partial capture may be called as many times as required while
-there is a remaining reserved amount.
-
-If one or more partial captures have been made, any remaining reserved amount
-will be automatically released after a few days.
-
-It is also possible to explicitly release the remaining funds. See:
-[Cancelling a partially captured order](#cancelling-a-partially-captured-order).
+for more details about the types of captures.
 
 ## Cancel
 
