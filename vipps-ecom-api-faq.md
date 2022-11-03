@@ -88,7 +88,7 @@ Document version 3.14.1.
   * [Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`?](#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked)
   * [Why do I get "Merchant Not Allowed for Ecommerce Payment"?](#why-do-i-get-merchant-not-allowed-for-ecommerce-payment)
   * [Why do I not get the `sub` from `/details`?](#why-do-i-not-get-the-sub-from-details)
-  * [Why do I get `unauthorized_client`?](#why-do-i-get-unauthorizedclient)
+  * [Why do I get `unauthorized_client`?](#why-do-i-get-unauthorized_client)
   * [Why do I get `Payment failed`?](#why-do-i-get-payment-failed)
   * [Why do I get error 81 and `User not registered with Vipps`?](#why-do-i-get-error-81-and-user-not-registered-with-vipps)
   * [Why do I get an error about having Vipps installed and being 15 years old?](#why-do-i-get-an-error-about-having-vipps-installed-and-being-15-years-old)
