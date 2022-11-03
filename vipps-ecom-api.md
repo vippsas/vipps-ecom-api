@@ -516,7 +516,7 @@ and `orderId`:
 
 * `merchantSerialNumber`: The merchant's Vipps id. Example: `123456`.
 * `orderId`: Must be unique for the `merchantSerialNumber`. Example: `acme-shop-123-order123abc`.
-  See: [orderId recommendations](#orderid-recommendations).
+  See: [orderId recommendations](https://github.com/vippsas/vipps-developers/blob/master/common-topics/orderid.md).
 
 ### Payment retries
 
