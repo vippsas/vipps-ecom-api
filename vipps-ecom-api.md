@@ -912,7 +912,7 @@ See FAQ:
 
 **Important:** When using `"skipLandingPage": true`:
 
-* The user is not able to provide a different phne number for completing the payment.
+* The user is not able to provide a different phone number for completing the payment.
 * It is crucial to use the correct format for the user's phone number.
   If not, the payment will fail.
 * The user is not sent to a `fallback` URL after completion of the payment.
