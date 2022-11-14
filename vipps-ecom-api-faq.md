@@ -16,7 +16,7 @@ END_METADATA -->
 
 Here are the eCom API FAQs.
 See the
-[Vipps eCommerce API guide](vipps-checkout-api.md)
+[Vipps eCommerce API guide](vipps-ecom-api.md)
 for more details.
 
 For more common Vipps questions, see:
