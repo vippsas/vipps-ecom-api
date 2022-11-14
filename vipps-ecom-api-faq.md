@@ -14,13 +14,16 @@ END_METADATA -->
 
 <!-- END_COMMENT -->
 
-Here are eCom API FAQs. For more common questions, see:
+Here are the eCom API FAQs.
+See the
+[Vipps eCommerce API guide](vipps-checkout-api.md)
+for more details.
 
-* [Vipps API General FAQ](https://github.com/vippsas/vipps-developers/blob/master/faqs/README.md)
+For more common Vipps questions, see:
 
-See [Vipps eCommerce API guide](vipps-ecom-api.md) for more details.
+* [Vipps API General FAQ](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/)
 
-Document version 3.15.0.
+Document version 3.15.1.
 
 <!-- START_TOC -->
 
@@ -46,7 +49,7 @@ Document version 3.15.0.
 ## Common problems
 
 See
-[FAQ: Common problems](https://github.com/vippsas/vipps-developers/blob/master/faqs/common-problems-faq.md)
+[FAQ: Common problems](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-problems-faq)
 for more questions.
 
 ### Why does Vipps Hurtigkasse (express checkout) fail?
@@ -79,7 +82,7 @@ See:
 ## Reservations and captures
 
 See
-[FAQ: Reservations and captures](https://github.com/vippsas/vipps-developers/blob/master/faqs/reserve-and-capture-faq.md)
+[FAQ: Reservations and captures](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/reserve-and-capture-faq)
 for more questions.
 
 ## Refunds
@@ -153,7 +156,7 @@ See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/commo
 ## Users and payments
 
 See
-[FAQ: Users and payments](https://github.com/vippsas/vipps-developers/blob/master/faqs/users-and-payments-faq.md)
+[FAQ: Users and payments](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/users-and-payments-faq)
 for more questions.
 
 ### I have initiated an order but I can't find it!
@@ -183,7 +186,7 @@ See:
 ## Common errors
 
 See
-[FAQ: Common errors](https://github.com/vippsas/vipps-developers/blob/master/faqs/common-errors-faq.md)
+[FAQ: Common errors](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq)
 for more questions.
 
 ### Why do I not get callbacks from Vipps?
@@ -222,7 +225,7 @@ as it gives a faster payment process and a better user experience.
 ## Other questions
 
 See
-[FAQ: Other questions](https://github.com/vippsas/vipps-developers/blob/master/faqs/other-faq.md)
+[FAQ: Other questions](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/other-faq)
 for more questions.
 
 ### What functionality is included in the eCom API, but not the PSP API?
