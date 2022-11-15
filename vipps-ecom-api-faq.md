@@ -23,7 +23,7 @@ For more common Vipps questions, see:
 
 * [Vipps API General FAQ](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/)
 
-Document version 3.15.2.
+Document version 3.15.3.
 
 <!-- START_TOC -->
 
@@ -32,9 +32,6 @@ Document version 3.15.2.
 * [Common problems](#common-problems)
   * [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
 * [Refunds](#refunds)
-  * [How can I refund a payment?](#how-can-i-refund-a-payment)
-  * [How can I refund only a part of a payment?](#how-can-i-refund-only-a-part-of-a-payment)
-  * [How long does it take from a refund is made until the money is in the customer's account?](#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
 * [Users and payments](#users-and-payments)
   * [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-cant-find-it)
 * [Common errors](#common-errors)
@@ -87,71 +84,13 @@ for more questions.
 
 ## Refunds
 
-### How can I refund a payment?
-
-This depends on your eCommerce solution. The Vipps API supports refunds with
+The Vipps eCom API supports refunds with
 [`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST).
 For details on how to offer refunds, please refer to the documentation for your eCommerce solution.
 
-All integrations with the Vipps eCom API _must_  support refunds. See the
-[Vipps eCommerce API Checklist](vipps-ecom-api-checklist.md).
-
-It is also possible to do refunds on
-[portal.vipps.no](https://portal.vipps.no).
-
-Refunds can be made up to 365 days after payment or reservation.
-Very old payments have a higher risk of being problematic, because people
-change banks, leave the country, die, etc,
-and this then requires time-consuming manual work.
-Vipps therefore limits refunds to 365 days.
-
-### How can I refund only a part of a payment?
-
-Example: A customer has placed an order of of two items for a total of 1000 NOK.
-The merchant has initiated a payment of 1000 NOK, but the customer has changed
-her mind and only bought one of the items, with a price of 750 NOK. The merchant
-has therefore made a
-[partial capture](vipps-ecom-api.md#partial-capture)
-of 750 NOK, and need to refund the remaining 250 NOK.
-
-* The short version: This is done automatically by the bank after a few days.
-See:
-[For how long is a payment reserved?](https://github.com/vippsas/vipps-developers/blob/master/faqs/reserve-and-capture-faq.md#for-how-long-is-a-payment-reserved).
-
-* The long version: It _is_ possible to cancel the remaining reservation after a
-partial capture through Vipps: Send a
-[`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/cancelPaymentRequestUsingPUT)
-request with `shouldReleaseRemainingFunds: true` in the body.
-The payment must be `RESERVED` for this to take effect.
-See:
-[Cancelling a partially captured order](vipps-ecom-api.md#cancelling-a-partially-captured-order).
-
-The partial capture (the 750 of the 1000 NOK in the example above)
-is normally confirmed in the bank after 3-10 days, but it sometimes takes even
-longer. When this is done, the bank will make the remaining (250 NOK) available
-in the customer's account again. This process depends entirely on the customer's
-bank, and Vipps cannot speed it up.
-
-Banks keep reservations for the same number of days regardless of whether there
-has been one or more captures. Banks do not extend the reservation if a partial
-capture has been made.
-
-If a partial capture has been made, the bank cancels the reservation for the
-remaining amount. If no capture has been made, the entire reserved amount is
-cancelled. Banks "count the days" from when the reservation was made, so the
-merchant must make the capture, or all captures, before the reservation expires.
-
-See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/common-topics/settlements/).
-
-### How long does it take from a refund is made until the money is in the customer's account?
-
-Normally 2-3 _bank days_, depending on the bank(s).
-It can take much longer, up to 10 days, and depends on the bank(s).
-
-Vipps does not have more information than what is available through our API:
-[`GET:/ecomm/v2/payments/{orderId}/details`](vipps-ecom-api.md#get-payment-details).
-
-See: [Settlements](https://github.com/vippsas/vipps-developers/tree/master/common-topics/settlements/).
+See
+[FAQ: Refunds](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#refunds)
+for more details.
 
 ## Users and payments
 
