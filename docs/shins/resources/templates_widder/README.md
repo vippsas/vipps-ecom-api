@@ -1,7 +1,7 @@
-## Swagger / OpenAPI 2 and OpenAPI 3 template parameters
+## OpenAPI 2 and OpenAPI 3 template parameters
 
 Note that properties of OpenAPI objects will be in OpenAPI 3.0 form, as
-Swagger / OpenAPI 2.0 definitions are converted automatically.
+OpenAPI 2.0 definitions are converted automatically.
 
 ### Code templates
 
@@ -56,7 +56,7 @@ Swagger / OpenAPI 2.0 definitions are converted automatically.
 
 ### Common to all templates
 
-* `openapi` - the top-level OpenAPI / Swagger document
+* `openapi` - the top-level OpenAPI  document
 * `header` - the front-matter of the Slate/Shins markdown document
 * `host` - the (computed) host of the API
 * `protocol` - the default/first protocol of the API

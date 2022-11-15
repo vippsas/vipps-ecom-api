@@ -27,7 +27,7 @@ Document version 2.1.15.
     - [ ] Full and partial Refund [`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST)
     - [ ] Details [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET)
     - For examples of requests and responses, see the [Postman collection](tools/vipps-ecom-api-postman-collection.json) and [environment](https://github.com/vippsas/vipps-developers/blob/master/tools/vipps-api-global-postman-environment.json).
-- [ ] Send the [Vipps HTTP headers](https://github.com/vippsas/vipps-developers/blob/master/common-topics/http-headers.md)
+- [ ] Send the [Vipps HTTP headers](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/http-headers)
       in all API requests for better tracking and troubleshooting
       (mandatory for partners and platforms, who must send these headers as part of the checklist approval):
     - [ ] `Merchant-Serial-Number`
@@ -57,7 +57,7 @@ Document version 2.1.15.
           and not in a specific browser, in a specific tab, in an embedded browser, requiring a session token, etc.
           See the API guide:
           [Recommendations regarding handling redirects](vipps-ecom-api.md#recommendations-regarding-handling-redirects).
-          See the FAQ: [How can I open the fallback URL in a specific (embedded) browser?](https://github.com/vippsas/vipps-developers/blob/master/faqs/common-problems-faq.md#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser)
+          See the FAQ: [How can I open the fallback URL in a specific (embedded) browser?](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-problems-faq#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser)
     - [ ] The Vipps branding must be according to the
           [Vipps design guidelines](https://github.com/vippsas/vipps-design-guidelines).
     - [ ] Make sure your customer service, etc has all the tools and information they need
@@ -79,7 +79,7 @@ Document version 2.1.15.
    Please double check to avoid mistakes.
 5. The merchant verifies the integration in the test environment by checking that
    there are test IDs (`orderId`) in the
-   [Vipps test environment](https://github.com/vippsas/vipps-developers/blob/master/developer-resources/test-environment.md),
+   [Vipps test environment](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/developer-resources/test-environment),
    with the following states:
     - A complete order ending in `REFUND`
       ([`/refund`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST)
@@ -105,7 +105,7 @@ Document version 2.1.15.
 
 ## Flow to go live for direct integrations for partners
 
-See: [Vipps partners](https://github.com/vippsas/vipps-partner#vipps-partners).
+See: [Vipps partners](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/).
 
 ## Questions?
 

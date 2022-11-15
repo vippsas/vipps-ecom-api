@@ -43,7 +43,7 @@ Document version 1.1.1.
 ### Prerequisites
 
 Review
-[Vipps quick start guides](https://github.com/vippsas/vipps-developers/blob/master/developer-resources/quick-start-guides.md) for information about getting your test environment set up.
+[Vipps quick start guides](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/developer-resources/quick-start-guides) for information about getting your test environment set up.
 
 ### Step 1: Get the Vipps Postman collection and environment
 
@@ -181,7 +181,7 @@ With this url, you can generate a QR code to take you to the Vipps landing page 
    app on your phone and allow you to complete the one-time purchase.
 
 This is done in cooperation with the Vipps QR API. See
-[One-time payment QR](https://github.com/vippsas/vipps-qr-api#one-time-payment-qr)
+[One-time payment QR](https://vippsas.github.io/vipps-developer-docs/docs/APIs/qr-api/vipps-qr-api#one-time-payment-qr-codes)
 for more details.
 
 ### Test with Force Approve
