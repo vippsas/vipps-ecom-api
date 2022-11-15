@@ -1083,6 +1083,10 @@ Response:
 }
 ```
 
+See
+[FAQ: Refunds](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#refunds)
+for more common questions.
+
 ## Get payment details
 
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET) retrieves the full history of a payment and the status of the operations.
