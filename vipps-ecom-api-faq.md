@@ -17,13 +17,13 @@ END_METADATA -->
 Here are the eCom API FAQs.
 See the
 [Vipps eCommerce API guide](vipps-ecom-api.md)
-for more details.
+for all the details.
 
 For more common Vipps questions, see:
 
 * [Vipps API General FAQ](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/)
 
-Document version 3.15.1.
+Document version 3.15.2.
 
 <!-- START_TOC -->
 
