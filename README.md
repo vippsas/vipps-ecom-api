@@ -39,7 +39,7 @@ for information about API keys, product activation, how to make API calls, etc.
 ## eCommerce API
 
 * [API Quick Start](vipps-ecom-api-quick-start.md): Quick Start.
-* [API guide](vipps-ecom-api.md): Developer guide for Vipps eCom API.
+* [API Guide](vipps-ecom-api.md): Developer guide for Vipps eCom API.
 * [API Checklist](vipps-ecom-api-checklist.md): For direct and POS integrations.
 * [API FAQ](vipps-ecom-api-faq.md): Questions and answers.
 * [API Reference](https://vippsas.github.io/vipps-developer-docs/api/ecom): eCom API Reference Specifications.
