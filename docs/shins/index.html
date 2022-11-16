@@ -2174,7 +2174,7 @@ System.out.println(response.toString());
 <tr>
 <td>default</td>
 <td>Default</td>
-<td>Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md">&quot;Common errors&quot; section of the FAQ</a>. See also: <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">Responses</a>.</td>
+<td>Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the &quot;Common errors&quot; section of the <a href="https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#common-errors">eCom FAQs</a> or from the <a href="https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq/">Vipps FAQs</a>. See also: <a href="https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/url-validation">Common topics: URL Validation</a>.</td>
 <td>Inline</td>
 </tr>
 </tbody>
@@ -2438,7 +2438,7 @@ System.out.println(response.toString());
 
 </code></pre>
 <p><code>POST /ecomm/v2/payments</code></p>
-<p>This API call lets the merchants initiate payments. The <code>merchantSerialNumber</code> (MSN) specifies which sales unit the payment is for. Payments are uniquely identified with the <code>merchantSerialNumber</code> and <code>orderId</code> together. The merchant-provided <code>orderId</code> must be unique per sales unit. Once the transaction is successfully initiated in Vipps, you will receive a response with a URL that will direct the customer to the Vipps landing page (when using a laptop/esktop), or app-switch to Vipps (when using a phone). The landing page detects if the request comes from a mobile or laptop/desktop device, and if on a mobile device automatically switches to the Vipps app, if it is installed. The merchant may also pass the optional 'isApp: true' parameter that will make Vipps respond with a app-switch deeplink that will take the customer directly to the Vipps app. This is normally not necessary, as Vipps handles this automatically. URLs passed to Vipps must validate, see the API guide. The URLs must use HTTPS.</p>
+<p>This API call lets the merchants initiate payments. The <code>merchantSerialNumber</code> (MSN) specifies which sales unit the payment is for. Payments are uniquely identified with the <code>merchantSerialNumber</code> and <code>orderId</code> together. The merchant-provided <code>orderId</code> must be unique per sales unit. Once the transaction is successfully initiated in Vipps, you will receive a response with a URL that will direct the customer to the Vipps landing page (when using a laptop/desktop), or app-switch to Vipps (when using a phone). The landing page detects if the request comes from a mobile or laptop/desktop device, and if on a mobile device automatically switches to the Vipps app, if it is installed. The merchant may also pass the optional 'isApp: true' parameter that will make Vipps respond with a app-switch deeplink that will take the customer directly to the Vipps app. This is normally not necessary, as Vipps handles this automatically. URLs passed to Vipps must validate, see the API guide. The URLs must use HTTPS.</p>
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -2838,7 +2838,7 @@ System.out.println(response.toString());
 <tr>
 <td>default</td>
 <td>Default</td>
-<td>Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md">&quot;Common errors&quot; section of the FAQ</a>. See also: <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">Responses</a>.</td>
+<td>Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the &quot;Common errors&quot; section of the <a href="https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#common-errors">eCom FAQs</a> or from the <a href="https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq/">Vipps FAQs</a>. See also: <a href="https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/url-validation">Common topics: URL Validation</a>.</td>
 <td>Inline</td>
 </tr>
 </tbody>
@@ -3262,7 +3262,7 @@ System.out.println(response.toString());
 <tr>
 <td>default</td>
 <td>Default</td>
-<td>Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md">&quot;Common errors&quot; section of the FAQ</a>. See also: <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">Responses</a>.</td>
+<td>Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the &quot;Common errors&quot; section of the <a href="https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#common-errors">eCom FAQs</a> or from the <a href="https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq/">Vipps FAQs</a>. See also: <a href="https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/url-validation">Common topics: URL Validation</a>.</td>
 <td>Inline</td>
 </tr>
 </tbody>
@@ -3672,7 +3672,7 @@ System.out.println(response.toString());
 <tr>
 <td>default</td>
 <td>Default</td>
-<td>Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md">&quot;Common errors&quot; section of the FAQ</a>. See also: <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">Responses</a>.</td>
+<td>Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the &quot;Common errors&quot; section of the <a href="https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#common-errors">eCom FAQs</a> or from the <a href="https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq/">Vipps FAQs</a>. See also: <a href="https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/url-validation">Common topics: URL Validation</a>.</td>
 <td>Inline</td>
 </tr>
 </tbody>
@@ -4095,7 +4095,7 @@ System.out.println(response.toString());
 <tr>
 <td>default</td>
 <td>Default</td>
-<td>Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md">&quot;Common errors&quot; section of the FAQ</a>. See also: <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">Responses</a>.</td>
+<td>Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the &quot;Common errors&quot; section of the <a href="https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#common-errors">eCom FAQs</a> or from the <a href="https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq/">Vipps FAQs</a>. See also: <a href="https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/url-validation">Common topics: URL Validation</a>.</td>
 <td>Inline</td>
 </tr>
 </tbody>
@@ -4464,7 +4464,7 @@ System.out.println(response.toString());
 <tr>
 <td>default</td>
 <td>Default</td>
-<td>Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md">&quot;Common errors&quot; section of the FAQ</a>. See also: <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">Responses</a>.</td>
+<td>Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the &quot;Common errors&quot; section of the <a href="https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#common-errors">eCom FAQs</a> or from the <a href="https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq/">Vipps FAQs</a>. See also: <a href="https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/url-validation">Common topics: URL Validation</a>.</td>
 <td>Inline</td>
 </tr>
 </tbody>
@@ -4828,7 +4828,7 @@ System.out.println(response.toString());
 <tr>
 <td>default</td>
 <td>Default</td>
-<td>Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md">&quot;Common errors&quot; section of the FAQ</a>. See also: <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">Responses</a>.</td>
+<td>Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the &quot;Common errors&quot; section of the <a href="https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#common-errors">eCom FAQs</a> or from the <a href="https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq/">Vipps FAQs</a>. See also: <a href="https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/url-validation">Common topics: URL Validation</a>.</td>
 <td>Inline</td>
 </tr>
 </tbody>
@@ -5075,7 +5075,7 @@ System.out.println(response.toString());
 <tr>
 <td>default</td>
 <td>Default</td>
-<td>Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api-faq.md">&quot;Common errors&quot; section of the FAQ</a>. See also: <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#url-validation">Responses</a>.</td>
+<td>Possible error responses. Errors can be from both Vipps' own code (where we have full control) and from Microsoft Azure (where we rely on standard functionality). See the &quot;Common errors&quot; section of the <a href="https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#common-errors">eCom FAQs</a> or from the <a href="https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq/">Vipps FAQs</a>. See also: <a href="https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/url-validation">Common topics: URL Validation</a>.</td>
 <td>Inline</td>
 </tr>
 </tbody>
@@ -6420,7 +6420,7 @@ System.out.println(response.toString());
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>The operation that was performed for this log entry. See the <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#responses-from-requests">API guide</a> for more information.</td>
+<td>The operation that was performed for this log entry. See the <a href="https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#requests-and-responses">API guide</a> for more information.</td>
 </tr>
 <tr>
 <td>operationSuccess</td>
@@ -6934,7 +6934,7 @@ System.out.println(response.toString());
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>Status which gives the current state of the payment within Vipps. See the <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callbacks">API guide</a> for more information.</td>
+<td>Status which gives the current state of the payment within Vipps. See the <a href="https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#callbacks">API guide</a> for more information.</td>
 </tr>
 <tr>
 <td>timeStamp</td>
@@ -7016,7 +7016,7 @@ System.out.println(response.toString());
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>Status which gives the current state of the payment within Vipps. See the <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#callbacks">API guide</a> for more information.</td>
+<td>Status which gives the current state of the payment within Vipps. See the <a href="https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#callbacks">API guide</a> for more information.</td>
 </tr>
 <tr>
 <td>timeStamp</td>
@@ -7098,7 +7098,7 @@ System.out.println(response.toString());
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>Status which gives the current state of the payment within Vipps. See the <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#responses-from-requests">API guide</a> for more information.</td>
+<td>Status which gives the current state of the payment within Vipps. See the <a href="https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#requests-and-responses">API guide</a> for more information.</td>
 </tr>
 <tr>
 <td>timeStamp</td>
@@ -7205,7 +7205,7 @@ System.out.println(response.toString());
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>Status which gives the current state of the payment within Vipps. See the <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#responses-from-requests">API guide</a> for more information.</td>
+<td>Status which gives the current state of the payment within Vipps. See the <a href="https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#requests-and-responses">API guide</a> for more information.</td>
 </tr>
 <tr>
 <td>timeStamp</td>
@@ -7291,7 +7291,7 @@ System.out.println(response.toString());
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>Status which gives the current state of the payment within Vipps. See the <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#responses-from-requests">API guide</a> for more information.</td>
+<td>Status which gives the current state of the payment within Vipps. See the <a href="https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#requests-and-responses">API guide</a> for more information.</td>
 </tr>
 <tr>
 <td>timeStamp</td>
@@ -9132,21 +9132,21 @@ System.out.println(response.toString());
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>The error group. See: <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-groups">https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-groups</a></td>
+<td>The error group. See: <a href="https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#error-groups">https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#error-groups</a></td>
 </tr>
 <tr>
 <td>errorCode</td>
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>The error code. See: <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes">https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#error-codes</a></td>
+<td>The error code. See: <a href="https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#error-codes">https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#error-codes</a></td>
 </tr>
 <tr>
 <td>errorMessage</td>
 <td>string</td>
 <td>true</td>
 <td>none</td>
-<td>A description of what went wrong. See <a href="https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#errors">https://github.com/vippsas/vipps-ecom-api/blob/master/vipps-ecom-api.md#errors</a></td>
+<td>A description of what went wrong. See <a href="https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#errors">https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#errors</a></td>
 </tr>
 <tr>
 <td>contextId</td>
