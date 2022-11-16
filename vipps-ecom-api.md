@@ -1239,7 +1239,7 @@ See
 in the Common topics for more recommendations.
 
 **Important note:** The API call to
-[`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-recurring-api/#/Userinfo%20Endpoint/getUserinfo)
+[`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-developer-docs/api/recurring#tag/Userinfo-Endpoint/operation/getUserinfo)
 must *not* include the subscription key (the `Ocp-Apim-Subscription-Key` header) used for the eCom API.
 This is because userinfo is part of Vipps Login and is therefore *not* under the same subscription,
 and will result in a `HTTP Unauthorized 401` error.
