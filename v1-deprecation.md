@@ -10,12 +10,6 @@ This is the message we sent to communicate the deprecation of the API.
 
 Document version 1.2.1.
 
-<br/>
-<br/>
-<br/>
-
-Hi
-
 Vipps is constantly improving our services, and in some cases this requires us
 to sunset legacy products and APIs.
 
