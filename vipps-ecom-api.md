@@ -84,8 +84,6 @@ Document version 2.9.0.
   - [Userinfo call-by-call guide](#userinfo-call-by-call-guide)
   - [Get userinfo](#get-userinfo)
   - [Userinfo call](#userinfo-call)
-     - [Request](#request)
-        - [Headers](#headers)
   - [Consent](#consent)
 - [HTTP response codes](#http-response-codes)
 - [Rate limiting](#rate-limiting)
@@ -100,13 +98,13 @@ Document version 2.9.0.
 - [App integration](#app-integration)
 - [App-switching](#app-switching)
   - [App-switch on iOS](#app-switch-on-ios)
-     - [Switch from merchant app to Vipps](#switch-from-merchant-app-to-vipps)
-     - [Redirect back to the merchant app from Vipps app](#redirect-back-to-the-merchant-app-from-vipps-app)
+    - [Switch from merchant app to Vipps](#switch-from-merchant-app-to-vipps)
+    - [Redirect back to the merchant app from Vipps app](#redirect-back-to-the-merchant-app-from-vipps-app)
   - [App-switch on Android](#app-switch-on-android)
-     - [Switching from merchant app to Vipps](#switching-from-merchant-app-to-vipps)
-     - [Switching back to the merchant app from Vipps app](#switching-back-to-the-merchant-app-from-vipps-app)
-     - [Return back to merchant app by actively deeplinking into it from Vipps](#return-back-to-merchant-app-by-actively-deeplinking-into-it-from-vipps)
-     - [Redirect back to merchant app by simply closing Vipps](#redirect-back-to-merchant-app-by-simply-closing-vipps)
+    - [Switching from merchant app to Vipps](#switching-from-merchant-app-to-vipps)
+    - [Switching back to the merchant app from Vipps app](#switching-back-to-the-merchant-app-from-vipps-app)
+    - [Return back to merchant app by actively deeplinking into it from Vipps](#return-back-to-merchant-app-by-actively-deeplinking-into-it-from-vipps)
+    - [Redirect back to merchant app by simply closing Vipps](#redirect-back-to-merchant-app-by-simply-closing-vipps)
 - [Errors](#errors)
   - [Error object in the response](#error-object-in-the-response)
   - [Error groups](#error-groups)
@@ -149,7 +147,7 @@ the detailed flow and [Payment states](#payment-states) for the corresponding
 states.
 
 The flow of settlements and how to retrieve them are described in
-[Settlements](https://github.com/vippsas/vipps-developers/tree/master/common-topics/settlements).
+[Settlements](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/settlements/).
 
 ## Quick start
 
@@ -171,7 +169,7 @@ Payments are supported in both web browsers and in native apps (via deep-linking
 | [Cancel payment](#cancel)                                                                                            | The merchant may cancel a reserved amount, but not on a captured amount.                                   | [`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/cancelPaymentRequestUsingPUT) |
 | [Refund payment](#refund)                                                                                            | The merchant may refund a captured amount.                                                                 | [`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST) |
 | [Get payment details](#get-payment-details)                                                                          | The full history of the payment.                                                                           | [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET) |
-| [Access Token](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#get-an-access-token) | Fetch the access token                                                                                     | [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Authorization-Service/operation/fetchAuthorizationTokenUsingPost) |
+| [Access Token](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/vipps-getting-started#get-an-access-token) | Fetch the access token                                                                                     | [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Authorization-Service/operation/fetchAuthorizationTokenUsingPost) |
 | Get order status                                                                                                     | Deprecated, use [Get payment details](#get-payment-details).                                               | Deprecated, use [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET) |
 
 See the
@@ -181,14 +179,14 @@ See the
 
 We recommend using the standard Vipps HTTP headers for all requests.
 
-See [Vipps HTTP headers](https://github.com/vippsas/vipps-developers/blob/master/common-topics/http-headers.md)
+See [Vipps HTTP headers](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/http-headers)
 in the Common topics guide, for details.
 
 ## Authentication
 
 All Vipps API calls are authenticated with an access token and an API subscription key.
 See
-[Get an access token](https://github.com/vippsas/vipps-developers/blob/master/vipps-getting-started.md#get-an-access-token)
+[Get an access token](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/vipps-getting-started#get-an-access-token)
 in the Getting started guide, for details.
 
 ## Initiate
@@ -214,10 +212,10 @@ This has some benefits:
 
 See:
 
-* [Reserve and capture](https://github.com/vippsas/vipps-developers/blob/master/common-topics/reserve-and-capture.md)
-* [When should I charge the customer](https://github.com/vippsas/vipps-developers/blob/master/faqs/reserve-and-capture-faq.md#when-should-i-charge-the-customer).
-* [What is the difference between "Reserve Capture" and "Direct Capture"?](https://github.com/vippsas/vipps-developers/blob/master/faqs/reserve-and-capture-faq.md#what-is-the-difference-between-reserve-capture-and-direct-capture)
-* [When should I use "Direct Capture"?](https://github.com/vippsas/vipps-developers/blob/master/faqs/reserve-and-capture-faq.md#when-should-i-use-direct-capture)
+* [Reserve and capture](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/reserve-and-capture)
+* [When should I charge the customer](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/reserve-and-capture-faq#when-should-i-charge-the-customer).
+* [What is the difference between "Reserve Capture" and "Direct Capture"?](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/reserve-and-capture-faq#what-is-the-difference-between-reserve-capture-and-direct-capture)
+* [When should I use "Direct Capture"?](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/reserve-and-capture-faq#when-should-i-use-direct-capture)
 
 ### Regular payments and express payments
 
@@ -503,7 +501,7 @@ apps is installed (and the Vipps landing page if not).
 #### isApp
 
 See
-[isApp](https://github.com/vippsas/vipps-developers/blob/master/common-topics/isApp.md)
+[isApp](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/isApp)
 in Common topics.
 
 
@@ -514,7 +512,7 @@ and `orderId`:
 
 * `merchantSerialNumber`: The merchant's Vipps id. Example: `123456`.
 * `orderId`: Must be unique for the `merchantSerialNumber`. Example: `acme-shop-123-order123abc`.
-  See: [orderId recommendations](https://github.com/vippsas/vipps-developers/blob/master/common-topics/orderid.md).
+  See: [orderId recommendations](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/orderid).
 
 ### Payment retries
 
@@ -529,19 +527,19 @@ to the first payment attempt.
 ### OrderId recommendations
 
 See
-[OrderId recommendations](https://github.com/vippsas/vipps-developers/blob/master/common-topics/orderid.md)
+[OrderId recommendations](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/orderid)
 in Common topics.
 
 ### transactionText recommendations
 
 See
-[transactionText recommendations](https://github.com/vippsas/vipps-developers/blob/master/common-topics/transactiontext.md)
+[transactionText recommendations](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/transactiontext)
 in Common topics.
 
 ### URL Validation
 
 See
-[URL Validation](https://github.com/vippsas/vipps-developers/blob/master/common-topics/url-validation.md)
+[URL Validation](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/url-validation)
 in Common topics.
 
 ## Callbacks
@@ -558,7 +556,7 @@ Callback are made for the following events:
 cannot rely on callbacks alone. You must also poll
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET)
 as described in the
-[Polling guidelines](https://github.com/vippsas/vipps-developers/blob/master/common-topics/polling-guidelines.md) in the Common topics.
+[Polling guidelines](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/polling-guidelines) in the Common topics.
 
 **Important:**
 * Vipps makes *one* attempt at a callback and cannot guarantee that it succeeds,
@@ -701,7 +699,7 @@ for testing your callbacks.
    and you must correct it.
 
 We recommend checking callbacks on the
-[API Dashboard](https://github.com/vippsas/vipps-developers/blob/master/developer-resources/api-dashboard.md).
+[API Dashboard](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/developer-resources/api-dashboard).
 
 ### Authorization for callbacks
 
@@ -718,7 +716,7 @@ API spec:
 ### Vipps callback servers
 
 The callbacks from Vipps are made from the servers described in
-[Vipps request servers](https://github.com/vippsas/vipps-developers/blob/master/developer-resources/servers.md#vipps-request-servers).
+[Vipps request servers](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/developer-resources/servers#vipps-request-servers).
 
 Please make sure that requests from these servers are allowed through firewalls, etc.
 
@@ -747,7 +745,7 @@ For a full history of a payment, use
 
 ## Timeouts
 
-See: [Timeouts](https://github.com/vippsas/vipps-developers/blob/master/common-topics/timeouts.md) in Common topics.
+See: [Timeouts](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/timeouts) in Common topics.
 
 ## Express checkout API endpoints required on the merchant side
 
@@ -845,7 +843,7 @@ When a user is directed to the `url` sent in the response to
 they will either be taken to Vipps or to the Vipps landing page.
 
 See
-[Vipps landing page](https://github.com/vippsas/vipps-developers/blob/master/common-topics/vipps-landing-page.md)
+[Vipps landing page](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/vipps-landing-page)
 from Common topics, for mre details about the landing page.
 
 ## Reserve
@@ -854,7 +852,7 @@ When the user confirms the purchase in Vipps, the payment status changes to `RES
 The respective amount will be reserved for future capturing.
 
 For more details, see
-[Common topics: Reserve and capture](https://github.com/vippsas/vipps-developers/blob/master/common-topics/reserve-and-capture.md).
+[Common topics: Reserve and capture](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/reserve-and-capture).
 
 ## Capture
 
@@ -870,7 +868,7 @@ See the [X-Request-Id in the capturePaymentUsingPOST specification](https://vipp
 To perform a normal capture of the entire amount, `amount` can be
 omitted from the API request (i.e., not sent at all), set to `null` or set to `0`.
 When doing a
-[partial capture](https://github.com/vippsas/vipps-developers/blob/master/common-topics/reserve-and-capture.md#partial-capture),
+[partial capture](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/reserve-and-capture#partial-capture),
 you need to specify the `amount`.
 
 **Please note:** It is important to check the response of the `/capture`
@@ -882,13 +880,13 @@ Attempting to capture an older payment will result in a
 
 See the FAQ:
 
-* [When should I charge the customer](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#when-should-i-charge-the-customer).
-* [What is the difference between "Reserve Capture" and "Direct Capture"?](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#what-is-the-difference-between-reserve-capture-and-direct-capture)
-* [When should I use "Direct Capture"?](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#when-should-i-use-direct-capture)
+* [When should I charge the customer](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/reserve-and-capture-faq#when-should-i-charge-the-customer).
+* [What is the difference between "Reserve Capture" and "Direct Capture"?](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/reserve-and-capture-faq#what-is-the-difference-between-reserve-capture-and-direct-capture)
+* [When should I use "Direct Capture"?](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/reserve-and-capture-faq#when-should-i-use-direct-capture)
 
 
 See
-[Common topics: capture](https://github.com/vippsas/vipps-developers/blob/master/common-topics/reserve-and-capture.md#capture)
+[Common topics: capture](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/reserve-and-capture#capture)
 for more details about the types of captures.
 
 ## Cancel
@@ -991,7 +989,7 @@ This is a useful and recommended feature, as it releases any reserved balance
 as soon as the card issuer and/or bank permits.
 
 See also the FAQ:
-[How long does it take from a refund is made until the money is in the customer's account?](https://github.com/vippsas/vipps-developers/blob/master/faqs/refunds-faq.md#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
+[How long does it take from a refund is made until the money is in the customer's account?](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/refunds-faq/#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
 
 Example Request:
 
@@ -1084,8 +1082,8 @@ Response:
 ```
 
 See
-[FAQ: Refunds](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#refunds)
-for more common questions.
+[FAQ: Refunds](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/refunds-faq)
+for common questions.
 
 ## Get payment details
 
@@ -1188,7 +1186,7 @@ and `userDetails` in addition to `transactionLogHistory` and `transactionSummary
 ### Polling guidelines
 
 See
-[Polling guidelines](https://github.com/vippsas/vipps-developers/blob/master/common-topics/polling-guidelines.md)
+[Polling guidelines](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/polling-guidelines)
 in the Common topics.
 
 ## Get payment status
@@ -1203,12 +1201,12 @@ To enable the possibility to fetch profile information for a user, the merchant 
 parameter to the initiate call:
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST).
 See
-[User information](https://github.com/vippsas/vipps-developers/blob/master/common-topics/userinfo.md)
+[User information](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/userinfo)
 in the Common topics.
 
 ### Scope
 
-See [Scope](https://github.com/vippsas/vipps-developers/blob/master/common-topics/userinfo.md#scope)
+See [Scope](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/userinfo#scope)
 in Common topics for details.
 
 ### Userinfo call-by-call guide
@@ -1237,7 +1235,7 @@ To test this out, see the step-by-step instructions in the
 is made within (milli)seconds of the payment approval in the app, it may not be
 available. If that happens, simply make another `/details` request.
 See
-[Polling guidelines](https://github.com/vippsas/vipps-developers/blob/master/common-topics/polling-guidelines.md)
+[Polling guidelines](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/polling-guidelines)
 in the Common topics for more recommendations.
 
 **Important note:** The API call to
@@ -1281,13 +1279,13 @@ Call [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-
 with the `sub` that was retrieved earlier.
 
 See
-[Userinfo call](https://github.com/vippsas/vipps-developers/blob/master/common-topics/userinfo.md#userinfo-call)
+[Userinfo call](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/userinfo#userinfo-call)
 in Common topics for details.
 
 ### Consent
 
 See
-[Consent](https://github.com/vippsas/vipps-developers/blob/master/common-topics/userinfo.md#consent)
+[Consent](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/userinfo#consent)
 in Common topics for details.
 
 
@@ -1307,7 +1305,9 @@ This API returns the following HTTP statuses in the responses:
 - `429 Too Many Requests`
 - `500 Server Error`
 
-For more information about the HTTP response codes and JSON object in the responses, see [HTTP response codes](https://github.com/vippsas/vipps-developers/blob/master/common-topics/http-response-codes.md) in the Common topics.
+For more information about the HTTP response codes and JSON object in the responses, see 
+[HTTP response codes](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/http-response-codes)
+in the Common topics.
 
 For details about the specific eCom errors and responses, see:
 
@@ -1321,8 +1321,8 @@ We have added rate limiting to our APIs (HTTP 429 Too Many Requests) to prevent 
 The "Key" column specifies what we consider to be the unique identifier, and
 what we "use to count". The limits are of course not *total* limits.
 
-| API                                                                                                                         | Limit          | Key                        | Explanation |
-|:----------------------------------------------------------------------------------------------------------------------------|:---------------|:---------------------------|:-|
+| API | Limit | Key | Explanation |
+| --- | ----- | --- | ----------- |
 | [Initiate](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST) | 2 per minute   | orderId + MSN              | Two calls per minute per unique orderId |
 | [Cancel](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/cancelPaymentRequestUsingPUT) | 5 per minute   | orderId + MSN              | Five calls per minute per unique orderId |
 | [Capture](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/capturePaymentUsingPOST)     | 5 per minute   | orderId + MSN              | Five calls per minute per unique orderId |
@@ -1346,7 +1346,7 @@ In addition to the normal [Authentication](#authentication), we offer *partner k
 which let a partner make API calls on behalf of a merchant.
 
 See:
-[Partner keys](https://github.com/vippsas/vipps-partner/blob/main/partner-keys.md).
+[Partner keys](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/partner-keys).
 
 ## Idempotency
 
@@ -1356,7 +1356,7 @@ a request with the same `X-Request-Id`, the retried request will not make
 additional changes.
 
 See the
-[Idempotency header](https://github.com/vippsas/vipps-developers/blob/master/common-topics/http-headers.md#idempotency)
+[Idempotency header](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/http-headers#idempotency)
 for more details.
 
 Example Request:
@@ -1750,7 +1750,7 @@ to retrieve all the information about the payment.
 ## Testing
 
 To facilitate automated testing in
-[The Vipps Test Environment (MT)](https://github.com/vippsas/vipps-developers/blob/master/developer-resources/test-environment.md)
+[The Vipps Test Environment (MT)](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/developer-resources/test-environment)
 the Vipps eCom API provides a "force approve" endpoint to avoid manual
 payment confirmation in the Vipps app:
 [`POST:/ecomm/v2/integration-test/payments/{orderId}/approve`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/integrationTestApprovePayment)
@@ -1772,7 +1772,7 @@ not supported by the force approve endpoint.
 ## Recommendations regarding handling redirects
 
 See
-[Recommendations regarding handling redirects](https://github.com/vippsas/vipps-developers/blob/master/common-topics/redirects.md)
+[Recommendations regarding handling redirects](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/redirects)
 in the Common topics.
 
 ## Questions?

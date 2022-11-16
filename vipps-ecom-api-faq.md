@@ -78,10 +78,6 @@ See:
 
 ## Reservations and captures
 
-See
-[FAQ: Reservations and captures](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/reserve-and-capture-faq)
-for more questions.
-
 ## Refunds
 
 The Vipps eCom API supports refunds with
@@ -89,8 +85,8 @@ The Vipps eCom API supports refunds with
 For details on how to offer refunds, please refer to the documentation for your eCommerce solution.
 
 See
-[FAQ: Refunds](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-faq#refunds)
-for more details.
+[Vipps FAQ: Refunds](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/refunds-faq)
+for answers to more questions.
 
 ## Users and payments
 
@@ -116,7 +112,7 @@ The solution is to check with
 [`GET:/ecomm/v2/payments/{orderId}/details`](vipps-ecom-api.md#get-payment-details).
 
 You can use
-[Postman](https://github.com/vippsas/vipps-developers/blob/master/developer-resources/quick-start-guides.md)
+[Postman](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/developer-resources/quick-start-guides)
 to manually do API calls, Use the "inspect" functionality to see the complete requests and responses.
 
 See:
@@ -140,7 +136,7 @@ section in the API guide, and see
 
 If you do not receive a callback, it could be because your firewall is blocking
 our requests. See:
-[Vipps request servers](https://github.com/vippsas/vipps-developers/blob/master/developer-resources/servers.md#vipps-request-servers).
+[Vipps request servers](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/developer-resources/servers#vipps-request-servers).
 
 Please check your own logs for any signs of problems. If your
 `orderId` is `acme-shop-123-order123abc`: Search your logs for `acme-shop-123-order123abc`.
@@ -169,7 +165,7 @@ for more questions.
 
 ### What functionality is included in the eCom API, but not the PSP API?
 
-The [Vipps PSP API](https://github.com/vippsas/vipps-psp-api) provides tokens
+The [Vipps PSP API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/psp-api/) provides tokens
 that a PSP can use to charge a Vipps user's card. To put it simply, it is a
 "card token lookup service". The payment is completed by the PSP, who sends an
 update to Vipps about the success or failure.
