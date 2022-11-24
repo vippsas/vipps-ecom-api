@@ -162,7 +162,7 @@ as it gives a faster payment process and a better user experience.
 
 If you use the correct `scope` in the payment initiation, but don't get the
 `sub` in the response for `/details`: Check that you are following the
-[orderId recommendations](../common-topics/orderid.md).
+[orderId recommendations](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/orderid).
 Very short orderIds don't work well with our database index, and may cause
 an internal timeout, and we "have to" send the response without the `sub`.
 We cannot enforce longer orderIds due to backwards compatibility.
