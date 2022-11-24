@@ -16,7 +16,7 @@ END_METADATA -->
 
 API version: 2.0.
 
-Document version 2.1.15.
+Document version 2.2.0.
 
 ## Checklist
 
@@ -48,6 +48,7 @@ Document version 2.1.15.
         - [ ] Remove consent
               [`DELETE:[consentRemovalPrefix]/v2/consents/{userId}`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Merchant-Endpoints/operation/removeUserConsentUsingDELETE)
  - [ ] Make sure to log and handle [all errors](vipps-ecom-api.md#errors).
+       All integrations should to display errors in a way that the user can see and understand them.
  - [ ] Avoid Integration pitfalls
     - [ ] The Merchant _must not_ rely on `fallback` or `callback` alone, and must poll
           [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET)
