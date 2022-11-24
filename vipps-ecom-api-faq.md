@@ -23,7 +23,7 @@ For more common Vipps questions, see:
 
 * [Vipps API General FAQ](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/)
 
-Document version 3.15.3.
+Document version 3.15.4.
 
 <!-- START_TOC -->
 
@@ -37,6 +37,7 @@ Document version 3.15.3.
 * [Common errors](#common-errors)
   * [Why do I not get callbacks from Vipps?](#why-do-i-not-get-callbacks-from-vipps)
   * [Why do I get `Payment failed`?](#why-do-i-get-payment-failed)
+  * [Why do I not get the `sub` from `/details`?](#why-do-i-not-get-the-sub-from-details)
 * [Other questions](#other-questions)
   * [What functionality is included in the eCom API, but not the PSP API?](#what-functionality-is-included-in-the-ecom-api-but-not-the-psp-api)
 * [Questions?](#questions)
@@ -156,6 +157,15 @@ Please verify that your response is correct.
 Also consider using
 [static shipping methods](vipps-ecom-api.md#shipping-and-static-shipping-details),
 as it gives a faster payment process and a better user experience.
+
+## Why do I not get the `sub` from `/details`?
+
+If you use the correct `scope` in the payment initiation, but don't get the
+`sub` in the response for `/details`: Check that you are following the
+[orderId recommendations](../common-topics/orderid.md).
+Very short orderIds don't work well with our database index, and may cause
+an internal timeout, and we "have to" send the response without the `sub`.
+We cannot enforce longer orderIds due to backwards compatibility.
 
 ## Other questions
 
