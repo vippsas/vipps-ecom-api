@@ -1369,7 +1369,7 @@ components:
           type: boolean
           example: true
         formatted:
-          description: 'The user's address as a formatted string'
+          description: "The user's address as a formatted string"
           type: string
           example: "Robert Levins gate 5\n0154 Oslo"
         postal_code:
@@ -1377,11 +1377,11 @@ components:
           type: string
           example: "0154"
         region:
-          description: 'The user's region (typically a county, town or city)'
+          description: "The user's region (typically a county, town or city)"
           type: string
           example: "Oslo"
         street_address:
-          description: 'The user's street address'
+          description: "The user's street address"
           type: string
           example: "Robert Levins gate 5"
     CallbackTransactionInfoRegular:
