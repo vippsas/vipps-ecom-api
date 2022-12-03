@@ -1188,7 +1188,6 @@ components:
       properties:
         amount:
           type: integer
-          format: int32
         operation:
           type: string
           example: RESERVE
@@ -1767,7 +1766,6 @@ components:
             - 'N'
         priority:
           type: integer
-          format: int32
         shippingCost:
           type: integer
           minimum: 0
@@ -1808,7 +1806,6 @@ components:
       properties:
         amount:
           type: integer
-          format: int32
           description: >-
             Amounts are specified in minor units.
             For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.
@@ -2028,7 +2025,6 @@ components:
       properties:
         amount:
           type: integer
-          format: int32
           description: >-
             Amounts are specified in minor units.
             For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.
@@ -2052,7 +2048,6 @@ components:
       properties:
         addressId:
           type: integer
-          format: int32
           minimum: 100
           description: >-
             Vipps Provided address Id. To be returned in response in the same
@@ -2241,7 +2236,6 @@ components:
       properties:
         addressId:
           type: integer
-          format: int32
         orderId:
           type: string
           description: >-
@@ -2265,27 +2259,22 @@ components:
       properties:
         capturedAmount:
           type: integer
-          format: int32
           description: Total amount captured
           example: 49900
         refundedAmount:
           type: integer
-          format: int32
           description: Total refunded amount of the order
           example: 0
         remainingAmountToCapture:
           type: integer
-          format: int32
           description: Total remaining amount to capture
           example: 0
         remainingAmountToRefund:
           type: integer
-          format: int32
           description: Total remaining amount to refund
           example: 49900
         bankIdentificationNumber:
           type: integer
-          format: int32
           description: Bank Identification Number, first 6 digit of card number
           example: 123456
     TransactionUpdateCallbackOneOf:
