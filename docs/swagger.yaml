@@ -2,7 +2,7 @@ openapi: '3.0.0'
 info:
   description: |
     For details, see the [API Guide](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
-  version: 1.6.37
+  version: 1.6.38
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -1162,9 +1162,8 @@ components:
         address:
           $ref: '#/components/schemas/Address'
         shippingCost:
-          type: number
-          format: double
-          description: Shipping Cost
+          type: integer
+          escription: 'Shipping cost. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
           example: 1500
         shippingMethod:
           type: string
@@ -1392,8 +1391,7 @@ components:
         - timeStamp
       properties:
         amount:
-          type: number
-          format: double
+          type: integer
           description:
             'Ordered amount. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
           example: 49900
@@ -1426,8 +1424,7 @@ components:
         - timeStamp
       properties:
         amount:
-          type: number
-          format: double
+          type: integer
           description: 'Ordered amount. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
           example: 49900
         status:
@@ -1460,8 +1457,7 @@ components:
         - timeStamp
       properties:
         amount:
-          type: number
-          format: double
+          type: integer
           description: 'Ordered amount. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
           example: 49900
         status:
@@ -1502,8 +1498,7 @@ components:
         - transactionText
       properties:
         amount:
-          type: number
-          format: double
+          type: integer
           description:
             'Ordered amount in øre. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
           example: 49900
@@ -1542,8 +1537,7 @@ components:
         - transactionText
       properties:
         amount:
-          type: number
-          format: double
+          type: integer
           description: >-
             Amounts are specified in minor units.
             For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.
@@ -1644,8 +1638,7 @@ components:
         address:
           $ref: '#/components/schemas/AddressExpress'
         shippingCost:
-          type: number
-          format: double
+          type: integer
           description: 'Shipping cost, in øre. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
           example: 9900
         shippingMethod:
@@ -1772,8 +1765,8 @@ components:
           type: integer
           format: int32
         shippingCost:
-          type: number
-          format: double
+          type: integer
+          description: 'Shipping cost. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
           example: 9900
         shippingMethod:
           type: string
