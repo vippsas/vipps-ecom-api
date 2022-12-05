@@ -1640,9 +1640,7 @@ components:
         address:
           $ref: '#/components/schemas/AddressExpress'
         shippingCost:
-          type: integer
-          minimum: 0
-          description: 'Shipping cost, in øre. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
+          description: 'Shipping cost, in kroner (not øre)'
           example: 9900
         shippingMethod:
           type: string
