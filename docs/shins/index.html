@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Vipps eCommerce API v1.6.37</title>
+    <title>Vipps eCommerce API v1.6.38</title>
 
     <style>
     </style>
@@ -2651,16 +2651,16 @@ System.out.println(response.toString());
 <tr>
 <td>»»» priority</td>
 <td>body</td>
-<td>integer(int32)</td>
+<td>integer</td>
 <td>false</td>
 <td>none</td>
 </tr>
 <tr>
 <td>»»» shippingCost</td>
 <td>body</td>
-<td>number(double)</td>
+<td>integer</td>
 <td>true</td>
-<td>none</td>
+<td>Shipping cost. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.</td>
 </tr>
 <tr>
 <td>»»» shippingMethod</td>
@@ -2686,7 +2686,7 @@ System.out.println(response.toString());
 <tr>
 <td>»» amount</td>
 <td>body</td>
-<td>integer(int32)</td>
+<td>integer</td>
 <td>true</td>
 <td>Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre. Must be non-zero and larger than 1 NOK.</td>
 </tr>
@@ -3204,7 +3204,7 @@ System.out.println(response.toString());
 <tr>
 <td>»» amount</td>
 <td>body</td>
-<td>integer(int32)</td>
+<td>integer</td>
 <td>false</td>
 <td>Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre. If amount is 0 or not provided then full capture will be performed.</td>
 </tr>
@@ -4038,7 +4038,7 @@ System.out.println(response.toString());
 <tr>
 <td>»» amount</td>
 <td>body</td>
-<td>integer(int32)</td>
+<td>integer</td>
 <td>false</td>
 <td>Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre. If amount is 0 or not provided then full capture will be performed.</td>
 </tr>
@@ -5444,7 +5444,7 @@ System.out.println(response.toString());
 <tr>
 <td>» addressId</td>
 <td>body</td>
-<td>integer(int32)</td>
+<td>integer</td>
 <td>true</td>
 <td>Vipps Provided address Id. To be returned in response in the same field</td>
 </tr>
@@ -6359,10 +6359,10 @@ System.out.println(response.toString());
 </tr>
 <tr>
 <td>shippingCost</td>
-<td>number(double)</td>
+<td>integer</td>
 <td>true</td>
 <td>none</td>
-<td>Shipping Cost</td>
+<td>none</td>
 </tr>
 <tr>
 <td>shippingMethod</td>
@@ -6410,7 +6410,7 @@ System.out.println(response.toString());
 <tbody>
 <tr>
 <td>amount</td>
-<td>integer(int32)</td>
+<td>integer</td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -6924,7 +6924,7 @@ System.out.println(response.toString());
 <tbody>
 <tr>
 <td>amount</td>
-<td>number(double)</td>
+<td>integer</td>
 <td>true</td>
 <td>none</td>
 <td>Ordered amount. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.</td>
@@ -7006,7 +7006,7 @@ System.out.println(response.toString());
 <tbody>
 <tr>
 <td>amount</td>
-<td>number(double)</td>
+<td>integer</td>
 <td>true</td>
 <td>none</td>
 <td>Ordered amount. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.</td>
@@ -7088,7 +7088,7 @@ System.out.println(response.toString());
 <tbody>
 <tr>
 <td>amount</td>
-<td>number(double)</td>
+<td>integer</td>
 <td>true</td>
 <td>none</td>
 <td>Ordered amount. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.</td>
@@ -7195,7 +7195,7 @@ System.out.println(response.toString());
 <tbody>
 <tr>
 <td>amount</td>
-<td>number(double)</td>
+<td>integer</td>
 <td>true</td>
 <td>none</td>
 <td>Ordered amount in øre. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.</td>
@@ -7281,7 +7281,7 @@ System.out.println(response.toString());
 <tbody>
 <tr>
 <td>amount</td>
-<td>number(double)</td>
+<td>integer</td>
 <td>true</td>
 <td>none</td>
 <td>Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.</td>
@@ -7524,7 +7524,7 @@ System.out.println(response.toString());
 </tr>
 <tr>
 <td>shippingCost</td>
-<td>number(double)</td>
+<td>any</td>
 <td>true</td>
 <td>none</td>
 <td>Shipping cost, in kroner (not øre)</td>
@@ -7807,17 +7807,17 @@ System.out.println(response.toString());
 </tr>
 <tr>
 <td>priority</td>
-<td>integer(int32)</td>
+<td>integer</td>
 <td>false</td>
 <td>none</td>
 <td>none</td>
 </tr>
 <tr>
 <td>shippingCost</td>
-<td>number(double)</td>
+<td>integer</td>
 <td>true</td>
 <td>none</td>
-<td>none</td>
+<td>Shipping cost. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.</td>
 </tr>
 <tr>
 <td>shippingMethod</td>
@@ -7971,7 +7971,7 @@ System.out.println(response.toString());
 <tbody>
 <tr>
 <td>amount</td>
-<td>integer(int32)</td>
+<td>integer</td>
 <td>true</td>
 <td>none</td>
 <td>Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre. Must be non-zero and larger than 1 NOK.</td>
@@ -8276,7 +8276,7 @@ System.out.println(response.toString());
 <tbody>
 <tr>
 <td>amount</td>
-<td>integer(int32)</td>
+<td>integer</td>
 <td>false</td>
 <td>none</td>
 <td>Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre. If amount is 0 or not provided then full capture will be performed.</td>
@@ -8320,7 +8320,7 @@ System.out.println(response.toString());
 <tbody>
 <tr>
 <td>addressId</td>
-<td>integer(int32)</td>
+<td>integer</td>
 <td>true</td>
 <td>none</td>
 <td>Vipps Provided address Id. To be returned in response in the same field</td>
@@ -8784,7 +8784,7 @@ System.out.println(response.toString());
 <tbody>
 <tr>
 <td>addressId</td>
-<td>integer(int32)</td>
+<td>integer</td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -8833,35 +8833,35 @@ System.out.println(response.toString());
 <tbody>
 <tr>
 <td>capturedAmount</td>
-<td>integer(int32)</td>
+<td>integer</td>
 <td>true</td>
 <td>none</td>
 <td>Total amount captured</td>
 </tr>
 <tr>
 <td>refundedAmount</td>
-<td>integer(int32)</td>
+<td>integer</td>
 <td>true</td>
 <td>none</td>
 <td>Total refunded amount of the order</td>
 </tr>
 <tr>
 <td>remainingAmountToCapture</td>
-<td>integer(int32)</td>
+<td>integer</td>
 <td>true</td>
 <td>none</td>
 <td>Total remaining amount to capture</td>
 </tr>
 <tr>
 <td>remainingAmountToRefund</td>
-<td>integer(int32)</td>
+<td>integer</td>
 <td>true</td>
 <td>none</td>
 <td>Total remaining amount to refund</td>
 </tr>
 <tr>
 <td>bankIdentificationNumber</td>
-<td>integer(int32)</td>
+<td>integer</td>
 <td>false</td>
 <td>none</td>
 <td>Bank Identification Number, first 6 digit of card number</td>
