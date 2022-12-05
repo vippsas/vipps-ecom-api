@@ -1750,7 +1750,7 @@ to retrieve all the information about the payment.
 ## Testing
 
 To facilitate automated testing in
-[The Vipps Test Environment (MT)](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/developer-resources/test-environment)
+[The Vipps Test Environment (MT)](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/test-environment)
 the Vipps eCom API provides a "force approve" endpoint to avoid manual
 payment confirmation in the Vipps app:
 [`POST:/ecomm/v2/integration-test/payments/{orderId}/approve`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/integrationTestApprovePayment)

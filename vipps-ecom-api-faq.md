@@ -113,7 +113,7 @@ The solution is to check with
 [`GET:/ecomm/v2/payments/{orderId}/details`](vipps-ecom-api.md#get-payment-details).
 
 You can use
-[Postman](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/developer-resources/quick-start-guides)
+[Postman](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/quick-start-guides)
 to manually do API calls, Use the "inspect" functionality to see the complete requests and responses.
 
 See:
