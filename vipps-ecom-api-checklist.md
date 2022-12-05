@@ -80,7 +80,7 @@ Document version 2.2.0.
    Please double check to avoid mistakes.
 5. The merchant verifies the integration in the test environment by checking that
    there are test IDs (`orderId`) in the
-   [Vipps test environment](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/developer-resources/test-environment),
+   [Vipps test environment](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/test-environment),
    with the following states:
     - A complete order ending in `REFUND`
       ([`/refund`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST)
