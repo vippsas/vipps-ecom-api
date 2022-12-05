@@ -22,7 +22,7 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-Document version 2.9.0.
+Document version 2.9.1.
 
 <!-- START_TOC -->
 
@@ -463,14 +463,14 @@ An express payment example with more parameters provided:
       {
         "isDefault": "N",
         "priority": 1,
-        "shippingCost": 30.0,
+        "shippingCost": 99,
         "shippingMethod": "Walking",
         "shippingMethodId": "123abc"
       },
       {
         "isDefault": "Y",
         "priority": 2,
-        "shippingCost": 30.0,
+        "shippingCost": 199,
         "shippingMethod": "Running",
         "shippingMethodId": "321abc"
       }
@@ -638,7 +638,7 @@ Example: `"eComm Express Payment"` callback:
       "country": "Norway",
       "postCode": "0191"
     },
-    "shippingCost": 109.99,
+    "shippingCost": 99,
     "shippingMethod": "By cannon"
   },
   "transactionInfo": {
@@ -803,14 +803,14 @@ Response:
     {
       "isDefault": "N",
       "priority": 1,
-      "shippingCost": 30.0,
+      "shippingCost": 99,
       "shippingMethod": "Walking",
       "shippingMethodId": "123abc"
     },
     {
       "isDefault": "Y",
       "priority": 2,
-      "shippingCost": 30.0,
+      "shippingCost": 199,
       "shippingMethod": "Running",
       "shippingMethodId": "321abc"
     }
@@ -1305,7 +1305,7 @@ This API returns the following HTTP statuses in the responses:
 - `429 Too Many Requests`
 - `500 Server Error`
 
-For more information about the HTTP response codes and JSON object in the responses, see 
+For more information about the HTTP response codes and JSON object in the responses, see
 [HTTP response codes](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/http-response-codes)
 in the Common topics.
 
