@@ -1162,10 +1162,10 @@ components:
         address:
           $ref: '#/components/schemas/Address'
         shippingCost:
-          type: integer
-          minimum: 0
-          escription: 'Shipping cost. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
-          example: 1500
+          type: number
+          format: double
+          description: Shipping cost in NOK. Please note that this is not øre, and different from other amounts.
+          example: 50.50
         shippingMethod:
           type: string
           description: >-
