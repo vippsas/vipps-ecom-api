@@ -1164,7 +1164,7 @@ components:
         shippingCost:
           type: number
           format: double
-          description: Shipping Cost in Noks
+          description: Shipping cost in NOK. Please note that this is not øre, and different from other amounts.
           example: 50.50
         shippingMethod:
           type: string
