@@ -2,7 +2,7 @@ openapi: '3.0.0'
 info:
   description: |
     For details, see the [API Guide](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
-  version: 1.6.38
+  version: 1.6.39
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
@@ -1164,8 +1164,11 @@ components:
         shippingCost:
           type: number
           format: double
-          description: Shipping cost in NOK. Please note that this is not øre, and different from other amounts.
+          description: >-
+            Shipping cost in NOK.
+            Please note that this is not øre, and different from other amounts.
           example: 50.50
+          minimum: 0
         shippingMethod:
           type: string
           description: >-
@@ -1392,9 +1395,14 @@ components:
       properties:
         amount:
           type: integer
-          description:
-            'Ordered amount. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
+          description: >-
+            Ordered amount.
+            Amounts are specified in minor units.
+            For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.
+            Minimum 1 NOK.
+          pattern: '^\d{3,}$'
           example: 49900
+          minimum: 100
         status:
           type: string
           enum:
@@ -1425,8 +1433,13 @@ components:
       properties:
         amount:
           type: integer
-          description: 'Ordered amount. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
+          description: >-
+            Amounts are specified in minor units.
+            For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.
+            Minimum 1 NOK.
+          pattern: '^\d{3,}$'
           example: 49900
+          minimum: 100
         status:
           type: string
           enum:
@@ -1458,9 +1471,13 @@ components:
       properties:
         amount:
           type: integer
-          minimum: 100
-          description: 'Ordered amount. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
+          description: >-
+            Amounts are specified in minor units.
+            For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.
+            Minimum 1 NOK.
+          pattern: '^\d{3,}$'
           example: 49900
+          minimum: 100
         status:
           type: string
           enum:
@@ -1500,10 +1517,13 @@ components:
       properties:
         amount:
           type: integer
-          minimum: 100
-          description:
-            'Ordered amount in øre. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
+          description: >-
+            Amounts are specified in minor units.
+            For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.
+            Minimum 1 NOK.
+          pattern: '^\d{3,}$'
           example: 49900
+          minimum: 100
         status:
           type: string
           enum:
@@ -1543,6 +1563,8 @@ components:
           description: >-
             Amounts are specified in minor units.
             For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.
+            Minimum 1 NOK.
+          pattern: '^\d{3,}$'
           example: 49900
           minimum: 100
         status:
@@ -1640,8 +1662,13 @@ components:
         address:
           $ref: '#/components/schemas/AddressExpress'
         shippingCost:
-          description: 'Shipping cost, in kroner (not øre)'
-          example: 9900
+          type: number
+          format: double
+          description: >-
+            Shipping cost in NOK.
+            Please note that this is not øre, and different from other amounts.
+          example: 50.50
+          minimum: 0
         shippingMethod:
           type: string
           description: >-
@@ -1766,9 +1793,13 @@ components:
           type: integer
         shippingCost:
           type: integer
-          minimum: 0
-          description: 'Shipping cost. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.'
-          example: 9900
+          description: >-
+            Amounts are specified in minor units.
+            For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.
+            Minimum 1 NOK.
+          pattern: '^\d{3,}$'
+          example: 49900
+          minimum: 100
         shippingMethod:
           type: string
           description: >-
@@ -1807,10 +1838,10 @@ components:
           description: >-
             Amounts are specified in minor units.
             For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.
-            Must be non-zero and larger than 1 NOK.
+            Minimum 1 NOK.
           pattern: '^\d{3,}$'
-          minimum: 100
           example: 49900
+          minimum: 100
         orderId:
           type: string
           description: >-
@@ -2026,7 +2057,7 @@ components:
           description: >-
             Amounts are specified in minor units.
             For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.
-            If amount is 0 or not provided then full capture will be performed.
+            Minimum 1 NOK.
           pattern: '^\d{3,}$'
           example: 49900
           minimum: 100
