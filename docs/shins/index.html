@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Vipps eCommerce API v1.6.38</title>
+    <title>Vipps eCommerce API v1.6.39</title>
 
     <style>
     </style>
@@ -2267,7 +2267,7 @@ curl -X POST https://apitest.vipps.no/ecomm/v2/payments \
       {
         &quot;isDefault&quot;: &quot;Y&quot;,
         &quot;priority&quot;: 0,
-        &quot;shippingCost&quot;: 9900,
+        &quot;shippingCost&quot;: 49900,
         &quot;shippingMethod&quot;: &quot;Posten Servicepakke&quot;,
         &quot;shippingMethodId&quot;: &quot;posten-servicepakke&quot;
       }
@@ -2459,7 +2459,7 @@ System.out.println(response.toString());
       {
         <span class="hljs-attr">&quot;isDefault&quot;</span>: <span class="hljs-string">&quot;Y&quot;</span>,
         <span class="hljs-attr">&quot;priority&quot;</span>: <span class="hljs-number">0</span>,
-        <span class="hljs-attr">&quot;shippingCost&quot;</span>: <span class="hljs-number">9900</span>,
+        <span class="hljs-attr">&quot;shippingCost&quot;</span>: <span class="hljs-number">49900</span>,
         <span class="hljs-attr">&quot;shippingMethod&quot;</span>: <span class="hljs-string">&quot;Posten Servicepakke&quot;</span>,
         <span class="hljs-attr">&quot;shippingMethodId&quot;</span>: <span class="hljs-string">&quot;posten-servicepakke&quot;</span>
       }
@@ -2660,7 +2660,7 @@ System.out.println(response.toString());
 <td>body</td>
 <td>integer</td>
 <td>true</td>
-<td>Shipping cost. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.</td>
+<td>Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre. Minimum 1 NOK.</td>
 </tr>
 <tr>
 <td>»»» shippingMethod</td>
@@ -2688,7 +2688,7 @@ System.out.println(response.toString());
 <td>body</td>
 <td>integer</td>
 <td>true</td>
-<td>Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre. Must be non-zero and larger than 1 NOK.</td>
+<td>Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre. Minimum 1 NOK.</td>
 </tr>
 <tr>
 <td>»» orderId</td>
@@ -3206,7 +3206,7 @@ System.out.println(response.toString());
 <td>body</td>
 <td>integer</td>
 <td>false</td>
-<td>Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre. If amount is 0 or not provided then full capture will be performed.</td>
+<td>Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre. Minimum 1 NOK.</td>
 </tr>
 <tr>
 <td>»» transactionText</td>
@@ -4040,7 +4040,7 @@ System.out.println(response.toString());
 <td>body</td>
 <td>integer</td>
 <td>false</td>
-<td>Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre. If amount is 0 or not provided then full capture will be performed.</td>
+<td>Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre. Minimum 1 NOK.</td>
 </tr>
 <tr>
 <td>»» transactionText</td>
@@ -5528,7 +5528,7 @@ System.out.println(response.toString());
     {
       <span class="hljs-attr">&quot;isDefault&quot;</span>: <span class="hljs-string">&quot;Y&quot;</span>,
       <span class="hljs-attr">&quot;priority&quot;</span>: <span class="hljs-number">0</span>,
-      <span class="hljs-attr">&quot;shippingCost&quot;</span>: <span class="hljs-number">9900</span>,
+      <span class="hljs-attr">&quot;shippingCost&quot;</span>: <span class="hljs-number">49900</span>,
       <span class="hljs-attr">&quot;shippingMethod&quot;</span>: <span class="hljs-string">&quot;Posten Servicepakke&quot;</span>,
       <span class="hljs-attr">&quot;shippingMethodId&quot;</span>: <span class="hljs-string">&quot;posten-servicepakke&quot;</span>
     }
@@ -5583,7 +5583,7 @@ curl -X POST https://apitest.vipps.no[callbackPrefix]/v2/payments/{orderId} \
       &quot;country&quot;: &quot;Norway&quot;,
       &quot;zipCode&quot;: &quot;0154&quot;
     },
-    &quot;shippingCost&quot;: 9900,
+    &quot;shippingCost&quot;: 50.5,
     &quot;shippingMethod&quot;: &quot;Posten Servicepakke&quot;,
     &quot;shippingMethodId&quot;: &quot;posten-servicepakke&quot;
   },
@@ -5732,7 +5732,7 @@ System.out.println(response.toString());
       <span class="hljs-attr">&quot;country&quot;</span>: <span class="hljs-string">&quot;Norway&quot;</span>,
       <span class="hljs-attr">&quot;zipCode&quot;</span>: <span class="hljs-string">&quot;0154&quot;</span>
     },
-    <span class="hljs-attr">&quot;shippingCost&quot;</span>: <span class="hljs-number">9900</span>,
+    <span class="hljs-attr">&quot;shippingCost&quot;</span>: <span class="hljs-number">50.5</span>,
     <span class="hljs-attr">&quot;shippingMethod&quot;</span>: <span class="hljs-string">&quot;Posten Servicepakke&quot;</span>,
     <span class="hljs-attr">&quot;shippingMethodId&quot;</span>: <span class="hljs-string">&quot;posten-servicepakke&quot;</span>
   },
@@ -6927,7 +6927,7 @@ System.out.println(response.toString());
 <td>integer</td>
 <td>true</td>
 <td>none</td>
-<td>Ordered amount. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.</td>
+<td>Ordered amount. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre. Minimum 1 NOK.</td>
 </tr>
 <tr>
 <td>status</td>
@@ -7009,7 +7009,7 @@ System.out.println(response.toString());
 <td>integer</td>
 <td>true</td>
 <td>none</td>
-<td>Ordered amount. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.</td>
+<td>Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre. Minimum 1 NOK.</td>
 </tr>
 <tr>
 <td>status</td>
@@ -7091,7 +7091,7 @@ System.out.println(response.toString());
 <td>integer</td>
 <td>true</td>
 <td>none</td>
-<td>Ordered amount. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.</td>
+<td>Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre. Minimum 1 NOK.</td>
 </tr>
 <tr>
 <td>status</td>
@@ -7198,7 +7198,7 @@ System.out.println(response.toString());
 <td>integer</td>
 <td>true</td>
 <td>none</td>
-<td>Ordered amount in øre. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.</td>
+<td>Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre. Minimum 1 NOK.</td>
 </tr>
 <tr>
 <td>status</td>
@@ -7284,7 +7284,7 @@ System.out.println(response.toString());
 <td>integer</td>
 <td>true</td>
 <td>none</td>
-<td>Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.</td>
+<td>Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre. Minimum 1 NOK.</td>
 </tr>
 <tr>
 <td>status</td>
@@ -7497,7 +7497,7 @@ System.out.println(response.toString());
     <span class="hljs-attr">&quot;country&quot;</span>: <span class="hljs-string">&quot;Norway&quot;</span>,
     <span class="hljs-attr">&quot;zipCode&quot;</span>: <span class="hljs-string">&quot;0154&quot;</span>
   },
-  <span class="hljs-attr">&quot;shippingCost&quot;</span>: <span class="hljs-number">9900</span>,
+  <span class="hljs-attr">&quot;shippingCost&quot;</span>: <span class="hljs-number">50.5</span>,
   <span class="hljs-attr">&quot;shippingMethod&quot;</span>: <span class="hljs-string">&quot;Posten Servicepakke&quot;</span>,
   <span class="hljs-attr">&quot;shippingMethodId&quot;</span>: <span class="hljs-string">&quot;posten-servicepakke&quot;</span>
 }
@@ -7524,10 +7524,10 @@ System.out.println(response.toString());
 </tr>
 <tr>
 <td>shippingCost</td>
-<td>any</td>
+<td>number(double)</td>
 <td>true</td>
 <td>none</td>
-<td>Shipping cost, in kroner (not øre)</td>
+<td>Shipping cost in NOK. Please note that this is not øre, and different from other amounts.</td>
 </tr>
 <tr>
 <td>shippingMethod</td>
@@ -7780,7 +7780,7 @@ System.out.println(response.toString());
 <pre class="highlight tab tab-json"><code>{
   <span class="hljs-attr">&quot;isDefault&quot;</span>: <span class="hljs-string">&quot;Y&quot;</span>,
   <span class="hljs-attr">&quot;priority&quot;</span>: <span class="hljs-number">0</span>,
-  <span class="hljs-attr">&quot;shippingCost&quot;</span>: <span class="hljs-number">9900</span>,
+  <span class="hljs-attr">&quot;shippingCost&quot;</span>: <span class="hljs-number">49900</span>,
   <span class="hljs-attr">&quot;shippingMethod&quot;</span>: <span class="hljs-string">&quot;Posten Servicepakke&quot;</span>,
   <span class="hljs-attr">&quot;shippingMethodId&quot;</span>: <span class="hljs-string">&quot;posten-servicepakke&quot;</span>
 }
@@ -7817,7 +7817,7 @@ System.out.println(response.toString());
 <td>integer</td>
 <td>true</td>
 <td>none</td>
-<td>Shipping cost. Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.</td>
+<td>Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre. Minimum 1 NOK.</td>
 </tr>
 <tr>
 <td>shippingMethod</td>
@@ -7876,7 +7876,7 @@ System.out.println(response.toString());
       {
         <span class="hljs-attr">&quot;isDefault&quot;</span>: <span class="hljs-string">&quot;Y&quot;</span>,
         <span class="hljs-attr">&quot;priority&quot;</span>: <span class="hljs-number">0</span>,
-        <span class="hljs-attr">&quot;shippingCost&quot;</span>: <span class="hljs-number">9900</span>,
+        <span class="hljs-attr">&quot;shippingCost&quot;</span>: <span class="hljs-number">49900</span>,
         <span class="hljs-attr">&quot;shippingMethod&quot;</span>: <span class="hljs-string">&quot;Posten Servicepakke&quot;</span>,
         <span class="hljs-attr">&quot;shippingMethodId&quot;</span>: <span class="hljs-string">&quot;posten-servicepakke&quot;</span>
       }
@@ -7974,7 +7974,7 @@ System.out.println(response.toString());
 <td>integer</td>
 <td>true</td>
 <td>none</td>
-<td>Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre. Must be non-zero and larger than 1 NOK.</td>
+<td>Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre. Minimum 1 NOK.</td>
 </tr>
 <tr>
 <td>orderId</td>
@@ -8102,7 +8102,7 @@ System.out.println(response.toString());
     {
       <span class="hljs-attr">&quot;isDefault&quot;</span>: <span class="hljs-string">&quot;Y&quot;</span>,
       <span class="hljs-attr">&quot;priority&quot;</span>: <span class="hljs-number">0</span>,
-      <span class="hljs-attr">&quot;shippingCost&quot;</span>: <span class="hljs-number">9900</span>,
+      <span class="hljs-attr">&quot;shippingCost&quot;</span>: <span class="hljs-number">49900</span>,
       <span class="hljs-attr">&quot;shippingMethod&quot;</span>: <span class="hljs-string">&quot;Posten Servicepakke&quot;</span>,
       <span class="hljs-attr">&quot;shippingMethodId&quot;</span>: <span class="hljs-string">&quot;posten-servicepakke&quot;</span>
     }
@@ -8279,7 +8279,7 @@ System.out.println(response.toString());
 <td>integer</td>
 <td>false</td>
 <td>none</td>
-<td>Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre. If amount is 0 or not provided then full capture will be performed.</td>
+<td>Amounts are specified in minor units. For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre. Minimum 1 NOK.</td>
 </tr>
 <tr>
 <td>transactionText</td>
@@ -8523,7 +8523,7 @@ System.out.println(response.toString());
       <span class="hljs-attr">&quot;country&quot;</span>: <span class="hljs-string">&quot;Norway&quot;</span>,
       <span class="hljs-attr">&quot;zipCode&quot;</span>: <span class="hljs-string">&quot;0154&quot;</span>
     },
-    <span class="hljs-attr">&quot;shippingCost&quot;</span>: <span class="hljs-number">9900</span>,
+    <span class="hljs-attr">&quot;shippingCost&quot;</span>: <span class="hljs-number">50.5</span>,
     <span class="hljs-attr">&quot;shippingMethod&quot;</span>: <span class="hljs-string">&quot;Posten Servicepakke&quot;</span>,
     <span class="hljs-attr">&quot;shippingMethodId&quot;</span>: <span class="hljs-string">&quot;posten-servicepakke&quot;</span>
   },
@@ -8762,7 +8762,7 @@ System.out.println(response.toString());
     {
       <span class="hljs-attr">&quot;isDefault&quot;</span>: <span class="hljs-string">&quot;Y&quot;</span>,
       <span class="hljs-attr">&quot;priority&quot;</span>: <span class="hljs-number">0</span>,
-      <span class="hljs-attr">&quot;shippingCost&quot;</span>: <span class="hljs-number">9900</span>,
+      <span class="hljs-attr">&quot;shippingCost&quot;</span>: <span class="hljs-number">49900</span>,
       <span class="hljs-attr">&quot;shippingMethod&quot;</span>: <span class="hljs-string">&quot;Posten Servicepakke&quot;</span>,
       <span class="hljs-attr">&quot;shippingMethodId&quot;</span>: <span class="hljs-string">&quot;posten-servicepakke&quot;</span>
     }
@@ -8884,7 +8884,7 @@ System.out.println(response.toString());
       <span class="hljs-attr">&quot;country&quot;</span>: <span class="hljs-string">&quot;Norway&quot;</span>,
       <span class="hljs-attr">&quot;zipCode&quot;</span>: <span class="hljs-string">&quot;0154&quot;</span>
     },
-    <span class="hljs-attr">&quot;shippingCost&quot;</span>: <span class="hljs-number">9900</span>,
+    <span class="hljs-attr">&quot;shippingCost&quot;</span>: <span class="hljs-number">50.5</span>,
     <span class="hljs-attr">&quot;shippingMethod&quot;</span>: <span class="hljs-string">&quot;Posten Servicepakke&quot;</span>,
     <span class="hljs-attr">&quot;shippingMethodId&quot;</span>: <span class="hljs-string">&quot;posten-servicepakke&quot;</span>
   },
