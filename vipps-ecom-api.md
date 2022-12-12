@@ -147,7 +147,7 @@ the detailed flow and [Payment states](#payment-states) for the corresponding
 states.
 
 The flow of settlements and how to retrieve them are described in
-[Settlements](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/settlements/).
+[Settlements](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/settlements/).
 
 ## Quick start
 
