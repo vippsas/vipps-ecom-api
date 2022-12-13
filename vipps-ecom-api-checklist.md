@@ -15,9 +15,6 @@ END_METADATA -->
 <!-- END_COMMENT -->
 
 API version: 2.0.
-
-Document version 2.2.0.
-
 ## Checklist
 
 - [ ] Integrate _all_ the [API endpoints](vipps-ecom-api.md#api-endpoints):

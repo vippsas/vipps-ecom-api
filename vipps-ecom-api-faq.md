@@ -23,8 +23,6 @@ For more common Vipps questions, see:
 
 * [Vipps API General FAQ](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/)
 
-Document version 3.15.4.
-
 <!-- START_TOC -->
 
 ## Table of contents

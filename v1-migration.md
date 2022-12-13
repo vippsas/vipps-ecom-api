@@ -6,8 +6,6 @@ END_METADATA -->
 
 # Migration from eCom API v1 to eCom API v2
 
-Document version 1.1.5.
-
 This document explains the key differences between eCom API v1 and eCom API v2.
 
 ## Landing page

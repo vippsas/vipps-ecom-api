@@ -36,8 +36,6 @@ You can also perform express checkout payments and get access to user info.
 
 <!-- END_TOC -->
 
-Document version 1.1.1.
-
 ## Postman
 
 ### Prerequisites
