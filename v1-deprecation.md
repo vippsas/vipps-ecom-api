@@ -44,7 +44,7 @@ feature to skip the landing page. Customers who cannot display the landing page
 can see more details about the
 [skipLandingPage](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/vipps-landing-page#skip-landing-page).
 
-Vipps is piloting a solution for tokenised BankAxept-payments in payment terminals using Vipps
+Vipps is piloting a solution for tokenized BankAxept-payments in payment terminals using Vipps
 as a wallet. To learn about availability, contact your payment terminal provider.
 
 Vipps is currently designing and developing solutions for direct integration into POS systems, electronic cash registers and vending machines. For more information about this, please [register here](https://forms.office.com/Pages/ResponsePage.aspx?id=XcJbgGSO1k6NJDiDyQaMWuVjn37JcrJJgJkaJ8cPvvVUQVdLVk9PTkZTRDBLSFRRNzQxTlc2VThZMS4u).

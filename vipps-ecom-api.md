@@ -1314,7 +1314,7 @@ For details about the specific eCom errors and responses, see:
 
 ## Rate limiting
 
-We have added rate limiting to our APIs (HTTP 429 Too Many Requests) to prevent fraudulent and wrongful behaviour, and to increase the stability and security of our APIs. The limits should not affect normal behaviour, but please contact us if you notice any unexpected behaviour.
+We have added rate limiting to our APIs (HTTP 429 Too Many Requests) to prevent fraudulent and wrongful behavior, and to increase the stability and security of our APIs. The limits should not affect normal behavior, but please contact us if you notice any unexpected behavior.
 
 The "Key" column specifies what we consider to be the unique identifier, and
 what we "use to count". The limits are of course not *total* limits.
