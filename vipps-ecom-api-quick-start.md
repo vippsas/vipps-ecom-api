@@ -172,7 +172,7 @@ With this url, you can generate a QR code to take you to the Vipps landing page 
    The `orderId` and `vippsLandingPageUrl` variables are now in the environment of this Postman example
 
 1. Send request `Generate QR Code PNG`. This uses
-   [`POST:/qr/v1`](hhttps://vippsas.github.io/vipps-developer-docs/api/qr#tag/One-time-payment-QR/operation/generateOtpQr)
+   [`POST:/qr/v1`](https://vippsas.github.io/vipps-developer-docs/api/qr#tag/One-time-payment-QR/operation/generateOtpQr)
    to provide a URL that can be used to show a QR code.
 
    Ctrl+click the link to see the QR code. Scanning the QR should open the test
