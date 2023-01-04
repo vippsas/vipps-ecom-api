@@ -2,6 +2,7 @@
 ---
 title: FAQ
 sidebar_position: 25
+pagination_prev: null
 ---
 END_METADATA -->
 
