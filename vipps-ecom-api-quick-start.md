@@ -187,7 +187,7 @@ for more details.
 You can use the
 [`Force Approve Payment`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/integrationTestApprovePayment)
 endpoint
-to approve an eCom API payment without signing in to the Vipps MT app,
+to approve an eCom API payment without signing in to the Vipps MT app.
 The endpoint is only available in our test environment.
 
 **Important:** All test users must manually approve at least one payment in
