@@ -7,17 +7,13 @@ END_METADATA -->
 
 # Quick start
 
+Use the eCom API to initiate payments, get payment details, capture payments, and refund payments.
+You can also perform express checkout payments and get access to user info.
+
 <!-- START_COMMENT -->
 
 ℹ️ Please use the new documentation:
 [Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
-
-<!-- END_COMMENT -->
-
-Use the eCom API to initiate payments, get payment details, capture payments, and refund payments.
-You can also perform express checkout payments and get access to user info.
-
-<!-- START_TOC -->
 
 ## Table of Contents
 
@@ -34,7 +30,7 @@ You can also perform express checkout payments and get access to user info.
   * [Test with Force Approve](#test-with-force-approve)
 * [Questions?](#questions)
 
-<!-- END_TOC -->
+<!-- END_COMMENT -->
 
 ## Postman
 

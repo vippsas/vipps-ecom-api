@@ -7,13 +7,6 @@ END_METADATA -->
 
 # Vipps eCommerce API
 
-<!-- START_COMMENT -->
-
-ℹ️ Please use the new documentation:
-[Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
-
-<!-- END_COMMENT -->
-
 The Vipps eCom API is used by
 [Vipps på nett (*Vipps Online*)](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/),
 [Vipps Checkout](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/vipps-checkout/),
@@ -22,7 +15,10 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-<!-- START_TOC -->
+<!-- START_COMMENT -->
+
+ℹ️ Please use the new documentation:
+[Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
 
 ## Table of contents
 
@@ -35,18 +31,18 @@ API version: 2.0.0.
   - [Regular payments and express payments](#regular-payments-and-express-payments)
   - [Regular eCommerce payments](#regular-ecommerce-payments)
   - [Express checkout payments](#express-checkout-payments)
-     - [Old and new express checkout flow](#old-and-new-express-checkout-flow)
-     - [How to specify the old or new express checkout flow](#how-to-specify-the-old-or-new-express-checkout-flow)
-     - [Shipping and static shipping details](#shipping-and-static-shipping-details)
-     - [Consent and GDPR](#consent-and-gdpr)
+    - [Old and new express checkout flow](#old-and-new-express-checkout-flow)
+    - [How to specify the old or new express checkout flow](#how-to-specify-the-old-or-new-express-checkout-flow)
+    - [Shipping and static shipping details](#shipping-and-static-shipping-details)
+    - [Consent and GDPR](#consent-and-gdpr)
   - [Phone and mobile browser flow](#phone-and-mobile-browser-flow)
-     - [Vipps installed](#vipps-installed)
-     - [Vipps not installed](#vipps-not-installed)
+    - [Vipps installed](#vipps-installed)
+    - [Vipps not installed](#vipps-not-installed)
   - [Desktop flow](#desktop-flow)
   - [Payments initiated in an app](#payments-initiated-in-an-app)
   - [Initiate payment flow: API calls](#initiate-payment-flow-api-calls)
   - [The Vipps deeplink URL](#the-vipps-deeplink-url)
-     - [isApp](#isapp)
+    - [isApp](#isapp)
   - [Payment identification](#payment-identification)
   - [Payment retries](#payment-retries)
   - [OrderId recommendations](#orderid-recommendations)
@@ -111,7 +107,7 @@ API version: 2.0.0.
 - [Recommendations regarding handling redirects](#recommendations-regarding-handling-redirects)
 - [Questions?](#questions)
 
-<!-- END_TOC -->
+<!-- END_COMMENT -->
 
 ## Payment flows
 
