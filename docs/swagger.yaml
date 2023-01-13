@@ -1162,13 +1162,7 @@ components:
         address:
           $ref: '#/components/schemas/Address'
         shippingCost:
-          type: number
-          format: double
-          description: >-
-            Shipping cost in NOK.
-            Please note that this is not øre, and different from other amounts.
-          example: 50.50
-          minimum: 0
+          $ref: '#/components/schemas/ShippingCost'
         shippingMethod:
           type: string
           description: >-
@@ -1662,13 +1656,7 @@ components:
         address:
           $ref: '#/components/schemas/AddressExpress'
         shippingCost:
-          type: number
-          format: double
-          description: >-
-            Shipping cost in NOK.
-            Please note that this is not øre, and different from other amounts.
-          example: 50.50
-          minimum: 0
+          $ref: '#/components/schemas/ShippingCost'
         shippingMethod:
           type: string
           description: >-
@@ -1792,14 +1780,7 @@ components:
         priority:
           type: integer
         shippingCost:
-          type: integer
-          description: >-
-            Amounts are specified in minor units.
-            For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.
-            Minimum 1 NOK.
-          pattern: '^\d{3,}$'
-          example: 49900
-          minimum: 100
+          $ref: '#/components/schemas/ShippingCost'
         shippingMethod:
           type: string
           description: >-
@@ -1813,6 +1794,14 @@ components:
           type: string
           maxLength: 100
           example: posten-servicepakke
+    ShippingCost:
+      type: number
+      format: double
+      description: >-
+        Shipping cost in NOK.
+        Please note that this is not øre, and different from other amounts.
+      example: 499.00
+      minimum: 1.00
     InitiatePaymentCommand:
       type: object
       required:
