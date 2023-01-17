@@ -15,6 +15,7 @@ END_METADATA -->
 <!-- END_COMMENT -->
 
 API version: 2.0.
+
 ## Checklist
 
 - [ ] Integrate _all_ the [API endpoints](vipps-ecom-api.md#api-endpoints):
@@ -104,12 +105,3 @@ API version: 2.0.
 ## Flow to go live for direct integrations for partners
 
 See: [Vipps partners](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/).
-
-## Questions?
-
-We're always happy to help with code or other questions you might have!
-Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),
-a [pull request](https://github.com/vippsas/vipps-ecom-api/pulls),
-or [contact us](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/contact).
-
-Sign up for our [Technical newsletter for developers](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/newsletters).

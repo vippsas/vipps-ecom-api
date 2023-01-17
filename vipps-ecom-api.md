@@ -105,7 +105,6 @@ API version: 2.0.0.
   - [Error codes](#error-codes)
 - [Testing](#testing)
 - [Recommendations regarding handling redirects](#recommendations-regarding-handling-redirects)
-- [Questions?](#questions)
 
 <!-- END_COMMENT -->
 
@@ -1766,14 +1765,4 @@ not supported by the force approve endpoint.
 ## Recommendations regarding handling redirects
 
 See
-[Recommendations regarding handling redirects](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/redirects)
-in the Common topics.
-
-## Questions?
-
-We're always happy to help with code or other questions you might have!
-Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),
-a [pull request](https://github.com/vippsas/vipps-ecom-api/pulls),
-or [contact us](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/contact).
-
-Sign up for our [Technical newsletter for developers](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/newsletters).
+[Common topics: Recommendations regarding handling redirects](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/redirects).

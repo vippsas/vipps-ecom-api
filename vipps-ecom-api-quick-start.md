@@ -28,7 +28,6 @@ You can also perform express checkout payments and get access to user info.
   * [Getting access to user info](#getting-access-to-user-info)
   * [Generating a QR code to the Vipps landing page](#generating-a-qr-code-to-the-vipps-landing-page)
   * [Test with Force Approve](#test-with-force-approve)
-* [Questions?](#questions)
 
 <!-- END_COMMENT -->
 
@@ -202,12 +201,3 @@ the test environment when using Vipps (the app), but not with "force approve".
 1. You can check the details by sending `Get Payment Details`.
 
 See [API guide: Testing](vipps-ecom-api#testing)
-
-## Questions?
-
-We're always happy to help with code or other questions you might have!
-Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),
-a [pull request](https://github.com/vippsas/vipps-ecom-api/pulls),
-or [contact us](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/contact).
-
-Sign up for our [Technical newsletter for developers](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/newsletters).

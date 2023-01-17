@@ -35,7 +35,6 @@ For more common Vipps questions, see:
   * [Why do I not get the `sub` from `/details`?](#why-do-i-not-get-the-sub-from-details)
 * [Other questions](#other-questions)
   * [What functionality is included in the eCom API, but not the PSP API?](#what-functionality-is-included-in-the-ecom-api-but-not-the-psp-api)
-* [Questions?](#questions)
 
 <!-- END_COMMENT -->
 
@@ -190,12 +189,3 @@ The Vipps eCom API has some functionality that is not available in the PSP API:
 4. When using the Vipps eCom API, Vipps handles soft-declines, 3-D Secure, BankID, etc.
    There is nothing a merchant needs to do.
    This give a consistent user experience and a very high completion rate.
-
-## Questions?
-
-We're always happy to help with code or other questions you might have!
-Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),
-a [pull request](https://github.com/vippsas/vipps-ecom-api/pulls),
-or [contact us](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/contact).
-
-Sign up for our [Technical newsletter for developers](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/newsletters).

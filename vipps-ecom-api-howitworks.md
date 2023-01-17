@@ -75,13 +75,3 @@ The payment is transferred to the merchant’s account. This may take 2-3 days d
 
 Take a look at the technical documentation in the [Vipps eCommerce API Guide](vipps-ecom-api.md).
 
-## Questions?
-
-For information in Norwegian, see: [Vipps på nett](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/).
-
-We're always happy to help with code or other questions you might have!
-Please create an [issue](https://github.com/vippsas/vipps-ecom-api/issues),
-a [pull request](https://github.com/vippsas/vipps-ecom-api/pulls),
-or [contact us](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/contact).
-
-Sign up for our [Technical newsletter for developers](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/newsletters).
