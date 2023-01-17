@@ -104,4 +104,4 @@ API version: 2.0.
 
 ## Flow to go live for direct integrations for partners
 
-See: [Vipps partners](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner/).
+See: [Vipps partners](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner).

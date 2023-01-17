@@ -15,7 +15,7 @@ for all the details.
 
 For more common Vipps questions, see:
 
-* [Vipps API General FAQ](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/)
+* [Vipps API General FAQ](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs)
 
 <!-- START_COMMENT -->
 
@@ -169,7 +169,7 @@ for more questions.
 
 ### What functionality is included in the eCom API, but not the PSP API?
 
-The [Vipps PSP API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/psp-api/) provides tokens
+The [Vipps PSP API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/psp-api) provides tokens
 that a PSP can use to charge a Vipps user's card. To put it simply, it is a
 "card token lookup service". The payment is completed by the PSP, who sends an
 update to Vipps about the success or failure.

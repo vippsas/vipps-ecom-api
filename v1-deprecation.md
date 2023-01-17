@@ -26,7 +26,7 @@ this message to those who have made API calls during the last few months.
 This eCom v1 API shutdown means that:
 
 * Your current integration needs to be updated to use the eCom v2 API. The API
-  is [well documented](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/), with an
+  is [well documented](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api), with an
   extensive guide, OpenAPI specification, Postman collection, integration
   checklist and a migration guide.
 * Integrations using the eCom v1 API will stop working on September 1 2020.
@@ -55,11 +55,11 @@ information about test environments, test apps, etc [here](https://github.com/vi
 
 We have also released new APIs that may be interesting, such as:
 
-* [Vipps Recurring API ("faste betalinger")](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api/)
+* [Vipps Recurring API ("faste betalinger")](https://vippsas.github.io/vipps-developer-docs/docs/APIs/recurring-api)
 * [Vipps Invoice API ("Vipps Regninger")](https://github.com/vippsas/vipps-invoice-api)
-* [Vipps Log In](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api/)
+* [Vipps Log In](https://vippsas.github.io/vipps-developer-docs/docs/APIs/login-api)
 
-Vipps also has [plugins](https://vippsas.github.io/vipps-developer-docs/docs/vipps-plugins/) available:
+Vipps also has [plugins](https://vippsas.github.io/vipps-developer-docs/docs/vipps-plugins) available:
 
 * [Vipps for WooCommerce (Wordpress)](https://wordpress.org/plugins/woo-vipps/)
 * [Vipps for Magento](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/magento/)
