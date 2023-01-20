@@ -16,7 +16,7 @@ END_METADATA -->
 
 API version: 2.0.
 
-## Checklist
+## Checklist for full integration
 
 - [ ] Integrate _all_ the [API endpoints](vipps-ecom-api.md#api-endpoints):
     - [ ] Initiate [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST)
