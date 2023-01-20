@@ -5,7 +5,7 @@ sidebar_position: 6
 ---
 END_METADATA -->
 
-# Vipps eCommerce API: How It Works
+# How it works
 
 <!-- START_COMMENT -->
 

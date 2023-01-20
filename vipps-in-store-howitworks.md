@@ -5,7 +5,7 @@ sidebar_position: 9
 ---
 END_METADATA -->
 
-# Vipps In Store: How It Works
+# How it works in the store
 
 <!-- START_COMMENT -->
 

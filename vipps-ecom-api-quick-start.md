@@ -15,7 +15,7 @@ You can also perform express checkout payments and get access to user info.
 ℹ️ Please use the new documentation:
 [Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
 
-## Table of Contents
+## Table of contents
 
 * [Postman](#postman)
   * [Prerequisites](#prerequisites)

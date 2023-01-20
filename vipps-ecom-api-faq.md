@@ -6,7 +6,7 @@ pagination_next: null
 ---
 END_METADATA -->
 
-# Vipps eCommerce API: Frequently Asked Questions
+# Frequently asked questions
 
 Here are the eCom API FAQs.
 See the

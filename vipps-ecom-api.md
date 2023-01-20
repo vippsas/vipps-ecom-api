@@ -5,7 +5,7 @@ sidebar_position: 15
 ---
 END_METADATA -->
 
-# Vipps eCommerce API
+# API guide
 
 The Vipps eCom API is used by
 [Vipps på nett (*Vipps Online*)](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/),
