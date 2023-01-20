@@ -2,7 +2,7 @@ openapi: '3.0.0'
 info:
   description: |
     For details, see the [API Guide](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
-  version: 1.6.39
+  version: 2.0.0
   title: Vipps eCommerce API
 tags:
   - name: Authorization Service
