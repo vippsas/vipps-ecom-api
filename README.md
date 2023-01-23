@@ -30,13 +30,13 @@ native apps and other solutions.
 * [Vipps eCommerce API: How It Works](vipps-ecom-api-howitworks.md):  Let your customers pay with Vipps online or in your app. All your customer needs to provide is their mobile number, then they pay in Vipps with one click.
 * [Vipps In Store](vipps-in-store-howitworks.md): How the Vipps eCom API can be integrated in your Point Of Sale (POS) system.
 
-## Getting started
+## Next steps
 
 See
 [Getting Started](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/vipps-getting-started)
 for information about API keys, product activation, how to make API calls, etc.
 
-## eCommerce API
+Review the detailed documentation found here:
 
 * [API Quick Start](vipps-ecom-api-quick-start.md): Quick Start.
 * [API Guide](vipps-ecom-api.md): Developer guide for Vipps eCom API.
