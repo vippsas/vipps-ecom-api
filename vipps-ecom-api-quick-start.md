@@ -18,7 +18,6 @@ You can also perform express checkout payments and get access to user info.
 ## Table of contents
 
 * [Postman](#postman)
-  * [Prerequisites](#prerequisites)
   * [Import Postman files and set up the environment](#import-postman-files-and-set-up-the-environment)
 * [Make API calls](#make-api-calls)
   * [A regular eCommerce payment](#a-regular-ecommerce-payment)
@@ -29,8 +28,6 @@ You can also perform express checkout payments and get access to user info.
 <!-- END_COMMENT -->
 
 ## Postman
-
-### Prerequisites
 
 See
 [Vipps quick start guides](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/quick-start-guides)
