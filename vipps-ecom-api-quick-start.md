@@ -19,7 +19,7 @@ You can also perform express checkout payments and get access to user info.
 
 * [Postman](#postman)
   * [Import Postman files and set up the environment](#import-postman-files-and-set-up-the-environment)
-* [Make API calls](#make-api-calls)
+* [Make API requests](#make-api-requests)
   * [Regular payment](#regular-payment)
   * [Express checkout (*Vipps Hurtigkasse*)](#express-checkout-vipps-hurtigkasse)
   * [Userinfo](#userinfo)
@@ -36,7 +36,8 @@ and
 
 ### Import Postman files and set up the environment
 
-Import the Postman files:
+[Import](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/)
+the Postman files:
 * [eCom API Postman collection](tools/vipps-ecom-api-postman-collection.json)
 * [API Global Postman environment](https://raw.githubusercontent.com/vippsas/vipps-developers/master/tools/vipps-api-global-postman-environment.json)
 
@@ -49,9 +50,9 @@ Specify the variables required for using the eCom API
  * `mobileNumber` - The phone number for your
    [test user](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/test-environment#test-users).
 
-## Make API calls
+## Make API requests
 
-For all API calls: You must first
+For all API requests you must first
 [get an access token](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/vipps-getting-started#get-an-access-token):
 Send request `Get Access Token`.
 
