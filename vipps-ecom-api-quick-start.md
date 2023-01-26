@@ -41,7 +41,8 @@ the Postman files:
 * [eCom API Postman collection](tools/vipps-ecom-api-postman-collection.json)
 * [API Global Postman environment](https://raw.githubusercontent.com/vippsas/vipps-developers/master/tools/vipps-api-global-postman-environment.json)
 
-Specify the variables required for using the eCom API
+[Specify the variables](https://learning.postman.com/docs/sending-requests/managing-environments/#editing-environment-variables)
+required for using the eCom API
 (see [Get credentials](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/vipps-getting-started#get-credentials)):
  * `client_id` - The "username" for making API requests
  * `client_secret` - The "password" for making API requests
