@@ -57,13 +57,12 @@ Specify the variables required for using the eCom API
 ### A regular eCommerce payment
 
 1. Send request `Get Access Token`.
-1. Send request `Initiate Payment`.
+2. Send request `Initiate Payment`.
    Open the Vipps landing page URL from the response in a browser and specify your phone number.
    **Please note:** You can also use
    [`Force approve payment`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#testing).
-1. Optional: Send request `Get Payment Details` for information about this payment.
-1. Send request `Capture Payment` to capture the payment.
-1. Send request `Refund Payment` to refund the payment.
+3. Optional: Send request `Get Payment Details` for information about this payment.
+4. Send request `Capture Payment` to capture the payment.
 
 See
 [Regular eCommerce payments](vipps-ecom-api.md#regular-ecommerce-payments)
@@ -75,9 +74,8 @@ for more information.
    Open the Vipps landing page URL from the response in a browser and specify your phone number.
    **Please note:** You can also use
    [`Force approve payment`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#testing).
-1. Optional: Send request `Get Payment Details` for information about this payment.
-1. Send request `Capture Payment` to capture the payment.
-1. Send request `Refund Payment` to refund the payment.
+2. Optional: Send request `Get Payment Details` for information about this payment.
+3. Send request `Capture Payment` to capture the payment.
 
 See
 [Express checkout payments](vipps-ecom-api.md#express-checkout-payments)
@@ -89,10 +87,9 @@ for more information.
    Open the Vipps landing page URL from the response in a browser and specify your phone number.
    **Please note:** You can also use
    [`Force approve payment`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#testing).
-1. Optional: Send request `Get Payment Details` for information about this payment.
 2. Send request `Get Payment Details`.
    The response contains the user identifier: `sub`.
-3. Send request `Get Userinfo`. This uses the `sub` from the previous call.
+3. Send request `Get Userinfo`, which uses the `sub` from the previous call.
 
 See
 [Userinfo](vipps-ecom-api.md#userinfo)
