@@ -59,6 +59,7 @@ Specify the variables required for using the eCom API
 1. Send request `Get Access Token`.
 2. Send request `Initiate Payment`.
    Open the Vipps landing page URL from the response in a browser and specify your phone number.
+2. Confirm the payment in Vipps.   
    **Please note:** You can also use
    [`Force approve payment`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#testing).
 3. Optional: Send request `Get Payment Details` for information about this payment.
@@ -72,6 +73,7 @@ for more information.
 
 1. Send request `Initiate Payment - Express Checkout`.
    Open the Vipps landing page URL from the response in a browser and specify your phone number.
+2. Confirm the payment in Vipps.   
    **Please note:** You can also use
    [`Force approve payment`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#testing).
 2. Optional: Send request `Get Payment Details` for information about this payment.
@@ -85,6 +87,7 @@ for more information.
 
 1. Send request `Initiate Payment - Profile flow`.
    Open the Vipps landing page URL from the response in a browser and specify your phone number.
+2. Confirm the payment in Vipps.   
    **Please note:** You can also use
    [`Force approve payment`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#testing).
 2. Send request `Get Payment Details`.
