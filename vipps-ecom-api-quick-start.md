@@ -58,8 +58,7 @@ Specify the variables required for using the eCom API
 
 1. Send request `Get Access Token`.
 1. Send request `Initiate Payment`.
-   The response will be a URL to the Vipps landing page.
-   Open the URL in a browser to specify your phone number.
+   Open the Vipps landing page URL from the response in a browser and specify your phone number.
    **Please note:** You can also use
    [`Force approve payment`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#testing).
 1. Optional: Send request `Get Payment Details` for information about this payment.
@@ -73,7 +72,10 @@ for more information.
 ### An express checkout payment (*Vipps Hurtigkasse*)
 
 1. Send request `Initiate Payment - Express Checkout`.
-1. Send request `Get Payment Details` for information about this payment.
+   Open the Vipps landing page URL from the response in a browser and specify your phone number.
+   **Please note:** You can also use
+   [`Force approve payment`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#testing).
+1. Optional: Send request `Get Payment Details` for information about this payment.
 1. Send request `Capture Payment` to capture the payment.
 1. Send request `Refund Payment` to refund the payment.
 
@@ -84,6 +86,10 @@ for more information.
 ### Getting access to user info
 
 1. Send request `Initiate Payment - Profile flow`.
+   Open the Vipps landing page URL from the response in a browser and specify your phone number.
+   **Please note:** You can also use
+   [`Force approve payment`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#testing).
+1. Optional: Send request `Get Payment Details` for information about this payment.
 2. Send request `Get Payment Details`.
    The response contains the user identifier: `sub`.
 3. Send request `Get Userinfo`. This uses the `sub` from the previous call.
