@@ -20,7 +20,7 @@ You can also perform express checkout payments and get access to user info.
 * [Postman](#postman)
   * [Import Postman files and set up the environment](#import-postman-files-and-set-up-the-environment)
 * [Make API calls](#make-api-calls)
-  * [Regular payments](#regular-payments)
+  * [Regular payment](#regular-payment)
   * [Express checkout (*Vipps Hurtigkasse*)](#express-checkout-vipps-hurtigkasse)
   * [Userinfo](#userinfo)
   * [QR code](#qr-code)
@@ -54,7 +54,7 @@ For all API calls: You must first
 [get an access token](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/vipps-getting-started#get-an-access-token):
 Send request `Get Access Token`.
 
-### Regular payments
+### Regular payment
 
 2. Send request `Initiate Payment`.
    Open the Vipps landing page URL from the response in a browser and specify your phone number.
