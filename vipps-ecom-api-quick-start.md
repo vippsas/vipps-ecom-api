@@ -20,10 +20,10 @@ You can also perform express checkout payments and get access to user info.
 * [Postman](#postman)
   * [Import Postman files and set up the environment](#import-postman-files-and-set-up-the-environment)
 * [Make API calls](#make-api-calls)
-  * [A regular eCommerce payment](#a-regular-ecommerce-payment)
-  * [An express checkout payment (*Vipps Hurtigkasse*)](#an-express-checkout-payment-vipps-hurtigkasse)
-  * [Getting access to user info](#getting-access-to-user-info)
-  * [Generating a QR code to the Vipps landing page](#generating-a-qr-code-to-the-vipps-landing-page)
+  * [Regular payments](#regular-payments)
+  * [Express checkout (*Vipps Hurtigkasse*)](#express-checkout-vipps-hurtigkasse)
+  * [Userinfo](#userinfo)
+  * [QR code](#qr-code)
 
 <!-- END_COMMENT -->
 
@@ -54,21 +54,21 @@ For all API calls: You must first
 [get an access token](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/vipps-getting-started#get-an-access-token):
 Send request `Get Access Token`.
 
-### A regular eCommerce payment
+### Regular payments
 
 2. Send request `Initiate Payment`.
    Open the Vipps landing page URL from the response in a browser and specify your phone number.
 2. Confirm the payment in Vipps.   
    **Please note:** You can also use
    [`Force approve payment`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#testing).
-3. Optional: Send request `Get Payment Details` for information about this payment.
-4. Send request `Capture Payment` to capture the payment.
+3. Send request `Capture Payment` to capture the payment.
+4. Optional: Send request `Get Payment Details` for information about this payment.
 
 See
 [Regular eCommerce payments](vipps-ecom-api.md#regular-ecommerce-payments)
 for more information.
 
-### An express checkout payment (*Vipps Hurtigkasse*)
+### Express checkout (*Vipps Hurtigkasse*)
 
 1. Send request `Initiate Payment - Express Checkout`.
    Open the Vipps landing page URL from the response in a browser and specify your phone number.
@@ -82,7 +82,7 @@ See
 [Express checkout payments](vipps-ecom-api.md#express-checkout-payments)
 for more information.
 
-### Getting access to user info
+### Userinfo
 
 1. Send request `Initiate Payment - Profile flow`.
    Open the Vipps landing page URL from the response in a browser and specify your phone number.
@@ -97,7 +97,7 @@ See
 [Userinfo](vipps-ecom-api.md#userinfo)
 for more information.
 
-### Generating a QR code to the Vipps landing page
+### QR code
 
 When you run any of the `Initiate Payment` examples, the `vippsLandingPageUrl` variable gets set in the environment.
 With this URL, you can generate a QR code to take you to the Vipps landing page for a one-time payment.
