@@ -19,15 +19,12 @@ You can also perform express checkout payments and get access to user info.
 
 * [Postman](#postman)
   * [Prerequisites](#prerequisites)
-  * [Step 1: Get the Postman collection and environment](#step-1-get-the-postman-collection-and-environment)
-  * [Step 2: Import the Postman files](#step-2-import-the-postman-files)
-  * [Step 3: Set up Postman environment](#step-3-set-up-postman-environment)
+  * [Import Postman files and set up the environment](#import-postman-files-and-set-up-the-environment)
 * [Make API calls](#make-api-calls)
   * [A regular eCommerce payment](#a-regular-ecommerce-payment)
   * [An express checkout payment (*Vipps Hurtigkasse*)](#an-express-checkout-payment-vipps-hurtigkasse)
   * [Getting access to user info](#getting-access-to-user-info)
   * [Generating a QR code to the Vipps landing page](#generating-a-qr-code-to-the-vipps-landing-page)
-  * [Test with Force Approve](#test-with-force-approve)
 
 <!-- END_COMMENT -->
 
