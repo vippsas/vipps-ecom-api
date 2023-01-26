@@ -54,9 +54,12 @@ Specify the variables required for using the eCom API
 
 ## Make API calls
 
+For all API calls: You must first
+[get an access token](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/vipps-getting-started#get-an-access-token):
+Send request `Get Access Token`.
+
 ### A regular eCommerce payment
 
-1. Send request `Get Access Token`.
 2. Send request `Initiate Payment`.
    Open the Vipps landing page URL from the response in a browser and specify your phone number.
 2. Confirm the payment in Vipps.   
