@@ -59,13 +59,14 @@ Send request `Get Access Token`.
 
 ### Regular payment
 
-2. Send request `Initiate Payment`.
-   Open the Vipps landing page URL from the response in a browser and specify your phone number.
-2. Confirm the payment in Vipps.   
+1. Send request `Initiate Payment`.
+2. Open the Vipps landing page URL from the response in a browser and specify your phone number.
+3. Confirm the payment in Vipps.   
    **Please note:** You can also use
-   [`Force approve payment`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#testing).
-3. Send request `Capture Payment` to capture the payment.
-4. Optional: Send request `Get Payment Details` for information about this payment.
+   [`Force approve payment`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#testing)
+   and skip the landing page step.
+4. Send request `Capture Payment` to capture the payment.
+5. Optional: Send request `Get Payment Details` for information about this payment.
 
 See
 [Regular eCommerce payments](vipps-ecom-api.md#regular-ecommerce-payments)
@@ -74,12 +75,13 @@ for more information.
 ### Express checkout (*Vipps Hurtigkasse*)
 
 1. Send request `Initiate Payment - Express Checkout`.
-   Open the Vipps landing page URL from the response in a browser and specify your phone number.
-2. Confirm the payment in Vipps.   
+2. Open the Vipps landing page URL from the response in a browser and specify your phone number.
+3. Confirm the payment in Vipps.   
    **Please note:** You can also use
-   [`Force approve payment`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#testing).
-2. Optional: Send request `Get Payment Details` for information about this payment.
-3. Send request `Capture Payment` to capture the payment.
+   [`Force approve payment`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#testing)
+   and skip the landing page step.
+4. Optional: Send request `Get Payment Details` for information about this payment.
+5. Send request `Capture Payment` to capture the payment.
 
 See
 [Express checkout payments](vipps-ecom-api.md#express-checkout-payments)
@@ -88,13 +90,14 @@ for more information.
 ### Userinfo
 
 1. Send request `Initiate Payment - Profile flow`.
-   Open the Vipps landing page URL from the response in a browser and specify your phone number.
-2. Confirm the payment in Vipps.   
+2. Open the Vipps landing page URL from the response in a browser and specify your phone number.
+3. Confirm the payment in Vipps.   
    **Please note:** You can also use
-   [`Force approve payment`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#testing).
-2. Send request `Get Payment Details`.
+   [`Force approve payment`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#testing)
+   and skip the landing page step.
+4. Send request `Get Payment Details`.
    The response contains the user identifier: `sub`.
-3. Send request `Get Userinfo`, which uses the `sub` from the previous call.
+5. Send request `Get Userinfo`, which uses the `sub` from the previous call.
 
 See
 [Userinfo](vipps-ecom-api.md#userinfo)
