@@ -64,7 +64,7 @@ Send request `Get Access Token`.
 3. Confirm the payment in Vipps.   
    **Please note:** You can also use
    [`Force approve payment`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#testing)
-   and skip the landing page step.
+   and skip this and the landing page step.
 4. Send request `Capture Payment` to capture the payment.
 5. Optional: Send request `Get Payment Details` for information about this payment.
 
@@ -79,7 +79,7 @@ for more information.
 3. Confirm the payment in Vipps.   
    **Please note:** You can also use
    [`Force approve payment`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#testing)
-   and skip the landing page step.
+   and skip this and the landing page step.
 4. Optional: Send request `Get Payment Details` for information about this payment.
 5. Send request `Capture Payment` to capture the payment.
 
@@ -94,7 +94,7 @@ for more information.
 3. Confirm the payment in Vipps.   
    **Please note:** You can also use
    [`Force approve payment`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#testing)
-   and skip the landing page step.
+   and skip this and the landing page step.
 4. Send request `Get Payment Details`.
    The response contains the user identifier: `sub`.
 5. Send request `Get Userinfo`, which uses the `sub` from the previous call.
