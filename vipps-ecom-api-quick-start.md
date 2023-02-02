@@ -38,12 +38,14 @@ and
 
 [Import](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/)
 the Postman files:
+
 * [eCom API Postman collection](tools/vipps-ecom-api-postman-collection.json)
 * [API Global Postman environment](https://raw.githubusercontent.com/vippsas/vipps-developers/master/tools/vipps-api-global-postman-environment.json)
 
 [Specify the variables](https://learning.postman.com/docs/sending-requests/managing-environments/#editing-environment-variables)
 required for using the eCom API
-(see [Get credentials](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/vipps-getting-started#get-credentials)):
+(see [Get credentials](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/vipps-getting-started#get-your-credentials)):
+
  * `client_id` - The "username" for making API requests
  * `client_secret` - The "password" for making API requests
  * `Ocp-Apim-Subscription-Key` - The subscription key for making API requests
@@ -61,7 +63,7 @@ Send request `Get Access Token`.
 
 1. Send request `Initiate Payment`.
 2. Open the Vipps landing page URL from the response in a browser and specify your phone number.
-3. Confirm the payment in Vipps.   
+3. Confirm the payment in Vipps.
    **Please note:** You can also use
    [`Force approve payment`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#testing)
    and skip this and the landing page step.
