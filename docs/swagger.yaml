@@ -1175,6 +1175,7 @@ components:
         shippingMethodId:
           type: string
           maxLength: 100
+          example: posten-servicepakke
     TransactionLogHistory:
       type: object
       required:
