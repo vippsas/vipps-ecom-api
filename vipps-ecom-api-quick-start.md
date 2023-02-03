@@ -44,7 +44,7 @@ the Postman files:
 
 [Specify the variables](https://learning.postman.com/docs/sending-requests/managing-environments/#editing-environment-variables)
 required for using the eCom API
-(see [Get credentials](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/vipps-getting-started#get-your-credentials)):
+(see [Get credentials](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/api-keys)):
 
  * `client_id` - The "username" for making API requests
  * `client_secret` - The "password" for making API requests
