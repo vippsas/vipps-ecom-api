@@ -1133,7 +1133,6 @@ a customer. Details about each step are described in the sections below.
 5. Using the sub from step 4, call
    [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-Userinfo-API/operation/getUserinfo)
    to retrieve the user's information.
-   Do not include the ``Ocp-Apim-Subscription-Key`` header. See more information under [Userinfo call](#userinfo-call).
 
 To test this out, see the step-by-step instructions in the
 [Quick start](vipps-ecom-api-quick-start.md).
