@@ -56,7 +56,7 @@ required for using the eCom API
 ## Make API requests
 
 For all API requests you must first
-[get an access token](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/vipps-getting-started#get-an-access-token):
+[Get an access token](https://vippsas.github.io/vipps-developer-docs/docs/APIs/access-token-api#get-an-access-token):
 Send request `Get Access Token`.
 
 ### Regular payment
