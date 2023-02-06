@@ -16,9 +16,9 @@ tags:
       These endpoints must be implemented by the merchant, and are called by Vipps.
 servers:
   - url: https://api.vipps.no
-    description: Production (Prod)
+    description: Production environment
   - url: https://apitest.vipps.no
-    description: Test (MT)
+    description: Merchant Test environment
 paths:
   '[consentRemovalPrefix]/v2/consents/{userId}':
     delete:
