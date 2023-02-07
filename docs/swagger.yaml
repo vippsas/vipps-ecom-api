@@ -1,7 +1,7 @@
 openapi: '3.0.0'
 info:
   description: |
-    For details, see the [API Guide](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
+    For details, see the [API Guide](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api).
   version: 2.0.1
   title: Vipps eCommerce API
 tags:
@@ -10,7 +10,7 @@ tags:
   - name: Vipps eCom API
     description: >-
       Functionality provided by the Vipps eCommerce API.
-      For details, see the [API Guide](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
+      For details, see the [API Guide](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api).
   - name: Merchant Endpoints
     description: >-
       These endpoints must be implemented by the merchant, and are called by Vipps.
