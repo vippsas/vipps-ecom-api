@@ -15,59 +15,11 @@ tags:
     description: >-
       These endpoints must be implemented by the merchant, and are called by Vipps.
 servers:
-  - url: https://apitest.vipps.no
   - url: https://api.vipps.no
+    description: Production environment
+  - url: https://apitest.vipps.no
+    description: Merchant Test environment
 paths:
-  /accesstoken/get:
-    post:
-      tags:
-        - Authorization Service
-      summary: Fetch the JWT authorization token
-      parameters:
-        - name: client_id
-          in: header
-          description: >-
-            The `client_id` is available on portal.vipps.no, under the 'Utvikler' tab.
-          required: true
-          schema:
-            type: string
-            format: guid
-          example: fb492b5e-7907-4d83-ba20-c7fb60ca35de
-        - name: client_secret
-          in: header
-          description: >-
-            The `client_secret` is available on portal.vipps.no, under the 'Utvikler' tab.
-            Keep it secret.
-          required: true
-          schema:
-            type: string
-          example: Y8Kteew6GE2ZmeycEt6egg==
-        - name: Ocp-Apim-Subscription-Key
-          in: header
-          description: >-
-            The subscription key for the authorization token is available on portal.vipps.no, under the 'Utvikler' tab.
-            Keep it secret.
-          required: true
-          schema:
-            type: string
-          example: 0f14ebcab0ec4b29ae0cb90d91b4a84a
-      description: >-
-        The access token endpoint is used to get the JWT (JSON Web Token) that
-        must be passed in every API request in the `Authorization` header.
-        The access token is a base64-encoded string value that must be
-        acquired first before making any Vipps API calls.
-        The access token is valid for 1 hour in the test environment
-        and 24 hours in the production environment.
-      operationId: fetchAuthorizationTokenUsingPost
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: '#/components/schemas/AuthorizationTokenResponse'
-        default:
-          $ref: '#/components/responses/ErrorResponse'
   '[consentRemovalPrefix]/v2/consents/{userId}':
     delete:
       tags:
@@ -174,7 +126,9 @@ paths:
           description: >-
             The access token is a base64-encoded string that is required for all API calls.
             It is a JWT (JSON Web Token).
-            The access token is fetched from the `POST:/accesstoken/get` endpoint.
+            The access token is fetched from the
+            [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-developer-docs/api/access-token#tag/Authorization-Service/operation/fetchAuthorizationTokenUsingPost)
+            endpoint.
             It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
@@ -453,7 +407,9 @@ paths:
           description: >-
             The access token is a base64-encoded string that is required for all API calls.
             It is a JWT (JSON Web Token).
-            The access token is fetched from the `POST:/accesstoken/get` endpoint.
+            The access token is fetched from the
+            [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-developer-docs/api/access-token#tag/Authorization-Service/operation/fetchAuthorizationTokenUsingPost)
+            endpoint.
             It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
@@ -562,7 +518,9 @@ paths:
           description: >-
             The access token is a base64-encoded string that is required for all API calls.
             It is a JWT (JSON Web Token).
-            The access token is fetched from the `POST:/accesstoken/get` endpoint.
+            The access token is fetched from the
+            [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-developer-docs/api/access-token#tag/Authorization-Service/operation/fetchAuthorizationTokenUsingPost)
+            endpoint.
             It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
@@ -666,7 +624,9 @@ paths:
           description: >-
             The access token is a base64-encoded string that is required for all API calls.
             It is a JWT (JSON Web Token).
-            The access token is fetched from the `POST:/accesstoken/get` endpoint.
+            The access token is fetched from the
+            [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-developer-docs/api/access-token#tag/Authorization-Service/operation/fetchAuthorizationTokenUsingPost)
+            endpoint.
             It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
@@ -774,7 +734,9 @@ paths:
           description: >-
             The access token is a base64-encoded string that is required for all API calls.
             It is a JWT (JSON Web Token).
-            The access token is fetched from the `POST:/accesstoken/get` endpoint.
+            The access token is fetched from the
+            [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-developer-docs/api/access-token#tag/Authorization-Service/operation/fetchAuthorizationTokenUsingPost)
+            endpoint.
             It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
@@ -860,7 +822,9 @@ paths:
           description: >-
             The access token is a base64-encoded string that is required for all API calls.
             It is a JWT (JSON Web Token).
-            The access token is fetched from the `POST:/accesstoken/get` endpoint.
+            The access token is fetched from the
+            [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-developer-docs/api/access-token#tag/Authorization-Service/operation/fetchAuthorizationTokenUsingPost)
+            endpoint.
             It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
@@ -952,7 +916,9 @@ paths:
           description: >-
             The access token is a base64-encoded string that is required for all API calls.
             It is a JWT (JSON Web Token).
-            The access token is fetched from the `POST:/accesstoken/get` endpoint.
+            The access token is fetched from the
+            [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-developer-docs/api/access-token#tag/Authorization-Service/operation/fetchAuthorizationTokenUsingPost)
+            endpoint.
             It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
@@ -997,7 +963,9 @@ paths:
           description: >-
             The access token is a base64-encoded string that is required for all API calls.
             It is a JWT (JSON Web Token).
-            The access token is fetched from the `POST:/accesstoken/get` endpoint.
+            The access token is fetched from the
+            [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-developer-docs/api/access-token#tag/Authorization-Service/operation/fetchAuthorizationTokenUsingPost)
+            endpoint.
             It is valid for 1 hour in the test environment and 24 hours in the production environment.
           required: true
           schema:
