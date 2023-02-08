@@ -940,86 +940,6 @@ paths:
                 $ref: '#/components/schemas/PaymentStatus'
         default:
           $ref: '#/components/responses/ErrorResponse'
-  '/vipps-userinfo-api/userinfo/{sub}':
-    get:
-      tags:
-        - Vipps Userinfo API
-      summary: Get Userinfo
-      description: >-
-        This endpoint returns the payload with the information that the user has consented to share.
-        Find more info on the `/userinfo` endpoint at the OIDC Standard https://openid.net/specs/openid-connect-core-1_0.html#UserInfo
-      operationId: getUserinfo
-      parameters:
-        - name: sub
-          in: path
-          description: The `sub` is specified when fetching payment details
-          required: true
-          schema:
-            type: string
-        - in: header
-          name: Authorization
-          description: >-
-            The access token is a base64-encoded string that is required for all API calls.
-            It is a JWT (JSON Web Token).
-            The access token is fetched from the
-            [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-developer-docs/api/access-token#tag/Authorization-Service/operation/fetchAuthorizationTokenUsingPost)
-            endpoint.
-            It is valid for 1 hour in the test environment and 24 hours in the production environment.
-          required: true
-          schema:
-            type: string
-          example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
-        - in: header
-          name: Merchant-Serial-Number
-          description: >-
-            The Merchant Serial Number (MSN) is a unique id for the sale unit
-            that this payment is made for.
-            This is a required parameter if you are a Vipps eCom partner
-            making payments on behalf of a merchant.
-            The partner must use the merchant's MSN (not the partner's MSN).
-            This parameter is optional, and recommended, for regular Vipps
-            merchants making payments for themselves.
-          required: false
-          schema:
-            type: string
-          example: '123456'
-      responses:
-        "200":
-          description: Get Userinfo
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: '#/components/schemas/Userinfo'
-        '400':
-          description: Bad Request
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: '#/components/schemas/UserinfoError'
-        '401':
-          description: Unauthorized
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: '#/components/schemas/UserinfoError'
-        '403':
-          description: Forbidden
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: '#/components/schemas/UserinfoError'
-        '404':
-          description: Not Found
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: '#/components/schemas/UserinfoError'
-        '500':
-          description: Internal Server Error
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: '#/components/schemas/UserinfoError'
 
 components:
   requestBodies:
@@ -1242,111 +1162,7 @@ components:
           maxLength: 50
           description: Identifies a user in Vipps. Merchant is required to store this field for future references.
           pattern: '^[\d\w\/=+]+$'
-    Userinfo:
-      type: object
-      properties:
-        accounts:
-          description: 'Contains an array with the user''s bank accounts registered in the Vipps app'
-          type: array
-          items:
-            $ref: '#/components/schemas/UserinfoAccountInfo'
-        address:
-          description: 'Contains the user''s preferred (default) address.'
-          items:
-            $ref: '#/components/schemas/UserinfoAddress'
-        other_addresses:
-          description: 'Contains an array with the user''s non-default addresses, if any. This list can contain an address with the address_type home, work, and/or other, if the user has registered them in the Vipps app'
-          type: array
-          items:
-            $ref: '#/components/schemas/Address'
-        birthdate:
-          description: 'The user''s birthday formatted as YYYY-MM-DD'
-          type: string
-          example: '2000-12-31'
-        email:
-          description: 'The user''s email address.'
-          example: user@example.com
-          type: string
-        email_verified:
-          description: 'Boolean value indicating whether the user''s email address is verified or not.'
-          type: boolean
-          example: true
-        family_name:
-          description: 'Surname(s) or last name(s) of the user.'
-          example: Lovelace
-          type: string
-        given_name:
-          description: 'Given name(s) or first name(s) of the user. Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters.'
-          type: string
-          example: Ada
-        name:
-          description: 'The user''s full name in displayable form including all name parts, possibly including titles and suffixes, ordered according to the user''s locale and preferences.'
-          type: string
-          example: Ada Lovelace
-        nin:
-          description: 'National identity number'
-          type: string
-          example: '09057517287'
-          pattern: '^\d{11}$'
-        phone_number:
-          description: 'The user''s telephone number on MSISDN format: Includes country code, but does not start with `+`. Up to 15 digits.'
-          type: string
-          example: '47912345678'
-          pattern: '^\d{15}$'
-        sid:
-          description: 'Session identifier - This represents a Session of a User Agent or device. Currently not in use'
-          type: string
-          example: '7d78a726-af92-499e-b857-de263ef9a969'
-        sub:
-          description: 'Subject - Identifier for the user'
-          type: string
-          example: 'c06c4afe-d9e1-4c5d-939a-177d752a0944'
-    UserinfoAccountInfo:
-      type: object
-      properties:
-        account_name:
-          description: "User''s defined name for account"
-          type: string
-          example: "Savings account"
-        account_number:
-          description: "User''s account number"
-          type: string
-          example: 86011117947
-        bank_name:
-          description: "Bank connected to the account number"
-          type: string
-          example: "ACME Bank"
-    UserinfoAddress:
-      type: object
-      properties:
-        address_type:
-          description: 'Address type is either home, work or other'
-          type: string
-          example: home
-        country:
-          description: 'Two letter country code'
-          type: string
-          example: "NO"
-        default:
-          description: 'If this is default address'
-          type: boolean
-          example: true
-        formatted:
-          description: "The user's address as a formatted string"
-          type: string
-          example: "Robert Levins gate 5\n0154 Oslo"
-        postal_code:
-          description: 'Postal code'
-          type: string
-          example: "0154"
-        region:
-          description: "The user's region (typically a county, town or city)"
-          type: string
-          example: "Oslo"
-        street_address:
-          description: "The user's street address"
-          type: string
-          example: "Robert Levins gate 5"
+
     CallbackTransactionInfoRegular:
       type: object
       required:
@@ -1582,8 +1398,9 @@ components:
         sub:
           type: string
           description: >-
-            The user identifier if using profile flow.
-            This should be used with the userInfo endpoint: `GET:/vipps-userinfo-api/userinfo/{sub}`.
+            The user identifier, if using profile flow.
+            This should be used with the userInfo endpoint:
+            [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-developer-docs/api/userinfo#tag/Vipps-Userinfo-API/operation/getUserinfo).
             The `sub` is added asynchronously, so if the `/details` request
             is made within (milli)seconds of the payment approval in the app, it may not be
             available. If that happens, simply make another `/details` request.
@@ -1820,7 +1637,9 @@ components:
         scope:
           type: string
           description: |
-            The requested OIDC scope for use with userinfo, possible values are
+            The requested OIDC scope for use with
+            [userinfo](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api).
+            Possible values are:
             - name
             - address
             - email
@@ -2173,45 +1992,8 @@ components:
           $ref: '#/components/schemas/CallbackTransactionInfoRegular'
         errorInfo:
           $ref: '#/components/schemas/Error'
-    AuthorizationTokenResponse:
-      type: object
-      required:
-        - token_type
-        - expires_in
-        - ext_expires_in
-        - expires_on
-        - not_before
-        - resource
-        - access_token
-      properties:
-        token_type:
-          type: string
-          description: String containing the type for the Access Token.
-          example: Bearer
-        expires_in:
-          type: integer
-          description: Token expiry time in seconds.
-          example: 3600
-        ext_expires_in:
-          type: integer
-          description: Extra time added to expiry time. Currently disabled.
-          example: 3600
-        expires_on:
-          type: integer
-          description: Token expiry time in epoch time format.
-          example: 1547823408
-        not_before:
-          type: integer
-          description: Token creation time in epoch time format.
-          example: 1547819508
-        resource:
-          type: string
-          description: A common resource object. Not used in token validation
-          example: 00000002-0000-0000-c000-000000000000
-        access_token:
-          type: string
-          format: byte
-          example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+
+
     FetchShippingCostResponse:
       type: object
       required:
@@ -2266,23 +2048,6 @@ components:
       oneOf:
         - $ref: '#/components/schemas/ExpressCheckOutPaymentRequest'
         - $ref: '#/components/schemas/RegularCheckOutPaymentRequest'
-    UserinfoError:
-      type: object
-      properties:
-        type:
-          type: string
-        title:
-          type: string
-        status:
-          type: string
-        detail:
-          type: string
-        instance:
-          type: string
-        extraInfo:
-          type: object
-          additionalProperties:
-            type: object
     ErrorFromAzure:
       type: object
       description: >-
