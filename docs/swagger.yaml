@@ -1398,8 +1398,9 @@ components:
         sub:
           type: string
           description: >-
-            The user identifier if using profile flow.
-            This should be used with the userInfo endpoint: `GET:/vipps-userinfo-api/userinfo/{sub}`.
+            The user identifier, if using profile flow.
+            This should be used with the userInfo endpoint:
+            [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-developer-docs/api/userinfo#tag/Vipps-Userinfo-API/operation/getUserinfo).
             The `sub` is added asynchronously, so if the `/details` request
             is made within (milli)seconds of the payment approval in the app, it may not be
             available. If that happens, simply make another `/details` request.
@@ -1636,7 +1637,9 @@ components:
         scope:
           type: string
           description: |
-            The requested OIDC scope for use with userinfo, possible values are
+            The requested OIDC scope for use with
+            [userinfo](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api).
+            Possible values are:
             - name
             - address
             - email
