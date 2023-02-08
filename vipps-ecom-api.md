@@ -470,6 +470,7 @@ as described in the
 [Polling guidelines](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/polling-guidelines) in the Common topics.
 
 **Important:**
+
 * Vipps makes *one* attempt at a callback and cannot guarantee that it succeeds,
   as it depends on network, firewalls and other factors that Vipps cannot control.
   If the communication is broken during the process for some reason and Vipps
@@ -479,12 +480,14 @@ as described in the
 * Callback URLs must use HTTPS.
 
 The callback request body is different for the different payment types:
+
 * `"eComm Regular Payment"`: The callback contains the order and transaction details.
 * `"eComm Express Payment"`: The callback contains the order and transaction details
   *and in addition* the user details and shipping details.
 * If [Userinfo](#userinfo) is used: The callback is the same as for `"eComm Express Payment"`.
 
 See:
+
 * [Callback examples](#callback-examples).
 * [FAQ: Why do I not get callbacks from Vipps?](vipps-ecom-api-faq.md#why-do-i-not-get-callbacks-from-vipps)
 
@@ -503,10 +506,12 @@ to `https://example.com/vipps/callback` and make a callback to
 `https://example.com/vipps/callback/v2/payments/acme-shop-123-order123abc`.
 
 Again:
+
 * `callbackPrefix` + `/v2/payments/` + `{orderId}`
 * `https://example.com/vipps/callback` + `/v2/payments/` + `acme-shop-123-order123abc`
 
 **Important:**
+
 * URLs must be [valid](#url-validation).
 * Vipps does *not* support sending requests to all ports, so to be safe use
   common port numbers such as: 80, 443, 8080.
@@ -1112,13 +1117,8 @@ To enable the possibility to fetch profile information for a user, the merchant 
 parameter to the initiate call:
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST).
 See
-[User information](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/userinfo)
-in the Common topics.
+[Userinfo API guide](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api).
 
-### Scope
-
-See [Scope](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/userinfo#scope)
-in Common topics for details.
 
 ### Userinfo call-by-call guide
 
@@ -1135,7 +1135,7 @@ a customer. Details about each step are described in the sections below.
 4. Retrieve the `sub` by calling
    [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET)
 5. Using the sub from step 4, call
-   [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-Userinfo-API/operation/getUserinfo)
+   [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-developer-docs/api/userinfo#operation/getUserinfo)
    to retrieve the user's information.
 
 To test this out, see the step-by-step instructions in the
@@ -1161,7 +1161,7 @@ Example `sub` format:
 
 This `sub` is a link between the merchant and the user and can be used to retrieve
 the user's details from Vipps userinfo:
-[`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-Userinfo-API/operation/getUserinfo)
+[`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-developer-docs/api/userinfo#operation/getUserinfo)
 
 The `sub` is based on the user's national identity number ("fødselsnummer"
 in Norway), and does not change (except in very special cases).
@@ -1174,24 +1174,6 @@ fetching the profile data. The merchant will get the information that is in the
 user profile at the time when they actually fetch the information. This means
 that the information might have changed from the time the user completed the
 transaction and the fetching of the profile data.
-
-### Userinfo call
-
-This endpoint returns the payload with the information that the user has consented to share.
-
-Call [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-Userinfo-API/operation/getUserinfo)
-with the `sub` that was retrieved earlier.
-
-See
-[Userinfo call](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/userinfo#userinfo-call)
-in Common topics for details.
-
-### Consent
-
-See
-[Consent](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/userinfo#consent)
-in Common topics for details.
-
 
 
 ## HTTP response codes
