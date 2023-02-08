@@ -1135,7 +1135,7 @@ a customer. Details about each step are described in the sections below.
 4. Retrieve the `sub` by calling
    [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET)
 5. Using the sub from step 4, call
-   [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-developer-docs/api/userinfo#tag/Vipps-Userinfo-API/operation/getUserinfogetUserinfo)
+   [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-developer-docs/api/userinfo#operation/getUserinfo)
    to retrieve the user's information.
 
 To test this out, see the step-by-step instructions in the
@@ -1161,7 +1161,7 @@ Example `sub` format:
 
 This `sub` is a link between the merchant and the user and can be used to retrieve
 the user's details from Vipps userinfo:
-[`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-developer-docs/api/userinfo#tag/Vipps-Userinfo-API/operation/getUserinfogetUserinfo)
+[`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-developer-docs/api/userinfo#operation/getUserinfo)
 
 The `sub` is based on the user's national identity number ("fødselsnummer"
 in Norway), and does not change (except in very special cases).
