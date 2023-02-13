@@ -26,15 +26,17 @@ For more common Vipps questions, see:
 
 * [Common problems](#common-problems)
   * [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
+* [Reservations and captures](#reservations-and-captures)
 * [Refunds](#refunds)
 * [Users and payments](#users-and-payments)
   * [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-cant-find-it)
 * [Common errors](#common-errors)
   * [Why do I not get callbacks from Vipps?](#why-do-i-not-get-callbacks-from-vipps)
   * [Why do I get `Payment failed`?](#why-do-i-get-payment-failed)
-  * [Why do I not get the `sub` from `/details`?](#why-do-i-not-get-the-sub-from-details)
+* [Why do I not get the `sub` from `/details`?](#why-do-i-not-get-the-sub-from-details)
 * [Other questions](#other-questions)
   * [What functionality is included in the eCom API, but not the PSP API?](#what-functionality-is-included-in-the-ecom-api-but-not-the-psp-api)
+  * [What does the `status` suffix at the `fallBack` URL mean?](#what-does-the-status-suffix-at-the-fallback-url-mean)
 
 <!-- END_COMMENT -->
 
@@ -189,3 +191,8 @@ The Vipps eCom API has some functionality that is not available in the PSP API:
 4. When using the Vipps eCom API, Vipps handles soft-declines, 3-D Secure, BankID, etc.
    There is nothing a merchant needs to do.
    This give a consistent user experience and a very high completion rate.
+
+### What does the `status` suffix at the `fallBack` URL mean?
+
+Please disregard it. The `status` suffix was phased out several years ago, and
+is no longer documented. But, since some merchants _still_ depend on in, it still provided.
