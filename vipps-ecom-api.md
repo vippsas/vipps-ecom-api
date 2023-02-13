@@ -61,6 +61,8 @@ stateDiagram
     Refund --> [*]
 ```    
 
+![Vipps checkout flow chart](images/flow-diagram.png)
+
 See [Get payment details](#get-payment-details) for more information about
 the detailed flow and [Payment states](#payment-states) for the corresponding
 states.
