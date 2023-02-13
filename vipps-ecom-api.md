@@ -47,20 +47,6 @@ There are many ways to use the Vipps eCom API. For example:
 
 This diagram shows a simplified payment flow:
 
-```mermaid
-stateDiagram
-    direction LR
-    [*] --> Initiate
-    Initiate --> Reserve
-    Reserve --> Capture
-    Capture --> [*]
-    Initiate --> Cancel: User cancels or is passive\nMerchant cancels
-    Reserve --> Cancel: Merchant cancels
-    Cancel --> [*]
-    Capture --> Refund
-    Refund --> [*]
-```    
-
 ![Vipps checkout flow chart](images/flow-diagram.png)
 
 See [Get payment details](#get-payment-details) for more information about
