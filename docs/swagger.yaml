@@ -2,7 +2,7 @@ openapi: '3.0.0'
 info:
   description: |
     For details, see the [API Guide](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api).
-  version: 2.0.1
+  version: 2.0.3
   title: Vipps eCommerce API
 tags:
   - name: Vipps eCom API
@@ -1563,6 +1563,10 @@ components:
             - 'N'
         priority:
           type: integer
+          description: |-
+            Determines the order in which the shipping methods are presented
+            to the user in the app, sorted in ascending order.
+          example: 1
         shippingCost:
           $ref: '#/components/schemas/ShippingCost'
         shippingMethod:
