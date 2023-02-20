@@ -78,10 +78,12 @@ Payments are supported in both web browsers and in native apps (via deep-linking
 | [Get payment details](#get-payment-details)                                                                          | The full history of the payment.                                                                           | [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET) |
 | Get order status                                                                                                     | Deprecated, use [Get payment details](#get-payment-details).                                               | Deprecated, use [`GET:/ecomm/v2/payments/{orderId}/details`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET) |
 
+
 Necessary endpoint from other APIs:
-| Operation                                                                                                            | Description                                                                                                | Endpoint |
-|:---------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------|:-|
-| [Get Access token](https://vippsas.github.io/vipps-developer-docs/api/access-token#tag/Authorization-Service/operation/fetchAuthorizationTokenUsingPost) | Fetch the access token                                                                                     | [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-developer-docs/api/access-token#tag/Authorization-Service/operation/fetchAuthorizationTokenUsingPost) |
+
+| Operation | Description | Endpoint |
+|:----------|:------------|:---------|
+| [Get Access token](https://vippsas.github.io/vipps-developer-docs/api/access-token#tag/Authorization-Service/operation/fetchAuthorizationTokenUsingPost) | Fetch the access token | [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-developer-docs/api/access-token#tag/Authorization-Service/operation/fetchAuthorizationTokenUsingPost) |
 
 See the
 [eCom API checklist](vipps-ecom-api-checklist.md).
