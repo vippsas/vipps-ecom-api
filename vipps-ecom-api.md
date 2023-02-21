@@ -1631,6 +1631,7 @@ to retrieve all the information about the payment.
 | Merchant       | 31         | Merchant is blocked because of [reason]. See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked). |
 | Merchant       | 32         | Receiving limit of merchant is exceeded.       |
 | Merchant       | 33         | Number of payment requests has been exceeded.  |
+| Merchant       | 34         | Unique constraint violation of the orderId. The orderId must be unique for the MSN. |
 | Merchant       | 37         | Merchant not available, deactivated or blocked. See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked) |
 | Merchant       | 38         | Sale unit is not allowed to skip the landing page. See the [Vipps landing page](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/vipps-landing-page-faq). |
 | Merchant       | 97         | The merchant is not approved by Vipps to receive payments. See [Why do I get "Merchant Not Allowed for Ecommerce Payment"?](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-merchant-not-allowed-for-ecommerce-payment). |
