@@ -1611,9 +1611,9 @@ to retrieve all the information about the payment.
 | Payment        | 51         | Cannot [cancel](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#cancel) an already captured order. Do a [refund](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#refund) instead. |
 | Payment        | 52         | [Cancel](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#cancel) failed.                           |
 | Payment        | 53         | Cannot [cancel](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#cancel) an order that is not reserved. The user must first accept the payment. |
-  | Payment        | 61         | Captured amount exceeds the reserved amount. You can not capture a higher amount than the user has accepted. Check the [payment details(https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#get-payment-details).]|
+  | Payment        | 61         | Captured amount exceeds the reserved amount. You can not capture a higher amount than the user has accepted. Check the [payment details](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#get-payment-details).]|
 | Payment        | 62         | The amount you tried to capture is not reserved. The user must first accept the payment. |
-| Payment        | 63         | Capture failed for an unknown reason, please use [payment details(https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#get-payment-details) to see the exact status. |
+| Payment        | 63         | Capture failed for an unknown reason, please use [payment details](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#get-payment-details) to see the exact status. |
 | Payment        | 71         | Cannot refund more than the captured amount.       |
 | Payment        | 72         | Cannot refund a reserved order (only captured orders). [Cancel](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#cancel) instead.|
 | Payment        | 73         | Cannot refund a cancelled order.               |
@@ -1625,9 +1625,9 @@ to retrieve all the information about the payment.
 | VippsError     | 92         | Transaction already processed.                 |
 | VippsError     | 94         | Order locked and is already processing. This can occur for a short period of time if a bank has problems, and Vipps needs to wait and/or clean up. Retry the same request later. |
 | VippsError     | 98         | Too many concurrent requests. Used only to prevent incorrect API use. See [Rate limiting](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#rate-limiting).|
-| VippsError     | 99         | The request body should contain a description of the internal error. |
+| VippsError     | 99         | An internal error not documented in this table. The request body should contain a description of the internal error. |
 | user           | 81         | User unknown. The phone number is either incorrectly formatted (see the API specification), is not a Vipps user, or the user is under 15 years old and cannot pay businesses. Vipps cannot give more details. This error also occurs if using a non-Norwegian phone number. |
-| user           | 82         | User app version not supported.                |
+| user           | 82         | The user's app version is not supported.                |
 | Merchant       | 31         | Merchant is blocked because of [reason]. See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked). |
 | Merchant       | 32         | Receiving limit of merchant is exceeded.       |
 | Merchant       | 33         | Number of payment requests has been exceeded.  |
