@@ -1621,19 +1621,19 @@ to retrieve all the information about the payment.
 | Payment        | 95         | Payments can only be refunded up to 365 days after reservation. See [Reserve and capture](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/reserve-and-capture).|
 | Payment        | 96         | Payments can only be captured up to 180 days after reservation. See [Reserve and capture](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/reserve-and-capture).|
 | Payment        | 1082       | This person is not BankID verified. Only applies for test users. |
-| VippsError     | 91         | Transaction is not allowed. Typically when attempt to capture a cancelled order. |
-| VippsError     | 92         | Transaction already processed.                 |
+| VippsError     | 91         | The transaction is not allowed. Typically when attempting to capture a cancelled order. |
+| VippsError     | 92         | The transaction is already processed.                 |
 | VippsError     | 94         | Order locked and is already processing. This can occur for a short period of time if a bank has problems, and Vipps needs to wait and/or clean up. Retry the same request later. |
 | VippsError     | 98         | Too many concurrent requests. Used only to prevent incorrect API use. See [Rate limiting](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#rate-limiting).|
 | VippsError     | 99         | An internal error not documented in this table. The request body should contain a description of the internal error. |
 | user           | 81         | User unknown. The phone number is either incorrectly formatted (see the API specification), is not a Vipps user, or the user is under 15 years old and cannot pay businesses. Vipps cannot give more details. This error also occurs if using a non-Norwegian phone number. |
 | user           | 82         | The user's app version is not supported.                |
-| Merchant       | 31         | Merchant is blocked because of [reason]. See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked). |
-| Merchant       | 32         | Receiving limit of merchant is exceeded.       |
-| Merchant       | 33         | Number of payment requests has been exceeded.  |
-| Merchant       | 34         | Unique constraint violation of the orderId. The orderId must be unique for the MSN. See [Recommendations for orderId/reference](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/orderid). |
-| Merchant       | 37         | Merchant not available, deactivated or blocked. See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked) |
-| Merchant       | 38         | Sale unit is not allowed to skip the landing page. See the [Vipps landing page](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/vipps-landing-page-faq). |
+| Merchant       | 31         | The merchant is blocked because of [reason]. See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked). |
+| Merchant       | 32         | The receiving limit of merchant is exceeded.       |
+| Merchant       | 33         | The number of allowed payment requests has been exceeded.  |
+| Merchant       | 34         | The `orderId` has already been used for another payment for this MSN. The orderId must be unique for the MSN. See [Recommendations for orderId/reference](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/orderid). |
+| Merchant       | 37         | The merchant is either not available, deactivated or blocked. See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked) |
+| Merchant       | 38         | The sale unit is not allowed to skip the landing page. See the [Vipps landing page](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/vipps-landing-page-faq). |
 | Merchant       | 97         | The merchant is not approved by Vipps to receive payments. See [Why do I get "Merchant Not Allowed for Ecommerce Payment"?](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-merchant-not-allowed-for-ecommerce-payment). |
 | InvalidRequest | -          | The field name will be the error code. Description about what exactly the field error is. |
 
