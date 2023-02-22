@@ -48,7 +48,7 @@ There are many ways to use the Vipps eCom API. For example:
 This diagram shows a simplified payment flow:
 
 ``` mermaid
-stateDiagram 
+stateDiagram
     direction LR
     [*] --> Initiate
     Initiate --> Reserve: User confirms
@@ -1608,44 +1608,34 @@ to retrieve all the information about the payment.
 
 | Error group    | Error Code | Error Message (and some explaining text for some errors) |
 |:---------------|:-----------|:-----------------------------------------------|
-| Payment        | 41         | The user does not have a valid card.           |
-| Payment        | 42         | Refused by issuer bank. Vipps can not provide more details. |
-| Payment        | 43         | Refused by issuer bank because of invalid a amount. Vipps can not provide more details. |
-| Payment        | 44         | Refused by issuer because of expired card. Vipps can not provide more details. |
-| Payment        | 45         | Reservation failed. The payment was not acted upon by the customer. |
-| Payment        | 51         | Cannot cancel an already captured order. Use `/refund` instead. |
-| Payment        | 52         | Cancellation failed.                           |
-| Payment        | 53         | Cannot cancel an order that is not reserved. The user must first accept the payment. |
-| Payment        | 61         | Captured amount exceeds the reserved amount. You can not capture a higher amount than the user has accepted. |
+| Payment        | 51         | Cannot [cancel](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#cancel) an already captured order. Do a [refund](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#refund) instead. |
+| Payment        | 52         | [Cancel](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#cancel) failed.                           |
+| Payment        | 53         | Cannot [cancel](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#cancel) an order that is not reserved. The user must first accept the payment. |
+  | Payment        | 61         | Captured amount exceeds the reserved amount. You can not capture a higher amount than the user has accepted. Check the [payment details(https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#get-payment-details).]|
 | Payment        | 62         | The amount you tried to capture is not reserved. The user must first accept the payment. |
-| Payment        | 63         | Capture failed for some unknown reason, please use `/details` endpoint to know the exact status. |
-| Payment        | 71         | Cannot refund more than captured amount.       |
-| Payment        | 72         | Cannot refund a reserved order (only captured orders), please use the `/cancel` endpoint. |
+| Payment        | 63         | Capture failed for an unknown reason, please use [payment details(https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#get-payment-details) to see the exact status. |
+| Payment        | 71         | Cannot refund more than the captured amount.       |
+| Payment        | 72         | Cannot refund a reserved order (only captured orders). [Cancel](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#cancel) instead.|
 | Payment        | 73         | Cannot refund a cancelled order.               |
-| Payment        | 93         | Captured amount must be the same in an idempotent retry. |
-| Payment        | 95         | Payments can only be refunded up to 365 days after reservation. |
-| Payment        | 96         | Payments can only be captured up to 180 days after reservation. |
-| Payment        | 1501       | This person cannot pay to companies. Used for Vipps users under the age of 15. |
+| Payment        | 93         | Captured amount must be the same in an idempotent retry. The same `Idempotency-Key` can not be used with different request payloads. |
+| Payment        | 95         | Payments can only be refunded up to 365 days after reservation. See [Reserve and capture](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/reserve-and-capture).|
+| Payment        | 96         | Payments can only be captured up to 180 days after reservation. See [Reserve and capture](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/reserve-and-capture).|
 | Payment        | 1082       | This person is not BankID verified. Only applies for test users. |
-| InvalidRequest | -          | The field name will be the error code. Description about what exactly the field error is. |
 | VippsError     | 91         | Transaction is not allowed. Typically when attempt to capture a cancelled order. |
 | VippsError     | 92         | Transaction already processed.                 |
-| VippsError     | 94         | Order locked and is already processing. This can occur if a bank has problems, and Vipps needs to wait and/or clean up. |
-| VippsError     | 98         | Too many concurrent requests. Used only to prevent incorrect API use. |
+| VippsError     | 94         | Order locked and is already processing. This can occur for a short period of time if a bank has problems, and Vipps needs to wait and/or clean up. Retry the same request later. |
+| VippsError     | 98         | Too many concurrent requests. Used only to prevent incorrect API use. See [Rate limiting](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#rate-limiting).|
 | VippsError     | 99         | The request body should contain a description of the internal error. |
 | user           | 81         | User unknown. The phone number is either incorrectly formatted (see the API specification), is not a Vipps user, or the user is under 15 years old and cannot pay businesses. Vipps cannot give more details. This error also occurs if using a non-Norwegian phone number. |
 | user           | 82         | User app version not supported.                |
-| Merchant       | 31         | Merchant is blocked because of [reason].       |
+| Merchant       | 31         | Merchant is blocked because of [reason]. See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked). |
 | Merchant       | 32         | Receiving limit of merchant is exceeded.       |
 | Merchant       | 33         | Number of payment requests has been exceeded.  |
-| Merchant       | 34         | Unique constraint violation of the orderId. The orderId must be unique for the MSN. |
-| Merchant       | 35         | Registered order not found.                    |
-| Merchant       | 36         | Merchant agreement not signed.                 |
-| Merchant       | 37         | Merchant not available, deactivated or blocked. See the FAQ. |
-| Merchant       | 38         | Sale unit is not allowed to skip the landing page. See the FAQ. |
-| Merchant       | 21         | Reference orderId is not valid.                |
-| Merchant       | 22         | Reference orderId is not in valid state.       |
-| Merchant       | 97         | The merchant is not approved by Vipps to receive payments. |
+| Merchant       | 34         | Unique constraint violation of the orderId. The orderId must be unique for the MSN. See [Recommendations for orderId/reference](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/orderid). |
+| Merchant       | 37         | Merchant not available, deactivated or blocked. See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked) |
+| Merchant       | 38         | Sale unit is not allowed to skip the landing page. See the [Vipps landing page](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/vipps-landing-page-faq). |
+| Merchant       | 97         | The merchant is not approved by Vipps to receive payments. See [Why do I get "Merchant Not Allowed for Ecommerce Payment"?](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-merchant-not-allowed-for-ecommerce-payment). |
+| InvalidRequest | -          | The field name will be the error code. Description about what exactly the field error is. |
 
 ## Testing
 
