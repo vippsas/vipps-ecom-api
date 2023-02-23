@@ -1611,7 +1611,7 @@ to retrieve all the information about the payment.
 | Payment        | 51         | Cannot [cancel](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#cancel) an already captured order. Do a [refund](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#refund) instead. |
 | Payment        | 52         | [Cancel](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#cancel) failed.                           |
 | Payment        | 53         | Cannot [cancel](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#cancel) an order that is not reserved. The user must first accept the payment. |
-  | Payment        | 61         | Captured amount exceeds the reserved amount. You can not capture a higher amount than the user has accepted. Check the [payment details](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#get-payment-details).]|
+  | Payment        | 61         | Captured amount exceeds the reserved amount. You can not capture a higher amount than the user has accepted. Check the [payment details](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#get-payment-details).|
 | Payment        | 62         | The amount you tried to capture is not reserved. The user must first accept the payment. |
 | Payment        | 63         | Capture failed for an unknown reason, please use [payment details](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#get-payment-details) to see the exact status. |
 | Payment        | 71         | Cannot refund more than the captured amount.       |
