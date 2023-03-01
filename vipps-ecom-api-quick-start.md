@@ -49,7 +49,7 @@ required for using the eCom API
  * `client_id` - The "username" for making API requests
  * `client_secret` - The "password" for making API requests
  * `Ocp-Apim-Subscription-Key` - The subscription key for making API requests
- * `merchantSerialNumber` - The unique id for your sale unit.
+ * `merchantSerialNumber` - The unique id for your sales unit.
  * `mobileNumber` - The phone number for your
    [test user](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/test-environment#test-users).
 

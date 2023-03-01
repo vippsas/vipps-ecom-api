@@ -1633,7 +1633,7 @@ to retrieve all the information about the payment.
 | Merchant       | 33         | The number of allowed payment requests has been exceeded.  |
 | Merchant       | 34         | The `orderId` has already been used for another payment for this MSN. The orderId must be unique for the MSN. See [Recommendations for orderId/reference](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/orderid). |
 | Merchant       | 37         | The merchant is either not available, deactivated or blocked. See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked) |
-| Merchant       | 38         | The sale unit is not allowed to skip the landing page. See the [Vipps landing page](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/vipps-landing-page-faq). |
+| Merchant       | 38         | The sales unit is not allowed to skip the landing page. See the [Vipps landing page](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/vipps-landing-page-faq). |
 | Merchant       | 97         | The merchant is not approved by Vipps to receive payments. See [Why do I get "Merchant Not Allowed for Ecommerce Payment"?](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-merchant-not-allowed-for-ecommerce-payment). |
 | InvalidRequest | -          | The field name will be the error code. Description about what exactly the field error is. |
 

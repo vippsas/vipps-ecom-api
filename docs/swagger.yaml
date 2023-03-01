@@ -151,7 +151,7 @@ paths:
         - in: header
           name: Merchant-Serial-Number
           description: >-
-            The Merchant Serial Number (MSN) is a unique id for the sale unit
+            The Merchant Serial Number (MSN) is a unique id for the sales unit
             that this payment is made for.
             This is a required parameter if you are a Vipps eCom partner
             making payments on behalf of a merchant.
@@ -445,7 +445,7 @@ paths:
         - in: header
           name: Merchant-Serial-Number
           description: >-
-            The Merchant Serial Number (MSN) is a unique id for the sale unit
+            The Merchant Serial Number (MSN) is a unique id for the sales unit
             that this payment is made for.
             This is a required parameter if you are a Vipps eCom partner
             making payments on behalf of a merchant.
@@ -542,7 +542,7 @@ paths:
         - in: header
           name: Merchant-Serial-Number
           description: >-
-            The Merchant Serial Number (MSN) is a unique id for the sale unit
+            The Merchant Serial Number (MSN) is a unique id for the sales unit
             that this payment is made for.
             This is a required parameter if you are a Vipps eCom partner
             making payments on behalf of a merchant.
@@ -660,7 +660,7 @@ paths:
         - in: header
           name: Merchant-Serial-Number
           description: >-
-            The Merchant Serial Number (MSN) is a unique id for the sale unit
+            The Merchant Serial Number (MSN) is a unique id for the sales unit
             that this payment is made for.
             This is a required parameter if you are a Vipps eCom partner
             making payments on behalf of a merchant.
@@ -847,7 +847,7 @@ paths:
         - in: header
           name: Merchant-Serial-Number
           description: >-
-            The Merchant Serial Number (MSN) is a unique id for the sale unit
+            The Merchant Serial Number (MSN) is a unique id for the sales unit
             that this payment is made for.
             This is a required parameter if you are a Vipps eCom partner
             making payments on behalf of a merchant.
@@ -1637,7 +1637,7 @@ components:
           type: boolean
           example: false
           default: false
-          description: Skips the landing page for whitelisted sale units. Requires a valid customerInfo.mobileNumber.
+          description: Skips the landing page for whitelisted sales units. Requires a valid customerInfo.mobileNumber.
         scope:
           type: string
           description: |

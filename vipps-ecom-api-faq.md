@@ -93,9 +93,9 @@ for more questions.
 
 ### I have initiated an order but I can't find it!
 
-If you have multiple sale units: Make sure you use the correct API keys, and that
-you are not attempting to use one sale unit's API keys to retrieve an order made
-by a different sale unit.
+If you have multiple sales units: Make sure you use the correct API keys, and that
+you are not attempting to use one sales unit's API keys to retrieve an order made
+by a different sales unit.
 
 Have you, or the eCommerce solution you are using, successfully implemented
 [`GET:/ecomm/v2/payments/{orderId}/details`](vipps-ecom-api.md#get-payment-details)?
