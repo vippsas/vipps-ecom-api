@@ -1608,6 +1608,7 @@ to retrieve all the information about the payment.
 
 | Error group    | Error Code | Error Message (and some explaining text for some errors) |
 |:---------------|:-----------|:-----------------------------------------------|
+| Payment        | 45         | Reservation failed. The payment was not acted upon by the customer. See [Timeouts](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/timeouts) |
 | Payment        | 51         | Cannot [cancel](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#cancel) an already captured order. Do a [refund](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#refund) instead. |
 | Payment        | 52         | [Cancel](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#cancel) failed.                           |
 | Payment        | 53         | Cannot [cancel](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#cancel) an order that is not reserved. The user must first accept the payment. |
