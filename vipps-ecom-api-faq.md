@@ -22,22 +22,6 @@ For more common Vipps questions, see:
 ℹ️ Please use the new documentation:
 [Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
 
-## Table of contents
-
-* [Common problems](#common-problems)
-  * [Why does Vipps Hurtigkasse (express checkout) fail?](#why-does-vipps-hurtigkasse-express-checkout-fail)
-* [Reservations and captures](#reservations-and-captures)
-* [Refunds](#refunds)
-* [Users and payments](#users-and-payments)
-  * [I have initiated an order but I can't find it!](#i-have-initiated-an-order-but-i-cant-find-it)
-* [Common errors](#common-errors)
-  * [Why do I not get callbacks from Vipps?](#why-do-i-not-get-callbacks-from-vipps)
-  * [Why do I get `Payment failed`?](#why-do-i-get-payment-failed)
-* [Why do I not get the `sub` from `/details`?](#why-do-i-not-get-the-sub-from-details)
-* [Other questions](#other-questions)
-  * [What functionality is included in the eCom API, but not the PSP API?](#what-functionality-is-included-in-the-ecom-api-but-not-the-psp-api)
-  * [What does the `status` suffix at the `fallBack` URL mean?](#what-does-the-status-suffix-at-the-fallback-url-mean)
-
 <!-- END_COMMENT -->
 
 ## Common problems
@@ -114,6 +98,54 @@ to manually do API calls, Use the "inspect" functionality to see the complete re
 
 See:
 [API endpoints](vipps-ecom-api.md#api-endpoints).
+
+## Express checkout
+
+The Express checkout (Vipps Hurtigkasse) is a solution for letting the user
+automatically share the address information with merchant and choose a shipping option.
+
+### Express checkout: Old and new flow
+
+This does require some background info - please bear with us.
+
+In the old flow for the
+[express checkout](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#express-checkout-payments)
+it was easy for a user to overlook
+that the correct address and shipping method was used, as both were simply
+displayed on the payment confirmation page. The user did not have to actively
+choose an address and shipping method. This resulted in some users
+inadvertently confirming the wrong address and possibly also selecting the
+wrong shipping method. To fix this, we made it mandatory to select and address
+and shipping method. This was released as a minor update of Vipps.
+
+That worked well for all merchants that used Vipps Hurtigkasse *as intended*,
+but not for those using it as a quick hack to speed up payments, "just get some
+info about the user", Covid-19 tracking, or something else.
+
+The new and (for some) improved flow did not work well for all. One example:
+Restaurant guests could not understand why a restaurant needed their address
+and shipping method for the two beers they ordered from their table.
+They had not noticed the need to select those before, but definitely did now.
+
+So: We changed it back to the way it was before, and now require merchants to
+explicitly specify the new express checkout flow:
+
+Specify `"useExplicitCheckoutFlow": true` in
+[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST)
+to get the new, explicit flow.
+
+Now, after a long time of notifying merchants and partners how Express Checkout
+_should_ be used, we have changed the default behaviour to
+`"useExplicitCheckoutFlow": true`.
+
+The new express checkout flow (`"useExplicitCheckoutFlow": true`):
+![New explicit checkout flow](images/vipps-ecom-confirm-express.png)
+
+The old express checkout flow (`"useExplicitCheckoutFlow": false`):
+![The old checkout flow](images/vipps-ecom-confirm-express-old.png)
+
+**Please note:** If you only need the user's information, please use the
+[Userinfo API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api).
 
 ## Common errors
 
