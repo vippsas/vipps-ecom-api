@@ -75,7 +75,7 @@ See
 [FAQ: Users and payments](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/users-and-payments-faq)
 for more questions.
 
-### I have initiated an order but I can't find it!
+### I have initiated an order but I can't find it
 
 If you have multiple sales units: Make sure you use the correct API keys, and that
 you are not attempting to use one sales unit's API keys to retrieve an order made
@@ -135,7 +135,7 @@ Specify `"useExplicitCheckoutFlow": true` in
 to get the new, explicit flow.
 
 Now, after a long time of notifying merchants and partners how Express Checkout
-_should_ be used, we have changed the default behaviour to
+*should* be used, we have changed the default behaviour to
 `"useExplicitCheckoutFlow": true`.
 
 The new express checkout flow (`"useExplicitCheckoutFlow": true`):
@@ -176,7 +176,7 @@ for problems with the callbacks. The API Dashboard is under "Utvikler".
 
 ### Why do I get `Payment failed`?
 
-This error is shown in Vipps if you use _Vipps Hurtigkasse_ (_Express checkout_) and respond
+This error is shown in Vipps if you use *Vipps Hurtigkasse* (*Express checkout*) and respond
 incorrectly to the request for
 [`[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Merchant-Endpoints/operation/fetchShippingCostUsingPOST).
 
@@ -227,4 +227,4 @@ The Vipps eCom API has some functionality that is not available in the PSP API:
 ### What does the `status` suffix at the `fallBack` URL mean?
 
 Please disregard it. The `status` suffix was phased out several years ago, and
-is no longer documented. But, since some merchants _still_ depend on in, it still provided.
+is no longer documented. But, since some merchants *still* depend on in, it still provided.
