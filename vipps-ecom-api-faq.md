@@ -104,9 +104,9 @@ See:
 The Express checkout (*Vipps Hurtigkasse*) is a solution that allows the user to
 automatically share their address information with the merchant and select a shipping option.
 
-### Express checkout: Original and new flow
+### Express checkout: Old and new flow
 
-### Original flow
+### Old flow
 
 In the original flow for
 [Express Checkout](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#express-checkout-payments),
@@ -133,7 +133,7 @@ They had not noticed the need to select those before, but definitely did now.
 
 So, we changed it back to the way it was before.
 
-### Back to the original flow, with modifications
+### Back to the old flow, with modifications
 
 A new attempt to solve the problems changes the Express Checkout back to the original flow, with modifications.
 Now, merchants must explicit specify the explicit checkout flow.
