@@ -142,7 +142,7 @@ This is done by specifying `"useExplicitCheckoutFlow": true` in
 [`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST).
 
 So, after a long time of notifying merchants and partners how Express Checkout
-*should* be used, we have changed the default behaviour to
+*should* be used, we have changed the default behavior to
 `"useExplicitCheckoutFlow": true`.
 
 The following image illustrates the new express checkout flow (`"useExplicitCheckoutFlow": true`):
