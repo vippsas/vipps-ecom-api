@@ -104,8 +104,6 @@ See:
 The Express checkout (*Vipps Hurtigkasse*) is a solution that allows the user to
 automatically share their address information with the merchant and select a shipping option.
 
-### Express checkout: Old and new flow
-
 ### Old flow
 
 In the old flow for
