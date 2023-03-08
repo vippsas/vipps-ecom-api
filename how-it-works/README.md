@@ -1,15 +1,15 @@
 <!-- START_METADATA
 ---
-title: How the eCom API works
+title: How eCom works
 sidebar_label: How it works
 sidebar_position: 1
-description: View the eCom API how-it-works guides for illustrations of the main flows.
+description: View eCom how-it-works guides for illustrations of the main flows.
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# How the eCom API works
+# How eCom works
 
 <!-- START_COMMENT -->
 
@@ -19,7 +19,7 @@ END_METADATA -->
 <!-- END_COMMENT -->
 
 
-View the eCom API how-it-works guides for illustrations of the main flows.
+View the eCom how-it-works guides for illustrations of the main flows.
 
-* [How the eCom API works online](vipps-ecom-api-howitworks.md)
-* [How the eCom API works in the store](vipps-in-store-howitworks.md)
+* [How eCom works online](vipps-ecom-api-howitworks.md)
+* [How eCom works in the store](vipps-in-store-howitworks.md)
