@@ -190,52 +190,6 @@ and
 [`DELETE:/v2/consents/{userId}`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Merchant-Endpoints/operation/removeUserConsentUsingDELETE)
 endpoints.
 
-#### Old and new express checkout flow
-
-This does require some background info - please bear with us.
-
-In the old flow for the express checkout it was easy for a user to overlook
-that the correct address and shipping method was used, as both were simply
-displayed on the payment confirmation page. The user did not have to actively
-choose an address and shipping method. This resulted in some users
-inadvertently confirming the wrong address and possibly also selecting the
-wrong shipping method. To fix this, we made it mandatory to select and address
-and shipping method. This was released as a minor update of Vipps.
-
-That worked well for all merchants that used Vipps Hurtigkasse *as intended*,
-but not for those using it as a quick hack to speed up payments, "just get some
-info about the user", Covid-19 tracking, or something else.
-
-The new and (for some) improved flow did not work well for all. One example:
-Restaurant guests could not understand why a restaurant needed their address
-and shipping method for the two beers they ordered from their table.
-They had not noticed the need to select those before, but definitely did now.
-
-So: We changed it back to the way it was before, and now require merchants to
-explicitly specify the new express checkout flow:
-
-Specify `"useExplicitCheckoutFlow": true` in
-[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST)
-to get the new, explicit flow.
-
-#### How to specify the old or new express checkout flow
-
-The old (and for some: "normal") express checkout flow is the default.
-You do not have to make any changes other than to specify
-`"paymentType": "eComm Express Payment"`.
-
-To get the new _and highly recommended_ express checkout flow: Specify this in
-addition, in the `transaction` object: `"useExplicitCheckoutFlow": true`.
-See
-[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST)
-for more details.
-
-The new express checkout flow (`"useExplicitCheckoutFlow": true`):
-![New explicit checkout flow](images/vipps-ecom-confirm-express.png)
-
-The old express checkout flow (`"useExplicitCheckoutFlow": false`):
-![The old checkout flow](images/vipps-ecom-confirm-express-old.png)
-
 #### Shipping and static shipping details
 
 The shipping methods presented to the user in Vipps are fetched from the merchant's
