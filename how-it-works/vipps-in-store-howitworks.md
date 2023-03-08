@@ -1,15 +1,15 @@
 <!-- START_METADATA
 ---
-title: How the eCommerce API works in the store
-sidebar_label: How it works online
+title: How Vipps eCommerce works in the store
+sidebar_label: How it works in the store
 sidebar_position: 9
-description: How the eCommerce API works in the store.
+description: How Vipps eCommerce works in the store.
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# How the eCommerce API works in the store
+# How Vipps eCommerce works in the store
 
 <!-- START_COMMENT -->
 
@@ -18,7 +18,8 @@ END_METADATA -->
 
 <!-- END_COMMENT -->
 
-Vipps-in-store is designed for stores that want to let customers pay easily and quickly from their own phone, without the need to touch the terminal. This page shows an example of how you can offer contactless payment to your customers by integrating Vipps in your POS system.
+Stores can allow customers to pay easily and quickly from their own phone, without the need to touch the terminal.
+This page shows an example of how you can offer contactless payment to your customers by integrating Vipps in your POS system.
 
 It is also possible to use our simpler solution Vippsnummer, but then the amount must be entered manually at checkout, and there will be some follow-up with accounting and settlement.
 

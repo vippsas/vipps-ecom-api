@@ -1,6 +1,6 @@
 <!-- START_METADATA
 ---
-title: eCommerce API checklist
+title: eCom API checklist
 sidebar_label: Checklist
 sidebar_position: 20
 description: Checklist for full integration with the eCom API.
@@ -9,7 +9,7 @@ pagination_prev: null
 ---
 END_METADATA -->
 
-# eCommerce API checklist
+# eCom API checklist
 
 <!-- START_COMMENT -->
 

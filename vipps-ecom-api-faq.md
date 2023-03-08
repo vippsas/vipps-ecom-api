@@ -1,19 +1,19 @@
 <!-- START_METADATA
 ---
-title: eCommerce API frequently asked questions
+title: eCom API Frequently Asked Questions
 sidebar_label: FAQ
 sidebar_position: 25
-description: Login API frequently asked questions
+description: eCom API frequently asked questions
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# eCommerce API frequently asked questions
+# eCom API Frequently Asked Questions
 
 Here are the eCom API Frequently Asked Questions (FAQs).
 See the
-[eCommerce API guide](vipps-ecom-api.md)
+[eCom API guide](vipps-ecom-api.md)
 for all the details.
 
 For more common Vipps questions, see:

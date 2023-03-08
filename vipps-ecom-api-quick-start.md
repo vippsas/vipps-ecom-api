@@ -1,17 +1,17 @@
 <!-- START_METADATA
 ---
-title: Quick start for the eCommerce API
+title: Quick start for the eCom API
 sidebar_label: Quick start
 sidebar_position: 10
-description: Quick start guide for the using the eCommerce API with Postman.
+description: Quick start guide for the using the eCom API with Postman.
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# Quick start for the eCommerce API
+# Quick start for the eCom API
 
-This is a quick start guide for the using the eCommerce API with Postman.
+This is a quick start guide for the using the eCom API with Postman.
 
 Use the eCom API to initiate payments, get payment details, capture payments, and refund payments.
 You can also perform express checkout payments and get access to user info.

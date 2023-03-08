@@ -1,15 +1,15 @@
 <!-- START_METADATA
 ---
-title: How the eCommerce API works online
+title: How Vipps eCommerce works online
 sidebar_label: How it works online
 sidebar_position: 6
-description: How the eCommerce API works online.
+description: How Vipps eCommerce works online.
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# How the eCommerce API works online
+# How Vipps eCommerce works online
 
 <!-- START_COMMENT -->
 
@@ -18,9 +18,9 @@ END_METADATA -->
 
 <!-- END_COMMENT -->
 
-This is how payment with Vipps eCommerce works.
+This is how payment with the eCom API works.
 
-## The ecommerce payment process
+## The Vipps eCommerce payment process
 
 ![Ecom process](../images/vipps-ecom-process-svg.svg)
 

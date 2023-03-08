@@ -19,7 +19,7 @@ END_METADATA -->
 
 <!-- END_COMMENT -->
 
-The eCom API allows you to create various online payment flows using Vipps, including express checkout. Initiate payments, get payment details, capture payments, and refund payments.
+The eCommerce API (eCom API) allows you to create various online payment flows using Vipps, including express checkout. Initiate payments, get payment details, capture payments, and refund payments.
 
 The eCom API supports
 [Vipps på nett](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/),

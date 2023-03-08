@@ -1,15 +1,15 @@
 <!-- START_METADATA
 ---
-title: eCommerce API guide
+title: eCom API guide
 sidebar_label: API guide
 sidebar_position: 15
-description: eCommerce API guide.
+description: eCom API guide.
 pagination_prev: Null
 pagination_next: Null
 ---
 END_METADATA -->
 
-# eCommerce API guide
+# eCom API guide
 
 The Vipps eCom API is used by
 [Vipps på nett (*Vipps Online*)](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/),
@@ -164,8 +164,8 @@ enters the shipping address and pays.
 
 See:
 
-* [How it works](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api-howitworks)
-* [How it works in the store](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-in-store-howitworks)
+* [How it works](./how-it-works/vipps-ecom-api-howitworks)
+* [How it works in the store](./how-it-works/vipps-in-store-howitworks)
 
 ### Express checkout payments
 
