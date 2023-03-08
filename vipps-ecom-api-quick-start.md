@@ -1,11 +1,17 @@
 <!-- START_METADATA
 ---
-title: Quick start
+title: Quick start for the eCommerce API
+sidebar_label: Quick start
 sidebar_position: 10
+description: Quick start guide for the using the eCommerce API with Postman.
+pagination_next: null
+pagination_prev: null
 ---
 END_METADATA -->
 
-# Quick start
+# Quick start for the eCommerce API
+
+This is a quick start guide for the using the eCommerce API with Postman.
 
 Use the eCom API to initiate payments, get payment details, capture payments, and refund payments.
 You can also perform express checkout payments and get access to user info.
@@ -13,17 +19,7 @@ You can also perform express checkout payments and get access to user info.
 <!-- START_COMMENT -->
 
 ℹ️ Please use the new documentation:
-[Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
-
-## Table of contents
-
-* [Postman](#postman)
-  * [Import Postman files and set up the environment](#import-postman-files-and-set-up-the-environment)
-* [Make API requests](#make-api-requests)
-  * [Regular payment](#regular-payment)
-  * [Express checkout (*Vipps Hurtigkasse*)](#express-checkout-vipps-hurtigkasse)
-  * [Userinfo](#userinfo)
-  * [QR code](#qr-code)
+[Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
 
 <!-- END_COMMENT -->
 

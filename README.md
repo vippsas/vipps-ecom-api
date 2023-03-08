@@ -1,19 +1,21 @@
 <!-- START_METADATA
 ---
-title: Introduction
+title: Introduction to the eCommerce API
+sidebar_label: Introduction
 sidebar_position: 1
 hide_table_of_contents: true
+description: Use the eCom API to create various online payment flows using Vipps, including express checkout.
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# Vipps eCommerce API
+# Introduction to the eCommerce API
 
 <!-- START_COMMENT -->
 
 ℹ️ Please use the new documentation:
-[Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
+[Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
 
 <!-- END_COMMENT -->
 
@@ -27,8 +29,8 @@ native apps and other solutions.
 
 ## How it works
 
-* [Vipps eCommerce API: How It Works](vipps-ecom-api-howitworks.md):  Let your customers pay with Vipps online or in your app. All your customer needs to provide is their mobile number, then they pay in Vipps with one click.
-* [Vipps In Store](vipps-in-store-howitworks.md): How the Vipps eCom API can be integrated in your Point Of Sale (POS) system.
+* [Vipps eCommerce API: How It Works](./how-it-works/vipps-ecom-api-howitworks.md):  Let your customers pay with Vipps online or in your app. All your customer needs to provide is their mobile number, then they pay in Vipps with one click.
+* [Vipps In Store](./how-it-works/vipps-in-store-howitworks.md): How the Vipps eCom API can be integrated in your Point Of Sale (POS) system.
 
 ## Next steps
 

@@ -1,16 +1,19 @@
 <!-- START_METADATA
 ---
-title: FAQ
+title: eCommerce API frequently asked questions
+sidebar_label: FAQ
 sidebar_position: 25
+description: Login API frequently asked questions
 pagination_next: null
+pagination_prev: null
 ---
 END_METADATA -->
 
-# Frequently asked questions
+# eCommerce API frequently asked questions
 
-Here are the eCom API FAQs.
+Here are the eCom API Frequently Asked Questions (FAQs).
 See the
-[Vipps eCommerce API guide](vipps-ecom-api.md)
+[eCommerce API guide](vipps-ecom-api.md)
 for all the details.
 
 For more common Vipps questions, see:
@@ -20,7 +23,7 @@ For more common Vipps questions, see:
 <!-- START_COMMENT -->
 
 ℹ️ Please use the new documentation:
-[Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/).
+[Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
 
 <!-- END_COMMENT -->
 
