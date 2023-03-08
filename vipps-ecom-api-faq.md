@@ -108,42 +108,21 @@ automatically share their address information with the merchant and select a shi
 
 ### Old flow
 
-In the original flow for
+In the old flow for
 [Express Checkout](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#express-checkout-payments),
-it was easy for a user to overlook verifying the
-address and shipping method. Both were
-displayed on the payment confirmation page and no active selection was required.
-This resulted in some users
-inadvertently confirming the wrong address and possibly also selecting the
-wrong shipping method.
+it was easy for a user to overlook verifying the address and shipping method.
+Both were displayed on the payment confirmation page and no active selection was required.
+This resulted in some users inadvertently confirming the wrong address and possibly also
+selecting the wrong shipping method.
 
 ### New flow
 
-To alleviate problems from the original flow, it became mandatory to select the address
-and shipping method. This was released as a minor update of Vipps.
+To alleviate problems from the old flow, we have made it mandatory to select the address
+and shipping method. For a while the new flow required specifying 
+`"useExplicitCheckoutFlow": true`), but this is no longer necessary.
+The only possible flow is the new flow.
 
-The mandatory selection of address and shipping method worked well for all merchants that used Express checkout *as intended*,
-but not for those using it as a quick hack to speed up payments, "just get some
-info about the user", Covid-19 tracking, or something else.
-
-The new and (for some) improved flow did not work well for all. One example:
-Restaurant guests could not understand why a restaurant needed their address
-and shipping method for the two beers they ordered from their table.
-They had not noticed the need to select those before, but definitely did now.
-
-So, we changed it back to the way it was before.
-
-### Back to the old flow, with modifications
-
-A new attempt to solve the problems changes the Express Checkout back to the original flow, with modifications.
-Now, merchants must explicit specify the explicit checkout flow.
-
-This is done by specifying `"useExplicitCheckoutFlow": true` in
-[`POST:/ecomm/v2/payments`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST).
-
-So, after a long time of notifying merchants and partners how Express Checkout
-*should* be used, we have changed the default behavior to
-`"useExplicitCheckoutFlow": true`.
+This ensures that the user gets the item delivered to the right place in the right way.
 
 The following image illustrates the new express checkout flow (`"useExplicitCheckoutFlow": true`):
 ![New explicit checkout flow](images/vipps-ecom-confirm-express.png)
