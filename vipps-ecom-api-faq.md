@@ -104,14 +104,17 @@ See:
 
 ## Express checkout
 
-The Express checkout (*Vipps Hurtigkasse*) is a solution that allows the user to
-automatically share their address information with the merchant and select a shipping option.
+The
+[Express checkout (*Vipps Hurtigkasse*)](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#express-checkout-payments),
+is a solution that allows the user to automatically share their address information with the
+merchant and select a shipping option.
+
+**Please note:** If you only need the user's information, please use the
+[Userinfo API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api).
 
 ### Old flow
 
-In the old flow for
-[Express Checkout](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#express-checkout-payments),
-it was easy for a user to overlook verifying the address and shipping method.
+In the old flow it was easy for a user to overlook verifying the address and shipping method.
 Both were displayed on the payment confirmation page (see screens below) and no active selection was required.
 This resulted in some users inadvertently confirming the wrong address and possibly also
 selecting the wrong shipping method.
@@ -130,9 +133,6 @@ The following images illustrate the new express checkout flow:
 
 Here is the old express checkout flow:
 ![The old checkout flow](images/vipps-ecom-confirm-express-old.png)
-
-**Please note:** If you only need the user's information, please use the
-[Userinfo API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api).
 
 ## Common errors
 
