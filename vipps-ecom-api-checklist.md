@@ -9,7 +9,7 @@ pagination_prev: null
 ---
 END_METADATA -->
 
-# eCom API checklist
+# Checklist
 
 <!-- START_COMMENT -->
 

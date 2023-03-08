@@ -9,9 +9,9 @@ pagination_prev: null
 ---
 END_METADATA -->
 
-# eCom API Frequently Asked Questions
+# Frequently asked questions
 
-Here are the eCom API Frequently Asked Questions (FAQs).
+Here are the eCom API Frequently Asked Questions (FAQ).
 See the
 [eCom API guide](vipps-ecom-api.md)
 for all the details.

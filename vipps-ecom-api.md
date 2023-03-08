@@ -9,7 +9,7 @@ pagination_next: Null
 ---
 END_METADATA -->
 
-# eCom API guide
+# API guide
 
 The Vipps eCom API is used by
 [Vipps på nett (*Vipps Online*)](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/),

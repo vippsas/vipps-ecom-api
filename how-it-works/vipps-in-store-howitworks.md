@@ -1,15 +1,15 @@
 <!-- START_METADATA
 ---
-title: How Vipps eCommerce works in the store
+title: How Vipps eCom works in the store
 sidebar_label: How it works in the store
 sidebar_position: 9
-description: How Vipps eCommerce works in the store.
+description: How Vipps eCom works in the store.
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# How Vipps eCommerce works in the store
+# How Vipps eCom works in the store
 
 <!-- START_COMMENT -->
 

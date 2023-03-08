@@ -9,7 +9,7 @@ pagination_prev: null
 ---
 END_METADATA -->
 
-# Quick start for the eCom API
+# Quick start
 
 This is a quick start guide for the using the eCom API with Postman.
 
