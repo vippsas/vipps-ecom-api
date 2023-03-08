@@ -111,7 +111,7 @@ automatically share their address information with the merchant and select a shi
 In the old flow for
 [Express Checkout](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#express-checkout-payments),
 it was easy for a user to overlook verifying the address and shipping method.
-Both were displayed on the payment confirmation page and no active selection was required.
+Both were displayed on the payment confirmation page (see screens below) and no active selection was required.
 This resulted in some users inadvertently confirming the wrong address and possibly also
 selecting the wrong shipping method.
 
@@ -124,10 +124,10 @@ The only possible flow is the new flow.
 
 This ensures that the user gets the item delivered to the right place in the right way.
 
-The following image illustrates the new express checkout flow (`"useExplicitCheckoutFlow": true`):
+The following images illustrate the new express checkout flow:
 ![New explicit checkout flow](images/vipps-ecom-confirm-express.png)
 
-The old express checkout flow (`"useExplicitCheckoutFlow": false`):
+Here is the old express checkout flow:
 ![The old checkout flow](images/vipps-ecom-confirm-express-old.png)
 
 **Please note:** If you only need the user's information, please use the
