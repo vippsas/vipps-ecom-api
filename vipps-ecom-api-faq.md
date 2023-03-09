@@ -109,8 +109,12 @@ The
 is a solution that allows the user to automatically share their address information with the
 merchant and select a shipping option.
 
-**Please note:** If you only need the user's information, please use the
-[Userinfo API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api).
+**Please note:** 
+* If you only need the user's information, you should use
+  [Userinfo API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api).
+* It is not possible to specify
+  [`scope`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api#userinfo-call-by-call-guide)
+  with Express checkout.
 
 ### Old flow
 
