@@ -26,7 +26,7 @@ You can also perform express checkout payments and get access to user info.
 ## Postman
 
 See
-[Vipps quick start guides](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/quick-start-guides)
+[Quick start guides](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/quick-start-guides)
 and
 [The Vipps Test Environment (MT)](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/test-environment).
 
