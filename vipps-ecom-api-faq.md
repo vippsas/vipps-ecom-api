@@ -16,9 +16,9 @@ See the
 [eCom API guide](vipps-ecom-api.md)
 for all the details.
 
-For more common Vipps questions, see:
+For more common questions, see:
 
-* [Vipps API General FAQ](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs)
+* [Common API FAQ](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs)
 
 <!-- START_COMMENT -->
 
