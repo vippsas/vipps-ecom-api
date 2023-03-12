@@ -21,8 +21,8 @@ API version: 2.0.0.
 
 <!-- START_COMMENT -->
 
-ℹ️ Please use the new documentation:
-[Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
+ℹ️ Please use the website:
+[Vipps MobilePay Technical Documentation](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
 
 <!-- END_COMMENT -->
 
@@ -35,7 +35,7 @@ There are many ways to use the Vipps eCom API. For example:
   initiates the payment command. The customer confirms the purchase through their
   Vipps app. If the purchase is approved, the merchant registers the sale in
   their system. See
-  [Vipps eCommerce API: How It Works](./how-it-works/vipps-ecom-api-howitworks.md) for more information.
+  [eCommerce API: How It Works](./how-it-works/vipps-ecom-api-howitworks.md) for more information.
 * *Vipps Express Checkout (aka Vipps Hurtigkasse)* - The same as *Vipps Online*
   except that the shipping address and package delivery options that are selected
   in the Vipps app.
@@ -47,7 +47,7 @@ There are many ways to use the Vipps eCom API. For example:
 * *Vipps In Store (aka Vipps i kassa)* - The same as *Vipps Online* except that
   the phone number is provided to the service provider who then initiates the
   payment through their Point of Sale (POS) system. See
-  [Vipps in store](./how-it-works/vipps-in-store-howitworks.md) for more information.
+  [eCommerce API: How it works in the store](./how-it-works/vipps-in-store-howitworks.md) for more information.
 
 This diagram shows a simplified payment flow:
 

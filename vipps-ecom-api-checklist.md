@@ -13,8 +13,8 @@ END_METADATA -->
 
 <!-- START_COMMENT -->
 
-ℹ️ Please use the new documentation:
-[Vipps Technical Documentation](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
+ℹ️ Please use the website:
+[Vipps MobilePay Technical Documentation](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
 
 <!-- END_COMMENT -->
 
@@ -106,6 +106,6 @@ API version: 2.0.
       as soon as the customer control (see step 2) is completed, independently of this checklist.
 7. The Merchant goes live 🎉
 
-## Flow to go live for direct integrations for partners
+## Flow to go live for direct integrations for Vipps partners
 
 See: [Vipps partners](https://vippsas.github.io/vipps-developer-docs/docs/vipps-partner).
