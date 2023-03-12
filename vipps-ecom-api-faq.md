@@ -3,7 +3,7 @@
 title: eCom API Frequently Asked Questions
 sidebar_label: FAQ
 sidebar_position: 25
-description: Frequently asked questions for the Vipps MobilePay eCommerce API.
+description: Frequently asked questions for the eCom API.
 pagination_next: null
 pagination_prev: null
 ---

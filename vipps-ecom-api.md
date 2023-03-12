@@ -3,7 +3,7 @@
 title: eCom API guide
 sidebar_label: API guide
 sidebar_position: 15
-description: eCom API guide.
+description: Find technical details about integrating with the eCom API.
 pagination_prev: Null
 pagination_next: Null
 ---

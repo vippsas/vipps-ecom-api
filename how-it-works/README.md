@@ -1,15 +1,15 @@
 <!-- START_METADATA
 ---
-title: How eCom works
+title: How the eCom API works
 sidebar_label: How it works
 sidebar_position: 1
-description: View eCom how-it-works guides for illustrations of the main flows.
+description: View the eCom API how-it-works guides for illustrations of the main flows.
 pagination_next: null
 pagination_prev: null
 ---
 END_METADATA -->
 
-# How eCom works
+# How the eCom API works
 
 <!-- START_COMMENT -->
 
@@ -17,7 +17,6 @@ END_METADATA -->
 [Vipps MobilePay Technical Documentation](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
 
 <!-- END_COMMENT -->
-
 
 View the eCom how-it-works guides for illustrations of the main flows.
 
