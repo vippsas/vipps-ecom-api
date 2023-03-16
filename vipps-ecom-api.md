@@ -1063,13 +1063,26 @@ always contains *the entire history* of payments for the order, not just the cur
 }
 ```
 
-**Please note:** The `transactionSummary` will not be part of the response if
-the user does not react to the Vipps landing page or app-switch.
-`bankIdentificationNumber` will only be part of `transactionSummary` in the
-response of the `GET:/ecomm/v2/payments/{orderId}/details` endpoint.
-
-If paymentType is set to `eComm Express Payment` you will get `shippingDetails`
-and `userDetails` in addition to `transactionLogHistory` and `transactionSummary`.
+**Please note:**
+* The `transactionSummary` will not be part of the response if
+  the user does not react to the Vipps landing page or app-switch.
+* The `bankIdentificationNumber` will only be part of `transactionSummary` in the
+  response of the `GET:/ecomm/v2/payments/{orderId}/details` endpoint.
+* If paymentType is set to `eComm Express Payment` you will get `shippingDetails`
+  and `userDetails` in addition to `transactionLogHistory` and `transactionSummary`.
+* If you initiate the payment with a `scope` to use with the
+  [Userinfo API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api)
+  you will also get an `userDetails` object containing the user's information:
+```
+"userDetails": {
+  "bankIdVerified": 0,
+  "email": "user@example.com",
+  "firstName": "Ada",
+  "lastName": "Lovelace",
+  "mobileNumber": "91234567",
+  "userId": "c06c4afe-d9e1-4c5d-939a-177d752a0944"
+}
+```
 
 ### Polling guidelines
 
