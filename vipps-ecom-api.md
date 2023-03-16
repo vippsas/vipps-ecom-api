@@ -1135,18 +1135,8 @@ This `sub` is a link between the merchant and the user and can be used to retrie
 the user's details from Vipps userinfo:
 [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://vippsas.github.io/vipps-developer-docs/api/userinfo#operation/getUserinfo)
 
-The `sub` is based on the user's national identity number ("fødselsnummer"
-in Norway), and does not change (except in very special cases).
-
-**Please note:** It is recommended to get the user's information directly after
-completing the transaction. There is a *time limit of 168 hours*
-(one week) to retrieve the consented profile data from the `/userinfo` endpoint. This is to
-better support merchants that depend on manual steps/checks in their process of
-fetching the profile data. The merchant will get the information that is in the
-user profile at the time when they actually fetch the information. This means
-that the information might have changed from the time the user completed the
-transaction and the fetching of the profile data.
-
+See:
+[Userinfo API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api).
 
 ## HTTP response codes
 
