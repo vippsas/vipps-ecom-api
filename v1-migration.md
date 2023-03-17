@@ -101,7 +101,7 @@ for eCom v2.
 
 ## Subscription keys
 
-When you have received confirmation that your new sales unit is created, then you can retrieve the API keys on <https://portal.vipps.no>. See [Getting started](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/vipps-getting-started).
+When you have received confirmation that your new sales unit is created, then you can retrieve the API keys on <https://portal.vipps.no>. See [Getting started](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/getting-started).
 
 ## New endpoint
 
