@@ -109,9 +109,13 @@ The
 is a solution that allows the user to automatically share their address information with the
 merchant and select a shipping option.
 
-**Please note:** 
+**Please note:**
 * If you only need the user's information, you should use
+  a normal payment and the
   [Userinfo API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api).
+  In other words: Don't specify `"paymentType": "eComm Express Payment"`, but
+  simply omit `paymentType` and specify the required
+  [`scope`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api#scope).
 * It is not possible to specify
   [`scope`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api#userinfo-call-by-call-guide)
   with Express checkout.
@@ -126,7 +130,7 @@ selecting the wrong shipping method.
 ### New flow
 
 To alleviate problems from the old flow, we have made it mandatory to select the address
-and shipping method. For a while the new flow required specifying 
+and shipping method. For a while the new flow required specifying
 `"useExplicitCheckoutFlow": true`), but this is no longer necessary.
 The only possible flow is the new flow.
 
