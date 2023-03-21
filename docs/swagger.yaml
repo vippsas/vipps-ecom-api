@@ -1122,7 +1122,7 @@ components:
           maxLength: 100
     UserDetails:
       type: object
-      description: "Only used for Vipps Hurtigkasse (express payment) and when using Userinfo."
+      description: Only used for Vipps Hurtigkasse (express payment) and when using [userinfo](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api).
       required:
         - email
         - firstName
@@ -1642,7 +1642,7 @@ components:
           type: string
           description: |
             The requested OIDC scope for use with
-            [userinfo](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api).
+            [userinfo](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api#scope).
             Possible values are:
             - name
             - address
