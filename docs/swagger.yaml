@@ -120,8 +120,8 @@ paths:
       operationId: initiatePaymentV3UsingPOST
       parameters:
         - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/Content-Type"
         - $ref: "#/components/parameters/Ocp-Apim-Subscription-Key"
+        - $ref: "#/components/parameters/Content-Type"
         - $ref: "#/components/parameters/Merchant-Serial-Number"
         - $ref: "#/components/parameters/Vipps-System-Name"
         - $ref: "#/components/parameters/Vipps-System-Version"
@@ -333,7 +333,6 @@ paths:
           schema:
             type: string
         - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/Content-Type"
         - $ref: "#/components/parameters/Ocp-Apim-Subscription-Key"
         - in: header
           name: X-Request-Id
@@ -348,6 +347,7 @@ paths:
           schema:
             type: string
           example: kRk3uEeiogxLu1yGSZRlNgsIv3TuNS
+        - $ref: "#/components/parameters/Content-Type"
         - $ref: "#/components/parameters/Merchant-Serial-Number"
         - $ref: "#/components/parameters/Vipps-System-Name"
         - $ref: "#/components/parameters/Vipps-System-Version"
@@ -385,8 +385,8 @@ paths:
           schema:
             type: string
         - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/Content-Type"
         - $ref: "#/components/parameters/Ocp-Apim-Subscription-Key"
+        - $ref: "#/components/parameters/Content-Type"
         - $ref: "#/components/parameters/Merchant-Serial-Number"
         - $ref: "#/components/parameters/Vipps-System-Name"
         - $ref: "#/components/parameters/Vipps-System-Version"
@@ -433,8 +433,8 @@ paths:
           schema:
             type: string
         - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/Content-Type"
         - $ref: "#/components/parameters/Ocp-Apim-Subscription-Key"
+        - $ref: "#/components/parameters/Content-Type"
         - $ref: "#/components/parameters/Merchant-Serial-Number"
         - $ref: "#/components/parameters/Vipps-System-Name"
         - $ref: "#/components/parameters/Vipps-System-Version"
@@ -484,8 +484,8 @@ paths:
           schema:
             type: string
         - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/Content-Type"
         - $ref: "#/components/parameters/Ocp-Apim-Subscription-Key"
+        - $ref: "#/components/parameters/Content-Type"
         - $ref: "#/components/parameters/Merchant-Serial-Number"
         - $ref: "#/components/parameters/Vipps-System-Name"
         - $ref: "#/components/parameters/Vipps-System-Version"
@@ -527,8 +527,8 @@ paths:
           schema:
             type: string
         - $ref: "#/components/parameters/Authorization"
-        - $ref: "#/components/parameters/Content-Type"
         - $ref: "#/components/parameters/Ocp-Apim-Subscription-Key"
+        - $ref: "#/components/parameters/Content-Type"
         - $ref: "#/components/parameters/Merchant-Serial-Number"
         - $ref: "#/components/parameters/Vipps-System-Name"
         - $ref: "#/components/parameters/Vipps-System-Version"
