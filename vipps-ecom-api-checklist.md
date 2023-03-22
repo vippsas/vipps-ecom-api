@@ -63,9 +63,10 @@ API version: 2.0.
           See the FAQ: [How can I open the fallback URL in a specific (embedded) browser?](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-problems-faq#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser)
     - [ ] The Vipps branding must be according to the
           [Vipps design guidelines](https://github.com/vippsas/vipps-design-guidelines).
-    - [ ] Make sure your customer service, etc has all the tools and information they need
-          available in _your_ system, through the APIs listed in the first item in this checklist,
-          and that they do not need to visit
+    - [ ] Make sure your users (meaning the merchant's employees), customer service, etc.
+          have all the tools and information they need available in _your_ system, through
+          the APIs listed in the first item in this checklist.
+          It should never be necessary to to visit
           [portal.vipps.no](https://portal.vipps.no)
           for normal work.
 
