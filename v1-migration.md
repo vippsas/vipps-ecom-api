@@ -25,9 +25,9 @@ The initiate payment response will contain a unique URL for each order. Either a
 
 Skipping the landing page is reserved for special cases, where displaying it is not possible.
 See the details in the
-[skip landing page section](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/vipps-landing-page#skip-landing-page).
+[skip landing page section](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page#skip-landing-page).
 
-See the [FAQ](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/vipps-landing-page-faq#is-it-possible-to-skip-the-landing-page).
+See the [FAQ](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/vipps-landing-page-faq#is-it-possible-to-skip-the-landing-page).
 
 ## Phone number is optional
 
@@ -101,7 +101,7 @@ for eCom v2.
 
 ## Subscription keys
 
-When you have received confirmation that your new sales unit is created, then you can retrieve the API keys on <https://portal.vipps.no>. See [Getting started](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/getting-started).
+When you have received confirmation that your new sales unit is created, then you can retrieve the API keys on <https://portal.vipps.no>. See [Getting started](https://developer.vippsmobilepay.com/docs/vipps-developers/getting-started).
 
 ## New endpoint
 

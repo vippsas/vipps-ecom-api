@@ -15,7 +15,7 @@ END_METADATA -->
 <!-- START_COMMENT -->
 
 ℹ️ Please use the website:
-[Vipps MobilePay Technical Documentation](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
+[Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/docs/APIs/ecom-api).
 
 <!-- END_COMMENT -->
 
@@ -35,7 +35,7 @@ native apps and other solutions.
 ## Next steps
 
 See
-[Vipps MobilePay getting started guide](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/getting-started)
+[Vipps MobilePay getting started guide](https://developer.vippsmobilepay.com/docs/vipps-developers/getting-started)
 for information about API keys, product activation, how to make API calls, etc.
 
 Review the detailed documentation found here:
@@ -44,4 +44,4 @@ Review the detailed documentation found here:
 * [API guide](vipps-ecom-api.md): Developer guide for Vipps eCom API.
 * [API checklist](vipps-ecom-api-checklist.md): For direct and POS integrations.
 * [API FAQ](vipps-ecom-api-faq.md): Questions and answers.
-* [API reference](https://vippsas.github.io/vipps-developer-docs/api/ecom): eCom API reference specifications.
+* [API reference](https://developer.vippsmobilepay.com/api/ecom): eCom API reference specifications.

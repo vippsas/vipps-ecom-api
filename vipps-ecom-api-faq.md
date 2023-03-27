@@ -18,19 +18,19 @@ for all the details.
 
 For more common questions, see:
 
-* [Common API FAQ](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs)
+* [Common API FAQ](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs)
 
 <!-- START_COMMENT -->
 
 ℹ️ Please use the website:
-[Vipps MobilePay Technical Documentation](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
+[Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/docs/APIs/ecom-api).
 
 <!-- END_COMMENT -->
 
 ## Common problems
 
 See
-[FAQ: Common problems](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-problems-faq)
+[FAQ: Common problems](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-problems-faq)
 for more questions.
 
 ### Why does Vipps Hurtigkasse (express checkout) fail?
@@ -65,17 +65,17 @@ See:
 ## Refunds
 
 The Vipps eCom API supports refunds with
-[`POST:/ecomm/v2/payments/{orderId}/refund`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST).
+[`POST:/ecomm/v2/payments/{orderId}/refund`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST).
 For details on how to offer refunds, please refer to the documentation for your eCommerce solution.
 
 See
-[Vipps FAQ: Refunds](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/refunds-faq)
+[Vipps FAQ: Refunds](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/refunds-faq)
 for answers to more questions.
 
 ## Users and payments
 
 See
-[FAQ: Users and payments](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/users-and-payments-faq)
+[FAQ: Users and payments](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/users-and-payments-faq)
 for more questions.
 
 ### I have initiated an order but I can't find it
@@ -96,7 +96,7 @@ The solution is to check with
 [`GET:/ecomm/v2/payments/{orderId}/details`](vipps-ecom-api.md#get-payment-details).
 
 You can use
-[Postman](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/quick-start-guides)
+[Postman](https://developer.vippsmobilepay.com/docs/vipps-developers/quick-start-guides)
 to manually do API calls, Use the "inspect" functionality to see the complete requests and responses.
 
 See:
@@ -105,19 +105,19 @@ See:
 ## Express checkout
 
 The
-[Express checkout (*Vipps Hurtigkasse*)](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#express-checkout-payments),
+[Express checkout (*Vipps Hurtigkasse*)](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#express-checkout-payments),
 is a solution that allows the user to automatically share their address information with the
 merchant and select a shipping option.
 
 **Please note:**
 * If you only need the user's information, you should use
   a normal payment and the
-  [Userinfo API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api).
+  [Userinfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api).
   In other words: Don't specify `"paymentType": "eComm Express Payment"`, but
   simply omit `paymentType` and specify the required
-  [`scope`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api#scope).
+  [`scope`](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api#scope).
 * It is not possible to specify
-  [`scope`](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api#userinfo-call-by-call-guide)
+  [`scope`](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api#userinfo-call-by-call-guide)
   with Express checkout.
 
 ### Old flow
@@ -145,7 +145,7 @@ Here is the old express checkout flow:
 ## Common errors
 
 See
-[FAQ: Common errors](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/common-errors-faq)
+[FAQ: Common errors](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-errors-faq)
 for more questions.
 
 ### Why do I not get callbacks from Vipps?
@@ -160,7 +160,7 @@ section in the API guide, and see
 
 If you do not receive a callback, it could be because your firewall is blocking
 our requests. See:
-[Vipps request servers](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/developer-resources/servers#vipps-request-servers).
+[Vipps request servers](https://developer.vippsmobilepay.com/docs/vipps-developers/developer-resources/servers#vipps-request-servers).
 
 Please check your own logs for any signs of problems. If your
 `orderId` is `acme-shop-123-order123abc`: Search your logs for `acme-shop-123-order123abc`.
@@ -173,7 +173,7 @@ for problems with the callbacks. The API Dashboard is under "Utvikler".
 
 This error is shown in Vipps if you use *Vipps Hurtigkasse* (*Express checkout*) and respond
 incorrectly to the request for
-[`[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://vippsas.github.io/vipps-developer-docs/api/ecom#tag/Merchant-Endpoints/operation/fetchShippingCostUsingPOST).
+[`[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/fetchShippingCostUsingPOST).
 
 Please verify that your response is correct.
 
@@ -185,7 +185,7 @@ as it gives a faster payment process and a better user experience.
 
 If you use the correct `scope` in the payment initiation, but don't get the
 `sub` in the response for `/details`: Check that you are following the
-[orderId recommendations](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/orderid).
+[orderId recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/orderid).
 Very short orderIds don't work well with our database index, and may cause
 an internal timeout, and we "have to" send the response without the `sub`.
 We cannot enforce longer orderIds due to backwards compatibility.
@@ -193,12 +193,12 @@ We cannot enforce longer orderIds due to backwards compatibility.
 ## Other questions
 
 See
-[FAQ: Other questions](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/faqs/other-faq)
+[FAQ: Other questions](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/other-faq)
 for more questions.
 
 ### What functionality is included in the eCom API, but not the PSP API?
 
-The [Vipps PSP API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/psp-api) provides tokens
+The [Vipps PSP API](https://developer.vippsmobilepay.com/docs/APIs/psp-api) provides tokens
 that a PSP can use to charge a Vipps user's card. To put it simply, it is a
 "card token lookup service". The payment is completed by the PSP, who sends an
 update to Vipps about the success or failure.
