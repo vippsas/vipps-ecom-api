@@ -51,7 +51,7 @@ Vipps is currently designing and developing solutions for direct integration int
 
 If you have any questions about the eCom v2 API, please see the GitHub documentation.
 You can contact Vipps Integration if you have questions. See contact information,
-information about test environments, test apps, etc [here](https://github.com/vippsas/vipps-developers).
+information about test environments, test apps, etc [here](https://developer.vippsmobilepay.com/docs/vipps-developers).
 
 We have also released new APIs that may be interesting, such as:
 

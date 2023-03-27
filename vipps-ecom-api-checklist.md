@@ -62,7 +62,7 @@ API version: 2.0.
           [Recommendations regarding handling redirects](vipps-ecom-api.md#recommendations-regarding-handling-redirects).
           See the FAQ: [How can I open the fallback URL in a specific (embedded) browser?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-problems-faq#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser)
     - [ ] The Vipps branding must be according to the
-          [Vipps design guidelines](https://github.com/vippsas/vipps-design-guidelines).
+          [Vipps design guidelines](https://developer.vippsmobilepay.com/docs/vipps-design-guidelines).
     - [ ] Make sure your users (meaning the merchant's employees), customer service, etc.
           have all the tools and information they need available in _your_ system, through
           the APIs listed in the first item in this checklist.

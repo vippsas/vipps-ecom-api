@@ -112,4 +112,4 @@ The eCom v2 API is available at ```ecomm/v2/payments```:
 
 ## Documentation
 
-The eCom v2 API documentation is available here: <https://github.com/vippsas/vipps-ecom-api>
+The eCom v2 API documentation is available [here](https://developer.vippsmobilepay.com/docs/APIs/ecom-api).
