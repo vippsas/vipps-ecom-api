@@ -14,7 +14,7 @@ END_METADATA -->
 <!-- START_COMMENT -->
 
 ℹ️ Please use the website:
-[Vipps MobilePay Technical Documentation](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api).
+[Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/docs/APIs/ecom-api).
 
 <!-- END_COMMENT -->
 
@@ -33,7 +33,7 @@ The user chooses “Pay with Vipps”, either in the checkout, or on the product
 ## 2. The Vipps landing page (If customer started on desktop)
 
 If the payment was started on a desktop device the user will be sent to
-[the Vipps landing page](https://vippsas.github.io/vipps-developer-docs/docs/vipps-developers/common-topics/vipps-landing-page).
+[the Vipps landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page).
 The user confirms their number, and is prompted to log in to Vipps.
 
 If the payment was started from a mobile device, the app will automatically switch over to Vipps.
