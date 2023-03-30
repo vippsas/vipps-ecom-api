@@ -11,6 +11,9 @@ END_METADATA -->
 
 # API guide
 
+**Important:** We strongly recommend that all new integrations use the new
+[ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
+
 The Vipps eCom API is used by
 [Vipps på nett (*Vipps Online*)](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/),
 [Vipps Checkout](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/vipps-checkout/),
