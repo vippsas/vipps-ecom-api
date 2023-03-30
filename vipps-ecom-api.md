@@ -629,11 +629,12 @@ These are the statuses provided by Vipps in the callbacks by
 |                  | `REJECTED`       | User did not act on the payment (timeout, etc.). |
 
 For a full history of a payment, use
-[`[callbackPrefix]/v2/payments/{orderId}/details`]( https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET). See [Get payment details](#get-payment-details) for more information.
+[`[callbackPrefix]/v2/payments/{orderId}/details`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET).
+See [Get payment details](#get-payment-details) for more information.
 
 ## Timeouts
 
-See: [Timeouts](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/timeouts) in Common topics.
+See: [Common topics: Timeouts](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/timeouts).
 
 ## Express checkout API endpoints required on the merchant side
 
