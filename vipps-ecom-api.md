@@ -525,12 +525,13 @@ Example: `"eComm Express Payment"` callback:
     "address": {
       "addressLine1": "Dronning Eufemias gate 42",
       "addressLine2": "Att: Rune Garborg",
-      "city": "Oslo",
-      "country": "Norway",
-      "postCode": "0191"
+      "city": "OSLO",
+      "country": "NO",
+      "zipCode": "0191" // Postcode (apologies for not using postCode as elsewhere)
     },
     "shippingCost": 99,
-    "shippingMethod": "By cannon"
+    "shippingMethod": "By cannon",
+    "shippingMethodId": "53DBB6BA-89DB-4997-B444-5E9F1681E3D3"
   },
   "transactionInfo": {
     "amount": 20000,
@@ -539,13 +540,10 @@ Example: `"eComm Express Payment"` callback:
     "transactionId": "5001420062"
   },
   "userDetails": {
-    "bankIdVerified": "Y",
-    "dateOfBirth": "12-3-1988",
-    "email": "user@example.com",
     "firstName": "Ada",
     "lastName": "Lovelace",
+    "email": "user@example.com",
     "mobileNumber": "12345678",
-    "ssn": "12345678901",
     "userId": "1234567"
   }
 }
