@@ -49,10 +49,10 @@ the shipping methods as part of the payment initiation. See:
 
 **Please note:** If you are not shipping any products you should use
 [Userinfo](vipps-ecom-api.md#userinfo)
-instead of Vipps Hurtigkasse, so you avoid asking the customer in a pub
+instead of Vipps Hurtigkasse, to avoid asking the customer in a pub
 for the shipping method for the drinks, etc.
 
-We strongly recommend to check the full history of every Vipps payment with
+We strongly recommend checking the full history of every Vipps payment with
 the API: You can see if a payment has been actively rejected, if the user has
 not done anything, etc.
 See: [Get payment details](vipps-ecom-api.md#get-payment-details).

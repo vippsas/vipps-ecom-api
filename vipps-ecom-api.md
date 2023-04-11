@@ -1099,6 +1099,7 @@ in the Common topics.
 ## Userinfo
 
 Vipps offers the possibility for merchants to ask for the user's profile information as part of the payment flow.
+This is also called "Profile Sharing".
 
 To enable the possibility to fetch profile information for a user, the merchant can add a `scope`
 parameter to the initiate call:
