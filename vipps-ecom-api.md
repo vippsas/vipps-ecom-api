@@ -167,8 +167,8 @@ enters the shipping address and pays.
 
 See:
 
-* [How it works](./how-it-works/vipps-ecom-api-howitworks)
-* [How it works in the store](./how-it-works/vipps-in-store-howitworks)
+* [How it works](./how-it-works/vipps-ecom-api-howitworks.md)
+* [How it works in the store](./how-it-works/vipps-in-store-howitworks.md)
 
 ### Express checkout payments
 
