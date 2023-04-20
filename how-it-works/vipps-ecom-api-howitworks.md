@@ -1,4 +1,3 @@
-<!-- START_METADATA
 ---
 title: How eCom works online
 sidebar_label: How it works online
@@ -7,16 +6,11 @@ description: How eCom works online.
 pagination_next: null
 pagination_prev: null
 ---
-END_METADATA -->
+
 
 # How eCom works online
 
-<!-- START_COMMENT -->
 
-ℹ️ Please use the website:
-[Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/docs/APIs/ecom-api).
-
-<!-- END_COMMENT -->
 
 This is how payment with the eCom API works.
 

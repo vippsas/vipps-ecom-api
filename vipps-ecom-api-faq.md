@@ -1,4 +1,3 @@
-<!-- START_METADATA
 ---
 title: eCom API Frequently Asked Questions
 sidebar_label: FAQ
@@ -7,7 +6,7 @@ description: Frequently asked questions for the eCom API.
 pagination_next: null
 pagination_prev: null
 ---
-END_METADATA -->
+
 
 # Frequently asked questions
 
@@ -20,12 +19,7 @@ For more common questions, see:
 
 * [Common API FAQ](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs)
 
-<!-- START_COMMENT -->
 
-ℹ️ Please use the website:
-[Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/docs/APIs/ecom-api).
-
-<!-- END_COMMENT -->
 
 ## Common problems
 

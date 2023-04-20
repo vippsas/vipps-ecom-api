@@ -1,4 +1,3 @@
-<!-- START_METADATA
 ---
 title: How eCom works in the store
 sidebar_label: How it works in the store
@@ -7,16 +6,11 @@ description: How eCom works in the store.
 pagination_next: null
 pagination_prev: null
 ---
-END_METADATA -->
+
 
 # How eCom works in the store
 
-<!-- START_COMMENT -->
 
-ℹ️ Please use the website:
-[Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/docs/APIs/ecom-api).
-
-<!-- END_COMMENT -->
 
 Stores can allow customers to pay easily and quickly from their own phone, without the need to touch the terminal.
 This page shows an example of how you can offer contactless payment to your customers by integrating Vipps in your POS system.
