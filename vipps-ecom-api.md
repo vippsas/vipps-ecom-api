@@ -1060,6 +1060,7 @@ always contains *the entire history* of payments for the order, not just the cur
 ```
 
 **Please note:**
+
 * The `transactionSummary` will not be part of the response if
   the user does not react to the Vipps landing page or app-switch.
 * The `bankIdentificationNumber` will only be part of `transactionSummary` in the
@@ -1069,7 +1070,8 @@ always contains *the entire history* of payments for the order, not just the cur
 * If you initiate the payment with a `scope` to use with the
   [Userinfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api)
   you will also get an `userDetails` object containing the user's information:
-```
+
+```json
 "userDetails": {
   "bankIdVerified": 0,
   "email": "user@example.com",
