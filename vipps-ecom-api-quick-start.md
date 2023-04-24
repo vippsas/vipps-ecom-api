@@ -29,7 +29,7 @@ and
 [Import](https://learning.postman.com/docs/getting-started/importing-and-exporting-data/)
 the Postman files:
 
-* [eCom API Postman collection](tools/vipps-ecom-api-postman-collection.json)
+* [eCom API Postman collection](/tools/vipps-ecom-api-postman-collection.json)
 * [API Global Postman environment](https://raw.githubusercontent.com/vippsas/vipps-developers/master/tools/vipps-api-global-postman-environment.json)
 
 [Specify the variables](https://learning.postman.com/docs/sending-requests/managing-environments/#editing-environment-variables)
