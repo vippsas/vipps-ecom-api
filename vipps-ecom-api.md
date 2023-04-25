@@ -261,7 +261,7 @@ If Vipps is installed, Vipps will automatically be opened.
    Facebook or Instagram, it is not possible for Vipps to open the
    `fallBack` URL in the embedded browser. The phone OS will always open URLs
    in the default browser. See:
-   [Recommendations regarding handling redirects](#recommendations-regarding-handling-redirects).
+   [Common topics: Recommendations regarding handling redirects](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/redirects).
 3. Because of the above, a successful payment *must not* rely on session cookies
    in the browser.
 4. Vipps cannot guarantee a particular sequence of callback and fallback,
