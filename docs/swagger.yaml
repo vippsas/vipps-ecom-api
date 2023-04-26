@@ -629,7 +629,7 @@ components:
       schema:
         type: string
         maxLength: 30
-      example: woocommerce
+      example: WooCommerce
     Vipps-System-Version:
       name: Vipps-System-Version
       in: header
@@ -646,7 +646,7 @@ components:
       schema:
         type: string
         maxLength: 30
-      example: "vipps-woocommerce"
+      example: "woocommerce-payment"
     Vipps-System-Plugin-Version:
       name: Vipps-System-Plugin-Version
       in: header
