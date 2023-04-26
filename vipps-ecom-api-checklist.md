@@ -60,7 +60,7 @@ Integrate _all_ the [API endpoints](https://developer.vippsmobilepay.com/api/eco
 3. The merchant receives an email from Vipps saying that they can log in with
    BankID on
    [portal.vipps.no](https://portal.vipps.no)
-   and retrieve API keys.
+   and retrieve [API keys](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/api-keys/#getting-the-api-keys).
 4. The merchant completes all checklist items above.
    Please double-check to avoid mistakes.
 5. The merchant verifies the integration in the test environment by checking that
