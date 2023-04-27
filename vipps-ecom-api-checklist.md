@@ -7,7 +7,6 @@ pagination_next: null
 pagination_prev: null
 ---
 
-
 # Checklist
 
 API version: 2.0.
@@ -15,7 +14,6 @@ API version: 2.0.
 ## Checklist for full integration
 
 Integrate _all_ the [API endpoints](https://developer.vippsmobilepay.com/api/ecom/). For examples of requests and responses, see the [Postman collection](/tools/vipps-ecom-api-postman-collection.json) and [environment](https://github.com/vippsas/vipps-developers/blob/master/tools/vipps-api-global-postman-environment.json).
-
 
 | Endpoint | Comment |
 |-----|-----------|
@@ -28,7 +26,6 @@ Integrate _all_ the [API endpoints](https://developer.vippsmobilepay.com/api/eco
 |    Shipping Details (For Vipps Hurtigkasse /express checkout only) |[`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/fetchShippingCostUsingPOST)|
 |    Remove consent (For Vipps Hurtigkasse /express checkout only) | [`DELETE:[consentRemovalPrefix]/v2/consents/{userId}`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/removeUserConsentUsingDELETE) |
 
-
 ## Quality assurance
 
 | Action | Comment |
@@ -38,15 +35,11 @@ Integrate _all_ the [API endpoints](https://developer.vippsmobilepay.com/api/eco
 |     Include Vipps HTTP headers | Send the [Vipps HTTP headers](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/http-headers) in all API requests for better tracking and troubleshooting (mandatory for partners and platforms, who must send these headers as part of the checklist approval). |
 |     Add information to the payment history| We recommend using the [Order Management API](https://developer.vippsmobilepay.com/docs/APIs/order-management-api) to add receipts and/or images to the payment history. This is a great benefit for the end user experience. It is also mandatory for merchants using ["Vipps Assisted Content Monitoring"](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api#vipps-assisted-content-monitoring). |
 
-
-
-
-
 ## Avoid integration pitfalls
 
 | Action    | Comment   |
 |-----|-----------|
-|     Send useful `OrderId` | Follow our [OrderId recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/orderid). |
+|     Send useful `OrderId` | Follow our [`OrderId` recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/orderid). |
 |     Poll for payment details | The Merchant _must not_ rely on `fallback` or `callback` alone, and must poll [`GET:/ecomm/v2/payments/{orderId}/details`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET) as documented (this is part of the first item in this checklist, but it's still a common error). Follow our [polling recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/polling-guidelines). |
 |     Handle redirects| The merchant must handle that the `fallback` URL is opened in the default browser on the phone, and not in a specific browser, in a specific tab, in an embedded browser, requiring a session token, etc. Follow our [recommendations regarding handling redirects](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/redirects/). See the FAQ: [How can I open the fallback URL in a specific (embedded) browser?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-problems-faq#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser)|
 |     Follow design guidelines| The Vipps branding must be according to the [Vipps design guidelines](https://developer.vippsmobilepay.com/docs/vipps-design-guidelines).|
@@ -78,16 +71,16 @@ Integrate _all_ the [API endpoints](https://developer.vippsmobilepay.com/api/eco
     - A complete order ending in `REFUND`
       ([`/refund`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST)
       request).
-    - For *reserve capture*: A complete order ending in `VOID`
+    - For _reserve capture_: A complete order ending in `VOID`
       ([`/cancel`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/cancelPaymentRequestUsingPUT)
       request after reserve).
-    - We recommend checking this using both the API itself and the API Dashboard, available under *Utvikler* on
+    - We recommend checking this using both the API itself and the API Dashboard, available under _Utvikler_ on
       [portal.vipps.no](https://portal.vipps.no).  
     - **Please note:** Vipps does not do any kind of activation or make any changes based on this checklist.
       The API keys for the production environment are made available on
       [portal.vipps.no](https://portal.vipps.no)
       as soon as the customer control (see step 2) is completed, independently of this checklist.
-7. The Merchant goes live 🎉
+7. The merchant goes live 🎉
 
 ## Flow to go live for direct integrations for Vipps partners
 
