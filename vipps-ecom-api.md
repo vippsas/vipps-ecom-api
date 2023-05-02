@@ -166,7 +166,7 @@ See:
 
 ### Express checkout payments
 
-The Express checkout (Vipps Hurtigkasse) is a solution for letting the user
+The Express checkout (*Vipps Hurtigkasse*) is a solution for letting the user
 automatically share the address information with merchant and choose a shipping option.
 
 Express checkout is designed for shipping products, with a delivery address and a
