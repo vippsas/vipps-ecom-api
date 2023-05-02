@@ -100,10 +100,18 @@ See:
 
 The
 [Express checkout (*Vipps Hurtigkasse*)](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#express-checkout-payments),
-is a solution that allows the user to automatically share their address information with the
+allows the user to automatically share their address information with the
 merchant and select a shipping option.
 
+It is mandatory for the user to select the address and shipping method.
+This ensures that the user gets the item delivered to the right place in the right way.
+
+The following images illustrate the express checkout flow:
+
+![Express checkout flow](images/vipps-ecom-confirm-express_consent_shipping_options.png)
+
 **Please note:**
+
 * If you only need the user's information, you should use
   a normal payment and the
   [Userinfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api).
@@ -113,28 +121,6 @@ merchant and select a shipping option.
 * It is not possible to specify
   [`scope`](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api#userinfo-call-by-call-guide)
   with Express checkout.
-
-### Old flow
-
-In the old flow it was easy for a user to overlook verifying the address and shipping method.
-Both were displayed on the payment confirmation page (see screens below) and no active selection was required.
-This resulted in some users inadvertently confirming the wrong address and possibly also
-selecting the wrong shipping method.
-
-### New flow
-
-To alleviate problems from the old flow, we have made it mandatory to select the address
-and shipping method. For a while the new flow required specifying
-`"useExplicitCheckoutFlow": true`), but this is no longer necessary.
-The only possible flow is the new flow.
-
-This ensures that the user gets the item delivered to the right place in the right way.
-
-The following images illustrate the new express checkout flow:
-![New explicit checkout flow](images/vipps-ecom-confirm-express.png)
-
-Here is the old express checkout flow:
-![The old checkout flow](images/vipps-ecom-confirm-express-old.png)
 
 ## Common errors
 
