@@ -10,8 +10,6 @@ pagination_prev: null
 
 # How eCom works online
 
-
-
 This is how payment with the eCom API works.
 
 ## The Vipps eCommerce payment process
@@ -36,20 +34,11 @@ If the payment was started from a mobile device, the app will automatically swit
 
 ## 3. Confirm payment in Vipps
 
-The user receives a push notification on their phone. They log in to Vipps, and confirm the payment. The payment is reserved and the user gets a receipt of the successful payment
+The user receives a push notification on their phone. They log in to Vipps and confirm the payment. The payment is reserved, and the user gets a receipt of the successful payment
 
-For Vipps Hurtigkasse (express checkout) the user also have to choose a
-shipping method.
+For Express checkout (*Vipps Hurtigkasse*), the user must give access and then choose a shipping method.
 
-![Confirm payment](../images/vipps-ecom-confirm.png)
-
-For Vipps Hurtigkasse (express checkout):
-
-The new express checkout flow (`"useExplicitCheckoutFlow": true`):
-![New explicit checkout flow](../images/vipps-ecom-confirm-express.png)
-
-The old express checkout flow (`"useExplicitCheckoutFlow": false`):
-![The old checkout flow](../images/vipps-ecom-confirm-express-old.png)
+![Express checkout flow](../images/vipps-ecom-confirm-express_consent_shipping_options.png)
 
 
 ## 4. Order Confirmation
