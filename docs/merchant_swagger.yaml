@@ -8,7 +8,7 @@ info:
 tags:
   - name: Merchant Endpoints
     description: >-
-      These endpoints must be implemented by the merchant, and are called by Vipps.
+      These endpoints are called by Vipps to communicate with the merchant. These endpoints must be implemented by the merchant. 
 paths:
   '[consentRemovalPrefix]/v2/consents/{userId}':
     delete:
