@@ -1,0 +1,27 @@
+    delete:
+      tags:
+        - Merchant Endpoints
+      summary: Remove User Consent (for Vipps Hurtigkasse (express checkout))
+      description: >-
+        This API endpoint on the merchant side allows Vipps to send consent-removal
+        requests to the merchant. When receiving requests, the merchant
+        is obliged to remove the user details permanently, as per the GDPR guidelines.
+        Vipps will add `/v2/consents/{userId}` to the end of this URL.
+        URLs passed to Vipps must validate, see the
+        [API guide](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api/#url-validation).
+        We do not send requests to all ports, so use common ports such as: 80, 443, 8080.
+        The URL must use HTTPS.
+      operationId: removeUserConsentUsingDELETE
+      parameters:
+        - name: userId
+          in: path
+          description: >-
+            URL-encoded `userId` provided when requesting user information from Vipps.
+            Received by callback or with `/detail` request.
+          required: true
+          schema:
+            type: string
+          example: 'uiJskNQ6qNN1iwN891uuob=='
+      responses:
+        '200':
+          description: Remove User Consent (for Vipps Hurtigkasse (express checkout))
