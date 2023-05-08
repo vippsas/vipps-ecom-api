@@ -97,6 +97,44 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/FetchShippingCostResponse'
+  '[callbackPrefix]/v2/payments/{orderId}':
+    post:
+      tags:
+        - Merchant Endpoints
+      summary: 'Callback : Transaction Update'
+      description: >-
+        This API call lets Vipps send the transaction details.
+        For regular eCom payments the order and transaction details will be shared.
+        For Vipps Hurtigkasse (express checkout) payments it will provides user details and
+        shipping details addition to the order and transaction details.
+        Vipps will add `/v2/payments/{orderId}` to the end of this URL.
+        URLs passed to Vipps must validate, see the API guide.
+        We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
+        The URL must use HTTPS.
+      operationId: transactionUpdateCallbackForRegularPaymentUsingPOST
+      parameters:
+        - name: orderId
+          in: path
+          description: orderId
+          required: true
+          schema:
+            type: string
+          example: acme-shop-123-order123abc
+          pattern: '^[a-zA-Z0-9-]{1,50}$'
+        - $ref: "#/components/parameters/Authorization"
+      requestBody:
+        content:
+          application/json;charset=UTF-8:
+            schema:
+              $ref: '#/components/schemas/TransactionUpdateCallbackOneOf'
+        description: >-
+          The body of the request made by Vipps. It will differ if the request
+          is a regular or express payment.
+        required: true
+      responses:
+        '200':
+          description: All ok
+
   '/ecomm/v2/payments':
     post:
       tags:
@@ -272,43 +310,6 @@ paths:
                 $ref: '#/components/schemas/PaymentInitiationResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-  '[callbackPrefix]/v2/payments/{orderId}':
-    post:
-      tags:
-        - Merchant Endpoints
-      summary: 'Callback : Transaction Update'
-      description: >-
-        This API call lets Vipps send the transaction details.
-        For regular eCom payments the order and transaction details will be shared.
-        For Vipps Hurtigkasse (express checkout) payments it will provides user details and
-        shipping details addition to the order and transaction details.
-        Vipps will add `/v2/payments/{orderId}` to the end of this URL.
-        URLs passed to Vipps must validate, see the API guide.
-        We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
-        The URL must use HTTPS.
-      operationId: transactionUpdateCallbackForRegularPaymentUsingPOST
-      parameters:
-        - name: orderId
-          in: path
-          description: orderId
-          required: true
-          schema:
-            type: string
-          example: acme-shop-123-order123abc
-          pattern: '^[a-zA-Z0-9-]{1,50}$'
-        - $ref: "#/components/parameters/Authorization"
-      requestBody:
-        content:
-          application/json;charset=UTF-8:
-            schema:
-              $ref: '#/components/schemas/TransactionUpdateCallbackOneOf'
-        description: >-
-          The body of the request made by Vipps. It will differ if the request
-          is a regular or express payment.
-        required: true
-      responses:
-        '200':
-          description: All ok
   '/ecomm/v2/payments/{orderId}/capture':
     post:
       tags:
