@@ -97,7 +97,7 @@ paths:
             application/json;charset=UTF-8:
               schema:
                 $ref: '#/components/schemas/FetchShippingCostResponse'
-  /ecomm/v2/payments:
+  '/ecomm/v2/payments':
     post:
       tags:
         - Vipps eCom API
