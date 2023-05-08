@@ -9,94 +9,12 @@ tags:
     description: >-
       Functionality provided by the Vipps eCommerce API.
       For details, see the [API Guide](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api).
-  - name: Merchant Endpoints
-    description: >-
-      These endpoints must be implemented by the merchant, and are called by Vipps.
 servers:
   - url: https://api.vipps.no
     description: Production environment (uses the production API keys, the official app and live data)
   - url: https://apitest.vipps.no
     description: Test environment (uses the test API keys, the test app and test data)
 paths:
-  '[consentRemovalPrefix]/v2/consents/{userId}':
-    delete:
-      tags:
-        - Merchant Endpoints
-      summary: Remove User Consent (for Vipps Hurtigkasse (express checkout))
-      description: >-
-        This API endpoint on the merchant side lets Vipps send consent
-        removal requests to the merchant. When receiving requests the merchant
-        is obliged to remove the user details permanently, as per the GDPR
-        guidelines. Vipps will add `/v2/consents/{userId}` to the end of this URL.
-        URLs passed to Vipps must validate, see the API guide.
-        We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
-        The URL must use HTTPS.
-      operationId: removeUserConsentUsingDELETE
-      parameters:
-        - name: userId
-          in: path
-          description: >-
-            URL-encoded `userId` provided when requesting user information from Vipps.
-            Received by callback or with `/detail` request.
-          required: true
-          schema:
-            type: string
-          example: 'uiJskNQ6qNN1iwN891uuob=='
-      responses:
-        '200':
-          description: Remove User Consent (for Vipps Hurtigkasse (express checkout))
-  '[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails':
-    post:
-      tags:
-        - Merchant Endpoints
-      summary: Fetch Shipping Cost & Method (for Vipps Hurtigkasse (express checkout))
-      description: >-
-        This API endpoint on the merchant side lets Vipps get the shipping
-        cost and method based on the provided address and product details. The
-        primary use of this service is Vipps Hurtigkasse (express checkout)
-        where Vipps needs to present shipping cost and method to the Vipps user.
-        Vipps will add `/v2/payments/{orderId}/shippingDetails` to the end of
-        this URL.
-        Vipps has a *10 second timeout* for these requests, to ensure a good
-        user experience, and thus requires a quick reply from the merchant's
-        server for successful payments.
-        URLs passed to Vipps must validate, see the API guide.
-        We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
-        The URL must use HTTPS.
-      operationId: fetchShippingCostUsingPOST
-      parameters:
-        - name: orderId
-          in: path
-          description: orderId
-          required: true
-          schema:
-            type: string
-          example: acme-shop-123-order123abc
-          pattern: '^[a-zA-Z0-9-]{1,50}$'
-        - name: Authorization
-          in: header
-          description: >-
-            The token provided by the merchant in the initiate payment request
-            as `authToken` (an optional parameter).
-            Vipps uses this token when making calls to the merchant's servers.
-            Used so that the merchant may authenticate the request from Vipps.
-          schema:
-            type: string
-          example: ae0cb90d91b4a84a
-      requestBody:
-        content:
-          application/json;charset=UTF-8:
-            schema:
-              $ref: '#/components/schemas/ShippingCostAndMethod'
-        description: ShippingCostAndMethod
-        required: true
-      responses:
-        '200':
-          description: Fetch shipping cost and method.
-          content:
-            application/json;charset=UTF-8:
-              schema:
-                $ref: '#/components/schemas/FetchShippingCostResponse'
   /ecomm/v2/payments:
     post:
       tags:
@@ -272,43 +190,7 @@ paths:
                 $ref: '#/components/schemas/PaymentInitiationResponse'
         default:
           $ref: '#/components/responses/ErrorResponse'
-  '[callbackPrefix]/v2/payments/{orderId}':
-    post:
-      tags:
-        - Merchant Endpoints
-      summary: 'Callback : Transaction Update'
-      description: >-
-        This API call lets Vipps send the transaction details.
-        For regular eCom payments the order and transaction details will be shared.
-        For Vipps Hurtigkasse (express checkout) payments it will provides user details and
-        shipping details addition to the order and transaction details.
-        Vipps will add `/v2/payments/{orderId}` to the end of this URL.
-        URLs passed to Vipps must validate, see the API guide.
-        We don't send requests to all ports, so to be safe use common ports such as: 80, 443, 8080.
-        The URL must use HTTPS.
-      operationId: transactionUpdateCallbackForRegularPaymentUsingPOST
-      parameters:
-        - name: orderId
-          in: path
-          description: orderId
-          required: true
-          schema:
-            type: string
-          example: acme-shop-123-order123abc
-          pattern: '^[a-zA-Z0-9-]{1,50}$'
-        - $ref: "#/components/parameters/Authorization"
-      requestBody:
-        content:
-          application/json;charset=UTF-8:
-            schema:
-              $ref: '#/components/schemas/TransactionUpdateCallbackOneOf'
-        description: >-
-          The body of the request made by Vipps. It will differ if the request
-          is a regular or express payment.
-        required: true
-      responses:
-        '200':
-          description: All ok
+
   '/ecomm/v2/payments/{orderId}/capture':
     post:
       tags:
