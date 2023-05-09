@@ -18,12 +18,12 @@ servers:
   - url: https://apitest.vipps.no
     description: Test environment (uses the test API keys, the test app and test data)
 paths:
-  '[consentRemovalPrefix]/v2/consents/{userId}':
-    $ref: consentRemovalPrefix.yaml
-  '[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails':
-    $ref: shippingDetailsPrefix.yaml
-  '[callbackPrefix]/v2/payments/{orderId}':
-    $ref: callbackPrefix.yaml
+  '/[consentRemovalPrefix]/v2/consents/{userId}':
+    $ref: 'merchant_swagger.yaml#/paths/consentRemovalPrefix'
+  '/[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails':
+    $ref: 'merchant_swagger.yaml#/paths/shippingDetailsPrefix'
+  '/[callbackPrefix]/v2/payments/{orderId}':
+    $ref: 'merchant_swagger.yaml#/paths/callbackPrefix'
 
   '/ecomm/v2/payments':
     post:
