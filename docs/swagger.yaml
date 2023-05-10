@@ -19,11 +19,11 @@ servers:
     description: Test environment (uses the test API keys, the test app and test data)
 paths:
   '/consentRemovalPrefix/v2/consents/{userId}':
-    $ref: 'merchant_swagger.yaml#/paths/consentRemovalPrefix'
+    $ref: 'ms_import.yaml#/paths/consentRemovalPrefix'
   '/shippingDetailsPrefix/v2/payments/{orderId}/shippingDetails':
-    $ref: 'merchant_swagger.yaml#/paths/shippingDetailsPrefix'
+    $ref: 'ms_import.yaml#/paths/shippingDetailsPrefix'
   '/callbackPrefix/v2/payments/{orderId}':
-    $ref: 'merchant_swagger.yaml#/paths/callbackPrefix'
+    $ref: 'ms_import.yaml#/paths/callbackPrefix'
 
   '/ecomm/v2/payments':
     post:
