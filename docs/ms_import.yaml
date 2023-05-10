@@ -1,0 +1,541 @@
+# This file is imported into swagger.yaml
+openapi: '3.0.0'
+info:
+  description: |
+    These are the merchant endpoints referenced by the
+    [eCom API](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api).
+  version: 2.0.3
+  title: Merchant Endpoints
+tags:
+  - name: Merchant Endpoints
+    description: >-
+      These endpoints are called by Vipps to communicate with the merchant. These endpoints must be implemented by the merchant. 
+paths:
+  '/consentRemovalPrefix/v2/consents/{userId}':
+    delete:
+      tags:
+        - Merchant Endpoints
+      summary: Remove User Consent (for Vipps Hurtigkasse (express checkout))
+      description: >-
+        This API endpoint on the merchant side allows Vipps to send consent-removal
+        requests to the merchant. When receiving requests, the merchant
+        is obliged to remove the user details permanently, as per the GDPR guidelines.
+        Request syntax: 'DELETE:consentRemovalPrefix/v2/consents/{userId}'.
+        Vipps will add `/v2/consents/{userId}` to the end of the `consentRemovalPrefix` URL.
+        URLs passed to Vipps must validate, see the
+        [API guide](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api/#url-validation).
+        We do not send requests to all ports, so use common ports such as: 80, 443, 8080.
+        The URL must use HTTPS.
+      operationId: removeUserConsentUsingDELETE
+      parameters:
+        - name: userId
+          in: path
+          description: >-
+            URL-encoded `userId` provided when requesting user information from Vipps.
+            Received by callback or with `/detail` request.
+          required: true
+          schema:
+            type: string
+          example: 'uiJskNQ6qNN1iwN891uuob=='
+      responses:
+        '200':
+          description: Remove User Consent (for Vipps Hurtigkasse (express checkout))
+  '/shippingDetailsPrefix/v2/payments/{orderId}/shippingDetails':
+    post:
+      tags:
+        - Merchant Endpoints
+      summary: Fetch Shipping Cost & Method (for Vipps Hurtigkasse (express checkout))
+      description: >-
+        This API endpoint on the merchant side allows Vipps to get the shipping
+        cost and method, based on the provided address and product details.
+        The primary use of this service is to support Vipps Hurtigkasse (express checkout),
+        where Vipps must present the shipping cost and method to the user.
+        There is a *10 second timeout* for these requests, to ensure a good
+        user experience, and thus requires a quick reply from the merchant's
+        server for successful payments.
+        Request syntax: 'POST:shippingDetailsPrefix/v2/payments/{orderId}/shippingDetails'.
+        Vipps will add `/v2/payments/{orderId}/shippingDetails` to the end of the `shippingDetailsPrefix` URL.
+        URLs passed to Vipps must be validated, see the
+        [API guide](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api/#url-validation).
+        We do not send requests to all ports, so use common ports such as: 80, 443, 8080.
+        The URL must use HTTPS.
+      operationId: fetchShippingCostUsingPOST
+      parameters:
+        - name: orderId
+          in: path
+          description: orderId
+          required: true
+          schema:
+            type: string
+          example: acme-shop-123-order123abc
+          pattern: '^[a-zA-Z0-9-]{1,50}$'
+        - name: Authorization
+          in: header
+          description: >-
+            The token provided by the merchant in the initiate payment request
+            as `authToken` (an optional parameter).
+            Vipps uses this token when making calls to the merchant's servers.
+            Used so that the merchant may authenticate the request from Vipps.
+          schema:
+            type: string
+          example: ae0cb90d91b4a84a
+      requestBody:
+        content:
+          application/json;charset=UTF-8:
+            schema:
+              $ref: '#/components/schemas/ShippingCostAndMethod'
+        description: ShippingCostAndMethod
+        required: true
+      responses:
+        '200':
+          description: Fetch shipping cost and method.
+          content:
+            application/json;charset=UTF-8:
+              schema:
+                $ref: '#/components/schemas/FetchShippingCostResponse'
+  '/callbackPrefix/v2/payments/{orderId}':
+    post:
+      tags:
+        - Merchant Endpoints
+      summary: 'Callback : Transaction Update'
+      description: >-
+        This API call allows Vipps to send the transaction details.
+        For regular eCom payments, the order and transaction details will be shared.
+        For Vipps Hurtigkasse (express checkout) payments, it will provide user and shipping details,
+        in addition to the order and transaction details.
+        Request syntax: 'POST:callbackPrefix/v2/payments/{orderId}'.
+        Vipps will add `/v2/payments/{orderId}` to the end of the `callbackPrefix` URL.
+        URLs passed to Vipps must be validated, see the
+        [API guide](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api/#url-validation).
+        We do not send requests to all ports, so use common ports such as: 80, 443, 8080.
+        The URL must use HTTPS.
+      operationId: transactionUpdateCallbackForRegularPaymentUsingPOST
+      parameters:
+        - name: orderId
+          in: path
+          description: orderId
+          required: true
+          schema:
+            type: string
+          example: acme-shop-123-order123abc
+          pattern: '^[a-zA-Z0-9-]{1,50}$'
+        - $ref: "#/components/parameters/Authorization"
+      requestBody:
+        content:
+          application/json;charset=UTF-8:
+            schema:
+              $ref: '#/components/schemas/TransactionUpdateCallbackOneOf'
+        description: >-
+          The body of the request made by Vipps. It will differ if the request
+          is a regular or express payment.
+        required: true
+      responses:
+        '200':
+          description: All ok
+
+components:
+  parameters:
+    Authorization:
+      in: header
+      name: Authorization
+      description: >-
+        The access token is a base64-encoded string that is required for all API calls.
+        It is a JWT (JSON Web Token).
+        The access token is fetched from the
+            [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-developer-docs/api/access-token#tag/Authorization-Service/operation/fetchAuthorizationTokenUsingPost)
+            endpoint.
+        It is valid for 1 hour in the test environment and 24 hours in the production environment.
+      required: true
+      schema:
+        type: string
+      example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+
+  schemas:
+    AddressExpress:
+      type: object
+      required:
+        - addressLine1
+        - city
+        - country
+        - postCode
+      properties:
+        addressLine1:
+          type: string
+          description: Address Line 1
+          example: Robert Levins gate 5
+        addressLine2:
+          type: string
+          description: Address Line 2
+          example: 'Att: Rune Garborg'
+        city:
+          type: string
+          description: City
+          example: Oslo
+        country:
+          type: string
+          description: 'Country'
+          example: 'Norway'
+          enum:
+            - Norway
+        zipCode:
+          type: string
+          description: "Postcode (apologies for not using `postCode` as elsewhere)"
+          example: "0154"
+    UserDetails:
+      type: object
+      description: Only used for Vipps Hurtigkasse (express payment) and when using [userinfo](https://vippsas.github.io/vipps-developer-docs/docs/APIs/userinfo-api).
+      required:
+        - email
+        - firstName
+        - lastName
+        - mobileNumber
+        - userId
+      properties:
+        bankIdVerified:
+          type: string
+          description: Optional Y/N string indicating if the user in bankId verified, must be requested during onboarding.
+          example: 'Y'
+          enum:
+            - Y
+            - N
+        email:
+          type: string
+          description: Email address
+          example: 'user@example.com'
+        firstName:
+          type: string
+          description: First name
+          example: 'Ada'
+        lastName:
+          type: string
+          description: Last name
+          example: 'Lovelace'
+        mobileNumber:
+          type: string
+          description: The phone number, 8 digits (not MSISDN format as Userinfo).
+          example: '91234567'
+          minLength: 8
+          maxLength: 8
+          pattern: '^\d{8}$'
+        userId:
+          type: string
+          example: 'uiJskNQ6qNN1iwN891uuob=='
+          maxLength: 50
+          description: Identifies a user in Vipps. Merchant is required to store this field for future references.
+          pattern: '^[\d\w\/=+]+$'
+    CallbackTransactionInfoRegular:
+      type: object
+      required:
+        - amount
+        - status
+        - timeStamp
+      properties:
+        amount:
+          type: integer
+          description: >-
+            Ordered amount.
+            Amounts are specified in minor units.
+            For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.
+            Minimum 1 NOK.
+          pattern: '^\d{3,}$'
+          example: 49900
+          minimum: 100
+        status:
+          type: string
+          enum:
+            - RESERVED
+            - SALE
+            - CANCELLED
+            - REJECTED
+          description: >-
+            Status which gives the current state of the payment within Vipps.
+            See the [API guide](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#callbacks)
+            for more information.
+          example: RESERVED
+        timeStamp:
+          type: string
+          description: >-
+            Timestamp in ISO-8601 representing when the operation was performed.
+          example: '2018-12-12T11:18:38.246Z'
+        transactionId:
+          type: string
+          description: 'Vipps transaction id, automatically generated by Vipps'
+          example: '5432123456'
+    CallbackTransactionInfoExpress:
+      type: object
+      required:
+        - amount
+        - status
+        - timeStamp
+      properties:
+        amount:
+          type: integer
+          description: >-
+            Amounts are specified in minor units.
+            For Norwegian kroner (NOK) that means 1 kr = 100 øre. Example: 499 kr = 49900 øre.
+            Minimum 1 NOK.
+          pattern: '^\d{3,}$'
+          example: 49900
+          minimum: 100
+        status:
+          type: string
+          enum:
+            - RESERVE
+            - SALE
+            - CANCELLED
+            - REJECTED
+          description: >-
+            Status which gives the current state of the payment within Vipps.
+            See the [API
+            guide](https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#callbacks)
+            for more information.
+          example: RESERVE
+        timeStamp:
+          type: string
+          description: >-
+            Timestamp in ISO-8601 representing when the operation was performed.
+          example: '2018-12-12T11:18:38.246Z'
+        transactionId:
+          type: string
+          description: 'Vipps transaction id, automatically generated by Vipps'
+          example: '5432123456'
+    ShippingDetailsRequest:
+      type: object
+      required:
+        - address
+        - shippingCost
+        - shippingMethod
+        - shippingMethodId
+      properties:
+        address:
+          $ref: '#/components/schemas/AddressExpress'
+        shippingCost:
+          $ref: '#/components/schemas/ShippingCost'
+        shippingMethod:
+          type: string
+          description: >-
+            The description of the shipping method.
+            Typically the name of the shipping company and the name of their service.
+            Max length: 256 characters.
+            Recommended length for readability on most screens: 25 characters.
+          example: Posten Servicepakke
+          maxLength: 256
+        shippingMethodId:
+          type: string
+          maxLength: 100
+          example: posten-servicepakke
+    ShippingDetails:
+      type: object
+      required:
+        - isDefault
+        - shippingCost
+        - shippingMethod
+        - shippingMethodId
+      properties:
+        isDefault:
+          type: string
+          enum:
+            - 'Y'
+            - 'N'
+        priority:
+          type: integer
+          description: |-
+            Determines the order in which the shipping methods are presented
+            to the user in the app, sorted in ascending order.
+          example: 1
+        shippingCost:
+          $ref: '#/components/schemas/ShippingCost'
+        shippingMethod:
+          type: string
+          description: >-
+            The description of the shipping method.
+            Typically the name of the shipping company and the name of their service.
+            Max length: 256 characters.
+            Recommended length for readability on most screens: 25 characters.
+          example: Posten Servicepakke
+          maxLength: 256
+        shippingMethodId:
+          type: string
+          maxLength: 100
+          example: posten-servicepakke
+    ShippingCost:
+      type: number
+      format: double
+      description: >-
+        Shipping cost in NOK.
+        Please note that this is not øre, and different from other amounts.
+      example: 499.00
+      minimum: 1.00
+    ShippingCostAndMethod:
+      type: object
+      required:
+        - addressId
+        - addressLine1
+        - city
+        - country
+        - postCode
+      properties:
+        addressId:
+          type: integer
+          minimum: 100
+          description: >-
+            Vipps Provided address Id. To be returned in response in the same
+            field
+          example: 100
+        addressLine1:
+          type: string
+          example: Robert Levins gate 5
+        addressLine2:
+          type: string
+          example: c/o Rune Garborg
+        city:
+          type: string
+          description: City
+          example: Oslo
+        country:
+          type: string
+          description: The only country supported is Norway
+          default: 'NO'
+          example: 'NO'
+        postCode:
+          type: string
+          description: Four digits for Norway.
+          pattern: '^\d{4}$'
+          example: '0154'
+        addressType:
+          type: string
+          description: 'The type of address: Home, Work, Other.'
+          pattern: '^\[A-Z]$'
+          enum:
+            - 'H'
+            - 'W'
+            - 'O'
+          default: 'H'
+          example: H
+    ExpressCheckOutPaymentRequest:
+      type: object
+      required:
+        - merchantSerialNumber
+        - orderId
+        - shippingDetails
+        - userDetails
+        - transactionInfo
+      properties:
+        merchantSerialNumber:
+          type: string
+          description: >-
+            Unique id for this merchant's sales channel: website, mobile app
+            etc. Short name: MSN.
+            Early MSNs were five digits, new ones are six digits.
+          minLength: 5
+          maxLength: 6
+          example: '123456'
+          pattern: '^\d{5,}$'
+        orderId:
+          type: string
+          description: >-
+            An id that uniquely identifies a payment.
+            Please see the orderId recommendations in the API guide.
+            Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+          example: acme-shop-123-order123abc
+          pattern: '^[a-zA-Z0-9-]{1,50}$'
+          maxLength: 50
+        shippingDetails:
+          $ref: '#/components/schemas/ShippingDetailsRequest'
+        transactionInfo:
+          $ref: '#/components/schemas/CallbackTransactionInfoExpress'
+        userDetails:
+          $ref: '#/components/schemas/UserDetails'
+        errorInfo:
+          $ref: '#/components/schemas/Error'
+    RegularCheckOutPaymentRequest:
+      type: object
+      required:
+        - merchantSerialNumber
+        - orderId
+        - transactionInfo
+      properties:
+        merchantSerialNumber:
+          type: string
+          description: >-
+            Unique id for this merchant's sales channel: website, mobile app
+            etc. Short name: MSN.
+            Early MSNs were five digits, new ones are six digits.
+          minLength: 5
+          maxLength: 6
+          example: '123456'
+          pattern: '^\d{5,}$'
+        orderId:
+          type: string
+          description: >-
+            An id that uniquely identifies a payment.
+            Please see the orderId recommendations in the API guide.
+            Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+          example: acme-shop-123-order123abc
+          pattern: '^[a-zA-Z0-9-]{1,50}$'
+          maxLength: 50
+        transactionInfo:
+          $ref: '#/components/schemas/CallbackTransactionInfoRegular'
+        errorInfo:
+          $ref: '#/components/schemas/Error'
+    FetchShippingCostResponse:
+      type: object
+      required:
+        - addressId
+        - orderId
+        - shippingDetails
+      properties:
+        addressId:
+          type: integer
+        orderId:
+          type: string
+          description: >-
+            An id that uniquely identifies a payment.
+            Please see the orderId recommendations in the API guide.
+            Maximum length is 50 alphanumeric characters: a-z, A-Z, 0-9 and '-'.
+          example: acme-shop-123-order123abc
+          pattern: '^[a-zA-Z0-9-]{1,50}$'
+          maxLength: 50
+        shippingDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShippingDetails'
+    TransactionUpdateCallbackOneOf:
+      oneOf:
+        - $ref: '#/components/schemas/ExpressCheckOutPaymentRequest'
+        - $ref: '#/components/schemas/RegularCheckOutPaymentRequest'
+    Error:
+      type: object
+      description: >-
+        An error from Vipps.
+        The most important property is the HTTP status code.
+        The response body contains more details of the error.
+      required:
+        - errorGroup
+        - errorCode
+        - errorMessage
+      properties:
+        errorGroup:
+          type: string
+          description: "The error group. See: https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#error-groups"
+          enum:
+            - Authentication
+            - Payment
+            - InvalidRequest
+            - VippsError
+            - User
+            - Merchant
+          example: "Payment"
+        errorCode:
+          type: string
+          description: "The error code. See: https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#error-codes"
+          example: "44"
+        errorMessage:
+          type: string
+          description: "A description of what went wrong. See https://vippsas.github.io/vipps-developer-docs/docs/APIs/ecom-api/vipps-ecom-api#errors"
+          example: "Refused by issuer because of expired card"
+        contextId:
+          type: string
+          description: "A unique id for this error, useful for searching in logs"
+          example: f70b8bf7-c843-4bea-95d9-94725b19895f
+
