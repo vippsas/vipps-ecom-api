@@ -191,13 +191,6 @@ components:
         - mobileNumber
         - userId
       properties:
-        bankIdVerified:
-          type: string
-          description: Optional Y/N string indicating if the user in bankId verified, must be requested during onboarding.
-          example: 'Y'
-          enum:
-            - Y
-            - N
         email:
           type: string
           description: Email address
