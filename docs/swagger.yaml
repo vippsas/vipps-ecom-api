@@ -591,7 +591,7 @@ components:
             Users should never be asked for the phone number, as they will
             either be automatically app-switched to the Vipps app, or they will be presented
             with the landing page.
-            If the phone numnber is needed: Use `scope` and the Userinfo API:
+            If the customer's phone number is needed by the merchant: Use `scope` and the Userinfo API:
             https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/
             See: https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page/
           example: '91234567'
