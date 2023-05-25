@@ -365,9 +365,19 @@ An express payment example with more parameters provided:
 }
 ```
 
-**Please note:** Do not send sensitive information in the `transactionText` field.
-See
-[Datatilsynet's information](https://www.datatilsynet.no/rettigheter-og-plikter/personopplysninger/)
+**Please note:** The phone number is optional and should only be sent if it is
+already known.
+Users should never be asked for the phone number, as they will
+either be automatically app-switched to the Vipps app, or they will be presented
+with the
+[landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page/).
+If the customer's phone number is needed by the merchant: Use `scope` and the
+[Userinfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/).
+
+**Important:** Do not send sensitive information in the `transactionText` field.
+See: 
+* [TransactionText recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/transactiontext/).
+* [Datatilsynet's information](https://www.datatilsynet.no/rettigheter-og-plikter/personopplysninger/)
 about which types of information is sensitive (in Norwegian).
 
 ### The Vipps deeplink URL
