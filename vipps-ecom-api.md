@@ -365,7 +365,7 @@ An express payment example with more parameters provided:
 }
 ```
 
-**Please note:** The phone number is optional, and should only be sent if it is
+**Please note:** The phone number is optional and should only be sent if it is
 already known.
 Users should never be asked for the phone number, as they will
 either be automatically app-switched to the Vipps app, or they will be presented
