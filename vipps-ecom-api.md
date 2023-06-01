@@ -218,6 +218,12 @@ that Vipps can call to delete the data. Vipps allows the user to later
 remove this consent (via the Profile -> Security -> "Access to your information"
 -> "Companies that remember you" screens).
 
+:::note
+The personal information shared with the merchant is available for 7 days after [reservation](#reserve). 
+After this, all customer information will be replaced with `"[Expired]"` in subsequent calls to
+[`GET:/ecomm/v2/payments/{orderId}/details`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET).
+:::
+
 ### Phone and mobile browser flow
 
 A payment is initiated with a call to
