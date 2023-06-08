@@ -1584,43 +1584,43 @@ to retrieve all the information about the payment.
 
 | Error group    | Error Code | Error Message (and some explaining text for some errors) |
 |:---------------|:-----------|:-----------------------------------------------|
-| Payment        | 41         | "The user does not have a valid card." |
-| Payment        | 42         | "Refused by the issuer." |
+| Payment        | 41         | "The user does not have a valid card." The customer must add a card. |
+| Payment        | 42         | "Refused by the issuer." The customer must contact the issuer, typically the bank. |
 | Payment        | 43         | "Refused by the issuer: Invalid amount." |
-| Payment        | 44         | "Refused by the issuer: Expired card." |
-| Payment        | 45         | "Reservation failed, reason unknown." The payment was not acted upon by the customer. See [Timeouts](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/timeouts) |
-| Payment        | 51         | "Cannot cancel an orderId that has already been captured." Cannot [cancel](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#cancel) an already captured order. Do a [refund](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#refund) instead. |
+| Payment        | 44         | "Refused by the issuer: Expired card."  The customer must add a card.|
+| Payment        | 45         | "Reservation failed, reason unknown." Most common: The customer has not acted upon the payment. We can not know the reason for this. See [Timeouts](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/timeouts). |
+| Payment        | 51         | "Cannot cancel an orderId that has already been captured." Cannot [cancel](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#cancel), do a [refund](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#refund) instead. |
 | Payment        | 52         | "Cancellation failed, reason unknown." [Cancel](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#cancel) failed.                           |
 | Payment        | 53         | "Cannot cancel an orderId that is not reserved." The user must first accept the payment. See [Cancel](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#cancel).  |
-  | Payment        | 61         | "The total capture amount exceeds the reserved amount. You cannot capture a higher amount than the user has accepted. Check the payment details". You can not capture a higher amount than the user has accepted. Check the [payment details](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#get-payment-details).|
+  | Payment        | 61         | "The total capture amount exceeds the reserved amount. You cannot capture a higher amount than the user has accepted. Check the payment details". This is in rare cases caused by rounding errors on the merchant's side. Check the [payment details](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#get-payment-details).|
 | Payment        | 62         | "The amount you tried to capture is not reserved. The user must accept the payment before capture can be done." |
 | Payment        | 63         | "Capture failed an unknown reason. Retrieve the payment details to see the full details." Use [payment details](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#get-payment-details) to see the exact status. |
-| Payment        | 71         | "Cannot refund a higher amount than the captured amount."  |
+| Payment        | 71         | "Cannot refund a higher amount than the captured amount." This is in rare cases caused by rounding errors on the merchant's side. |
 | Payment        | 72         | "Cannot refund a reserved order. The orderId can be canceled instead." [Cancel](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#cancel) instead.|
 | Payment        | 73         | "Cannot refund a canceled order."               |
 | Payment        | 74         | "Refund failed during debit from the merchant's account." |
 | Payment        | 93         | Captured amount must be the same in an idempotent retry. The same `Idempotency-Key` can not be used with different request payloads. |
 | Payment        | 95         | "Payments can only be refunded up to 365 days after reservation. See the FAQ." or "Direct capture is not allowed. See the Checkout documentation." See [Reserve and capture](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/reserve-and-capture).|
 | Payment        | 96         | ""Payments can only be captured up to 180 days after reservation. See the FAQ." Payments can only be captured up to 180 days after reservation. See [Reserve and capture](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/reserve-and-capture).|
-| Payment        | 1082       | This person is not BankID verified. Only applies for test users. |
+| Payment        | 1082       | This person is not BankID verified. This only applies for test users. |
 | VippsError     | 91         | "The transaction is not allowed." Typically when attempting to capture a cancelled order. |
 | VippsError     | 92         | "The transaction has already been processed." |
 | VippsError     | 93         | "The capture request must be identical to the previous request(s) in an idempotent retry." or "The refund request must be identical to the previous request(s) in an idempotent retry." |
-| VippsError     | 94         | Order locked and is already processing. This can occur for a short period of time if a bank has problems, and Vipps needs to wait and/or clean up. Retry the same request later. |
-| VippsError     | 98         | "Too many concurrent requests. See the FAQ." Used only to prevent incorrect API use. See [Rate limiting](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#rate-limiting).|
-| VippsError     | 99         | "Internal error. In some cases, this is caused by an incorrect API request. Please check the request." See [Why do I get HTTP 500 Internal Server Error?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-errors-faq/#why-do-i-get-http-500-internal-server-error) |
+| VippsError     | 94         | Order locked and is already processing. This can occur for a short period of time if a bank has problems, and Vipps needs to wait and/or clean up. Retry the same request later, with the same idempotency key. |
+| VippsError     | 98         | "Too many concurrent requests. See the FAQ." Used only to prevent obviously incorrect API use. See [Rate limiting](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#rate-limiting).|
+| VippsError     | 99         | "Internal error. In some cases, this is caused by an incorrect API request. Please check the request." In practice this is _always_ due to a combination of a bad request from the merchant and inadequate validation at our end. See [Why do I get HTTP 500 Internal Server Error?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-errors-faq/#why-do-i-get-http-500-internal-server-error). |
 | user           | 81         | "The phone number is either incorrectly formatted (see the API specification), is not a Vipps user, or the user cannot pay businesses. Vipps cannot give more details." We can not give all the details, as we can not reveal if the user is blocked, is too young to pay businesses, etc. |
-| user           | 82         | "The user's app version is not supported."                |
-| Merchant       | 31         | "The merchant is blocked. The merchant can contact customer service for details." See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked). |
-| Merchant       | 32         | The receiving limit of merchant is exceeded.       |
-| Merchant       | 33         | "The merchant's payment request limit is exceeded.""  |
+| user           | 82         | "The user's app version is not supported."  The user must upgrade the app.              |
+| Merchant       | 31         | "The merchant is blocked. The merchant can contact customer service for details." We can not reveal the details. See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked). |
+| Merchant       | 32         | "The receiving limit of merchant is exceeded." The merchant has received more money than allowed. The merchant can contact customer service for details.   |
+| Merchant       | 33         | "The merchant's payment request limit is exceeded." The merchant has requested more money than allowed. can contact customer service for details.  |
 | Merchant       | 34         | "Duplicate orderId. The orderId must be unique for each MSN. It has already been used for this MSN." The `orderId` has already been used for another payment for this MSN. The orderId must be unique for the MSN. See [Recommendations for orderId/reference](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/orderid). |
-| Merchant       | 35         | "The orderId 'acme-shop-123-order123abc' does not exist for MSN 654321." |
-| Merchant       | 36         | "The merchant's agreement has not been signed." |
-| Merchant       | 37         | "The merchant and/or sales unit is unavailable, deleted, deactivated or blocked for payments." See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked) |
+| Merchant       | 35         | "The orderId 'acme-shop-123-order123abc' does not exist for MSN 654321." See [Recommendations for orderId/reference](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/orderid). |
+| Merchant       | 36         | "The merchant's agreement has not been signed." The merchant can contact customer service for details. |
+| Merchant       | 37         | "The merchant and/or sales unit is unavailable, deleted, deactivated or blocked for payments." We can not reveal the details. See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked) |
 | Merchant       | 38         | "The sales unit is not allowed to skip the landing page. See the FAQ." See the [Vipps landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/vipps-landing-page-faq). |
 | Merchant       | 39         | "The sales unit is not allowed to initiate long-living payments." |
-| Merchant       | 97         | The merchant is not approved by Vipps to receive payments. See [Why do I get "Merchant Not Allowed for Ecommerce Payment"?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-merchant-not-allowed-for-ecommerce-payment). |
+| Merchant       | 97         | ""The sales unit is not allowed to perform payments. See the FAQ."" Typically a merchant that has only applied for Login API, and has not been through the required compliance checks for making payments. See [Why do I get "Merchant Not Allowed for Ecommerce Payment"?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-merchant-not-allowed-for-ecommerce-payment). |
 | InvalidRequest | -          | The field name will be the error code. Description about what exactly the field error is. |
 
 ## Testing
