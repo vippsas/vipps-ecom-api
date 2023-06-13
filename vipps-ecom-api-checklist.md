@@ -60,23 +60,23 @@ Integrate _all_ the [API endpoints](https://developer.vippsmobilepay.com/api/eco
    there are test IDs (`orderId`) in the
    [Vipps test environment](https://developer.vippsmobilepay.com/docs/vipps-developers/test-environment),
    with the following states:
-    - A complete order ending in `REFUND`
+   * A complete order ending in `REFUND`
       ([`/refund`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST)
       request).
-    - A complete order ending in `VOID`
+   * A complete order ending in `VOID`
       ([`/cancel`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/cancelPaymentRequestUsingPUT)
       request).
-    - In the test environment this must be verified using the API itself.
+   * In the test environment this must be verified using the API itself.
 6. The merchant verifies the integration in the production environment (similar to step 5):
-    - A complete order ending in `REFUND`
+   * A complete order ending in `REFUND`
       ([`/refund`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST)
       request).
-    - For _reserve capture_: A complete order ending in `VOID`
+   * For _reserve capture_: A complete order ending in `VOID`
       ([`/cancel`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/cancelPaymentRequestUsingPUT)
       request after reserve).
-    - We recommend checking this using both the API itself and the API Dashboard, available under _Utvikler_ on
+   * We recommend checking this using both the API itself and the API Dashboard, available under _Utvikler_ on
       [portal.vipps.no](https://portal.vipps.no).  
-    - **Please note:** Vipps does not do any kind of activation or make any changes based on this checklist.
+   * **Please note:** Vipps does not do any kind of activation or make any changes based on this checklist.
       The API keys for the production environment are made available on
       [portal.vipps.no](https://portal.vipps.no)
       as soon as the customer control (see step 2) is completed, independently of this checklist.

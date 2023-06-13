@@ -1170,16 +1170,16 @@ See:
 
 This API returns the following HTTP statuses in the responses:
 
-- `200 OK`
-- `201 Created`
-- `204 No Content`
-- `400 Bad Request`
-- `401 Unauthorized`
-- `403 Forbidden`
-- `404 Not Found`
-- `409 Conflict`
-- `429 Too Many Requests`
-- `500 Server Error`
+* `200 OK`
+* `201 Created`
+* `204 No Content`
+* `400 Bad Request`
+* `401 Unauthorized`
+* `403 Forbidden`
+* `404 Not Found`
+* `409 Conflict`
+* `429 Too Many Requests`
+* `500 Server Error`
 
 For more information about the HTTP response codes and JSON object in the responses, see
 [HTTP response codes](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/http-response-codes)
@@ -1187,8 +1187,8 @@ in the Common topics.
 
 For details about the specific eCom errors and responses, see:
 
-- [OpenAPI specification](https://developer.vippsmobilepay.com/api/ecom)
-- [Errors](#errors)
+* [OpenAPI specification](https://developer.vippsmobilepay.com/api/ecom)
+* [Errors](#errors)
 
 ## Rate limiting
 
