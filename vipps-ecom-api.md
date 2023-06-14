@@ -1,3 +1,4 @@
+<!-- START_METADATA
 ---
 title: eCom API guide
 sidebar_label: API guide
@@ -6,9 +7,13 @@ description: Find technical details about integrating with the eCom API.
 pagination_prev: Null
 pagination_next: Null
 ---
-
+END_METADATA -->
 
 # API guide
+
+<!-- START_COMMENT -->
+💥 Please use the documentation pages here: <https://developer.vippsmobilepay.com/docs/APIs/ecom-api>. 💥
+<!-- END_COMMENT -->
 
 **Important:** We strongly recommend that all new integrations use the new
 [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).

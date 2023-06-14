@@ -1,3 +1,4 @@
+<!-- START_METADATA
 ---
 title: Quick start for the eCom API
 sidebar_label: Quick start
@@ -6,9 +7,13 @@ description: Quick start guide for the using the eCom API with Postman.
 pagination_next: null
 pagination_prev: null
 ---
-
+END_METADATA -->
 
 # Quick start
+
+<!-- START_COMMENT -->
+💥 Please use the documentation pages here: <https://developer.vippsmobilepay.com/docs/APIs/ecom-api>. 💥
+<!-- END_COMMENT -->
 
 This is a quick start guide for the using the eCom API with Postman.
 

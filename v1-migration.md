@@ -1,6 +1,8 @@
+<!-- START_METADATA
 ---
 draft: true
 ---
+END_METADATA -->
 
 
 # Migration from eCom API v1 to eCom API v2

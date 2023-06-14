@@ -1,3 +1,4 @@
+<!-- START_METADATA
 ---
 title: Introduction to the eCommerce API
 sidebar_label: Introduction
@@ -7,8 +8,13 @@ description: Use the eCommerce API to create various online payment flows using 
 pagination_next: null
 pagination_prev: null
 ---
+END_METADATA -->
 
 # eCom API
+
+<!-- START_COMMENT -->
+💥 Please use the documentation pages here: <https://developer.vippsmobilepay.com/docs/APIs/ecom-api>. 💥
+<!-- END_COMMENT -->
 
 **Important:** We strongly recommend that all new integrations use the new
 [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).

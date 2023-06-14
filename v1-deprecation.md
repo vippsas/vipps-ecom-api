@@ -1,6 +1,8 @@
+<!-- START_METADATA
 ---
 draft: true
 ---
+END_METADATA -->
 
 
 # Deprecation of the Vipps eCom API v1

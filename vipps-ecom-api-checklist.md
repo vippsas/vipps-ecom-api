@@ -1,3 +1,4 @@
+<!-- START_METADATA
 ---
 title: eCom API checklist
 sidebar_label: Checklist
@@ -6,8 +7,13 @@ description: Checklist for full integration with the eCom API.
 pagination_next: null
 pagination_prev: null
 ---
+END_METADATA -->
 
 # Checklist
+
+<!-- START_COMMENT -->
+💥 Please use the documentation pages here: <https://developer.vippsmobilepay.com/docs/APIs/ecom-api>. 💥
+<!-- END_COMMENT -->
 
 API version: 2.0.
 
