@@ -20,8 +20,6 @@ This is a quick start guide for the using the eCom API with Postman.
 Use the eCom API to initiate payments, get payment details, capture payments, and refund payments.
 You can also perform express checkout payments and get access to user info.
 
-
-
 ## Postman
 
 See
@@ -41,11 +39,11 @@ the Postman files:
 required for using the eCom API
 (see [Get credentials](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/api-keys)):
 
- * `client_id` - The "username" for making API requests
- * `client_secret` - The "password" for making API requests
- * `Ocp-Apim-Subscription-Key` - The subscription key for making API requests
- * `merchantSerialNumber` - The unique id for your sales unit.
- * `mobileNumber` - The phone number for your
+* `client_id` - The "username" for making API requests
+* `client_secret` - The "password" for making API requests
+* `Ocp-Apim-Subscription-Key` - The subscription key for making API requests
+* `merchantSerialNumber` - The unique ID for your sales unit.
+* `mobileNumber` - The phone number for your
    [test user](https://developer.vippsmobilepay.com/docs/vipps-developers/test-environment#test-users).
 
 ## Make API requests
@@ -73,7 +71,7 @@ for more information.
 
 1. Send request `Initiate Payment - Express Checkout`.
 2. Open the Vipps landing page URL from the response in a browser and specify your phone number.
-3. Confirm the payment in Vipps.   
+3. Confirm the payment in Vipps.
    **Please note:** You can also use
    [`Force approve payment`](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#testing)
    and skip this and the landing page step.
@@ -88,7 +86,7 @@ for more information.
 
 1. Send request `Initiate Payment - Profile flow`.
 2. Open the Vipps landing page URL from the response in a browser and specify your phone number.
-3. Confirm the payment in Vipps.   
+3. Confirm the payment in Vipps.
    **Please note:** You can also use
    [`Force approve payment`](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#testing)
    and skip this and the landing page step.

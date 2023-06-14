@@ -24,8 +24,6 @@ For more common questions, see:
 
 * [Common API FAQ](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs)
 
-
-
 ## Common problems
 
 See

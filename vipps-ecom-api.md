@@ -26,8 +26,6 @@ native apps and other solutions.
 
 API version: 2.0.0.
 
-
-
 ## Payment flows
 
 There are many ways to use the Vipps eCom API. For example:
@@ -96,7 +94,6 @@ Payments are supported in both web browsers and in native apps (via deep-linking
 | [Get payment details](#get-payment-details)                                                                          | The full history of the payment.                                                                           | [`GET:/ecomm/v2/payments/{orderId}/details`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET) |
 | Get order status                                                                                                     | Deprecated, use [Get payment details](#get-payment-details).                                               | Deprecated, use [`GET:/ecomm/v2/payments/{orderId}/details`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET) |
 
-
 Necessary endpoint from other APIs:
 
 | Operation | Description | Endpoint |
@@ -132,12 +129,12 @@ When you initiate a payment, it will normally only be *reserved* until you captu
 
 This has some benefits:
 
-* If a payment has been _reserved_, the merchant can
+* If a payment has been *reserved*, the merchant can
   make a
   [`PUT:/ecomm/v2/payments/acme-shop-123-order123abc/cancel`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/cancelPaymentRequestUsingPUT)
   call to immediately release the reservation.
 * It is possible to reserve a higher amount and only
-  capture a part of it (useful for electric car charging stations, etc).
+  capture a part of it (useful for electric car charging stations, etc.).
   It is also possible to capture the full amount
   with multiple captures ("partial capture").
 
@@ -224,7 +221,7 @@ remove this consent (via the Profile -> Security -> "Access to your information"
 -> "Companies that remember you" screens).
 
 :::note
-The personal information shared with the merchant is available for 7 days after [reservation](#reserve). 
+The personal information shared with the merchant is available for 7 days after [reservation](#reserve).
 After this, all customer information will be replaced with `"[Expired]"` in subsequent calls to
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET).
 :::
@@ -237,7 +234,7 @@ A payment is initiated with a call to
 ![Push notification](images/vipps-flow-device.png)
 
 Triggered by the payment initiation, the Vipps landing page will automatically
-detect if is being invoked on a phone, and whether Vipps is installed on the phone.
+detect if it is being invoked on a phone, and whether Vipps is installed on the phone.
 If Vipps is installed, Vipps will automatically be opened.
 
 #### Vipps installed
@@ -386,7 +383,8 @@ If the customer's phone number is needed by the merchant: Use `scope` and the
 [Userinfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/).
 
 **Important:** Do not send sensitive information in the `transactionText` field.
-See: 
+See:
+
 * [TransactionText recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/transactiontext/).
 * [Datatilsynet's information](https://www.datatilsynet.no/rettigheter-og-plikter/personopplysninger/)
 about which types of information is sensitive (in Norwegian).
@@ -395,7 +393,7 @@ about which types of information is sensitive (in Norwegian).
 
 Vipps responds to the
 [`POST:/ecomm/v2/payments`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST)
-request with an URL.
+request with a URL.
 The URL is normally a `https://` URL, which automatically opens Vipps if the
 apps is installed (and the Vipps landing page if not).
 
@@ -405,13 +403,12 @@ See
 [isApp](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/isApp)
 in Common topics.
 
-
 ### Payment identification
 
 A payment is uniquely identified by the combination of `merchantSerialNumber`
 and `orderId`:
 
-* `merchantSerialNumber`: The merchant's Vipps id. Example: `123456`.
+* `merchantSerialNumber`: The merchant's Vipps ID. Example: `123456`.
 * `orderId`: Must be unique for the `merchantSerialNumber`. Example: `acme-shop-123-order123abc`.
   See: [orderId recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/orderid).
 
@@ -565,7 +562,7 @@ Example: `"eComm Express Payment"` callback:
 ```
 
 **Please note:** Regular payments use `RESERVED`, but express payments use
-`RESERVE`. We apologize for this, but it is technical debt and it cannot be
+`RESERVE`. We apologize for this, but it is technical debt, and it cannot be
 corrected in this version of the API, as that would break backwards compatibility.
 
 ### How to test your own callbacks
@@ -664,7 +661,7 @@ reference only - these endpoints are *not* callable at Vipps.
 
 | Operation            | Description                                                                       | Endpoint |
 |:---------------------|:----------------------------------------------------------------------------------|:-|
-| Get shipping details | Used to fetch shipping information, **10 second timeout** | [`POST:/v2/payments/{orderId}/shippingDetails`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/fetchShippingCostUsingPOST) |
+| Get shipping details | Used to fetch shipping information, **10-second timeout** | [`POST:/v2/payments/{orderId}/shippingDetails`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/fetchShippingCostUsingPOST) |
 | Transaction Update   | A callback to the merchant for receiving post-payment information.                | [`POST:/v2/payments/{orderId}`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/transactionUpdateCallbackForRegularPaymentUsingPOST) |
 | Remove user consent  | Used to inform merchant when the Vipps user removes consent to share information. | [`DELETE:/v2/consents/{userId}`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/removeUserConsentUsingDELETE) |
 
@@ -680,7 +677,7 @@ See
 
 The
 [`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/fetchShippingCostUsingPOST)
-API endpoint _on the merchant's side_ allows Vipps to get the shipping cost and
+API endpoint *on the merchant's side* allows Vipps to get the shipping cost and
 method based on the provided address and product details.
 This endpoint is required for express checkout.
 
@@ -732,7 +729,7 @@ See
 
 The
 [`DELETE:[consentRemovalPrefix]/v2/consents/{userId}`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/removeUserConsentUsingDELETE)
-API endpoint _on the merchant's side_ allows Vipps to send an end user's consent
+API endpoint *on the merchant's side* allows Vipps to send an end user's consent
 removal request to the merchant.
 This endpoint is required for express checkout.
 
@@ -749,7 +746,7 @@ they will either be taken to Vipps or to the Vipps landing page.
 
 See
 [Vipps landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page)
-from Common topics, for mre details about the landing page.
+from Common topics, for more details about the landing page.
 
 ## Reserve
 
@@ -766,7 +763,7 @@ Capture is done with
 
 Use the idempotency key, `X-Request-Id`, in the capture call. Then, if a capture
 request fails for any reason, it can be retried with the same idempotency key.
-You can use any unique id for your `X-Request-Id`.
+You can use any unique ID for your `X-Request-Id`.
 
 See the [X-Request-Id in the capturePaymentUsingPOST specification](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/capturePaymentUsingPOST) for details.
 
@@ -788,7 +785,6 @@ See the FAQ:
 * [When should I charge the customer](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/reserve-and-capture-faq#when-should-i-charge-the-customer).
 * [What is the difference between "Reserve Capture" and "Direct Capture"?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/reserve-and-capture-faq#what-is-the-difference-between-reserve-capture-and-direct-capture)
 * [When should I use "Direct Capture"?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/reserve-and-capture-faq#when-should-i-use-direct-capture)
-
 
 See
 [Common topics: capture](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/reserve-and-capture#capture)
@@ -1090,7 +1086,7 @@ always contains *the entire history* of payments for the order, not just the cur
   and `userDetails` in addition to `transactionLogHistory` and `transactionSummary`.
 * If you initiate the payment with a `scope` to use with the
   [Userinfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api)
-  you will also get an `userDetails` object containing the user's information:
+  you will also get a `userDetails` object containing the user's information:
 
 ```json
 "userDetails": {
@@ -1123,7 +1119,6 @@ parameter to the initiate call:
 [`POST:/ecomm/v2/payments`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST).
 See
 [Userinfo API guide](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api).
-
 
 ### Userinfo call-by-call guide
 
@@ -1346,8 +1341,8 @@ Vipps recommends polling
 until either a `REJECT`, `USER_CANCEL`, `RESERVE` or `SALE` status is received,
 and then performing the appropriate action based on the status of product issuing.
 The user should also be notified that the merchant has issued any product to
-ensure they do not naturally retry the purchase. This includes using sms/email
-strategy if it is unclear that the user in on the merchants website/app to see confirmation.
+ensure they do not naturally retry the purchase. This includes using SMS/email
+strategy if it is unclear that the user in on the merchant's website/app to see confirmation.
 
 ### Recommendations for handling very high traffic
 
@@ -1370,8 +1365,7 @@ so it is possible to cancel a payment without making a refund.
     user gives up and tries to order again: It may be smart to cancel the
     previous order, even though the user did approve the payment.
 
-It is also important that the merchant's and/or partner's systems are able to
-to handle the peak traffic.
+It is also important that the merchant's and/or partner's systems are able to handle the peak traffic.
 
 See also:
 
@@ -1387,8 +1381,8 @@ This may be done in two ways:
 1. From a mobile or desktop browser. See [Desktop flow](#desktop-flow)
 2. From an iOS or Android native app
 
-After the user has finished (or cancelled) the payment in Vipps, the user is returned back to the specified `fallBack` URL. When the user arrives back in the merchant app or website, we *strongly* recommend that you perform a call to the [payment details endpoint](#get-payment-details) to check the state
-of the transaction. While some of the state of the eCom operation *can* be derived from things like whether or not user returned successfully from the
+After the user has finished (or cancelled) the payment in Vipps, the user is returned to the specified `fallBack` URL. When the user arrives back in the merchant app or website, we *strongly* recommend that you perform a call to the [payment details endpoint](#get-payment-details) to check the state
+of the transaction. While some state of the eCom operation *can* be derived from things like whether or not user returned successfully from the
 Vipps app, the most reliable approach to know the state of the payment is always to query the eCom API once the user arrive back in the merchant app/website.
 
 ## App-switching
@@ -1438,7 +1432,7 @@ The Vipps mobile application will use the URL to launch the merchant application
 
 ### App-switch on Android
 
-Vipps is launched with a standard intent, using the url returned from the eCom
+Vipps is launched with a standard intent, using the URL returned from the eCom
 API when the payment is created ("url": "vipps://?token=eyJraWQiOiJqd3RrZXki..")
 
 #### Switching from merchant app to Vipps
@@ -1480,13 +1474,13 @@ class MyActivity : Activity() {
 
 Once the user has paid (or cancelled), Vipps supports two ways to return to the merchant native app:
 
-1: Let Vipps deeplink back into the merchant app using their url scheme (eg. merchantapp://). This is the default/suggested approach.
+1: Let Vipps deeplink back into the merchant app using their URL scheme (e.g., merchantapp://). This is the default/suggested approach.
 
-2: Just close Vipps, fall back to the merchant app, pick up the thread again there in onActivityResult().
+2: Just close Vipps, fall back to the merchant app, pick up the thread again there in `onActivityResult()`.
 
 In both cases, the merchant app should query the ecom API for updated status on the payment once user returns from Vipps.
 
-#### Return back to merchant app by actively deeplinking into it from Vipps
+#### Return to merchant app by actively deeplinking into it from Vipps
 
 With this approach, the merchant app has to have its own URL scheme registered so Vipps can actively open the merchant app again after payment/cancellation.
 
@@ -1513,7 +1507,7 @@ starting a new activity with the `fallBack` URL as a URL parameter in the intent
 The merchant app can make their receiving activity a `singleInstance`
 to handle the response in same activity.
 
-The receiving MainActivity has to override the `onNewIntent` method to handle
+The receiving `MainActivity` has to override the `onNewIntent` method to handle
 result send by Vipps:
 
 ```kotlin
@@ -1524,7 +1518,7 @@ override fun onNewIntent(intent: Intent) {
 
 #### Redirect back to merchant app by simply closing Vipps
 
-With this approach, the merchant app does not have to register/handle deeplink urls.
+With this approach, the merchant app does not have to register/handle deeplink URLs.
 
 In order to use this approach, when creating the payment in the merchant has to pass fallback attribute like this:
 
@@ -1534,7 +1528,7 @@ In order to use this approach, when creating the payment in the merchant has to 
 
 This will cause Vipps to simply close after a successful or cancelled ecom payment, and fall back to the calling merchant app.
 
-The merchant app activity that resumes again (after Vipps closes) has to override onActivityResult method to pick up the thread again here. Example:
+The merchant app activity that resumes again (after Vipps closes) has to override `onActivityResult` method to pick up the thread again here. Example:
 
 ```kotlin
 override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
@@ -1605,14 +1599,14 @@ to retrieve all the information about the payment.
 | Payment        | 74         | "Refund failed during debit from the merchant's account." |
 | Payment        | 93         | Captured amount must be the same in an idempotent retry. The same `Idempotency-Key` can not be used with different request payloads. |
 | Payment        | 95         | "Payments can only be refunded up to 365 days after reservation. See the FAQ." or "Direct capture is not allowed. See the Checkout documentation." See [Reserve and capture](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/reserve-and-capture).|
-| Payment        | 96         | ""Payments can only be captured up to 180 days after reservation. See the FAQ." Payments can only be captured up to 180 days after reservation. See [Reserve and capture](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/reserve-and-capture).|
+| Payment        | 96         | "Payments can only be captured up to 180 days after reservation. See the FAQ." Payments can only be captured up to 180 days after reservation. See [Reserve and capture](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/reserve-and-capture).|
 | Payment        | 1082       | This person is not BankID verified. This only applies for test users. |
 | VippsError     | 91         | "The transaction is not allowed." Typically when attempting to capture a cancelled order. |
 | VippsError     | 92         | "The transaction has already been processed." |
 | VippsError     | 93         | "The capture request must be identical to the previous request(s) in an idempotent retry." or "The refund request must be identical to the previous request(s) in an idempotent retry." |
 | VippsError     | 94         | Order locked and is already processing. This can occur for a short period of time if a bank has problems, and Vipps needs to wait and/or clean up. Retry the same request later, with the same idempotency key. |
 | VippsError     | 98         | "Too many concurrent requests. See the FAQ." Used only to prevent obviously incorrect API use. See [Rate limiting](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#rate-limiting).|
-| VippsError     | 99         | "Internal error. In some cases, this is caused by an incorrect API request. Please check the request." In practice this is _always_ due to a combination of a bad request from the merchant and inadequate validation at our end. See [Why do I get HTTP 500 Internal Server Error?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-errors-faq/#why-do-i-get-http-500-internal-server-error). |
+| VippsError     | 99         | "Internal error. In some cases, this is caused by an incorrect API request. Please check the request." In practice this is *always* due to a combination of a bad request from the merchant and inadequate validation at our end. See [Why do I get HTTP 500 Internal Server Error?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-errors-faq/#why-do-i-get-http-500-internal-server-error). |
 | user           | 81         | "The phone number is either incorrectly formatted (see the API specification), is not a Vipps user, or the user cannot pay businesses. Vipps cannot give more details." We can not give all the details, as we can not reveal if the user is blocked, is too young to pay businesses, etc. |
 | user           | 82         | "The user's app version is not supported."  The user must upgrade the app.              |
 | Merchant       | 31         | "The merchant is blocked. The merchant can contact customer service for details." We can not reveal the details. See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked). |
@@ -1643,10 +1637,10 @@ The endpoint is only available in our test environment.
 Vipps (using the app) before "force approve" can be used for that user.
 If this has not been done, you will get an error.
 This is because the user needs to be registered as
-"bankID verified" in the backend, and this is happens automatically in
+"bankID verified" in the backend, and this happens automatically in
 the test environment when using Vipps (the app), but not with "force approve".
 
-**Please note:** Vipps Hurtigkasse (express checkout) and `skipLandingPage`is
+**Please note:** Vipps Hurtigkasse (express checkout) and `skipLandingPage` is
 not supported by the force approve endpoint.
 
 ## Recommendations regarding handling redirects

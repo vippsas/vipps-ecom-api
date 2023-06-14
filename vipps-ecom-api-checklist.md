@@ -19,7 +19,7 @@ API version: 2.0.
 
 ## Checklist for full integration
 
-Integrate _all_ the [API endpoints](https://developer.vippsmobilepay.com/api/ecom/). For examples of requests and responses, see the [Postman collection](/tools/vipps-ecom-api-postman-collection.json) and [environment](https://github.com/vippsas/vipps-developers/blob/master/tools/vipps-api-global-postman-environment.json).
+Integrate *all* the [API endpoints](https://developer.vippsmobilepay.com/api/ecom/). For examples of requests and responses, see the [Postman collection](/tools/vipps-ecom-api-postman-collection.json) and [environment](https://github.com/vippsas/vipps-developers/blob/master/tools/vipps-api-global-postman-environment.json).
 
 | Endpoint | Comment |
 |-----|-----------|
@@ -46,10 +46,10 @@ Integrate _all_ the [API endpoints](https://developer.vippsmobilepay.com/api/eco
 | Action    | Comment   |
 |-----|-----------|
 |     Send useful `OrderId` | Follow our [`OrderId` recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/orderid). |
-|     Poll for payment details | The Merchant _must not_ rely on `fallback` or `callback` alone, and must poll [`GET:/ecomm/v2/payments/{orderId}/details`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET) as documented (this is part of the first item in this checklist, but it's still a common error). Follow our [polling recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/polling-guidelines). |
+|     Poll for payment details | The Merchant *must not* rely on `fallback` or `callback` alone, and must poll [`GET:/ecomm/v2/payments/{orderId}/details`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET) as documented (this is part of the first item in this checklist, but it's still a common error). Follow our [polling recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/polling-guidelines). |
 |     Handle redirects| The merchant must handle that the `fallback` URL is opened in the default browser on the phone, and not in a specific browser, in a specific tab, in an embedded browser, requiring a session token, etc. Follow our [recommendations regarding handling redirects](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/redirects/). See the FAQ: [How can I open the fallback URL in a specific (embedded) browser?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-problems-faq#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser)|
 |     Follow design guidelines| The Vipps branding must be according to the [Vipps design guidelines](https://developer.vippsmobilepay.com/docs/vipps-design-guidelines).|
-|     Educate customer support| Make sure your customer service, etc. has all the tools and information they need available in _your_ system, through the APIs listed in the first item in this checklist, and that they do not need to visit [portal.vipps.no](https://portal.vipps.no) for normal work.|
+|     Educate customer support| Make sure your customer service, etc. has all the tools and information they need available in *your* system, through the APIs listed in the first item in this checklist, and that they do not need to visit [portal.vipps.no](https://portal.vipps.no) for normal work.|
 
 ## Flow to go live for direct integrations
 
@@ -77,10 +77,10 @@ Integrate _all_ the [API endpoints](https://developer.vippsmobilepay.com/api/eco
    * A complete order ending in `REFUND`
       ([`/refund`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST)
       request).
-   * For _reserve capture_: A complete order ending in `VOID`
+   * For *reserve capture*: A complete order ending in `VOID`
       ([`/cancel`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/cancelPaymentRequestUsingPUT)
       request after reserve).
-   * We recommend checking this using both the API itself and the API Dashboard, available under _Utvikler_ on
+   * We recommend checking this using both the API itself and the API Dashboard, available under *Utvikler* on
       [portal.vipps.no](https://portal.vipps.no).  
    * **Please note:** Vipps does not do any kind of activation or make any changes based on this checklist.
       The API keys for the production environment are made available on
