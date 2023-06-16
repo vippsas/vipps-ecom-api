@@ -97,7 +97,7 @@ See [here](vipps-ecom-api.md#url-validation) for details.
 
 ## Migration
 
-If you have already signed an agreement with Vipps, and have API keys for eCom v1, you can use the same API keys
+If you have already signed an agreement with Vipps and have API keys for eCom v1, you can use the same API keys
 for eCom v2.
 
 ## Subscription keys

@@ -14,7 +14,7 @@ This is how payment with the eCom API works.
 
 ## The Vipps eCommerce payment process
 
-![Ecom process](../images/vipps-ecom-process-svg.svg)
+![eCom process](../images/vipps-ecom-process-svg.svg)
 
 ## 1. Pay with Vipps
 

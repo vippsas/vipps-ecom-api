@@ -4,7 +4,6 @@ draft: true
 ---
 END_METADATA -->
 
-
 # Deprecation of the Vipps eCom API v1
 
 This is the message we sent to communicate the deprecation of the API.
@@ -16,7 +15,7 @@ The Vipps eCom API was superseded by the eCom v2 API around two years ago.
 This means that the eCom v1 API is technologically outdated.
 Therefore:
 
-**The Vipps eCom v1 API will be shut down on September 1 2020.**
+**The Vipps eCom v1 API will be shut down on September 1, 2020.**
 
 The eCom v2 API has all the functionality of eCom v1, and there is no reason
 for not upgrading to eCom v2.
@@ -30,7 +29,7 @@ This eCom v1 API shutdown means that:
   is [well documented](https://developer.vippsmobilepay.com/docs/APIs/ecom-api), with an
   extensive guide, OpenAPI specification, Postman collection, integration
   checklist and a migration guide.
-* Integrations using the eCom v1 API will stop working on September 1 2020.
+* Integrations using the eCom v1 API will stop working on September 1, 2020.
 
 The main benefits of the eCom v2 API:
 
@@ -45,14 +44,14 @@ feature to skip the landing page. Customers who cannot display the landing page
 can see more details about the
 [skipLandingPage](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page#skip-landing-page).
 
-Vipps is piloting a solution for tokenized BankAxept-payments in payment terminals using Vipps
+Vipps is piloting a solution for tokenized BankAxept payments in payment terminals using Vipps
 as a wallet. To learn about availability, contact your payment terminal provider.
 
 Vipps is currently designing and developing solutions for direct integration into POS systems, electronic cash registers and vending machines. For more information about this, please [register here](https://forms.office.com/Pages/ResponsePage.aspx?id=XcJbgGSO1k6NJDiDyQaMWuVjn37JcrJJgJkaJ8cPvvVUQVdLVk9PTkZTRDBLSFRRNzQxTlc2VThZMS4u).
 
 If you have any questions about the eCom v2 API, please see the GitHub documentation.
 You can contact Vipps Integration if you have questions. See contact information,
-information about test environments, test apps, etc [here](https://developer.vippsmobilepay.com/docs/vipps-developers).
+information about test environments, test apps, etc. [here](https://developer.vippsmobilepay.com/docs/vipps-developers).
 
 We have also released new APIs that may be interesting, such as:
 
@@ -62,7 +61,7 @@ We have also released new APIs that may be interesting, such as:
 
 Vipps also has [plugins](https://developer.vippsmobilepay.com/docs/vipps-plugins) available:
 
-* [Vipps for WooCommerce (Wordpress)](https://wordpress.org/plugins/woo-vipps/)
+* [Vipps for WooCommerce (WordPress)](https://wordpress.org/plugins/woo-vipps/)
 * [Vipps for Magento](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/magento/)
 * Upcoming: Vipps for Shopify, Vipps for Drupal and Vipps for Episerver.
 
