@@ -586,15 +586,12 @@ components:
           description: |-
             The customer's phone number, if available.
             Format: 8 digits.
+
             **Please note:** The phone number is optional and should only be sent if it is
-            already known.
-            Users should never be asked for the phone number, as they will
+            already known. Users should never be asked for the phone number, as they will
             either be automatically app-switched to the Vipps app, or they will be presented
-            with the landing page.
-            If the customer's phone number is needed by the merchant: Use `scope` and the Userinfo API:
-            https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/
-            See: https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page/
-          example: '91234567'
+            with the landing page. The exception for this is "manual POS" integration,
+            where the cashier asks the customer for the number, and then enters it manually on the POS.
           pattern: '^\d{8}$'
         token:
           type: string
