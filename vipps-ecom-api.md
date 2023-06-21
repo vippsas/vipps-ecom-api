@@ -1599,7 +1599,7 @@ to retrieve all the information about the payment.
 | Payment        | 74         | "Refund failed during debit from the merchant's account." |
 | Payment        | 93         | Captured amount must be the same in an idempotent retry. The same `Idempotency-Key` can not be used with different request payloads. |
 | Payment        | 95         | "Payments can only be refunded up to 365 days after reservation. See the FAQ." or "Direct capture is not allowed. See the Checkout documentation." See [Reserve and capture](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/reserve-and-capture).|
-| Payment        | 96         | "Payments can only be captured up to 180 days after reservation. See the FAQ." Payments can only be captured up to 180 days after reservation. See [Reserve and capture](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/reserve-and-capture).|
+| Payment        | 98         | "Payments can only be captured up to 180 days after reservation. See the FAQ." Payments can only be captured up to 180 days after reservation. See [Reserve and capture](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/reserve-and-capture).|
 | Payment        | 1082       | This person is not BankID verified. This only applies for test users. |
 | VippsError     | 91         | "The transaction is not allowed." Typically when attempting to capture a cancelled order. |
 | VippsError     | 92         | "The transaction has already been processed." |
