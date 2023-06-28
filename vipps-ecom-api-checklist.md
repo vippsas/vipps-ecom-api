@@ -45,7 +45,7 @@ Integrate *all* the [API endpoints](https://developer.vippsmobilepay.com/api/eco
 
 | Action    | Comment   |
 |-----|-----------|
-|     Send useful `OrderId` | Follow our [`OrderId` recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/orderid). |
+|     Send useful `OrderId` | Follow our [`orderId` recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/orderid). |
 |     Poll for payment details | The Merchant *must not* rely on `fallback` or `callback` alone, and must poll [`GET:/ecomm/v2/payments/{orderId}/details`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET) as documented (this is part of the first item in this checklist, but it's still a common error). Follow our [polling recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/polling-guidelines). |
 |     Handle redirects| The merchant must handle that the `fallback` URL is opened in the default browser on the phone, and not in a specific browser, in a specific tab, in an embedded browser, requiring a session token, etc. Follow our [recommendations regarding handling redirects](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/redirects/). See the FAQ: [How can I open the fallback URL in a specific (embedded) browser?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-problems-faq#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser)|
 |     Follow design guidelines| The Vipps branding must be according to the [Vipps design guidelines](https://developer.vippsmobilepay.com/docs/vipps-design-guidelines).|

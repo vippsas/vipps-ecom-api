@@ -385,7 +385,7 @@ If the customer's phone number is needed by the merchant: Use `scope` and the
 **Important:** Do not send sensitive information in the `transactionText` field.
 See:
 
-* [TransactionText recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/transactiontext/).
+* [Recommendations for `paymentDescription` and `transactionText`](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/transactiontext/).
 * [Datatilsynet's information](https://www.datatilsynet.no/rettigheter-og-plikter/personopplysninger/)
 about which types of information is sensitive (in Norwegian).
 
@@ -410,7 +410,7 @@ and `orderId`:
 
 * `merchantSerialNumber`: The merchant's Vipps ID. Example: `123456`.
 * `orderId`: Must be unique for the `merchantSerialNumber`. Example: `acme-shop-123-order123abc`.
-  See: [orderId recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/orderid).
+  See: [`orderId` recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/orderid).
 
 ### Payment retries
 
@@ -422,16 +422,16 @@ is to make a new initiate call with a new `orderId`. Vipps has no concept
 of relation between orders, so the "retry" payment is in no way connected
 to the first payment attempt.
 
-### OrderId recommendations
+### `orderId` recommendations
 
 See
-[OrderId recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/orderid)
+[`orderId` recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/orderid)
 in Common topics.
 
-### transactionText recommendations
+### `transactionText` recommendations
 
 See
-[transactionText recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/transactiontext)
+[Recommendations for `paymentDescription` and `transactionText`](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/transactiontext/)
 in Common topics.
 
 ### URL Validation
@@ -1601,7 +1601,7 @@ to retrieve all the information about the payment.
 | Payment        | 95         | "Payments can only be refunded up to 365 days after reservation. See the FAQ." or "Direct capture is not allowed. See the Checkout documentation." See [Reserve and capture](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/reserve-and-capture).|
 | Payment        | 98         | "Payments can only be captured up to 180 days after reservation. See the FAQ." Payments can only be captured up to 180 days after reservation. See [Reserve and capture](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/reserve-and-capture).|
 | Payment        | 1082       | This person is not BankID verified. This only applies for test users. |
-| VippsError     | 91         | "The transaction is not allowed." Typically when attempting to capture a cancelled order. |
+| VippsError     | 91         | "The transaction is not allowed." Typically shown when attempting to capture a cancelled order. |
 | VippsError     | 92         | "The transaction has already been processed." |
 | VippsError     | 93         | "The capture request must be identical to the previous request(s) in an idempotent retry." or "The refund request must be identical to the previous request(s) in an idempotent retry." |
 | VippsError     | 94         | Order locked and is already processing. This can occur for a short period of time if a bank has problems, and Vipps needs to wait and/or clean up. Retry the same request later, with the same idempotency key. |
@@ -1612,13 +1612,13 @@ to retrieve all the information about the payment.
 | Merchant       | 31         | "The merchant is blocked. The merchant can contact customer service for details." We can not reveal the details. See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked). |
 | Merchant       | 32         | "The receiving limit of merchant is exceeded." The merchant has received more money than allowed. The merchant can contact customer service for details.   |
 | Merchant       | 33         | "The merchant's payment request limit is exceeded." The merchant has requested more money than allowed. can contact customer service for details.  |
-| Merchant       | 34         | "Duplicate orderId. The orderId must be unique for each MSN. It has already been used for this MSN." The `orderId` has already been used for another payment for this MSN. The orderId must be unique for the MSN. See [Recommendations for orderId/reference](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/orderid). |
-| Merchant       | 35         | "The orderId 'acme-shop-123-order123abc' does not exist for MSN 654321." See [Recommendations for orderId/reference](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/orderid). |
+| Merchant       | 34         | "Duplicate orderId. The orderId must be unique for each MSN. It has already been used for this MSN." The `orderId` has already been used for another payment for this MSN. The orderId must be unique for the MSN. Follow the [`orderId` recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/orderid). |
+| Merchant       | 35         | "The orderId 'acme-shop-123-order123abc' does not exist for MSN 654321." Follow the [`orderId` recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/orderid). |
 | Merchant       | 36         | "The merchant's agreement has not been signed." The merchant can contact customer service for details. |
 | Merchant       | 37         | "The merchant and/or sales unit is unavailable, deleted, deactivated or blocked for payments." We can not reveal the details. See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked) |
 | Merchant       | 38         | "The sales unit is not allowed to skip the landing page. See the FAQ." See the [Vipps landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/vipps-landing-page-faq). |
 | Merchant       | 39         | "The sales unit is not allowed to initiate long-living payments." |
-| Merchant       | 97         | "The sales unit is not allowed to perform payments. See the FAQ." Typically a merchant that has only applied for Login API, and has not been through the required compliance checks for making payments. See [Why do I get "Merchant Not Allowed for Ecommerce Payment"?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-merchant-not-allowed-for-ecommerce-payment). |
+| Merchant       | 97         | "The sales unit is not allowed to perform payments. See the FAQ." Typically shown for a merchant that has only applied for Login API, and has not been through the required compliance checks for making payments. See [Why do I get "Merchant Not Allowed for Ecommerce Payment"?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-merchant-not-allowed-for-ecommerce-payment). |
 | InvalidRequest | -          | The field name will be the error code. Contains a description about what exactly the field error is. |
 
 ## Testing
