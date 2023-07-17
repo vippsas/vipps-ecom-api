@@ -1202,7 +1202,7 @@ components:
         Shipping cost in NOK.
         Please note that this is not øre, and different from other amounts.
       example: 499.00
-      minimum: 1.00
+      minimum: 0.00
     InitiatePaymentCommand:
       type: object
       required:
