@@ -39,7 +39,7 @@ This includes the following fields:
 
 Added capability to cancel a partially captured order.
 See:
-[Cancelling a partially captured order](vipps-ecom-api#cancelling-a-partially-captured-order).
+[Cancelling a partially captured order](vipps-ecom-api.md#cancelling-a-partially-captured-order).
 
 ## April 2021
 
@@ -76,7 +76,7 @@ reserved, meaning before the user has accepted/rejected in Vipps. This may be
 useful in face-to-face situations where a customer's phone runs out of battery.
 
 See
-[Cancelling a pending order](vipps-ecom-api#Cancelling-a-pending-order).
+[Cancelling a pending order](./vipps-ecom-api.md#cancelling-a-pending-order).
 
 
 ### `/approve` endpoint for integration tests
