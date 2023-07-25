@@ -39,7 +39,7 @@ This includes the following fields:
 
 Added capability to cancel a partially captured order.
 See:
-[Cancelling a partially captured order](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#cancelling-a-partially-captured-order).
+[Cancelling a partially captured order](vipps-ecom-api#cancelling-a-partially-captured-order).
 
 ## April 2021
 
@@ -66,7 +66,7 @@ If there is no way to show the Vipps landing page, it can be skipped.
 
 This may be useful for POS integration, vending machines, etc.
 See
-[Skip landing page](../common-topics/vipps-landing-page.md#skip-landing-page)
+[Skip landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page/#skip-landing-page)
 for details.
 
 ### Cancel pending payments
@@ -76,12 +76,12 @@ reserved, meaning before the user has accepted/rejected in Vipps. This may be
 useful in face-to-face situations where a customer's phone runs out of battery.
 
 See
-[Cancelling a pending order](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#Cancelling-a-pending-order).
+[Cancelling a pending order](vipps-ecom-api#Cancelling-a-pending-order).
 
 
 ### `/approve` endpoint for integration tests
 
 A new
-[`/approve`](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#testing)
+[`/approve`](vipps-ecom-api.md#testing)
 endpoint makes it possible to approve payments through the API,
 without using the app.
