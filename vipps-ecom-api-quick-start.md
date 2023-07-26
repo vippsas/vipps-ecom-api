@@ -267,7 +267,7 @@ curl https://apitest.vipps.no/ecomm/v2/payments/UNIQUE-PAYMENT-REFERENCE/capture
 
 See
 [Common topics: Capture](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/reserve-and-capture#capture)
-for more details about the types of captures.
+for more details.
 
 
 ## Optional steps
@@ -320,7 +320,7 @@ curl https://apitest.vipps.no/ecomm/v2/payments/UNIQUE-PAYMENT-REFERENCE/refund 
 
 See
 [Common topics: refund](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/refund)
-for more details about refunds.
+for more details.
 
 ### Cancel the payment
 
@@ -371,7 +371,7 @@ curl https://apitest.vipps.no/ecomm/v2/payments/UNIQUE-PAYMENT-REFERENCE/cancel 
 
 See
 [Common topics: Cancel](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/cancel)
-for more details about cancel.
+for more details.
 
 ## Next Steps
 
