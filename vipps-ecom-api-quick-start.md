@@ -375,10 +375,10 @@ for more details.
 
 ## Next Steps
 
+You will find more examples of eCom API requests in the
+[eCom API Postman collection](/tools/vipps-ecom-api-postman-collection.json).
 
-Now that you have completed your first payment,
-read further to see the full range of possibilities within the eCom API.
-See the [API Guide](vipps-ecom-api.md).
+Experiment with these or go straight to the [eCom API Guide](vipps-ecom-api.md).
 
 
 [access-token-endpoint]: https://developer.vippsmobilepay.com/api/access-token#tag/Authorization-Service/operation/fetchAuthorizationTokenUsingPost
