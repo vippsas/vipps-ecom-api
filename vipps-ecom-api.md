@@ -233,7 +233,7 @@ A payment is initiated with a call to
 
 ![Push notification](images/vipps-flow-device.png)
 
-Triggered by the payment initiation, the Vipps landing page will automatically
+Triggered by the payment initiation, the [landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/landing-page/) will automatically
 detect if it is being invoked on a phone, and whether Vipps is installed on the phone.
 If Vipps is installed, Vipps will automatically be opened.
 
@@ -378,7 +378,7 @@ already known.
 Users should never be asked for the phone number, as they will
 either be automatically app-switched to the Vipps app, or they will be presented
 with the
-[landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page/).
+[landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/landing-page/).
 If the customer's phone number is needed by the merchant: Use `scope` and the
 [Userinfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/).
 
@@ -395,7 +395,7 @@ Vipps responds to the
 [`POST:/ecomm/v2/payments`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST)
 request with a URL.
 The URL is normally a `https://` URL, which automatically opens Vipps if the
-apps is installed (and the Vipps landing page if not).
+apps is installed (and the landing page, if not).
 
 #### isApp
 
@@ -738,14 +738,14 @@ the merchant is obliged to handle the user details as per the GDPR guidelines.
 The request path will include a `userId` that Vipps will have provided as
 part of callback and also made accessible through [`GET:/ecomm/v2/payments/{orderId}/details`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET).
 
-## The Vipps landing page
+## The landing page
 
 When a user is directed to the `url` sent in the response to
 [`POST:/ecomm/v2/payments`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST),
-they will either be taken to Vipps or to the Vipps landing page.
+they will either be taken to Vipps or to the landing page.
 
 See
-[Vipps landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page)
+[Landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/landing-page)
 from Common topics, for more details about the landing page.
 
 ## Reserve
@@ -1079,7 +1079,7 @@ always contains *the entire history* of payments for the order, not just the cur
 **Please note:**
 
 * The `transactionSummary` will not be part of the response if
-  the user does not react to the Vipps landing page or app-switch.
+  the user does not react to the landing page or app-switch.
 * The `bankIdentificationNumber` will only be part of `transactionSummary` in the
   response of the `GET:/ecomm/v2/payments/{orderId}/details` endpoint.
 * If paymentType is set to `eComm Express Payment` you will get `shippingDetails`
@@ -1616,7 +1616,7 @@ to retrieve all the information about the payment.
 | Merchant       | 35         | "The orderId 'acme-shop-123-order123abc' does not exist for MSN 654321." Follow the [`orderId` recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/orderid). |
 | Merchant       | 36         | "The merchant's agreement has not been signed." The merchant can contact customer service for details. |
 | Merchant       | 37         | "The merchant and/or sales unit is unavailable, deleted, deactivated or blocked for payments." We can not reveal the details. See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked) |
-| Merchant       | 38         | "The sales unit is not allowed to skip the landing page. See the FAQ." See the [Vipps landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/vipps-landing-page-faq). |
+| Merchant       | 38         | "The sales unit is not allowed to skip the landing page. See the FAQ." See the [landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/landing-page-faq). |
 | Merchant       | 39         | "The sales unit is not allowed to initiate long-living payments." |
 | Merchant       | 97         | "The sales unit is not allowed to perform payments. See the FAQ." Typically shown for a merchant that has only applied for Login API, and has not been through the required compliance checks for making payments. See [Why do I get "Merchant Not Allowed for Ecommerce Payment"?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-errors-faq#why-do-i-get-merchant-not-allowed-for-ecommerce-payment). |
 | InvalidRequest | -          | The field name will be the error code. Contains a description about what exactly the field error is. |

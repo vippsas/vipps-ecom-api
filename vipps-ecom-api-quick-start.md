@@ -55,7 +55,7 @@ Send request `Get Access Token`.
 ### Regular payment
 
 1. Send request `Initiate Payment`.
-2. Open the Vipps landing page URL from the response in a browser and specify your phone number.
+2. Open the landing page URL from the response in a browser and specify your phone number.
 3. Confirm the payment in Vipps.
    **Please note:** You can also use
    [`Force approve payment`](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#testing)
@@ -70,7 +70,7 @@ for more information.
 ### Express checkout (*Vipps Hurtigkasse*)
 
 1. Send request `Initiate Payment - Express Checkout`.
-2. Open the Vipps landing page URL from the response in a browser and specify your phone number.
+2. Open the landing page URL from the response in a browser and specify your phone number.
 3. Confirm the payment in Vipps.
    **Please note:** You can also use
    [`Force approve payment`](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#testing)
@@ -85,7 +85,7 @@ for more information.
 ### Userinfo
 
 1. Send request `Initiate Payment - Profile flow`.
-2. Open the Vipps landing page URL from the response in a browser and specify your phone number.
+2. Open the landing page URL from the response in a browser and specify your phone number.
 3. Confirm the payment in Vipps.
    **Please note:** You can also use
    [`Force approve payment`](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#testing)
@@ -101,7 +101,7 @@ for more information.
 ### QR code
 
 When you run any of the `Initiate Payment` examples, the `vippsLandingPageUrl` variable gets set in the environment.
-With this URL, you can generate a QR code to take you to the Vipps landing page for a one-time payment.
+With this URL, you can generate a QR code to take you to the landing page for a one-time payment.
 
 1. Send request `Initiate Payment`.
 1. Send request `Generate QR Code PNG`.

@@ -66,7 +66,7 @@ If there is no way to show the Vipps landing page, it can be skipped.
 
 This may be useful for POS integration, vending machines, etc.
 See
-[Skip landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page/#skip-landing-page)
+[Skip landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/landing-page/#skip-landing-page)
 for details.
 
 ### Cancel pending payments

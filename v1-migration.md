@@ -18,7 +18,7 @@ for a detailed description of the v2 flow.
 
 The initiate payment response will contain a unique URL for each order. Either a standard `https://` URL or a deeplink URL, prefixed with `vipps://`.
 
-![Vipps landing page](images/landing-page.png)
+![Landing page](images/landing-page.png)
 
 *Note: On mobile devices "Universal Linking" will be used for `https` URLs, which will automatically open [Vipps](vipps-ecom-api.md#phone-and-mobile-browser-flow).*
 
@@ -26,9 +26,9 @@ The initiate payment response will contain a unique URL for each order. Either a
 
 Skipping the landing page is reserved for special cases, where displaying it is not possible.
 See the details in the
-[skip landing page section](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page#skip-landing-page).
+[skip landing page section](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/landing-page#skip-landing-page).
 
-See the [FAQ](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/vipps-landing-page-faq#is-it-possible-to-skip-the-landing-page).
+See the [FAQ](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/landing-page-faq#is-it-possible-to-skip-the-landing-page).
 
 ## Phone number is optional
 
@@ -84,8 +84,8 @@ See [here](vipps-ecom-api.md#initiate) for full overview of initiate payment.
 
 ## Fallback URL is required
 
-The initiate payment must contain a `fallBack` URL. This is where the user will be redirect to after the payment.
-This is set in the initiate payment body.
+The `initiate` payment must contain a `fallBack` URL. This is where the user will be redirected after the payment.
+This is set in the `initiate` payment body.
 
 For apps, this URL will be the appswitch URL.
 
