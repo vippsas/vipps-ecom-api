@@ -77,7 +77,7 @@ For all the following, you will need an `access_token` from the
 This provides you with access to the API.
 
 <Tabs
-defaultValue="postman"
+defaultValue="curl"
 groupId="sdk-choice"
 values={[
 {label: 'curl', value: 'curl'},
@@ -118,7 +118,7 @@ When your test mobile number
 is provided in `phoneNumber`, it will be pre-filled in the form.
 
 <Tabs
-defaultValue="postman"
+defaultValue="curl"
 groupId="sdk-choice"
 values={[
 {label: 'curl', value: 'curl'},
@@ -149,17 +149,19 @@ curl --location 'https://apitest.vipps.no/ecomm/v2/payments/' \
     "mobileNumber": "91234567"
   },
   "merchantInfo": {
-    "merchantSerialNumber": "123456"
+    "merchantSerialNumber": "123456",
     "callbackPrefix":"https://example.com/vipps/callbacks-for-payment-update-from-vipps",
     "fallBack": "https://example.com/vipps/fallback-result-page-for-both-success-and-failure/acme-shop-123-order123abc",
   },
   "transaction": {
     "amount": 49900,
-    "orderId": "acme-shop-123-order123abc",
+    "orderId": "UNIQUE-PAYMENT-REFERENCE",
     "transactionText": "One pair of socks.",
 }
 }'
 ```
+
+Note that `orderId` must be unique for each payment you create.
 
 </TabItem>
 </Tabs>
@@ -186,7 +188,7 @@ To receive the result of the user action you may poll the status of the payment 
 
 
 <Tabs
-defaultValue="postman"
+defaultValue="curl"
 groupId="sdk-choice"
 values={[
 {label: 'curl', value: 'curl'},
@@ -225,7 +227,7 @@ amount either partially or fully:
 [`POST:/payments/{orderId}/capture`][capture-payment-endpoint].
 
 <Tabs
-defaultValue="postman"
+defaultValue="curl"
 groupId="sdk-choice"
 values={[
 {label: 'curl', value: 'curl'},
@@ -278,7 +280,7 @@ To refund the captured amount, either partially or fully:
 [`POST:/payments/{orderId}/refund`][refund-payment-endpoint].
 
 <Tabs
-defaultValue="postman"
+defaultValue="curl"
 groupId="sdk-choice"
 values={[
 {label: 'curl', value: 'curl'},
@@ -328,7 +330,7 @@ To cancel the payment, either fully or after a partial capture:
 [`POST:/payments/{orderId}/cancel`][cancel-payment-endpoint].
 
 <Tabs
-defaultValue="postman"
+defaultValue="curl"
 groupId="sdk-choice"
 values={[
 {label: 'curl', value: 'curl'},
@@ -353,8 +355,7 @@ curl https://apitest.vipps.no/ecomm/v2/payments/UNIQUE-PAYMENT-REFERENCE/cancel 
 -H "Vipps-System-Version: 3.1.2" \
 -H "Vipps-System-Plugin-Name: acme-webshop" \
 -H "Vipps-System-Plugin-Version: 4.5.6" \
--H "Idempotency-Key: 49ca711a-acee-4d01-993b-9487112e1def" \
--X POST \
+-X PUT \
 -d '{
   "merchantInfo": {
         "merchantSerialNumber": "123456"
