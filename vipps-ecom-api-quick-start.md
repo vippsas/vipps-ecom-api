@@ -170,7 +170,7 @@ Note that `orderId` must be unique for each payment you create.
 ### Step 4 - Completing the payment
 
 *Ctrl+click* (*Command-click* on macOS) on the link that appears, and it will take you to the
-[landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/vipps-landing-page/).
+[landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/landing-page/).
 The phone number of your test user should already be filled in, so you only have to click *Next*.
 You will be presented with the payment in the app, where you can complete or reject the payment.
 Once you have acted upon the payment, you will be redirected back to the specified `fallBack` URL under a "best effort" policy.
