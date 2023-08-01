@@ -25,7 +25,7 @@ The user chooses “Pay with Vipps”, either in the checkout, or on the product
 ## 2. The landing page (If customer started on desktop)
 
 If the payment was started on a desktop device the user will be sent to the
-[landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/landing-page).
+[landing page](https://developer.vippsmobilepay.com/docs/common-topics/landing-page).
 The user confirms their number, and is prompted to log in to Vipps.
 
 If the payment was started from a mobile device, the app will automatically switch over to Vipps.

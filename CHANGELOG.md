@@ -12,7 +12,7 @@ END_METADATA -->
 
 All notable changes to the current API will be documented in this file.
 To learn about API versioning, see
-[Common topics: API Lifecycle](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/api-lifecycle/).
+[Common topics: API Lifecycle](https://developer.vippsmobilepay.com/docs/common-topics/api-lifecycle/).
 
 ## March 2023
 
@@ -66,7 +66,7 @@ If there is no way to show the Vipps landing page, it can be skipped.
 
 This may be useful for POS integration, vending machines, etc.
 See
-[Skip landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/landing-page/#skip-landing-page)
+[Skip landing page](https://developer.vippsmobilepay.com/docs/common-topics/landing-page/#skip-landing-page)
 for details.
 
 ### Cancel pending payments
