@@ -59,7 +59,7 @@ We have also released new APIs that may be interesting, such as:
 * [Vipps Invoice API ("Vipps Regninger")](https://github.com/vippsas/vipps-invoice-api)
 * [Vipps Log In](https://developer.vippsmobilepay.com/docs/APIs/login-api)
 
-Vipps also has [plugins](https://developer.vippsmobilepay.com/docs/vipps-plugins) available:
+Vipps also has [plugins](https://developer.vippsmobilepay.com/docs/plugins) available:
 
 * [Vipps for WooCommerce (WordPress)](https://wordpress.org/plugins/woo-vipps/)
 * [Vipps for Magento](https://www.vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/magento/)
