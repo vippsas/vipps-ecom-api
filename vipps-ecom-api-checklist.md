@@ -90,4 +90,4 @@ Integrate *all* the [API endpoints](https://developer.vippsmobilepay.com/api/eco
 
 ## Flow to go live for direct integrations for Vipps partners
 
-See: [Vipps partners](https://developer.vippsmobilepay.com/docs/vipps-partner).
+See: [Vipps partners](https://developer.vippsmobilepay.com/docs/partner).

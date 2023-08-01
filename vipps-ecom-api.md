@@ -1222,7 +1222,7 @@ In addition to the normal [Authentication](#authentication), we offer *partner k
 which let a partner make API calls on behalf of a merchant.
 
 See:
-[Partner keys](https://developer.vippsmobilepay.com/docs/vipps-partner/partner-keys).
+[Partner keys](https://developer.vippsmobilepay.com/docs/partner/partner-keys).
 
 ## Idempotency
 
