@@ -24,7 +24,7 @@ import TabItem from '@theme/TabItem';
 This document covers the quick steps for getting started with the ePayment API.
 You must have already signed up as an organization with Vipps MobilePay and have
 your test credentials from the merchant portal, as described in the
-[Getting started guide](https://developer.vippsmobilepay.com/docs/vipps-developers/getting-started).
+[Getting started guide](https://developer.vippsmobilepay.com/docs/getting-started).
 
 **Important:** The examples use standard example values that you must change to
 use *your* values. This includes API keys, HTTP headers, reference, etc.
@@ -49,17 +49,17 @@ Import the following files into Postman:
 * [Global Postman environment](https://github.com/vippsas/vipps-developers/blob/master/tools/vipps-api-global-postman-environment.json)
 
 In Postman, tweak the environment with your own values (see
-[API keys](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/api-keys/)):
+[API keys](https://developer.vippsmobilepay.com/docs/common-topics/api-keys/)):
 
 * `client_id` - Merchant key required for getting the access token.
 * `client_secret` - Merchant key required for getting the access token.
 * `Ocp-Apim-Subscription-Key` - The subscription key for making API requests.
 * `merchantSerialNumber` - The unique ID for your sales unit.
 * `mobileNumber` - The phone number for your
-   [test user](https://developer.vippsmobilepay.com/docs/vipps-developers/test-environment#test-users).
+   [test user](https://developer.vippsmobilepay.com/docs/test-environment#test-users).
 
 For help using Postman, see
-[Quick start guides](https://developer.vippsmobilepay.com/docs/vipps-developers/quick-start-guides).
+[Quick start guides](https://developer.vippsmobilepay.com/docs/quick-start-guides).
 
 </TabItem>
 <TabItem value="curl">
@@ -170,7 +170,7 @@ Note that `orderId` must be unique for each payment you create.
 ### Step 4 - Completing the payment
 
 *Ctrl+click* (*Command-click* on macOS) on the link that appears, and it will take you to the
-[landing page](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/landing-page/).
+[landing page](https://developer.vippsmobilepay.com/docs/common-topics/landing-page/).
 The phone number of your test user should already be filled in, so you only have to click *Next*.
 You will be presented with the payment in the app, where you can complete or reject the payment.
 Once you have acted upon the payment, you will be redirected back to the specified `fallBack` URL under a "best effort" policy.
@@ -268,7 +268,7 @@ curl https://apitest.vipps.no/ecomm/v2/payments/UNIQUE-PAYMENT-REFERENCE/capture
 </Tabs>
 
 See
-[Common topics: Capture](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/reserve-and-capture#capture)
+[Common topics: Capture](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture#capture)
 for more details.
 
 
@@ -321,7 +321,7 @@ curl https://apitest.vipps.no/ecomm/v2/payments/UNIQUE-PAYMENT-REFERENCE/refund 
 </Tabs>
 
 See
-[Common topics: refund](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/refund)
+[Common topics: refund](https://developer.vippsmobilepay.com/docs/common-topics/refund)
 for more details.
 
 ### Cancel the payment
@@ -371,7 +371,7 @@ curl https://apitest.vipps.no/ecomm/v2/payments/UNIQUE-PAYMENT-REFERENCE/cancel 
 </Tabs>
 
 See
-[Common topics: Cancel](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/cancel)
+[Common topics: Cancel](https://developer.vippsmobilepay.com/docs/common-topics/cancel)
 for more details.
 
 ## Next Steps

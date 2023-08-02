@@ -37,7 +37,7 @@ native apps and other solutions.
 ## Next steps
 
 See
-[Vipps MobilePay getting started guide](https://developer.vippsmobilepay.com/docs/vipps-developers/getting-started)
+[Vipps MobilePay getting started guide](https://developer.vippsmobilepay.com/docs/getting-started)
 for information about API keys, product activation, how to make API calls, etc.
 
 Review the detailed documentation found here:

@@ -38,17 +38,17 @@ Integrate *all* the [API endpoints](https://developer.vippsmobilepay.com/api/eco
 |-----|-----------|
 |     Handle callbacks | Correctly handle callbacks from Vipps, both for successful and unsuccessful payments. See the API documentation for [how callback URLs are built](vipps-ecom-api.md#callback-endpoints), make test calls to make sure you handle the `POST` requests correctly. Vipps does not have capacity to manually do this for you. |
 |     Handle errors | Make sure to log and handle [all errors](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api.md#errors). All integrations should display errors in a way that the users (customers and merchant employees/administrators) can see and understand them.|
-|     Include Vipps HTTP headers | Send the [Vipps HTTP headers](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/http-headers) in all API requests for better tracking and troubleshooting (mandatory for partners and platforms, who must send these headers as part of the checklist approval). |
+|     Include Vipps HTTP headers | Send the [Vipps HTTP headers](https://developer.vippsmobilepay.com/docs/common-topics/http-headers) in all API requests for better tracking and troubleshooting (mandatory for partners and platforms, who must send these headers as part of the checklist approval). |
 |     Add information to the payment history| We recommend using the [Order Management API](https://developer.vippsmobilepay.com/docs/APIs/order-management-api) to add receipts and/or images to the payment history. This is a great benefit for the end user experience. It is also mandatory for merchants using ["Vipps Assisted Content Monitoring"](https://developer.vippsmobilepay.com/docs/APIs/order-management-api/vipps-order-management-api#vipps-assisted-content-monitoring). |
 
 ## Avoid integration pitfalls
 
 | Action    | Comment   |
 |-----|-----------|
-|     Send useful `OrderId` | Follow our [`orderId` recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/orderid). |
-|     Poll for payment details | The Merchant *must not* rely on `fallback` or `callback` alone, and must poll [`GET:/ecomm/v2/payments/{orderId}/details`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET) as documented (this is part of the first item in this checklist, but it's still a common error). Follow our [polling recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/polling-guidelines). |
-|     Handle redirects| The merchant must handle that the `fallback` URL is opened in the default browser on the phone, and not in a specific browser, in a specific tab, in an embedded browser, requiring a session token, etc. Follow our [recommendations regarding handling redirects](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/redirects/). See the FAQ: [How can I open the fallback URL in a specific (embedded) browser?](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-problems-faq#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser)|
-|     Follow design guidelines| The Vipps branding must be according to the [Vipps design guidelines](https://developer.vippsmobilepay.com/docs/vipps-design-guidelines).|
+|     Send useful `OrderId` | Follow our [`orderId` recommendations](https://developer.vippsmobilepay.com/docs/common-topics/orderid). |
+|     Poll for payment details | The Merchant *must not* rely on `fallback` or `callback` alone, and must poll [`GET:/ecomm/v2/payments/{orderId}/details`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET) as documented (this is part of the first item in this checklist, but it's still a common error). Follow our [polling recommendations](https://developer.vippsmobilepay.com/docs/common-topics/polling-guidelines). |
+|     Handle redirects| The merchant must handle that the `fallback` URL is opened in the default browser on the phone, and not in a specific browser, in a specific tab, in an embedded browser, requiring a session token, etc. Follow our [recommendations regarding handling redirects](https://developer.vippsmobilepay.com/docs/common-topics/redirects/). See the FAQ: [How can I open the fallback URL in a specific (embedded) browser?](https://developer.vippsmobilepay.com/docs/faqs/common-problems-faq#how-can-i-open-the-fallback-url-in-a-specific-embedded-browser)|
+|     Follow design guidelines| The Vipps branding must be according to the [Vipps design guidelines](https://developer.vippsmobilepay.com/docs/design-guidelines).|
 |     Educate customer support| Make sure your customer service, etc. has all the tools and information they need available in *your* system, through the APIs listed in the first item in this checklist, and that they do not need to visit [portal.vipps.no](https://portal.vipps.no) for normal work.|
 
 ## Flow to go live for direct integrations
@@ -59,12 +59,12 @@ Integrate *all* the [API endpoints](https://developer.vippsmobilepay.com/api/eco
 3. The merchant receives an email from Vipps saying that they can log in with
    BankID on
    [portal.vipps.no](https://portal.vipps.no)
-   and retrieve [API keys](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/api-keys/#getting-the-api-keys).
+   and retrieve [API keys](https://developer.vippsmobilepay.com/docs/common-topics/api-keys/#getting-the-api-keys).
 4. The merchant completes all checklist items above.
    Please double-check to avoid mistakes.
 5. The merchant verifies the integration in the test environment by checking that
    there are test IDs (`orderId`) in the
-   [Vipps test environment](https://developer.vippsmobilepay.com/docs/vipps-developers/test-environment),
+   [Vipps test environment](https://developer.vippsmobilepay.com/docs/test-environment),
    with the following states:
    * A complete order ending in `REFUND`
       ([`/refund`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST)
@@ -90,4 +90,4 @@ Integrate *all* the [API endpoints](https://developer.vippsmobilepay.com/api/eco
 
 ## Flow to go live for direct integrations for Vipps partners
 
-See: [Vipps partners](https://developer.vippsmobilepay.com/docs/vipps-partner).
+See: [Vipps partners](https://developer.vippsmobilepay.com/docs/partner).

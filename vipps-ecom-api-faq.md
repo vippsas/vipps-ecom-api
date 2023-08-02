@@ -22,12 +22,12 @@ for all the details.
 
 For more common questions, see:
 
-* [Common API FAQ](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs)
+* [Common API FAQ](https://developer.vippsmobilepay.com/docs/faqs)
 
 ## Common problems
 
 See
-[FAQ: Common problems](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-problems-faq)
+[FAQ: Common problems](https://developer.vippsmobilepay.com/docs/faqs/common-problems-faq)
 for more questions.
 
 ### Why does Vipps Hurtigkasse (express checkout) fail?
@@ -66,13 +66,13 @@ The Vipps eCom API supports refunds with
 For details on how to offer refunds, please refer to the documentation for your eCommerce solution.
 
 See
-[Vipps FAQ: Refunds](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/refunds-faq)
+[Vipps FAQ: Refunds](https://developer.vippsmobilepay.com/docs/faqs/refunds-faq)
 for answers to more questions.
 
 ## Users and payments
 
 See
-[FAQ: Users and payments](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/users-and-payments-faq)
+[FAQ: Users and payments](https://developer.vippsmobilepay.com/docs/faqs/users-and-payments-faq)
 for more questions.
 
 ### I have initiated an order but I can't find it
@@ -93,7 +93,7 @@ The solution is to check with
 [`GET:/ecomm/v2/payments/{orderId}/details`](vipps-ecom-api.md#get-payment-details).
 
 You can use
-[Postman](https://developer.vippsmobilepay.com/docs/vipps-developers/quick-start-guides)
+[Postman](https://developer.vippsmobilepay.com/docs/quick-start-guides)
 to manually do API calls, Use the "inspect" functionality to see the complete requests and responses.
 
 See:
@@ -128,7 +128,7 @@ The following images illustrate the express checkout flow:
 ## Common errors
 
 See
-[FAQ: Common errors](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/common-errors-faq)
+[FAQ: Common errors](https://developer.vippsmobilepay.com/docs/faqs/common-errors-faq)
 for more questions.
 
 ### Why do I not get callbacks from Vipps?
@@ -143,7 +143,7 @@ section in the API guide, and see
 
 If you do not receive a callback, it could be because your firewall is blocking
 our requests. See:
-[Vipps request servers](https://developer.vippsmobilepay.com/docs/vipps-developers/developer-resources/servers#vipps-request-servers).
+[Vipps request servers](https://developer.vippsmobilepay.com/docs/developer-resources/servers#vipps-request-servers).
 
 Please check your own logs for any signs of problems. If your
 `orderId` is `acme-shop-123-order123abc`: Search your logs for `acme-shop-123-order123abc`.
@@ -168,7 +168,7 @@ as it gives a faster payment process and a better user experience.
 
 If you use the correct `scope` in the payment initiation, but don't get the
 `sub` in the response for `/details`: Check that you are following the
-[`orderId` recommendations](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/orderid).
+[`orderId` recommendations](https://developer.vippsmobilepay.com/docs/common-topics/orderid).
 Very short orderIds don't work well with our database index, and may cause
 an internal timeout, and we "have to" send the response without the `sub`.
 We cannot enforce longer orderIds due to backwards compatibility.
@@ -176,7 +176,7 @@ We cannot enforce longer orderIds due to backwards compatibility.
 ## Other questions
 
 See
-[FAQ: Other questions](https://developer.vippsmobilepay.com/docs/vipps-developers/faqs/other-faq)
+[FAQ: Other questions](https://developer.vippsmobilepay.com/docs/faqs/other-faq)
 for more questions.
 
 ### What functionality is included in the eCom API, but not the PSP API?
