@@ -86,15 +86,11 @@ Have you, or the eCommerce solution you are using, successfully implemented
 This is a requirement, see the
 [API checklist](vipps-ecom-api-checklist.md).
 
-In case the Vipps
+In case the
 [callback](vipps-ecom-api.md#callbacks)
 fails, you will not automatically receive notification of order status.
 The solution is to check with
 [`GET:/ecomm/v2/payments/{orderId}/details`](vipps-ecom-api.md#get-payment-details).
-
-You can use
-[Postman](https://developer.vippsmobilepay.com/docs/quick-start-guides)
-to manually do API calls, Use the "inspect" functionality to see the complete requests and responses.
 
 See:
 [API endpoints](vipps-ecom-api.md#api-endpoints).

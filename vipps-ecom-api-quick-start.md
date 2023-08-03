@@ -43,7 +43,9 @@ values={[
 ]}>
 <TabItem value="postman">
 
-Import the following files into Postman:
+**Please note:** Postman is discontinuing their offline version. Use only your test keys and delete them after testing. Ensure that your company allows for cloud use before continuing.
+
+If you wish to use Postman, import the following files:
 
 * [eCom API Postman collection](/tools/vipps-ecom-api-postman-collection.json)
 * [Global Postman environment](https://github.com/vippsas/vipps-developers/blob/master/tools/vipps-api-global-postman-environment.json)
@@ -57,9 +59,6 @@ In Postman, tweak the environment with your own values (see
 * `merchantSerialNumber` - The unique ID for your sales unit.
 * `mobileNumber` - The phone number for your
    [test user](https://developer.vippsmobilepay.com/docs/test-environment#test-users).
-
-For help using Postman, see
-[Quick start guides](https://developer.vippsmobilepay.com/docs/quick-start-guides).
 
 </TabItem>
 <TabItem value="curl">
