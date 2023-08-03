@@ -1138,8 +1138,8 @@ a customer. Details about each step are described in the sections below.
    [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://developer.vippsmobilepay.com/api/userinfo#operation/getUserinfo)
    to retrieve the user's information.
 
-To test this out, see the step-by-step instructions in the
-[Quick start](vipps-ecom-api-quick-start.md).
+An example similar to this, but with ePayment, is shown in the
+[UserInfo Quickstart guide](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/quick-start/).
 
 **Please note:** The `sub` is added asynchronously, so if the `/details` request
 is made within (milli)seconds of the payment approval in the app, it may not be
