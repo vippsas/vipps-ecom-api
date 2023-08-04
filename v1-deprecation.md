@@ -42,7 +42,7 @@ Some customers have not been able to use the eCom v2 API because they have not
 had a display available for the landing page. In these special cases we offer a
 feature to skip the landing page. Customers who cannot display the landing page
 can see more details about the
-[skipLandingPage](https://developer.vippsmobilepay.com/docs/common-topics/landing-page#skip-landing-page).
+[`skipLandingPage`](https://developer.vippsmobilepay.com/docs/common-topics/landing-page#skip-landing-page).
 
 Vipps is piloting a solution for tokenized BankAxept payments in payment terminals using Vipps
 as a wallet. To learn about availability, contact your payment terminal provider.

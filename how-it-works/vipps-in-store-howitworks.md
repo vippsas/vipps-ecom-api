@@ -10,12 +10,10 @@ pagination_prev: null
 
 # How eCom works in the store
 
-
-
 Stores can allow customers to pay easily and quickly from their own phone, without the need to touch the terminal.
 This page shows an example of how you can offer contactless payment to your customers by integrating Vipps in your POS system.
 
-It is also possible to use our simpler solution Vippsnummer, but then the amount must be entered manually at checkout, and there will be some follow-up with accounting and settlement.
+It is also possible to use our simpler solution, *Vippsnummer*, but then the amount must be entered manually at checkout, and there will be some follow-up with accounting and settlement.
 
 ## The payment process in store
 
