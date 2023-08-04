@@ -17,7 +17,6 @@ import TabItem from '@theme/TabItem';
 
 ## Before you begin
 
-
 **Important:** We strongly recommend that all new integrations use the new
 [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
 
@@ -28,7 +27,6 @@ your test credentials from the merchant portal, as described in the
 
 **Important:** The examples use standard example values that you must change to
 use *your* values. This includes API keys, HTTP headers, reference, etc.
-
 
 ## Your first Payment
 
@@ -165,7 +163,6 @@ Note that `orderId` must be unique for each payment you create.
 </TabItem>
 </Tabs>
 
-
 ### Step 4 - Completing the payment
 
 *Ctrl+click* (*Command-click* on macOS) on the link that appears, and it will take you to the
@@ -178,13 +175,10 @@ Once you have acted upon the payment, you will be redirected back to the specifi
 We cannot guarantee the user will be redirected back to the same browser or session, or that they will at all be redirected back. User interaction can be unpredictable, and the user may choose to fully close the app or browser.
 :::
 
-
-
 ### Step 5 - Getting the status of the payment
 
 To receive the result of the user action you may poll the status of the payment via the
 [`GET:/payments/{orderId}/details`][get-payment-endpoint].
-
 
 <Tabs
 defaultValue="curl"
@@ -217,7 +211,6 @@ curl https://apitest.vipps.no/ecomm/v2/payments/UNIQUE-PAYMENT-REFERENCE/details
 
 </TabItem>
 </Tabs>
-
 
 ### Step 6 - Capture the payment
 
@@ -269,7 +262,6 @@ curl https://apitest.vipps.no/ecomm/v2/payments/UNIQUE-PAYMENT-REFERENCE/capture
 See
 [Common topics: Capture](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture#capture)
 for more details.
-
 
 ## Optional steps
 
@@ -379,7 +371,6 @@ You will find more examples of eCom API requests in the
 [eCom API Postman collection](/tools/vipps-ecom-api-postman-collection.json).
 
 Experiment with these or go straight to the [eCom API Guide](vipps-ecom-api.md).
-
 
 [access-token-endpoint]: https://developer.vippsmobilepay.com/api/access-token#tag/Authorization-Service/operation/fetchAuthorizationTokenUsingPost
 [create-payment-endpoint]: https://developer.vippsmobilepay.com/api/ecom/#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST

@@ -1139,7 +1139,7 @@ a customer. Details about each step are described in the sections below.
    to retrieve the user's information.
 
 An example similar to this, but with ePayment, is shown in the
-[UserInfo Quickstart guide](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/quick-start/).
+[Userinfo quick start guide](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/quick-start/).
 
 **Please note:** The `sub` is added asynchronously, so if the `/details` request
 is made within (milli)seconds of the payment approval in the app, it may not be
@@ -1213,7 +1213,7 @@ is to prevent too many initiate calls for the same payment. The overall limit
 for number of *different* payments is *far* higher than 2. The same goes for
 [Capture](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/capturePaymentUsingPOST):
 You can make five capture calls per minute for
-one unique orderId, and the limit for capture calls for different orderIds
+one unique `orderId`, and the limit for capture calls for different `orderId` values
 is *far* higher.
 
 ## Partner keys
@@ -1478,7 +1478,7 @@ Once the user has paid (or cancelled), Vipps supports two ways to return to the 
 
 2: Just close Vipps, fall back to the merchant app, pick up the thread again there in `onActivityResult()`.
 
-In both cases, the merchant app should query the ecom API for updated status on the payment once user returns from Vipps.
+In both cases, the merchant app should query the eCom API for updated status on the payment once user returns from Vipps.
 
 #### Return to merchant app by actively deeplinking into it from Vipps
 
@@ -1526,7 +1526,7 @@ In order to use this approach, when creating the payment in the merchant has to 
 
 (and *only* "INTENT", no parameters etc.)
 
-This will cause Vipps to simply close after a successful or cancelled ecom payment, and fall back to the calling merchant app.
+This will cause Vipps to simply close after a successful or cancelled eCom payment, and fall back to the calling merchant app.
 
 The merchant app activity that resumes again (after Vipps closes) has to override `onActivityResult` method to pick up the thread again here. Example:
 
@@ -1637,7 +1637,7 @@ The endpoint is only available in our test environment.
 Vipps (using the app) before "force approve" can be used for that user.
 If this has not been done, you will get an error.
 This is because the user needs to be registered as
-"bankID verified" in the backend, and this happens automatically in
+"BankID verified" in the backend, and this happens automatically in
 the test environment when using Vipps (the app), but not with "force approve".
 
 **Please note:** Vipps Hurtigkasse (express checkout) and `skipLandingPage` is
