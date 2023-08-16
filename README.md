@@ -36,14 +36,12 @@ native apps and other solutions.
 
 ## Next steps
 
-See
-[Vipps MobilePay getting started guide](https://developer.vippsmobilepay.com/docs/getting-started)
-for information about API keys, product activation, how to make API calls, etc.
+* [API quick start](vipps-ecom-api-quick-start.md): Run the basic examples in curl or Postman.
+* [API guide](vipps-ecom-api.md): Learn about the eCom API features.
+* [API checklist](vipps-ecom-api-checklist.md): Complete the checklist for direct and POS integrations.
+* [API FAQ](vipps-ecom-api-faq.md): Look for your question among those people have asked before.
+* [API reference](https://developer.vippsmobilepay.com/api/ecom): Go straight to the endpoint specifications.
 
-Review the detailed documentation found here:
-
-* [API quick start](vipps-ecom-api-quick-start.md): Quick start.
-* [API guide](vipps-ecom-api.md): Developer guide for Vipps eCom API.
-* [API checklist](vipps-ecom-api-checklist.md): For direct and POS integrations.
-* [API FAQ](vipps-ecom-api-faq.md): Questions and answers.
-* [API reference](https://developer.vippsmobilepay.com/api/ecom): eCom API reference specifications.
+If you're new to the platform, see
+[Getting started](https://developer.vippsmobilepay.com/docs/getting-started/)
+for information about API keys, product activation, and the test environment.
