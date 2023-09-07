@@ -139,16 +139,14 @@ components:
       in: header
       name: Authorization
       description: >-
-        The access token is a base64-encoded string that is required for all API calls.
-        It is a JWT (JSON Web Token).
-        The access token is fetched from the
-            [`POST:/accesstoken/get`](https://vippsas.github.io/vipps-developer-docs/api/access-token#tag/Authorization-Service/operation/fetchAuthorizationTokenUsingPost)
-            endpoint.
-        It is valid for 1 hour in the test environment and 24 hours in the production environment.
+        The token provided by the merchant in the initiate payment request
+        as `authToken` (an optional parameter).
+        Vipps uses this token when making calls to the merchant's servers.
+        Used so that the merchant may authenticate the request from Vipps.
       required: true
       schema:
         type: string
-      example: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni..."
+      example: "ae0cb90d91b4a84a"
 
   schemas:
     AddressExpress:
