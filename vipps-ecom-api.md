@@ -152,7 +152,7 @@ Vipps eCommerce API offers two types of payments:
 1. Regular eCommerce payments
 2. Express checkout payments
 
-Examples from a demo website:
+Examples from our [demo website](https://demo.vipps.no/):
 
 ![Regular and express checkout](images/vipps-flow-web.png)
 
@@ -160,6 +160,8 @@ Examples from a demo website:
 
 This is the typical flow, where the user adds items to a shopping cart,
 enters the shipping address and pays.
+
+Try it out on the [Vipps på Nett demo page](https://demo.vipps.no/vipps-paa-nett).
 
 See:
 
@@ -170,6 +172,8 @@ See:
 
 The Express checkout (*Vipps Hurtigkasse*) is a solution for letting the user
 automatically share the address information with merchant and choose a shipping option.
+
+Try it out on the [Express checkout demo page](https://demo.vipps.no/vipps-express).
 
 Express checkout is designed for shipping products, with a delivery address and a
 shipping method.
