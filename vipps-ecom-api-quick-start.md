@@ -41,9 +41,10 @@ values={[
 ]}>
 <TabItem value="postman">
 
-**Please note:** Postman is discontinuing their offline version. Use only your test keys and delete them after testing. Ensure that your company allows for cloud use before continuing.
+**Please note:** To prevent your sensitive data and credentials from being synced to the Postman cloud,
+store them in the *Current Value* fields of your Postman environment.
 
-If you wish to use Postman, import the following files:
+Import the following files:
 
 * [eCom API Postman collection](/tools/vipps-ecom-api-postman-collection.json)
 * [Global Postman environment](https://github.com/vippsas/vipps-developers/blob/master/tools/vipps-api-global-postman-environment.json)
