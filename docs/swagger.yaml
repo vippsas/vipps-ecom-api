@@ -1254,8 +1254,11 @@ components:
         scope:
           type: string
           description: |
-            The requested OIDC scope for use with
-            [userinfo](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api#scope).
+            A space-separated string list of required user information (e.g., "name phoneNumber") in
+            accordance with the OpenID Connect specification.
+            See the
+            [Userinfo user guide](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/userinfo-api-guide#scope)
+            for details.
             Possible values are:
             - name
             - address
@@ -1263,8 +1266,7 @@ components:
             - phoneNumber
             - birthDate
             - nin
-            - accountNumbers
-          example: 'name address email'
+          example: 'name phoneNumber'
         additionalData:
           $ref: '#/components/schemas/AdditionalTransactionData'
         useExplicitCheckoutFlow:
