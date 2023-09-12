@@ -1254,7 +1254,7 @@ components:
         scope:
           type: string
           description: |
-            A space-separated string list of required user information (e.g., "name phoneNumber") in
+            A space-separated string list of the required user information (e.g., "name phoneNumber") for the payment, in
             accordance with the OpenID Connect specification.
             See the
             [Userinfo user guide](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/userinfo-api-guide#scope)
