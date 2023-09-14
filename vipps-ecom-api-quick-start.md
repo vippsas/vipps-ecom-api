@@ -1,3 +1,4 @@
+<!-- START_METADATA
 ---
 title: Quick start for the eCom API
 sidebar_label: Quick start
@@ -12,8 +13,14 @@ pagination_prev: null
 import ApiSchema from '@theme/ApiSchema';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+END_METADATA -->
 
 # Quick start
+
+<!-- START_COMMENT -->
+ℹ️ Please use the website:
+[Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/).
+<!-- END_COMMENT -->
 
 ## Before you begin
 

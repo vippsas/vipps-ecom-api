@@ -13,7 +13,8 @@ END_METADATA -->
 # eCom API
 
 <!-- START_COMMENT -->
-💥 Please use the documentation pages here: <https://developer.vippsmobilepay.com/docs/APIs/ecom-api>. 💥
+ℹ️ Please use the website:
+[Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/).
 <!-- END_COMMENT -->
 
 **Important:** We strongly recommend that all new integrations use the new
