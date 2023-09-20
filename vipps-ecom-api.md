@@ -27,12 +27,6 @@ API version: 2.0.0.
 
 ## Payment flows
 
-The Vipps eCom API is used by
-[Vipps på nett (*Vipps Online*)](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/),
-[Vipps Checkout](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/vipps-checkout/),
-[Vipps i kassa (*Vipps in Store*)](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/vipps-i-kassa/),
-native apps and other solutions.
-
 There are many ways to use the Vipps eCom API. For example:
 
 * *Vipps Online (aka Vipps på nett)* - The customer selects Vipps as the method
