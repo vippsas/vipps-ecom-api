@@ -17,8 +17,14 @@ END_METADATA -->
 [Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/).
 <!-- END_COMMENT -->
 
-**Important:** We strongly recommend that all new integrations use the new
+![Vipps](./images/vipps.png) *Only available for Vipps. All new integrations use the
+[ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).*
+
+**Important:** All new integrations should use the new
 [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
+See the [eCom to ePayment Migration guide](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/migration/) for help migrating older integrations.
+
+## Overview
 
 The eCommerce API (eCom API) allows you to create various online payment flows,
 including express checkout. Initiate payments, get payment details, capture

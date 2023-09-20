@@ -16,14 +16,12 @@ END_METADATA -->
 [Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/).
 <!-- END_COMMENT -->
 
-**Important:** We strongly recommend that all new integrations use the new
-[ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
+![Vipps](./images/vipps.png) *Only available for Vipps. All new integrations use the
+[ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).*
 
-The Vipps eCom API is used by
-[Vipps på nett (*Vipps Online*)](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/ta-betalt-paa-nett/),
-[Vipps Checkout](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-paa-nett/vipps-checkout/),
-[Vipps i kassa (*Vipps in Store*)](https://vipps.no/produkter-og-tjenester/bedrift/ta-betalt-i-butikk/vipps-i-kassa/),
-native apps and other solutions.
+**Important:** All new integrations should use the new
+[ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
+See the [eCom to ePayment Migration guide](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/migration/) for help migrating older integrations.
 
 API version: 2.0.0.
 
