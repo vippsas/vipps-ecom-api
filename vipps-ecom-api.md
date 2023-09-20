@@ -16,6 +16,8 @@ END_METADATA -->
 [Vipps MobilePay Technical Documentation](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/).
 <!-- END_COMMENT -->
 
+![Vipps](./images/vipps.png) *Available for Vipps.*
+
 **Important:** We strongly recommend that all new integrations use the new
 [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
 
