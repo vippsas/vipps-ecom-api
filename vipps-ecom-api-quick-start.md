@@ -24,12 +24,10 @@ END_METADATA -->
 
 ## Before you begin
 
-This document covers the quick steps for getting started with the eCom API.
-
 **Important:** We strongly recommend that you use the newer
 [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api) instead.
 
-**Important:** The examples use standard example values that you must change to
+The examples use standard example values that you must change to
 use *your* values. This includes API keys, HTTP headers, reference, etc.
 
 ## Your first Payment
