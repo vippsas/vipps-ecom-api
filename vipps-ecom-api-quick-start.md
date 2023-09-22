@@ -24,13 +24,10 @@ END_METADATA -->
 
 ## Before you begin
 
-**Important:** We strongly recommend that all new integrations use the new
-[ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api).
+This document covers the quick steps for getting started with the eCom API.
 
-This document covers the quick steps for getting started with the ePayment API.
-You must have already signed up as an organization with Vipps MobilePay and have
-your test credentials from the merchant portal, as described in the
-[Getting started guide](https://developer.vippsmobilepay.com/docs/getting-started).
+**Important:** We strongly recommend that you use the newer
+[ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api) instead.
 
 **Important:** The examples use standard example values that you must change to
 use *your* values. This includes API keys, HTTP headers, reference, etc.
@@ -51,7 +48,6 @@ You will need the following values, as described in the
 * `merchantSerialNumber` - The unique ID for a test sales unit.
 * `mobileNumber` - The phone number for your
    [test user](https://developer.vippsmobilepay.com/docs/test-environment#test-users).
-
 
 <Tabs
 defaultValue="curl"
