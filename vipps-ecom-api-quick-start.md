@@ -29,6 +29,7 @@ END_METADATA -->
 
 The examples use standard example values that you must change to
 use *your* values. This includes API keys, HTTP headers, reference, etc.
+Note that any currency amount must be an Integer value minimum 100 in øre.
 
 ## Your first Payment
 
