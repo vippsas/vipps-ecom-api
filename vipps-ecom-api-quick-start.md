@@ -62,7 +62,7 @@ In Postman, import the following files:
 * [eCom API Postman collection](/tools/vipps-ecom-api-postman-collection.json)
 * [Global Postman environment](https://github.com/vippsas/vipps-developers/blob/master/tools/vipps-api-global-postman-environment.json)
 
-🔥 **Don't store production keys in the cloud version of Postman, because this introduces a risk of exposure.** 🔥
+🔥 **To reduce risk of exposure, never store production keys in Postman or any similar tools.** 🔥
 
 Update the *Current Value* field in your Postman environment with your **Merchant Test** keys.
 Use *Current Value* field for added security, as these values are not synced to the cloud.
