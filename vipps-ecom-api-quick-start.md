@@ -27,7 +27,7 @@ END_METADATA -->
 **Important:** We strongly recommend that you use the newer
 [ePayment API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api) instead.
 
-The provided example values in this guide must be changed with the values for your test sales unit and user.
+The provided example values in this guide must be changed with the values for your sales unit and user.
 This applies for API keys, HTTP headers, reference, phone number, etc.
 Note that any currency amount must be an Integer value minimum 100 in øre.
 
