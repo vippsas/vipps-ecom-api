@@ -491,7 +491,7 @@ components:
       in: header
       name: Ocp-Apim-Subscription-Key
       description: |-
-        The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' tab.
+        The subscription key for your API product is available on portal.vipps.no, under the 'Utvikler' section.
         Keep it secret.
       required: true
       schema:

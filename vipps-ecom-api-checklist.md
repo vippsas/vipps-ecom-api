@@ -81,14 +81,14 @@ Integrate *all* the [API endpoints](https://developer.vippsmobilepay.com/api/eco
    * For *reserve capture*: A complete order ending in `VOID`
       ([`/cancel`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/cancelPaymentRequestUsingPUT)
       request after reserve).
-   * We recommend checking this using both the API itself and the API Dashboard, available under *Utvikler* on
-      [portal.vipps.no](https://portal.vipps.no).  
+   * We recommend checking this using both the API itself and the API Dashboard, available in the *Utvikler* section on the
+      [merchant portal](https://portal.vipps.no).  
    * **Please note:** Vipps does not do any kind of activation or make any changes based on this checklist.
-      The API keys for the production environment are made available on
-      [portal.vipps.no](https://portal.vipps.no)
+      The API keys for the production environment are made available on the
+      [merchant portal](https://portal.vipps.no)
       as soon as the customer control (see step 2) is completed, independently of this checklist.
 7. The merchant goes live 🎉
 
-## Flow to go live for direct integrations for Vipps partners
+## Flow to go live for direct integrations for partners
 
-See: [Vipps partners](https://developer.vippsmobilepay.com/docs/partner).
+See: [partners](https://developer.vippsmobilepay.com/docs/partner).

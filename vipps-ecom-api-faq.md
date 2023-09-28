@@ -145,7 +145,7 @@ Please check your own logs for any signs of problems. If your
 
 Check the API Dashboard on
 [portal.vipps.no](https://portal.vipps.no)
-for problems with the callbacks. The API Dashboard is under "Utvikler".
+for problems with the callbacks. The API Dashboard is in the *Utvikler* section.
 
 ### Why do I get `Payment failed`?
 
