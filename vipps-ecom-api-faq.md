@@ -58,6 +58,8 @@ See:
 
 ## Reservations and captures
 
+See [FAQ: Reservations and capture](https://developer.vippsmobilepay.com/docs/faqs/reserve-and-capture-faq/).
+
 ## Refunds
 
 The Vipps eCom API supports refunds with
