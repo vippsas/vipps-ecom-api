@@ -773,7 +773,7 @@ See the [X-Request-Id in the capturePaymentUsingPOST specification](https://deve
 To perform a normal capture of the entire amount, `amount` can be
 omitted from the API request (i.e., not sent at all), set to `null` or set to `0`.
 When doing a
-[partial capture](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture#partial-capture),
+[partial capture](#partial-capture),
 you need to specify the `amount`.
 
 **Please note:** It is important to check the response of the `/capture`
@@ -792,6 +792,13 @@ See the FAQ:
 See
 [Common topics: capture](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture#capture)
 for more details about the types of captures.
+
+### Partial capture
+
+Partial capture may be used in cases where a partial order is shipped or for other reasons.
+It may be called as many times as required while there is a remaining amount that is reserved and has not yet been captured.
+
+For this API, it is also possible to do a partial capture and send an optional parameter to explicitly free the remaining amount immediately.
 
 ## Cancel
 
@@ -892,8 +899,8 @@ any request to cancel after a partial or full capture has been performed will be
 This is a useful and recommended feature, as it releases any reserved balance
 as soon as the card issuer and/or bank permits.
 
-See also the FAQ:
-[How long does it take from a refund is made until the money is in the customer's account?](https://developer.vippsmobilepay.com/docs/faqs/refunds-faq#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
+It usually takes 2-3 *bank days* until the money is in the customer's account, depending on the bank(s).
+It can take much longer, up to 10 days, and depends on the bank(s).
 
 Example Request:
 
@@ -938,6 +945,9 @@ have captured all you need.
 
 The merchant can initiate a refund of the captured amount.
 The refund can be a partial or full.
+
+It usually takes 2-3 *bank days* until the money is in the customer's account, depending on the bank(s).
+It can take much longer, up to 10 days, and depends on the bank(s).
 
 Partial refunds are done by specifying an `amount` which is lower than the
 captured amount. The refunded amount cannot be larger than the captured amount.
@@ -986,8 +996,7 @@ Response:
 ```
 
 See
-[FAQ: Refunds](https://developer.vippsmobilepay.com/docs/faqs/refunds-faq)
-for common questions.
+[FAQ: Refunds](./vipps-ecom-api-faq.md#refunds).
 
 ## Get payment details
 
@@ -1609,7 +1618,7 @@ to retrieve all the information about the payment.
 | VippsError     | 93         | "The capture request must be identical to the previous request(s) in an idempotent retry." or "The refund request must be identical to the previous request(s) in an idempotent retry." |
 | VippsError     | 94         | Order locked and is already processing. This can occur for a short period of time if a bank has problems, and Vipps needs to wait and/or clean up. Retry the same request later, with the same idempotency key. |
 | VippsError     | 98         | "Too many concurrent requests. See the FAQ." Used only to prevent obviously incorrect API use. See [Rate limiting](#rate-limiting).|
-| VippsError     | 99         | "Internal error. In some cases, this is caused by an incorrect API request. Please check the request." In practice this is *always* due to a combination of a bad request from the merchant and inadequate validation at our end. See [Why do I get HTTP 500 Internal Server Error?](https://developer.vippsmobilepay.com/docs/faqs/common-errors-faq/#why-do-i-get-http-500-internal-server-error). |
+| VippsError     | 99         | "Internal error. In some cases, this is caused by an incorrect API request. Please check the request." In practice this is *always* due to a combination of a bad request from the merchant and inadequate validation at our end. See [Why do I get HTTP 500 Internal Server Error?](vipps-ecom-api-faq.md#why-do-i-get-http-500-internal-server-error). |
 | user           | 81         | "The phone number is either incorrectly formatted (see the API specification), is not a Vipps user, or the user cannot pay businesses. Vipps cannot give more details." We can not give all the details, as we can not reveal if the user is blocked, is too young to pay businesses, etc. |
 | user           | 82         | "The user's app version is not supported."  The user must upgrade the app.              |
 | Merchant       | 31         | "The merchant is blocked. The merchant can contact customer service for details." We can not reveal the details. See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](./vipps-ecom-api-faq.md#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked). |
