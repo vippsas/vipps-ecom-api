@@ -3,11 +3,11 @@ info:
   description: |
     For details, see the [API Guide](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api).
   version: 2.0.3
-  title: Vipps eCommerce API
+  title: eCommerce API
 tags:
-  - name: Vipps eCom API
+  - name: eCom API
     description: >-
-      Functionality provided by the Vipps eCommerce API.
+      Functionality provided by the eCommerce API.
       For details, see the [API Guide](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api).
   - name: Merchant Endpoints
     description: >-
@@ -28,7 +28,7 @@ paths:
   '/ecomm/v2/payments':
     post:
       tags:
-        - Vipps eCom API
+        - eCom API
       summary: Initiate Payment
       description: >-
         This API call lets the merchants initiate payments.
@@ -203,7 +203,7 @@ paths:
   '/ecomm/v2/payments/{orderId}/capture':
     post:
       tags:
-        - Vipps eCom API
+        - eCom API
       summary: 'Capture Payment'
       description: >-
         This API call lets merchant capture the reserved amount. Amount to
@@ -258,7 +258,7 @@ paths:
   '/ecomm/v2/payments/{orderId}/cancel':
     put:
       tags:
-        - Vipps eCom API
+        - eCom API
       summary: Cancel Payment
       description: >-
         This API call lets merchants cancel a reserved or initiated transaction as long as it is less than 6 months old.
@@ -302,7 +302,7 @@ paths:
   '/ecomm/v2/payments/{orderId}/refund':
     post:
       tags:
-        - Vipps eCom API
+        - eCom API
       summary: 'Refund Payment '
       description: >-
         The API lets a merchant do a refund of an already captured
@@ -356,10 +356,10 @@ paths:
   '/ecomm/v2/integration-test/payments/{orderId}/approve':
     post:
       tags:
-        - Vipps eCom API
+        - eCom API
       summary: 'Force Approve Payment'
       description: >-
-        This endpoint lets developers approve a payment through the Vipps eCom API
+        This endpoint lets developers approve a payment through the eCom API
         without the use of the Vipps app. This is useful for automated testing.
         Express checkout is not supported for this endpoint.
         The endpoint is only available in our Test environment.
@@ -402,7 +402,7 @@ paths:
   '/ecomm/v2/payments/{orderId}/details':
     get:
       tags:
-        - Vipps eCom API
+        - eCom API
       summary: Get Payment Details
       description: >-
         This API call lets merchant get the details of a payment
@@ -438,7 +438,7 @@ paths:
     get:
       deprecated: true
       tags:
-        - Vipps eCom API
+        - eCom API
       summary: 'Deprecated: Get Order Status'
       description: >-
         This deprecated endpoint lets the merchant get the status of the last payment

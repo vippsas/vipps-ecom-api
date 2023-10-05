@@ -45,4 +45,4 @@ The payment is registered in the POS system.
 
 Great! Now you know how the Vipps in store payment process works.
 
-Read all the technical details in the [Vipps eCommerce API Guide](../vipps-ecom-api.md)
+Read all the technical details in the [e API Guide](../vipps-ecom-api.md)

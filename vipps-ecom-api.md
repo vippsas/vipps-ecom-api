@@ -81,7 +81,7 @@ this API, and you *should* have all information needed to integrate with Vipps.
 
 ## API endpoints
 
-The Vipps eCommerce API (eCom API) offers functionality for online payments.
+The eCom API offers functionality for online payments.
 Payments are supported in both web browsers and in native apps (via deep-linking).
 
 | Operation                                                                                                            | Description                                                                                                | Endpoint |
@@ -146,7 +146,7 @@ See:
 
 ### Regular payments and express payments
 
-Vipps eCommerce API offers two types of payments:
+The eCom API offers two types of payments:
 
 1. Regular eCommerce payments
 2. Express checkout payments

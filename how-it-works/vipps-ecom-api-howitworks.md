@@ -12,7 +12,7 @@ pagination_prev: null
 
 This is how payment with the eCom API works.
 
-## The Vipps eCommerce payment process
+## The eCommerce payment process
 
 ![eCom process](../images/vipps-ecom-process-svg.svg)
 
@@ -61,4 +61,4 @@ The payment is transferred to the merchant’s account. This may take 2-3 days d
 
 Great! Now you know how the payment process works.
 
-Read all the technical details in the [Vipps eCommerce API Guide](../vipps-ecom-api.md)
+Read all the technical details in the [eCom API Guide](../vipps-ecom-api.md)

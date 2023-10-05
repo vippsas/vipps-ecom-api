@@ -203,3 +203,36 @@ The eCom API has some functionality that is not available in the PSP API:
 
 Please disregard it. The `status` suffix was phased out several years ago, and
 is no longer documented. But, since some merchants *still* depend on in, it still provided.
+
+## How do I use the one-time payment QR?
+
+This feature is for presenting a QR code for opening a payment request from a
+customer-facing screen, so there is no need to manually input the mobile number.
+
+Basic flow:
+
+1. Initiate a eCom payment (`skipLandingPage` must be set to `false`)
+2. Receive the payment URL as response
+3. Post the payment URL to the
+   [QR API](https://developer.vippsmobilepay.com/docs/APIs/qr-api)
+4. Receive a URL to a QR code in PNG (Portable Network Graphics) format
+5. Present the QR code on the customer-facing screen
+6. The user scans the QR code with the Vipps or MobilePay app, or the camera app
+7. The user pays (or cancels the payment) in the app
+8. The fallback URL is triggered and will be presented on customers mobile phone
+
+**Please note:**
+The customer-facing screen will not show the fallback page. We recommend
+presenting the result of the payment in some other way on the screen, and
+also that an error messages if something went wrong.
+
+If it is not possible for the POS solution to handle a fallback URL you may use one of the following options:
+
+1. Set `fallbackURL` to be the merchant's website
+2. Set `fallbackURL` to be this static page: [www.vipps.no/thankyoupage/](https://www.vipps.no/thankyoupage/)
+
+See also:
+
+* [QR API](https://developer.vippsmobilepay.com/docs/APIs/qr-api)
+* [Error codes](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#error-codes)
+* [Do we need to support callbacks?](#do-we-need-to-support-callbacks)
