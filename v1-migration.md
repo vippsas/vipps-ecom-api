@@ -28,8 +28,6 @@ Skipping the landing page is reserved for special cases, where displaying it is 
 See the details in the
 [skip landing page section](https://developer.vippsmobilepay.com/docs/common-topics/landing-page#skip-landing-page).
 
-See the [FAQ](https://developer.vippsmobilepay.com/docs/faqs/landing-page-faq#is-it-possible-to-skip-the-landing-page).
-
 ## Phone number is optional
 
 The initiate payment call no longer requires a phone number. Instead, the user will be asked to fill in the phone number on the landing page. If phone number is included in the initiate payment body, then the landing page will be "pre-filled" with that number.

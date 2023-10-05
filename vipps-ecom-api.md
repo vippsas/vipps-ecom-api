@@ -1628,7 +1628,7 @@ to retrieve all the information about the payment.
 | Merchant       | 35         | "The orderId 'acme-shop-123-order123abc' does not exist for MSN 654321." Follow the [`orderId` recommendations](https://developer.vippsmobilepay.com/docs/common-topics/orderid). |
 | Merchant       | 36         | "The merchant's agreement has not been signed." The merchant can contact customer service for details. |
 | Merchant       | 37         | "The merchant and/or sales unit is unavailable, deleted, deactivated or blocked for payments." We can not reveal the details. See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](./vipps-ecom-api-faq.md#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked) |
-| Merchant       | 38         | "The sales unit is not allowed to skip the landing page. See the FAQ." See the [landing page](https://developer.vippsmobilepay.com/docs/faqs/landing-page-faq). |
+| Merchant       | 38         | "The sales unit is not allowed to skip the landing page. See the FAQ." See the [landing page](https://developer.vippsmobilepay.com/docs/common-topics/landing-page/). |
 | Merchant       | 39         | "The sales unit is not allowed to initiate long-living payments." |
 | Merchant       | 97         | "The sales unit is not allowed to perform payments. See the FAQ." Typically shown for a merchant that has only applied for Login API, and has not been through the required compliance checks for making payments. See [Why do I get "Merchant Not Allowed for Ecommerce Payment"?](./vipps-ecom-api-faq.md#why-do-i-get-merchant-not-allowed-for-ecommerce-payment). |
 | InvalidRequest | -          | The field name will be the error code. Contains a description about what exactly the field error is. |
