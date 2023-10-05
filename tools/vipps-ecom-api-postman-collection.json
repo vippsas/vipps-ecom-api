@@ -697,7 +697,7 @@
 						"approve"
 					]
 				},
-				"description": "This endpoint lets developers approve a payment through the Vipps eCom API without the use of the Vipps app. This is useful for automated testing. Express checkout is not supported for this endpoint. The endpoint is only available in our Test environment. Attempted use of the endpoint in production is not allowed, and will fail. Important: All test users must manually approve at least one payment in Vipps (using the app) before this endpoint can be used for that user."
+				"description": "This endpoint lets developers approve a payment through the eCom API without the use of the Vipps app. This is useful for automated testing. Express checkout is not supported for this endpoint. The endpoint is only available in our Test environment. Attempted use of the endpoint in production is not allowed, and will fail. Important: All test users must manually approve at least one payment in Vipps (using the app) before this endpoint can be used for that user."
 			},
 			"response": []
 		},

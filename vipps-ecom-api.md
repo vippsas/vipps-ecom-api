@@ -27,7 +27,7 @@ API version: 2.0.0.
 
 ## Payment flows
 
-There are many ways to use the Vipps eCom API. For example:
+There are many ways to use the eCom API. For example:
 
 * *Vipps Online (aka Vipps på nett)* - The customer selects Vipps as the method
   of payment and enters their mobile number into the app or website. The merchant
@@ -1163,7 +1163,7 @@ Example `sub` format:
 ```
 
 This `sub` is a link between the merchant and the user and can be used to retrieve
-the user's details from Vipps userinfo:
+the user's details from the Userinfo API:
 [`GET:/vipps-userinfo-api/userinfo/{sub}`](https://developer.vippsmobilepay.com/api/userinfo#operation/getUserinfo)
 
 See:
@@ -1628,7 +1628,7 @@ to retrieve all the information about the payment.
 
 To facilitate automated testing in
 [The Vipps Test Environment (MT)](https://developer.vippsmobilepay.com/docs/test-environment)
-the Vipps eCom API provides a "force approve" endpoint to avoid manual
+the eCom API provides a "force approve" endpoint to avoid manual
 payment confirmation in the Vipps app:
 [`POST:/ecomm/v2/integration-test/payments/{orderId}/approve`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/integrationTestApprovePayment)
 
