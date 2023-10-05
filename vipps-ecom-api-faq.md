@@ -25,10 +25,6 @@ For more common questions, see [Common API FAQ](https://developer.vippsmobilepay
 
 ## Common problems
 
-See
-[FAQ: Common problems](https://developer.vippsmobilepay.com/docs/faqs/common-problems-faq)
-for more questions.
-
 ### Why does Vipps Hurtigkasse (express checkout) fail?
 
 When using Vipps Hurtigkasse (express checkout), Vipps makes a callback to the
