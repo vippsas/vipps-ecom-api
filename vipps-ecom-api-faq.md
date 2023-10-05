@@ -244,3 +244,22 @@ provided in the callback.
 
 If it's not possible for your POS to support callbacks (no fixed hostname/IP, etc.),
 you must actively check the payment status.
+
+## How can I check if a person has Vipps?
+
+There is no separate API for this, but an attempt to initiate a payment
+with a phone number that is not registered with Vipps will fail with error 81,
+`User not registered with Vipps`.
+See: [Error codes](./vipps-ecom-api#error-codes).
+
+Users that install the app accept the terms and conditions, including being
+"looked up" by the merchant if the payment is initiated with the phone number
+is specified. It is possible to pay with Vipps without sharing the
+phone number with the merchant.
+
+See also
+[vipps.no: privacy and terms](https://vipps.no/vilkar/).
+
+There are users with unlisted numbers, users with secret number, etc.
+These users can still pay with Vipps, since their phone number is
+not shared with anyone without their explicit consent.
