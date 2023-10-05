@@ -52,10 +52,10 @@ a `HTTP 400 Bad Request` with more details in the request body.
 
 ## December 2020
 
-Vipps eCom API v1 is disabled.
+eCom API v1 is disabled.
 
-After several extensions to the original June 1 deadline, the Vipps eCom API v1
-was shut down on December 4. The Vipps eCom API v2 has been available for
+After several extensions to the original June 1 deadline, the eCom API v1
+was shut down on December 4. The eCom API v2 has been available for
 about three years, and offers more functionality than the old version.
 
 ## April 2020

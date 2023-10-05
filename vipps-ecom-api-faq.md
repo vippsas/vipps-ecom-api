@@ -62,12 +62,12 @@ See [FAQ: Reservations and capture](https://developer.vippsmobilepay.com/docs/fa
 
 ## Refunds
 
-The Vipps eCom API supports refunds with
+The eCom API supports refunds with
 [`POST:/ecomm/v2/payments/{orderId}/refund`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST).
 For details on how to offer refunds, please refer to the documentation for your eCommerce solution.
 
 See
-[Vipps FAQ: Refunds](https://developer.vippsmobilepay.com/docs/faqs/refunds-faq)
+[FAQ: Refunds](https://developer.vippsmobilepay.com/docs/faqs/refunds-faq)
 for answers to more questions.
 
 ## Users and payments
@@ -178,12 +178,12 @@ for more questions.
 
 ### What functionality is included in the eCom API, but not the PSP API?
 
-The [Vipps PSP API](https://developer.vippsmobilepay.com/docs/APIs/psp-api) provides tokens
+The [PSP API](https://developer.vippsmobilepay.com/docs/APIs/psp-api) provides tokens
 that a PSP can use to charge a Vipps user's card. To put it simply, it is a
 "card token lookup service". The payment is completed by the PSP, who sends an
 update to Vipps about the success or failure.
 
-The Vipps eCom API has some functionality that is not available in the PSP API:
+The eCom API has some functionality that is not available in the PSP API:
 
 1. Retry functionality: If the user attempts to pay with a card that is declined,
    the user can retry with a different card, while still in the same payment process.
@@ -191,11 +191,11 @@ The Vipps eCom API has some functionality that is not available in the PSP API:
    The PSP API does not have this functionality, as it is the PSP, not Vipps,
    that make the charge.
 2. [Express checkout (Vipps Hurtigkasse)](vipps-ecom-api.md#express-checkout-payments)
-   is only available in the Vipps eCom API.
+   is only available in the eCom API.
 3. [Userinfo](vipps-ecom-api.md#userinfo):
-   The Vipps eCom API offers the possibility for merchants to ask for the user's
+   The eCom API offers the possibility for merchants to ask for the user's
    profile information as part of the payment flow: name, address, email, phone number, birthdate, etc.
-4. When using the Vipps eCom API, Vipps handles soft-declines, 3-D Secure, BankID, etc.
+4. When using the eCom API, Vipps handles soft-declines, 3-D Secure, BankID, etc.
    There is nothing a merchant needs to do.
    This give a consistent user experience and a very high completion rate.
 

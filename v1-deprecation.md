@@ -4,14 +4,14 @@ draft: true
 ---
 END_METADATA -->
 
-# Deprecation of the Vipps eCom API v1
+# Deprecation of the eCom API v1
 
 This is the message we sent to communicate the deprecation of the API.
 
 Vipps is constantly improving our services, and in some cases this requires us
 to sunset legacy products and APIs.
 
-The Vipps eCom API was superseded by the eCom v2 API around two years ago.
+The eCom API was superseded by the eCom v2 API around two years ago.
 This means that the eCom v1 API is technologically outdated.
 Therefore:
 
@@ -55,9 +55,9 @@ information about test environments, test apps, etc. [here](https://developer.vi
 
 We have also released new APIs that may be interesting, such as:
 
-* [Vipps Recurring API ("faste betalinger")](https://developer.vippsmobilepay.com/docs/APIs/recurring-api)
-* [Vipps Invoice API ("Vipps Regninger")](https://github.com/vippsas/vipps-invoice-api)
-* [Vipps Log In](https://developer.vippsmobilepay.com/docs/APIs/login-api)
+* [Recurring API ("faste betalinger")](https://developer.vippsmobilepay.com/docs/APIs/recurring-api)
+* [Invoice API ("Vipps Regninger")](https://github.com/vippsas/vipps-invoice-api)
+* [Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api)
 
 Vipps also has [plugins](https://developer.vippsmobilepay.com/docs/plugins) available:
 
