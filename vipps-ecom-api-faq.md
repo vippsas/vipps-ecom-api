@@ -234,7 +234,7 @@ If it is not possible for the POS solution to handle a fallback URL you may use 
 See also:
 
 * [QR API](https://developer.vippsmobilepay.com/docs/APIs/qr-api)
-* [Error codes](./vipps-ecom-api#error-codes)
+* [Error codes](./vipps-ecom-api.md#error-codes)
 * [Do we need to support callbacks?](#do-we-need-to-support-callbacks)
 
 ## Do we need to support callbacks?
