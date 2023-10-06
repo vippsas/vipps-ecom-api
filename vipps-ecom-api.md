@@ -1591,13 +1591,13 @@ to retrieve all the information about the payment.
 | Payment        | 43         | "Refused by the issuer: Invalid amount." |
 | Payment        | 44         | "Refused by the issuer: Expired card."  The customer must add a card.|
 | Payment        | 45         | "Reservation failed, reason unknown." Most common: The customer has not acted upon the payment. We can not know the reason for this. See [Timeouts](https://developer.vippsmobilepay.com/docs/common-topics/timeouts). |
-| Payment        | 51         | "Cannot cancel an orderId that has already been captured." Cannot [cancel](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#cancel), do a [refund](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#refund) instead. |
-| Payment        | 52         | "Cancellation failed, reason unknown." [Cancel](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#cancel) failed.                           |
-  | Payment        | 61         | "The total capture amount exceeds the reserved amount. You cannot capture a higher amount than the user has accepted. Check the payment details". This is in rare cases caused by rounding errors on the merchant's side. Check the [payment details](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#get-payment-details).|
+| Payment        | 51         | "Cannot cancel an orderId that has already been captured." Cannot [cancel](#cancel), do a [refund](#refund) instead. |
+| Payment        | 52         | "Cancellation failed, reason unknown." [Cancel](#cancel) failed.                           |
+  | Payment        | 61         | "The total capture amount exceeds the reserved amount. You cannot capture a higher amount than the user has accepted. Check the payment details". This is in rare cases caused by rounding errors on the merchant's side. Check the [payment details](#get-payment-details).|
 | Payment        | 62         | "The amount you tried to capture is not reserved. The user must accept the payment before capture can be done." |
-| Payment        | 63         | "Capture failed an unknown reason. Retrieve the payment details to see the full details." Use [payment details](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#get-payment-details) to see the exact status. |
+| Payment        | 63         | "Capture failed an unknown reason. Retrieve the payment details to see the full details." Use [payment details](#get-payment-details) to see the exact status. |
 | Payment        | 71         | "Cannot refund a higher amount than the captured amount." This is in rare cases caused by rounding errors on the merchant's side. |
-| Payment        | 72         | "Cannot refund a reserved order. The orderId can be canceled instead." [Cancel](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#cancel) instead.|
+| Payment        | 72         | "Cannot refund a reserved order. The orderId can be canceled instead." [Cancel](#cancel) instead.|
 | Payment        | 73         | "Cannot refund a canceled order."               |
 | Payment        | 74         | "Refund failed during debit from the merchant's account." |
 | Payment        | 93         | Captured amount must be the same in an idempotent retry. The same `Idempotency-Key` can not be used with different request payloads. |
@@ -1608,7 +1608,7 @@ to retrieve all the information about the payment.
 | VippsError     | 92         | "The transaction has already been processed." |
 | VippsError     | 93         | "The capture request must be identical to the previous request(s) in an idempotent retry." or "The refund request must be identical to the previous request(s) in an idempotent retry." |
 | VippsError     | 94         | Order locked and is already processing. This can occur for a short period of time if a bank has problems, and Vipps needs to wait and/or clean up. Retry the same request later, with the same idempotency key. |
-| VippsError     | 98         | "Too many concurrent requests. See the FAQ." Used only to prevent obviously incorrect API use. See [Rate limiting](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api#rate-limiting).|
+| VippsError     | 98         | "Too many concurrent requests. See the FAQ." Used only to prevent obviously incorrect API use. See [Rate limiting](#rate-limiting).|
 | VippsError     | 99         | "Internal error. In some cases, this is caused by an incorrect API request. Please check the request." In practice this is *always* due to a combination of a bad request from the merchant and inadequate validation at our end. See [Why do I get HTTP 500 Internal Server Error?](https://developer.vippsmobilepay.com/docs/faqs/common-errors-faq/#why-do-i-get-http-500-internal-server-error). |
 | user           | 81         | "The phone number is either incorrectly formatted (see the API specification), is not a Vipps user, or the user cannot pay businesses. Vipps cannot give more details." We can not give all the details, as we can not reveal if the user is blocked, is too young to pay businesses, etc. |
 | user           | 82         | "The user's app version is not supported."  The user must upgrade the app.              |
