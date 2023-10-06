@@ -946,6 +946,9 @@ have captured all you need.
 The merchant can initiate a refund of the captured amount.
 The refund can be a partial or full.
 
+It usually takes 2-3 *bank days* until the money is in the customer's account, depending on the bank(s).
+It can take much longer, up to 10 days, and depends on the bank(s).
+
 Partial refunds are done by specifying an `amount` which is lower than the
 captured amount. The refunded amount cannot be larger than the captured amount.
 
@@ -993,8 +996,7 @@ Response:
 ```
 
 See
-[FAQ: Refunds](https://developer.vippsmobilepay.com/docs/faqs/refunds-faq)
-for common questions.
+[FAQ: Refunds](./vipps-ecom-api-faq.md#refunds).
 
 ## Get payment details
 
