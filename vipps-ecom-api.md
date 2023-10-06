@@ -773,7 +773,7 @@ See the [X-Request-Id in the capturePaymentUsingPOST specification](https://deve
 To perform a normal capture of the entire amount, `amount` can be
 omitted from the API request (i.e., not sent at all), set to `null` or set to `0`.
 When doing a
-[partial capture](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture#partial-capture),
+[partial capture](#partial-capture),
 you need to specify the `amount`.
 
 **Please note:** It is important to check the response of the `/capture`
@@ -792,6 +792,13 @@ See the FAQ:
 See
 [Common topics: capture](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture#capture)
 for more details about the types of captures.
+
+### Partial capture
+
+Partial capture may be used in cases where a partial order is shipped or for other reasons.
+It may be called as many times as required while there is a remaining amount that is reserved and has not yet been captured.
+
+For this API, it is also possible to do a partial capture and send an optional parameter to explicitly free the remaining amount immediately.
 
 ## Cancel
 
