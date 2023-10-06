@@ -205,6 +205,152 @@ Also consider using
 [static shipping methods](vipps-ecom-api.md#shipping-and-static-shipping-details),
 as it gives a faster payment process and a better user experience.
 
+
+## Why do I get `HTTP 403 Forbidden`?
+
+Merchants that only have access to the
+[Login API](https://developer.vippsmobilepay.com/docs/APIs/login-api)
+and attempt to use the ePayment API (or eCom API) will get this error, with
+`Merchant Not Allowed for Ecommerce Payment` in the response body.
+
+This is because the compliance checks required for making payments are not
+done for merchants that only need the Login API.
+If you need access to the ePayment API (or eCom API), you can apply for this on
+[portal.vipps.no](https://portal.vipps.no).
+
+Partners can get this error if they use
+[Partner keys](https://developer.vippsmobilepay.com/docs/partner/partner-keys),
+but:
+
+* Do not send the `Merchant-Serial-Number` header.
+* Send a `Merchant-Serial-Number` header for a sales unit (MSN) that is not connected
+  to them as a partner. The partner keys can only be used for sales units that are
+  connected to them as a partner.
+
+See: [HTTP headers](https://developer.vippsmobilepay.com/docs/common-topics/http-headers/).
+
+## Why do I get `HTTP 429 Too Many Requests`?
+
+We rate-limit some API endpoints to prevent incorrect usage.
+The rate-limiting has nothing to do with our total capacity, but is
+designed to stop incorrect use.
+
+See [eCom API Rate limiting](./vipps-ecom-api.md#rate-limiting).
+
+
+## Why do I get `errorCode 35 "Requested Order not found"`?
+
+This is either because you are specifying an incorrect `orderId`, or because
+the payment with this `orderId` was initiated using the API keys for
+one sales unit (MSN), and you are attempting to get the details with
+the API keys for a different sales unit (MSN).
+
+The `orderId`s is not globally unique, they are only unique per MSN.
+
+See:
+
+* [Why do I get `HTTP 404 Not Found`?](#why-do-i-get-http-404-not-found)
+* [Error codes](./vipps-ecom-api.md#error-codes).
+
+## Why do I get `errorCode 37 "Merchant not available or deactivated or blocked"`?
+
+Or: `Merchant not available or active`.
+
+Please check that the merchant's organization number is still active in
+[Brønnøysundregistrene](https://www.brreg.no). We automatically deactivate
+merchants (companies) when they are deleted from Brønnøysundregistrene.
+This can also happen if a merchant changes organization type, for instance
+from *ENK* to *AS*.
+
+Merchants can log in on
+[portal.vipps.no](https://portal.vipps.no)
+and deactivate their sales units. This is sometimes done "by accident", without being
+aware of the consequences. If a sales unit has been incorrectly deactivated,
+the merchant can reactivate it again.
+
+**Please note:** We require BankID for deactivation and reactivation,
+and cannot help with this based on email requests.
+
+Deactivation can also happen if the test merchant is not being used for a
+*very long* time. Please
+[contact customer service](https://vipps.no/kontakt-oss/),
+and we will reactivate the merchant.
+
+Partners that use
+[partner keys](https://developer.vippsmobilepay.com/docs/partner/partner-keys)
+can also get this error if the partner itself is deactivated, even though
+the sales unit (that it is acting on behalf of) is active.
+
+**Please note:** We no longer automatically deactivate test merchants.
+Merchants can [create new test sales units](https://developer.vippsmobilepay.com/docs/developer-resources/portal#how-to-create-a-test-sales-unit).
+
+See: [Error codes](./vipps-ecom-api.md#error-codes).
+
+## Why do I get "Merchant Not Allowed for Ecommerce Payment"?
+
+This error occurs if you attempt to use a payment related API with a sales unit (MSN)
+that is only approved for the Login API.
+
+Your sales unit will need to go through a different set of regulatory and legally required checks
+to get access to the payment APIs.
+Place an order for *Vipps på Nett* through the
+[merchant portal](https://portal.vipps.no).
+
+Note that all sales units that have been approved for the eCom API can also use
+the Login API, but not the other way around.
+
+See:
+[Why do I get `HTTP 403 Forbidden`?](#why-do-i-get-http-403-forbidden)
+
+## Why do I get error 81 and `User not registered with Vipps`?
+
+The most common reasons are:
+
+* The phone number is incorrectly formatted.
+  Vipps attempts to correct incorrectly formatted phone numbers
+  instead of responding with `HTTP 400 Bad Request`.
+  In cases where the phone number still fails, the error will be `errorCode: 81`.
+  See the API specifications.
+* The user is under 15 years old and cannot pay businesses.
+* The phone number is not for a Vipps or MobilePay user.
+
+Vipps MobilePay cannot give more details, as we cannot "leak" information about a user's
+age, whether a user has been blocked, whether a user has reached its spending
+limit, etc.
+
+## Why do I get an error about having the app installed and being 15 years old?
+
+This can happen when:
+
+* You attempt to use a real user in the test environment.
+* You have a new test user and have not logged into the test app before
+  trying to make payments, etc.
+
+See:
+[Test Environment (MT)](https://developer.vippsmobilepay.com/docs/test-environment/).
+
+## Why do I get `Invalid MSN: 654321. Check your API keys on portal.vipps.no and see the eCom FAQ for tips.`?
+
+This can happen when:
+
+* A partner tries to use
+  [Partner keys](https://developer.vippsmobilepay.com/docs/partner/partner-keys)
+  for a sales unit that is not registered with them as partner.
+* API keys for the test environment is used in the production environment, or opposite.
+* Partner keys are used, but the `Merchant-Serial-Number` HTTP header is not used correctly.
+
+## Why do I get `Invalid MSN: 654321. This MSN is not valid for the provided supermerchant ID.`?
+
+This can happen when the partner making the API request is using:
+
+* API keys for the test environment in the production environment, or opposite
+* An MSN for the test environment in the production environment, or opposite
+* [Partner keys](https://developer.vippsmobilepay.com/docs/partner/partner-keys)
+  without including the required `Merchant-Serial-Number` header
+
+If the error message is `Invalid MSN: This MSN is not valid for the provided supermerchant ID.`,
+with no MSN specified, it means that the `Merchant-Serial-Number` is missing in the request header.
+
 ### Why do I not get the `sub` from `/details`?
 
 If you use the correct `scope` in the payment initiation, but don't get the
