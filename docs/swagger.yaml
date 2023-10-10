@@ -1744,7 +1744,7 @@ components:
         from Microsoft Azure (where we rely on standard functionality).
         See the "Common errors" section of the [eCom FAQs](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api-faq#common-errors)
         or from the [Vipps FAQs](https://developer.vippsmobilepay.com/docs/faqs/common-errors-faq).
-        See also: [Common topics: URL Validation](https://developer.vippsmobilepay.com/docs/common-topics/url-validation).
+        See also: [Knowledge base: URL Validation](https://developer.vippsmobilepay.com/docs/common-topics/url-validation).
       content:
         application/json;charset=UTF-8:
           schema:

@@ -106,8 +106,7 @@ See the
 
 We recommend using the standard Vipps HTTP headers for all requests.
 
-See [Vipps HTTP headers](https://developer.vippsmobilepay.com/docs/common-topics/http-headers)
-in the Common topics guide, for details.
+See [Knowledge base: HTTP headers](https://developer.vippsmobilepay.com/docs/common-topics/http-headers) for details.
 
 ## Authentication
 
@@ -272,7 +271,7 @@ If Vipps is installed, Vipps will automatically be opened.
    Facebook or Instagram, it is not possible for Vipps to open the
    `fallBack` URL in the embedded browser. The phone OS will always open URLs
    in the default browser. See:
-   [Common topics: Recommendations regarding handling redirects](https://developer.vippsmobilepay.com/docs/common-topics/redirects).
+   [Knowledge base: Recommendations regarding handling redirects](https://developer.vippsmobilepay.com/docs/common-topics/redirects).
 3. Because of the above, a successful payment *must not* rely on session cookies
    in the browser.
 4. Vipps cannot guarantee a particular sequence of callback and fallback,
@@ -404,7 +403,7 @@ apps is installed (and the landing page, if not).
 
 See
 [isApp](https://developer.vippsmobilepay.com/docs/common-topics/isApp)
-in Common topics.
+in the Knowledge base.
 
 ### Payment identification
 
@@ -429,19 +428,19 @@ to the first payment attempt.
 
 See
 [`orderId` recommendations](https://developer.vippsmobilepay.com/docs/common-topics/orderid)
-in Common topics.
+in the Knowledge base.
 
 ### `transactionText` recommendations
 
 See
 [Recommendations for `paymentDescription` and `transactionText`](https://developer.vippsmobilepay.com/docs/common-topics/transactiontext/)
-in Common topics.
+in the Knowledge base.
 
 ### URL Validation
 
 See
 [URL Validation](https://developer.vippsmobilepay.com/docs/common-topics/url-validation)
-in Common topics.
+in the Knowledge base.
 
 ## Callbacks
 
@@ -457,7 +456,7 @@ Callback are made for the following events:
 cannot rely on callbacks alone. You must also poll
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET)
 as described in the
-[Polling guidelines](https://developer.vippsmobilepay.com/docs/common-topics/polling-guidelines) in the Common topics.
+[Polling guidelines](https://developer.vippsmobilepay.com/docs/common-topics/polling-guidelines) in the Knowledge base.
 
 **Important:**
 
@@ -650,7 +649,7 @@ See [Get payment details](#get-payment-details) for more information.
 
 ## Timeouts
 
-See: [Common topics: Timeouts](https://developer.vippsmobilepay.com/docs/common-topics/timeouts).
+See: [Knowledge base: Timeouts](https://developer.vippsmobilepay.com/docs/common-topics/timeouts).
 
 ## Express checkout API endpoints required on the merchant side
 
@@ -749,7 +748,7 @@ they will either be taken to Vipps or to the landing page.
 
 See
 [Landing page](https://developer.vippsmobilepay.com/docs/common-topics/landing-page)
-from Common topics, for more details about the landing page.
+from Knowledge base, for more details about the landing page.
 
 ## Reserve
 
@@ -757,7 +756,7 @@ When the user confirms the purchase in Vipps, the payment status changes to `RES
 The respective amount will be reserved for future capturing.
 
 For more details, see
-[Common topics: Reserve and capture](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture).
+[Knowledge base: Reserve and capture](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture).
 
 ## Capture
 
@@ -790,7 +789,7 @@ See the FAQ:
 * [When should I use "Direct Capture"?](https://developer.vippsmobilepay.com/docs/faqs/reserve-and-capture-faq#when-should-i-use-direct-capture)
 
 See
-[Common topics: capture](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture#capture)
+[Knowledge base: capture](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture#capture)
 for more details about the types of captures.
 
 ### Partial capture
@@ -1115,7 +1114,7 @@ always contains *the entire history* of payments for the order, not just the cur
 
 See
 [Polling guidelines](https://developer.vippsmobilepay.com/docs/common-topics/polling-guidelines)
-in the Common topics.
+in the Knowledge base.
 
 ## Get payment status
 
@@ -1158,7 +1157,7 @@ is made within (milli)seconds of the payment approval in the app, it may not be
 available. If that happens, simply make another `/details` request.
 See
 [Polling guidelines](https://developer.vippsmobilepay.com/docs/common-topics/polling-guidelines)
-in the Common topics for more recommendations.
+in the Knowledge base for more recommendations.
 
 ### Get userinfo
 
@@ -1195,7 +1194,7 @@ This API returns the following HTTP statuses in the responses:
 
 For more information about the HTTP response codes and JSON object in the responses, see
 [HTTP response codes](https://developer.vippsmobilepay.com/docs/common-topics/http-response-codes)
-in the Common topics.
+in the Knowledge base.
 
 For details about the specific eCom errors and responses, see:
 
@@ -1658,4 +1657,4 @@ not supported by the force approve endpoint.
 ## Recommendations regarding handling redirects
 
 See
-[Common topics: Recommendations regarding handling redirects](https://developer.vippsmobilepay.com/docs/common-topics/redirects).
+[Knowledge base: Recommendations regarding handling redirects](https://developer.vippsmobilepay.com/docs/common-topics/redirects).
