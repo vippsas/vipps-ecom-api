@@ -89,7 +89,7 @@ This is set in the `initiate` payment body.
 
 For apps, this URL will be the appswitch URL.
 
-If you do not have a fallback (or "result" page), you can use the main URL for your company:
+If you do not have a fallback (or "result" page), you can use the main URL for your business:
 `https://example.com/fallback-dummy`, or similar. Please use a URL that returns `HTTP 200 OK`.
 
 The URL must be valid.
