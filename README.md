@@ -42,6 +42,16 @@ native apps and other solutions.
 * [How the eCom API works online](./how-it-works/vipps-ecom-api-howitworks.md):  Let your customers pay with Vipps online or in your app. All your customer needs to provide is their mobile number, then they pay in Vipps with one click.
 * [How the eCom API works in the Store](./how-it-works/vipps-in-store-howitworks.md): How the eCom API can be integrated in your Point Of Sale (POS) system.
 
+## Plugins for eCom
+
+* [Commerce Vipps (Drupal)](https://developer.vippsmobilepay.com/docs/plugins-ext/drupal/)
+* [Vipps Payment Module for Magento 2](https://developer.vippsmobilepay.com/docs/plugins-ext/magento/)
+* [Vipps for Optimizely](https://developer.vippsmobilepay.com/docs/plugins-ext/episerver/)
+* [Vipps for Shopify](https://developer.vippsmobilepay.com/docs/plugins-ext/shopify/)
+* [Vipps Payment for Wix](https://developer.vippsmobilepay.com/docs/plugins-ext/wix/)
+* [Vipps for WooCommerce](https://developer.vippsmobilepay.com/docs/plugins-ext/woocommerce/)
+
+
 ## Next steps
 
 * [API quick start](vipps-ecom-api-quick-start.md): Run the basic examples in curl or Postman.
