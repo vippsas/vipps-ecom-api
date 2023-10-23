@@ -729,7 +729,7 @@ When you initiate a payment, it will be *reserved* until you *capture* it:
   The funds are still in the customer's account, but not available to spend on other things.
 * When a payment is captured it means the funds are moved from customer's account to merchant's account.
   * Captured funds will be settled to the merchant's settlement account after two business days. See
-  [Settlement Information](../settlements/README.md) for more details.
+  [Settlement Information](https://developer.vippsmobilepay.com/docs/settlements/) for more details.
 
 When the user confirms the purchase in Vipps, the payment status changes to `RESERVE`.
 The respective amount will be reserved for future capturing.
@@ -806,7 +806,7 @@ or by KAM merchants from the Key Account Manager.
 See the FAQ:
 
 * [When should I use "Direct Capture"?](https://developer.vippsmobilepay.com/docs/faqs/reserve-and-capture-faq/#when-should-i-use-direct-capture)
-* [How can I check if I have "reserve capture" or "direct capture"?](../faqs/reserve-and-capture-faq.md#how-can-i-check-if-i-have-reserve-capture-or-direct-capture)
+* [How can I check if I have "reserve capture" or "direct capture"?](https://developer.vippsmobilepay.com/docs/faqs/reserve-and-capture-faq.md#how-can-i-check-if-i-have-reserve-capture-or-direct-capture)
 
 ### Partial capture
 
