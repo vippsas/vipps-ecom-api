@@ -119,7 +119,7 @@ The property `access_token` should be used for all other API requests in the `Au
 
 ### Step 3 - A simple payment
 
-Initiate a payment with: [`POST:/payments`][create-payment-endpoint].
+Initiate a payment with: [`POST:/ecomm/v2/payments`][create-payment-endpoint].
 When your test mobile number
 is provided in `phoneNumber`, it will be pre-filled in the form.
 
@@ -187,7 +187,7 @@ We cannot guarantee the user will be redirected back to the same browser or sess
 ### Step 5 - Getting the status of the payment
 
 To receive the result of the user action you may poll the status of the payment via the
-[`GET:/payments/{orderId}/details`][get-payment-endpoint].
+[`GET:/ecomm/v2/payments/{orderId}/details`][get-payment-endpoint].
 
 <Tabs
 defaultValue="curl"
@@ -225,7 +225,7 @@ curl https://apitest.vipps.no/ecomm/v2/payments/UNIQUE-PAYMENT-REFERENCE/details
 
 After the goods or services have been delivered, you can capture the authorized
 amount either partially or fully:
-[`POST:/payments/{orderId}/capture`][capture-payment-endpoint].
+[`POST:/ecomm/v2/payments/{orderId}/capture`][capture-payment-endpoint].
 
 <Tabs
 defaultValue="curl"
@@ -277,7 +277,7 @@ for more details.
 ### Refund the payment
 
 To refund the captured amount, either partially or fully:
-[`POST:/payments/{orderId}/refund`][refund-payment-endpoint].
+[`POST:/ecomm/v2/payments/{orderId}/refund`][refund-payment-endpoint].
 
 <Tabs
 defaultValue="curl"
@@ -327,7 +327,7 @@ for more details.
 ### Cancel the payment
 
 To cancel the payment, either fully or after a partial capture:
-[`POST:/payments/{orderId}/cancel`][cancel-payment-endpoint].
+[`POST:/ecomm/v2/payments/{orderId}/cancel`][cancel-payment-endpoint].
 
 <Tabs
 defaultValue="curl"

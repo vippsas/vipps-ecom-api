@@ -25,7 +25,7 @@ The `useExplicitCheckoutFlow` parameter no longer has any effect.
 ## October 2022
 
 URL links in the body of
-[`POST:/payments`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST)
+[`POST:/ecomm/v2/payments`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST)
 now only support HTTPS.
 
 This includes the following fields:
