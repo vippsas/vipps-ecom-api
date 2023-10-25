@@ -806,7 +806,7 @@ or by KAM merchants from the Key Account Manager.
 See the FAQ:
 
 * [When should I use "Direct Capture"?](https://developer.vippsmobilepay.com/docs/faqs/reserve-and-capture-faq/#when-should-i-use-direct-capture)
-* [How can I check if I have "reserve capture" or "direct capture"?](https://developer.vippsmobilepay.com/docs/faqs/reserve-and-capture-faq.md#how-can-i-check-if-i-have-reserve-capture-or-direct-capture)
+* [How can I check if I have "reserve capture" or "direct capture"?](https://developer.vippsmobilepay.com/docs/faqs/reserve-and-capture-faq#how-can-i-check-if-i-have-reserve-capture-or-direct-capture)
 
 ### Partial capture
 
