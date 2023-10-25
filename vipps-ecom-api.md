@@ -914,9 +914,6 @@ any request to cancel after a partial or full capture has been performed will be
 This is a useful and recommended feature, as it releases any reserved balance
 as soon as the card issuer and/or bank permits.
 
-See also the FAQ:
-[How long does it take from a refund is made until the money is in the customer's account?](https://developer.vippsmobilepay.com/docs/faqs/refunds-faq#how-long-does-it-take-from-a-refund-is-made-until-the-money-is-in-the-customers-account)
-
 Example Request:
 
 ```json
