@@ -20,7 +20,7 @@ paths:
         This API endpoint on the merchant side allows Vipps to send consent-removal
         requests to the merchant. When receiving requests, the merchant
         is obliged to remove the user details permanently, as per the GDPR guidelines.
-        Request syntax: 'DELETE:consentRemovalPrefix/v2/consents/{userId}'.
+        Request syntax: 'DELETE:{consentRemovalPrefix}/v2/consents/{userId}'.
         Vipps will add `/v2/consents/{userId}` to the end of the `consentRemovalPrefix` URL.
         URLs passed to Vipps must validate, see the
         [API guide](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api/#url-validation).
@@ -53,7 +53,7 @@ paths:
         There is a *10 second timeout* for these requests, to ensure a good
         user experience, and thus requires a quick reply from the merchant's
         server for successful payments.
-        Request syntax: 'POST:shippingDetailsPrefix/v2/payments/{orderId}/shippingDetails'.
+        Request syntax: 'POST:{shippingDetailsPrefix}/v2/payments/{orderId}/shippingDetails'.
         Vipps will add `/v2/payments/{orderId}/shippingDetails` to the end of the `shippingDetailsPrefix` URL.
         URLs passed to Vipps must be validated, see the
         [API guide](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api/#url-validation).
@@ -103,7 +103,7 @@ paths:
         For regular eCom payments, the order and transaction details will be shared.
         For Vipps Hurtigkasse (express checkout) payments, it will provide user and shipping details,
         in addition to the order and transaction details.
-        Request syntax: 'POST:callbackPrefix/v2/payments/{orderId}'.
+        Request syntax: 'POST:{callbackPrefix}/v2/payments/{orderId}'.
         Vipps will add `/v2/payments/{orderId}` to the end of the `callbackPrefix` URL.
         URLs passed to Vipps must be validated, see the
         [API guide](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api/#url-validation).

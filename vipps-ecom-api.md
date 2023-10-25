@@ -184,7 +184,7 @@ To perform an express checkout, the merchant needs to specify
 call, and support the
 [`POST:[shippingDetailsPrefix]​/v2​/payments​/{orderId}​/shippingDetails`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/fetchShippingCostUsingPOST)
 and
-[`DELETE:/v2/consents/{userId}`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/removeUserConsentUsingDELETE)
+[`DELETE:[consentRemovalPrefix]/v2/consents/{userId}`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/removeUserConsentUsingDELETE)
 endpoints.
 
 #### Shipping and static shipping details
@@ -639,14 +639,14 @@ reference only - these endpoints are *not* callable at Vipps.
 
 | Operation            | Description                                                                       | Endpoint |
 |:---------------------|:----------------------------------------------------------------------------------|:-|
-| Get shipping details | Used to fetch shipping information, **10-second timeout** | [`POST:/v2/payments/{orderId}/shippingDetails`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/fetchShippingCostUsingPOST) |
-| Transaction Update   | A callback to the merchant for receiving post-payment information.                | [`POST:/v2/payments/{orderId}`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/transactionUpdateCallbackForRegularPaymentUsingPOST) |
-| Remove user consent  | Used to inform merchant when the Vipps user removes consent to share information. | [`DELETE:/v2/consents/{userId}`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/removeUserConsentUsingDELETE) |
+| Get shipping details | Used to fetch shipping information, **10-second timeout** | [`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/fetchShippingCostUsingPOST) |
+| Transaction Update   | A callback to the merchant for receiving post-payment information.                | [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/transactionUpdateCallbackForRegularPaymentUsingPOST) |
+| Remove user consent  | Used to inform merchant when the Vipps user removes consent to share information. | [`DELETE:[consentRemovalPrefix]//v2/consents/{userId}`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/removeUserConsentUsingDELETE) |
 
 Please note that if the shipping details are static (i.e., do not vary based on the
 address), the parameter `staticShippingDetails` can be used in the initiate call.
 Then, there is no need to implement
-[`POST:/v2/payments/{orderId}/shippingDetails`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/fetchShippingCostUsingPOST).
+[`POST:[shippingDetailsPrefix]//v2/payments/{orderId}/shippingDetails`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/fetchShippingCostUsingPOST).
 
 See
 [Initiate payment flow: API calls](#initiate-payment-flow-api-calls) for details.
