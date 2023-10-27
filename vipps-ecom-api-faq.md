@@ -21,12 +21,12 @@ See the
 [eCom API guide](vipps-ecom-api.md)
 for all the details.
 
-For more common questions, see [Common API FAQ](https://developer.vippsmobilepay.com/docs/faqs).
+For more general information and questions, please check in the [Knowledge base](https://developer.vippsmobilepay.com/docs/common-topics/).
 
 ## Common problems
 
 See
-[FAQ: Common problems](https://developer.vippsmobilepay.com/docs/faqs/common-problems-faq)
+[Knowledge base: Errors](https://developer.vippsmobilepay.com/docs/common-topics/errors/)
 for more questions.
 
 ### Why does Vipps Hurtigkasse (express checkout) fail?
@@ -56,9 +56,6 @@ See: [Get payment details](vipps-ecom-api.md#get-payment-details).
 See:
 [All errors](vipps-ecom-api.md#error-codes).
 
-## Reservations and captures
-
-See [FAQ: Reservations and capture](https://developer.vippsmobilepay.com/docs/faqs/reserve-and-capture-faq/).
 
 ## Refunds
 
@@ -89,7 +86,7 @@ of 750 NOK, and need to refund the remaining 250 NOK.
 
 * The short version: This is done automatically by the bank after a few days.
 See:
-[For how long is a payment reserved?](https://developer.vippsmobilepay.com/docs/faqs/reserve-and-capture-faq/#for-how-long-is-a-payment-reserved).
+[For how long is a payment reserved?](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture/#for-how-long-is-a-payment-reserved).
 
 * The long version: It *is* possible to cancel the remaining reservation after a
 partial capture through the eCom API: Send a
@@ -119,7 +116,7 @@ See: [Settlements](https://developer.vippsmobilepay.com/docs/settlements/).
 ## Users and payments
 
 See
-[FAQ: Users and payments](https://developer.vippsmobilepay.com/docs/faqs/users-and-payments-faq)
+[FAQ: Users and payments](https://developer.vippsmobilepay.com/docs/common-topics/payments/)
 for more questions.
 
 ### I have initiated an order but I can't find it
@@ -169,7 +166,7 @@ The following images illustrate the express checkout flow:
 ## Common errors
 
 See
-[FAQ: Common errors](https://developer.vippsmobilepay.com/docs/faqs/common-errors-faq)
+[FAQ: Common errors](https://developer.vippsmobilepay.com/docs/common-topics/errors)
 for more questions.
 
 ### Why do I not get callbacks from Vipps?
@@ -215,10 +212,6 @@ an internal timeout, and we "have to" send the response without the `sub`.
 We cannot enforce longer `orderId` values due to backwards compatibility.
 
 ## Other questions
-
-See
-[FAQ: Other questions](https://developer.vippsmobilepay.com/docs/faqs/other-faq)
-for more questions.
 
 ### What functionality is included in the eCom API, but not the PSP API?
 

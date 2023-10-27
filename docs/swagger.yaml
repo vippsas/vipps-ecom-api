@@ -1743,7 +1743,7 @@ components:
         Errors can be from both our own code (where we have full control) and
         from Microsoft Azure (where we rely on standard functionality).
         See the "Common errors" section of the [eCom FAQs](https://developer.vippsmobilepay.com/docs/APIs/ecom-api/vipps-ecom-api-faq#common-errors)
-        or from the [FAQs](https://developer.vippsmobilepay.com/docs/faqs/common-errors-faq).
+        or from the [Knowledge base: Errors](https://developer.vippsmobilepay.com/docs/common-topics/errors).
         See also: [Knowledge base: URL Validation](https://developer.vippsmobilepay.com/docs/common-topics/url-validation).
       content:
         application/json;charset=UTF-8:
