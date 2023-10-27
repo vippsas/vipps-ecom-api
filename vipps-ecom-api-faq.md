@@ -26,7 +26,7 @@ For more common questions, see [Common API FAQ](https://developer.vippsmobilepay
 ## Common problems
 
 See
-[FAQ: Common problems](https://developer.vippsmobilepay.com/docs/faqs/common-problems-faq)
+[Knowledge base: Errors](https://developer.vippsmobilepay.com/docs/common-topics/errors/)
 for more questions.
 
 ### Why does Vipps Hurtigkasse (express checkout) fail?
@@ -56,9 +56,6 @@ See: [Get payment details](vipps-ecom-api.md#get-payment-details).
 See:
 [All errors](vipps-ecom-api.md#error-codes).
 
-## Reservations and captures
-
-See [FAQ: Reservations and capture](https://developer.vippsmobilepay.com/docs/faqs/reserve-and-capture-faq/).
 
 ## Refunds
 

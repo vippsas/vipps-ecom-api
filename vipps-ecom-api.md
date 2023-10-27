@@ -1188,7 +1188,7 @@ the user's details from the Userinfo API:
 See:
 [Userinfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api).
 
-## HTTP response codes
+## eCom API HTTP response codes
 
 This API returns the following HTTP statuses in the responses:
 
@@ -1204,13 +1204,11 @@ This API returns the following HTTP statuses in the responses:
 * `500 Server Error`
 
 For more information about the HTTP response codes and JSON object in the responses, see
-[HTTP response codes](https://developer.vippsmobilepay.com/docs/common-topics/http-response-codes)
+[Errors and response codes](https://developer.vippsmobilepay.com/docs/common-topics/errors)
 in the Knowledge base.
 
-For details about the specific eCom errors and responses, see:
+For details about the specific eCom errors and responses, see [OpenAPI specification](https://developer.vippsmobilepay.com/api/ecom).
 
-* [OpenAPI specification](https://developer.vippsmobilepay.com/api/ecom)
-* [Errors](#errors)
 
 ## Rate limiting
 
@@ -1561,7 +1559,7 @@ override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
 
 ### Error object in the response
 
-See [HTTP response codes](#http-response-codes).
+See [eCom API HTTP response codes](#ecom-api-http-response-codes).
 
 ```json
 [
