@@ -131,7 +131,7 @@ This has some benefits:
 See:
 
 * [Reserve and capture](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture)
-* [When should I charge the customer](https://developer.vippsmobilepay.com/docs/faqs/reserve-and-capture-faq#when-should-i-charge-the-customer).
+* [When should I charge the customer](https://developer.vippsmobilepay.com/docs/faqs/reserve-and-capture-faq#when-should-i-charge-the-customer)
 * [What is the difference between "Reserve Capture" and "Direct Capture"?](https://developer.vippsmobilepay.com/docs/faqs/reserve-and-capture-faq#what-is-the-difference-between-reserve-capture-and-direct-capture)
 * [When should I use "Direct Capture"?](https://developer.vippsmobilepay.com/docs/faqs/reserve-and-capture-faq#when-should-i-use-direct-capture)
 

@@ -21,7 +21,7 @@ See the
 [eCom API guide](vipps-ecom-api.md)
 for all the details.
 
-For more common questions, see [Common API FAQ](https://developer.vippsmobilepay.com/docs/faqs).
+For more general information and questions, please check in the [Knowledge base](https://developer.vippsmobilepay.com/docs/common-topics/).
 
 ## Common problems
 
