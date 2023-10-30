@@ -382,8 +382,8 @@ You will find more examples of eCom API requests in the
 Experiment with these or go straight to the [eCom API Guide](vipps-ecom-api.md).
 
 [access-token-endpoint]: https://developer.vippsmobilepay.com/api/access-token#tag/Authorization-Service/operation/fetchAuthorizationTokenUsingPost
-[create-payment-endpoint]: https://developer.vippsmobilepay.com/api/ecom/#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST
-[get-payment-endpoint]: https://developer.vippsmobilepay.com/api/ecom/#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET
-[capture-payment-endpoint]: https://developer.vippsmobilepay.com/api/ecom/#tag/Vipps-eCom-API/operation/capturePaymentUsingPOST
-[refund-payment-endpoint]: https://developer.vippsmobilepay.com/api/ecom/#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST
-[cancel-payment-endpoint]: https://developer.vippsmobilepay.com/api/ecom/#tag/Vipps-eCom-API/operation/cancelPaymentRequestUsingPUT
+[create-payment-endpoint]: https://developer.vippsmobilepay.com/api/ecom/#tag/eCom-API/operation/initiatePaymentV3UsingPOST
+[get-payment-endpoint]: https://developer.vippsmobilepay.com/api/ecom/#tag/eCom-API/operation/getPaymentDetailsUsingGET
+[capture-payment-endpoint]: https://developer.vippsmobilepay.com/api/ecom/#tag/eCom-API/operation/capturePaymentUsingPOST
+[refund-payment-endpoint]: https://developer.vippsmobilepay.com/api/ecom/#tag/eCom-API/operation/refundPaymentUsingPOST
+[cancel-payment-endpoint]: https://developer.vippsmobilepay.com/api/ecom/#tag/eCom-API/operation/cancelPaymentRequestUsingPUT
