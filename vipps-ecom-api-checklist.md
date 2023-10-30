@@ -24,11 +24,11 @@ Integrate *all* the [API endpoints](https://developer.vippsmobilepay.com/api/eco
 
 | Endpoint | Comment |
 |-----|-----------|
-|     Initiate |  [`POST:/ecomm/v2/payments`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST)|
-|     Full and partial Capture| [`POST:/ecomm/v2/payments/{orderId}/capture`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/capturePaymentUsingPOST)|
-|     Cancel| [`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/cancelPaymentRequestUsingPUT)|
-|     Full and partial Refund| [`POST:/ecomm/v2/payments/{orderId}/refund`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST)|
-|     Details| [`GET:/ecomm/v2/payments/{orderId}/details`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET)|
+|     Initiate |  [`POST:/ecomm/v2/payments`](https://developer.vippsmobilepay.com/api/ecom#tag/eCom-API/operation/initiatePaymentV3UsingPOST)|
+|     Full and partial Capture| [`POST:/ecomm/v2/payments/{orderId}/capture`](https://developer.vippsmobilepay.com/api/ecom#tag/eCom-API/operation/capturePaymentUsingPOST)|
+|     Cancel| [`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://developer.vippsmobilepay.com/api/ecom#tag/eCom-API/operation/cancelPaymentRequestUsingPUT)|
+|     Full and partial Refund| [`POST:/ecomm/v2/payments/{orderId}/refund`](https://developer.vippsmobilepay.com/api/ecom#tag/eCom-API/operation/refundPaymentUsingPOST)|
+|     Details| [`GET:/ecomm/v2/payments/{orderId}/details`](https://developer.vippsmobilepay.com/api/ecom#tag/eCom-API/operation/getPaymentDetailsUsingGET)|
 |     Callback| [`POST:[callbackPrefix]/v2/payments/{orderId}`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/transactionUpdateCallbackForRegularPaymentUsingPOST)|
 |    Shipping Details (For Vipps Hurtigkasse /express checkout only) |[`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/fetchShippingCostUsingPOST)|
 |    Remove consent (For Vipps Hurtigkasse /express checkout only) | [`DELETE:[consentRemovalPrefix]/v2/consents/{userId}`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/removeUserConsentUsingDELETE) |
@@ -47,7 +47,7 @@ Integrate *all* the [API endpoints](https://developer.vippsmobilepay.com/api/eco
 | Action    | Comment   |
 |-----|-----------|
 |     Send useful `OrderId` | Follow our [`orderId` recommendations](https://developer.vippsmobilepay.com/docs/knowledge-base/orderid). |
-|     Poll for payment details | The Merchant *must not* rely on `fallback` or `callback` alone, and must poll [`GET:/ecomm/v2/payments/{orderId}/details`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET) as documented (this is part of the first item in this checklist, but it's still a common error). Follow our [polling recommendations](https://developer.vippsmobilepay.com/docs/knowledge-base/polling-guidelines). |
+|     Poll for payment details | The Merchant *must not* rely on `fallback` or `callback` alone, and must poll [`GET:/ecomm/v2/payments/{orderId}/details`](https://developer.vippsmobilepay.com/api/ecom#tag/eCom-API/operation/getPaymentDetailsUsingGET) as documented (this is part of the first item in this checklist, but it's still a common error). Follow our [polling recommendations](https://developer.vippsmobilepay.com/docs/knowledge-base/polling-guidelines). |
 |     Handle redirects| The merchant must handle that the `fallback` URL is opened in the default browser on the phone, and not in a specific browser, in a specific tab, in an embedded browser, requiring a session token, etc. Follow our [recommendations regarding handling redirects](https://developer.vippsmobilepay.com/docs/knowledge-base/redirects/).|
 |     Follow design guidelines| The Vipps branding must be according to the [Design guidelines](https://developer.vippsmobilepay.com/docs/design-guidelines).|
 |     Educate customer support| Make sure your customer service, etc. has all the tools and information they need available in *your* system, through the APIs listed in the first item in this checklist, and that they do not need to visit [portal.vipps.no](https://portal.vipps.no) for normal work.|
@@ -68,18 +68,18 @@ Integrate *all* the [API endpoints](https://developer.vippsmobilepay.com/api/eco
    [Vipps test environment](https://developer.vippsmobilepay.com/docs/test-environment),
    with the following states:
    * A complete order ending in `REFUND`
-      ([`/refund`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST)
+      ([`/refund`](https://developer.vippsmobilepay.com/api/ecom#tag/eCom-API/operation/refundPaymentUsingPOST)
       request).
    * A complete order ending in `VOID`
-      ([`/cancel`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/cancelPaymentRequestUsingPUT)
+      ([`/cancel`](https://developer.vippsmobilepay.com/api/ecom#tag/eCom-API/operation/cancelPaymentRequestUsingPUT)
       request).
    * In the test environment this must be verified using the API itself.
 6. The merchant verifies the integration in the production environment (similar to step 5):
    * A complete order ending in `REFUND`
-      ([`/refund`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST)
+      ([`/refund`](https://developer.vippsmobilepay.com/api/ecom#tag/eCom-API/operation/refundPaymentUsingPOST)
       request).
    * For *reserve capture*: A complete order ending in `VOID`
-      ([`/cancel`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/cancelPaymentRequestUsingPUT)
+      ([`/cancel`](https://developer.vippsmobilepay.com/api/ecom#tag/eCom-API/operation/cancelPaymentRequestUsingPUT)
       request after reserve).
    * We recommend checking this using both the API itself and the API Dashboard, available in the *Utvikler* section on the
       [merchant portal](https://portal.vipps.no).  

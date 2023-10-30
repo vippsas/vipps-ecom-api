@@ -62,7 +62,7 @@ See:
 ## Can I refund a payment?
 
 The eCom API supports refunds with
-[`POST:/ecomm/v2/payments/{orderId}/refund`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/refundPaymentUsingPOST).
+[`POST:/ecomm/v2/payments/{orderId}/refund`](https://developer.vippsmobilepay.com/api/ecom#tag/eCom-API/operation/refundPaymentUsingPOST).
 
 All integrations with the eCom API *must* support refunds.
 
@@ -90,7 +90,7 @@ See:
 
 * The long version: It *is* possible to cancel the remaining reservation after a
 partial capture through the eCom API: Send a
-[`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/cancelPaymentRequestUsingPUT)
+[`PUT:/ecomm/v2/payments/{orderId}/cancel`](https://developer.vippsmobilepay.com/api/ecom#tag/eCom-API/operation/cancelPaymentRequestUsingPUT)
 request with `shouldReleaseRemainingFunds: true` in the body.
 The payment must be `RESERVED` for this to take effect.
 See:
