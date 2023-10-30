@@ -175,7 +175,7 @@ Note that `orderId` must be unique for each payment you create.
 ### Step 4 - Completing the payment
 
 *Ctrl+click* (*Command-click* on macOS) on the link that appears, and it will take you to the
-[landing page](https://developer.vippsmobilepay.com/docs/common-topics/landing-page/).
+[landing page](https://developer.vippsmobilepay.com/docs/knowledge-base/landing-page/).
 The phone number of your test user should already be filled in, so you only have to click *Next*.
 You will be presented with the payment in the app, where you can complete or reject the payment.
 Once you have acted upon the payment, you will be redirected back to the specified `fallBack` URL under a "best effort" policy.
@@ -269,7 +269,7 @@ curl https://apitest.vipps.no/ecomm/v2/payments/UNIQUE-PAYMENT-REFERENCE/capture
 </Tabs>
 
 See
-[Knowledge base: Capture](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture#capture)
+[Knowledge base: Capture](https://developer.vippsmobilepay.com/docs/knowledge-base/reserve-and-capture#capture)
 for more details.
 
 ## Optional steps
@@ -321,7 +321,7 @@ curl https://apitest.vipps.no/ecomm/v2/payments/UNIQUE-PAYMENT-REFERENCE/refund 
 </Tabs>
 
 See
-[Knowledge base: refund](https://developer.vippsmobilepay.com/docs/common-topics/refund)
+[Knowledge base: refund](https://developer.vippsmobilepay.com/docs/knowledge-base/refund)
 for more details.
 
 ### Cancel the payment
@@ -371,7 +371,7 @@ curl https://apitest.vipps.no/ecomm/v2/payments/UNIQUE-PAYMENT-REFERENCE/cancel 
 </Tabs>
 
 See
-[Knowledge base: Cancel](https://developer.vippsmobilepay.com/docs/common-topics/cancel)
+[Knowledge base: Cancel](https://developer.vippsmobilepay.com/docs/knowledge-base/cancel)
 for more details.
 
 ## Next Steps

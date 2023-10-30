@@ -98,7 +98,7 @@ For integrating with the eCom API, see the
 
 We recommend using the standard HTTP headers for all requests.
 
-See [Knowledge base: HTTP headers](https://developer.vippsmobilepay.com/docs/common-topics/http-headers) for details.
+See [Knowledge base: HTTP headers](https://developer.vippsmobilepay.com/docs/knowledge-base/http-headers) for details.
 
 ## Authentication
 
@@ -130,10 +130,10 @@ This has some benefits:
 
 See:
 
-* [Reserve and capture](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture)
-* [When should I charge the customer](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture/#when-should-i-charge-the-customer)
-* [What is the difference between "Reserve Capture" and "Direct Capture"?](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture/#what-is-the-difference-between-reserve-capture-and-direct-capture)
-* [When should I use "Direct Capture"?](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture/#when-should-i-use-direct-capture)
+* [Reserve and capture](https://developer.vippsmobilepay.com/docs/knowledge-base/reserve-and-capture)
+* [When should I charge the customer](https://developer.vippsmobilepay.com/docs/knowledge-base/reserve-and-capture/#when-should-i-charge-the-customer)
+* [What is the difference between "Reserve Capture" and "Direct Capture"?](https://developer.vippsmobilepay.com/docs/knowledge-base/reserve-and-capture/#what-is-the-difference-between-reserve-capture-and-direct-capture)
+* [When should I use "Direct Capture"?](https://developer.vippsmobilepay.com/docs/knowledge-base/reserve-and-capture/#when-should-i-use-direct-capture)
 
 ### Regular payments and express payments
 
@@ -227,7 +227,7 @@ A payment is initiated with a call to
 
 ![Push notification](images/vipps-flow-device.png)
 
-Triggered by the payment initiation, the [landing page](https://developer.vippsmobilepay.com/docs/common-topics/landing-page/) will automatically
+Triggered by the payment initiation, the [landing page](https://developer.vippsmobilepay.com/docs/knowledge-base/landing-page/) will automatically
 detect if it is being invoked on a phone, and whether Vipps is installed on the phone.
 If Vipps is installed, Vipps will automatically be opened.
 
@@ -263,7 +263,7 @@ If Vipps is installed, Vipps will automatically be opened.
    Facebook or Instagram, it is not possible for Vipps to open the
    `fallBack` URL in the embedded browser. The phone OS will always open URLs
    in the default browser. See:
-   [Knowledge base: Recommendations regarding handling redirects](https://developer.vippsmobilepay.com/docs/common-topics/redirects).
+   [Knowledge base: Recommendations regarding handling redirects](https://developer.vippsmobilepay.com/docs/knowledge-base/redirects).
 3. Because of the above, a successful payment *must not* rely on session cookies
    in the browser.
 4. Vipps cannot guarantee a particular sequence of callback and fallback,
@@ -271,7 +271,7 @@ If Vipps is installed, Vipps will automatically be opened.
    Because of this, it is not possible to base an integration on a specific
    sequence of events.
 5. URLs must be valid. See:
-   [Knowledge base: URL Validation](https://developer.vippsmobilepay.com/docs/common-topics/url-validation/)
+   [Knowledge base: URL Validation](https://developer.vippsmobilepay.com/docs/knowledge-base/url-validation/)
 
 ### Desktop flow
 
@@ -297,7 +297,7 @@ automatically.
 
 It is possible to send the optional `isApp` parameter, which comes with some
 additional responsibility. For details, see
-[IsApp](https://developer.vippsmobilepay.com/docs/common-topics/isApp/)
+[IsApp](https://developer.vippsmobilepay.com/docs/knowledge-base/isApp/)
 in the Knowledge base.
 
 ### Initiate payment flow: API calls
@@ -369,14 +369,14 @@ already known.
 Users should never be asked for the phone number, as they will
 either be automatically app-switched to the Vipps app, or they will be presented
 with the
-[landing page](https://developer.vippsmobilepay.com/docs/common-topics/landing-page/).
+[landing page](https://developer.vippsmobilepay.com/docs/knowledge-base/landing-page/).
 If the customer's phone number is needed by the merchant: Use `scope` and the
 [Userinfo API](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/).
 
 **Important:** Do not send sensitive information in the `transactionText` field.
 See:
 
-* [`transactionText`](https://developer.vippsmobilepay.com/docs/common-topics/transactiontext/) for recommendations of what to use in this field.
+* [`transactionText`](https://developer.vippsmobilepay.com/docs/knowledge-base/transactiontext/) for recommendations of what to use in this field.
 * [Datatilsynet's information](https://www.datatilsynet.no/rettigheter-og-plikter/personopplysninger/)
 about which types of information is sensitive (in Norwegian).
 
@@ -389,7 +389,7 @@ The URL is normally a `https://` URL, which automatically opens the Vipps app, i
 app is installed (and the landing page, if not).
 
 It is possible to perform manual handling of the interaction between the user's Vipps app and the Vipps backend, although this is not recommended. To learn about this, see
-[isApp](https://developer.vippsmobilepay.com/docs/common-topics/isApp)
+[isApp](https://developer.vippsmobilepay.com/docs/knowledge-base/isApp)
 in the Knowledge base.
 
 ### Payment identification
@@ -399,7 +399,7 @@ and `orderId`:
 
 * `merchantSerialNumber`: The merchant's Vipps ID. Example: `123456`.
 * `orderId`: Must be unique for the `merchantSerialNumber`. Example: `acme-shop-123-order123abc`.
-  See: [`orderId` recommendations](https://developer.vippsmobilepay.com/docs/common-topics/orderid).
+  See: [`orderId` recommendations](https://developer.vippsmobilepay.com/docs/knowledge-base/orderid).
 
 ### Payment retries
 
@@ -415,9 +415,9 @@ to the first payment attempt.
 
 For some hints about what to use for the parameter values, see these pages in the Knowledge base:
 
-* [`orderId`](https://developer.vippsmobilepay.com/docs/common-topics/orderid)
-* [`transactionText`](https://developer.vippsmobilepay.com/docs/common-topics/transactiontext/)
-* [URLs](https://developer.vippsmobilepay.com/docs/common-topics/url-validation)
+* [`orderId`](https://developer.vippsmobilepay.com/docs/knowledge-base/orderid)
+* [`transactionText`](https://developer.vippsmobilepay.com/docs/knowledge-base/transactiontext/)
+* [URLs](https://developer.vippsmobilepay.com/docs/knowledge-base/url-validation)
 
 ## Callbacks
 
@@ -433,7 +433,7 @@ Callback are made for the following events:
 can't rely on callbacks alone. You must also poll
 [`GET:/ecomm/v2/payments/{orderId}/details`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET).
 
-See [Knowledge base: Poling](https://developer.vippsmobilepay.com/docs/common-topics/polling-guidelines/) for polling guidelines.
+See [Knowledge base: Poling](https://developer.vippsmobilepay.com/docs/knowledge-base/polling-guidelines/) for polling guidelines.
 
 **Important:**
 
@@ -479,7 +479,7 @@ Again:
 
 **Important:**
 
-* URLs must be valid. For details, see [Knowledge base: URL Validation](https://developer.vippsmobilepay.com/docs/common-topics/url-validation/).
+* URLs must be valid. For details, see [Knowledge base: URL Validation](https://developer.vippsmobilepay.com/docs/knowledge-base/url-validation/).
 * Vipps does *not* support sending requests to all ports, so to be safe use
   common port numbers such as: 80, 443, 8080.
 * Vipps does *not* support callback URLs that return `HTTP 301 Redirect`,
@@ -625,7 +625,7 @@ For a full history of a payment, use
 [`[callbackPrefix]/v2/payments/{orderId}/details`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/getPaymentDetailsUsingGET).
 See [Get payment details](#get-payment-details) for more information.
 
-See: [Knowledge base: Timeouts](https://developer.vippsmobilepay.com/docs/common-topics/timeouts).
+See: [Knowledge base: Timeouts](https://developer.vippsmobilepay.com/docs/knowledge-base/timeouts).
 
 ## Express checkout API endpoints required on the merchant side
 
@@ -719,7 +719,7 @@ part of callback and also made accessible through [`GET:/ecomm/v2/payments/{orde
 When a user is directed to the `url` sent in the response to
 [`POST:/ecomm/v2/payments`](https://developer.vippsmobilepay.com/api/ecom#tag/Vipps-eCom-API/operation/initiatePaymentV3UsingPOST),
 they will either be taken to the Vipps app or to the
-[Landing page](https://developer.vippsmobilepay.com/docs/common-topics/landing-page).
+[Landing page](https://developer.vippsmobilepay.com/docs/knowledge-base/landing-page).
 
 ## Reserve
 
@@ -735,7 +735,7 @@ When the user confirms the purchase in Vipps, the payment status changes to `RES
 The respective amount will be reserved for future capturing.
 
 For more details, see
-[Knowledge base: Reserve and capture](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture).
+[Knowledge base: Reserve and capture](https://developer.vippsmobilepay.com/docs/knowledge-base/reserve-and-capture).
 
 ## Capture
 
@@ -763,12 +763,12 @@ Attempting to capture an older payment will result in a
 
 See the FAQ:
 
-* [When should I charge the customer](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture/#when-should-i-charge-the-customer).
-* [What is the difference between "Reserve Capture" and "Direct Capture"?](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture/#what-is-the-difference-between-reserve-capture-and-direct-capture)
-* [When should I use "Direct Capture"?](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture/#when-should-i-use-direct-capture)
+* [When should I charge the customer](https://developer.vippsmobilepay.com/docs/knowledge-base/reserve-and-capture/#when-should-i-charge-the-customer).
+* [What is the difference between "Reserve Capture" and "Direct Capture"?](https://developer.vippsmobilepay.com/docs/knowledge-base/reserve-and-capture/#what-is-the-difference-between-reserve-capture-and-direct-capture)
+* [When should I use "Direct Capture"?](https://developer.vippsmobilepay.com/docs/knowledge-base/reserve-and-capture/#when-should-i-use-direct-capture)
 
 See
-[Knowledge base: capture](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture#capture)
+[Knowledge base: capture](https://developer.vippsmobilepay.com/docs/knowledge-base/reserve-and-capture#capture)
 for more details about the types of captures.
 
 ### Reserve capture
@@ -805,8 +805,8 @@ or by KAM merchants from the Key Account Manager.
 
 See the FAQ:
 
-* [When should I use "Direct Capture"?](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture/#when-should-i-use-direct-capture)
-* [How can I check if I have "reserve capture" or "direct capture"?](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture/#how-can-i-check-if-i-have-reserve-capture-or-direct-capture)
+* [When should I use "Direct Capture"?](https://developer.vippsmobilepay.com/docs/knowledge-base/reserve-and-capture/#when-should-i-use-direct-capture)
+* [How can I check if I have "reserve capture" or "direct capture"?](https://developer.vippsmobilepay.com/docs/knowledge-base/reserve-and-capture/#how-can-i-check-if-i-have-reserve-capture-or-direct-capture)
 
 ### Partial capture
 
@@ -1124,7 +1124,7 @@ always contains *the entire history* of payments for the order, not just the cur
 ```
 
 See
-[Polling guidelines](https://developer.vippsmobilepay.com/docs/common-topics/polling-guidelines)
+[Polling guidelines](https://developer.vippsmobilepay.com/docs/knowledge-base/polling-guidelines)
 in the Knowledge base.
 
 ## Get payment status
@@ -1167,7 +1167,7 @@ An example similar to this, but with ePayment, is shown in the
 is made within (milli)seconds of the payment approval in the app, it may not be
 available. If that happens, simply make another `/details` request.
 See
-[Polling guidelines](https://developer.vippsmobilepay.com/docs/common-topics/polling-guidelines)
+[Polling guidelines](https://developer.vippsmobilepay.com/docs/knowledge-base/polling-guidelines)
 in the Knowledge base for more recommendations.
 
 ### Get userinfo
@@ -1204,7 +1204,7 @@ This API returns the following HTTP statuses in the responses:
 * `500 Server Error`
 
 For more information about the HTTP response codes and JSON object in the responses, see
-[HTTP response codes and errors](https://developer.vippsmobilepay.com/docs/common-topics/errors)
+[HTTP response codes and errors](https://developer.vippsmobilepay.com/docs/knowledge-base/errors)
 in the Knowledge base.
 
 For details about the specific eCom errors and responses, see [OpenAPI specification](https://developer.vippsmobilepay.com/api/ecom).
@@ -1252,7 +1252,7 @@ a request with the same `X-Request-Id`, the retried request will not make
 additional changes.
 
 See the
-[Idempotency header](https://developer.vippsmobilepay.com/docs/common-topics/http-headers#idempotency)
+[Idempotency header](https://developer.vippsmobilepay.com/docs/knowledge-base/http-headers#idempotency)
 for more details.
 
 Example Request:
@@ -1606,7 +1606,7 @@ to retrieve all the information about the payment.
 | Payment        | 42         | "Refused by the issuer." The customer must contact the issuer, typically the bank. |
 | Payment        | 43         | "Refused by the issuer: Invalid amount." |
 | Payment        | 44         | "Refused by the issuer: Expired card."  The customer must add a card.|
-| Payment        | 45         | "Reservation failed, reason unknown." Most common: The customer has not acted upon the payment. We can not know the reason for this. See [Timeouts](https://developer.vippsmobilepay.com/docs/common-topics/timeouts). |
+| Payment        | 45         | "Reservation failed, reason unknown." Most common: The customer has not acted upon the payment. We can not know the reason for this. See [Timeouts](https://developer.vippsmobilepay.com/docs/knowledge-base/timeouts). |
 | Payment        | 51         | "Cannot cancel an orderId that has already been captured." Cannot [cancel](#cancel), do a [refund](#refund) instead. |
 | Payment        | 52         | "Cancellation failed, reason unknown." [Cancel](#cancel) failed.                           |
   | Payment        | 61         | "The total capture amount exceeds the reserved amount. You cannot capture a higher amount than the user has accepted. Check the payment details". This is in rare cases caused by rounding errors on the merchant's side. Check the [payment details](#get-payment-details).|
@@ -1617,27 +1617,27 @@ to retrieve all the information about the payment.
 | Payment        | 73         | "Cannot refund a canceled order."               |
 | Payment        | 74         | "Refund failed during debit from the merchant's account." |
 | Payment        | 93         | Captured amount must be the same in an idempotent retry. The same `Idempotency-Key` can not be used with different request payloads. |
-| Payment        | 95         | "Payments can only be refunded up to 365 days after reservation. See the FAQ." or "Direct capture is not allowed. See the Checkout documentation." See [Reserve and capture](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture).|
-| Payment        | 98         | "Payments can only be captured up to 180 days after reservation. See the FAQ." Payments can only be captured up to 180 days after reservation. See [Reserve and capture](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture).|
+| Payment        | 95         | "Payments can only be refunded up to 365 days after reservation. See the FAQ." or "Direct capture is not allowed. See the Checkout documentation." See [Reserve and capture](https://developer.vippsmobilepay.com/docs/knowledge-base/reserve-and-capture).|
+| Payment        | 98         | "Payments can only be captured up to 180 days after reservation. See the FAQ." Payments can only be captured up to 180 days after reservation. See [Reserve and capture](https://developer.vippsmobilepay.com/docs/knowledge-base/reserve-and-capture).|
 | Payment        | 1082       | This person is not BankID verified. This only applies for test users. |
 | VippsError     | 91         | "The transaction is not allowed." Typically shown when attempting to capture a cancelled order. |
 | VippsError     | 92         | "The transaction has already been processed." |
 | VippsError     | 93         | "The capture request must be identical to the previous request(s) in an idempotent retry." or "The refund request must be identical to the previous request(s) in an idempotent retry." |
 | VippsError     | 94         | Order locked and is already processing. This can occur for a short period of time if a bank has problems, and Vipps needs to wait and/or clean up. Retry the same request later, with the same idempotency key. |
 | VippsError     | 98         | "Too many concurrent requests. See the FAQ." Used only to prevent obviously incorrect API use. See [Rate limiting](#rate-limiting).|
-| VippsError     | 99         | "Internal error. In some cases, this is caused by an incorrect API request. Please check the request." In practice this is *always* due to a combination of a bad request from the merchant and inadequate validation at our end. See [Why do I get HTTP 500 Internal Server Error?](https://developer.vippsmobilepay.com/docs/common-topics/errors/#why-do-i-get-http-500-internal-server-error). |
+| VippsError     | 99         | "Internal error. In some cases, this is caused by an incorrect API request. Please check the request." In practice this is *always* due to a combination of a bad request from the merchant and inadequate validation at our end. See [Why do I get HTTP 500 Internal Server Error?](https://developer.vippsmobilepay.com/docs/knowledge-base/errors/#why-do-i-get-http-500-internal-server-error). |
 | user           | 81         | "The phone number is either incorrectly formatted (see the API specification), is not a Vipps user, or the user cannot pay businesses. Vipps cannot give more details." We can not give all the details, as we can not reveal if the user is blocked, is too young to pay businesses, etc. |
 | user           | 82         | "The user's app version is not supported."  The user must upgrade the app.              |
-| Merchant       | 31         | "The merchant is blocked. The merchant can contact customer service for details." We can not reveal the details. See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](https://developer.vippsmobilepay.com/docs/common-topics/errors#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked). |
+| Merchant       | 31         | "The merchant is blocked. The merchant can contact customer service for details." We can not reveal the details. See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](https://developer.vippsmobilepay.com/docs/knowledge-base/errors#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked). |
 | Merchant       | 32         | "The receiving limit of merchant is exceeded." The merchant has received more money than allowed. The merchant can contact customer service for details.   |
 | Merchant       | 33         | "The merchant's payment request limit is exceeded." The merchant has requested more money than allowed. Can contact customer service for details.  |
-| Merchant       | 34         | "Duplicate orderId. The orderId must be unique for each MSN. It has already been used for this MSN." The `orderId` has already been used for another payment for this MSN. The orderId must be unique for the MSN. Follow the [`orderId` recommendations](https://developer.vippsmobilepay.com/docs/common-topics/orderid). |
-| Merchant       | 35         | "The orderId 'acme-shop-123-order123abc' does not exist for MSN 654321." Follow the [`orderId` recommendations](https://developer.vippsmobilepay.com/docs/common-topics/orderid). |
+| Merchant       | 34         | "Duplicate orderId. The orderId must be unique for each MSN. It has already been used for this MSN." The `orderId` has already been used for another payment for this MSN. The orderId must be unique for the MSN. Follow the [`orderId` recommendations](https://developer.vippsmobilepay.com/docs/knowledge-base/orderid). |
+| Merchant       | 35         | "The orderId 'acme-shop-123-order123abc' does not exist for MSN 654321." Follow the [`orderId` recommendations](https://developer.vippsmobilepay.com/docs/knowledge-base/orderid). |
 | Merchant       | 36         | "The merchant's agreement has not been signed." The merchant can contact customer service for details. |
-| Merchant       | 37         | "The merchant and/or sales unit is unavailable, deleted, deactivated or blocked for payments." We can not reveal the details. See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](https://developer.vippsmobilepay.com/docs/common-topics/errors#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked) |
-| Merchant       | 38         | "The sales unit is not allowed to skip the landing page. See the FAQ." See the [landing page](https://developer.vippsmobilepay.com/docs/common-topics/landing-page/#skip-landing-page). |
+| Merchant       | 37         | "The merchant and/or sales unit is unavailable, deleted, deactivated or blocked for payments." We can not reveal the details. See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](https://developer.vippsmobilepay.com/docs/knowledge-base/errors#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked) |
+| Merchant       | 38         | "The sales unit is not allowed to skip the landing page. See the FAQ." See the [landing page](https://developer.vippsmobilepay.com/docs/knowledge-base/landing-page/#skip-landing-page). |
 | Merchant       | 39         | "The sales unit is not allowed to initiate long-living payments." |
-| Merchant       | 97         | "The sales unit is not allowed to perform payments. See the FAQ." Typically shown for a merchant that has only applied for Login API, and has not been through the required compliance checks for making payments. See [Why do I get "Merchant Not Allowed for Ecommerce Payment"?](https://developer.vippsmobilepay.com/docs/common-topics/errors#why-do-i-get-merchant-not-allowed-for-ecommerce-payment). |
+| Merchant       | 97         | "The sales unit is not allowed to perform payments. See the FAQ." Typically shown for a merchant that has only applied for Login API, and has not been through the required compliance checks for making payments. See [Why do I get "Merchant Not Allowed for Ecommerce Payment"?](https://developer.vippsmobilepay.com/docs/knowledge-base/errors#why-do-i-get-merchant-not-allowed-for-ecommerce-payment). |
 | InvalidRequest | -          | The field name will be the error code. Contains a description about what exactly the field error is. |
 
 ## Testing
@@ -1663,4 +1663,4 @@ the test environment when using Vipps (the app), but not with "force approve".
 not supported by the force approve endpoint.
 
 See
-[Knowledge base: Recommendations regarding handling redirects](https://developer.vippsmobilepay.com/docs/common-topics/redirects).
+[Knowledge base: Recommendations regarding handling redirects](https://developer.vippsmobilepay.com/docs/knowledge-base/redirects).
