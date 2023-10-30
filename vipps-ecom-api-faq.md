@@ -21,12 +21,12 @@ See the
 [eCom API guide](vipps-ecom-api.md)
 for all the details.
 
-For more general information and questions, please check in the [Knowledge base](https://developer.vippsmobilepay.com/docs/common-topics/).
+For more general information and questions, please check in the [Knowledge base](https://developer.vippsmobilepay.com/docs/knowledge-base/).
 
 ## Common problems
 
 See
-[Knowledge base: Errors](https://developer.vippsmobilepay.com/docs/common-topics/errors/)
+[Knowledge base: Errors](https://developer.vippsmobilepay.com/docs/knowledge-base/errors/)
 for more questions.
 
 ### Why does Vipps Hurtigkasse (express checkout) fail?
@@ -86,7 +86,7 @@ of 750 NOK, and need to refund the remaining 250 NOK.
 
 * The short version: This is done automatically by the bank after a few days.
 See:
-[For how long is a payment reserved?](https://developer.vippsmobilepay.com/docs/common-topics/reserve-and-capture/#for-how-long-is-a-payment-reserved).
+[For how long is a payment reserved?](https://developer.vippsmobilepay.com/docs/knowledge-base/reserve-and-capture/#for-how-long-is-a-payment-reserved).
 
 * The long version: It *is* possible to cancel the remaining reservation after a
 partial capture through the eCom API: Send a
@@ -116,7 +116,7 @@ See: [Settlements](https://developer.vippsmobilepay.com/docs/settlements/).
 ## Users and payments
 
 See
-[FAQ: Users and payments](https://developer.vippsmobilepay.com/docs/common-topics/payments/)
+[FAQ: Users and payments](https://developer.vippsmobilepay.com/docs/knowledge-base/payments/)
 for more questions.
 
 ### I have initiated an order but I can't find it
@@ -166,7 +166,7 @@ The following images illustrate the express checkout flow:
 ## Common errors
 
 See
-[FAQ: Common errors](https://developer.vippsmobilepay.com/docs/common-topics/errors)
+[FAQ: Common errors](https://developer.vippsmobilepay.com/docs/knowledge-base/errors)
 for more questions.
 
 ### Why do I not get callbacks from Vipps?
@@ -206,7 +206,7 @@ as it gives a faster payment process and a better user experience.
 
 If you use the correct `scope` in the payment initiation, but don't get the
 `sub` in the response for `/details`: Check that you are following the
-[`orderId` recommendations](https://developer.vippsmobilepay.com/docs/common-topics/orderid).
+[`orderId` recommendations](https://developer.vippsmobilepay.com/docs/knowledge-base/orderid).
 Very short `orderId` values don't work well with our database index, and may cause
 an internal timeout, and we "have to" send the response without the `sub`.
 We cannot enforce longer `orderId` values due to backwards compatibility.

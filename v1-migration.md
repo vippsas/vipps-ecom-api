@@ -26,7 +26,7 @@ The initiate payment response will contain a unique URL for each order. Either a
 
 Skipping the landing page is reserved for special cases, where displaying it is not possible.
 See the details in the
-[skip landing page section](https://developer.vippsmobilepay.com/docs/common-topics/landing-page#skip-landing-page).
+[skip landing page section](https://developer.vippsmobilepay.com/docs/knowledge-base/landing-page#skip-landing-page).
 
 ## Phone number is optional
 
