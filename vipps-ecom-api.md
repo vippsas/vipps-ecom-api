@@ -1637,8 +1637,11 @@ to retrieve all the information about the payment.
 | Merchant       | 37         | "The merchant and/or sales unit is unavailable, deleted, deactivated or blocked for payments." We can not reveal the details. See [Why do I get errorCode 37 "Merchant not available or deactivated or blocked"?](https://developer.vippsmobilepay.com/docs/knowledge-base/errors#why-do-i-get-errorcode-37-merchant-not-available-or-deactivated-or-blocked) |
 | Merchant       | 38         | "The sales unit is not allowed to skip the landing page. See the FAQ." See the [landing page](https://developer.vippsmobilepay.com/docs/knowledge-base/landing-page/#skip-landing-page). |
 | Merchant       | 39         | "The sales unit is not allowed to initiate long-living payments." |
+| Merchant       | 51         | "The Nin scope is not allowed." See [who can get access](https://developer.vippsmobilepay.com/docs/APIs/login-api/login-api-faq/#who-can-get-access-to-nin-and-how). |
 | Merchant       | 97         | "The sales unit is not allowed to perform payments. See the FAQ." Typically shown for a merchant that has only applied for Login API, and has not been through the required compliance checks for making payments. See [Why do I get "Merchant Not Allowed for Ecommerce Payment"?](https://developer.vippsmobilepay.com/docs/knowledge-base/errors#why-do-i-get-merchant-not-allowed-for-ecommerce-payment). |
 | InvalidRequest | -          | The field name will be the error code. Contains a description about what exactly the field error is. |
+
+ErrorCode: "51", ErrorGroup: "Merchant", Statuscode: 403, Error: "The Nin scope is not allowed"
 
 ## Testing
 
