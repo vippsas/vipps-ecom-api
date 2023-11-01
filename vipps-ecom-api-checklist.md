@@ -20,7 +20,7 @@ API version: 2.0.
 
 ## Checklist for full integration
 
-Integrate *all* the [API endpoints](https://developer.vippsmobilepay.com/api/ecom/). For examples of requests and responses, see the [Postman collection](/tools/vipps-ecom-api-postman-collection.json) and [environment](https://github.com/vippsas/vipps-developers/blob/master/tools/vipps-api-global-postman-environment.json).
+Integrate *all* the [API endpoints](https://developer.vippsmobilepay.com/api/ecom/). For examples of requests and responses, see the [Postman collection](/tools/vipps-ecom-api-postman-collection.json) and [environment](https://github.com/vippsas/vipps-developers/blob/master/tools/global-postman-environment.json).
 
 | Endpoint | Comment |
 |-----|-----------|
