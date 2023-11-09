@@ -33,6 +33,13 @@ Integrate *all* the [API endpoints](https://developer.vippsmobilepay.com/api/eco
 |    Shipping Details (For Vipps Hurtigkasse /express checkout only) |[`POST:[shippingDetailsPrefix]/v2/payments/{orderId}/shippingDetails`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/fetchShippingCostUsingPOST)|
 |    Remove consent (For Vipps Hurtigkasse /express checkout only) | [`DELETE:[consentRemovalPrefix]/v2/consents/{userId}`](https://developer.vippsmobilepay.com/api/ecom#tag/Merchant-Endpoints/operation/removeUserConsentUsingDELETE) |
 
+When the checklist is completed, notify Vipps MobilePay Integration Service
+at [developer@vippsmobilepay.com](mailto:developer@vippsmobilepay.com).
+Include examples from the test environment, pilot customer info, and a description of the implemented solution.
+
+We will verify the integration and contact you.
+After the checklist is approved, we'll send you the information you need to get started.
+
 ## Quality assurance
 
 | Action | Comment |
